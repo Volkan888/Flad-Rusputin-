@@ -700,6 +700,9 @@ class Program
         // DDR
         player.Alter = 35;
         player.Phase = "DDR-Einsatz";
+        
+        // Zufallsereignis
+        EventSystem.TriggerRandomEvent(player);
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
         Console.WriteLine("║              EINSATZ IN DER DDR (1989)                    ║");
