@@ -1,0 +1,202 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║      RISE OF THE NORTHBORN – FLAD RUSPUTIN SAGA                      ║
+║      Installations- und Spielanleitung                                ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+
+█████ INSTALLATION █████████████████████████████████████████████████████
+
+--- WINDOWS ---
+
+1. Voraussetzungen:
+   - .NET Framework 4.5 oder höher muss installiert sein
+   - Wird normalerweise mit Windows mitgeliefert
+
+2. Kompilieren:
+   Doppelklick auf: compile.bat
+   ODER in der Kommandozeile:
+   > compile.bat
+
+3. Starten:
+   Doppelklick auf: run.bat
+   ODER:
+   > RiseOfTheNorthborn.exe
+
+
+--- LINUX / MAC ---
+
+1. Voraussetzungen:
+   - Mono muss installiert sein
+   Installation (Ubuntu/Debian):
+   $ sudo apt-get install mono-complete
+   
+   Installation (Mac mit Homebrew):
+   $ brew install mono
+
+2. Kompilieren:
+   $ chmod +x compile.sh
+   $ ./compile.sh
+
+3. Starten:
+   $ chmod +x run.sh
+   $ ./run.sh
+
+
+█████ SPIELANLEITUNG ███████████████████████████████████████████████████
+
+--- HAUPTMENÜ ---
+
+[1] Neues Spiel         - Starte ein neues Abenteuer
+[2] Spiel Laden         - Lade einen Spielstand (5 Slots)
+[3] Highscore           - Zeige lokale Bestenliste
+[4] Globaler Highscore  - Zeige weltweite Rangliste
+[5] Mini Game           - Spiele Schiffe versenken ⚓
+[6] Mehrspieler         - Spiele mit Freunden
+[7] Einstellungen       - Passe das Spiel an
+[8] Beenden             - Verlasse das Spiel
+
+
+--- SCHIFFE VERSENKEN (OPTION 5) ---
+
+1. Wähle Spielmodus:
+   [1] Spieler vs Computer  - Kämpfe gegen die KI
+   [2] Spieler vs Spieler   - Spiele mit einem Freund (Hotseat)
+   [3] Highscore            - Zeige die besten Zeiten
+
+2. Gib deinen Namen ein:
+   > Admiral
+
+3. Wähle Schwierigkeitsgrad:
+   [1] Klein (5x5)   - 3 Schiffe, schnelle Runden
+   [2] Mittel (6x6)  - 4 Schiffe, ausgewogen
+   [3] Groß (8x8)    - 5 Schiffe, epische Schlacht
+
+4. PLATZIERE DEINE SCHIFFE:
+   
+   Für jedes Schiff:
+   - Gib Startposition ein (z.B. A1, B3, C2)
+   - Wähle Ausrichtung:
+     H = Horizontal (nach rechts)
+     V = Vertikal (nach unten)
+   
+   Beispiel:
+   > Startposition: A1
+   > Ausrichtung: H
+   
+   WICHTIG:
+   - Schiffe dürfen sich NICHT berühren (auch nicht diagonal)
+   - Schiffe müssen komplett aufs Feld passen
+
+5. KÄMPFE:
+   
+   - Gib Koordinaten zum Angriff ein (z.B. B3)
+   - Treffer = Rotes X, du darfst nochmal schießen
+   - Wasser = Blaues O, Gegner ist dran
+   - Versenkt = Alle Teile eines Schiffs getroffen
+   
+   Legende:
+   ~ = Wasser (noch nicht beschossen)
+   ■ = Dein Schiff
+   X = Treffer
+   ○ = Fehlschuss
+
+6. SIEG:
+   
+   - Versenke alle gegnerischen Schiffe
+   - Deine Zeit wird im Highscore gespeichert
+
+
+--- KOORDINATENSYSTEM ---
+
+     1   2   3   4   5
+   ─────────────────────
+ A │ ~   ~   ~   ~   ~ │
+ B │ ~   ■   ■   ■   ~ │  <-- Schiff von B2 bis B4
+ C │ ~   ~   ~   ~   ~ │
+ D │ ■   ~   ~   ~   ~ │
+ E │ ■   ~   ~   ~   ~ │
+   ─────────────────────
+    ^
+    |
+   Schiff von D1 bis E1
+
+
+--- TIPPS & TRICKS ---
+
+✓ Streue deine Schiffe über das Feld
+✓ Platziere nicht alle Schiffe nebeneinander
+✓ Merke dir wo du schon geschossen hast
+✓ Bei Treffer: Suche systematisch nach dem Rest
+✓ Ecken und Rand sind oft gute Verstecke
+
+
+--- SOUND-EFFEKTE ---
+
+♪ Hintergrundmusik    - Tetris-Melodie (sowjetischer Klassiker)
+♪ Treffer             - Hoher Piepton
+♪ Versenkt            - Doppelton
+♪ Fehlschuss          - Tiefer Ton
+♪ Wellenrauschen      - Während der Platzierungsphase
+
+
+--- TECHNISCHE HINWEISE ---
+
+• Das Spiel läuft in der Konsole/Terminal
+• Stelle sicher, dass deine Konsole UTF-8 unterstützt
+• Für beste Darstellung: Verwende eine Monospace-Schriftart
+• Empfohlene Konsolengröße: 80x30 Zeichen
+
+
+--- FEHLERSUCHE ---
+
+Problem: Spiel kompiliert nicht
+Lösung:  Prüfe ob .NET Framework (Windows) oder Mono (Linux/Mac)
+         installiert ist
+
+Problem: Keine Sound-Effekte
+Lösung:  Normal unter Linux/Mac, da Console.Beep nicht immer 
+         unterstützt wird. Das Spiel funktioniert trotzdem!
+
+Problem: Komische Zeichen statt Symbole
+Lösung:  Stelle Konsole auf UTF-8 um:
+         Windows: chcp 65001
+         Linux: export LANG=de_DE.UTF-8
+
+Problem: Spiel nicht gefunden
+Lösung:  Navigiere zum richtigen Ordner:
+         > cd /pfad/zum/spiel
+
+
+█████ SPIELFEATURES ████████████████████████████████████████████████████
+
+✅ Vollständiges Schiffe-Versenken-Minigame
+✅ Spieler vs Computer (mit KI)
+✅ Spieler vs Spieler (Hotseat)
+✅ 3 Schwierigkeitsgrade (5x5, 6x6, 8x8)
+✅ Highscore-System mit Top 10
+✅ Manuelle Schiffplatzierung
+✅ Intelligente KI
+✅ Sound-Effekte
+✅ Farbige ASCII-Grafik
+✅ Speicher-/Ladesystem (5 Slots)
+✅ Sowjetische Atmosphäre ☭
+
+
+█████ CREDITS ██████████████████████████████████████████████████████████
+
+Projekt:     Rise of the Northborn – Flad Rusputin Saga
+Entwickler:  Volkan Kurt
+Klasse:      SI 25-3
+Typ:         Text-Adventure mit Mini-Game
+Sprache:     C# (.NET/Mono)
+Plattform:   Windows, Linux, Mac
+
+
+╔═══════════════════════════════════════════════════════════════════════╗
+║                                                                       ║
+║              Viel Erfolg bei deinen Seeschlachten!                   ║
+║                   Für das Vaterland! ☭                               ║
+║                                                                       ║
+╚═══════════════════════════════════════════════════════════════════════╝
