@@ -141,7 +141,7 @@ class Program
             {
                 case "1": StartFladStory(); break;
                 case "2":
-                    LoadGame();
+                    LoadGameMenu();
                     break;
                 case "3":
                     Console.WriteLine(">> Highscore wird angezeigt...");
