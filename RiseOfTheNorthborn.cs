@@ -85,10 +85,7 @@ class Program
 
             switch (input)
             {
-                case "1":
-                    Console.WriteLine(">> Neues Spiel wird gestartet...");
-                    SaveGame();
-                    break;
+                case "1": StartFladStory(); break;
                 case "2":
                     LoadGame();
                     break;
