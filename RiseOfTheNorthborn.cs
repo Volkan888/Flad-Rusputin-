@@ -660,6 +660,9 @@ class Program
         // JURASTUDIUM
         player.Alter = 20;
         player.Phase = "Jurastudium";
+        
+        // Zufallsereignis
+        EventSystem.TriggerRandomEvent(player);
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
         Console.WriteLine("║         JURASTUDIUM (1970er)                              ║");
