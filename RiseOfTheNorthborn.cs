@@ -737,6 +737,9 @@ class Program
         // PRÄSIDENT
         player.Alter = 48;
         player.Phase = "Präsident";
+        
+        // Zufallsereignis
+        EventSystem.TriggerRandomEvent(player);
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
         Console.WriteLine("║       AUFSTIEG ZUM PRÄSIDENTEN (2000)                     ║");
