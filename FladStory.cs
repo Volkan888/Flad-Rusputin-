@@ -564,7 +564,7 @@ public static class FladStoryModule
         flad.Alter = 48;
     }
     
-    public static void PlayPresidentPhase(PlayerCharacter flad)
+    public static void PlayPresidentPhase(PlayerCharacter flad, FamilyTree family)
     {
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
@@ -588,6 +588,15 @@ public static class FladStoryModule
         Console.WriteLine(">> Flad wird Präsident von Russland!");
         Console.ResetColor();
         Thread.Sleep(2000);
+        
+        // Kinder generieren
+        Console.WriteLine("\n>> Während seiner politischen Karriere gründet Flad eine Familie...");
+        Thread.Sleep(1500);
+        Random rand = new Random();
+        int childCount = rand.Next(2, 5); // 2-4 Kinder
+        family.CurrentPlayer.GenerateChildren(childCount);
+        Console.WriteLine($">> Flad hat {childCount} Kinder!");
+        Thread.Sleep(1500);
         
         Console.WriteLine("\nNun muss Flad seinen Regierungsstil festlegen:\n");
         
