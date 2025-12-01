@@ -52,6 +52,346 @@ class GameSave
     }
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// ZUFALLSEREIGNISSE
+// ═══════════════════════════════════════════════════════════════════
+
+class RandomEvent
+{
+    public string Name;
+    public string Description;
+    public string Phase;
+    public int Chance; // 0-100
+    
+    public Action<PlayerCharacter> Apply;
+    
+    public RandomEvent(string name, string desc, string phase, int chance, Action<PlayerCharacter> apply)
+    {
+        Name = name;
+        Description = desc;
+        Phase = phase;
+        Chance = chance;
+        Apply = apply;
+    }
+}
+
+static class EventSystem
+{
+    static Random rand = new Random();
+    static List<RandomEvent> allEvents = new List<RandomEvent>();
+    
+    public static void InitializeEvents()
+    {
+        // KINDHEIT EREIGNISSE
+        allEvents.Add(new RandomEvent(
+            "Verlust des Bruders",
+            "Flad verliert seinen Bruder durch Krankheit. Ein traumatisches Ereignis...",
+            "Kindheit", 20,
+            p => {
+                p.Gesundheit -= 10;
+                p.LoyalitätFamilie = Math.Min(100, p.LoyalitätFamilie + 20);
+                p.Stärke += 1; // Entschlossenheit
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nächtliche Verhaftung",
+            "Flad beobachtet, wie der KGB einen Nachbarn abholt. Die Schritte hallen im Treppenhaus...",
+            "Kindheit", 30,
+            p => {
+                if (rand.Next(2) == 0)
+                    p.LoyalitätPartei += 15; // Aus Angst
+                else
+                    p.LoyalitätPartei -= 10; // Zweifel am System
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rauferei im Hinterhof",
+            "Flad gerät in eine Prügelei mit Straßenjungen. Er setzt sich durch!",
+            "Kindheit", 40,
+            p => {
+                p.Gesundheit -= 5;
+                p.Stärke += 1;
+                p.LoyalitätPartei -= 5; // Unruhestifter
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Heldengeschichte des Vaters",
+            "Vater erzählt von seinen Kriegsheldentaten. Flad ist tief beeindruckt...",
+            "Kindheit", 50,
+            p => {
+                p.LoyalitätPartei += 20;
+                p.LoyalitätFamilie += 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Aufnahme bei den Jungpionieren",
+            "Flad wird feierlich mit dem roten Halstuch ausgezeichnet!",
+            "Kindheit", 60,
+            p => {
+                p.LoyalitätPartei += 15;
+                p.Charisma += 1;
+            }
+        ));
+        
+        // JUGEND/KGB EREIGNISSE
+        allEvents.Add(new RandomEvent(
+            "Aufstieg in der Komsomol",
+            "Flad wird zum Anführer der lokalen Jugendorganisation gewählt!",
+            "KGB-Ambitionen", 40,
+            p => {
+                p.Charisma += 1;
+                p.LoyalitätPartei += 20;
+                p.EinflussKGB += 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Gefährlicher Freundeskreis",
+            "Ein Freund wird bei regimekritischen Aktivitäten erwischt!",
+            "KGB-Ambitionen", 25,
+            p => {
+                Console.WriteLine("\n[1] Freund decken (+Moral, -Partei)");
+                Console.WriteLine("[2] Freund melden (+Partei, -Moral)");
+                Console.Write("Wähle [1-2]: ");
+                if (Console.ReadLine() == "1")
+                {
+                    p.LoyalitätFamilie += 15;
+                    p.LoyalitätPartei -= 20;
+                }
+                else
+                {
+                    p.LoyalitätPartei += 25;
+                    p.LoyalitätFamilie -= 15;
+                    p.EinflussKGB += 10;
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Unverhofftes Erbe",
+            "Ein entfernter Onkel vermacht der Familie ein kleines Vermögen!",
+            "Jurastudium", 15,
+            p => {
+                p.Geld += 200;
+                p.LoyalitätPartei -= 5; // Neid
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Triumph auf der Judomatte",
+            "Flad gewinnt die Stadtmeisterschaft im Judo!",
+            "Jurastudium", 35,
+            p => {
+                p.Kraft += 2;
+                p.Gesundheit = Math.Min(100, p.Gesundheit + 10);
+                p.Charisma += 1;
+            }
+        ));
+        
+        // KGB AUSBILDUNG
+        allEvents.Add(new RandomEvent(
+            "Drill und Disziplin",
+            "Gnadenloser Drill in der KGB-Akademie. Flad trägt einen Kameraden kilometerweit...",
+            "Jurastudium", 30,
+            p => {
+                p.Gesundheit -= 15;
+                p.Kraft += 2;
+                p.Stärke += 1;
+                p.EinflussKGB += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Enttarnter Maulwurf",
+            "Ein Mitkadett ist ein westlicher Spion! Er verschwindet für immer...",
+            "Jurastudium", 20,
+            p => {
+                if (p.Intelligenz >= 3)
+                {
+                    Console.WriteLine("Du bemerkst Ungereimtheiten und meldest es!");
+                    p.EinflussKGB += 20;
+                    p.LoyalitätPartei += 15;
+                }
+                else
+                {
+                    p.LoyalitätPartei -= 10; // Schock
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Geheimer Testeinsatz",
+            "Flad erhält seinen ersten Feldauftrag - Intellektuelle observieren!",
+            "Jurastudium", 40,
+            p => {
+                if (rand.Next(100) < 60) // Erfolg
+                {
+                    p.EinflussKGB += 15;
+                    p.Intelligenz += 1;
+                    p.Geld += 50;
+                }
+                else
+                {
+                    p.Gesundheit -= 20;
+                    p.EinflussKGB -= 10;
+                }
+            }
+        ));
+        
+        // DDR & AUSLAND
+        allEvents.Add(new RandomEvent(
+            "Aufruhr in der Botschaft",
+            "Protestierende stürmen die sowjetische Residenz!",
+            "DDR-Einsatz", 45,
+            p => {
+                Console.WriteLine("\n[1] Dokumente verbrennen");
+                Console.WriteLine("[2] Menge besänftigen");
+                Console.Write("Wähle [1-2]: ");
+                if (Console.ReadLine() == "1")
+                {
+                    p.EinflussKGB += 20;
+                }
+                else if (p.Charisma >= 3)
+                {
+                    p.Charisma += 1;
+                    p.EinflussInternational += 15;
+                }
+                else
+                {
+                    p.Gesundheit -= 30;
+                    p.EinflussKGB -= 20;
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Doppelspiel eines Informanten",
+            "Ein Agent spielt doppelt für den Westen!",
+            "DDR-Einsatz", 30,
+            p => {
+                Console.WriteLine("\n[1] Ausschalten (+Loyalität)");
+                Console.WriteLine("[2] Als Doppelagenten nutzen (Risiko)");
+                Console.Write("Wähle [1-2]: ");
+                if (Console.ReadLine() == "1")
+                {
+                    p.LoyalitätPartei += 15;
+                    p.LoyalitätFamilie -= 10;
+                }
+                else
+                {
+                    if (rand.Next(100) < 50)
+                    {
+                        p.EinflussInternational += 25;
+                    }
+                    else
+                    {
+                        p.EinflussKGB -= 30;
+                    }
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Erfolgreicher Coup",
+            "Flad rekrutiert einen hochrangigen westlichen Offizier!",
+            "DDR-Einsatz", 25,
+            p => {
+                p.EinflussKGB += 30;
+                p.Geld += 100;
+                p.LoyalitätPartei += 20;
+            }
+        ));
+        
+        // PRÄSIDENT
+        allEvents.Add(new RandomEvent(
+            "Intrige im Politbüro",
+            "Ein Rivale versucht, Flad zu stürzen!",
+            "Präsident", 35,
+            p => {
+                if (p.Intelligenz >= 4 || p.EinflussKGB >= 50)
+                {
+                    p.EinflussKGB += 20;
+                    p.LoyalitätPartei += 15;
+                }
+                else
+                {
+                    p.EinflussKGB -= 25;
+                    p.Geld -= 100;
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Attentatsversuch",
+            "Schüsse in der Nacht! Ein Attentäter zielt auf Flad!",
+            "Präsident", 20,
+            p => {
+                p.Gesundheit -= 40;
+                p.LoyalitätVolk += 30; // Sympathie
+                p.EinflussKGB += 15; // Leibwächter engagierter
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Verrat im Umfeld",
+            "Ein enger Vertrauter ist ein Spion!",
+            "Präsident", 25,
+            p => {
+                p.LoyalitätFamilie -= 20;
+                p.LoyalitätPartei -= 15;
+                if (p.EinflussKGB >= 40)
+                {
+                    p.EinflussKGB += 10; // Aufgedeckt und gesäubert
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nervenzusammenbruch",
+            "Die jahrelange Belastung fordert ihren Tribut...",
+            "Präsident", 15,
+            p => {
+                p.Gesundheit -= 30;
+                p.EinflussKGB -= 20;
+                p.LoyalitätFamilie += 15; // Familie steht bei
+            }
+        ));
+    }
+    
+    public static void TriggerRandomEvent(PlayerCharacter player)
+    {
+        var possibleEvents = allEvents.Where(e => 
+            e.Phase == player.Phase && 
+            rand.Next(100) < e.Chance
+        ).ToList();
+        
+        if (possibleEvents.Count == 0) return;
+        
+        var chosen = possibleEvents[rand.Next(possibleEvents.Count)];
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                  ⚡ ZUFALLSEREIGNIS ⚡                     ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        Console.WriteLine($"\n📰 {chosen.Name}\n");
+        Console.WriteLine(chosen.Description);
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+        
+        chosen.Apply(player);
+        
+        Console.WriteLine("\n✓ Ereignis verarbeitet!");
+        Thread.Sleep(1500);
+    }
+}
+
 class Program
 {
     static bool stopMusic = false;
