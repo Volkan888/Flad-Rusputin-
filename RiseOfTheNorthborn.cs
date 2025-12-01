@@ -13,6 +13,7 @@ class Program
     static Dictionary<int, SaveData> saveSlots = new Dictionary<int, SaveData>();
     static Random rand = new Random();
     static List<BattleshipScore> battleshipHighscores = new List<BattleshipScore>();
+    static PlayerCharacter flad = null;
 
     static void Main()
     {
