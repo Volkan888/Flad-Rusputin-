@@ -217,32 +217,83 @@ class Program
         Thread.Sleep(1000);
     }
 
-    static void LoadGame()
+    static void LoadGameMenu()
     {
-        Console.WriteLine("\n>> Verfügbare Speicherstände:");
-        for (int i = 1; i <= 5; i++)
+        var result = SaveManager.LoadGame();
+        
+        if (result.Item1 != null)
         {
-            if (saveSlots.ContainsKey(i))
+            flad = result.Item1;
+            familyTree = result.Item2;
+            
+            Console.WriteLine("\n>> Spiel geladen! Möchtest du:");
+            Console.WriteLine("[1] Weiterspielen");
+            Console.WriteLine("[2] Stammbaum ansehen");
+            Console.WriteLine("[3] Zurück zum Menü");
+            
+            string choice = Console.ReadLine();
+            
+            switch (choice)
             {
-                var save = saveSlots[i];
-                Console.WriteLine($"[{i}] {save.PlayerName} - Level {save.Level} - {save.Timestamp:dd.MM.yyyy HH:mm}");
-            }
-            else
-            {
-                Console.WriteLine($"[{i}] (leer)");
+                case "1":
+                    ContinueLoadedGame();
+                    break;
+                case "2":
+                    familyTree.DisplayTree();
+                    Console.WriteLine("\n[Drücke eine Taste...]");
+                    Console.ReadKey(true);
+                    break;
             }
         }
-
-        Console.Write("\nWähle Slot zum Laden (1–5) oder 0 zum Abbrechen: ");
-        string choice = Console.ReadLine();
-        if (int.TryParse(choice, out int slot) && slot >= 1 && slot <= 5)
+    }
+    
+    static void ContinueLoadedGame()
+    {
+        stopMusic = true;
+        Thread.Sleep(300);
+        
+        Console.WriteLine("\n>> Das Spiel wird fortgesetzt...");
+        
+        // Prüfe ob Charakter gestorben ist
+        if (DeathAndSuccession.CheckForDeath(flad))
         {
-            if (saveSlots.ContainsKey(slot))
-                Console.WriteLine($">> Spiel geladen: {saveSlots[slot].PlayerName}");
-            else
-                Console.WriteLine(">> Kein Spielstand in diesem Slot vorhanden.");
+            flad = DeathAndSuccession.ContinueWithHeir(familyTree);
+            
+            if (flad == null)
+            {
+                Console.WriteLine("\n=== GAME OVER ===");
+                Console.WriteLine("Die Dynastie der Rusputins ist ausgestorben.");
+                Console.ReadKey();
+                stopMusic = false;
+                Task.Run(() => PlayLoopingBeep());
+                return;
+            }
         }
-        Thread.Sleep(1500);
+        
+        // Spiele weiter ab aktueller Phase
+        switch (flad.Phase)
+        {
+            case GamePhase.Kindheit:
+                FladStoryModule.PlayChildhood(flad);
+                goto case GamePhase.KGBAmbitionen;
+            case GamePhase.KGBAmbitionen:
+                FladStoryModule.PlayKGBPhase(flad);
+                goto case GamePhase.Jurastudium;
+            case GamePhase.Jurastudium:
+                FladStoryModule.PlayUniversityPhase(flad);
+                goto case GamePhase.DDREinsatz;
+            case GamePhase.DDREinsatz:
+                FladStoryModule.PlayDDRPhase(flad);
+                goto case GamePhase.Präsident;
+            case GamePhase.Präsident:
+                FladStoryModule.PlayPresidentPhase(flad, familyTree);
+                break;
+        }
+        
+        SaveManager.SaveGame(flad, familyTree);
+        
+        stopMusic = false;
+        Task.Run(() => PlayLoopingBeep());
     }
 
     // ═══════════════════════════════════════════════════════════════════
