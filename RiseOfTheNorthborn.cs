@@ -127,8 +127,8 @@ class Program
 
             Console.WriteLine("\n[1] Neues Spiel – Streben nach der Weltherrschaft");
             Console.WriteLine("[2] Spiel Laden");
-            Console.WriteLine("[3] Highscore");
-            Console.WriteLine("[4] Globaler Highscore");
+            Console.WriteLine("[3] Stammbaum ansehen 🌳");
+            Console.WriteLine("[4] Highscore");
             Console.WriteLine("[5] Mini Game: Schiffe versenken ⚓");
             Console.WriteLine("[6] Mehrspieler");
             Console.WriteLine("[7] Einstellungen");
