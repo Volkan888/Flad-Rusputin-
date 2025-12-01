@@ -116,7 +116,7 @@ public static class FladStoryModule
 {
     private static Random rand = new Random();
     
-    public static PlayerCharacter StartNewGame()
+    public static (PlayerCharacter, FamilyTree) StartNewGame()
     {
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Red;
@@ -143,7 +143,10 @@ public static class FladStoryModule
         // Geburtszene
         BirthScene(flad);
         
-        return flad;
+        // Stammbaum erstellen
+        FamilyTree family = new FamilyTree(flad);
+        
+        return (flad, family);
     }
     
     private static Difficulty ChooseDifficulty()
