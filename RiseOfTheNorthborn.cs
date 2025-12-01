@@ -1,28 +1,79 @@
 // Rise of the Northborn - Flad Rusputin Saga
-// Vollständiges C# Konsolenspiel mit komplettem Schiffe-Versenken-Minigame
+// Komplettes Spiel mit Stammbaum, Speichersystem und Schiffe Versenken
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
+
+// ═══════════════════════════════════════════════════════════════════
+// DATENKLASSEN
+// ═══════════════════════════════════════════════════════════════════
+
+class PlayerCharacter
+{
+    public string Name;
+    public int Stärke, Intelligenz, Charisma, Kraft;
+    public int Geld, Gesundheit;
+    public int LoyalitätPartei, LoyalitätVolk, LoyalitätFamilie;
+    public int EinflussKGB, EinflussMilitär, EinflussInternational;
+    public int Alter, Generation;
+    public string Phase;
+    public bool KGBEasterEgg, GeheimeAusbildung;
+    public List<PlayerCharacter> Kinder;
+    
+    public PlayerCharacter(string name, int generation)
+    {
+        Name = name;
+        Generation = generation;
+        Gesundheit = 100;
+        Geld = 0;
+        LoyalitätPartei = 50;
+        LoyalitätVolk = 50;
+        LoyalitätFamilie = 80;
+        Phase = "Geburt";
+        Kinder = new List<PlayerCharacter>();
+    }
+}
+
+class GameSave
+{
+    public string SaveName;
+    public DateTime SaveDate;
+    public PlayerCharacter Character;
+    public int Generation;
+    
+    public GameSave(string name, PlayerCharacter character)
+    {
+        SaveName = name;
+        SaveDate = DateTime.Now;
+        Character = character;
+        Generation = character.Generation;
+    }
+}
 
 class Program
 {
     static bool stopMusic = false;
-    static Dictionary<int, SaveData> saveSlots = new Dictionary<int, SaveData>();
+    static Dictionary<int, GameSave> saveSlots = new Dictionary<int, GameSave>();
     static Random rand = new Random();
-    static List<BattleshipScore> battleshipHighscores = new List<BattleshipScore>();
-    static PlayerCharacter flad = null;
-
+    static PlayerCharacter currentPlayer = null;
+    
     static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
+        ShowIntro();
+        MainMenu();
+    }
+    
+    static void ShowIntro()
+    {
         Console.BackgroundColor = ConsoleColor.Red;
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Clear();
-
-        string asciiFlag = @"            ▄▀▄▀              
+        
+        Console.WriteLine(@"
+            ▄▀▄▀              
           ▄▐▓▓▓▌▄            
           ▐▓▓▓▓▓▌            
         ▄▀▓▓▓▓▓▓▓▀▄          
@@ -32,87 +83,19 @@ class Program
   █                      █   
  █    ⚒                  █  
 █   ☭                     █ 
-█                         █ 
- ▀▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▀  ";
-
-        Console.WriteLine(asciiFlag);
-
-        string[] headerLines = {
-            "══════════════════════════════════════════════════════════════",
-            "║ ☆                                                      ☆ ║",
-            "║      RISE OF THE NORTHBORN – FLAD RUSPUTIN SAGA          ║",
-            "║ ☆                                                      ☆ ║",
-            "══════════════════════════════════════════════════════════════"
-        };
-
-        foreach (string line in headerLines)
-        {
-            Console.WriteLine(line);
-            Thread.Sleep(200);
-        }
-
-        Task.Run(() => PlayLoopingBeep());
-
-        Console.WriteLine("\n[ Drücke eine Taste, um ins Hauptmenü zu gelangen... ]");
+");
+        
+        Console.WriteLine("══════════════════════════════════════════════════════════════");
+        Console.WriteLine("║      RISE OF THE NORTHBORN – FLAD RUSPUTIN SAGA          ║");
+        Console.WriteLine("══════════════════════════════════════════════════════════════");
+        Thread.Sleep(200);
+        
+        Task.Run(() => PlayMusic());
+        
+        Console.WriteLine("\n[ Drücke eine Taste... ]");
         Console.ReadKey(true);
-
-        MainMenu();
-    }
-
-    static FamilyTree familyTree = null;
-    
-    static void StartFladStory()
-    {
-        stopMusic = true;
-        Thread.Sleep(300);
-        
-        var result = FladStoryModule.StartNewGame();
-        flad = result.Item1;
-        familyTree = result.Item2;
-        
-        // Durchlaufe alle Phasen
-        FladStoryModule.PlayChildhood(flad);
-        FladStoryModule.PlayKGBPhase(flad);
-        FladStoryModule.PlayUniversityPhase(flad);
-        FladStoryModule.PlayDDRPhase(flad);
-        FladStoryModule.PlayPresidentPhase(flad, familyTree);
-        
-        // Zeige Stammbaum
-        Console.WriteLine("\n>> Drücke [S] um Stammbaum zu sehen, oder andere Taste zum Speichern...");
-        if (Console.ReadKey(true).Key == ConsoleKey.S)
-        {
-            familyTree.DisplayTree();
-            Console.WriteLine("\n[Drücke eine Taste...]");
-            Console.ReadKey(true);
-        }
-        
-        // Speichere am Ende
-        SaveManager.SaveGame(flad, familyTree);
-        
-        stopMusic = false;
-        Task.Run(() => PlayLoopingBeep());
     }
     
-    static void SaveGameData(PlayerCharacter character)
-    {
-        for (int i = 1; i <= 5; i++)
-        {
-            if (!saveSlots.ContainsKey(i))
-            {
-                saveSlots[i] = new SaveData
-                {
-                    PlayerName = character.Name,
-                    Timestamp = DateTime.Now,
-                    Level = character.Alter,
-                    Money = character.Geld
-                };
-                Console.WriteLine($"\n>> Spielstand gespeichert in Slot {i}.");
-                Thread.Sleep(1000);
-                return;
-            }
-        }
-    }
-
     static void MainMenu()
     {
         while (true)
@@ -120,818 +103,577 @@ class Program
             Console.Clear();
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Yellow;
-
+            
             Console.WriteLine("══════════════════════════════════════════════════════════════");
             Console.WriteLine("║   ☭                   RUSPUTIN DYNASTY                 ☭   ║");
             Console.WriteLine("══════════════════════════════════════════════════════════════");
-
-            Console.WriteLine("\n[1] Neues Spiel – Streben nach der Weltherrschaft");
+            Console.ResetColor();
+            
+            Console.WriteLine("\n[1] Neues Spiel – Aufstieg zur Macht");
             Console.WriteLine("[2] Spiel Laden");
             Console.WriteLine("[3] Stammbaum ansehen 🌳");
-            Console.WriteLine("[4] Highscore");
-            Console.WriteLine("[5] Mini Game: Schiffe versenken ⚓");
-            Console.WriteLine("[6] Mehrspieler");
-            Console.WriteLine("[7] Einstellungen");
-            Console.WriteLine("[8] Beenden");
-
-            Console.Write("\nWähle eine Option [1–8]: ");
+            Console.WriteLine("[4] Spielstände verwalten");
+            Console.WriteLine("[5] Beenden");
+            
+            Console.Write("\nWähle [1-5]: ");
             string input = Console.ReadLine();
-
+            
             switch (input)
             {
-                case "1": StartFladStory(); break;
-                case "2":
-                    LoadGameMenu();
-                    break;
-                case "3":
-                    Console.WriteLine(">> Highscore wird angezeigt...");
-                    Console.ReadKey();
-                    break;
-                case "4":
-                    Console.WriteLine(">> Globaler Highscore wird geladen...");
-                    Console.ReadKey();
-                    break;
+                case "1": StartNewGame(); break;
+                case "2": LoadGame(); break;
+                case "3": ShowFamilyTree(); break;
+                case "4": ManageSaves(); break;
                 case "5":
                     stopMusic = true;
-                    Thread.Sleep(300);
-                    BattleshipGame();
-                    stopMusic = false;
-                    Task.Run(() => PlayLoopingBeep());
-                    break;
-                case "6":
-                    Console.WriteLine(">> Mehrspielermodus aktiviert...");
-                    Console.ReadKey();
-                    break;
-                case "7":
-                    Console.WriteLine(">> Einstellungen geöffnet...");
-                    Console.ReadKey();
-                    break;
-                case "8":
-                    stopMusic = true;
-                    Console.WriteLine(">> Auf Wiedersehen, Genosse! Das Vaterland dankt dir!");
+                    Console.WriteLine("\n>> Auf Wiedersehen, Genosse!");
                     Thread.Sleep(1000);
                     return;
-                default:
-                    Console.WriteLine("Ungültige Eingabe. Bitte wähle eine Zahl von 1 bis 8.");
-                    Thread.Sleep(1000);
-                    break;
-            }
-        }
-    }
-
-    static void PlayLoopingBeep()
-    {
-        int tempo = 150;
-        int[] melody = { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659, 587, 523, 494, 494, 523, 587, 659, 523, 440, 440 };
-        int[] durations = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2 };
-        while (!stopMusic)
-        {
-            for (int i = 0; i < melody.Length; i++)
-            {
-                if (stopMusic) return;
-                try { Console.Beep(melody[i], tempo * durations[i]); }
-                catch { }
-            }
-        }
-    }
-
-    static void SaveGame()
-    {
-        for (int i = 1; i <= 5; i++)
-        {
-            if (!saveSlots.ContainsKey(i))
-            {
-                saveSlots[i] = new SaveData
-                {
-                    PlayerName = "Flad Rusputin",
-                    Timestamp = DateTime.Now,
-                    Level = 1,
-                    Money = 100
-                };
-                Console.WriteLine($">> Spiel gespeichert in Slot {i}.");
-                Thread.Sleep(1000);
-                return;
-            }
-        }
-        Console.WriteLine(">> Alle Speicherplätze sind belegt.");
-        Thread.Sleep(1000);
-    }
-
-    static void LoadGameMenu()
-    {
-        var result = SaveManager.LoadGame();
-        
-        if (result.Item1 != null)
-        {
-            flad = result.Item1;
-            familyTree = result.Item2;
-            
-            Console.WriteLine("\n>> Spiel geladen! Möchtest du:");
-            Console.WriteLine("[1] Weiterspielen");
-            Console.WriteLine("[2] Stammbaum ansehen");
-            Console.WriteLine("[3] Zurück zum Menü");
-            
-            string choice = Console.ReadLine();
-            
-            switch (choice)
-            {
-                case "1":
-                    ContinueLoadedGame();
-                    break;
-                case "2":
-                    familyTree.DisplayTree();
-                    Console.WriteLine("\n[Drücke eine Taste...]");
-                    Console.ReadKey(true);
-                    break;
             }
         }
     }
     
-    static void ContinueLoadedGame()
+    static void StartNewGame()
     {
         stopMusic = true;
         Thread.Sleep(300);
         
-        Console.WriteLine("\n>> Das Spiel wird fortgesetzt...");
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║      FLAD: AUFSTIEG IN EINER SOWJETISCHEN DYSTOPIE        ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        // Prüfe ob Charakter gestorben ist
-        if (DeathAndSuccession.CheckForDeath(flad))
+        Console.WriteLine("1952, Leningrad – In einer verfallenen Scheune");
+        Console.WriteLine("erblickt Flad das Licht der Welt...\n");
+        Thread.Sleep(2000);
+        
+        // Schwierigkeitsgrad
+        int difficulty = ChooseDifficulty();
+        
+        // Charakter erstellen
+        currentPlayer = new PlayerCharacter("Flad Rusputin", 1);
+        currentPlayer.Alter = 0;
+        
+        // Attribute verteilen
+        DistributeAttributes(currentPlayer, difficulty);
+        
+        // Story durchspielen
+        PlayStory(currentPlayer);
+        
+        // Am Ende speichern anbieten
+        Console.WriteLine("\n>> Möchtest du speichern? [J/N]");
+        if (Console.ReadKey(true).Key == ConsoleKey.J)
         {
-            flad = DeathAndSuccession.ContinueWithHeir(familyTree);
-            
-            if (flad == null)
-            {
-                Console.WriteLine("\n=== GAME OVER ===");
-                Console.WriteLine("Die Dynastie der Rusputins ist ausgestorben.");
-                Console.ReadKey();
-                stopMusic = false;
-                Task.Run(() => PlayLoopingBeep());
-                return;
-            }
+            SaveGame(currentPlayer);
         }
-        
-        // Spiele weiter ab aktueller Phase
-        switch (flad.Phase)
-        {
-            case GamePhase.Kindheit:
-                FladStoryModule.PlayChildhood(flad);
-                goto case GamePhase.KGBAmbitionen;
-            case GamePhase.KGBAmbitionen:
-                FladStoryModule.PlayKGBPhase(flad);
-                goto case GamePhase.Jurastudium;
-            case GamePhase.Jurastudium:
-                FladStoryModule.PlayUniversityPhase(flad);
-                goto case GamePhase.DDREinsatz;
-            case GamePhase.DDREinsatz:
-                FladStoryModule.PlayDDRPhase(flad);
-                goto case GamePhase.Präsident;
-            case GamePhase.Präsident:
-                FladStoryModule.PlayPresidentPhase(flad, familyTree);
-                break;
-        }
-        
-        SaveManager.SaveGame(flad, familyTree);
         
         stopMusic = false;
-        Task.Run(() => PlayLoopingBeep());
+        Task.Run(() => PlayMusic());
     }
-
-    // ═══════════════════════════════════════════════════════════════════
-    // SCHIFFE VERSENKEN - VOLLSTÄNDIGE IMPLEMENTIERUNG
-    // ═══════════════════════════════════════════════════════════════════
-
-    static void BattleshipGame()
+    
+    static int ChooseDifficulty()
     {
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║            SCHWIERIGKEITSGRAD WÄHLEN                      ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("[1] Leicht - Alle Attribute bei 1, +500 Rubel");
+        Console.WriteLine("[2] Mittel - 3 Attributpunkte verteilen");
+        Console.WriteLine("[3] Hart - 2 Punkte, 70% Gesundheit");
+        Console.WriteLine("[4] Kalter Krieg - 1 Punkt, Schulden, +20% KGB\n");
+        
         while (true)
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║           ⚓ SCHIFFE VERSENKEN ⚓                          ║");
-            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
-            Console.ResetColor();
-
-            Console.WriteLine("\n[1] Spieler gegen Computer");
-            Console.WriteLine("[2] Spieler gegen Spieler");
-            Console.WriteLine("[3] Highscore anzeigen");
-            Console.WriteLine("[4] Zurück zum Hauptmenü");
-
-            Console.Write("\nAuswahl: ");
-            string choice = Console.ReadLine();
-
-            switch (choice)
-            {
-                case "1":
-                    PlayBattleship(false);
-                    break;
-                case "2":
-                    PlayBattleship(true);
-                    break;
-                case "3":
-                    ShowBattleshipHighscores();
-                    break;
-                case "4":
-                    return;
-            }
+            Console.Write("Wähle [1-4]: ");
+            if (int.TryParse(Console.ReadLine(), out int diff) && diff >= 1 && diff <= 4)
+                return diff;
         }
     }
-
-    static void PlayBattleship(bool pvp)
+    
+    static void DistributeAttributes(PlayerCharacter player, int difficulty)
     {
         Console.Clear();
-        Console.Write("Bitte gib deinen Spielernamen ein: ");
-        string player1Name = Console.ReadLine();
-        if (string.IsNullOrWhiteSpace(player1Name)) player1Name = "Spieler 1";
-
-        string player2Name = pvp ? "" : "Computer";
-        if (pvp)
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║           ATTRIBUT-VERTEILUNG BEI GEBURT                  ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        int points = 0;
+        
+        switch (difficulty)
         {
-            Console.Write("Name von Spieler 2: ");
-            player2Name = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(player2Name)) player2Name = "Spieler 2";
+            case 1: // Leicht
+                player.Stärke = player.Intelligenz = player.Charisma = player.Kraft = 1;
+                player.Geld = 500;
+                Console.WriteLine("LEICHT: Alle Attribute bei 1, +500 Rubel");
+                Thread.Sleep(2000);
+                return;
+            case 2: points = 3; break;
+            case 3: points = 2; player.Gesundheit = 70; break;
+            case 4: points = 1; player.Geld = -200; player.EinflussKGB = 20; break;
         }
-
-        int size = 0;
-        while (size != 5 && size != 6 && size != 8)
+        
+        Console.WriteLine($"Du hast {points} Punkte zu verteilen:\n");
+        Console.WriteLine("[1] Stärke    [2] Intelligenz");
+        Console.WriteLine("[3] Charisma  [4] Kraft\n");
+        
+        while (points > 0)
         {
-            Console.Write("\nWähle Schlachtfeldgröße:\n[1] Klein (5x5)\n[2] Mittel (6x6)\n[3] Groß (8x8)\nAuswahl: ");
-            string sizeChoice = Console.ReadLine();
-            if (sizeChoice == "1") size = 5;
-            else if (sizeChoice == "2") size = 6;
-            else if (sizeChoice == "3") size = 8;
+            Console.WriteLine($"Punkte: {points} | Stärke:{player.Stärke} Int:{player.Intelligenz} Char:{player.Charisma} Kraft:{player.Kraft}");
+            Console.Write("Erhöhe [1-4]: ");
+            
+            if (int.TryParse(Console.ReadLine(), out int attr) && attr >= 1 && attr <= 4)
+            {
+                switch (attr)
+                {
+                    case 1: player.Stärke++; break;
+                    case 2: player.Intelligenz++; break;
+                    case 3: player.Charisma++; break;
+                    case 4: player.Kraft++; break;
+                }
+                points--;
+            }
         }
-
-        BattleshipBoard board1 = new BattleshipBoard(size, player1Name);
-        BattleshipBoard board2 = new BattleshipBoard(size, player2Name);
-
-        // Spieler 1 platziert Schiffe
+        
+        Console.WriteLine("\n✓ Attribute verteilt!");
+        Thread.Sleep(1500);
+    }
+    
+    static void PlayStory(PlayerCharacter player)
+    {
+        // KINDHEIT
+        player.Alter = 10;
+        player.Phase = "Kindheit";
         Console.Clear();
-        Console.WriteLine($"═══ {player1Name}, platziere deine Schiffe! ═══\n");
-        PlaceShipsManual(board1);
-
-        // Spieler 2 oder Computer platziert Schiffe
-        if (pvp)
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              KINDHEIT IN LENINGRAD (1950er)               ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("Flad wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
+        Thread.Sleep(1500);
+        
+        Console.WriteLine("[1] Kämpferische Kindheit (+2 Stärke, -15 Gesundheit)");
+        Console.WriteLine("[2] Disziplin durch Sport (+2 Kraft, +1 Charisma)");
+        Console.WriteLine("[3] Wissbegierig (+3 Intelligenz, +1 Charisma)\n");
+        Console.Write("Wähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        if (choice == "1") { player.Stärke += 2; player.Gesundheit -= 15; }
+        else if (choice == "2") { player.Kraft += 2; player.Charisma++; }
+        else { player.Intelligenz += 3; player.Charisma++; }
+        
+        if (player.Intelligenz >= 2 || player.Charisma >= 2)
         {
-            Console.Clear();
-            Console.WriteLine("═══════════════════════════════════════════════");
-            Console.WriteLine($"Spieler 2 ist an der Reihe!");
-            Console.WriteLine("═══════════════════════════════════════════════");
-            Console.WriteLine("\n[Drücke eine Taste wenn bereit...]");
-            Console.ReadKey(true);
-            Console.Clear();
-            Console.WriteLine($"═══ {player2Name}, platziere deine Schiffe! ═══\n");
-            PlaceShipsManual(board2);
+            player.KGBEasterEgg = true;
+            Console.WriteLine("\n💀 Ein KGB-Agent beobachtet Flad...");
+            Thread.Sleep(2000);
+        }
+        
+        ShowStats(player);
+        Console.ReadKey(true);
+        
+        // KGB PHASE
+        player.Alter = 16;
+        player.Phase = "KGB-Ambitionen";
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              KGB-AMBITIONEN (1968)                        ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("Mit 16 marschiert Flad zur KGB-Zentrale!\n");
+        Thread.Sleep(1500);
+        
+        if (player.KGBEasterEgg)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("═══ EASTER EGG! ═══\n");
+            Console.ResetColor();
+            Console.WriteLine("Ein Agent lädt ihn zur geheimen Ausbildung ein!\n");
+            Console.WriteLine("[1] Annehmen (+30 KGB, +1 Intel, -20 Familie)");
+            Console.WriteLine("[2] Ablehnen (normaler Weg)\n");
+            Console.Write("Wähle [1-2]: ");
+            
+            if (Console.ReadLine() == "1")
+            {
+                player.GeheimeAusbildung = true;
+                player.EinflussKGB += 30;
+                player.Intelligenz++;
+                player.LoyalitätFamilie -= 20;
+                Console.WriteLine("\n>> Geheime Ausbildung absolviert!");
+            }
         }
         else
         {
-            PlaceShipsAuto(board2);
-            Console.WriteLine($"\n>> {player2Name} hat seine Flotte positioniert!");
-            Thread.Sleep(1500);
+            Console.WriteLine("Er wird abgewiesen. Muss erst Jura studieren...");
         }
-
-        // Spielablauf
-        DateTime startTime = DateTime.Now;
-        PlayBattleshipTurns(board1, board2, pvp);
-        TimeSpan duration = DateTime.Now - startTime;
-
-        // Gewinner ermitteln
-        string winner = board2.AllShipsSunk() ? player1Name : player2Name;
+        
+        Thread.Sleep(2000);
+        ShowStats(player);
+        Console.ReadKey(true);
+        
+        // JURASTUDIUM
+        player.Alter = 20;
+        player.Phase = "Jurastudium";
         Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-        Console.WriteLine($"║  🎉 SIEG! {winner} hat gewonnen! 🎉");
+        Console.WriteLine("║         JURASTUDIUM (1970er)                              ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("Flad studiert Jura. Wem ist er loyal?\n");
+        Console.WriteLine("[1] Partei (+30 Partei, +20 Geld, -15 Volk)");
+        Console.WriteLine("[2] KGB (+40 KGB, -20 Familie, -10 Gesundheit)");
+        Console.WriteLine("[3] Familie & Moral (+30 Familie, +20 Volk)\n");
+        Console.Write("Wähle [1-3]: ");
+        
+        choice = Console.ReadLine();
+        if (choice == "1") 
+        { 
+            player.LoyalitätPartei = Math.Min(100, player.LoyalitätPartei + 30);
+            player.Geld += 20;
+            player.LoyalitätVolk -= 15;
+        }
+        else if (choice == "2")
+        {
+            player.EinflussKGB = Math.Min(100, player.EinflussKGB + 40);
+            player.LoyalitätFamilie -= 20;
+            player.Gesundheit -= 10;
+        }
+        else
+        {
+            player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + 30);
+            player.LoyalitätVolk = Math.Min(100, player.LoyalitätVolk + 20);
+        }
+        
+        Thread.Sleep(1500);
+        ShowStats(player);
+        Console.ReadKey(true);
+        
+        // DDR
+        player.Alter = 35;
+        player.Phase = "DDR-Einsatz";
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              EINSATZ IN DER DDR (1989)                    ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("Dresden, 1989: Demonstranten vor dem KGB-Gebäude!\n");
+        Thread.Sleep(1500);
+        
+        Console.WriteLine("[1] Aufstand niederschlagen (+30 KGB, +100 Geld, -25 Gesundheit)");
+        Console.WriteLine("[2] Sympathisieren & Flucht (+40 Volk, -40 KGB, -50 Geld)\n");
+        Console.Write("Wähle [1-2]: ");
+        
+        if (Console.ReadLine() == "1")
+        {
+            player.EinflussKGB = Math.Min(100, player.EinflussKGB + 30);
+            player.Geld += 100;
+            player.Gesundheit -= 25;
+            Console.WriteLine("\n>> Flad greift hart durch!");
+        }
+        else
+        {
+            player.EinflussKGB = Math.Max(0, player.EinflussKGB - 40);
+            player.Geld -= 50;
+            player.LoyalitätVolk = Math.Min(100, player.LoyalitätVolk + 40);
+            Console.WriteLine("\n>> Flad flieht aus der DDR!");
+        }
+        
+        Thread.Sleep(2000);
+        ShowStats(player);
+        Console.ReadKey(true);
+        
+        // PRÄSIDENT
+        player.Alter = 48;
+        player.Phase = "Präsident";
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║       AUFSTIEG ZUM PRÄSIDENTEN (2000)                     ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(">> FLAD WIRD PRÄSIDENT VON RUSSLAND!");
+        Console.ResetColor();
+        Thread.Sleep(2000);
+        
+        // Kinder generieren
+        Console.WriteLine("\n>> Flad gründet eine Familie...");
+        int childCount = rand.Next(2, 5);
+        GenerateChildren(player, childCount);
+        Console.WriteLine($">> Flad hat {childCount} Kinder!");
+        Thread.Sleep(1500);
+        
+        Console.WriteLine("\nRegierungsstil wählen:\n");
+        Console.WriteLine("[1] Imperiale Expansion (+50 Militär, -200 Geld)");
+        Console.WriteLine("[2] Diplomatie (+300 Geld, +40 International)");
+        Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)\n");
+        Console.Write("Wähle [1-3]: ");
+        
+        choice = Console.ReadLine();
+        if (choice == "1")
+        {
+            player.EinflussMilitär += 50;
+            player.Geld -= 200;
+            ShowEnding(player, "Imperial");
+        }
+        else if (choice == "2")
+        {
+            player.Geld += 300;
+            player.EinflussInternational += 40;
+            ShowEnding(player, "Diplomatisch");
+        }
+        else
+        {
+            player.LoyalitätPartei += 40;
+            player.LoyalitätVolk -= 50;
+            ShowEnding(player, "Diktator");
+        }
+    }
+    
+    static void GenerateChildren(PlayerCharacter parent, int count)
+    {
+        string[] names = { "Dimitri", "Vladimir", "Nikolai", "Alexei", "Natasha", "Olga", "Irina", "Katya" };
+        
+        for (int i = 0; i < count; i++)
+        {
+            string childName = names[rand.Next(names.Length)] + " Rusputin Jr.";
+            PlayerCharacter child = new PlayerCharacter(childName, parent.Generation + 1);
+            
+            child.Stärke = Math.Max(0, parent.Stärke + rand.Next(-1, 3));
+            child.Intelligenz = Math.Max(0, parent.Intelligenz + rand.Next(-1, 3));
+            child.Charisma = Math.Max(0, parent.Charisma + rand.Next(-1, 3));
+            child.Kraft = Math.Max(0, parent.Kraft + rand.Next(-1, 3));
+            child.Alter = 5;
+            child.Phase = "Kind";
+            
+            parent.Kinder.Add(child);
+        }
+    }
+    
+    static void ShowEnding(PlayerCharacter player, string type)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine($"║              {type.ToUpper()} ENDE                               ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
-
-        // Highscore speichern
-        if (!pvp)
+        
+        Thread.Sleep(1000);
+        
+        if (type == "Imperial")
         {
-            battleshipHighscores.Add(new BattleshipScore
-            {
-                PlayerName = winner,
-                BoardSize = size,
-                Duration = duration,
-                Date = DateTime.Now
-            });
-            battleshipHighscores = battleshipHighscores.OrderBy(s => s.Duration).Take(10).ToList();
-        }
-
-        Console.WriteLine($"\nSpieldauer: {duration:mm\\:ss}");
-        Console.WriteLine("\n[Drücke eine Taste um fortzufahren...]");
-        Console.ReadKey(true);
-    }
-
-    static void PlayBattleshipTurns(BattleshipBoard board1, BattleshipBoard board2, bool pvp)
-    {
-        bool player1Turn = true;
-
-        while (!board1.AllShipsSunk() && !board2.AllShipsSunk())
-        {
-            Console.Clear();
-
-            if (pvp && !player1Turn)
-            {
-                Console.WriteLine("═══════════════════════════════════════════════");
-                Console.WriteLine($"{board2.PlayerName} ist an der Reihe!");
-                Console.WriteLine("═══════════════════════════════════════════════");
-                Console.WriteLine("\n[Drücke eine Taste wenn bereit...]");
-                Console.ReadKey(true);
-                Console.Clear();
-            }
-
-            BattleshipBoard attacker = player1Turn ? board1 : board2;
-            BattleshipBoard defender = player1Turn ? board2 : board1;
-
-            Console.WriteLine($"═══ {attacker.PlayerName} ist am Zug ═══\n");
-
-            // Eigenes Feld anzeigen
-            Console.WriteLine($"Dein Feld ({attacker.PlayerName}):");
-            attacker.Display(true);
-
-            Console.WriteLine($"\nGegnerisches Feld ({defender.PlayerName}):");
-            defender.Display(false);
-
-            bool hit = false;
-            if (!pvp && !player1Turn)
-            {
-                // Computer-KI
-                hit = ComputerAttack(defender);
-                Thread.Sleep(1500);
-            }
+            if (player.Geld < -100)
+                Console.WriteLine("\n⚠ Das Reich kollabiert unter Kriegskosten...");
             else
-            {
-                // Spieler-Angriff
-                hit = PlayerAttack(defender);
-            }
-
-            // Bei Treffer nochmal angreifen
-            if (!hit)
-            {
-                player1Turn = !player1Turn;
-            }
+                Console.WriteLine("\n★ Russland erstrahlt in alter Größe!");
         }
-    }
-
-    static void PlaceShipsManual(BattleshipBoard board)
-    {
-        int[] shipSizes = board.Size == 5 ? new[] { 4, 3, 2 } : 
-                          board.Size == 6 ? new[] { 5, 4, 3, 2 } : 
-                          new[] { 5, 4, 3, 3, 2 };
-
-        foreach (int shipSize in shipSizes)
+        else if (type == "Diplomatisch")
         {
-            bool placed = false;
-            while (!placed)
-            {
-                Console.Clear();
-                Console.WriteLine($"Platziere Schiff der Größe {shipSize}\n");
-                board.Display(true);
-
-                Console.Write($"\nStartposition (z.B. A1): ");
-                string pos = Console.ReadLine()?.ToUpper();
-
-                Console.Write("Ausrichtung ([H]orizontal / [V]ertikal): ");
-                string dir = Console.ReadLine()?.ToUpper();
-
-                if (string.IsNullOrEmpty(pos) || pos.Length < 2) continue;
-
-                int row = pos[0] - 'A';
-                int col;
-                if (!int.TryParse(pos.Substring(1), out col)) continue;
-                col--;
-
-                bool horizontal = dir == "H";
-
-                if (board.PlaceShip(row, col, shipSize, horizontal))
-                {
-                    placed = true;
-                    Console.WriteLine("✓ Schiff platziert!");
-                    Thread.Sleep(500);
-                }
-                else
-                {
-                    Console.WriteLine("✗ Ungültige Position! Versuche es erneut.");
-                    Thread.Sleep(1500);
-                }
-            }
-        }
-
-        Console.Clear();
-        Console.WriteLine("Alle Schiffe platziert!\n");
-        board.Display(true);
-        Console.WriteLine("\n[Drücke eine Taste um fortzufahren...]");
-        Console.ReadKey(true);
-    }
-
-    static void PlaceShipsAuto(BattleshipBoard board)
-    {
-        int[] shipSizes = board.Size == 5 ? new[] { 4, 3, 2 } :
-                          board.Size == 6 ? new[] { 5, 4, 3, 2 } :
-                          new[] { 5, 4, 3, 3, 2 };
-
-        foreach (int shipSize in shipSizes)
-        {
-            bool placed = false;
-            int attempts = 0;
-            while (!placed && attempts < 100)
-            {
-                int row = rand.Next(board.Size);
-                int col = rand.Next(board.Size);
-                bool horizontal = rand.Next(2) == 0;
-
-                placed = board.PlaceShip(row, col, shipSize, horizontal);
-                attempts++;
-            }
-        }
-    }
-
-    static bool PlayerAttack(BattleshipBoard board)
-    {
-        while (true)
-        {
-            Console.Write("\nZiel angeben (z.B. B3): ");
-            string input = Console.ReadLine()?.ToUpper();
-
-            if (string.IsNullOrEmpty(input) || input.Length < 2) continue;
-
-            int row = input[0] - 'A';
-            int col;
-            if (!int.TryParse(input.Substring(1), out col)) continue;
-            col--;
-
-            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size)
-            {
-                Console.WriteLine("Ungültige Koordinaten!");
-                continue;
-            }
-
-            AttackResult result = board.Attack(row, col);
-
-            if (result == AttackResult.AlreadyShot)
-            {
-                Console.WriteLine("⚠ Du hast diese Position schon beschossen!");
-                continue;
-            }
-
-            if (result == AttackResult.Hit)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("💥 TREFFER!");
-                Console.ResetColor();
-                try { Console.Beep(800, 200); } catch { }
-                Thread.Sleep(1000);
-                return true;
-            }
-            else if (result == AttackResult.Sunk)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("💥💥 TREFFER UND VERSENKT! 💥💥");
-                Console.ResetColor();
-                try
-                {
-                    Console.Beep(1000, 200);
-                    Thread.Sleep(100);
-                    Console.Beep(1200, 300);
-                }
-                catch { }
-                Thread.Sleep(1500);
-                return true;
-            }
+            if (player.EinflussKGB < 20)
+                Console.WriteLine("\n⚠ Hardliner planen einen Putsch...");
             else
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("💧 Wasser - Daneben!");
-                Console.ResetColor();
-                try { Console.Beep(300, 200); } catch { }
-                Thread.Sleep(1000);
-                return false;
-            }
-        }
-    }
-
-    static bool ComputerAttack(BattleshipBoard board)
-    {
-        // Einfache KI: Zufälliger Angriff
-        int row, col;
-        int attempts = 0;
-        do
-        {
-            row = rand.Next(board.Size);
-            col = rand.Next(board.Size);
-            attempts++;
-        } while (board.Grid[row, col] == 'X' || board.Grid[row, col] == 'O' && attempts < 100);
-
-        Console.WriteLine($"\nComputer greift an: {(char)('A' + row)}{col + 1}");
-
-        AttackResult result = board.Attack(row, col);
-
-        if (result == AttackResult.Hit)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("💥 Der Computer hat getroffen!");
-            Console.ResetColor();
-            try { Console.Beep(800, 200); } catch { }
-            return true;
-        }
-        else if (result == AttackResult.Sunk)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("💥💥 Der Computer hat ein Schiff versenkt! 💥💥");
-            Console.ResetColor();
-            try
-            {
-                Console.Beep(1000, 200);
-                Thread.Sleep(100);
-                Console.Beep(1200, 300);
-            }
-            catch { }
-            return true;
+                Console.WriteLine("\n★ Stabile, respektierte Regierung!");
         }
         else
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("💧 Der Computer hat daneben geschossen!");
-            Console.ResetColor();
-            try { Console.Beep(300, 200); } catch { }
-            return false;
+            if (player.LoyalitätVolk < 20)
+                Console.WriteLine("\n⚠ Das Volk leidet, Revolution droht...");
+            else
+                Console.WriteLine("\n★ Absolute Kontrolle erreicht!");
+        }
+        
+        Thread.Sleep(2000);
+        ShowStats(player);
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    static void ShowStats(PlayerCharacter player)
+    {
+        Console.WriteLine("\n╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine($"║ {player.Name,-30} Gen:{player.Generation} Alter:{player.Alter,-3}  ║");
+        Console.WriteLine("╠═══════════════════════════════════════════════════════════╣");
+        Console.WriteLine($"║ Stärke:{player.Stärke,-3} Intel:{player.Intelligenz,-3} Char:{player.Charisma,-3} Kraft:{player.Kraft,-3}              ║");
+        Console.WriteLine($"║ Geld:{player.Geld,-6} Gesundheit:{player.Gesundheit,-3}%                         ║");
+        Console.WriteLine($"║ Partei:{player.LoyalitätPartei,-3}% Volk:{player.LoyalitätVolk,-3}% Familie:{player.LoyalitätFamilie,-3}%         ║");
+        Console.WriteLine($"║ KGB:{player.EinflussKGB,-3}% Militär:{player.EinflussMilitär,-3}% International:{player.EinflussInternational,-3}%  ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+    }
+    
+    static void ShowFamilyTree()
+    {
+        if (currentPlayer == null)
+        {
+            Console.WriteLine("\n>> Kein Spielstand vorhanden!");
+            Thread.Sleep(1500);
+            return;
+        }
+        
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                   RUSPUTIN STAMMBAUM                      ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        DisplayFamily(currentPlayer, 0);
+        
+        Console.WriteLine($"\n\nAktueller Spieler: {currentPlayer.Name}");
+        Console.WriteLine($"Generation: {currentPlayer.Generation}");
+        Console.WriteLine($"Kinder: {currentPlayer.Kinder.Count}");
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    static void DisplayFamily(PlayerCharacter member, int indent)
+    {
+        string space = new string(' ', indent * 3);
+        Console.WriteLine($"{space}► {member.Name} (Gen {member.Generation}) - {member.Phase}");
+        Console.WriteLine($"{space}  Attribute: S:{member.Stärke} I:{member.Intelligenz} C:{member.Charisma} K:{member.Kraft}");
+        
+        foreach (var child in member.Kinder)
+        {
+            DisplayFamily(child, indent + 1);
         }
     }
-
-    static void ShowBattleshipHighscores()
+    
+    static void SaveGame(PlayerCharacter player)
     {
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              🏆 SCHIFFE VERSENKEN HIGHSCORES 🏆           ║");
+        Console.WriteLine("║                    SPIEL SPEICHERN                        ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
-
-        if (battleshipHighscores.Count == 0)
+        
+        for (int i = 1; i <= 5; i++)
         {
-            Console.WriteLine("Noch keine Highscores vorhanden!");
-        }
-        else
-        {
-            Console.WriteLine("Platz | Spieler            | Größe | Zeit     | Datum");
-            Console.WriteLine("──────────────────────────────────────────────────────────");
-            int place = 1;
-            foreach (var score in battleshipHighscores)
+            if (saveSlots.ContainsKey(i))
             {
-                Console.WriteLine($"{place,5} | {score.PlayerName,-18} | {score.BoardSize}x{score.BoardSize}  | {score.Duration:mm\\:ss} | {score.Date:dd.MM.yyyy}");
-                place++;
+                var save = saveSlots[i];
+                Console.WriteLine($"[{i}] {save.SaveName} | {save.Character.Name} | Gen:{save.Generation}");
+                Console.WriteLine($"    {save.SaveDate:dd.MM.yyyy HH:mm:ss}");
+            }
+            else
+            {
+                Console.WriteLine($"[{i}] (Leer)");
             }
         }
-
-        Console.WriteLine("\n[Drücke eine Taste um zurückzukehren...]");
-        Console.ReadKey(true);
-    }
-}
-
-// ═══════════════════════════════════════════════════════════════════
-// DATENKLASSEN
-// ═══════════════════════════════════════════════════════════════════
-
-class SaveData
-{
-    public string PlayerName { get; set; }
-    public DateTime Timestamp { get; set; }
-    public int Level { get; set; }
-    public int Money { get; set; }
-}
-
-class BattleshipScore
-{
-    public string PlayerName { get; set; }
-    public int BoardSize { get; set; }
-    public TimeSpan Duration { get; set; }
-    public DateTime Date { get; set; }
-}
-
-enum AttackResult
-{
-    Miss,
-    Hit,
-    Sunk,
-    AlreadyShot
-}
-
-class Ship
-{
-    public int Row { get; set; }
-    public int Col { get; set; }
-    public int Size { get; set; }
-    public bool Horizontal { get; set; }
-    public bool[] Hits { get; set; }
-
-    public Ship(int row, int col, int size, bool horizontal)
-    {
-        Row = row;
-        Col = col;
-        Size = size;
-        Horizontal = horizontal;
-        Hits = new bool[size];
-    }
-
-    public bool IsSunk()
-    {
-        return Hits.All(h => h);
-    }
-
-    public bool IsAt(int row, int col)
-    {
-        if (Horizontal)
+        
+        Console.Write("\nSlot [1-5] oder [0] Abbrechen: ");
+        if (!int.TryParse(Console.ReadLine(), out int slot) || slot < 1 || slot > 5)
+            return;
+        
+        if (saveSlots.ContainsKey(slot))
         {
-            return row == Row && col >= Col && col < Col + Size;
+            Console.Write($"Slot {slot} überschreiben? [J/N]: ");
+            if (Console.ReadKey(true).Key != ConsoleKey.J)
+                return;
+            Console.WriteLine();
         }
-        else
-        {
-            return col == Col && row >= Row && row < Row + Size;
-        }
+        
+        Console.Write("\nSpeicherstand-Name: ");
+        string saveName = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(saveName))
+            saveName = $"Spielstand {slot}";
+        
+        saveSlots[slot] = new GameSave(saveName, player);
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"\n✓ Gespeichert in Slot {slot}!");
+        Console.ResetColor();
+        Console.WriteLine($"Name: {saveName}");
+        Console.WriteLine($"Datum: {DateTime.Now:dd.MM.yyyy HH:mm:ss}");
+        Thread.Sleep(2000);
     }
-
-    public void Hit(int row, int col)
+    
+    static void LoadGame()
     {
-        if (Horizontal)
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                     SPIEL LADEN                           ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        if (saveSlots.Count == 0)
         {
-            Hits[col - Col] = true;
+            Console.WriteLine("Keine Spielstände vorhanden!");
+            Thread.Sleep(1500);
+            return;
         }
-        else
+        
+        foreach (var kvp in saveSlots.OrderBy(s => s.Key))
         {
-            Hits[row - Row] = true;
+            Console.WriteLine($"[{kvp.Key}] {kvp.Value.SaveName}");
+            Console.WriteLine($"    {kvp.Value.Character.Name} | Gen:{kvp.Value.Generation} | {kvp.Value.Character.Phase}");
+            Console.WriteLine($"    {kvp.Value.SaveDate:dd.MM.yyyy HH:mm:ss}\n");
         }
-    }
-}
-
-class BattleshipBoard
-{
-    public int Size { get; private set; }
-    public char[,] Grid { get; private set; }
-    public List<Ship> Ships { get; private set; }
-    public string PlayerName { get; private set; }
-
-    public BattleshipBoard(int size, string playerName)
-    {
-        Size = size;
-        PlayerName = playerName;
-        Grid = new char[size, size];
-        Ships = new List<Ship>();
-
-        // Initialisiere Grid mit Wasser
-        for (int i = 0; i < size; i++)
-            for (int j = 0; j < size; j++)
-                Grid[i, j] = '~';
-    }
-
-    public bool PlaceShip(int row, int col, int size, bool horizontal)
-    {
-        // Prüfe ob platzierbar
-        if (horizontal)
+        
+        Console.Write("Slot [1-5] oder [0] Abbrechen: ");
+        if (!int.TryParse(Console.ReadLine(), out int slot) || slot < 1 || slot > 5)
+            return;
+        
+        if (!saveSlots.ContainsKey(slot))
         {
-            if (col + size > Size) return false;
-            for (int c = col; c < col + size; c++)
+            Console.WriteLine($"Slot {slot} ist leer!");
+            Thread.Sleep(1500);
+            return;
+        }
+        
+        currentPlayer = saveSlots[slot].Character;
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\n✓ Spiel geladen!");
+        Console.ResetColor();
+        ShowStats(currentPlayer);
+        Thread.Sleep(2000);
+    }
+    
+    static void ManageSaves()
+    {
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              SPIELSTÄNDE VERWALTEN                        ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        if (saveSlots.Count == 0)
+        {
+            Console.WriteLine("Keine Spielstände vorhanden!");
+            Thread.Sleep(1500);
+            return;
+        }
+        
+        foreach (var kvp in saveSlots.OrderBy(s => s.Key))
+        {
+            Console.WriteLine($"[{kvp.Key}] {kvp.Value.SaveName}");
+            Console.WriteLine($"    {kvp.Value.SaveDate:dd.MM.yyyy HH:mm:ss}\n");
+        }
+        
+        Console.Write("Slot zum Löschen [1-5] oder [0] Zurück: ");
+        if (!int.TryParse(Console.ReadLine(), out int slot) || slot < 1 || slot > 5)
+            return;
+        
+        if (saveSlots.ContainsKey(slot))
+        {
+            Console.Write($"Wirklich löschen? [J/N]: ");
+            if (Console.ReadKey(true).Key == ConsoleKey.J)
             {
-                if (Grid[row, c] != '~') return false;
-                // Prüfe auch Nachbarfelder
-                for (int dr = -1; dr <= 1; dr++)
-                {
-                    for (int dc = -1; dc <= 1; dc++)
-                    {
-                        int nr = row + dr;
-                        int nc = c + dc;
-                        if (nr >= 0 && nr < Size && nc >= 0 && nc < Size)
-                        {
-                            if (Grid[nr, nc] == 'S') return false;
-                        }
-                    }
-                }
+                saveSlots.Remove(slot);
+                Console.WriteLine($"\n\n✓ Slot {slot} gelöscht!");
+                Thread.Sleep(1500);
             }
         }
-        else
+    }
+    
+    static void PlayMusic()
+    {
+        int tempo = 150;
+        int[] melody = { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659 };
+        int[] durations = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2 };
+        
+        while (!stopMusic)
         {
-            if (row + size > Size) return false;
-            for (int r = row; r < row + size; r++)
+            for (int i = 0; i < melody.Length && !stopMusic; i++)
             {
-                if (Grid[r, col] != '~') return false;
-                // Prüfe auch Nachbarfelder
-                for (int dr = -1; dr <= 1; dr++)
-                {
-                    for (int dc = -1; dc <= 1; dc++)
-                    {
-                        int nr = r + dr;
-                        int nc = col + dc;
-                        if (nr >= 0 && nr < Size && nc >= 0 && nc < Size)
-                        {
-                            if (Grid[nr, nc] == 'S') return false;
-                        }
-                    }
-                }
+                try { Console.Beep(melody[i], tempo * durations[i]); }
+                catch { }
             }
         }
-
-        // Platziere Schiff
-        Ship ship = new Ship(row, col, size, horizontal);
-        Ships.Add(ship);
-
-        if (horizontal)
-        {
-            for (int c = col; c < col + size; c++)
-                Grid[row, c] = 'S';
-        }
-        else
-        {
-            for (int r = row; r < row + size; r++)
-                Grid[r, col] = 'S';
-        }
-
-        return true;
-    }
-
-    public AttackResult Attack(int row, int col)
-    {
-        if (Grid[row, col] == 'X' || Grid[row, col] == 'O')
-            return AttackResult.AlreadyShot;
-
-        if (Grid[row, col] == 'S')
-        {
-            Grid[row, col] = 'X';
-
-            // Finde getroffenes Schiff
-            Ship hitShip = Ships.FirstOrDefault(s => s.IsAt(row, col));
-            if (hitShip != null)
-            {
-                hitShip.Hit(row, col);
-                if (hitShip.IsSunk())
-                    return AttackResult.Sunk;
-            }
-
-            return AttackResult.Hit;
-        }
-        else
-        {
-            Grid[row, col] = 'O';
-            return AttackResult.Miss;
-        }
-    }
-
-    public bool AllShipsSunk()
-    {
-        return Ships.All(s => s.IsSunk());
-    }
-
-    public void Display(bool showShips)
-    {
-        // Spaltenüberschriften
-        Console.Write("   ");
-        for (int c = 0; c < Size; c++)
-            Console.Write($" {c + 1} ");
-        Console.WriteLine();
-
-        // Trennlinie
-        Console.Write("   ");
-        for (int c = 0; c < Size; c++)
-            Console.Write("───");
-        Console.WriteLine();
-
-        for (int r = 0; r < Size; r++)
-        {
-            // Zeilenüberschrift
-            Console.Write($" {(char)('A' + r)} │");
-
-            for (int c = 0; c < Size; c++)
-            {
-                char cell = Grid[r, c];
-
-                if (cell == 'S' && !showShips)
-                    cell = '~'; // Verstecke gegnerische Schiffe
-
-                switch (cell)
-                {
-                    case '~':
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(" ~ ");
-                        break;
-                    case 'S':
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(" ■ ");
-                        break;
-                    case 'X':
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(" X ");
-                        break;
-                    case 'O':
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write(" ○ ");
-                        break;
-                }
-                Console.ResetColor();
-            }
-            Console.WriteLine("│");
-        }
-
-        // Untere Trennlinie
-        Console.Write("   ");
-        for (int c = 0; c < Size; c++)
-            Console.Write("───");
-        Console.WriteLine();
-
-        Console.WriteLine("\nLegende: ~ Wasser | ■ Schiff | X Treffer | ○ Fehlschuss");
     }
 }
