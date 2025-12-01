@@ -592,6 +592,9 @@ class Program
         Console.WriteLine("Flad wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
         Thread.Sleep(1500);
         
+        // Zufallsereignis auslösen
+        EventSystem.TriggerRandomEvent(player);
+        
         Console.WriteLine("[1] Kämpferische Kindheit (+2 Stärke, -15 Gesundheit)");
         Console.WriteLine("[2] Disziplin durch Sport (+2 Kraft, +1 Charisma)");
         Console.WriteLine("[3] Wissbegierig (+3 Intelligenz, +1 Charisma)\n");
