@@ -618,6 +618,9 @@ class Program
         // KGB PHASE
         player.Alter = 16;
         player.Phase = "KGB-Ambitionen";
+        
+        // Zufallsereignis
+        EventSystem.TriggerRandomEvent(player);
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
         Console.WriteLine("║              KGB-AMBITIONEN (1968)                        ║");
