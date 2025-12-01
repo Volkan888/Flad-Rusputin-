@@ -59,22 +59,35 @@ class Program
         MainMenu();
     }
 
+    static FamilyTree familyTree = null;
+    
     static void StartFladStory()
     {
         stopMusic = true;
         Thread.Sleep(300);
         
-        flad = FladStoryModule.StartNewGame();
+        var result = FladStoryModule.StartNewGame();
+        flad = result.Item1;
+        familyTree = result.Item2;
         
         // Durchlaufe alle Phasen
         FladStoryModule.PlayChildhood(flad);
         FladStoryModule.PlayKGBPhase(flad);
         FladStoryModule.PlayUniversityPhase(flad);
         FladStoryModule.PlayDDRPhase(flad);
-        FladStoryModule.PlayPresidentPhase(flad);
+        FladStoryModule.PlayPresidentPhase(flad, familyTree);
+        
+        // Zeige Stammbaum
+        Console.WriteLine("\n>> Drücke [S] um Stammbaum zu sehen, oder andere Taste zum Speichern...");
+        if (Console.ReadKey(true).Key == ConsoleKey.S)
+        {
+            familyTree.DisplayTree();
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+        }
         
         // Speichere am Ende
-        SaveGameData(flad);
+        SaveManager.SaveGame(flad, familyTree);
         
         stopMusic = false;
         Task.Run(() => PlayLoopingBeep());
