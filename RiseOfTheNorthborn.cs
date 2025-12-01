@@ -59,6 +59,47 @@ class Program
         MainMenu();
     }
 
+    static void StartFladStory()
+    {
+        stopMusic = true;
+        Thread.Sleep(300);
+        
+        flad = FladStoryModule.StartNewGame();
+        
+        // Durchlaufe alle Phasen
+        FladStoryModule.PlayChildhood(flad);
+        FladStoryModule.PlayKGBPhase(flad);
+        FladStoryModule.PlayUniversityPhase(flad);
+        FladStoryModule.PlayDDRPhase(flad);
+        FladStoryModule.PlayPresidentPhase(flad);
+        
+        // Speichere am Ende
+        SaveGameData(flad);
+        
+        stopMusic = false;
+        Task.Run(() => PlayLoopingBeep());
+    }
+    
+    static void SaveGameData(PlayerCharacter character)
+    {
+        for (int i = 1; i <= 5; i++)
+        {
+            if (!saveSlots.ContainsKey(i))
+            {
+                saveSlots[i] = new SaveData
+                {
+                    PlayerName = character.Name,
+                    Timestamp = DateTime.Now,
+                    Level = character.Alter,
+                    Money = character.Geld
+                };
+                Console.WriteLine($"\n>> Spielstand gespeichert in Slot {i}.");
+                Thread.Sleep(1000);
+                return;
+            }
+        }
+    }
+
     static void MainMenu()
     {
         while (true)
