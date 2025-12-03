@@ -1110,7 +1110,8 @@ static class DeathSystem
 /// </summary>
 static class PutinShop
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     static List<ShopItem> shopItems = new List<ShopItem>();
     
     /// <summary>
