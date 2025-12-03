@@ -7805,6 +7805,247 @@ static class EventSystem
                 Thread.Sleep(3000);
             }
         ));
+        
+        // LETZTE UNTERVERSORGTE JAHRE AUFFÜLLEN
+        // 1986 - 1 zusätzliches Event
+        allEvents.Add(new RandomEvent(
+            "Gorbatschow verkündet Glasnost 1986",
+            "TRANSPARENZ UND WAHRHEIT! Michail Gorbatschow verkündet 'Glasnost' - Offenheit! Die Presse darf kritisieren, das Volk darf reden. Nach 70 Jahren Lügen ein revolutionärer Schritt! Das Volk ist misstrauisch: Ist das eine Falle? Oder der Beginn echter Freiheit? Die Büchse der Pandora öffnet sich.",
+            "Präsident", 90, 1986, "politisch",
+            p => {
+                Console.WriteLine("\n📰 GLASNOST - OFFENHEIT BEGINNT!");
+                Console.WriteLine("Das Volk darf endlich die Wahrheit sprechen!");
+                p.LoyalitätVolk += 30;
+                p.LoyalitätPartei -= 20;
+                p.Intelligenz += 2;
+                p.Gesundheit += 15;
+                Console.WriteLine($"➕ Volk: +30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Partei: -20% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Intelligenz: +2 (Wahrheit befreit)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1991 - 1 zusätzliches Event
+        allEvents.Add(new RandomEvent(
+            "Boris Jelzin auf dem Panzer 1991",
+            "DER MANN AUF DEM PANZER! Hardliner putschen gegen Gorbatschow. Boris Jelzin klettert auf einen Panzer und ruft zum Widerstand! Das Volk strömt auf die Straßen - sie haben keine Angst mehr! Der Putsch scheitert nach drei Tagen. Die Sowjetunion hat nur noch Monate zu leben.",
+            "Präsident", 95, 1991, "politisch",
+            p => {
+                Console.WriteLine("\n✊ JELZIN AUF DEM PANZER - DEMOKRATIE SIEGT!");
+                Console.WriteLine("Der Putsch scheitert! Das Volk feiert Freiheit!");
+                p.LoyalitätVolk += 35;
+                p.LoyalitätPartei -= 40;
+                p.Charisma += 2;
+                p.EinflussMilitär -= 25;
+                Console.WriteLine($"➕ Volk: +35% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Partei: -40% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Charisma: +2 (Heldenmut)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1992 - 2 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Schocktherapie Wirtschaft 1992",
+            "PREISE EXPLODIEREN ÜBER NACHT! Jelzins Berater Gaidar befreit alle Preise - die 'Schocktherapie' beginnt. Brot kostet plötzlich das 10-fache! Das Volk stürmt Läden, Ersparnisse verdampfen. Omas verkaufen ihre Habseligkeiten auf der Straße. Der Kapitalismus kommt nicht als Segen, sondern als Tsunami.",
+            "Präsident", 95, 1992, "katastrophe",
+            p => {
+                Console.WriteLine("\n💸 SCHOCKTHERAPIE - PREISE EXPLODIEREN!");
+                Console.WriteLine("Das Volk verliert alles! Verzweiflung überall!");
+                p.Geld -= 700;
+                p.LoyalitätVolk -= 45;
+                p.Gesundheit -= 25;
+                p.LoyalitätPartei -= 30;
+                Console.WriteLine($"💰 Verlust: -700 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -45% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -25% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Voucher-Privatisierung 1992",
+            "JEDEM RUSSEN EINE AKTIE! Jelzin verteilt Privatisierungs-Voucher: 'Das Volkseigentum gehört dem Volk!' Das Volk bekommt Papiere im Wert von 10.000 Rubel. Doch clevere Oligarchen kaufen sie für Wodka auf. Das Volk wird betrogen - das Staatsvermögen landet in Oligarchen-Händen.",
+            "Präsident", 90, 1992, "politisch",
+            p => {
+                Console.WriteLine("\n📜 VOUCHER-PRIVATISIERUNG - DAS GROSSE BETRUG!");
+                Console.WriteLine("Oligarchen stehlen Volksvermögen! Das Volk ist wütend!");
+                p.Geld += 100;
+                p.LoyalitätVolk -= 40;
+                p.LoyalitätPartei -= 25;
+                p.Intelligenz += 1;
+                Console.WriteLine($"💰 Voucher: +100 Rubel (ein Witz) → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -40% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2005 - 1 zusätzliches Event
+        allEvents.Add(new RandomEvent(
+            "Orange Revolution Nachwehen 2005",
+            "UKRAINE WENDET SICH NACH WESTEN! Viktor Juschtschenko wird Präsident - Putins Kandidat verlor. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren? Putin zieht die Schrauben an. Die 'farbigen Revolutionen' werden zum Feindbild. Der Kreml hat Angst.",
+            "Präsident", 80, 2005, "politisch",
+            p => {
+                Console.WriteLine("\n🧡 UKRAINE-SCHOCK WIRKT NACH!");
+                Console.WriteLine("Putin sieht Bedrohung! Das Volk wird überwacht!");
+                p.EinflussKGB += 25;
+                p.LoyalitätVolk -= 20;
+                p.EinflussInternational -= 20;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2006 - 2 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Litwinenko-Mord London 2006",
+            "POLONIUM IM TEE! Alexander Litwinenko, Ex-FSB-Agent und Kreml-Kritiker, wird in London mit radioaktivem Polonium vergiftet. Er stirbt qualvoll. Die Spur führt zum Kreml. Das Volk lernt: Selbst in London ist niemand sicher. Verrat wird mit dem Tod bestraft - spektakulär und abschreckend.",
+            "Präsident", 90, 2006, "katastrophe",
+            p => {
+                Console.WriteLine("\n☢️ LITWINENKO VERGIFTET - POLONIUM-MORD!");
+                Console.WriteLine("Kreml-Kritiker in London ermordet! Das Volk ist schockiert!");
+                p.EinflussKGB += 25;
+                p.EinflussInternational -= 35;
+                p.LoyalitätVolk -= 25;
+                p.Gesundheit -= 15;
+                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ International: -35 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Georgien-Russland Spionage-Krise 2006",
+            "VIER OFFIZIERE VERHAFTET! Georgien verhaftet russische Offiziere wegen Spionage. Putin ist wütend - totales Embargo gegen Georgien! Wein, Wasser, alles verboten. Das Volk leidet unter höheren Preisen. Die Beziehungen sind am Nullpunkt. Zwei Jahre später: Krieg.",
+            "Präsident", 75, 2006, "politisch",
+            p => {
+                Console.WriteLine("\n🇬🇪 GEORGIEN-KRISE ESKALIERT!");
+                Console.WriteLine("Embargo verhängt! Das Volk zahlt die Rechnung!");
+                p.EinflussMilitär += 15;
+                p.Geld -= 200;
+                p.LoyalitätVolk -= 15;
+                p.EinflussInternational -= 20;
+                Console.WriteLine($"➕ Militär: +15 → {p.EinflussMilitär}");
+                Console.WriteLine($"💰 Kosten: -200 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2007 - 1 zusätzliches Event
+        allEvents.Add(new RandomEvent(
+            "Putin München-Rede 2007",
+            "KRIEGSERKLÄRUNG AN DEN WESTEN! Putin hält eine flammende Rede auf der Münchner Sicherheitskonferenz: 'Die USA wollen eine unipolare Welt!' Das Volk jubelt - endlich zeigt Russland Stärke! Der Westen ist schockiert. Der neue Kalte Krieg beginnt offiziell. Die Maske ist gefallen.",
+            "Präsident", 90, 2007, "politisch",
+            p => {
+                Console.WriteLine("\n🎤 MÜNCHEN-REDE - PUTIN GEGEN DEN WESTEN!");
+                Console.WriteLine("Das Volk feiert russische Stärke!");
+                p.EinflussInternational -= 30;
+                p.LoyalitätVolk += 30;
+                p.EinflussMilitär += 20;
+                p.Charisma += 1;
+                Console.WriteLine($"➖ International: -30 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Militär: +20 → {p.EinflussMilitär}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2009 - 2 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Magnitski stirbt im Gefängnis 2009",
+            "FOLTER BIS ZUM TOD! Sergei Magnitski, Anwalt der Korruption aufdeckte, stirbt in Untersuchungshaft - gefoltert, ohne medizinische Hilfe. Das Volk flüstert die Wahrheit: Er wurde ermordet. Der Westen verhängt später die 'Magnitski-Sanktionen'. Sein Tod wird zum Symbol für Putins Brutalität.",
+            "Präsident", 85, 2009, "katastrophe",
+            p => {
+                Console.WriteLine("\n⚖️ MAGNITSKI STIRBT - FOLTER IN HAFT!");
+                Console.WriteLine("Anwalt zu Tode gefoltert! Das Volk ist entsetzt!");
+                p.EinflussKGB += 20;
+                p.LoyalitätVolk -= 30;
+                p.EinflussInternational -= 25;
+                p.Gesundheit -= 20;
+                Console.WriteLine($"➕ KGB/FSB: +20 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -25 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sajano-Schuschenskaja Katastrophe 2009",
+            "WASSERKRAFTWERK EXPLODIERT! Im größten Wasserkraftwerk Russlands reißt eine Turbine - die Flutwelle tötet 75 Arbeiter. Das Volk fragt: Warum wird nicht gewartet? Die Infrastruktur zerfällt, während Milliarden in Paläste fließen. Die Toten werden schnell vergessen.",
+            "Präsident", 80, 2009, "katastrophe",
+            p => {
+                Console.WriteLine("\n💥 KRAFTWERK-KATASTROPHE - 75 TOTE!");
+                Console.WriteLine("Infrastruktur versagt! Das Volk trauert und ist wütend!");
+                p.Gesundheit -= 25;
+                p.Geld -= 400;
+                p.LoyalitätVolk -= 30;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine($"➖ Gesundheit: -25% → {p.Gesundheit}%");
+                Console.WriteLine($"💰 Schaden: -400 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 2013 - 1 zusätzliches Event
+        allEvents.Add(new RandomEvent(
+            "Anti-LGBT-Gesetze 2013",
+            "'HOMOSEXUELLEN-PROPAGANDA' VERBOTEN! Putin unterzeichnet drakonische Anti-LGBT-Gesetze. Das Volk ist gespalten: Konservative jubeln, Liberale sind entsetzt. Der Westen protestiert - Putin ist es egal. 'Traditionelle Werte' werden zum Kampfbegriff gegen den dekadenten Westen.",
+            "Präsident", 75, 2013, "politisch",
+            p => {
+                Console.WriteLine("\n🏳️‍🌈 ANTI-LGBT-GESETZE ERLASSEN!");
+                Console.WriteLine("Das Volk ist tief gespalten!");
+                p.LoyalitätVolk -= 20;
+                p.EinflussInternational -= 25;
+                p.LoyalitätPartei += 20;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -25 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Partei: +20% (Konservative)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2025 - 2 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Ukraine-Krieg endloser Fleischwolf 2025",
+            "DER KRIEG FRISST DIE JUGEND! 2025 - Jahr drei des Ukraine-Krieges. Hunderttausende Russen sind tot oder verstümmelt. Das Volk ist erschöpft, aber die Propaganda läuft weiter. Mütter weinen heimlich. Soldaten desertieren. Wie lange noch? Putin schweigt. Der Fleischwolf dreht sich weiter.",
+            "Präsident", 95, 2025, "katastrophe",
+            p => {
+                Console.WriteLine("\n💀 KRIEG DAUERT AN - JAHR 3!");
+                Console.WriteLine("Das Volk ist kriegsmüde! Verluste immens!");
+                p.Gesundheit -= 35;
+                p.LoyalitätVolk -= 45;
+                p.Geld -= 1000;
+                p.EinflussMilitär -= 20;
+                Console.WriteLine($"➖ Gesundheit: -35% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk: -45% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Kriegskosten: -1000 Rubel → {p.Geld}");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Wirtschaftskollaps droht 2025",
+            "DIE WIRTSCHAFT IMPLODIERT! Sanktionen, Kriegskosten, Kapitalflucht - die russische Wirtschaft steht am Abgrund. Das Volk kann sich nichts mehr leisten. Inflation bei 20%. Fabriken schließen. Arbeitslosigkeit steigt. Das Volk fragt: War der Krieg das wert? Die Antwort darf nicht laut gesagt werden.",
+            "Präsident", 90, 2025, "katastrophe",
+            p => {
+                Console.WriteLine("\n📉 WIRTSCHAFTSKRISE VERSCHÄRFT SICH!");
+                Console.WriteLine("Das Volk verarmt! Inflation galoppiert!");
+                p.Geld -= 800;
+                p.LoyalitätVolk -= 40;
+                p.Gesundheit -= 25;
+                p.LoyalitätPartei -= 30;
+                Console.WriteLine($"💰 Verlust: -800 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -40% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -25% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
     }
     
     /// <summary>
