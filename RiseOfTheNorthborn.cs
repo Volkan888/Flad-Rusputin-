@@ -421,8 +421,10 @@ static class MarriageSystem
                 Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
                 
                 // Spieler gibt Namen ein
-                Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen: ");
+                Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen (oder Enter für Standard): ");
                 string vorname = Console.ReadLine();
+                
+                // Überprüfung und Standard-Name falls leer
                 if (string.IsNullOrWhiteSpace(vorname))
                     vorname = isBoy ? "Vladimir" : "Natasha";
                 
