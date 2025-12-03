@@ -3262,6 +3262,11 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 35; p.EinflussKGB += 20; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
+        historicalEvents.Add(new HistoricalEvent("KUBA_US_EMBARGO_1962", "USA verhängen Kuba-Embargo", "[RU]", "[EN]", "7. Februar 1962", "[RU]", "[EN]", 1962, 2, "POLITIK",
+            @"Kennedy verhängt totales Handelsembargo gegen Kuba! Die UdSSR muss nun Kuba massiv wirtschaftlich stützen. Ein teurer Verbündeter - aber ein wichtiger.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.Geld -= 150; p.EinflussInternational += 15; Thread.Sleep(3000); }));
+        
         historicalEvents.Add(new HistoricalEvent("TERESCHKOWA_WELTRAUM_1962", "Walentina Tereschkowa - Erste Frau im All", "[RU]", "[EN]", "16. Juni 1963", "[RU]", "[EN]", 1963, 6, "POLITIK",
             @"Die 26-jährige Tereschkowa fliegt als erste Frau ins Weltall! Ein propagandistischer Triumph: Sowjetische Frauen sind gleichberechtigt!",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
