@@ -4338,9 +4338,15 @@ static class EventSystem
             Console.WriteLine($"\n{evt.GetGeschichte()}");
             Thread.Sleep(5000);
             
+            Console.WriteLine("\n[Drücke eine Taste um die Auswirkungen zu sehen...]");
+            Console.ReadKey(true);
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("\n╔═══════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║              ⚡ AUSWIRKUNGEN WERDEN AUSGEFÜHRT ⚡          ║");
+            Console.WriteLine("║              ⚡ AUSWIRKUNGEN AUF RUSSLAND ⚡               ║");
             Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
             
             // Auswirkungen ausführen
             evt.Auswirkungen(player);
