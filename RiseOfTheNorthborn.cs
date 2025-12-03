@@ -4191,11 +4191,6 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.Gesundheit += 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("USA_ABM_AUSTRITT_2002", "USA steigen aus ABM-Vertrag aus", "[RU]", "[EN]", "13. Juni 2002", "[RU]", "[EN]", 2002, 6, "POLITIK",
-            @"Die USA kündigen den ABM-Vertrag. Putin ist verärgert - ein wichtiger Abrüstungsvertrag ist Geschichte.",
-            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
-            p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
-        
         historicalEvents.Add(new HistoricalEvent("GASPROM_MONOPOL_2005", "Gasprom wird Energie-Gigant", "[RU]", "[EN]", "28. September 2005", "[RU]", "[EN]", 2005, 9, "WIRTSCHAFT",
             @"Gasprom schluckt Sibneft. Der Staat kontrolliert die Energieressourcen. Gas als Waffe!",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
