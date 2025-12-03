@@ -4607,7 +4607,7 @@ class Program
         Console.WriteLine("║              KGB-AMBITIONEN (1968)                        ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        Console.WriteLine("Mit 16 marschiert Flad zur KGB-Zentrale!\n");
+        Console.WriteLine($"Mit 16 marschiert {player.GetFirstName()} zur KGB-Zentrale!\n");
         Thread.Sleep(1500);
         
         if (player.KGBEasterEgg)
