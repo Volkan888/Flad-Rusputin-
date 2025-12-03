@@ -381,6 +381,9 @@ static class MarriageSystem
         // Nur wenn verheiratet
         if (!player.IstVerheiratet) return;
         
+        // Begrenzung: Maximal 8 Kinder
+        if (player.Kinder.Count >= 8) return;
+        
         // Berechne Geburts-Wahrscheinlichkeit basierend auf Ehefrau
         // GeburtenBonus 1-5 * 15% = 15%, 30%, 45%, 60%, 75%
         int chance = player.GeburtenBonus * 15;
