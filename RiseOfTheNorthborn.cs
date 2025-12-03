@@ -3859,6 +3859,11 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 15; p.EinflussInternational += 10; Thread.Sleep(3000); }));
         
+        historicalEvents.Add(new HistoricalEvent("JELZIN_ENTLAESST_REGIERUNG_1998", "Jelzin entlässt gesamte Regierung", "[RU]", "[EN]", "23. März 1998", "[RU]", "[EN]", 1998, 3, "POLITIK",
+            @"Jelzin feuert die komplette Regierung! Tschernomyrdin muss gehen. Politisches Chaos in Moskau. Wer regiert hier eigentlich?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.LoyalitätPartei -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
+        
         // ====== 1999 ======
         historicalEvents.Add(new HistoricalEvent("ZWEITER_TSCHETSCHENIENKRIEG_1999", "Zweiter Tschetschenienkrieg beginnt", "[RU]", "[EN]", "26. August 1999", "[RU]", "[EN]", 1999, 8, "KRIEG",
             @"Nach Anschlägen in Moskau startet Russland eine neue Offensive in Tschetschenien. Premierminister Putin führt den Krieg hart und populär. Seine Popularität steigt.",
