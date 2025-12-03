@@ -2456,6 +2456,339 @@ static class TrumpHotline
     }
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// NATO-TELEFON EASTER EGG
+// ═══════════════════════════════════════════════════════════════════
+/// <summary>
+/// NATOHotline - Das geheimnisvolle NATO-Telefon
+/// 
+/// Ein blaues Telefon mit NATO-Symbol klingelt im Kreml.
+/// Der NATO-Generalsekretär ruft persönlich an - teils humorvoll, teils ernst!
+/// 
+/// FEATURES:
+/// - 3 Anrufe verfügbar
+/// - Meist negative Beziehung zu NATO
+/// - Humorvolle aber realistische Dialoge
+/// - Wichtige strategische Entscheidungen
+/// </summary>
+static class NATOHotline
+{
+    static Random rand = new Random();
+    
+    public static void CallNATO(PlayerCharacter p)
+    {
+        if (!p.NATOTelefonAktiv)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n📞 NATO-TELEFON");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            Console.ResetColor();
+            Console.WriteLine("Das NATO-Telefon ist noch nicht freigeschaltet!");
+            Console.WriteLine("\n💡 Tipp: Wird durch spezielle NATO-Events aktiviert.");
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+            return;
+        }
+        
+        if (p.NATOAnrufeVerfügbar <= 0)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n📞 NATO-TELEFON");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            Console.ResetColor();
+            Console.WriteLine("Alle Anrufe aufgebraucht!");
+            Console.WriteLine("\nDie NATO-Hotline ist derzeit nicht verfügbar...");
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+            return;
+        }
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine(@"
+        ╔═══════════════════════════════════╗
+        ║   📞 NATO-TELEFON 📞             ║
+        ║   🛡️ SICHERHEITS-HOTLINE 🛡️       ║
+        ╚═══════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        
+        Console.WriteLine($"🔋 Verbleibende Anrufe: {p.NATOAnrufeVerfügbar}/3");
+        Console.WriteLine($"🤝 NATO-Beziehung: {p.NATOBeziehung}%");
+        Console.WriteLine();
+        
+        Console.WriteLine("[1] 🛡️  Sicherheitsgarantien diskutieren");
+        Console.WriteLine("[2] ⚡ Osterweiterung ansprechen");
+        Console.WriteLine("[3] 🎯 Schach-Spiel vorschlagen (Humor)");
+        Console.WriteLine("[4] 🔙 Zurück");
+        Console.Write("\nWähle [1-4]: ");
+        
+        string choice = Console.ReadLine();
+        
+        switch (choice)
+        {
+            case "1":
+                SicherheitsGarantien(p);
+                break;
+            case "2":
+                Osterweiterung(p);
+                break;
+            case "3":
+                SchachSpiel(p);
+                break;
+            case "4":
+                return;
+        }
+        
+        p.NATOAnrufeVerfügbar--;
+    }
+    
+    static void SicherheitsGarantien(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n🛡️  SICHERHEITSGARANTIEN");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("📞 *Ring Ring*");
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\nNATO-Generalsekretär: 'Herr Präsident, guten Tag!'");
+        Console.WriteLine("NATO: 'Ich rufe an wegen Ihrer... Bedenken bezüglich unserer Osterweiterung.'");
+        Console.WriteLine("NATO: 'Wir können über gegenseitige Sicherheitsgarantien sprechen.'");
+        Console.WriteLine("NATO: 'Aber Sie müssen verstehen - jedes Land hat das Recht zu wählen!'");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Forderungen stellen (Keine Osterweiterung!)");
+        Console.WriteLine("[2] Kompromiss suchen (Pufferzone?)");
+        Console.WriteLine("[3] Ablehnen (NATO ist Bedrohung!)");
+        Console.Write("\nWähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        Console.Clear();
+        
+        if (choice == "1")
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n⚠️  FORDERUNGEN ABGELEHNT!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Diese Forderungen sind inakzeptabel!'");
+            Console.WriteLine("NATO: 'Wir entscheiden gemeinsam als Bündnis!'");
+            
+            p.NATOBeziehung -= 20;
+            p.EinflussMilitär += 15; // Muss sich militärisch stärken
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: -20% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"⚔️  Militäreinfluss: +15 (Aufrüstung nötig!)");
+            Console.ResetColor();
+        }
+        else if (choice == "2")
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n⚖️  KOMPROMISS-VERSUCH");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Interessant... lassen Sie uns darüber sprechen.'");
+            Console.WriteLine("NATO: 'Aber keine Garantien. Wir müssen intern beraten.'");
+            
+            p.NATOBeziehung += 10;
+            p.EinflussInternational += 10;
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: +10% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"🌍 Internationales Ansehen: +10");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n💥 ABLEHNUNG!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Schade. Wir hatten gehofft auf Dialog.'");
+            Console.WriteLine("NATO: 'Die Tür bleibt offen... vorerst.'");
+            
+            p.NATOBeziehung -= 15;
+            p.LoyalitätPartei += 20; // Hardliner zufrieden
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: -15% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"🏛️  Loyalität Partei: +20 (Hardliner zufrieden!)");
+            Console.ResetColor();
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    static void Osterweiterung(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\n⚡ OSTERWEITERUNG");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("📞 *Ring Ring*");
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\nNATO: 'Ich wollte Sie informieren - wir diskutieren über neue Mitglieder.'");
+        Console.WriteLine("NATO: 'Baltikum, Polen, vielleicht sogar Ukraine in Zukunft...'");
+        Console.WriteLine("NATO: 'Sie müssen verstehen - das ist rein defensiv!'");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Veto androhen (Konsequenzen!)");
+        Console.WriteLine("[2] Wirtschaftliche Druckmittel erwähnen");
+        Console.WriteLine("[3] Akzeptieren (Pragmatisch)");
+        Console.Write("\nWähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        Console.Clear();
+        
+        if (choice == "1")
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n💀 DROHUNG AUSGESPROCHEN!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Drohungen? Das ist inakzeptabel!'");
+            Console.WriteLine("NATO: 'Wir werden die Erweiterung BESCHLEUNIGEN!'");
+            
+            p.NATOBeziehung -= 30;
+            p.EinflussMilitär -= 20; // NATO rüstet auf
+            p.EinflussInternational -= 25;
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: -30% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"⚔️  Militäreinfluss: -20 (NATO rüstet auf!)");
+            Console.WriteLine($"🌍 Internationales Ansehen: -25");
+            Console.ResetColor();
+        }
+        else if (choice == "2")
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n💰 WIRTSCHAFTSDRUCK");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Gas und Öl? Wir diversifizieren bereits unsere Quellen.'");
+            Console.WriteLine("NATO: 'Diese Taktik wird nicht funktionieren.'");
+            
+            p.NATOBeziehung -= 15;
+            p.Geld += 100; // Kurzfristiger Gewinn
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: -15% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"💰 Geld: +100 Rubel (kurzfristig)");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n✓ PRAGMATISCHE AKZEPTANZ");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Vielen Dank für Ihr Verständnis!'");
+            Console.WriteLine("NATO: 'Vielleicht können wir eine Partnerschaft aufbauen?'");
+            
+            p.NATOBeziehung += 25;
+            p.LoyalitätPartei -= 30; // Hardliner verärgert!
+            p.EinflussInternational += 20;
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: +25% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"🌍 Internationales Ansehen: +20");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"⚠️  Loyalität Partei: -30 (Hardliner wütend!)");
+            Console.ResetColor();
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    static void SchachSpiel(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("\n🎯 SCHACH-SPIEL VORSCHLAG");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("📞 *Ring Ring*");
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\nNATO: 'Herr Präsident! Ich habe eine... ungewöhnliche Idee.'");
+        Console.WriteLine("NATO: 'Wie wäre es mit einer Partie Schach? Strategen unter sich!'");
+        Console.WriteLine("NATO: 'Ich habe hier eine Karte unserer Stellungen... wäre das nicht interessant?'");
+        Console.WriteLine("NATO: 'Und wissen Sie - bei uns im Baltikum stellen sie jetzt Matroschkas mit NATO-Logo her!'");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Annehmen ('Die russische Dame ist stärker!')");
+        Console.WriteLine("[2] Ablehnen ('Keine Kinderspiele!')");
+        Console.WriteLine("[3] Gegenvorschlag ('Reden wir über Gasverträge')");
+        Console.Write("\nWähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        Console.Clear();
+        
+        if (choice == "1")
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n♟️  SCHACH-PARTIE!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Ausgezeichnet! Sehen Sie sich diese Karte an...'");
+            Thread.Sleep(1500);
+            Console.WriteLine("\n🗺️  Du erhältst geheime NATO-Stellungsinformationen!");
+            
+            p.NATOBeziehung += 15;
+            p.EinflussKGB += 30; // Spionage-Erfolg!
+            p.Intelligenz += 1;
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: +15% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"💻 KGB-Einfluss: +30 (Aufklärung!)");
+            Console.WriteLine($"🧠 Intelligenz: +1");
+            Console.ResetColor();
+        }
+        else if (choice == "2")
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n❌ ABGELEHNT!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Schade... ich dachte, Sie schätzen strategisches Denken.'");
+            
+            p.NATOBeziehung -= 10;
+            p.EinflussMilitär += 10; // Fokus auf Militär
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: -10% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"⚔️  Militäreinfluss: +10");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n💼 GESCHÄFTLICH!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            Console.WriteLine("NATO: 'Ah, Gasverträge! Immer pragmatisch, wie ich sehe.'");
+            Console.WriteLine("NATO: 'Lassen Sie uns darüber sprechen...'");
+            
+            p.NATOBeziehung += 10;
+            p.Geld += 250; // Gasvertrag
+            
+            Console.WriteLine($"\n🛡️  NATO-Beziehung: +10% (jetzt {p.NATOBeziehung}%)");
+            Console.WriteLine($"💰 Geld: +250 Rubel (Gasvertrag!)");
+            Console.ResetColor();
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+}
+
 static class EventSystem
 {
     static Random rand = new Random();
