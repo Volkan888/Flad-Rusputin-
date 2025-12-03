@@ -1057,6 +1057,15 @@ static class ErdoganHotline
                 GetreideAbkommen(p);
                 break;
             case "6":
+                TourismusBoost(p);
+                break;
+            case "7":
+                AkkuyuInvestition(p);
+                break;
+            case "8":
+                Waffenhandel(p);
+                break;
+            case "9":
                 Console.WriteLine("\nAnruf abgebrochen.");
                 Thread.Sleep(1500);
                 return;
