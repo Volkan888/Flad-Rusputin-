@@ -3827,6 +3827,11 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Gesundheit -= 30; p.LoyalitätPartei -= 15; Thread.Sleep(3000); }));
         
+        historicalEvents.Add(new HistoricalEvent("CHASAWJURT_WAFFENSTILLSTAND_1996", "Waffenstillstand Tschetschenien", "[RU]", "[EN]", "31. August 1996", "[RU]", "[EN]", 1996, 8, "KRIEG",
+            @"Russland unterschreibt demütigenden Waffenstillstand! Tschetschenien ist de facto unabhängig. 80.000 Tote, keine Lösung. Russland hat verloren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussMilitär -= 30; p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(4000); }));
+        
         // ====== 1997 ======
         historicalEvents.Add(new HistoricalEvent("NATO_RUSSLAND_AKTE_1997", "NATO-Russland-Grundakte", "[RU]", "[EN]", "27. Mai 1997", "[RU]", "[EN]", 1997, 5, "POLITIK",
             @"Russland und NATO unterzeichnen eine 'Partnerschaft'. Aber die NATO-Osterweiterung geht trotzdem weiter. Russland fühlt sich hintergangen.",
