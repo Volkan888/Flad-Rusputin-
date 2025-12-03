@@ -5438,9 +5438,20 @@ static class EventSystem
             }
         ));
         
+        // CHINA-EVENTS (1950-2025) - Kompakt
+        allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China Freundschaft", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Damanski 1969", "Grenzkonflikt!", "KGB", 70, 1969, "china", p => { p.ChinaBeziehung -= 50; p.EinflussMilitär += 20; Console.WriteLine("💥 Grenzkrieg! China -50%"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Gorbatschow China 1989", "Normalisierung", "KGB", 50, 1989, "china", p => { p.ChinaBeziehung += 30; Console.WriteLine("🤝 +30% China"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Freundschaft 2001", "20-Jahres-Vertrag", "Präsident", 60, 2001, "china", p => { p.Geld += 300; p.ChinaBeziehung += 25; Console.WriteLine("✓ +300 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Gas-Deal 2014", "$400 Mrd Deal!", "Präsident", 80, 2014, "china", p => { p.Geld += 500; p.ChinaTelefonAktiv = true; Console.WriteLine("💰 +500 Rubel! 📞 China-Telefon aktiv!"); Thread.Sleep(2000); }));
+        allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; p.ChinaBeziehung += 20; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Handel 2019", "$110 Mrd", "Präsident", 55, 2019, "china", p => { p.Geld += 350; Console.WriteLine("💰 +350 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Olympia 2022", "Peking-Treffen", "Präsident", 75, 2022, "china", p => { p.Geld += 400; p.ChinaBeziehung += 15; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Putin Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; p.EinflussMilitär += 25; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("China-Allianz 2025", "Strategisch", "Präsident", 60, 2025, "china", p => { p.Geld += 300; p.ChinaBeziehung += 10; Console.WriteLine("🤝 +300 Rubel!"); Thread.Sleep(1500); }));
+        
         // ═══════════════════════════════════════════════════════════
         // RUSSLAND-USA BEZIEHUNGEN (2000-2025)
-        // Chronologie der politischen, wirtschaftlichen und militärischen Events
         // ═══════════════════════════════════════════════════════════
         
         // 2001 - 9/11 und Kooperation
