@@ -5689,8 +5689,23 @@ static class EventSystem
                 Thread.Sleep(5000);
             }
         ));
+        // 1962 - 4 Events
         allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 85, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 60, 1964, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Karibik-Blockade 1962", "Kennedy blockiert Kuba", "Jugend", 70, 1962, "politisch", p => { p.EinflussInternational -= 15; p.LoyalitätPartei += 10; Console.WriteLine("🚢 US-Blockade!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("U-2 über Kuba 1962", "Spionageflüge entdeckt", "Jugend", 65, 1962, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🔍 Spionage aufgedeckt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Atomtest Nowaja Semlja 1962", "Weitere Nukleartests", "Jugend", 60, 1962, "politisch", p => { p.EinflussMilitär += 10; p.Gesundheit -= 5; Console.WriteLine("☢️ Atomtests!"); Thread.Sleep(3000); }));
+        
+        // 1963 - 4 Events
+        allEvents.Add(new RandomEvent("Teststopp-Vertrag 1963", "Atomtest-Abkommen", "Jugend", 70, 1963, "politisch", p => { p.EinflussInternational += 20; p.Gesundheit += 5; Console.WriteLine("☮️ Vertrag unterzeichnet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kennedy ermordet 1963", "US-Präsident getötet", "Jugend", 75, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 Kennedy tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Heißer Draht 1963", "Direktleitung USA-UdSSR", "Jugend", 60, 1963, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📞 Hotline aktiv!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Weltraumabkommen 1963", "Kooperation im All", "Jugend", 55, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚀 Raumfahrt-Vertrag!"); Thread.Sleep(3000); }));
+        
+        // 1964 - 4 Events
+        allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 90, 1964, "politisch", p => { p.LoyalitätPartei += 15; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Chruschtschow gestürzt 1964", "Machtwechsel in Moskau", "Jugend", 80, 1964, "politisch", p => { p.EinflussKGB += 20; p.LoyalitätPartei += 10; Console.WriteLine("🔄 Putsch erfolgreich!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Woschod 1 im All 1964", "Erste 3-Mann-Crew", "Jugend", 65, 1964, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Weltraumerfolg!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("China-Atombombe 1964", "China wird Atommacht", "Jugend", 70, 1964, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussMilitär -= 10; Console.WriteLine("☢️ China nuklear!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 65, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Prager Frühling 1968", "Panzer nach Prag", "KGB", 80, 1968, "politisch", p => { p.EinflussMilitär += 25; p.EinflussInternational -= 30; Console.WriteLine("🇨🇿 Prag besetzt!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Mondlandung 1970", "USA auf dem Mond", "KGB", 70, 1970, "politisch", p => { p.EinflussInternational -= 20; Console.WriteLine("🌕 USA gewinnt Wettlauf!"); Thread.Sleep(3000); }));
