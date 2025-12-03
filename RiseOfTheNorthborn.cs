@@ -325,6 +325,11 @@ class PlayerCharacter
         
         // Putin-Shop initialisieren
         Besitztümer = new List<ShopItem>();
+        
+        // Trump-Telefon initialisieren
+        TrumpTelefonAktiv = false;        // Wird durch Event freigeschaltet
+        TrumpAnrufeVerfügbar = 3;         // 3 Anrufe mit Trump
+        USABeziehung = 50;                // Neutrale Beziehung
     }
     
     /// <summary>
