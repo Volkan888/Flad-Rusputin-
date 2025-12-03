@@ -10062,8 +10062,6 @@ class Program
         Thread.Sleep(2000);
     }
 
-    }
-
     /// <summary>
     /// ENTRY POINT - Startet das Spiel
     /// </summary>
