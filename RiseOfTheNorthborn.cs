@@ -2156,51 +2156,131 @@ static class SoundSystem
     }
     
     /// <summary>
-    /// ShowMusicMenu - Menü für russische Lieder
+    /// ShowMusicMenu - Erweitert: Musik wechseln, ausschalten, Songs spielen
     /// </summary>
     public static void ShowMusicMenu(PlayerCharacter player)
     {
-        Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine(@"
+        while (true)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(@"
         ╔════════════════════════════════════════════╗
-        ║   🎵 RUSSISCHE LIEDER 🎵                   ║
+        ║   🎵 MUSIK-KONTROLLE 🎵                    ║
         ║   Musik des Vaterlandes                    ║
         ╚════════════════════════════════════════════╝
         ");
-        Console.ResetColor();
-        
-        Console.WriteLine("\n[1] 🇷🇺 Russische Hymne (Гимн России)");
-        Console.WriteLine("[2] 🎶 Katyusha (Катюша) - Volkslied");
-        Console.WriteLine("[3] 💃 Kalinka (Калинка) - Tanzlied");
-        Console.WriteLine("[4] 🔙 Zurück");
-        Console.Write("\nWähle [1-4]: ");
-        
-        string choice = Console.ReadLine();
-        
-        switch (choice)
-        {
-            case "1":
-                PlayRussianAnthem();
-                player.LoyalitätVolk += 5; // Patriotismus
-                player.LoyalitätPartei += 5;
-                Console.WriteLine("\n✓ Patriotismus +10!");
-                break;
-            case "2":
-                PlayKatyusha();
-                player.Charisma += 1;
-                Console.WriteLine("\n✓ Charisma +1!");
-                break;
-            case "3":
-                PlayKalinka();
-                player.Gesundheit = Math.Min(100, player.Gesundheit + 5);
-                Console.WriteLine("\n✓ Gesundheit +5 (Tanzen!)");
-                break;
-            case "4":
-                return;
+            Console.ResetColor();
+            
+            // Status anzeigen
+            if (Program.stopMusic)
+                Console.WriteLine("\n📢 Status: Musik ist AUS 🔇");
+            else
+                Console.WriteLine($"\n📢 Status: Musik läuft (Melodie {Program.currentMusicTrack}) 🔊");
+            
+            Console.WriteLine("\n═══ HINTERGRUNDMUSIK ═══");
+            Console.WriteLine("[1] 🎵 Melodie 1 - Klassische Sowjet-Hymne");
+            Console.WriteLine("[2] 🎶 Melodie 2 - Katyusha-Variation");
+            Console.WriteLine("[3] 💃 Melodie 3 - Kalinka-Remix");
+            Console.WriteLine("[4] 🎹 Melodie 4 - Roter Oktober Marsch");
+            Console.WriteLine("[5] 🔇 Musik AUS/EIN schalten");
+            
+            Console.WriteLine("\n═══ EINMALIGE SONGS (mit Bonus) ═══");
+            Console.WriteLine("[6] 🇷🇺 Russische Hymne spielen (+Patriotismus)");
+            Console.WriteLine("[7] 🎶 Katyusha Volkslied (+Charisma)");
+            Console.WriteLine("[8] 💃 Kalinka Tanzlied (+Gesundheit)");
+            
+            Console.WriteLine("\n[9] 🔙 Zurück zum Spiel");
+            Console.Write("\nWähle [1-9]: ");
+            
+            string choice = Console.ReadLine();
+            
+            switch (choice)
+            {
+                case "1":
+                    Program.currentMusicTrack = 1;
+                    if (Program.stopMusic)
+                    {
+                        Program.stopMusic = false;
+                        Task.Run(() => Program.PlayMusic());
+                    }
+                    Console.WriteLine("\n✓ Melodie 1 aktiviert!");
+                    Thread.Sleep(2000);
+                    break;
+                    
+                case "2":
+                    Program.currentMusicTrack = 2;
+                    if (Program.stopMusic)
+                    {
+                        Program.stopMusic = false;
+                        Task.Run(() => Program.PlayMusic());
+                    }
+                    Console.WriteLine("\n✓ Melodie 2 aktiviert!");
+                    Thread.Sleep(2000);
+                    break;
+                    
+                case "3":
+                    Program.currentMusicTrack = 3;
+                    if (Program.stopMusic)
+                    {
+                        Program.stopMusic = false;
+                        Task.Run(() => Program.PlayMusic());
+                    }
+                    Console.WriteLine("\n✓ Melodie 3 aktiviert!");
+                    Thread.Sleep(2000);
+                    break;
+                    
+                case "4":
+                    Program.currentMusicTrack = 4;
+                    if (Program.stopMusic)
+                    {
+                        Program.stopMusic = false;
+                        Task.Run(() => Program.PlayMusic());
+                    }
+                    Console.WriteLine("\n✓ Melodie 4 aktiviert!");
+                    Thread.Sleep(2000);
+                    break;
+                    
+                case "5":
+                    Program.stopMusic = !Program.stopMusic;
+                    if (Program.stopMusic)
+                    {
+                        Console.WriteLine("\n🔇 Musik ausgeschaltet!");
+                    }
+                    else
+                    {
+                        Task.Run(() => Program.PlayMusic());
+                        Console.WriteLine("\n🔊 Musik eingeschaltet!");
+                    }
+                    Thread.Sleep(2000);
+                    break;
+                    
+                case "6":
+                    PlayRussianAnthem();
+                    player.LoyalitätVolk += 5;
+                    player.LoyalitätPartei += 5;
+                    Console.WriteLine("\n✓ Patriotismus +10!");
+                    Thread.Sleep(3500);
+                    break;
+                    
+                case "7":
+                    PlayKatyusha();
+                    player.Charisma += 1;
+                    Console.WriteLine("\n✓ Charisma +1!");
+                    Thread.Sleep(3500);
+                    break;
+                    
+                case "8":
+                    PlayKalinka();
+                    player.Gesundheit = Math.Min(100, player.Gesundheit + 5);
+                    Console.WriteLine("\n✓ Gesundheit +5 (Tanzen!)");
+                    Thread.Sleep(3500);
+                    break;
+                    
+                case "9":
+                    return;
+            }
         }
-        
-        Thread.Sleep(3500);
     }
 }
 
