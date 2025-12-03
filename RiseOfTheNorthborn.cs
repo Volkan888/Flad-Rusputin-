@@ -8807,23 +8807,7 @@ static class EventSystem
             }
         ));
         
-        allEvents.Add(new RandomEvent(
-            "Nawalny stirbt im Lager 2024",
-            "DER LETZTE HELD IST TOT! Alexei Nawalny stirbt mit 47 Jahren in der Arktis-Strafkolonie. 'Natürliche Ursachen', sagt der Kreml. Das Volk weiß: Mord. Zehntausende trauern - heimlich. Wer zu laut weint, wird verhaftet. Die Opposition ist endgültig geköpft. Putin hat gewonnen. Die Dunkelheit ist komplett.",
-            "Präsident", 100, 2024, "katastrophe",
-            p => {
-                Console.WriteLine("\n💔 NAWALNY TOT - DIE HOFFNUNG STIRBT!");
-                Console.WriteLine("Ermordet im Gulag! Das Volk trauert heimlich!");
-                p.LoyalitätVolk -= 35;
-                p.EinflussInternational -= 40;
-                p.EinflussKGB += 25;
-                p.Gesundheit -= 20;
-                Console.WriteLine($"➖ Volk: -35% → {p.LoyalitätVolk}%");
-                Console.WriteLine($"➖ International: -40 → {p.EinflussInternational}");
-                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
-                Thread.Sleep(5000);
-            }
-        ));
+        // DUPLIKAT ENTFERNT: Nawalny Tod 2024 ist bereits als HistoricalEvent vorhanden
         
         // ═══════════════════════════════════════════════════════════════════
         // WEITERE EVENTS FÜR UNTERVERSORGTE JAHRE (1953, 1956-1961, etc.)
