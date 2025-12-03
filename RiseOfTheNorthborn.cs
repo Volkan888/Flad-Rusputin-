@@ -8454,8 +8454,6 @@ static class EventSystem
         int currentYear = player.GetCurrentYear();
         
         // ═══ SCHRITT 1: FILTERE PASSENDE EVENTS ═══
-        // LINQ-Abfrage: Events nach Phase UND Jahr filtern
-        // ÄNDERUNG: Historische Events (mit Jahr > 0) ignorieren Phase-Check!
         var possibleEvents = allEvents.Where(e => 
         {
             // Historische Events (mit spezifischem Jahr) können in jeder Phase auftreten
@@ -8469,26 +8467,42 @@ static class EventSystem
             // Jahr muss passen (Jahr=0 bedeutet jederzeit möglich)
             bool yearMatch = (e.Jahr == 0 || e.Jahr == currentYear);
             
-            // Wahrscheinlichkeit - ABER: Events mit 100% Chance werden NICHT gewürfelt!
-            bool chanceMatch;
-            if (e.Chance >= 100)
-            {
-                chanceMatch = true; // GARANTIERT - kein Würfeln!
-            }
-            else
-            {
-                chanceMatch = rand.Next(100) < e.Chance; // Normales Würfeln
-            }
-            
-            return phaseMatch && yearMatch && chanceMatch;
+            return phaseMatch && yearMatch;
         }).ToList();
         
         // Kein Event möglich? Beende frühzeitig
         if (possibleEvents.Count == 0) return;
         
-        // ═══ SCHRITT 2: WÄHLE EVENT ═══
-        // Wähle ein zufälliges Event aus den möglichen
-        var chosen = possibleEvents[rand.Next(possibleEvents.Count)];
+        // ═══ SCHRITT 2: SEPARIERE GARANTIERTE UND ZUFÄLLIGE EVENTS ═══
+        var guaranteedEvents = possibleEvents.Where(e => e.Chance >= 100).ToList();
+        var randomEvents = possibleEvents.Where(e => e.Chance < 100).ToList();
+        
+        // ═══ SCHRITT 3: ZEIGE ALLE GARANTIERTEN EVENTS (100% Chance) ═══
+        foreach (var guaranteed in guaranteedEvents)
+        {
+            ShowEventDetails(guaranteed, player);
+        }
+        
+        // ═══ SCHRITT 4: ZEIGE EIN ZUFÄLLIGES EVENT (falls vorhanden und Würfel-Glück) ═══
+        if (randomEvents.Count > 0)
+        {
+            foreach (var randomEvent in randomEvents)
+            {
+                // Würfeln ob dieses Event erscheint
+                if (rand.Next(100) < randomEvent.Chance)
+                {
+                    ShowEventDetails(randomEvent, player);
+                    break; // Nur EIN zufälliges Event pro Durchlauf
+                }
+            }
+        }
+    }
+    
+    /// <summary>
+    /// ShowEventDetails - Zeigt ein einzelnes Event an (ausgelagert für Wiederverwendung)
+    /// </summary>
+    static void ShowEventDetails(RandomEvent chosen, PlayerCharacter player)
+    {
         
         // ═══ SCHRITT 3: ZEIGE EVENT MIT ASCII-ART ═══
         Console.Clear();
