@@ -7993,7 +7993,7 @@ class Program
             {
                 try 
                 { 
-                    // Beep deaktiviert 
+                    Console.Beep(melody[i], tempo * durations[i]);
                 }
                 catch 
                 { 
