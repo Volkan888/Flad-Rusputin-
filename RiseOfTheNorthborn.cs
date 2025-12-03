@@ -1033,17 +1033,42 @@ static class EventSystem
         ));
     }
     
+    /// <summary>
+    /// TriggerRandomEvent - Löst ein Zufallsereignis aus
+    /// 
+    /// TRIGGER-ALGORITHMUS:
+    /// 1. Filtere alle Events nach aktueller Lebensphase
+    /// 2. Würfle für jedes Event ob Wahrscheinlichkeit eintrifft
+    /// 3. Wenn mehrere Events möglich: Wähle zufällig eines
+    /// 4. Zeige Event-Beschreibung
+    /// 5. Führe Effekte aus (via Lambda-Funktion)
+    /// 
+    /// BEISPIEL:
+    /// - Phase: "Kindheit"
+    /// - Mögliche Events: "Verlust des Bruders" (20%), "Rauferei" (40%)
+    /// - Würfel für "Verlust": 18 < 20 → TRIFFT ZU
+    /// - Würfel für "Rauferei": 67 < 40 → TRIFFT NICHT ZU
+    /// - Ergebnis: "Verlust des Bruders" wird ausgeführt
+    /// 
+    /// Wird an kritischen Story-Punkten in jeder Phase aufgerufen.
+    /// </summary>
+    /// <param name="player">Der aktuelle Spieler-Charakter</param>
     public static void TriggerRandomEvent(PlayerCharacter player)
     {
+        // ═══ SCHRITT 1: FILTERE PASSENDE EVENTS ═══
+        // LINQ-Abfrage: Nur Events der aktuellen Phase die "würfeln"
         var possibleEvents = allEvents.Where(e => 
-            e.Phase == player.Phase && 
-            rand.Next(100) < e.Chance
+            e.Phase == player.Phase &&           // Richtige Phase?
+            rand.Next(100) < e.Chance            // Wahrscheinlichkeit getroffen?
         ).ToList();
         
+        // Kein Event möglich? Beende frühzeitig
         if (possibleEvents.Count == 0) return;
         
+        // ═══ SCHRITT 2: WÄHLE ZUFÄLLIGES EVENT ═══
         var chosen = possibleEvents[rand.Next(possibleEvents.Count)];
         
+        // ═══ SCHRITT 3: ZEIGE EVENT ═══
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
@@ -1056,6 +1081,8 @@ static class EventSystem
         Console.WriteLine("\n[Drücke eine Taste...]");
         Console.ReadKey(true);
         
+        // ═══ SCHRITT 4: FÜHRE EFFEKTE AUS ═══
+        // Lambda-Funktion (Action<PlayerCharacter>) wird ausgeführt
         chosen.Apply(player);
         
         Console.WriteLine("\n✓ Ereignis verarbeitet!");
