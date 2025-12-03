@@ -1804,7 +1804,6 @@ static class EventSystem
         Console.WriteLine($"\n✓ {childName} wurde geboren!");
         Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
     }
-    }
     
     /// <summary>
     /// TriggerRandomEvent - Löst ein Zufallsereignis aus
