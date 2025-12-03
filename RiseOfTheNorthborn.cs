@@ -3899,8 +3899,8 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 35; p.LoyalitätPartei += 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("JELZIN_RUECKTRITT_1999", "Jelzin tritt zurück - Putin übernimmt", "[RU]", "[EN]", "31. Dezember 1999", "[RU]", "[EN]", 1999, 12, "POLITIK",
-            @"Silvester-Überraschung! Jelzin tritt zurück und übergibt die Macht an Putin. 'Russland muss ins 21. Jahrhundert mit neuer Führung gehen.' Die Jelzin-Ära endet.",
+        historicalEvents.Add(new HistoricalEvent("JELZIN_RUECKTRITT_1999", "Jelzin tritt zurück - Flad übernimmt", "[RU]", "[EN]", "31. Dezember 1999", "[RU]", "[EN]", 1999, 12, "POLITIK",
+            @"Silvester-Überraschung! Jelzin tritt zurück und übergibt die Macht an Flad. 'Russland muss ins 21. Jahrhundert mit neuer Führung gehen.' Die Jelzin-Ära endet.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 30; p.Gesundheit += 20; Thread.Sleep(5000); }));
         
