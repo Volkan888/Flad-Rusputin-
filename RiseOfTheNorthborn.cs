@@ -3649,10 +3649,10 @@ class Program
     }
     
     /// <summary>
-    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L-Shortcuts
+    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L/E-Shortcuts
     /// 
-    /// FEATURE: Speichern/Laden während des Spiels
-    /// Shortcuts: 'S' = Speichern, 'L' = Laden
+    /// FEATURE: Speichern/Laden/Erdogan-Nottelefon während des Spiels
+    /// Shortcuts: 'S' = Speichern, 'L' = Laden, 'E' = Erdogan-Nottelefon
     /// </summary>
     static string ReadInputWithShortcuts(PlayerCharacter player, string prompt = "")
     {
@@ -3678,6 +3678,15 @@ class Program
                 Console.WriteLine(">> Verwende Hauptmenü zum Laden. [Taste drücken]");
                 Console.ReadKey(true);
                 Console.Write(prompt);
+                continue;
+            }
+            else if (input == "E")
+            {
+                Console.WriteLine("\n>> 📞 Erdogan-Nottelefon wird gewählt...");
+                Thread.Sleep(1000);
+                ErdoganHotline.ShowHotlineMenu(player);
+                Console.Clear();
+                Console.Write(prompt);  // Prompt erneut anzeigen
                 continue;
             }
             
