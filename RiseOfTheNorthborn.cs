@@ -3921,8 +3921,8 @@ static class EventSystem
             p => { p.EinflussKGB += 25; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
         // ====== 2001 ======
-        historicalEvents.Add(new HistoricalEvent("PUTIN_BUSH_2001", "Putin trifft Bush - 'Ich sah in seine Seele'", "[RU]", "[EN]", "16. Juni 2001", "[RU]", "[EN]", 2001, 6, "POLITIK",
-            @"Putin trifft Bush in Slowenien. Bush: 'Ich sah in seine Seele und fand ihn vertrauenswürdig.' Eine kurze Phase guter Beziehungen beginnt.",
+        historicalEvents.Add(new HistoricalEvent("FLAD_BUSH_2001", "Flad trifft Bush - 'Ich sah in seine Seele'", "[RU]", "[EN]", "16. Juni 2001", "[RU]", "[EN]", 2001, 6, "POLITIK",
+            @"Flad trifft Bush in Slowenien. Bush: 'Ich sah in seine Seele und fand ihn vertrauenswürdig.' Eine kurze Phase guter Beziehungen beginnt.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
