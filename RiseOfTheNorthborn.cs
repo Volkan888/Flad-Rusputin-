@@ -723,16 +723,34 @@ static class MarriageSystem
             }
             
             // Zwillings-/Drillings-Chance (5% für Zwillinge, 1% für Drillinge)
+            // BUG-FIX: Maximal 3 Kinder pro Geburt, respektiere 8-Kinder-Limit
             int birthCount = 1;
             int multipleChance = rand.Next(100);
-            if (multipleChance < 1) // 1% Drillinge
+            
+            // Berechne wie viele Kinder noch Platz haben (max 8 total)
+            int remainingSlots = 8 - player.Kinder.Count;
+            
+            if (multipleChance < 1 && remainingSlots >= 3) // 1% Drillinge
             {
                 birthCount = 3;
             }
-            else if (multipleChance < 6) // 5% Zwillinge
+            else if (multipleChance < 6 && remainingSlots >= 2) // 5% Zwillinge
             {
                 birthCount = 2;
             }
+            else if (remainingSlots >= 1)
+            {
+                birthCount = 1;
+            }
+            else
+            {
+                return; // Keine Plätze mehr frei
+            }
+            
+            // Sicherheitscheck: Niemals mehr als 3 Kinder auf einmal
+            birthCount = Math.Min(birthCount, 3);
+            // Sicherheitscheck: Nicht über das 8-Kinder-Limit
+            birthCount = Math.Min(birthCount, remainingSlots);
             
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
