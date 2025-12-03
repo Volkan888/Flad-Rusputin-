@@ -5135,7 +5135,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "🎯 Geheime KGB-Mission",
             "Ein alter KGB-Kontakt bietet dir eine geheime Mission an...",
-            "KGB", 8, 0, "kgb_easter",
+            "KGB", 70, 0, "kgb_easter",
             p => {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkRed;
