@@ -11509,7 +11509,8 @@ class Program
         Console.ResetColor();
         Console.WriteLine();
         
-        string choice = ReadInputWithShortcuts(player, "Wähle [1-3 oder Shortcuts]: ");
+        Console.Write("Wähle [1-3]: ");
+        string choice = Console.ReadLine();
         if (choice == "1")
         {
             player.EinflussMilitär += 50;
