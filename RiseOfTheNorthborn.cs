@@ -8469,8 +8469,16 @@ static class EventSystem
             // Jahr muss passen (Jahr=0 bedeutet jederzeit möglich)
             bool yearMatch = (e.Jahr == 0 || e.Jahr == currentYear);
             
-            // Wahrscheinlichkeit
-            bool chanceMatch = rand.Next(100) < e.Chance;
+            // Wahrscheinlichkeit - ABER: Events mit 100% Chance werden NICHT gewürfelt!
+            bool chanceMatch;
+            if (e.Chance >= 100)
+            {
+                chanceMatch = true; // GARANTIERT - kein Würfeln!
+            }
+            else
+            {
+                chanceMatch = rand.Next(100) < e.Chance; // Normales Würfeln
+            }
             
             return phaseMatch && yearMatch && chanceMatch;
         }).ToList();
