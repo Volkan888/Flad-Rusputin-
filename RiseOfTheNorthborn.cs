@@ -288,6 +288,19 @@ class PlayerCharacter
     public int TrumpAnrufeVerfügbar;     // Anzahl verbleibender Anrufe (max 3)
     public int USABeziehung;             // Beziehungswert zu USA (0-100)
     
+    // ═══ NATO-TELEFON EASTER EGG ═══
+    public bool NATOTelefonAktiv;        // TRUE wenn NATO-Telefon freigeschaltet
+    public int NATOAnrufeVerfügbar;      // Anzahl verbleibender Anrufe (max 3)
+    public int NATOBeziehung;            // Beziehungswert zu NATO (0-100, meist negativ)
+    
+    // ═══ FINKA-SYSTEM ═══
+    public bool HatFinka;                // TRUE wenn Finka gekauft
+    public int LetzterFinkabesuch;       // Jahr des letzten Finka-Besuchs
+    public int FinkaKosten;              // Kaufpreis der Finka
+    
+    // ═══ SHORTCUT-MENÜ TIMER ═══
+    public int LetzteShortcutAnzeige;    // Alter bei letzter Shortcut-Menü-Anzeige
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
