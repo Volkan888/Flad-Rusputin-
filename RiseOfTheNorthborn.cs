@@ -11344,6 +11344,12 @@ class Program
         {
             player.Alter++;
             
+            // SIDECHICK-SYSTEM: Prüfe alle 10 Jahre
+            CheckSidechickEvent(player);
+            
+            // VATERSCHAFTSTEST: Prüfe versteckte Kinder nach 18 Jahren
+            CheckVaterschaftstestEvent(player);
+            
             // BUG-FIX 3: Geburten-Intervall eingeführt
             // Problem: Bei hoher Geburtenrate (z.B. 75%) traten zu viele Geburten
             //          direkt hintereinander auf → Spieler hing in Namenseingabe fest
