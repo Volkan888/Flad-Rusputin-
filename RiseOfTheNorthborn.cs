@@ -4911,6 +4911,26 @@ class Program
         Console.WriteLine($"║ Geld:{player.Geld,-6} Gesundheit:{player.Gesundheit,-3}%                         ║");
         Console.WriteLine($"║ Partei:{player.LoyalitätPartei,-3}% Volk:{player.LoyalitätVolk,-3}% Familie:{player.LoyalitätFamilie,-3}%         ║");
         Console.WriteLine($"║ KGB:{player.EinflussKGB,-3}% Militär:{player.EinflussMilitär,-3}% International:{player.EinflussInternational,-3}%  ║");
+        
+        // Zeige Besitztümer wenn vorhanden
+        if (player.Besitztümer != null && player.Besitztümer.Count > 0)
+        {
+            Console.WriteLine("╠═══════════════════════════════════════════════════════════╣");
+            Console.WriteLine($"║ 🎒 BESITZTÜMER ({player.Besitztümer.Count}):                                     ║");
+            
+            for (int i = 0; i < Math.Min(3, player.Besitztümer.Count); i++)
+            {
+                var item = player.Besitztümer[i];
+                string itemText = $"{item.Icon} {item.Name}";
+                Console.WriteLine($"║ {itemText,-56} ║");
+            }
+            
+            if (player.Besitztümer.Count > 3)
+            {
+                Console.WriteLine($"║ ... und {player.Besitztümer.Count - 3} weitere (Drücke 'Q' für Shop)            ║");
+            }
+        }
+        
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
     }
     
