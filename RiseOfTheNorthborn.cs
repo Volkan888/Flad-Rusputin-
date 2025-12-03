@@ -1934,45 +1934,63 @@ static class SoundSystem
         {
             if (eventType == "katastrophe")
             {
-                // Alarm-Sound
                 Console.Beep(800, 150);
                 Console.Beep(600, 150);
                 Console.Beep(800, 150);
             }
             else if (eventType == "sidechick")
             {
-                // Romantischer Sound
-                Console.Beep(523, 200); // C
-                Console.Beep(659, 200); // E
-                Console.Beep(784, 300); // G
+                Console.Beep(523, 200);
+                Console.Beep(659, 200);
+                Console.Beep(784, 300);
             }
             else if (eventType == "usa")
             {
-                // Dramatischer Sound
                 Console.Beep(440, 250);
                 Console.Beep(494, 250);
             }
+            else if (eventType == "nato")
+            {
+                Console.Beep(587, 200);
+                Console.Beep(659, 200);
+                Console.Beep(784, 250);
+            }
+            else if (eventType == "china")
+            {
+                Console.Beep(659, 200);
+                Console.Beep(784, 200);
+                Console.Beep(880, 250);
+            }
+            else if (eventType == "kgb_easter")
+            {
+                Console.Beep(349, 300);
+                Console.Beep(523, 300);
+                Console.Beep(698, 200);
+            }
             else if (eventType == "türkei")
             {
-                // Exotischer Sound
                 Console.Beep(660, 200);
                 Console.Beep(740, 200);
             }
             else if (eventType == "politisch")
             {
-                // Offizieller Sound
                 Console.Beep(392, 300);
                 Console.Beep(523, 300);
             }
+            else if (eventType == "deutschland")
+            {
+                Console.Beep(523, 250);
+                Console.Beep(587, 250);
+            }
             else
             {
-                // Standard Event-Sound
                 Console.Beep(1000, 100);
             }
         }
         catch
         {
-            // Beep nicht verfügbar auf manchen Systemen - ignorieren
+            // Beep nicht auf Linux/Mono verfügbar - Text-Ausgabe stattdessen
+            Console.Write("♪ ");
         }
     }
     
