@@ -425,7 +425,9 @@ static class MarriageSystem
                 
                 Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
                 
-                // Spieler gibt Namen ein
+                // BUG-FIX 2: Klarere Eingabe-Anweisungen
+                // Problem: Spieler wussten nicht, dass sie Enter drücken können
+                // Lösung: Hinweis "(oder Enter für Standard)" hinzugefügt
                 Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen (oder Enter für Standard): ");
                 string vorname = Console.ReadLine();
                 
