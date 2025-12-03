@@ -7333,7 +7333,6 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Tschetschenien II 1999", "Zweiter Krieg", "Präsident", 100, 1999, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 200; Console.WriteLine("⚔️ Neuer Tschetschenien-Krieg!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Putin wird Präsident", "Präsident", 100, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Putin 2000", "Neuer Präsident", "Präsident", 100, 2000, "politisch", p => { p.LoyalitätPartei += 35; p.EinflussKGB += 25; Console.WriteLine("🇷🇺 Putin an der Macht!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Kursk-Untergang 2000", "U-Boot sinkt", "Präsident", 100, 2000, "katastrophe", p => { p.Gesundheit -= 25; p.LoyalitätPartei -= 15; Console.WriteLine("💀 118 Tote!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Y2K-Bug überstanden 2000", "Millennium", "Präsident", 100, 2000, "politisch", p => { p.Geld += 50; Console.WriteLine("💻 Y2K geschafft!"); Thread.Sleep(3000); }));
         
@@ -8808,7 +8807,6 @@ static class EventSystem
         ));
         
         allEvents.Add(new RandomEvent(
-            "Nawalny stirbt im Lager 2024",
             "DER LETZTE HELD IST TOT! Alexei Nawalny stirbt mit 47 Jahren in der Arktis-Strafkolonie. 'Natürliche Ursachen', sagt der Kreml. Das Volk weiß: Mord. Zehntausende trauern - heimlich. Wer zu laut weint, wird verhaftet. Die Opposition ist endgültig geköpft. Putin hat gewonnen. Die Dunkelheit ist komplett.",
             "Präsident", 100, 2024, "katastrophe",
             p => {
