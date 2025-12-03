@@ -277,6 +277,9 @@ class PlayerCharacter
     public bool ErdoganVermittlungAktiv; // TRUE wenn diplomatische Vermittlung läuft
     public int TürkeiBeziehung;          // Beziehungswert zu Türkei (0-100)
     
+    // ═══ GEBURTEN-COOLDOWN (NEUE FEATURE) ═══
+    public int LetzteGeburtJahr;         // Jahr der letzten Geburt (für 3-Jahres-Sperre)
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
