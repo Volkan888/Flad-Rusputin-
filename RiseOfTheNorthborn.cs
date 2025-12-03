@@ -1776,6 +1776,211 @@ static class EventSystem
     }
     
     /// <summary>
+    /// ASCII-Art Bibliothek für Ereignisse
+    /// </summary>
+    static class AsciiArt
+    {
+        public static void ShowEventArt(string eventName, string eventType)
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            
+            // Event-spezifische ASCII-Art
+            if (eventName.Contains("Erdbeben") || eventName.Contains("Kamtschatka"))
+            {
+                Console.WriteLine(@"
+        ╱╲    ╱╲    ╱╲
+       ╱  ╲  ╱  ╲  ╱  ╲
+      ╱    ╲╱    ╲╱    ╲
+     ╱  E R D B E B E N  ╲
+    ╱______╲    ╱________╲
+   ═══════════════════════");
+            }
+            else if (eventName.Contains("Nuklear") || eventName.Contains("Tschernobyl") || eventName.Contains("Kyshtym"))
+            {
+                Console.WriteLine(@"
+           ___
+          /   \
+         /  ☢  \
+        /   ︵   \
+       │  (   )  │
+       │   ═╤═   │
+        \   │   /
+    ══════════════════");
+            }
+            else if (eventName.Contains("Feuer") || eventName.Contains("Brand") || eventName.Contains("Waldbrände"))
+            {
+                Console.WriteLine(@"
+      (  )   (   )  )
+       ) (   )  (  (
+       ( )  (    ) )
+       _____________
+      <_____________> ~~~
+    🔥 F E U E R 🔥");
+            }
+            else if (eventName.Contains("Flut") || eventName.Contains("Überschwemmung") || eventName.Contains("Hochwasser"))
+            {
+                Console.WriteLine(@"
+    ~~~~~~~~~~~~
+  ~~~~~~~~~~~~~~
+ ~~~ W A S S E R ~~~
+~~~~~~~~~~~~~~~~
+  🌊 FLUT 🌊");
+            }
+            else if (eventName.Contains("COVID") || eventName.Contains("Pandemie"))
+            {
+                Console.WriteLine(@"
+        .-.
+       (o.o)
+        |=|
+       __|__
+     //.=|=.\\
+    // .=|=. \\
+    \\ .=|=. //
+     \\(_=_)//
+      (:| |:)
+    🦠 VIRUS 🦠");
+            }
+            else if (eventName.Contains("Affäre") || eventName.Contains("Flamme"))
+            {
+                Console.WriteLine(@"
+      ♥♥♥  ♥♥♥
+    ♥♥♥♥♥♥♥♥♥♥♥
+   ♥♥♥♥♥♥♥♥♥♥♥♥♥
+   ♥♥♥♥♥♥♥♥♥♥♥♥♥
+    ♥♥♥♥♥♥♥♥♥♥♥
+      ♥♥♥♥♥♥♥
+        ♥♥♥
+💋 AFFÄRE 💋");
+            }
+            else if (eventName.Contains("Kursk") || eventName.Contains("U-Boot"))
+            {
+                Console.WriteLine(@"
+    ~~~~~~~~~~~~~~~~~~~
+   ~~~~ _________ ~~~~
+  ~~~~ |_________|~~~~
+ ~~~~/___________\~~~
+~~~~~~~~~~~~~~~~⚓");
+            }
+            else if (eventName.Contains("Theater") || eventName.Contains("Geisel") || eventName.Contains("Beslan"))
+            {
+                Console.WriteLine(@"
+    ╔════════════╗
+    ║  ☠  ☠  ☠  ║
+    ║  GEISEL    ║
+    ║  DRAMA     ║
+    ╚════════════╝
+   💀 TERROR 💀");
+            }
+            else if (eventName.Contains("Rubel") || eventName.Contains("Finanzkrise") || eventName.Contains("Wirtschaft"))
+            {
+                Console.WriteLine(@"
+      ╔═══╗
+      ║ ₽ ║
+      ╚═══╝
+     /     \
+    │  💸  │
+     \     /
+  💰 KRISE 💰");
+            }
+            else if (eventName.Contains("Zerfall") || eventName.Contains("Sowjetunion"))
+            {
+                Console.WriteLine(@"
+    ⚠ ═══════════ ⚠
+       ☭ UdSSR ☭
+      /         \
+     /___________\
+    ═══════════════
+   🚩 KOLLAPS 🚩");
+            }
+            else if (eventName.Contains("Cyber") || eventName.Contains("KI"))
+            {
+                Console.WriteLine(@"
+    ┌─────────┐
+    │░▒▓█▓▒░│
+    │ 01001 │
+    │ 10110 │
+    └─────────┘
+   💻 DIGITAL 💻");
+            }
+            else if (eventName.Contains("Mars") || eventName.Contains("Arktis"))
+            {
+                Console.WriteLine(@"
+       /\
+      /  \
+     /____\
+    |  ||  |
+    |__||__|
+   /|  ||  |\
+  🚀 RAUM 🚀");
+            }
+            else if (eventName.Contains("Klima") || eventName.Contains("Hitzewelle"))
+            {
+                Console.WriteLine(@"
+       \ | /
+    -  ☀☀☀  -
+       / | \
+    H I T Z E
+   ~~~~~~~~~~~~~~~~
+   🌡️ KLIMA 🌡️");
+            }
+            else if (eventName.Contains("Apartmenthaus") || eventName.Contains("Bomben"))
+            {
+                Console.WriteLine(@"
+      ___💥___
+     /   |   \
+    |  ___  |
+    | |___| |
+    |_______|
+   💣 TERROR 💣");
+            }
+            else if (eventName.Contains("Krieg") || eventName.Contains("Konflikt") || eventName.Contains("Kuba"))
+            {
+                Console.WriteLine(@"
+    ╔═══╗ ╔═══╗
+    ║ ⚔ ║ ║ ⚔ ║
+    ╚═══╝ ╚═══╝
+    K R I E G
+   ⚔️  KAMPF ⚔️");
+            }
+            else if (eventName.Contains("Union") || eventName.Contains("Eurasisch"))
+            {
+                Console.WriteLine(@"
+    🌍═══🌏═══🌎
+     U N I O N
+    ═══════════
+   🤝 ALLIANZ 🤝");
+            }
+            else if (eventType == "sidechick")
+            {
+                Console.WriteLine(@"
+    ♡♡♡  LOVE  ♡♡♡
+    ♥  SKANDAL  ♥
+    ♡♡♡♡♡♡♡♡♡♡♡
+   💋 AFFÄRE 💋");
+            }
+            else if (eventType == "fiktiv")
+            {
+                Console.WriteLine(@"
+    ✦ ✧ ★ ✧ ✦
+    Z U K U N F T
+    ✦ ✧ ★ ✧ ✦
+   🔮 2025+ 🔮");
+            }
+            else
+            {
+                // Standard Event
+                Console.WriteLine(@"
+    ╔═══════════╗
+    ║  ⚡ ⚡ ⚡  ║
+    ║  EVENT    ║
+    ╚═══════════╝");
+            }
+            
+            Console.ResetColor();
+        }
+    }
+    
+    /// <summary>
     /// AddIllegitimateChild - Hilfsfunktion für uneheliche Kinder
     /// Erstellt ein uneheliches Kind aus einer Affäre
     /// </summary>
