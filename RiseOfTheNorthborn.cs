@@ -2480,11 +2480,14 @@ class BattleshipGame
         }
         
         // ═══ SCHRITT 2: FELDGRÖSSE WÄHLEN ═══
+        // BUG-FIX 7: Feldgrößen angepasst für bessere Spielbarkeit
+        // Problem: 6x6 zu klein für Schiffe der Größe 4, 3, 2
+        // Lösung: Klein = 8x8, Groß = 10x10
         Console.WriteLine("\nFeldgröße:");
-        Console.WriteLine("[1] Klein (6x6) - Schnelles Spiel");
-        Console.WriteLine("[2] Groß (8x8) - Längeres Spiel");
+        Console.WriteLine("[1] Klein (8x8) - Schnelles Spiel");
+        Console.WriteLine("[2] Groß (10x10) - Längeres Spiel");
         Console.Write("Wähle [1-2]: ");
-        int size = Console.ReadLine() == "2" ? 8 : 6;
+        int size = Console.ReadLine() == "2" ? 10 : 8;
         
         // ═══ SCHRITT 3: SPIELFELDER ERSTELLEN ═══
         Board board1 = new Board(size, player1);
