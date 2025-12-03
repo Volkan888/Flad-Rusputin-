@@ -7149,8 +7149,7 @@ class Program
             }
         }
         
-        stopMusic = false;
-        Task.Run(() => PlayMusic());
+        // MUSIK LÄUFT BEREITS - nicht neu starten
     }
     
     static void PlayMultiplayerStory(List<PlayerCharacter> players)
