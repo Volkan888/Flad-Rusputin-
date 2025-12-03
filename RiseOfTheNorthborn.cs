@@ -657,6 +657,13 @@ static class MarriageSystem
         // Zufalls-Check: Findet eine Geburt statt?
         if (rand.Next(100) < chance)
         {
+            // WICHTIG: Setze Cooldown SOFORT, bevor Geburt beginnt
+            // Verhindert, dass Funktion mehrfach hintereinander aufgerufen wird
+            if (!isSidechickBirth)
+            {
+                player.LetzteGeburtJahr = currentYear;
+            }
+            
             // Zwillings-/Drillings-Chance (5% für Zwillinge, 1% für Drillinge)
             int birthCount = 1;
             int multipleChance = rand.Next(100);
