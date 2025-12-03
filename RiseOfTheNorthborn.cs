@@ -5793,9 +5793,31 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Reagan gewählt 1980", "Hardliner-Präsident", "KGB", 75, 1980, "politisch", p => { p.EinflussMilitär += 15; p.EinflussInternational -= 15; Console.WriteLine("🇺🇸 Reagan an Macht!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Iran-Irak Krieg 1980", "Nahostkonflikt", "KGB", 70, 1980, "politisch", p => { p.Geld += 150; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 70, 1980, "politisch", p => { p.EinflussInternational -= 25; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Breschnjew stirbt 1982", "Ende einer Ära", "KGB", 65, 1982, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("☭ Führerwechsel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Reagan SDI 1983", "Star Wars Programm", "KGB", 75, 1983, "politisch", p => { p.EinflussMilitär -= 20; Console.WriteLine("🛰️ Wettrüsten!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Gorbatschow 1985", "Glasnost & Perestroika", "KGB", 70, 1985, "politisch", p => { p.LoyalitätPartei -= 25; p.EinflussInternational += 20; Console.WriteLine("🌍 Reformen!"); Thread.Sleep(3000); }));
+        // 1981-1985
+        allEvents.Add(new RandomEvent("Kriegsrecht Polen 1981", "Jaruzelski-Putsch", "KGB", 80, 1981, "politisch", p => { p.EinflussMilitär += 20; p.EinflussInternational -= 20; Console.WriteLine("🇵🇱 Kriegsrecht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan Attentat 1981", "US-Präsident überlebt", "KGB", 70, 1981, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🔫 Attentat!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sadat ermordet 1981", "Ägypten-Präsident tot", "KGB", 65, 1981, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("💀 Sadat tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan-Krieg 1981", "Mudschahedin kämpfen", "KGB", 75, 1981, "politisch", p => { p.Geld -= 150; p.EinflussMilitär += 10; Console.WriteLine("🇦🇫 Krieg eskaliert!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Breschnjew stirbt 1982", "Ende einer Ära", "KGB", 85, 1982, "politisch", p => { p.LoyalitätPartei -= 20; p.Gesundheit -= 10; Console.WriteLine("☭ Führerwechsel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Andropow KGB-Chef 1982", "KGB übernimmt", "KGB", 80, 1982, "politisch", p => { p.EinflussKGB += 30; Console.WriteLine("🕵️ KGB an Macht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Falklandkrieg 1982", "GB-Argentinien", "KGB", 70, 1982, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Falkland-Krieg!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Libanon-Invasion 1982", "Israel marschiert ein", "KGB", 75, 1982, "politisch", p => { p.Geld += 120; Console.WriteLine("🇱🇧 Nahost-Krise!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Reagan SDI 1983", "Star Wars Programm", "KGB", 90, 1983, "politisch", p => { p.EinflussMilitär -= 25; p.Geld -= 200; Console.WriteLine("🛰️ Wettrüsten!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("KAL 007 Abschuss 1983", "Passagierflugzeug abgeschossen", "KGB", 85, 1983, "katastrophe", p => { p.EinflussInternational -= 35; p.EinflussMilitär += 10; Console.WriteLine("✈️ 269 Tote!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Andropow stirbt 1983", "Zweiter Tod", "KGB", 75, 1983, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("☭ Erneuter Führerwechsel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Able Archer 1983", "Fast-Atomkrieg", "KGB", 80, 1983, "katastrophe", p => { p.Gesundheit -= 20; p.EinflussMilitär += 15; Console.WriteLine("☢️ Beinahe-Krieg!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Tschernenko Generalsekretär 1984", "Kranker Führer", "KGB", 70, 1984, "politisch", p => { p.LoyalitätPartei -= 10; Console.WriteLine("☭ Schwacher Führer!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia LA Boykott 1984", "Sowjet boykottiert", "KGB", 75, 1984, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🏅 Gegenboykott!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Indira Gandhi ermordet 1984", "Indien-Krise", "KGB", 65, 1984, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🇮🇳 Gandhi tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan wiedergewählt 1984", "Hardliner bleibt", "KGB", 70, 1984, "politisch", p => { p.EinflussMilitär += 10; Console.WriteLine("🇺🇸 Reagan 2. Amtszeit!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Gorbatschow 1985", "Glasnost & Perestroika", "KGB", 95, 1985, "politisch", p => { p.LoyalitätPartei -= 30; p.EinflussInternational += 25; p.Gesundheit += 10; Console.WriteLine("🌍 Reformen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Genfer Gipfel 1985", "Reagan-Gorbatschow", "KGB", 80, 1985, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🤝 Gipfeltreffen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Achille Lauro 1985", "Schiffsentführung", "KGB", 65, 1985, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚢 Terror auf See!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan Rückzug beginnt 1985", "Erste Signale", "KGB", 70, 1985, "politisch", p => { p.Geld += 100; Console.WriteLine("🇦🇫 Rückzugspläne!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Tschernobyl 1986", "Atomkatastrophe", "KGB", 90, 1986, "katastrophe", p => { p.Gesundheit -= 25; p.Geld -= 300; Console.WriteLine("☢️ Reaktor explodiert!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("INF-Vertrag 1987", "Abrüstung", "KGB", 60, 1987, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🕊️ Frieden!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Afghanistan-Abzug 1988", "Rückzug", "KGB", 70, 1988, "politisch", p => { p.Geld += 150; p.EinflussMilitär -= 20; Console.WriteLine("🇦🇫 Rückzug!"); Thread.Sleep(3000); }));
