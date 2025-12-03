@@ -1025,6 +1025,56 @@ class Program
         ShowStats(player);
         Console.ReadKey(true);
         
+        PlayJurastudium(player);
+        PlayDDRPhase(player);
+        PlayPresidentPhase(player);
+    }
+    
+    static void PlayJurastudium(PlayerCharacter player)
+    {
+        // JURASTUDIUM
+        player.Alter = 20;
+        player.Phase = "Jurastudium";
+        
+        // Zufallsereignis
+        EventSystem.TriggerRandomEvent(player);
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║         JURASTUDIUM (1970er)                              ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("Flad studiert Jura. Wem ist er loyal?\n");
+        Console.WriteLine("[1] Partei (+30 Partei, +20 Geld, -15 Volk)");
+        Console.WriteLine("[2] KGB (+40 KGB, -20 Familie, -10 Gesundheit)");
+        Console.WriteLine("[3] Familie & Moral (+30 Familie, +20 Volk)\n");
+        Console.Write("Wähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        if (choice == "1") 
+        { 
+            player.LoyalitätPartei = Math.Min(100, player.LoyalitätPartei + 30);
+            player.Geld += 20;
+            player.LoyalitätVolk -= 15;
+        }
+        else if (choice == "2")
+        {
+            player.EinflussKGB = Math.Min(100, player.EinflussKGB + 40);
+            player.LoyalitätFamilie -= 20;
+            player.Gesundheit -= 10;
+        }
+        else
+        {
+            player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + 30);
+            player.LoyalitätVolk = Math.Min(100, player.LoyalitätVolk + 20);
+        }
+        
+        Thread.Sleep(1500);
+        ShowStats(player);
+        Console.ReadKey(true);
+    }
+    
+    static void PlayDDRPhase(PlayerCharacter player)
+    {
         // DDR
         player.Alter = 35;
         player.Phase = "DDR-Einsatz";
