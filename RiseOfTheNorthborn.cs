@@ -8928,6 +8928,51 @@ class Program
     public static Random rand = new Random();  // Public für Zugriff von anderen Klassen
     static PlayerCharacter currentPlayer = null;
     
+    /// <summary>
+    /// ChooseLanguage - Sprachauswahl beim Start
+    /// </summary>
+    static void ChooseLanguage()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+╔═══════════════════════════════════════════════════════════╗
+║           SPRACHAUSWAHL / ВЫБОР ЯЗЫКА / LANGUAGE          ║
+╚═══════════════════════════════════════════════════════════╝
+");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] 🇩🇪 Deutsch");
+        Console.WriteLine("[2] 🇷🇺 Русский (Russian)");
+        Console.WriteLine("[3] 🇬🇧 English");
+        
+        Console.Write("\nWähle / Выберите / Choose [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        switch (choice)
+        {
+            case "1":
+                EventSystem.currentLanguage = "DE";
+                Console.WriteLine("\n✓ Sprache: Deutsch");
+                break;
+            case "2":
+                EventSystem.currentLanguage = "RU";
+                Console.WriteLine("\n✓ Язык: Русский");
+                break;
+            case "3":
+                EventSystem.currentLanguage = "EN";
+                Console.WriteLine("\n✓ Language: English");
+                break;
+            default:
+                EventSystem.currentLanguage = "DE";
+                Console.WriteLine("\n✓ Standard: Deutsch");
+                break;
+        }
+        
+        Thread.Sleep(2000);
+    }
+    
     static void Main()
     {
         try
