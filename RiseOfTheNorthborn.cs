@@ -1970,7 +1970,7 @@ static class SoundSystem
             
             for (int i = 0; i < notes.Length; i++)
             {
-                Console.Beep(notes[i], durations[i]);
+                // Beep deaktiviert
                 Thread.Sleep(50);
             }
         }
@@ -2020,7 +2020,7 @@ static class SoundSystem
             
             for (int i = 0; i < notes.Length; i++)
             {
-                Console.Beep(notes[i], durations[i]);
+                // Beep deaktiviert
                 Thread.Sleep(30);
             }
         }
@@ -2069,7 +2069,7 @@ static class SoundSystem
             for (int i = 0; i < notes.Length; i++)
             {
                 int duration = Math.Max(100, 300 - (i * 15)); // Wird schneller
-                Console.Beep(notes[i], duration);
+                // Beep deaktiviert
                 Thread.Sleep(20);
             }
         }
@@ -5189,7 +5189,7 @@ static class EventSystem
                 Console.WriteLine("\n📞 *Ring Ring*");
                 Thread.Sleep(3000);
                 
-                try { Console.Beep(800, 300); Console.Beep(800, 300); } catch { }
+                try { // Beep deaktiviert // Beep deaktiviert } catch { }
                 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("\n[Verzerrte Stimme]:");
@@ -7524,7 +7524,7 @@ class Program
             {
                 try 
                 { 
-                    Console.Beep(melody[i], tempo * durations[i]); 
+                    // Beep deaktiviert 
                 }
                 catch 
                 { 
@@ -7827,7 +7827,7 @@ class BattleshipGame
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("💥 TREFFER!");
                 Console.ResetColor();
-                try { Console.Beep(800, 200); } catch { }
+                try { // Beep deaktiviert } catch { }
                 Thread.Sleep(2500);
                 return true;
             }
@@ -7836,7 +7836,7 @@ class BattleshipGame
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("💧 Wasser!");
                 Console.ResetColor();
-                try { Console.Beep(300, 200); } catch { }
+                try { // Beep deaktiviert } catch { }
                 Thread.Sleep(2500);
                 return false;
             }
@@ -7873,7 +7873,7 @@ class BattleshipGame
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("💥 Computer trifft!");
             Console.ResetColor();
-            try { Console.Beep(800, 200); } catch { }
+            try { // Beep deaktiviert } catch { }
             return true;
         }
         else
@@ -7881,7 +7881,7 @@ class BattleshipGame
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("💧 Computer verfehlt!");
             Console.ResetColor();
-            try { Console.Beep(300, 200); } catch { }
+            try { // Beep deaktiviert } catch { }
             return false;
         }
     }
