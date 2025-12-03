@@ -4283,10 +4283,21 @@ class Program
             }
             else
             {
-                Console.Write($"Name von Spieler {i + 1}: ");
-                playerName = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(playerName))
-                    playerName = $"Spieler {i + 1}";
+                // ERZWINGE Namenseingabe im Multiplayer
+                playerName = "";
+                while (string.IsNullOrWhiteSpace(playerName))
+                {
+                    Console.Write($"Name von Spieler {i + 1} (PFLICHT): ");
+                    playerName = Console.ReadLine()?.Trim();
+                    
+                    if (string.IsNullOrWhiteSpace(playerName))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("⚠ Name darf nicht leer sein! Bitte eingeben.");
+                        Console.ResetColor();
+                    }
+                }
+                playerName = playerName + " Rusputin"; // Füge Dynastie-Name hinzu
                 Console.WriteLine();
             }
             
