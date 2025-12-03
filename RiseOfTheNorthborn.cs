@@ -5189,7 +5189,7 @@ static class EventSystem
                 Console.WriteLine("\n📞 *Ring Ring*");
                 Thread.Sleep(3000);
                 
-                try { // Beep deaktiviert // Beep deaktiviert } catch { }
+                // Beeps entfernt
                 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("\n[Verzerrte Stimme]:");
