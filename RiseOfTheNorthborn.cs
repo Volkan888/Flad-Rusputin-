@@ -5999,9 +5999,15 @@ static class EventSystem
     ╔═══════════╗
     ║  🛡️  ★  🛡️  ║
     ║   N A T O ║
-    ║  ━━━━━━━  ║
-    ╚═══════════╝
-   🌐 ALLIANCE 🌐");
+    ╚═══════════╝");
+            }
+            else if (eventName.Contains("China") || eventName.Contains("🇨🇳"))
+            {
+                Console.WriteLine(@"
+    ╔═══════════╗
+    ║  🐉 🇨🇳 🐉  ║
+    ║  C H I N A║
+    ╚═══════════╝");
             }
             else if (eventName.Contains("Zerfall") || eventName.Contains("Sowjetunion"))
             {
