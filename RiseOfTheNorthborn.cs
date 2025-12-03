@@ -3795,6 +3795,11 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
+        historicalEvents.Add(new HistoricalEvent("RUSSLAND_G7_EINGELADEN_1994", "Russland zu G7 eingeladen", "[RU]", "[EN]", "2. Juli 1994", "[RU]", "[EN]", 1994, 7, "POLITIK",
+            @"Russland wird zu G7-Gipfeln eingeladen. Der Weg zur G8 beginnt. Jelzin feiert: Russland ist Teil des Westens!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational += 30; p.LoyalitätVolk += 15; Thread.Sleep(3000); }));
+        
         // ====== 1995 ======
         historicalEvents.Add(new HistoricalEvent("GROSNY_EROBERT_1995", "Grosny erobert - zu welchem Preis?", "[RU]", "[EN]", "8. Februar 1995", "[RU]", "[EN]", 1995, 2, "KRIEG",
             @"Nach wochenlangen Kämpfen erobert Russland die zerstörte Stadt Grosny. Die UN nennt es 'die zerstörteste Stadt der Welt'. Ein Pyrrhussieg.",
