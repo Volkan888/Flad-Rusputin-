@@ -8486,8 +8486,30 @@ static class EventSystem
         // Kein Event möglich? Beende frühzeitig
         if (possibleEvents.Count == 0) return;
         
-        // ═══ SCHRITT 2: WÄHLE ZUFÄLLIGES EVENT ═══
-        var chosen = possibleEvents[rand.Next(possibleEvents.Count)];
+        // ═══ SCHRITT 2: WÄHLE EVENT(S) ═══
+        // NEUE LOGIK: Zeige ALLE Events mit 100% Chance, dann EINS mit <100%
+        var guaranteedEvents = possibleEvents.Where(e => e.Chance >= 100).ToList();
+        var randomEvents = possibleEvents.Where(e => e.Chance < 100).ToList();
+        
+        // ALLE garantierten Events werden gezeigt
+        foreach (var guaranteed in guaranteedEvents)
+        {
+            ShowSingleEvent(guaranteed, player);
+        }
+        
+        // DANN: Ein zufälliges Event (falls vorhanden)
+        if (randomEvents.Count > 0)
+        {
+            var chosen = randomEvents[rand.Next(randomEvents.Count)];
+            ShowSingleEvent(chosen, player);
+        }
+    }
+    
+    /// <summary>
+    /// ShowSingleEvent - Zeigt ein einzelnes Event an
+    /// </summary>
+    static void ShowSingleEvent(RandomEvent chosen, PlayerCharacter player)
+    {
         
         // ═══ SCHRITT 3: ZEIGE EVENT MIT ASCII-ART ═══
         Console.Clear();
