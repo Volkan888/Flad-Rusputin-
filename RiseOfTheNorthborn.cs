@@ -3685,7 +3685,8 @@ static class EventSystem
         // Spezielle Farben für Event-Typen
         if (chosen.Type == "sidechick")
             Console.ForegroundColor = ConsoleColor.Red;
-        else if (chosen.Type == "historisch")
+        else if (chosen.Type == "katastrophe" || chosen.Type == "politisch" || 
+                 chosen.Type == "türkei" || chosen.Type == "deutschland" || chosen.Type == "schulden")
             Console.ForegroundColor = ConsoleColor.Yellow;
         else if (chosen.Type == "fiktiv")
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -3696,8 +3697,16 @@ static class EventSystem
         
         if (chosen.Type == "sidechick")
             Console.WriteLine("║                  💋 PERSÖNLICHES EVENT 💋                 ║");
-        else if (chosen.Type == "historisch")
-            Console.WriteLine($"║         📅 HISTORISCHES EREIGNIS {chosen.Jahr} 📅            ║");
+        else if (chosen.Type == "katastrophe")
+            Console.WriteLine($"║         🔥 KATASTROPHE {chosen.Jahr} 🔥                    ║");
+        else if (chosen.Type == "politisch")
+            Console.WriteLine($"║         🏛️  POLITISCHES EREIGNIS {chosen.Jahr} 🏛️           ║");
+        else if (chosen.Type == "türkei")
+            Console.WriteLine($"║         🇹🇷 TÜRKEI-EREIGNIS {chosen.Jahr} 🇹🇷               ║");
+        else if (chosen.Type == "deutschland")
+            Console.WriteLine($"║         🇩🇪 DEUTSCHLAND-EREIGNIS {chosen.Jahr} 🇩🇪           ║");
+        else if (chosen.Type == "schulden")
+            Console.WriteLine($"║         💳 SCHULDEN-EREIGNIS 💳                          ║");
         else if (chosen.Type == "fiktiv")
             Console.WriteLine($"║          🔮 ZUKUNFTSEREIGNIS {chosen.Jahr} 🔮             ║");
         else
