@@ -4850,6 +4850,8 @@ static class EventSystem
             Console.ForegroundColor = ConsoleColor.Yellow;
         else if (chosen.Type == "fiktiv")
             Console.ForegroundColor = ConsoleColor.Cyan;
+        else if (chosen.Type == "usa")
+            Console.ForegroundColor = ConsoleColor.Blue;
         else
             Console.ForegroundColor = ConsoleColor.Magenta;
             
@@ -4869,6 +4871,8 @@ static class EventSystem
             Console.WriteLine($"║         💳 SCHULDEN-EREIGNIS 💳                          ║");
         else if (chosen.Type == "fiktiv")
             Console.WriteLine($"║          🔮 ZUKUNFTSEREIGNIS {chosen.Jahr} 🔮             ║");
+        else if (chosen.Type == "usa")
+            Console.WriteLine($"║         🇺🇸 USA-RUSSLAND {chosen.Jahr} 🇺🇸                 ║");
         else
             Console.WriteLine("║                  ⚡ ZUFALLSEREIGNIS ⚡                     ║");
             
