@@ -2050,8 +2050,13 @@ static class EventSystem
         // ═══ SCHRITT 2: WÄHLE ZUFÄLLIGES EVENT ═══
         var chosen = possibleEvents[rand.Next(possibleEvents.Count)];
         
-        // ═══ SCHRITT 3: ZEIGE EVENT ═══
+        // ═══ SCHRITT 3: ZEIGE EVENT MIT ASCII-ART ═══
         Console.Clear();
+        
+        // Zeige ASCII-Art für das Event
+        AsciiArt.ShowEventArt(chosen.Name, chosen.Type);
+        
+        Console.WriteLine();  // Leerzeile
         
         // Spezielle Farben für Event-Typen
         if (chosen.Type == "sidechick")
