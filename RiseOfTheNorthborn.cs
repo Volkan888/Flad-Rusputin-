@@ -5706,9 +5706,41 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Chruschtschow gestürzt 1964", "Machtwechsel in Moskau", "Jugend", 80, 1964, "politisch", p => { p.EinflussKGB += 20; p.LoyalitätPartei += 10; Console.WriteLine("🔄 Putsch erfolgreich!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Woschod 1 im All 1964", "Erste 3-Mann-Crew", "Jugend", 65, 1964, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Weltraumerfolg!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("China-Atombombe 1964", "China wird Atommacht", "Jugend", 70, 1964, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussMilitär -= 10; Console.WriteLine("☢️ China nuklear!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 65, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Prager Frühling 1968", "Panzer nach Prag", "KGB", 80, 1968, "politisch", p => { p.EinflussMilitär += 25; p.EinflussInternational -= 30; Console.WriteLine("🇨🇿 Prag besetzt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Mondlandung 1970", "USA auf dem Mond", "KGB", 70, 1970, "politisch", p => { p.EinflussInternational -= 20; Console.WriteLine("🌕 USA gewinnt Wettlauf!"); Thread.Sleep(3000); }));
+        // 1965 - 4 Events
+        allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 85, 1965, "politisch", p => { p.Geld += 150; p.EinflussMilitär += 15; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Woschod 2 Weltraumspaziergang 1965", "Erster Ausstieg ins All", "Jugend", 75, 1965, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("👨‍🚀 Weltraumspaziergang!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Wirtschaftsreform 1965", "Kossygin-Reform", "Jugend", 60, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("💰 Wirtschaft gestärkt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Strelnikow-Affäre 1965", "KGB-Operationen", "Jugend", 55, 1965, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🕵️ KGB aktiv!"); Thread.Sleep(3000); }));
+        
+        // 1966 - 4 Events
+        allEvents.Add(new RandomEvent("Luna 9 Landung 1966", "Erste Mondlandung (unbemannt)", "Jugend", 80, 1966, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Luna 9 auf dem Mond!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kulturrevolution China 1966", "Mao startet Revolution", "Jugend", 70, 1966, "politisch", p => { p.ChinaBeziehung -= 25; Console.WriteLine("🇨🇳 Chaos in China!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Venera 3 zur Venus 1966", "Erste Venus-Sonde", "Jugend", 65, 1966, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🪐 Venus erreicht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew-Doktrin 1966", "Intervention gerechtfertigt", "Jugend", 60, 1966, "politisch", p => { p.EinflussMilitär += 20; p.EinflussInternational -= 15; Console.WriteLine("⚔️ Doktrin verkündet!"); Thread.Sleep(3000); }));
+        
+        // 1967 - 4 Events
+        allEvents.Add(new RandomEvent("Sojus 1 Katastrophe 1967", "Kosmonaut stirbt", "Jugend", 80, 1967, "katastrophe", p => { p.Gesundheit -= 15; p.EinflussInternational -= 20; Console.WriteLine("💀 Komarow tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sechstagekrieg 1967", "Israel besiegt Araber", "Jugend", 75, 1967, "politisch", p => { p.Geld -= 100; p.EinflussInternational -= 15; Console.WriteLine("🇮🇱 Arabische Niederlage!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Venera 4 Venus 1967", "Venus-Atmosphäre erforscht", "Jugend", 65, 1967, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🪐 Venus-Daten!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Atomwaffensperrvertrag 1967", "Verhandlungen beginnen", "Jugend", 60, 1967, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("☮️ Abrüstungsgespräche!"); Thread.Sleep(3000); }));
+        
+        // 1968 - 4 Events
+        allEvents.Add(new RandomEvent("Prager Frühling 1968", "Panzer nach Prag", "KGB", 90, 1968, "politisch", p => { p.EinflussMilitär += 30; p.EinflussInternational -= 35; Console.WriteLine("🇨🇿 Prag besetzt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Dubček gestürzt 1968", "Reformer entmachtet", "KGB", 80, 1968, "politisch", p => { p.EinflussKGB += 25; Console.WriteLine("🔨 Reform niedergeschlagen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("MLK ermordet 1968", "US-Bürgerrechtler tot", "KGB", 65, 1968, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 MLK ermordet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("My Lai Massaker 1968", "US-Kriegsverbrechen", "KGB", 70, 1968, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("⚠️ US-Skandal!"); Thread.Sleep(3000); }));
+        
+        // 1969 - 4 Events
+        allEvents.Add(new RandomEvent("Mondlandung Apollo 11 1969", "USA auf dem Mond", "KGB", 85, 1969, "politisch", p => { p.EinflussInternational -= 25; p.Gesundheit -= 10; Console.WriteLine("🌕 USA siegt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Grenzkonflikt Damanski 1969", "Kampf mit China", "KGB", 80, 1969, "politisch", p => { p.ChinaBeziehung -= 40; p.EinflussMilitär += 15; Console.WriteLine("💥 Gefecht mit China!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus 4/5 Kopplung 1969", "Erste Raumstation-Basis", "KGB", 70, 1969, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Kopplung gelungen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("SALT-Verhandlungen 1969", "Abrüstung beginnt", "KGB", 60, 1969, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("☮️ Gespräche starten!"); Thread.Sleep(3000); }));
+        
+        // 1970 - 4 Events
+        allEvents.Add(new RandomEvent("Mondlandung USA 1970", "Apollo 13 Drama", "KGB", 75, 1970, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🌕 USA Mondprogramm!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Lunochod 1 Rover 1970", "Erster Mondrover", "KGB", 80, 1970, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Rover auf Mond!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Allende Chile 1970", "Sozialist siegt", "KGB", 65, 1970, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇨🇱 Verbündeter in Chile!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Ostverträge 1970", "Deutschland-Entspannung", "KGB", 70, 1970, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Brandt in Moskau!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("SALT I 1972", "Rüstungskontrolle", "KGB", 55, 1972, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🕊️ Entspannung!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Helsinki 1975", "KSZE-Konferenz", "KGB", 60, 1975, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🤝 Menschenrechte!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Afghanistan 1979", "Invasion", "KGB", 85, 1979, "politisch", p => { p.EinflussMilitär += 30; p.Geld -= 200; Console.WriteLine("🇦🇫 Krieg beginnt!"); Thread.Sleep(3000); }));
