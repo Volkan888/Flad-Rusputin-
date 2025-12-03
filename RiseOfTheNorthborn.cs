@@ -7911,6 +7911,11 @@ class Program
                         currentPlayer = heir;
                         Console.WriteLine("\n>> Die nächste Generation übernimmt...");
                         SaveGame(heir);
+                        
+                        // DYNASTIE WEITERFÜHREN - Starte Spiel mit Erben
+                        Console.WriteLine("\n[Drücke eine Taste, um die Dynastie fortzusetzen...]");
+                        Console.ReadKey(true);
+                        PlayStory(heir);
                     }
                     return;
                 }
@@ -7920,6 +7925,11 @@ class Program
             
             Console.WriteLine($"\n>> {player.Name} ist {player.Alter} Jahre alt und lebt friedlich weiter.");
             SaveGame(player);
+            
+            // Nach dem Speichern weiterspielen
+            Console.WriteLine("\n[Drücke eine Taste, um weiterzuspielen...]");
+            Console.ReadKey(true);
+            PlayPresidentPhase(player);
         }
         else if (choice == "2" && player.Kinder.Count > 0)
         {
@@ -7932,6 +7942,11 @@ class Program
                 Console.WriteLine("\n>> Die Dynastie geht weiter...");
                 Thread.Sleep(3000);
                 SaveGame(heir);
+                
+                // DYNASTIE WEITERFÜHREN - Starte Spiel mit Erben
+                Console.WriteLine("\n[Drücke eine Taste, um die Dynastie mit dem Erben fortzusetzen...]");
+                Console.ReadKey(true);
+                PlayStory(heir);
             }
         }
         else
@@ -7941,9 +7956,6 @@ class Program
             Console.WriteLine("\n>> Auf Wiedersehen!");
             Thread.Sleep(3000);
         }
-        
-        Console.WriteLine("\n[Drücke eine Taste...]");
-        Console.ReadKey(true);
     }
     
     static void ShowStats(PlayerCharacter player)
