@@ -10046,6 +10046,7 @@ class Program
                 return; // Nur ein Event pro Jahr
             }
         }
+    }
     
     static void TriggerSidechickEvent(PlayerCharacter player)
     {
