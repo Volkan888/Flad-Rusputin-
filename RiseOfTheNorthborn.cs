@@ -6862,7 +6862,8 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
         Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("\n📞 Telefone: 'E' = Erdogan | 'T' = Trump");
+        Console.WriteLine("\n📞 Telefone: 'E' = Erdogan | 'T' = Trump | 'N' = NATO");
+        Console.WriteLine("🏡 Erholung: 'F' = Finka (Gesundheit +30)");
         Console.WriteLine("🛒 Shop: 'Q' = Putin's Luxus-Shop");
         Console.WriteLine("🎵 Musik: 'M' = Russische Lieder");
         Console.WriteLine("💾 System: 'S' = Speichern | 'L' = Laden");
@@ -6872,11 +6873,11 @@ class Program
         Console.WriteLine("[2] Diplomatie (+300 Geld, +40 International)");
         Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)");
         Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine("[E/T/Q/M/S/L] Telefone/Shop/Musik/Speichern");
+        Console.WriteLine("[E/T/N/F/Q/M/S/L] Alle Shortcuts verfügbar");
         Console.ResetColor();
         Console.WriteLine();
         
-        string choice = ReadInputWithShortcuts(player, "Wähle [1-3 oder E/T/Q/M/S/L]: ");
+        string choice = ReadInputWithShortcuts(player, "Wähle [1-3 oder Shortcuts]: ");
         if (choice == "1")
         {
             player.EinflussMilitär += 50;
