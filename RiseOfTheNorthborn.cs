@@ -9908,72 +9908,90 @@ class Program
     static List<TelefonatEvent> telefonate = new List<TelefonatEvent>();
     
     /// <summary>
-    /// InitializeTelefonate - Lädt alle historischen Telefonate
+    /// InitializeTelefonate - Lädt alle historischen Telefonate (nur logische ab KGB-Phase)
     /// </summary>
     static void InitializeTelefonate()
     {
-        // 1953 - Stalins Tod
+        // 1975 - Erste KGB Mission (Flad ist 23)
         telefonate.Add(new TelefonatEvent
         {
-            Datum = new DateTime(1953, 3, 5),
-            Anrufer = "US-Präsident Dwight D. Eisenhower",
-            Empfaenger = "Georgi Malenkow (UdSSR)",
-            Thema = "Stalins Tod – Zukunft des Kalten Krieges",
-            Beschreibung = "Washington kondoliert, doch der Subtext ist klar: Die USA wittern eine Schwächephase der Sowjets. Eisenhower fragt, ob die UdSSR 'bereit sei für De-Eskalation'. Moskau reagiert misstrauisch.",
+            Datum = new DateTime(1975, 1, 3),
+            Anrufer = "KGB-Ausbilder",
+            Empfaenger = "Flad Rusputin",
+            Thema = "Erste Mission nach Ostdeutschland",
+            Beschreibung = "Flad… wir schicken dich nach Ostdeutschland. Beobachten. Fotografieren. Melden. Keine Fehler. Der Ton ist streng – aber voller Erwartungen.",
             Optionen = new List<TelefonatOption>
             {
-                new TelefonatOption { Text = "Die Sowjetunion bleibt stark. Kein Dialog.", VolkAenderung = 5, ArmeeAenderung = 0, WirtschaftAenderung = 0, DiplomatieAenderung = -10, KGBAenderung = 5 },
-                new TelefonatOption { Text = "Wir reden – aber nur zu unseren Bedingungen.", VolkAenderung = 0, ArmeeAenderung = 5, WirtschaftAenderung = 0, DiplomatieAenderung = 0, KGBAenderung = 0 },
-                new TelefonatOption { Text = "Lasst uns ein neues Kapitel aufschlagen.", VolkAenderung = -10, ArmeeAenderung = 0, WirtschaftAenderung = 50, DiplomatieAenderung = 20, KGBAenderung = -5 }
+                new TelefonatOption { Text = "Ich erledige den Auftrag.", VolkAenderung = -3, ArmeeAenderung = 0, WirtschaftAenderung = 0, DiplomatieAenderung = 5, KGBAenderung = 20 },
+                new TelefonatOption { Text = "Geben Sie mir eine härtere Mission.", VolkAenderung = 0, ArmeeAenderung = 5, WirtschaftAenderung = 0, DiplomatieAenderung = 0, KGBAenderung = 25 },
+                new TelefonatOption { Text = "Ist das wirklich notwendig?", VolkAenderung = 5, ArmeeAenderung = -5, WirtschaftAenderung = 0, DiplomatieAenderung = 0, KGBAenderung = -10 }
             }
         });
         
-        // 1953 - Korea Waffenstillstand
+        // 1986 - Tschernobyl (Flad ist 34)
         telefonate.Add(new TelefonatEvent
         {
-            Datum = new DateTime(1953, 7, 27),
-            Anrufer = "Pentagon Joint Chiefs",
-            Empfaenger = "Politbüro UdSSR",
-            Thema = "Waffenstillstand Korea",
-            Beschreibung = "Die USA warnen, dass ein erneutes militärisches Eingreifen der UdSSR als 'Akt der Aggression' gewertet würde. Die UdSSR weigert sich, ihren Einfluss auf Nordkorea zu reduzieren.",
+            Datum = new DateTime(1986, 4, 26),
+            Anrufer = "KGB-Notfallstab",
+            Empfaenger = "Flad Rusputin",
+            Thema = "Tschernobyl-Katastrophe",
+            Beschreibung = "Flad, hör gut zu. Ein Reaktor ist explodiert. Panik, Schreie, Sirenen. Du wirst NICHT darüber sprechen. Verstanden?",
             Optionen = new List<TelefonatOption>
             {
-                new TelefonatOption { Text = "Wir halten uns raus – vorerst.", VolkAenderung = -5, ArmeeAenderung = -5, WirtschaftAenderung = 0, DiplomatieAenderung = 10, KGBAenderung = 0 },
-                new TelefonatOption { Text = "Wir unterstützen Nordkorea weiter im Geheimen.", VolkAenderung = 5, ArmeeAenderung = 10, WirtschaftAenderung = -20, DiplomatieAenderung = -15, KGBAenderung = 10 },
-                new TelefonatOption { Text = "Wir drohen mit Vergeltungsschlägen.", VolkAenderung = 10, ArmeeAenderung = 15, WirtschaftAenderung = -30, DiplomatieAenderung = -25, KGBAenderung = 5 }
+                new TelefonatOption { Text = "Wir müssen das Volk warnen!", VolkAenderung = 20, ArmeeAenderung = 0, WirtschaftAenderung = -20, DiplomatieAenderung = -10, KGBAenderung = -15 },
+                new TelefonatOption { Text = "Ich folge den Befehlen.", VolkAenderung = -10, ArmeeAenderung = 5, WirtschaftAenderung = 0, DiplomatieAenderung = 0, KGBAenderung = 20 },
+                new TelefonatOption { Text = "Ich brauche genaue Daten!", VolkAenderung = 0, ArmeeAenderung = 0, WirtschaftAenderung = 0, DiplomatieAenderung = 5, KGBAenderung = 10 },
+                new TelefonatOption { Text = "Vertuschen wir alles.", VolkAenderung = -20, ArmeeAenderung = 10, WirtschaftAenderung = 0, DiplomatieAenderung = -15, KGBAenderung = 25 }
             }
         });
         
-        // 1957 - Sputnik Schock
+        // 1991 - UdSSR Zerfall (Flad ist 39)
         telefonate.Add(new TelefonatEvent
         {
-            Datum = new DateTime(1957, 10, 4),
-            Anrufer = "US-Präsident Eisenhower",
-            Empfaenger = "Nikita Chruschtschow",
-            Thema = "Sputnik-Schock",
-            Beschreibung = "Der erste Satellit der Menschheit schockiert die USA. Eisenhower klingt nervös, fast panisch: 'Was habt ihr da hochgeschickt?' Chruschtschow lacht ihn am Telefon aus.",
+            Datum = new DateTime(1991, 12, 25),
+            Anrufer = "Boris Jelzin",
+            Empfaenger = "Flad Rusputin",
+            Thema = "UdSSR zerbricht",
+            Beschreibung = "Jelzin klingt betrunken und verzweifelt. 'Flad… die Sowjetunion existiert nicht mehr. Wir sind… Russland jetzt.'",
             Optionen = new List<TelefonatOption>
             {
-                new TelefonatOption { Text = "Wir bieten wissenschaftlichen Austausch an.", VolkAenderung = 5, ArmeeAenderung = 0, WirtschaftAenderung = 30, DiplomatieAenderung = 15, KGBAenderung = -5 },
-                new TelefonatOption { Text = "Wir prahlen mit sowjetischer Überlegenheit.", VolkAenderung = 15, ArmeeAenderung = 10, WirtschaftAenderung = 10, DiplomatieAenderung = -10, KGBAenderung = 5 },
-                new TelefonatOption { Text = "Wir drohen mit neuen Waffenprogrammen.", VolkAenderung = 10, ArmeeAenderung = 20, WirtschaftAenderung = -20, DiplomatieAenderung = -20, KGBAenderung = 10 },
-                new TelefonatOption { Text = "Wir schweigen arrogant.", VolkAenderung = 20, ArmeeAenderung = 5, WirtschaftAenderung = 0, DiplomatieAenderung = -15, KGBAenderung = 15 }
+                new TelefonatOption { Text = "Ich diene Russland.", VolkAenderung = 10, ArmeeAenderung = -5, WirtschaftAenderung = 0, DiplomatieAenderung = 10, KGBAenderung = 5 },
+                new TelefonatOption { Text = "Ich trete zurück.", VolkAenderung = -20, ArmeeAenderung = -10, WirtschaftAenderung = 0, DiplomatieAenderung = -10, KGBAenderung = -20 },
+                new TelefonatOption { Text = "Ich übernehme mehr Verantwortung.", VolkAenderung = 5, ArmeeAenderung = 10, WirtschaftAenderung = 0, DiplomatieAenderung = 5, KGBAenderung = 15 }
             }
         });
         
-        // 1958 - Berlin Ultimatum
+        // 2000 - Machtübernahme (Flad ist 48)
         telefonate.Add(new TelefonatEvent
         {
-            Datum = new DateTime(1958, 11, 1),
-            Anrufer = "US-Außenminister John Foster Dulles",
-            Empfaenger = "Nikita Chruschtschow",
-            Thema = "Berlin-Ultimatum",
-            Beschreibung = "Die USA fordern freien Zugang nach West-Berlin. Die Spannung steigt. Beide Seiten drohen hinter höflichen Worten mit Krieg.",
+            Datum = new DateTime(2000, 10, 7),
+            Anrufer = "Geheimdienstchef",
+            Empfaenger = "Präsident Flad",
+            Thema = "Machtübernahme komplett",
+            Beschreibung = "Präsident Flad… Russland gehört jetzt Ihnen. Du hörst im Hintergrund Applaus – oder Maschinengewehrfeuer.",
             Optionen = new List<TelefonatOption>
             {
-                new TelefonatOption { Text = "Wir lockern die Kontrollen.", VolkAenderung = -10, ArmeeAenderung = -5, WirtschaftAenderung = 0, DiplomatieAenderung = 15, KGBAenderung = -10 },
-                new TelefonatOption { Text = "Wir verstärken die Kontrollen.", VolkAenderung = 5, ArmeeAenderung = 10, WirtschaftAenderung = -10, DiplomatieAenderung = -10, KGBAenderung = 10 },
-                new TelefonatOption { Text = "Wir drohen mit Schließung aller Zugänge.", VolkAenderung = 10, ArmeeAenderung = 15, WirtschaftAenderung = -25, DiplomatieAenderung = -30, KGBAenderung = 20 }
+                new TelefonatOption { Text = "Bring Ordnung in das Land.", VolkAenderung = 15, ArmeeAenderung = 15, WirtschaftAenderung = -10, DiplomatieAenderung = -5, KGBAenderung = 20 },
+                new TelefonatOption { Text = "Wir werden ein Imperium.", VolkAenderung = 20, ArmeeAenderung = 25, WirtschaftAenderung = -30, DiplomatieAenderung = -20, KGBAenderung = 25 },
+                new TelefonatOption { Text = "Ich beginne Reformen.", VolkAenderung = 25, ArmeeAenderung = -10, WirtschaftAenderung = 50, DiplomatieAenderung = 30, KGBAenderung = -10 },
+                new TelefonatOption { Text = "Bekämpft die Oligarchen.", VolkAenderung = 30, ArmeeAenderung = 5, WirtschaftAenderung = 20, DiplomatieAenderung = 0, KGBAenderung = 15 }
+            }
+        });
+        
+        // 2022 - Ukraine Krieg (Flad ist 70)
+        telefonate.Add(new TelefonatEvent
+        {
+            Datum = new DateTime(2022, 2, 24),
+            Anrufer = "NATO-Generalsekretär",
+            Empfaenger = "Präsident Flad",
+            Thema = "Ukraine-Krieg",
+            Beschreibung = "Flad, das ist Wahnsinn! Stoppen Sie das sofort! Stille. Die Welt hält den Atem an.",
+            Optionen = new List<TelefonatOption>
+            {
+                new TelefonatOption { Text = "Wir ziehen uns zurück.", VolkAenderung = -30, ArmeeAenderung = -40, WirtschaftAenderung = 100, DiplomatieAenderung = 50, KGBAenderung = -30 },
+                new TelefonatOption { Text = "Wir verhandeln.", VolkAenderung = -10, ArmeeAenderung = -10, WirtschaftAenderung = 20, DiplomatieAenderung = 20, KGBAenderung = 0 },
+                new TelefonatOption { Text = "Wir eskalieren.", VolkAenderung = 15, ArmeeAenderung = 30, WirtschaftAenderung = -100, DiplomatieAenderung = -80, KGBAenderung = 20 },
+                new TelefonatOption { Text = "Alles läuft nach Plan.", VolkAenderung = 10, ArmeeAenderung = 20, WirtschaftAenderung = -50, DiplomatieAenderung = -60, KGBAenderung = 25 }
             }
         });
     }
