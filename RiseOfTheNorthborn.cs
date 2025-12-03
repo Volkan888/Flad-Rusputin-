@@ -280,6 +280,9 @@ class PlayerCharacter
     // ═══ GEBURTEN-COOLDOWN (NEUE FEATURE) ═══
     public int LetzteGeburtJahr;         // Jahr der letzten Geburt (für 3-Jahres-Sperre)
     
+    // ═══ PUTIN-LUXUS-SHOP (NEUE FEATURE) ═══
+    public List<ShopItem> Besitztümer;   // Gekaufte Luxusgegenstände (Autos, Pferde, etc.)
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
