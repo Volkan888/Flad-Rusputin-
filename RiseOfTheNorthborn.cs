@@ -381,7 +381,9 @@ static class MarriageSystem
         // Nur wenn verheiratet
         if (!player.IstVerheiratet) return;
         
-        // Begrenzung: Maximal 8 Kinder
+        // BUG-FIX 1: Begrenzung auf maximal 8 Kinder
+        // Problem: Zu viele Geburten führten zu Endlos-Namenseingaben
+        // Lösung: Kinderzahl auf 8 begrenzt für bessere Spielbalance
         if (player.Kinder.Count >= 8) return;
         
         // Berechne Geburts-Wahrscheinlichkeit basierend auf Ehefrau
