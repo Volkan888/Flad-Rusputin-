@@ -230,6 +230,7 @@ class PlayerCharacter
     // ═══ BASIS-INFORMATIONEN ═══
     public string Name;              // Voller Name des Charakters (z.B. "Vladimir Rusputin 2")
     public int Alter;                // Aktuelles Alter in Jahren
+    public int Geburtsjahr;          // Jahr der Geburt (z.B. 1952)
     public int Generation;           // Generationsnummer (1 = Gründer, 2 = Kinder, etc.)
     public string Phase;             // Aktuelle Lebensphase (Kindheit, KGB, Studium, DDR, Präsident)
     
