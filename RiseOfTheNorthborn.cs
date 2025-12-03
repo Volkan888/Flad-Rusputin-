@@ -5741,9 +5741,57 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Lunochod 1 Rover 1970", "Erster Mondrover", "KGB", 80, 1970, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Rover auf Mond!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Allende Chile 1970", "Sozialist siegt", "KGB", 65, 1970, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇨🇱 Verbündeter in Chile!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Ostverträge 1970", "Deutschland-Entspannung", "KGB", 70, 1970, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Brandt in Moskau!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("SALT I 1972", "Rüstungskontrolle", "KGB", 55, 1972, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🕊️ Entspannung!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Helsinki 1975", "KSZE-Konferenz", "KGB", 60, 1975, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🤝 Menschenrechte!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Afghanistan 1979", "Invasion", "KGB", 85, 1979, "politisch", p => { p.EinflussMilitär += 30; p.Geld -= 200; Console.WriteLine("🇦🇫 Krieg beginnt!"); Thread.Sleep(3000); }));
+        // 1971-1975 (Détente-Ära)
+        allEvents.Add(new RandomEvent("Saljut 1 Raumstation 1971", "Erste Raumstation", "KGB", 80, 1971, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🛰️ Raumstation!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Viermächte-Abkommen 1971", "Berlin-Status", "KGB", 65, 1971, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🏛️ Berlin-Vertrag!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Ping-Pong China 1971", "Annäherung USA-China", "KGB", 70, 1971, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussInternational -= 10; Console.WriteLine("🏓 China-USA nähern sich!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus 11 Tragödie 1971", "3 Kosmonauten sterben", "KGB", 75, 1971, "katastrophe", p => { p.Gesundheit -= 20; Console.WriteLine("💀 Raumfahrt-Tod!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("SALT I 1972", "Rüstungskontrolle", "KGB", 85, 1972, "politisch", p => { p.EinflussInternational += 20; p.Geld += 100; Console.WriteLine("🕊️ Entspannung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Nixon Moskau 1972", "US-Präsident besucht", "KGB", 75, 1972, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Nixon in Moskau!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia München 1972", "Terror-Anschlag", "KGB", 70, 1972, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🏅 Olympia-Drama!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mars 2 Mars-Landung 1972", "Erste Mars-Landung", "KGB", 80, 1972, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🔴 Mars erreicht!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Jom-Kippur-Krieg 1973", "Nahost-Krieg", "KGB", 80, 1973, "politisch", p => { p.Geld += 150; p.EinflussMilitär += 20; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Ölkrise 1973", "OPEC-Embargo", "KGB", 75, 1973, "politisch", p => { p.Geld += 200; Console.WriteLine("🛢️ Ölpreise steigen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sacharow-Protest 1973", "Dissident warnt", "KGB", 65, 1973, "politisch", p => { p.LoyalitätPartei -= 10; p.EinflussKGB += 15; Console.WriteLine("⚠️ Dissidenten aktiv!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus-Apollo Vorbereitung 1973", "Gemeinsame Mission geplant", "KGB", 70, 1973, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 US-UdSSR Kooperation!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Solschenizyn ausgewiesen 1974", "Kritiker verbannt", "KGB", 70, 1974, "politisch", p => { p.EinflussKGB += 20; p.EinflussInternational -= 15; Console.WriteLine("📚 Autor ausgewiesen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Watergate Nixon 1974", "US-Präsident zurückgetreten", "KGB", 75, 1974, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📰 Nixon-Skandal!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Zypern-Krise 1974", "Türkei-Griechenland", "KGB", 65, 1974, "politisch", p => { p.EinflussMilitär += 10; Console.WriteLine("🇹🇷 Zypern-Konflikt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus-Apollo Test 1974", "Gemeinsame Tests", "KGB", 70, 1974, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Kooperation läuft!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Helsinki 1975", "KSZE-Konferenz", "KGB", 85, 1975, "politisch", p => { p.EinflussInternational += 25; p.LoyalitätPartei += 15; Console.WriteLine("🤝 Menschenrechte!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus-Apollo Kopplung 1975", "US-Sowjet im All", "KGB", 80, 1975, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🚀 Historische Kopplung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Saigon fällt 1975", "Vietnam-Sieg", "KGB", 75, 1975, "politisch", p => { p.EinflussMilitär += 20; p.Geld += 150; Console.WriteLine("🇻🇳 USA verliert Vietnam!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Angola-Intervention 1975", "Kubanische Truppen", "KGB", 70, 1975, "politisch", p => { p.EinflussMilitär += 15; p.Geld -= 100; Console.WriteLine("🇦🇴 Afrika-Engagement!"); Thread.Sleep(3000); }));
+        
+        // 1976-1980
+        allEvents.Add(new RandomEvent("Mao stirbt 1976", "China-Wandel", "KGB", 75, 1976, "politisch", p => { p.ChinaBeziehung += 10; Console.WriteLine("🇨🇳 Mao tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Viking Mars 1976", "US-Mars-Landung", "KGB", 70, 1976, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🔴 USA auf Mars!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sacharow Verbannung 1976", "Friedensnobelpreis verbannt", "KGB", 65, 1976, "politisch", p => { p.EinflussKGB += 15; p.EinflussInternational -= 10; Console.WriteLine("⚠️ Dissident verbannt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Carter gewählt 1976", "Menschenrechtler", "KGB", 60, 1976, "politisch", p => { p.EinflussInternational -= 10; Console.WriteLine("🇺🇸 Carter Präsident!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Breschnjew-Verfassung 1977", "Neue Verfassung", "KGB", 70, 1977, "politisch", p => { p.LoyalitätPartei += 15; Console.WriteLine("📜 Verfassung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Charta 77 1977", "Dissidenten Osteuropa", "KGB", 65, 1977, "politisch", p => { p.EinflussKGB += 15; p.EinflussInternational -= 10; Console.WriteLine("📄 Opposition wächst!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sadat Jerusalem 1977", "Ägypten-Israel", "KGB", 75, 1977, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🇮🇱 Arabische Wende!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Neutronenbombe 1977", "US-Waffe diskutiert", "KGB", 70, 1977, "politisch", p => { p.EinflussMilitär += 15; Console.WriteLine("☢️ Neue Waffe!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Camp David 1978", "Israel-Ägypten Frieden", "KGB", 75, 1978, "politisch", p => { p.EinflussInternational -= 20; Console.WriteLine("🕊️ Frieden ohne UdSSR!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan-Putsch 1978", "Kommunisten an Macht", "KGB", 80, 1978, "politisch", p => { p.EinflussMilitär += 15; p.EinflussKGB += 20; Console.WriteLine("🇦🇫 Kabul-Putsch!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Papst Johannes Paul II 1978", "Polnischer Papst", "KGB", 70, 1978, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("⛪ Polen-Papst!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus 29 Langzeit 1978", "175 Tage im All", "KGB", 65, 1978, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Rekord im All!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Afghanistan 1979", "Invasion", "KGB", 90, 1979, "politisch", p => { p.EinflussMilitär += 35; p.Geld -= 250; p.Gesundheit -= 15; Console.WriteLine("🇦🇫 Krieg beginnt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Iranische Revolution 1979", "Schah gestürzt", "KGB", 80, 1979, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🇮🇷 Khomeini siegt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("SALT II 1979", "Neuer Abrüstungsvertrag", "KGB", 70, 1979, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("☮️ SALT II!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Nicaragua-Revolution 1979", "Sandinisten siegen", "KGB", 75, 1979, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇳🇮 Verbündeter!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 85, 1980, "politisch", p => { p.EinflussInternational -= 30; p.LoyalitätPartei += 15; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Solidarność 1980", "Polnische Gewerkschaft", "KGB", 80, 1980, "politisch", p => { p.LoyalitätPartei -= 20; p.EinflussKGB += 15; Console.WriteLine("⚠️ Polen rebelliert!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan gewählt 1980", "Hardliner-Präsident", "KGB", 75, 1980, "politisch", p => { p.EinflussMilitär += 15; p.EinflussInternational -= 15; Console.WriteLine("🇺🇸 Reagan an Macht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Iran-Irak Krieg 1980", "Nahostkonflikt", "KGB", 70, 1980, "politisch", p => { p.Geld += 150; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 70, 1980, "politisch", p => { p.EinflussInternational -= 25; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Breschnjew stirbt 1982", "Ende einer Ära", "KGB", 65, 1982, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("☭ Führerwechsel!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Reagan SDI 1983", "Star Wars Programm", "KGB", 75, 1983, "politisch", p => { p.EinflussMilitär -= 20; Console.WriteLine("🛰️ Wettrüsten!"); Thread.Sleep(3000); }));
