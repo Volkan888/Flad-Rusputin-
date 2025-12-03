@@ -791,10 +791,11 @@ class Program
             Console.WriteLine("\n[1] Neues Spiel – Aufstieg zur Macht");
             Console.WriteLine("[2] Spiel Laden");
             Console.WriteLine("[3] Stammbaum ansehen 🌳");
-            Console.WriteLine("[4] Spielstände verwalten");
-            Console.WriteLine("[5] Beenden");
+            Console.WriteLine("[4] Mini-Game: Schiffe versenken ⚓");
+            Console.WriteLine("[5] Spielstände verwalten");
+            Console.WriteLine("[6] Beenden");
             
-            Console.Write("\nWähle [1-5]: ");
+            Console.Write("\nWähle [1-6]: ");
             string input = Console.ReadLine();
             
             switch (input)
@@ -802,8 +803,15 @@ class Program
                 case "1": StartNewGame(); break;
                 case "2": LoadGame(); break;
                 case "3": ShowFamilyTree(); break;
-                case "4": ManageSaves(); break;
-                case "5":
+                case "4":
+                    stopMusic = true;
+                    Thread.Sleep(200);
+                    BattleshipGame.Play();
+                    stopMusic = false;
+                    Task.Run(() => PlayMusic());
+                    break;
+                case "5": ManageSaves(); break;
+                case "6":
                     stopMusic = true;
                     Console.WriteLine("\n>> Auf Wiedersehen, Genosse!");
                     Thread.Sleep(1000);
