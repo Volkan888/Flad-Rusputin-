@@ -4656,7 +4656,7 @@ class Program
         Console.WriteLine("║         JURASTUDIUM (1970er)                              ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        Console.WriteLine("Flad studiert Jura. Wem ist er loyal?\n");
+        Console.WriteLine($"{player.GetFirstName()} studiert Jura. Wem ist er loyal?\n");
         Console.WriteLine("[1] Partei (+30 Partei, +20 Geld, -15 Volk)");
         Console.WriteLine("[2] KGB (+40 KGB, -20 Familie, -10 Gesundheit)");
         Console.WriteLine("[3] Familie & Moral (+30 Familie, +20 Volk)\n");
