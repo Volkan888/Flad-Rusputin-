@@ -7047,9 +7047,7 @@ class Program
     
     static void StartNewGame(int playerCount = 1)
     {
-        stopMusic = true;
-        Thread.Sleep(300);
-        
+        // MUSIK LÄUFT WEITER während des Spiels
         Console.Clear();
         
         if (playerCount == 1)
