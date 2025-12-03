@@ -381,6 +381,10 @@ class PlayerCharacter
         ChinaTelefonAktiv = false;        // Wird durch Event freigeschaltet
         ChinaAnrufeVerfügbar = 3;         // 3 Anrufe
         ChinaBeziehung = 70;              // Gute Beziehung (Allianz)
+        
+        // Sidechick-System initialisieren
+        VersteckteKinder = new List<UnanerkanntesSidechickKind>();
+        LetztesSidechickJahr = 0;
     }
     
     /// <summary>
