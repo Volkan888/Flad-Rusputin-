@@ -5541,6 +5541,8 @@ static class EventSystem
             Console.WriteLine($"║         🇩🇪 DEUTSCHLAND-EREIGNIS {chosen.Jahr} 🇩🇪           ║");
         else if (chosen.Type == "schulden")
             Console.WriteLine($"║         💳 SCHULDEN-EREIGNIS 💳                          ║");
+        else if (chosen.Type == "kgb_easter")
+            Console.WriteLine($"║         🕵️ KGB EASTER EGG 🕵️                             ║");
         else if (chosen.Type == "fiktiv")
             Console.WriteLine($"║          🔮 ZUKUNFTSEREIGNIS {chosen.Jahr} 🔮             ║");
         else if (chosen.Type == "usa")
@@ -5554,7 +5556,7 @@ static class EventSystem
         Console.WriteLine($"\n📰 {chosen.Name}\n");
         Console.WriteLine(chosen.Description);
         
-        if (chosen.Type != "sidechick")  // Sidechick-Events haben eigene Interaktion
+        if (chosen.Type != "sidechick" && chosen.Type != "kgb_easter")  // Spezielle Events haben eigene Interaktion
         {
             Console.WriteLine("\n[Drücke eine Taste...]");
             Console.ReadKey(true);
