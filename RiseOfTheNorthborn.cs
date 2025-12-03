@@ -594,15 +594,26 @@ static class MarriageSystem
     /// - Minimum ist 0 (kein Negativ-Wert möglich)
     /// - Ermöglicht stärkere ODER schwächere Nachkommen
     /// </summary>
-    public static void RandomBirth(PlayerCharacter player)
+    public static void RandomBirth(PlayerCharacter player, bool isSidechickBirth = false)
     {
-        // Nur wenn verheiratet
-        if (!player.IstVerheiratet) return;
+        // Nur wenn verheiratet (außer bei Sidechick-Geburten)
+        if (!player.IstVerheiratet && !isSidechickBirth) return;
         
         // BUG-FIX 1: Begrenzung auf maximal 8 Kinder
         // Problem: Zu viele Geburten führten zu Endlos-Namenseingaben
         // Lösung: Kinderzahl auf 8 begrenzt für bessere Spielbalance
         if (player.Kinder.Count >= 8) return;
+        
+        // NEU: 3-Jahres-Cooldown nach jeder Geburt (außer bei Sidechick)
+        int currentYear = player.GetCurrentYear();
+        if (!isSidechickBirth && player.LetzteGeburtJahr > 0)
+        {
+            int jahreSeitLetzterGeburt = currentYear - player.LetzteGeburtJahr;
+            if (jahreSeitLetzterGeburt < 3)
+            {
+                return; // Zu früh für nächste Geburt
+            }
+        }
         
         // Berechne Geburts-Wahrscheinlichkeit basierend auf Ehefrau
         // GeburtenBonus 1-5 * 15% = 15%, 30%, 45%, 60%, 75%
