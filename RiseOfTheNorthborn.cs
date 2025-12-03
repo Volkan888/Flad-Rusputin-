@@ -9997,16 +9997,14 @@ class Program
     
     
     /// <summary>
-    /// Prüft ob ein Sidechick-Event ausgelöst werden soll (alle 10 Jahre)
+    /// Prüft ob ein Sidechick-Event ausgelöst werden soll (alle 10 Jahre ab Alter 20)
     /// </summary>
     static void CheckSidechickEvent(PlayerCharacter player)
     {
-        int currentYear = player.GetCurrentYear();
-        
-        // Alle 10 Jahre (1960, 1970, 1980, etc.)
-        if (currentYear % 10 == 0 && currentYear != player.LetztesSidechickJahr && currentYear >= 1960 && currentYear <= 2100)
+        // Alle 10 Jahre ab Alter 20 (20, 30, 40, 50, 60, 70, 80...)
+        if (player.Alter % 10 == 0 && player.Alter >= 20 && player.Alter != player.LetztesSidechickJahr)
         {
-            player.LetztesSidechickJahr = currentYear;
+            player.LetztesSidechickJahr = player.Alter;
             TriggerSidechickEvent(player);
         }
     }
