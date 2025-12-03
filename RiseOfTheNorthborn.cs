@@ -5892,16 +5892,27 @@ class Program
         Console.WriteLine($"\n>> Flad hat {player.Kinder.Count} Kind(er)!");
         
         Console.WriteLine("\nRegierungsstil wählen:\n");
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("💾 NEUE FEATURES VERFÜGBAR:");
-        Console.WriteLine("   'E' = 📞 Erdogan-Nottelefon | 'Q' = 🛒 Putin's Luxus-Shop | 'T' = 📞 Trump-Telefon");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║           🎉 PRÄSIDENTEN-FEATURES VERFÜGBAR! 🎉           ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
-        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n📞 Telefone: 'E' = Erdogan | 'T' = Trump");
+        Console.WriteLine("🛒 Shop: 'Q' = Putin's Luxus-Shop");
+        Console.WriteLine("🎵 Musik: 'M' = Russische Lieder");
+        Console.WriteLine("💾 System: 'S' = Speichern | 'L' = Laden");
+        Console.ResetColor();
+        Console.WriteLine("\n" + "═".Repeat(60) + "\n");
         Console.WriteLine("[1] Imperiale Expansion (+50 Militär, -200 Geld)");
         Console.WriteLine("[2] Diplomatie (+300 Geld, +40 International)");
-        Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)\n");
+        Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)");
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine("[E/T/Q/M/S/L] Telefone/Shop/Musik/Speichern");
+        Console.ResetColor();
+        Console.WriteLine();
         
-        string choice = ReadInputWithShortcuts(player, "Wähle [1-3]: ");
+        string choice = ReadInputWithShortcuts(player, "Wähle [1-3 oder E/T/Q/M/S/L]: ");
         if (choice == "1")
         {
             player.EinflussMilitär += 50;
