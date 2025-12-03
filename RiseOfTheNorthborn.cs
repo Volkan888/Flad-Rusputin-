@@ -700,6 +700,13 @@ static class MarriageSystem
             Console.WriteLine($"\n\nFlad hat jetzt {player.Kinder.Count} Kind(er)!");
             player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + (5 * birthCount));
             
+            // Speichere Jahr der letzten Geburt (außer bei Sidechick)
+            if (!isSidechickBirth)
+            {
+                player.LetzteGeburtJahr = player.GetCurrentYear();
+                Console.WriteLine($"⏰ Nächste Geburt frühestens in {player.LetzteGeburtJahr + 3}");
+            }
+            
             Console.WriteLine("\n[Drücke eine Taste...]");
             Console.ReadKey(true);
         }
