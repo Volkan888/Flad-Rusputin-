@@ -196,40 +196,70 @@ static class MarriageSystem
         
         if (rand.Next(100) < chance)
         {
-            string[] boyNames = { "Dimitri", "Vladimir", "Nikolai", "Alexei", "Boris", "Sergei", "Igor", "Yuri" };
-            string[] girlNames = { "Natasha", "Olga", "Svetlana", "Anastasia", "Irina", "Katya", "Ludmila", "Yelena" };
-            
-            bool isBoy = rand.Next(2) == 0;
-            string childName = (isBoy ? boyNames[rand.Next(boyNames.Length)] : girlNames[rand.Next(girlNames.Length)]) 
-                              + $" Rusputin {player.Generation + 1}";
-            
-            PlayerCharacter child = new PlayerCharacter(childName, player.Generation + 1);
-            child.Alter = 0;
-            child.Phase = "Kind";
-            
-            // Attribute vererben mit Variation
-            child.Stärke = Math.Max(0, player.Stärke + rand.Next(-1, 3));
-            child.Intelligenz = Math.Max(0, player.Intelligenz + rand.Next(-1, 3));
-            child.Charisma = Math.Max(0, player.Charisma + rand.Next(-1, 3));
-            child.Kraft = Math.Max(0, player.Kraft + rand.Next(-1, 3));
-            
-            player.Kinder.Add(child);
+            // Zwillings-/Drillings-Chance (5% für Zwillinge, 1% für Drillinge)
+            int birthCount = 1;
+            int multipleChance = rand.Next(100);
+            if (multipleChance < 1) // 1% Drillinge
+            {
+                birthCount = 3;
+            }
+            else if (multipleChance < 6) // 5% Zwillinge
+            {
+                birthCount = 2;
+            }
             
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║                    👶 GEBURT! 👶                          ║");
+            
+            if (birthCount == 1)
+                Console.WriteLine("║                    👶 GEBURT! 👶                          ║");
+            else if (birthCount == 2)
+                Console.WriteLine("║                👶👶 ZWILLINGE! 👶👶                      ║");
+            else
+                Console.WriteLine("║              👶👶👶 DRILLINGE! 👶👶👶                    ║");
+            
             Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
             Console.ResetColor();
             
-            Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
-            Console.WriteLine($"Name: {childName}");
-            Console.WriteLine($"\nAttribute:");
-            Console.WriteLine($"  Stärke: {child.Stärke} | Intelligenz: {child.Intelligenz}");
-            Console.WriteLine($"  Charisma: {child.Charisma} | Kraft: {child.Kraft}");
-            Console.WriteLine($"\nFlad hat jetzt {player.Kinder.Count} Kind(er)!");
+            for (int i = 0; i < birthCount; i++)
+            {
+                bool isBoy = rand.Next(2) == 0;
+                
+                Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
+                
+                // Spieler gibt Namen ein
+                Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen: ");
+                string vorname = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(vorname))
+                    vorname = isBoy ? "Vladimir" : "Natasha";
+                
+                string childName = $"{vorname} Rusputin {player.Generation + 1}";
+                
+                PlayerCharacter child = new PlayerCharacter(childName, player.Generation + 1);
+                child.Alter = 0;
+                child.Phase = "Kind";
+                
+                // Attribute vererben mit Variation
+                child.Stärke = Math.Max(0, player.Stärke + rand.Next(-1, 3));
+                child.Intelligenz = Math.Max(0, player.Intelligenz + rand.Next(-1, 3));
+                child.Charisma = Math.Max(0, player.Charisma + rand.Next(-1, 3));
+                child.Kraft = Math.Max(0, player.Kraft + rand.Next(-1, 3));
+                
+                player.Kinder.Add(child);
+                
+                Console.WriteLine($"\n✓ {childName} wurde geboren!");
+                Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
+                
+                if (i < birthCount - 1)
+                {
+                    Console.WriteLine("\n[Drücke eine Taste für nächstes Kind...]");
+                    Console.ReadKey(true);
+                }
+            }
             
-            player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + 5);
+            Console.WriteLine($"\n\nFlad hat jetzt {player.Kinder.Count} Kind(er)!");
+            player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + (5 * birthCount));
             
             Console.WriteLine("\n[Drücke eine Taste...]");
             Console.ReadKey(true);
