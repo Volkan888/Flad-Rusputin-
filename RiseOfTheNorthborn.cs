@@ -6285,8 +6285,21 @@ static class EventSystem
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
         
+        // Jahr und Jahreszeit anzeigen
+        if (chosen.Jahr > 0)
+        {
+            string[] jahreszeiten = { "🌸 Frühling", "☀️ Sommer", "🍂 Herbst", "❄️ Winter" };
+            string jahreszeit = jahreszeiten[rand.Next(jahreszeiten.Length)];
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n📅 Jahr: {chosen.Jahr} | {jahreszeit}");
+            Console.ResetColor();
+            Thread.Sleep(2500);
+        }
+        
         Console.WriteLine($"\n📰 {chosen.Name}\n");
+        Thread.Sleep(2500);
         Console.WriteLine(chosen.Description);
+        Thread.Sleep(3000);
         
         if (chosen.Type != "sidechick" && chosen.Type != "kgb_easter")  // Spezielle Events haben eigene Interaktion
         {
