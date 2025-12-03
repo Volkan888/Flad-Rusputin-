@@ -5299,30 +5299,66 @@ class Program
             }
             else if (input == "E")
             {
-                Console.WriteLine("\n>> 📞 Erdogan-Nottelefon wird gewählt...");
-                Thread.Sleep(1000);
-                ErdoganHotline.ShowHotlineMenu(player);
-                Console.Clear();
-                Console.Write(prompt);  // Prompt erneut anzeigen
-                continue;
+                // Nur als Präsident verfügbar
+                if (player.Phase == "Präsident")
+                {
+                    Console.WriteLine("\n>> 📞 Erdogan-Nottelefon wird gewählt...");
+                    Thread.Sleep(1000);
+                    ErdoganHotline.ShowHotlineMenu(player);
+                    Console.Clear();
+                    Console.Write(prompt);  // Prompt erneut anzeigen
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("\n⚠️  Erdogan-Nottelefon erst als Präsident verfügbar!");
+                    Console.WriteLine("   [Taste drücken]");
+                    Console.ReadKey(true);
+                    Console.Write(prompt);
+                    continue;
+                }
             }
             else if (input == "Q")
             {
-                Console.WriteLine("\n>> 🛒 Putin's Luxus-Shop wird geöffnet...");
-                Thread.Sleep(1000);
-                PutinShop.ShowShop(player);
-                Console.Clear();
-                Console.Write(prompt);  // Prompt erneut anzeigen
-                continue;
+                // Nur als Präsident verfügbar
+                if (player.Phase == "Präsident")
+                {
+                    Console.WriteLine("\n>> 🛒 Putin's Luxus-Shop wird geöffnet...");
+                    Thread.Sleep(1000);
+                    PutinShop.ShowShop(player);
+                    Console.Clear();
+                    Console.Write(prompt);  // Prompt erneut anzeigen
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("\n⚠️  Putin's Luxus-Shop erst als Präsident verfügbar!");
+                    Console.WriteLine("   [Taste drücken]");
+                    Console.ReadKey(true);
+                    Console.Write(prompt);
+                    continue;
+                }
             }
             else if (input == "T")
             {
-                Console.WriteLine("\n>> 📞 Trump-Telefon klingelt...");
-                Thread.Sleep(1000);
-                TrumpHotline.CallTrump(player);
-                Console.Clear();
-                Console.Write(prompt);  // Prompt erneut anzeigen
-                continue;
+                // Nur als Präsident verfügbar
+                if (player.Phase == "Präsident")
+                {
+                    Console.WriteLine("\n>> 📞 Trump-Telefon klingelt...");
+                    Thread.Sleep(1000);
+                    TrumpHotline.CallTrump(player);
+                    Console.Clear();
+                    Console.Write(prompt);  // Prompt erneut anzeigen
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("\n⚠️  Trump-Telefon erst als Präsident verfügbar!");
+                    Console.WriteLine("   [Taste drücken]");
+                    Console.ReadKey(true);
+                    Console.Write(prompt);
+                    continue;
+                }
             }
             
             return input;
