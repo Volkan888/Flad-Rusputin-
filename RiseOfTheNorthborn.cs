@@ -9612,7 +9612,11 @@ class Program
         player.Alter = 48;
         player.Phase = "Präsident";
         
-        // Zufallsereignis
+        // ZUERST: Zeige historische Events für dieses Jahr (chronologisch)
+        int currentYear = player.GetCurrentYear();
+        EventSystem.ShowHistoricalEventsForYear(player, currentYear);
+        
+        // DANN: Zufallsereignis
         EventSystem.TriggerRandomEvent(player);
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
