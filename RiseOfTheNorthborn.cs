@@ -355,17 +355,27 @@ class GameSave
 ///                   20,  // 20% Chance
 ///                   p => { p.Gesundheit -= 10; p.Stärke += 1; })
 /// </summary>
+/// <summary>
+/// RandomEvent - Zufallsereignis mit chronologischer Steuerung
+/// 
+/// ÄNDERUNG 11: Jahr-basierte Events für historische Genauigkeit
+/// - Events können jetzt an spezifische Jahre gebunden werden
+/// - Jahr = 0 bedeutet: Kann in jeder Phase auftreten (klassisches Event)
+/// - Jahr > 0 bedeutet: Tritt nur in diesem spezifischen Jahr auf
+/// </summary>
 class RandomEvent
 {
     public string Name;              // Bezeichnung des Ereignisses
     public string Description;       // Beschreibung was passiert
     public string Phase;             // In welcher Lebensphase tritt es auf?
     public int Chance;               // Wahrscheinlichkeit 0-100%
+    public int Jahr;                 // Spezifisches Jahr (0 = jederzeit in Phase)
+    public string Type;              // "normal", "sidechick", "historisch", "fiktiv"
     
     public Action<PlayerCharacter> Apply;  // Lambda-Funktion die die Effekte ausführt
     
     /// <summary>
-    /// Konstruktor - Erstellt ein neues Zufallsereignis
+    /// Konstruktor - Erstellt klassisches Zufallsereignis (ohne Jahr)
     /// </summary>
     public RandomEvent(string name, string desc, string phase, int chance, Action<PlayerCharacter> apply)
     {
@@ -373,6 +383,22 @@ class RandomEvent
         Description = desc;
         Phase = phase;
         Chance = chance;
+        Jahr = 0;  // Jederzeit möglich
+        Type = "normal";
+        Apply = apply;
+    }
+    
+    /// <summary>
+    /// Konstruktor - Erstellt jahr-spezifisches Ereignis
+    /// </summary>
+    public RandomEvent(string name, string desc, string phase, int chance, int jahr, string type, Action<PlayerCharacter> apply)
+    {
+        Name = name;
+        Description = desc;
+        Phase = phase;
+        Chance = chance;
+        Jahr = jahr;
+        Type = type;
         Apply = apply;
     }
 }
