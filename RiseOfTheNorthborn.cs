@@ -1,15 +1,66 @@
-// Rise of the Northborn - Flad Rusputin Saga
-// Komplettes Spiel mit Stammbaum, Speichersystem und Schiffe Versenken
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
+/*
+ * ════════════════════════════════════════════════════════════════════════════════
+ * PROJEKT: Rise of the Northborn – Flad Rusputin Saga
+ * ════════════════════════════════════════════════════════════════════════════════
+ * 
+ * BESCHREIBUNG:
+ * Ein textbasiertes Rollenspiel in C#, das die fiktive Geschichte von Flad Rusputin
+ * erzählt - vom Straßenkind bis zum Präsidenten einer dystopischen sowjetischen Nation.
+ * 
+ * HAUPTFEATURES:
+ * - Lebensphasen-System: 5 verschiedene Lebensabschnitte spielbar
+ * - Attribut-System: Stärke, Intelligenz, Charisma, Kraft
+ * - Zufallsereignisse: 20+ dynamische Events basierend auf Entscheidungen
+ * - Hochzeits-System: 5 verschiedene Ehepartner mit Trade-offs
+ * - Geburten-System: Dynamische Kinderzeugung mit Namenseingabe
+ * - Generationen-Spiel: Nach Tod mit Nachkommen weiterspielen
+ * - Stammbaum-Funktion: Visualisierung der Familie über Generationen
+ * - Speicher/Laden: 5 Slots mit benutzerdefinierten Namen
+ * - Mini-Game: Vollständiges Schiffe-Versenken-Spiel
+ * 
+ * TECHNOLOGIE:
+ * - Sprache: C# (.NET Framework 4.5+)
+ * - Plattform: Windows, Linux (Mono), macOS (Mono)
+ * - Architektur: Objektorientiert, ereignisbasiert
+ * - UI: Konsolen-basiert mit ASCII-Grafik
+ * 
+ * ENTWICKELT: Dezember 2024
+ * VERSION: 1.0
+ * ZEILEN CODE: ~1857
+ * 
+ * ════════════════════════════════════════════════════════════════════════════════
+ */
+
+using System;                      // Basis-Funktionalität (Console, DateTime, etc.)
+using System.Threading;            // Thread.Sleep für Verzögerungen
+using System.Threading.Tasks;      // Task.Run für Hintergrundmusik
+using System.Collections.Generic;  // List<T>, Dictionary<K,V> für Datenstrukturen
+using System.Linq;                 // LINQ für Datenabfragen (All, Where, etc.)
 
 // ═══════════════════════════════════════════════════════════════════
 // DATENKLASSEN
 // ═══════════════════════════════════════════════════════════════════
 
+/// <summary>
+/// PlayerCharacter - Hauptklasse für den Spielercharakter
+/// 
+/// Diese Klasse repräsentiert Flad Rusputin und alle seine Nachkommen.
+/// Sie speichert alle wichtigen Daten über den Charakter:
+/// - Basis-Attribute (Stärke, Intelligenz, etc.)
+/// - Ressourcen (Geld, Gesundheit)
+/// - Loyalitäts-Werte (Partei, Volk, Familie)
+/// - Einfluss-Werte (KGB, Militär, International)
+/// - Familiendaten (Kinder, Ehepartner)
+/// 
+/// ÄNDERUNG 1: Hochzeits-System hinzugefügt
+/// - IstVerheiratet, EhepartnerName: Tracking des Ehe-Status
+/// - GeburtenBonus, FinanzBonus: Trade-off zwischen Kindern und Geld
+/// 
+/// ÄNDERUNG 2: Generationen-System
+/// - Generation: Welche Generation (1, 2, 3...)
+/// - Kinder: Liste aller Nachkommen
+/// - IstTot: Für Stammbaum-Visualisierung
+/// </summary>
 class PlayerCharacter
 {
     public string Name;
