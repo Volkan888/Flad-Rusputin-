@@ -3987,8 +3987,8 @@ static class EventSystem
             p => { p.EinflussInternational -= 35; p.EinflussKGB += 25; Thread.Sleep(4000); }));
         
         // ====== 2007 ======
-        historicalEvents.Add(new HistoricalEvent("MUENCHNER_SICHERHEITSKONFERENZ_2007", "Putins Rede in München - scharfe Kritik", "[RU]", "[EN]", "10. Februar 2007", "[RU]", "[EN]", 2007, 2, "POLITIK",
-            @"Putin hält explosive Rede in München! Scharfe Kritik an USA, NATO-Osterweiterung, US-Raketenabwehr. 'Eine unipolare Welt ist inakzeptabel!' Der Westen ist schockiert.",
+        historicalEvents.Add(new HistoricalEvent("MUENCHNER_SICHERHEITSKONFERENZ_2007", "Flads Rede in München - scharfe Kritik", "[RU]", "[EN]", "10. Februar 2007", "[RU]", "[EN]", 2007, 2, "POLITIK",
+            @"Flad hält explosive Rede in München! Scharfe Kritik an USA, NATO-Osterweiterung, US-Raketenabwehr. 'Eine unipolare Welt ist inakzeptabel!' Der Westen ist schockiert.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.LoyalitätVolk += 25; Thread.Sleep(4000); }));
         
