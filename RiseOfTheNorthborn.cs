@@ -2109,7 +2109,7 @@ static class EventSystem
             "Dezember 1991: Die UdSSR existiert nicht mehr! Wirtschaftskrise, Hyperinflation, Verarmung...",
             "DDR-Einsatz", 35,
             p => {
-                Console.WriteLine("'Die größte geopolitische Katastrophe des Jahrhunderts' - {player.GetFirstName()} erlebt den Zusammenbruch.");
+                Console.WriteLine($"'Die größte geopolitische Katastrophe des Jahrhunderts' - {p.GetFirstName()} erlebt den Zusammenbruch.");
                 p.Geld -= 150; // Rubelverfall
                 p.LoyalitätPartei -= 40; // System kollabiert
                 p.Gesundheit -= 20; // Krisenstress
