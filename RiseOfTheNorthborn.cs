@@ -4531,7 +4531,7 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine("Flad wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
-        Console.WriteLine("💾 Tipp: 'S' = Speichern | 'L' = Laden | 'E' = 📞 Erdogan-Nottelefon\n");
+        Console.WriteLine("💾 Shortcuts: 'S' = Speichern | 'L' = Laden | 'E' = 📞 Erdogan | 'Q' = 🛒 Shop\n");
         Thread.Sleep(1500);
         
         // Zufallsereignis auslösen
