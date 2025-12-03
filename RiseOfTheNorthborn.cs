@@ -2799,6 +2799,36 @@ static class NATOHotline
     }
 }
 
+static class ChinaHotline
+{
+    static Random rand = new Random();
+    
+    public static void CallChina(PlayerCharacter p)
+    {
+        if (!p.ChinaTelefonAktiv || p.ChinaAnrufeVerfügbar <= 0)
+        {
+            Console.WriteLine("China-Telefon nicht verfügbar!");
+            Thread.Sleep(1500);
+            return;
+        }
+        
+        Console.Clear();
+        Console.WriteLine("\n📞 CHINA-TELEFON 🐉");
+        Console.WriteLine($"Anrufe: {p.ChinaAnrufeVerfügbar}/3");
+        Console.WriteLine("[1] Diplomatisch | [2] Überrascht | [3] Krawallstour | [4] Zurück");
+        Console.Write("Wähle: ");
+        
+        string c = Console.ReadLine();
+        if (c == "1") { p.Geld += 400; p.ChinaBeziehung += 20; Console.WriteLine("✓ +400 Rubel!"); }
+        else if (c == "2") { p.Geld += 100; Console.WriteLine("✓ +100 Rubel (Reis)!"); }
+        else if (c == "3") { p.Geld -= 300; p.ChinaBeziehung -= 40; Console.WriteLine("💥 -300 Rubel! Eklat!"); }
+        else return;
+        
+        p.ChinaAnrufeVerfügbar--;
+        Thread.Sleep(2000);
+    }
+}
+
 static class EventSystem
 {
     static Random rand = new Random();
