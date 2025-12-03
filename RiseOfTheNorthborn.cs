@@ -1024,6 +1024,325 @@ static class DeathSystem
 /// </summary>
 
 // ═══════════════════════════════════════════════════════════════════
+// PUTIN-LUXUS-SHOP SYSTEM
+// ═══════════════════════════════════════════════════════════════════
+
+/// <summary>
+/// PutinShop - Luxusgegenstände kaufen wie echte Oligarchen
+/// 
+/// KONZEPT:
+/// Der Spieler kann Putin-typische Luxusgegenstände kaufen:
+/// - Autos (Mercedes, Rolls-Royce, Aurus)
+/// - Pferde (Putin liebt Reiten!)
+/// - Jachten
+/// - Paläste
+/// - Sportausrüstung
+/// - Kampfflugzeuge
+/// 
+/// FEATURES:
+/// - Alle Items geben permanente Stat-Boni
+/// - Items werden in Attribut-Anzeige gelistet
+/// - Nur einmal pro Item kaufbar
+/// - Taste 'Q' zum Öffnen
+/// </summary>
+static class PutinShop
+{
+    static Random rand = new Random();
+    static List<ShopItem> shopItems = new List<ShopItem>();
+    
+    /// <summary>
+    /// InitializeShop - Lädt alle verfügbaren Luxusgegenstände
+    /// </summary>
+    public static void InitializeShop()
+    {
+        shopItems.Clear();
+        
+        // ═══ FAHRZEUGE ═══
+        shopItems.Add(new ShopItem(
+            "Mercedes S-Klasse",
+            "🚗",
+            500,
+            0, 5, 10, 15, 10,
+            "Luxuslimousine der Staatsführung"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Rolls-Royce Phantom",
+            "🚙",
+            1200,
+            0, 10, 20, 25, 20,
+            "Ultimatives Prestige-Fahrzeug"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Aurus Senat",
+            "🚘",
+            800,
+            5, 5, 15, 30, 15,
+            "Russische Präsidentenlimousine"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Militär-Konvoi",
+            "🚛",
+            600,
+            20, 0, 10, 20, 5,
+            "Bewaffnete Eskorte"
+        ));
+        
+        // ═══ TIERE ═══
+        shopItems.Add(new ShopItem(
+            "Russisches Araber-Pferd",
+            "🐴",
+            400,
+            15, 5, 20, 25, 5,
+            "Putin liebt Reiten ohne Hemd!"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Sibirischer Tiger",
+            "🐯",
+            1000,
+            30, 0, 25, 15, 20,
+            "Symbol der Stärke"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Bären-Duo",
+            "🐻",
+            700,
+            25, 0, 15, 20, 10,
+            "Russlands nationales Tier"
+        ));
+        
+        // ═══ IMMOBILIEN ═══
+        shopItems.Add(new ShopItem(
+            "Kreml-Datscha",
+            "🏰",
+            1500,
+            0, 15, 25, 30, 25,
+            "Präsidenten-Sommerresidenz"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Schwarzmeer-Palast",
+            "🏛️",
+            3000,
+            0, 20, 40, 40, 35,
+            "Geheimes Luxus-Anwesen"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Oligarchen-Jacht",
+            "🛥️",
+            2000,
+            5, 10, 35, 30, 40,
+            "150m Superjacht mit Hubschrauber"
+        ));
+        
+        // ═══ SPORT & HOBBIES ═══
+        shopItems.Add(new ShopItem(
+            "Judo-Dojo (Eigenes)",
+            "🥋",
+            300,
+            25, 10, 15, 20, 10,
+            "Putin ist Judo-Meister"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Eishockey-Ausrüstung Pro",
+            "🏒",
+            250,
+            20, 5, 20, 25, 5,
+            "Putin spielt Eishockey"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Goldene Rolex",
+            "⌚",
+            600,
+            0, 5, 25, 15, 15,
+            "Luxus-Uhr der Weltführer"
+        ));
+        
+        // ═══ MILITÄR ═══
+        shopItems.Add(new ShopItem(
+            "Su-57 Kampfjet",
+            "✈️",
+            2500,
+            30, 15, 30, 20, 50,
+            "Modernster russischer Jet"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "T-14 Armata Panzer",
+            "🚀",
+            1800,
+            40, 10, 20, 25, 30,
+            "Neuester russischer Panzer"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "Atomraketen-U-Boot",
+            "🚢",
+            4000,
+            20, 25, 35, 30, 60,
+            "Strategische Atomwaffe"
+        ));
+        
+        // ═══ ENTERTAINMENT ═══
+        shopItems.Add(new ShopItem(
+            "Privat-Theater",
+            "🎭",
+            500,
+            0, 10, 30, 25, 15,
+            "Kulturbotschafter-Status"
+        ));
+        
+        shopItems.Add(new ShopItem(
+            "KGB-Archiv-Zugang",
+            "📚",
+            1000,
+            0, 40, 20, 15, 25,
+            "Geheimwissen ist Macht"
+        ));
+    }
+    
+    /// <summary>
+    /// ShowShop - Zeigt den Luxus-Shop
+    /// </summary>
+    public static void ShowShop(PlayerCharacter player)
+    {
+        if (shopItems.Count == 0)
+            InitializeShop();
+        
+        while (true)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\n╔══════════════════════════════════════════════════════╗");
+            Console.WriteLine("║         🛒 PUTIN'S LUXUS-SHOP 🛒                    ║");
+            Console.WriteLine("╚══════════════════════════════════════════════════════╝\n");
+            Console.ResetColor();
+            
+            Console.WriteLine($"💰 Dein Geld: {player.Geld} Rubel");
+            Console.WriteLine($"🎒 Besitztümer: {player.Besitztümer.Count} Items\n");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            // Zeige verfügbare Items
+            for (int i = 0; i < shopItems.Count && i < 18; i++)
+            {
+                var item = shopItems[i];
+                bool bereitsGekauft = player.Besitztümer.Any(b => b.Name == item.Name);
+                
+                if (bereitsGekauft)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine($"[{i + 1}] ✓ {item.Icon} {item.Name} - BESITZT");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = player.Geld >= item.Preis ? ConsoleColor.Green : ConsoleColor.Red;
+                    Console.WriteLine($"[{i + 1}] {item.Icon} {item.Name} - {item.Preis} ₽");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine($"     {item.Beschreibung}");
+                    Console.WriteLine($"     Bonus: S+{item.StärkeBonus} I+{item.IntelligenzBonus} C+{item.CharismaBonus} L+{item.LoyalitätBonus} E+{item.EinflussBonus}");
+                    Console.ResetColor();
+                }
+            }
+            
+            Console.WriteLine("\n[0] Verlassen");
+            Console.Write("\nWähle Item [0-18]: ");
+            
+            string input = Console.ReadLine();
+            
+            if (input == "0")
+                break;
+            
+            if (int.TryParse(input, out int choice) && choice >= 1 && choice <= shopItems.Count)
+            {
+                BuyItem(player, shopItems[choice - 1]);
+            }
+            else
+            {
+                Console.WriteLine("\nUngültige Auswahl!");
+                Thread.Sleep(1000);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// BuyItem - Kauft ein Item
+    /// </summary>
+    static void BuyItem(PlayerCharacter player, ShopItem item)
+    {
+        Console.Clear();
+        
+        // Bereits gekauft?
+        if (player.Besitztümer.Any(b => b.Name == item.Name))
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"\n⚠ Du besitzt bereits: {item.Icon} {item.Name}");
+            Console.ResetColor();
+            Thread.Sleep(2000);
+            return;
+        }
+        
+        // Nicht genug Geld?
+        if (player.Geld < item.Preis)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"\n❌ Nicht genug Geld!");
+            Console.WriteLine($"Benötigt: {item.Preis} ₽");
+            Console.WriteLine($"Verfügbar: {player.Geld} ₽");
+            Console.ResetColor();
+            Thread.Sleep(2000);
+            return;
+        }
+        
+        // Bestätigung
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"\n{item.Icon} {item.Name}");
+        Console.WriteLine($"═══════════════════════════════════════════════════════");
+        Console.WriteLine($"\n{item.Beschreibung}");
+        Console.WriteLine($"\nPreis: {item.Preis} Rubel");
+        Console.WriteLine($"\nBoni:");
+        if (item.StärkeBonus > 0) Console.WriteLine($"  💪 Stärke: +{item.StärkeBonus}");
+        if (item.IntelligenzBonus > 0) Console.WriteLine($"  🧠 Intelligenz: +{item.IntelligenzBonus}");
+        if (item.CharismaBonus > 0) Console.WriteLine($"  ✨ Charisma: +{item.CharismaBonus}");
+        if (item.LoyalitätBonus > 0) Console.WriteLine($"  👥 Loyalität Volk: +{item.LoyalitätBonus}");
+        if (item.EinflussBonus > 0) Console.WriteLine($"  🌍 Einfluss International: +{item.EinflussBonus}");
+        Console.ResetColor();
+        
+        Console.Write("\nKaufen? [J/N]: ");
+        string confirm = Console.ReadLine()?.ToUpper();
+        
+        if (confirm == "J" || confirm == "Y")
+        {
+            // Kaufen
+            player.Geld -= item.Preis;
+            player.Besitztümer.Add(item);
+            
+            // Boni anwenden
+            player.Stärke += item.StärkeBonus;
+            player.Intelligenz += item.IntelligenzBonus;
+            player.Charisma += item.CharismaBonus;
+            player.LoyalitätVolk += item.LoyalitätBonus;
+            player.EinflussInternational += item.EinflussBonus;
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n✓ {item.Icon} {item.Name} GEKAUFT!");
+            Console.WriteLine($"\n💰 Verbleibendes Geld: {player.Geld} ₽");
+            Console.WriteLine($"🎒 Besitztümer: {player.Besitztümer.Count}");
+            Console.ResetColor();
+            Thread.Sleep(2500);
+        }
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // ERDOGAN-NOTTELEFON SYSTEM
 // ═══════════════════════════════════════════════════════════════════
 
