@@ -465,26 +465,68 @@ static class MarriageSystem
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// TOD UND NACHFOLGE-SYSTEM
+// TOD UND NACHFOLGE-SYSTEM (ÄNDERUNG 8)
 // ═══════════════════════════════════════════════════════════════════
+/*
+ * TODESURSACHEN UND NACHFOLGE-MECHANIK:
+ * 
+ * Der Tod ist ein zentrales Gameplay-Element und ermöglicht
+ * das generationenübergreifende Spielen.
+ * 
+ * TODESURSACHEN:
+ * 1. Gesundheit ≤ 0:
+ *    - Sofortiger Tod
+ *    - Kann durch Ereignisse, Kämpfe oder Entscheidungen passieren
+ * 
+ * 2. Altersschwäche (ab 65 Jahre):
+ *    - Nur in Präsidenten-Phase
+ *    - Progressives Risiko: (Alter - 65) * 8%
+ *    - Beispiel: 65 Jahre = 0%, 70 Jahre = 40%, 75 Jahre = 80%
+ * 
+ * NACHFOLGE:
+ * - Spieler wählt einen Erben aus seinen Kindern
+ * - Erbe startet mit 25 Jahren im Jurastudium
+ * - 50% Geld, 33% KGB-Einfluss, 50% Partei-Loyalität werden vererbt
+ * - Attribute werden von Eltern geerbt (± Variation)
+ * - KEINE Kinder? → GAME OVER!
+ */
 
+/// <summary>
+/// DeathSystem - Verwaltung von Tod und Nachfolge
+/// 
+/// ÄNDERUNG 8: Generationen-System mit Erben-Auswahl
+/// </summary>
 static class DeathSystem
 {
     static Random rand = new Random();
     
+    /// <summary>
+    /// CheckDeath - Prüft ob der Charakter stirbt
+    /// 
+    /// Prüft zwei Todesursachen:
+    /// 1. Gesundheit auf 0 gefallen
+    /// 2. Altersschwäche (progressiv ab 65 Jahren)
+    /// 
+    /// RÜCKGABE: true wenn tot, false wenn am Leben
+    /// </summary>
     public static bool CheckDeath(PlayerCharacter player)
     {
-        // Tod durch Gesundheit
+        // ═══ TODESURSACHE 1: Gesundheit ═══
+        // Sofortiger Tod wenn Gesundheit auf 0 oder darunter
         if (player.Gesundheit <= 0)
         {
             ShowDeathScene(player, "tödlichen Verletzungen");
             return true;
         }
         
-        // Tod durch Alter (nach Präsident)
+        // ═══ TODESURSACHE 2: Altersschwäche ═══
+        // Nur während Präsidentschaft, progressives Risiko
         if (player.Phase == "Präsident" && player.Alter >= 65)
         {
-            int deathChance = (player.Alter - 65) * 8; // 0% bei 65, 80% bei 75
+            // Berechne Todes-Wahrscheinlichkeit
+            // Formel: (Alter - 65) * 8
+            // Ergebnis: 65J=0%, 70J=40%, 75J=80%, 80J=120%=sicherer Tod
+            int deathChance = (player.Alter - 65) * 8;
             if (rand.Next(100) < deathChance)
             {
                 ShowDeathScene(player, "Altersschwäche");
@@ -492,7 +534,7 @@ static class DeathSystem
             }
         }
         
-        return false;
+        return false;  // Charakter lebt
     }
     
     static void ShowDeathScene(PlayerCharacter player, string cause)
