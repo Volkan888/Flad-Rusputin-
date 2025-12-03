@@ -171,15 +171,38 @@ class GameSave
 // ZUFALLSEREIGNISSE
 // ═══════════════════════════════════════════════════════════════════
 
+/// <summary>
+/// RandomEvent - Repräsentiert ein Zufallsereignis während des Spiels
+/// 
+/// Diese Klasse definiert dynamische Ereignisse, die während verschiedener
+/// Lebensphasen von Flad auftreten können und seine Attribute beeinflussen.
+/// 
+/// MECHANIK:
+/// - Jedes Event hat eine Wahrscheinlichkeit (0-100%) pro Phase
+/// - Events werden durch Action<PlayerCharacter> ausgeführt
+/// - Können Attribute, Ressourcen und Loyalitäten verändern
+/// - Manche Events sind interaktiv (Spieler muss wählen)
+/// - Andere sind attribut-abhängig (Ergebnis variiert je nach Werten)
+/// 
+/// BEISPIEL:
+///   new RandomEvent("Verlust des Bruders", 
+///                   "Flad verliert...",
+///                   "Kindheit", 
+///                   20,  // 20% Chance
+///                   p => { p.Gesundheit -= 10; p.Stärke += 1; })
+/// </summary>
 class RandomEvent
 {
-    public string Name;
-    public string Description;
-    public string Phase;
-    public int Chance; // 0-100
+    public string Name;              // Bezeichnung des Ereignisses
+    public string Description;       // Beschreibung was passiert
+    public string Phase;             // In welcher Lebensphase tritt es auf?
+    public int Chance;               // Wahrscheinlichkeit 0-100%
     
-    public Action<PlayerCharacter> Apply;
+    public Action<PlayerCharacter> Apply;  // Lambda-Funktion die die Effekte ausführt
     
+    /// <summary>
+    /// Konstruktor - Erstellt ein neues Zufallsereignis
+    /// </summary>
     public RandomEvent(string name, string desc, string phase, int chance, Action<PlayerCharacter> apply)
     {
         Name = name;
