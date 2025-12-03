@@ -5278,6 +5278,127 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
+        // NATO-RUSSLAND BEZIEHUNGEN (2000-2025)
+        // Meist negative Entwicklungen, Osterweiterung, Konflikte
+        // ═══════════════════════════════════════════════════════════
+        
+        // 2002 - NATO-Russland-Rat
+        allEvents.Add(new RandomEvent(
+            "NATO-Russland-Rat 2002",
+            "NATO-Gipfel in Prag: Gründung des NATO-Russland-Rats für gemeinsame Konsultationen...",
+            "Präsident", 40, 2002, "nato",
+            p => {
+                Console.WriteLine("\n🛡️  NATO bietet Kooperationsplattform an!");
+                p.NATOBeziehung += 15;
+                p.EinflussInternational += 10;
+                Console.WriteLine($"\n🛡️  NATO-Beziehung: +15% (jetzt {p.NATOBeziehung}%)");
+                Console.WriteLine($"🌍 Internationaler Einfluss: +10");
+            }
+        ));
+        
+        // 2004 - Osterweiterung (Baltikum)
+        allEvents.Add(new RandomEvent(
+            "NATO-Osterweiterung 2004",
+            "7 neue Mitglieder treten NATO bei (Baltikum, Polen, etc.). Russland protestiert heftig!",
+            "Präsident", 70, 2004, "nato",
+            p => {
+                Console.WriteLine("\n⚠️  NATO erweitert sich bis an russische Grenze!");
+                Console.WriteLine("\n🇪🇪 Estland | 🇱🇻 Lettland | 🇱🇹 Litauen");
+                Console.WriteLine("🇵🇱 Polen | 🇧🇬 Bulgarien | 🇷🇴 Rumänien | 🇸🇰 Slowakei");
+                
+                p.NATOBeziehung -= 25;
+                p.EinflussMilitär -= 15;
+                p.LoyalitätPartei -= 20; // Gesichtsverlust
+                
+                Console.WriteLine($"\n🛡️  NATO-Beziehung: -25% (jetzt {p.NATOBeziehung}%)");
+                Console.WriteLine($"⚔️  Militäreinfluss: -15 (Einflusszone schrumpft!)");
+                Console.WriteLine($"🏛️  Loyalität Partei: -20 (Schwäche gezeigt!)");
+            }
+        ));
+        
+        // 2007 - Münchner Sicherheitskonferenz
+        allEvents.Add(new RandomEvent(
+            "Münchner Rede 2007",
+            "Putin hält scharfe Rede: 'USA weltgefährlich! Ein Zentrum der Macht!'",
+            "Präsident", 60, 2007, "nato",
+            p => {
+                Console.WriteLine("\n📢 Historische Rede in München!");
+                Console.WriteLine("\n'Die USA als einziger Herrscher - das ist gefährlich!'");
+                
+                p.NATOBeziehung -= 20;
+                p.LoyalitätPartei += 25; // Hardliner begeistert
+                p.LoyalitätVolk += 20;
+                p.EinflussInternational -= 15;
+                
+                Console.WriteLine($"\n🛡️  NATO-Beziehung: -20% (jetzt {p.NATOBeziehung}%)");
+                Console.WriteLine($"🏛️  Loyalität Partei: +25 (Hardliner jubeln!)");
+                Console.WriteLine($"👥 Loyalität Volk: +20 (Patriotismus!)");
+            }
+        ));
+        
+        // 2008 - Bukarest-Gipfel
+        allEvents.Add(new RandomEvent(
+            "NATO-Gipfel Bukarest 2008",
+            "NATO: 'Ukraine und Georgien werden Mitglieder!' Moskau sieht dies als Provokation.",
+            "Präsident", 75, 2008, "nato",
+            p => {
+                Console.WriteLine("\n💥 ROTE LINIE ÜBERSCHRITTEN!");
+                Console.WriteLine("\n🇺🇦 Ukraine und 🇬🇪 Georgien sollen NATO beitreten!");
+                
+                p.NATOBeziehung -= 35;
+                p.EinflussMilitär -= 25;
+                p.LoyalitätPartei -= 30; // Massive Bedrohung
+                
+                // Aktiviere NATO-Telefon
+                p.NATOTelefonAktiv = true;
+                
+                Console.WriteLine($"\n🛡️  NATO-Beziehung: -35% (jetzt {p.NATOBeziehung}%)");
+                Console.WriteLine($"⚔️  Militäreinfluss: -25 (Sicherheit bedroht!)");
+                Console.WriteLine($"🏛️  Loyalität Partei: -30 (Krise!)");
+                Console.WriteLine("\n📞 NATO-Telefon wurde freigeschaltet!");
+            }
+        ));
+        
+        // 2014 - NATO nach Krim-Annexion
+        allEvents.Add(new RandomEvent(
+            "NATO-Verurteilung Krim 2014",
+            "Nach Krim-Annexion: NATO verurteilt Russland scharf und verstärkt Ostflanke!",
+            "Präsident", 80, 2014, "nato",
+            p => {
+                Console.WriteLine("\n⚠️  NATO-Truppen an Ostgrenze!");
+                Console.WriteLine("\n📰 'Völkerrechtswidrige Annexion!'");
+                Console.WriteLine("🛡️  Enhanced Forward Presence wird eingerichtet");
+                
+                p.NATOBeziehung -= 40;
+                p.EinflussMilitär -= 30;
+                p.Geld -= 150; // Sanktionen
+                
+                Console.WriteLine($"\n🛡️  NATO-Beziehung: -40% (jetzt {p.NATOBeziehung}%)");
+                Console.WriteLine($"⚔️  Militäreinfluss: -30");
+                Console.WriteLine($"💰 Geld: -150 Rubel (Sanktionen!)");
+            }
+        ));
+        
+        // 2023 - Finnland NATO-Beitritt
+        allEvents.Add(new RandomEvent(
+            "Finnland tritt NATO bei 2023",
+            "Nach Ukraine-Krieg: Finnland tritt NATO bei! Russlands längste Grenze jetzt NATO-Grenze.",
+            "Präsident", 70, 2023, "nato",
+            p => {
+                Console.WriteLine("\n💥 1300 KM NEUE NATO-GRENZE!");
+                Console.WriteLine("\n🇫🇮 Finnland verlässt Neutralität nach Jahrzehnten");
+                
+                p.NATOBeziehung -= 30;
+                p.EinflussMilitär -= 35; // Massive Bedrohung
+                p.Geld -= 200; // Truppen verlegen
+                
+                Console.WriteLine($"\n🛡️  NATO-Beziehung: -30% (jetzt {p.NATOBeziehung}%)");
+                Console.WriteLine($"⚔️  Militäreinfluss: -35 (Strategischer Verlust!)");
+                Console.WriteLine($"💰 Geld: -200 Rubel (Truppenverlegung!)");
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
         // RUSSLAND-USA BEZIEHUNGEN (2000-2025)
         // Chronologie der politischen, wirtschaftlichen und militärischen Events
         // ═══════════════════════════════════════════════════════════
