@@ -461,6 +461,8 @@ class RandomEvent
     public string Phase;             // In welcher Lebensphase tritt es auf?
     public int Chance;               // Wahrscheinlichkeit 0-100%
     public int Jahr;                 // Spezifisches Jahr (0 = jederzeit in Phase)
+    public int Monat;                // Monat (1-12, 0 = unspezifisch)
+    public string Datum;             // Genaues Datum als String (z.B. "26. Dezember 1991")
     public string Type;              // "normal", "sidechick", "historisch", "fiktiv"
     
     public Action<PlayerCharacter> Apply;  // Lambda-Funktion die die Effekte ausführt
