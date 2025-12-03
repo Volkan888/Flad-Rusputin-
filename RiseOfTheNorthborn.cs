@@ -10050,9 +10050,172 @@ class Program
     
     static void TriggerSidechickEvent(PlayerCharacter player)
     {
-        // Wird implementiert
-        Console.WriteLine("Sidechick Event - Coming soon!");
-        Thread.Sleep(2000);
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                  💋 ROMANTISCHE BEGEGNUNG 💋              ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        // Geschlechtsspezifisch
+        bool spielerIstMaennlich = !player.Name.ToLower().Contains("ova") && !player.Name.ToLower().Contains("ina");
+        string[] namen = spielerIstMaennlich ? WeiblicheNamen : MaennlicheNamen;
+        string[] berufe = spielerIstMaennlich ? WeiblicheBerufe : MaennlicheBerufe;
+        
+        string sidechickName = namen[rand.Next(namen.Length)];
+        string sidechickBeruf = berufe[rand.Next(berufe.Length)];
+        
+        Console.WriteLine($"\nBei einem Staatsempfang triffst du {sidechickName}, {(spielerIstMaennlich ? "eine" : "einen")} {sidechickBeruf}.");
+        Console.WriteLine($"Die Chemie zwischen euch ist elektrisch. {sidechickName} flüstert:");
+        Console.WriteLine($"'{(spielerIstMaennlich ? "Sie würden" : "Du würdest")} gerne mehr Zeit mit mir verbringen...'");
+        Thread.Sleep(4000);
+        
+        Console.WriteLine("\n═══════════════════════════════════════════════════════════");
+        Console.WriteLine("Was möchtest du tun?");
+        Console.WriteLine("═══════════════════════════════════════════════════════════");
+        Console.WriteLine("\n[1] 💰 Einfaches Abendessen im Kreml (200₽) - 40% Erfolg");
+        Console.WriteLine("[2] 💎 Luxus-Date im Bolschoi Theater (500₽) - 60% Erfolg");
+        Console.WriteLine("[3] 🛩️  Romantisches Wochenende in Paris (1000₽) - 80% Erfolg");
+        Console.WriteLine("[4] ✈️  Traumreise auf die Malediven (2500₽) - 95% Erfolg");
+        Console.WriteLine("[5] 🚫 Ablehnen - Treu bleiben");
+        Console.Write("\nWähle [1-5]: ");
+        
+        string choice = Console.ReadLine();
+        
+        if (choice == "5")
+        {
+            Console.Clear();
+            Console.WriteLine("\n✓ Du bleibst deinen Prinzipien treu.");
+            Console.WriteLine($"{sidechickName} ist enttäuscht und verlässt den Raum.");
+            player.LoyalitätFamilie += 15;
+            Console.WriteLine("\n💚 Familie-Loyalität: +15%");
+            Thread.Sleep(4000);
+            return;
+        }
+        
+        int kosten = 0;
+        int erfolgsChance = 0;
+        string dateOrt = "";
+        
+        switch (choice)
+        {
+            case "1": kosten = 200; erfolgsChance = 40; dateOrt = "Kreml-Restaurant"; break;
+            case "2": kosten = 500; erfolgsChance = 60; dateOrt = "Bolschoi Theater"; break;
+            case "3": kosten = 1000; erfolgsChance = 80; dateOrt = "Paris"; break;
+            case "4": kosten = 2500; erfolgsChance = 95; dateOrt = "Malediven"; break;
+            default: Console.WriteLine("\nUngültige Wahl."); Thread.Sleep(2000); return;
+        }
+        
+        if (player.Geld < kosten)
+        {
+            Console.WriteLine($"\n💸 Du hast nicht genug Geld! (Benötigt: {kosten}₽)");
+            Thread.Sleep(3000);
+            return;
+        }
+        
+        player.Geld -= kosten;
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                    💋 DAS DATE BEGINNT 💋                 ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        Console.WriteLine($"\n{dateOrt.ToUpper()}");
+        switch (choice)
+        {
+            case "1":
+                Console.WriteLine($"\nPrivater Saal im Kreml. Champagner und Kaviar.");
+                Console.WriteLine($"{sidechickName} lächelt über den Tisch. Intim...");
+                break;
+            case "2":
+                Console.WriteLine($"\nBolschoi Theater in goldenem Licht. Schwanensee.");
+                Console.WriteLine($"{sidechickName} lehnt sich an deine Schulter...");
+                break;
+            case "3":
+                Console.WriteLine($"\nParis bei Nacht. Eiffelturm funkelt. Spaziergang an der Seine.");
+                Console.WriteLine($"{sidechickName} flüstert französisch. Kuss unter Sternen...");
+                break;
+            case "4":
+                Console.WriteLine($"\nTürkisblaues Wasser. Weißer Sand. Private Villa.");
+                Console.WriteLine($"{sidechickName} liegt neben dir. Die Welt existiert nicht...");
+                break;
+        }
+        
+        Thread.Sleep(5000);
+        
+        if (rand.Next(100) < erfolgsChance)
+        {
+            Console.WriteLine("\n💋💋💋 Die Nacht wird unvergesslich... 💋💋💋");
+            Thread.Sleep(3000);
+            
+            if (rand.Next(100) < 60)
+            {
+                Console.WriteLine("\n\n══════════════════════════════════════════════════════");
+                Console.WriteLine("⏰ SECHS MONATE SPÄTER...");
+                Console.WriteLine("══════════════════════════════════════════════════════");
+                Thread.Sleep(3000);
+                
+                Console.WriteLine($"\n{sidechickName}: 'Ich bin schwanger! Das Kind ist von dir!'");
+                Thread.Sleep(4000);
+                
+                bool istJunge = rand.Next(2) == 0;
+                
+                var verstecktesKind = new PlayerCharacter.UnanerkanntesSidechickKind
+                {
+                    MutterName = sidechickName,
+                    GeburtsjahR = player.GetCurrentYear(),
+                    IstJunge = istJunge,
+                    Staerke = Math.Max(1, player.Stärke + rand.Next(-2, 3)),
+                    Intelligenz = Math.Max(1, player.Intelligenz + rand.Next(-2, 3)),
+                    Charisma = Math.Max(1, player.Charisma + rand.Next(-2, 3)),
+                    Kraft = Math.Max(1, player.Kraft + rand.Next(-2, 3)),
+                    DatumKosten = kosten
+                };
+                
+                player.VersteckteKinder.Add(verstecktesKind);
+                
+                Console.WriteLine($"\n👶 Ein {(istJunge ? "Junge" : "Mädchen")} wird geboren!");
+                Console.WriteLine($"Wächst bei {sidechickName} auf - du zahlst heimlich monatlich.");
+                Console.WriteLine($"\n⚠️ IN 18 JAHREN: Vaterschaftstest!");
+                
+                player.Geld -= 150;
+                Console.WriteLine($"\n💸 -150₽ (Schweigegeld)");
+            }
+            else
+            {
+                Console.WriteLine("\n\n💭 Wundervolle Erinnerung... keine Konsequenzen.");
+                player.Geld -= 100;
+                Console.WriteLine($"\n💸 -100₽ (Geschenk)");
+            }
+            
+            player.LoyalitätFamilie -= 25;
+            Console.WriteLine($"\n💔 Familie: -25%");
+            
+            if (player.IstVerheiratet)
+            {
+                player.LoyalitätFamilie -= 20;
+                Console.WriteLine($"💔 Ehe angespannt: -20%");
+            }
+            
+            if (rand.Next(100) < 20)
+            {
+                Console.WriteLine("\n\n📰 SKANDAL! Presse erfährt davon!");
+                player.LoyalitätVolk -= 35;
+                player.LoyalitätPartei -= 20;
+                player.Geld -= 300;
+                Console.WriteLine($"\n👥 Volk: -35% | 🏛️ Partei: -20% | 💸 -300₽");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"\n\n😔 {sidechickName} ist nicht interessiert...");
+            Console.WriteLine("Date endet höflich aber ohne Romantik.");
+            Console.WriteLine($"\n💸 -{kosten}₽ verschwendet");
+        }
+        
+        Thread.Sleep(6000);
     }
     
     static void TriggerVaterschaftstestEvent(PlayerCharacter player, PlayerCharacter.UnanerkanntesSidechickKind kind)
