@@ -6745,10 +6745,66 @@ class Program
         Console.ReadKey(true);
     }
     
+    /// <summary>
+    /// ShowShortcutReminder - Zeigt alle 5 Jahre Shortcut-Übersicht
+    /// </summary>
+    static void ShowShortcutReminder(PlayerCharacter player)
+    {
+        // Nur alle 5 Jahre anzeigen
+        if (player.Alter - player.LetzteShortcutAnzeige < 5)
+            return;
+        
+        player.LetzteShortcutAnzeige = player.Alter;
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   ⌨️  SHORTCUT-ÜBERSICHT ⌨️                ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        
+        Console.WriteLine($"📅 Alter: {player.Alter} Jahre");
+        Console.WriteLine($"🎭 Phase: {player.Phase}\n");
+        
+        Console.WriteLine("═══ VERFÜGBARE SHORTCUTS ═══\n");
+        
+        Console.WriteLine("💾 SYSTEM:");
+        Console.WriteLine("   'S' = Speichern");
+        Console.WriteLine("   'L' = Laden\n");
+        
+        Console.WriteLine("🎵 UNTERHALTUNG:");
+        Console.WriteLine("   'M' = Russische Lieder\n");
+        
+        if (player.Phase == "Präsident")
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("📞 PRÄSIDENTEN-TELEFONE:");
+            Console.WriteLine("   'E' = Erdogan-Hotline");
+            Console.WriteLine("   'T' = Trump-Telefon");
+            Console.WriteLine("   'N' = NATO-Telefon\n");
+            
+            Console.WriteLine("🏡 ERHOLUNG:");
+            Console.WriteLine($"   'F' = Finka besuchen (Gesundheit: {player.Gesundheit}%)\n");
+            
+            Console.WriteLine("🛒 LUXUS:");
+            Console.WriteLine("   'Q' = Putin's Shop\n");
+            Console.ResetColor();
+        }
+        
+        Console.WriteLine("💡 Tipp: Diese Shortcuts funktionieren bei jeder Auswahl!");
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
     static void PlayDDRPhase(PlayerCharacter player)
     {
         player.Alter = 35;
         player.Phase = "DDR-Einsatz";
+        
+        // 5-Jahres Shortcut-Reminder
+        ShowShortcutReminder(player);
         
         // Zufallsereignis
         EventSystem.TriggerRandomEvent(player);
