@@ -1927,6 +1927,43 @@ class Program
         }
     }
     
+    /// <summary>
+    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L-Shortcuts
+    /// 
+    /// FEATURE: Speichern/Laden während des Spiels
+    /// Shortcuts: 'S' = Speichern, 'L' = Laden
+    /// </summary>
+    static string ReadInputWithShortcuts(PlayerCharacter player, string prompt = "")
+    {
+        if (!string.IsNullOrEmpty(prompt))
+            Console.Write(prompt);
+        
+        while (true)
+        {
+            string input = Console.ReadLine()?.ToUpper();
+            
+            if (input == "S")
+            {
+                Console.WriteLine("\n>> Speichern...");
+                SaveGame(player);
+                Console.WriteLine(">> Gespeichert! [Taste drücken]");
+                Console.ReadKey(true);
+                Console.Write(prompt);  // Prompt erneut anzeigen
+                continue;
+            }
+            else if (input == "L")
+            {
+                Console.WriteLine("\n>> Laden nicht verfügbar während des Spiels.");
+                Console.WriteLine(">> Verwende Hauptmenü zum Laden. [Taste drücken]");
+                Console.ReadKey(true);
+                Console.Write(prompt);
+                continue;
+            }
+            
+            return input;
+        }
+    }
+    
     static void PlayStory(PlayerCharacter player)
     {
         // KINDHEIT
@@ -1938,6 +1975,7 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine("Flad wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
+        Console.WriteLine("💾 Tipp: Drücke 'S' zum Speichern, 'L' zum Laden\n");
         Thread.Sleep(1500);
         
         // Zufallsereignis auslösen
@@ -1946,9 +1984,8 @@ class Program
         Console.WriteLine("[1] Kämpferische Kindheit (+2 Stärke, -15 Gesundheit)");
         Console.WriteLine("[2] Disziplin durch Sport (+2 Kraft, +1 Charisma)");
         Console.WriteLine("[3] Wissbegierig (+3 Intelligenz, +1 Charisma)\n");
-        Console.Write("Wähle [1-3]: ");
         
-        string choice = Console.ReadLine();
+        string choice = ReadInputWithShortcuts(player, "Wähle [1-3]: ");
         if (choice == "1") { player.Stärke += 2; player.Gesundheit -= 15; }
         else if (choice == "2") { player.Kraft += 2; player.Charisma++; }
         else { player.Intelligenz += 3; player.Charisma++; }
