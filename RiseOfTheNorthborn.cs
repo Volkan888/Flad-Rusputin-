@@ -5515,6 +5515,8 @@ static class EventSystem
         // Spezielle Farben für Event-Typen
         if (chosen.Type == "sidechick")
             Console.ForegroundColor = ConsoleColor.Red;
+        else if (chosen.Type == "kgb_easter")
+            Console.ForegroundColor = ConsoleColor.DarkRed;
         else if (chosen.Type == "katastrophe" || chosen.Type == "politisch" || 
                  chosen.Type == "türkei" || chosen.Type == "deutschland" || chosen.Type == "schulden")
             Console.ForegroundColor = ConsoleColor.Yellow;
