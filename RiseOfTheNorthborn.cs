@@ -330,12 +330,39 @@ static class MarriageSystem
         }
     }
     
+    /// <summary>
+    /// RandomBirth - Zufällige Geburt eines oder mehrerer Kinder
+    /// 
+    /// ÄNDERUNG 5: Einzelgeburten statt Massengeneration
+    /// ÄNDERUNG 6: Zwillinge/Drillinge-System
+    /// ÄNDERUNG 7: Spieler gibt Namen ein
+    /// 
+    /// ABLAUF:
+    /// 1. Prüfung ob verheiratet
+    /// 2. Wahrscheinlichkeits-Check basierend auf gewählter Ehefrau
+    /// 3. Bonus-Check für Zwillinge (5%) oder Drillinge (1%)
+    /// 4. Für jedes Kind:
+    ///    - Geschlecht zufällig bestimmen
+    ///    - Spieler gibt Vornamen ein
+    ///    - Attribute vererben (Elternwerte ±1-2)
+    ///    - Zur Kinder-Liste hinzufügen
+    /// 5. Familien-Loyalität erhöhen
+    /// 
+    /// VERERBUNGS-MECHANIK:
+    /// - Jedes Attribut = Elternwert + Zufallszahl(-1 bis +2)
+    /// - Minimum ist 0 (kein Negativ-Wert möglich)
+    /// - Ermöglicht stärkere ODER schwächere Nachkommen
+    /// </summary>
     public static void RandomBirth(PlayerCharacter player)
     {
+        // Nur wenn verheiratet
         if (!player.IstVerheiratet) return;
         
-        int chance = player.GeburtenBonus * 15; // 15%, 30%, 45%, 60%, 75%
+        // Berechne Geburts-Wahrscheinlichkeit basierend auf Ehefrau
+        // GeburtenBonus 1-5 * 15% = 15%, 30%, 45%, 60%, 75%
+        int chance = player.GeburtenBonus * 15;
         
+        // Zufalls-Check: Findet eine Geburt statt?
         if (rand.Next(100) < chance)
         {
             // Zwillings-/Drillings-Chance (5% für Zwillinge, 1% für Drillinge)
