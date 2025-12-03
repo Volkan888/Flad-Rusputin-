@@ -4466,10 +4466,10 @@ class Program
     }
     
     /// <summary>
-    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L/E-Shortcuts
+    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L/E/Q-Shortcuts
     /// 
-    /// FEATURE: Speichern/Laden/Erdogan-Nottelefon während des Spiels
-    /// Shortcuts: 'S' = Speichern, 'L' = Laden, 'E' = Erdogan-Nottelefon
+    /// FEATURE: Speichern/Laden/Erdogan-Nottelefon/Shop während des Spiels
+    /// Shortcuts: 'S' = Speichern, 'L' = Laden, 'E' = Erdogan-Nottelefon, 'Q' = Shop
     /// </summary>
     static string ReadInputWithShortcuts(PlayerCharacter player, string prompt = "")
     {
