@@ -2024,7 +2024,7 @@ static class EventSystem
             "Geheime Atomanlage explodiert! 23.000 km² kontaminiert, aber der Staat verschweigt alles...",
             "Kindheit", 12,
             p => {
-                Console.WriteLine("Gerüchte über eine mysteriöse Evakuierung erreichen Flad...");
+                Console.WriteLine("Gerüchte über eine mysteriöse Evakuierung erreichen {player.GetFirstName()}...");
                 p.Gesundheit -= 10; // Strahlenangst
                 p.LoyalitätPartei -= 15; // Misstrauen wegen Vertuschung
                 p.Intelligenz += 1; // Lernt, Propaganda zu hinterfragen
@@ -2100,7 +2100,7 @@ static class EventSystem
             "Dezember 1991: Die UdSSR existiert nicht mehr! Wirtschaftskrise, Hyperinflation, Verarmung...",
             "DDR-Einsatz", 35,
             p => {
-                Console.WriteLine("'Die größte geopolitische Katastrophe des Jahrhunderts' - Flad erlebt den Zusammenbruch.");
+                Console.WriteLine("'Die größte geopolitische Katastrophe des Jahrhunderts' - {player.GetFirstName()} erlebt den Zusammenbruch.");
                 p.Geld -= 150; // Rubelverfall
                 p.LoyalitätPartei -= 40; // System kollabiert
                 p.Gesundheit -= 20; // Krisenstress
