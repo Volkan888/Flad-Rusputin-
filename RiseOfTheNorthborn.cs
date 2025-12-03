@@ -2398,8 +2398,21 @@ class Ship
             hits[r - row] = true;  // Index = Reihe minus Start-Reihe
     }
     
+    /// <summary>
+    /// IsSunk - Prüft ob Schiff vollständig versenkt ist
+    /// 
+    /// MECHANIK:
+    /// Verwendet LINQ-Methode .All() um zu prüfen ob ALLE
+    /// Segmente getroffen wurden (alle hits[] = true).
+    /// 
+    /// BEISPIEL:
+    /// hits = [true, false, true] → false (noch 1 Segment intakt)
+    /// hits = [true, true, true]  → true  (VERSENKT!)
+    /// 
+    /// RÜCKGABE: true wenn komplett versenkt, sonst false
+    /// </summary>
     public bool IsSunk()
     {
-        return hits.All(h => h);
+        return hits.All(h => h);  // LINQ: Alle Elemente müssen true sein
     }
 }
