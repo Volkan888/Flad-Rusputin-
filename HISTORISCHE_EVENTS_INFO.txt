@@ -1,0 +1,126 @@
+═══════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS - VOLLSTÄNDIGE ÜBERSICHT 1952-2024
+═══════════════════════════════════════════════════════════════════
+
+STATUS: ✅ IMPLEMENTIERT (ca. 150 Events)
+
+ZEITRAUM: 1952 - 2024 (72 Jahre)
+EVENTS PRO JAHR: 2-3 wichtige Ereignisse
+GESAMTZAHL: Circa 150 historische Events
+
+═══════════════════════════════════════════════════════════════════
+  WAS IST FERTIG?
+═══════════════════════════════════════════════════════════════════
+
+✅ Alle wichtigen historischen Ereignisse von 1952-2024 eingefügt
+✅ Dramatische, kurze Beschreibungen auf Deutsch
+✅ Genaue Datums angaben (Tag.Monat.Jahr)
+✅ Passende Auswirkungen auf Spieler-Stats
+✅ Kategorien: POLITIK, KRIEG, WIRTSCHAFT, KATASTROPHE
+✅ Chronologische Sortierung nach Jahr und Monat
+✅ Spiel kompiliert fehlerfrei!
+
+═══════════════════════════════════════════════════════════════════
+  WAS FEHLT NOCH?
+═══════════════════════════════════════════════════════════════════
+
+⏳ ÜBERSETZUNGEN (Russisch & Englisch)
+   - Aktuell: Platzhalter "[RU]" und "[EN]"
+   - Du musst später hinzufügen:
+     * Russische Titel
+     * Russische Datums
+     * Russische Geschichten
+     * Englische Titel
+     * Englische Datums
+     * Englische Geschichten
+
+═══════════════════════════════════════════════════════════════════
+  HIGHLIGHTS DER EINGEFÜGTEN EVENTS
+═══════════════════════════════════════════════════════════════════
+
+1950er:
+- Stalins Tod (1953)
+- Chruschtschows Geheimrede (1956)
+- Sputnik & Weltraumrennen (1957)
+- Berliner Mauer (1961)
+- Kubakrise (1962)
+
+1960er-1970er:
+- Prager Frühling (1968)
+- Mondlandung USA (1969)
+- SALT I Rüstungskontrolle (1972)
+- Helsinki KSZE (1975)
+- Afghanistan-Invasion (1979)
+
+1980er:
+- Olympia-Boykott (1980)
+- Breschnew Tod & Gorbatschow (1982-1985)
+- Tschernobyl (1986)
+- INF-Vertrag (1987)
+- Mauerfall (1989)
+
+1990er:
+- Ende der UdSSR (1991)
+- Jelzin-Ära & Wirtschaftschaos
+- Tschetschenienkriege
+- Rubelkrise (1998)
+- Putin kommt an die Macht (1999)
+
+2000er-2020er:
+- Kursk-Untergang (2000)
+- 9/11 & Terror (2001)
+- Beslan-Massaker (2004)
+- Georgienkrieg (2008)
+- Krim-Annexion (2014)
+- Syrienintervention (2015)
+- Verfassungsreform (2020)
+- Ukraine-Invasion (2022)
+- Prigoschin-Meuterei (2023)
+- Nawalny Tod (2024)
+
+═══════════════════════════════════════════════════════════════════
+  WIE ÜBERSETZUNGEN HINZUFÜGEN?
+═══════════════════════════════════════════════════════════════════
+
+1. Öffne /app/RiseOfTheNorthborn.cs
+2. Suche nach "[RU]" oder "[EN]" 
+3. Ersetze die Platzhalter mit echten Übersetzungen
+4. Format für jedes Event:
+
+   historicalEvents.Add(new HistoricalEvent(
+       "EVENT_ID",
+       "Deutscher Titel",           // ✅ FERTIG
+       "Русский заголовок",         // ⏳ FEHLT - Hier einfügen
+       "English Title",             // ⏳ FEHLT - Hier einfügen
+       "5. März 1953",              // ✅ FERTIG
+       "5 марта 1953 года",         // ⏳ FEHLT - Hier einfügen
+       "March 5, 1953",             // ⏳ FEHLT - Hier einfügen
+       1953, 3,                     // ✅ FERTIG
+       "POLITIK",                   // ✅ FERTIG
+       @"Deutsche Geschichte...",   // ✅ FERTIG
+       @"Русская история...",       // ⏳ FEHLT - Hier einfügen
+       @"English story...",         // ⏳ FEHLT - Hier einfügen
+       p => { /* Auswirkungen */ }  // ✅ FERTIG
+   ));
+
+═══════════════════════════════════════════════════════════════════
+  TIPP FÜR ÜBERSETZUNGEN
+═══════════════════════════════════════════════════════════════════
+
+- Verwende ChatGPT/DeepL für schnelle Übersetzungen
+- Behalte den dramatischen Stil bei
+- Russische Datums im Format: "5 марта 1953 года"
+- Englische Datums im Format: "March 5, 1953"
+
+═══════════════════════════════════════════════════════════════════
+  DATEI-INFO
+═══════════════════════════════════════════════════════════════════
+
+Datei: /app/RiseOfTheNorthborn.cs
+Methode: InitializeHistoricalEvents() (Zeile ~3072-4126)
+Zeilen: Circa 1050 Zeilen Code für Events
+Gesamt: 11.875 Zeilen in der Datei
+
+Backup: /app/RiseOfTheNorthborn.cs.backup (alte Version)
+
+═══════════════════════════════════════════════════════════════════
