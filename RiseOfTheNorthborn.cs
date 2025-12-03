@@ -7613,7 +7613,8 @@ class Program
 /// </summary>
 class BattleshipGame
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     
     /// <summary>
     /// Play - Zeigt Spielmodus-Auswahl
