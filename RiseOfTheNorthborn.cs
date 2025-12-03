@@ -4211,11 +4211,6 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ESTONIA_CYBERANGRIFF_2007", "Cyberangriff auf Estland", "[RU]", "[EN]", "27. April 2007", "[RU]", "[EN]", 2007, 4, "KRIEG",
-            @"Estland wird massiv cyber-angegriffen! Verdacht: Russland. Der erste Cyberkrieg.",
-            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
-            p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
-        
         historicalEvents.Add(new HistoricalEvent("RESET_BUTTON_USA_2009", "USA-Russland 'Reset'", "[RU]", "[EN]", "6. März 2009", "[RU]", "[EN]", 2009, 3, "POLITIK",
             @"US-Außenministerin Clinton übergibt Lawrow symbolischen 'Reset-Button'. Obama will Neustart.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
