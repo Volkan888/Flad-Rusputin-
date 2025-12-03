@@ -10859,10 +10859,6 @@ class Program
         Console.WriteLine("[1] Kämpferische Kindheit (+2 Stärke, -15 Gesundheit)");
         Console.WriteLine("[2] Disziplin durch Sport (+2 Kraft, +1 Charisma)");
         Console.WriteLine("[3] Wissbegierig (+3 Intelligenz, +1 Charisma)");
-        Console.ForegroundColor = ConsoleColor.DarkGray;
-        Console.WriteLine("[S/L/M] Speichern/Laden/Musik");
-        Console.ResetColor();
-        Console.WriteLine();
         
         Console.Write("Wähle [1-3]: ");
         string choice = Console.ReadLine();
