@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 17
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -22,7 +26,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Stalin bietet den Westmächten eine deutsche Wiedervereinigung an - unter Bedingung der Neutralität. Die Westmächte lehnen ab. Deutschland bleibt geteilt, der Kalte Krieg verhärtet sich.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -122,7 +126,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Der Diktator stirbt nach einem Schlaganfall. 30 Jahre Terror enden. Das Volk zwischen Trauer und Erleichterung. Der Machtkampf um die Nachfolge beginnt: Malenkow, Beria, Chruschtschow.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -197,7 +201,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Stalins gefürchteter Geheimdienstchef wird nach Schauprozess hingerichtet. Verrat, Spionage, Mord - die Anklagen sind endlos. Das Volk jubelt heimlich.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -397,7 +401,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+1000 sowjetische Panzer rollen durch Budapest. Der Freiheitsaufstand wird brutal niedergewalzt. 2500 Ungarn sterben, 200.000 fliehen. Die Botschaft: Freiheit wird mit Panzern beantwortet.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]

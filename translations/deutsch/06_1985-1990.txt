@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 19
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -97,7 +101,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+SUPER-GAU! Reaktor 4 im AKW Tschernobyl explodiert. Eine radioaktive Wolke zieht über Europa. Die Regierung verschweigt es tagelang. 31 Tote sofort, Tausende später. Glasnost wird zur bitteren Realität: Das System ist verrottet.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -222,7 +226,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Die Medien dürfen plötzlich kritisieren! Stalins Verbrechen, Tschernobyl, Afghanistan - alles wird diskutiert. Die Büchse der Pandora ist geöffnet.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -247,7 +251,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Nach 9 Jahren Krieg beginnt der Abzug! 15.000 Sowjetsoldaten sind gefallen, Hunderttausende Afghanen. Gorbatschow nennt es 'blutende Wunde'. Ein gescheiterter Krieg.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -272,7 +276,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Ein Erdbeben der Stärke 6,9 zerstört Teile Armeniens. 25.000 Tote, Hunderttausende obdachlos. Gorbatschow bricht einen USA-Besuch ab. Das System ist überfordert.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -322,7 +326,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+General Gromow überquert als letzter sowjetischer Soldat die Brücke zurück. 9 Jahre, 15.000 Tote, 470 Milliarden Rubel - für nichts. Afghanistan versinkt weiter im Bürgerkrieg.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -347,7 +351,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Erstmals dürfen die Bürger wählen - teils frei! Reformer wie Jelzin triumphieren, alte Kommunisten verlieren. Das System wankt.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -397,7 +401,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+DIE MAUER FÄLLT! Nach einem Kommunikationsfehler öffnen DDR-Grenzposten die Mauer. Hunderttausende strömen nach West-Berlin. Menschen tanzen auf der Mauer, schlagen mit Hämmern darauf ein. 28 Jahre Trennung enden in einer Nacht. Das Volk in der UdSSR sieht die Bilder ungläubig: Der Eiserne Vorhang fällt! Gorbatschow lässt die Panzer in den Kasernen - keine Wiederholung von 1968. Das sowjetische Imperium bröckelt. Der Kalte Krieg ist vorbei.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -447,7 +451,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Gorbatschow wird mit dem Friedensnobelpreis geehrt - für das Ende des Kalten Krieges. Im Westen ein Held, zuhause immer unbeliebter.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]

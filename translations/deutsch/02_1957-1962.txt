@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 17
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -347,7 +351,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+In der Nacht beginnt der Mauerbau! Berlin wird mit Stacheldraht und Beton geteilt. 'Niemand hat die Absicht, eine Mauer zu errichten' log Ulbricht. Die Welt ist entsetzt.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]

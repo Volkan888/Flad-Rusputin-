@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 21
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -147,7 +151,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Der Schah flieht, Ayatollah Khomeini übernimmt. Der Iran wird islamische Republik. Weder pro-sowjetisch noch pro-amerikanisch - eine Niederlage für beide Supermächte.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -172,7 +176,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Die Sommerspiele in Moskau sollten ein Triumph werden - doch 65 Nationen boykottieren wegen Afghanistan! Die Propaganda versucht, es zu beschönigen. Eine Demütigung.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -297,7 +301,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+General Jaruzelski verhängt Kriegsrecht in Polen! Panzer auf den Straßen, Solidarność-Führer verhaftet. Der Kreml atmet auf - vorerst keine Invasion nötig.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -322,7 +326,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Nach 18 Jahren an der Macht stirbt Breschnew. Die 'Ära der Stagnation' endet. Juri Andropow, der KGB-Chef, übernimmt. Wird er Reformen wagen?
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -347,7 +351,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Juri Andropow, der ehemalige KGB-Chef, übernimmt die Führung. Er verspricht Disziplin und Effizienz. Aber er ist bereits krank.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -397,7 +401,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Ein sowjetisches Kampfjet schießt Korean Air 007 ab - 269 Tote! Die UdSSR behauptet, es war ein Spionageflugzeug. Die Welt ist entsetzt. Reagan nennt es 'Massaker'.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -447,7 +451,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+NATO-Manöver 'Able Archer': Die sowjetische Führung glaubt, es ist Vorbereitung für einen Atomschlag! Die Welt steht am Abgrund - ohne es zu wissen.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -472,7 +476,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Andropow stirbt nach nur 15 Monaten im Amt. Konstantin Tschernenko, 72 und krank, wird sein Nachfolger. Die Sowjetunion wird von einem Greis regiert.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -522,7 +526,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Michail Gorbatschow, 53, wird zur Nummer 2 im Politbüro. Er gilt als Reformer. Viele hoffen: Vielleicht kann er das System retten?
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]

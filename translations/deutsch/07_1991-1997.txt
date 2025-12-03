@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 18
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -22,7 +26,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Sowjetische Truppen stürmen den Fernsehturm in Vilnius, Litauen. 14 Zivilisten werden getötet. Gorbatschow verliert international massiv an Ansehen.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -247,7 +251,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Jelzin lässt Panzer auf das Parlament schießen! Das 'Weiße Haus' brennt, über 100 Tote. Die Demokratie wird mit Gewalt durchgesetzt. Die Welt schaut entsetzt zu.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -372,7 +376,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+'Loans-for-Shares': Die reichsten Geschäftsleute kaufen Staatsbetriebe für einen Spottpreis. Die Oligarchen entstehen. Das Volk verarmt, wenige werden steinreich.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -422,7 +426,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Jelzin wird am offenen Herzen operiert. Monatelang ist unklar, wer Russland regiert. Das Land taumelt führungslos.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]

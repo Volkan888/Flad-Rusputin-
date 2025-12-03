@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 23
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -22,7 +26,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+KATASTROPHE! Russland erklärt Zahlungsunfähigkeit! Der Rubel stürzt ab, Banken kollabieren, Menschen verlieren alles. Die schlimmste Wirtschaftskrise seit 1991.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -122,7 +126,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Der unbekannte Ex-KGB-Agent Wladimir Putin wird Premierminister. Er verspricht, Tschetschenien zu 'erledigen'. Die Ära Putin beginnt.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -197,7 +201,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Das Atom-U-Boot Kursk sinkt nach Explosion. 118 Seeleute sterben. Putin bleibt im Urlaub, lehnt ausländische Hilfe ab. Seine erste große Krise.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -272,7 +276,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Nach den Anschlägen von 9/11 ist Putin der erste, der Bush anruft. Russland unterstützt den 'Krieg gegen Terror'. Kurze Annäherung an den Westen.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -347,7 +351,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Der reichste Mann Russlands, Michail Chodorkowski, wird verhaftet! Sein Ölkonzern Yukos wird zerschlagen. Die Botschaft: Wer sich Putin widersetzt, fällt.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -397,7 +401,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Terroristen nehmen über 1000 Menschen, darunter 777 Kinder, in einer Schule in Beslan als Geiseln. Die Erstürmung endet katastrophal: 334 Tote, davon 186 Kinder. Russland steht unter Schock.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -547,7 +551,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Putin hält explosive Rede in München! Scharfe Kritik an USA, NATO-Osterweiterung, US-Raketenabwehr. 'Eine unipolare Welt ist inakzeptabel!' Der Westen ist schockiert.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -572,7 +576,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Estland wird massiv cyber-angegriffen! Regierungsseiten, Banken, Medien - alles lahm. Verdacht: Russland. Der erste Cyberkrieg der Geschichte.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]

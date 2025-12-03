@@ -4,8 +4,12 @@
 
 ANZAHL EVENTS: 22
 
-WICHTIG: Behalte das Format genau bei!
-Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
 
 ══════════════════════════════════════════════════════════════════════
 
@@ -72,7 +76,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+USA, UdSSR und Großbritannien verbieten oberirdische Atomtests. Ein kleiner Schritt zur Entspannung nach der Kubakrise.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -122,7 +126,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Während Chruschtschow im Urlaub ist, putscht das Politbüro! Breschnew übernimmt. Die Ära Chruschtschow endet abrupt. Gründe: Kubakrise, Misswirtschaft, Unberechenbarkeit.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -147,7 +151,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Leonid Breschnew wird neuer Generalsekretär. Die 'Ära der Stagnation' beginnt. Stabilität statt Reform, Kontrolle statt Experimente.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -197,7 +201,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+USA bombardieren Nordvietnam massiv. Die UdSSR liefert Waffen, Flugabwehr und Berater. Ein neuer blutiger Stellvertreterkrieg beginnt.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -247,7 +251,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+Ministerpräsident Kossygin versucht zaghafte Wirtschaftsreformen. Mehr Autonomie für Betriebe, Gewinnorientierung. Aber der Widerstand ist groß.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
@@ -447,7 +451,7 @@ DATUM_RU: [HIER RUSSISCHES DATUM]
 DATUM_EN: [HERE ENGLISH DATE]
 
 GESCHICHTE_DE:
-
+'Begrenzte Souveränität' nennt Breschnew es: Die UdSSR darf überall im Ostblock einmarschieren, wenn der Sozialismus 'bedroht' ist. Eine Doktrin der Unterdrückung.
 
 GESCHICHTE_RU:
 [HIER RUSSISCHE GESCHICHTE]
