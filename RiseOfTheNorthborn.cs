@@ -5321,6 +5321,16 @@ static class EventSystem
     └─────────┘
    💻 DIGITAL 💻");
             }
+            else if (eventName.Contains("🕵️") || eventName.Contains("KGB"))
+            {
+                Console.WriteLine(@"
+    ╔═══════════╗
+    ║  🕵️  ☭  🕵️  ║
+    ║   K G B   ║
+    ║  ━━━━━━━  ║
+    ╚═══════════╝
+   🔒 SECRET 🔒");
+            }
             else if (eventName.Contains("Mars") || eventName.Contains("Arktis"))
             {
                 Console.WriteLine(@"
