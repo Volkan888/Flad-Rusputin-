@@ -1511,7 +1511,10 @@ class Program
         {
             player.Alter++;
             
-            // Geburt nur alle 2 Jahre möglich (realistischer)
+            // BUG-FIX 3: Geburten-Intervall eingeführt
+            // Problem: Bei hoher Geburtenrate (z.B. 75%) traten zu viele Geburten
+            //          direkt hintereinander auf → Spieler hing in Namenseingabe fest
+            // Lösung: Geburten nur noch alle 2 Jahre möglich (realistischer + spielbar)
             if (jahr % 2 == 0)
                 MarriageSystem.RandomBirth(player);
             
