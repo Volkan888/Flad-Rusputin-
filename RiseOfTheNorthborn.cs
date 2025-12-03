@@ -736,7 +736,7 @@ static class MarriageSystem
                 }
             }
             
-            Console.WriteLine($"\n\nFlad hat jetzt {player.Kinder.Count} Kind(er)!");
+            Console.WriteLine($"\n\n{player.Name.Split(' ')[0]} hat jetzt {player.Kinder.Count} Kind(er)!");
             player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + (5 * birthCount));
             
             // Zeige Cooldown-Info (wurde bereits am Anfang gesetzt)
