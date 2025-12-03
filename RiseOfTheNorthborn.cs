@@ -4728,6 +4728,14 @@ static class EventSystem
     ✦ ✧ ★ ✧ ✦
    🔮 2025+ 🔮");
             }
+            else if (eventType == "usa")
+            {
+                Console.WriteLine(@"
+    ★ ★ ★ ★ ★
+    ═══════════
+    ★ ★ ★ ★ ★
+   🇺🇸 USA 🇺🇸");
+            }
             else
             {
                 // Standard Event
