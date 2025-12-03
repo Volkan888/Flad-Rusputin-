@@ -4037,11 +4037,25 @@ static class EventSystem
         
         // ═══ SCHRITT 1: FILTERE PASSENDE EVENTS ═══
         // LINQ-Abfrage: Events nach Phase UND Jahr filtern
+        // ÄNDERUNG: Historische Events (mit Jahr > 0) ignorieren Phase-Check!
         var possibleEvents = allEvents.Where(e => 
-            e.Phase == player.Phase &&                          // Richtige Phase?
-            (e.Jahr == 0 || e.Jahr == currentYear) &&          // Jahr passt?
-            rand.Next(100) < e.Chance                           // Wahrscheinlichkeit getroffen?
-        ).ToList();
+        {
+            // Historische Events (mit spezifischem Jahr) können in jeder Phase auftreten
+            bool isHistoricalEvent = e.Jahr > 0 && 
+                (e.Type == "katastrophe" || e.Type == "politisch" || 
+                 e.Type == "türkei" || e.Type == "deutschland" || e.Type == "schulden");
+            
+            // Prüfe Phase nur bei nicht-historischen Events
+            bool phaseMatch = isHistoricalEvent || e.Phase == player.Phase;
+            
+            // Jahr muss passen (Jahr=0 bedeutet jederzeit möglich)
+            bool yearMatch = (e.Jahr == 0 || e.Jahr == currentYear);
+            
+            // Wahrscheinlichkeit
+            bool chanceMatch = rand.Next(100) < e.Chance;
+            
+            return phaseMatch && yearMatch && chanceMatch;
+        }).ToList();
         
         // Kein Event möglich? Beende frühzeitig
         if (possibleEvents.Count == 0) return;
