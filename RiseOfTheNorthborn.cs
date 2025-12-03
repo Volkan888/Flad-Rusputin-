@@ -845,7 +845,8 @@ static class MarriageSystem
 /// </summary>
 static class DeathSystem
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     
     /// <summary>
     /// CheckDeath - Prüft ob der Charakter stirbt
