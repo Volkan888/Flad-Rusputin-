@@ -306,6 +306,21 @@ class PlayerCharacter
     public int ChinaAnrufeVerfügbar;     // Anzahl verbleibender Anrufe (max 3)
     public int ChinaBeziehung;           // Beziehungswert zu China (0-100)
     
+    // ═══ SIDECHICK-SYSTEM (NEUE MECHANIK) ═══
+    public class UnanerkanntesSidechickKind
+    {
+        public string MutterName;
+        public int GeburtsjahR;
+        public bool IstJunge;
+        public int Staerke;
+        public int Intelligenz;
+        public int Charisma;
+        public int Kraft;
+        public int DatumKosten;  // Wie viel wurde für das Date ausgegeben
+    }
+    public List<UnanerkanntesSidechickKind> VersteckteKinder;  // Kinder die noch nicht anerkannt sind
+    public int LetztesSidechickJahr;  // Jahr des letzten Sidechick-Events
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
