@@ -5942,6 +5942,16 @@ static class EventSystem
      \     /
   💰 KRISE 💰");
             }
+            else if (eventName.Contains("NATO"))
+            {
+                Console.WriteLine(@"
+    ╔═══════════╗
+    ║  🛡️  ★  🛡️  ║
+    ║   N A T O ║
+    ║  ━━━━━━━  ║
+    ╚═══════════╝
+   🌐 ALLIANCE 🌐");
+            }
             else if (eventName.Contains("Zerfall") || eventName.Contains("Sowjetunion"))
             {
                 Console.WriteLine(@"
