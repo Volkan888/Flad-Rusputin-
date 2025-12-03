@@ -2033,7 +2033,7 @@ static class EventSystem
             "Geheime Atomanlage explodiert! 23.000 km² kontaminiert, aber der Staat verschweigt alles...",
             "Kindheit", 12,
             p => {
-                Console.WriteLine("Gerüchte über eine mysteriöse Evakuierung erreichen {player.GetFirstName()}...");
+                Console.WriteLine($"Gerüchte über eine mysteriöse Evakuierung erreichen {p.GetFirstName()}...");
                 p.Gesundheit -= 10; // Strahlenangst
                 p.LoyalitätPartei -= 15; // Misstrauen wegen Vertuschung
                 p.Intelligenz += 1; // Lernt, Propaganda zu hinterfragen
