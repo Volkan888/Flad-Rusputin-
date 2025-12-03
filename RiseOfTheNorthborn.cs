@@ -10010,6 +10010,44 @@ class Program
         "faszinierender Rennfahrer aus Monaco"
     };
     
+    
+    /// <summary>
+    /// Prüft ob ein Sidechick-Event ausgelöst werden soll (alle 10 Jahre)
+    /// </summary>
+    static void CheckSidechickEvent(PlayerCharacter player)
+    {
+        int currentYear = player.GetCurrentYear();
+        
+        // Alle 10 Jahre (1960, 1970, 1980, etc.)
+        if (currentYear % 10 == 0 && currentYear != player.LetztesSidechickJahr && currentYear >= 1960 && currentYear <= 2100)
+        {
+            player.LetztesSidechickJahr = currentYear;
+            TriggerSidechickEvent(player);
+        }
+    }
+    
+    /// <summary>
+    /// Prüft ob ein Vaterschaftstest-Event fällig ist (18 Jahre nach Geburt)
+    /// </summary>
+    static void CheckVaterschaftstestEvent(PlayerCharacter player)
+    {
+        int currentYear = player.GetCurrentYear();
+        
+        for (int i = 0; i < player.VersteckteKinder.Count; i++)
+        {
+            var kind = player.VersteckteKinder[i];
+            int alterDesKindes = currentYear - kind.GeburtsjahR;
+            
+            if (alterDesKindes == 18)
+            {
+                // Kind ist jetzt 18 - Vaterschaftstest-Event!
+                player.VersteckteKinder.RemoveAt(i);
+                TriggerVaterschaftstestEvent(player, kind);
+                return; // Nur ein Event pro Jahr
+            }
+        }
+    }
+
     /// <summary>
     /// ENTRY POINT - Startet das Spiel
     /// </summary>
