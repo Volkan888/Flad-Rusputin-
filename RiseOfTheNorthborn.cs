@@ -7243,20 +7243,30 @@ class Program
             case 3: // Schwer
                 points = 2;
                 player.Gesundheit = 70;
-                player.Geld = 300; // Weniger Geld
-                player.NATOBeziehung = 20; // Schlechtere NATO-Beziehung
-                player.USABeziehung = 40;
-                Console.WriteLine("SCHWER: -30 Gesundheit | Weniger Geld | Schlechtere Auslandsbeziehungen");
+                player.Geld = -200; // Schulden statt Geld
+                player.NATOBeziehung = 15; // Feindliche NATO-Beziehung
+                player.USABeziehung = 25; // Feindliche USA-Beziehung
+                player.Kraft = -1; // Schwäche durch harte Kindheit
+                Console.WriteLine("HART: -30 Gesundheit | -200 Rubel Schulden | Feindliche Auslandsbeziehungen | -1 Kraft");
+                Console.WriteLine("Sanktionen: +35% Schaden | Ereignisse: +25% härter");
                 Thread.Sleep(3000);
                 break;
-            case 4: // Brutal
+            case 4: // Kalter Krieg - EXTREM SCHWER
                 points = 1;
-                player.Geld = -200;
-                player.EinflussKGB = 20;
-                player.NATOBeziehung = 10; // Sehr schlecht
-                player.USABeziehung = 30;
-                Console.WriteLine("BRUTAL: Schulden | NATO-Feindschaft | Harte Sanktionen");
-                Thread.Sleep(3000);
+                player.Geld = -500; // Massive Schulden
+                player.EinflussKGB = 40; // Viel höhere KGB-Kontrolle
+                player.NATOBeziehung = 5; // Nahezu Kriegszustand
+                player.USABeziehung = 10; // Extreme Feindschaft
+                player.Gesundheit = 60; // Schwache Gesundheit
+                player.Kraft = -1; // Körperliche Schwäche
+                player.LoyalitätVolk = 30; // Volk leidet
+                Console.WriteLine("KALTER KRIEG: -500 Rubel Schulden | -40 Gesundheit | -1 Kraft");
+                Console.WriteLine("+40% KGB-Kontrolle | NATO/USA fast Kriegszustand | Volk leidet");
+                Console.WriteLine("Sanktionen: +60% Schaden | Ereignisse: +50% härter | KGB-Anrufe +100%");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("⚠ EXTREM SCHWIERIG - Nur für Experten!");
+                Console.ResetColor();
+                Thread.Sleep(4000);
                 break;
         }
         
