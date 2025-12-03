@@ -1716,6 +1716,267 @@ static class ErdoganHotline
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// SOUND SYSTEM & RUSSISCHE LIEDER
+// ═══════════════════════════════════════════════════════════════════
+/// <summary>
+/// SoundSystem - Beep-Sounds und russische Musikstücke
+/// 
+/// FEATURES:
+/// - Event-Sounds mit Console.Beep()
+/// - Russische Hymne & Lieder (Melodie als ASCII + Beeps)
+/// - Verschiedene Sounds für Event-Typen
+/// </summary>
+static class SoundSystem
+{
+    /// <summary>
+    /// PlayEventSound - Spielt passenden Sound für Event-Typ
+    /// </summary>
+    public static void PlayEventSound(string eventType)
+    {
+        try
+        {
+            if (eventType == "katastrophe")
+            {
+                // Alarm-Sound
+                Console.Beep(800, 150);
+                Console.Beep(600, 150);
+                Console.Beep(800, 150);
+            }
+            else if (eventType == "sidechick")
+            {
+                // Romantischer Sound
+                Console.Beep(523, 200); // C
+                Console.Beep(659, 200); // E
+                Console.Beep(784, 300); // G
+            }
+            else if (eventType == "usa")
+            {
+                // Dramatischer Sound
+                Console.Beep(440, 250);
+                Console.Beep(494, 250);
+            }
+            else if (eventType == "türkei")
+            {
+                // Exotischer Sound
+                Console.Beep(660, 200);
+                Console.Beep(740, 200);
+            }
+            else if (eventType == "politisch")
+            {
+                // Offizieller Sound
+                Console.Beep(392, 300);
+                Console.Beep(523, 300);
+            }
+            else
+            {
+                // Standard Event-Sound
+                Console.Beep(1000, 100);
+            }
+        }
+        catch
+        {
+            // Beep nicht verfügbar auf manchen Systemen - ignorieren
+        }
+    }
+    
+    /// <summary>
+    /// PlayRussianAnthem - Spielt die Sowjet-/Russische Hymne
+    /// </summary>
+    public static void PlayRussianAnthem()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🎵 ГИМН РОССИИ 🎵                        ║
+        ║   Russische Hymne                          ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        Console.WriteLine(@"
+        Россия — священная наша держава,
+        Россия — любимая наша страна.
+        Могучая воля, великая слава —
+        Твоё достоянье на все времена!
+        
+        🎶 REFRAIN 🎶
+        Славься, Отечество наше свободное,
+        Братских народов союз вековой,
+        Предками данная мудрость народная!
+        Славься, страна! Мы гордимся тобой!
+        ");
+        
+        try
+        {
+            // Melodie (vereinfacht)
+            int[] notes = {392, 440, 494, 523, 587, 523, 494, 440, 392, 349, 330, 349, 392, 440, 392};
+            int[] durations = {400, 400, 400, 600, 400, 400, 400, 400, 600, 400, 400, 400, 400, 600, 800};
+            
+            for (int i = 0; i < notes.Length; i++)
+            {
+                Console.Beep(notes[i], durations[i]);
+                Thread.Sleep(50);
+            }
+        }
+        catch
+        {
+            // Beep nicht verfügbar
+            Console.WriteLine("\n[Hymne erklingt...]");
+            Thread.Sleep(3000);
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    /// <summary>
+    /// PlayKatyusha - Spielt "Катюша" (berühmtes russisches Lied)
+    /// </summary>
+    public static void PlayKatyusha()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🎵 КАТЮША 🎵                             ║
+        ║   Berühmtes Volkslied                      ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        Console.WriteLine(@"
+        Расцветали яблони и груши,
+        Поплыли туманы над рекой.
+        Выходила на берег Катюша,
+        На высокий берег на крутой.
+        
+        🎶 CHORUS 🎶
+        Ой, ты песня, песенка девичья,
+        Ты лети за ясным солнцем вслед.
+        И бойцу на дальнем пограничье
+        От Катюши передай привет!
+        ");
+        
+        try
+        {
+            // Katyusha Melodie (vereinfacht)
+            int[] notes = {392, 440, 494, 523, 494, 440, 392, 349, 392, 440, 494, 523, 587, 523, 494};
+            int[] durations = {300, 300, 300, 500, 300, 300, 500, 300, 300, 300, 300, 500, 300, 300, 600};
+            
+            for (int i = 0; i < notes.Length; i++)
+            {
+                Console.Beep(notes[i], durations[i]);
+                Thread.Sleep(30);
+            }
+        }
+        catch
+        {
+            Console.WriteLine("\n[Katyusha erklingt...]");
+            Thread.Sleep(3000);
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    /// <summary>
+    /// PlayKalinka - Spielt "Калинка" (schnelles Tanzlied)
+    /// </summary>
+    public static void PlayKalinka()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🎵 КАЛИНКА 🎵                            ║
+        ║   Schnelles Tanzlied                       ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        Console.WriteLine(@"
+        Калинка, калинка, калинка моя!
+        В саду ягода малинка, малинка моя!
+        
+        Ах! Под сосною, под зелёною,
+        Спать положите вы меня!
+        Ай-люли, люли, ай-люли, люли,
+        Спать положите вы меня!
+        
+        🎶 [Tempo steigt!] 🎶
+        ");
+        
+        try
+        {
+            // Kalinka Melodie (schnell werdend)
+            int[] notes = {523, 587, 659, 587, 523, 494, 440, 494, 523, 587, 659, 698, 659, 587, 523};
+            
+            // Beginnt langsam, wird schneller
+            for (int i = 0; i < notes.Length; i++)
+            {
+                int duration = Math.Max(100, 300 - (i * 15)); // Wird schneller
+                Console.Beep(notes[i], duration);
+                Thread.Sleep(20);
+            }
+        }
+        catch
+        {
+            Console.WriteLine("\n[Kalinka erklingt...]");
+            Thread.Sleep(2500);
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    /// <summary>
+    /// ShowMusicMenu - Menü für russische Lieder
+    /// </summary>
+    public static void ShowMusicMenu(PlayerCharacter player)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🎵 RUSSISCHE LIEDER 🎵                   ║
+        ║   Musik des Vaterlandes                    ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] 🇷🇺 Russische Hymne (Гимн России)");
+        Console.WriteLine("[2] 🎶 Katyusha (Катюша) - Volkslied");
+        Console.WriteLine("[3] 💃 Kalinka (Калинка) - Tanzlied");
+        Console.WriteLine("[4] 🔙 Zurück");
+        Console.Write("\nWähle [1-4]: ");
+        
+        string choice = Console.ReadLine();
+        
+        switch (choice)
+        {
+            case "1":
+                PlayRussianAnthem();
+                player.LoyalitätVolk += 5; // Patriotismus
+                player.LoyalitätPartei += 5;
+                Console.WriteLine("\n✓ Patriotismus +10!");
+                break;
+            case "2":
+                PlayKatyusha();
+                player.Charisma += 1;
+                Console.WriteLine("\n✓ Charisma +1!");
+                break;
+            case "3":
+                PlayKalinka();
+                player.Gesundheit = Math.Min(100, player.Gesundheit + 5);
+                Console.WriteLine("\n✓ Gesundheit +5 (Tanzen!)");
+                break;
+            case "4":
+                return;
+        }
+        
+        Thread.Sleep(2000);
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // TRUMP-TELEFON EASTER EGG
 // ═══════════════════════════════════════════════════════════════════
 /// <summary>
