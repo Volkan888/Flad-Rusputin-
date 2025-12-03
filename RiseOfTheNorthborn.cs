@@ -3944,7 +3944,7 @@ static class EventSystem
         
         // ====== 2003 ======
         historicalEvents.Add(new HistoricalEvent("CHODORKOWSKI_VERHAFTET_2003", "Oligarch Chodorkowski verhaftet", "[RU]", "[EN]", "25. Oktober 2003", "[RU]", "[EN]", 2003, 10, "POLITIK",
-            @"Der reichste Mann Russlands, Michail Chodorkowski, wird verhaftet! Sein Ölkonzern Yukos wird zerschlagen. Die Botschaft: Wer sich Putin widersetzt, fällt.",
+            @"Der reichste Mann Russlands, Michail Chodorkowski, wird verhaftet! Sein Ölkonzern Yukos wird zerschlagen. Die Botschaft: Wer sich Flad widersetzt, fällt.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 40; p.Geld += 300; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
