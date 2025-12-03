@@ -6498,6 +6498,266 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Erster Tschetschenienkrieg 1994", "Invasion Grosnys", "Präsident", 90, 1994, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 400; p.LoyalitätVolk -= 20; Console.WriteLine("⚔️ Krieg beginnt!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Schwarzer Dienstag 1994", "Rubel stürzt ab", "Präsident", 80, 1994, "katastrophe", p => { p.Geld -= 600; p.Gesundheit -= 15; Console.WriteLine("📉 Finanzcrash!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("NATO-Erweiterung Debatte 1994", "Polen will NATO beitreten", "Präsident", 70, 1994, "politisch", p => { p.EinflussInternational -= 20; p.NATOBeziehung -= 25; Console.WriteLine("⚠️ NATO-Bedrohung!"); Thread.Sleep(3000); }));
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // MASSIVE EVENT-DICHTE-ERWEITERUNG (1952-2025)
+        // Jedes Event mit dramatischer Beschreibung + Volk & Spieler-Auswirkungen
+        // ═══════════════════════════════════════════════════════════════════
+        
+        // 1952 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Eiseskälte Leningrad 1952",
+            "WINTER DER VERZWEIFLUNG! Temperaturen fallen auf -40°C. Die Bevölkerung hungert in verfallenen Kommunalkas. Kohle ist knapp, Kinder erfrieren in den Straßen von Leningrad. Das Volk leidet still - doch in ihren Augen lodert Wut auf die Partei, die sie im Stich lässt.",
+            "Kindheit", 70, 1952, "katastrophe",
+            p => {
+                Console.WriteLine("\n❄️ EISESKÄLTE HERRSCHT IN LENINGRAD!");
+                Console.WriteLine("Das Volk friert und hungert. Die Partei ignoriert das Leid.");
+                p.Gesundheit -= 15;
+                p.LoyalitätVolk -= 20;
+                p.LoyalitätPartei -= 10;
+                p.Geld -= 50;
+                Console.WriteLine($"➖ Gesundheit: -15% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk-Loyalität: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Partei-Loyalität: -10% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Ärzte-Verschwörung Panik 1952",
+            "STALINS TERROR ERREICHT HÖHEPUNKT! Neun jüdische Ärzte werden beschuldigt, Kreml-Führer vergiften zu wollen. Massenverhaftungen in Moskau! Das Volk erstarrt in Angst - niemand ist mehr sicher. Nachbarn denunzieren Nachbarn. Die Paranoia des Führers infiziert die gesamte Nation.",
+            "Kindheit", 85, 1952, "politisch",
+            p => {
+                Console.WriteLine("\n🏥 ÄRZTE-VERSCHWÖRUNG - TERROR ÜBERALL!");
+                Console.WriteLine("Jüdische Ärzte werden verhaftet! Das Volk lebt in Angst!");
+                p.EinflussKGB += 20;
+                p.LoyalitätVolk -= 25;
+                p.Gesundheit -= 10;
+                p.LoyalitätPartei += 15;
+                Console.WriteLine($"➕ KGB-Einfluss: +20 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk-Loyalität: -25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -10% → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Schauprozesse 1952",
+            "BLUTIGER SÄUBERUNGSWAHN! 13 jüdische Intellektuelle werden in Moskau hingerichtet. Die Slánský-Prozesse in Prag erschüttern den Ostblock. Das Volk beobachtet schweigend die Hinrichtungen - niemand wagt zu protestieren. Stalin ist allmächtig, unberechenbar und tödlich.",
+            "Kindheit", 75, 1952, "politisch",
+            p => {
+                Console.WriteLine("\n⚖️ SCHAUPROZESSE & EXEKUTIONEN!");
+                Console.WriteLine("13 Intellektuelle hingerichtet! Das Volk schweigt aus Angst!");
+                p.EinflussKGB += 15;
+                p.LoyalitätVolk -= 30;
+                p.Intelligenz += 1;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine($"➕ KGB-Einfluss: +15 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk-Loyalität: -30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Intelligenz: +1 (du lernst aus dem Terror)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1954 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Gulag-Aufstand Kengir 1954",
+            "REVOLUTION IM TODESLAGER! 5000 Häftlinge im Gulag Kengir erheben sich gegen die Wärter! 40 Tage der Freiheit hinter Stacheldraht - doch dann rollen sowjetische Panzer heran. Hunderte werden niedergemetzelt. Das Volk hört Gerüchte, doch niemand spricht darüber.",
+            "Kindheit", 80, 1954, "katastrophe",
+            p => {
+                Console.WriteLine("\n⛓️ GULAG-AUFSTAND BLUTIG NIEDERGESCHLAGEN!");
+                Console.WriteLine("Hunderte Häftlinge sterben! Das Volk erfährt nichts offiziell!");
+                p.EinflussMilitär += 15;
+                p.LoyalitätVolk -= 20;
+                p.Stärke += 1;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"➕ Militär-Einfluss: +15 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk-Loyalität: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Stärke: +1 (die Härte der Zeit formt dich)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Erste Atomkraft Obninsk 1954",
+            "SOWJETMACHT ERLEUCHTET DIE ZUKUNFT! Das weltweit erste kommerzielle Atomkraftwerk wird in Obninsk eröffnet! Die UdSSR führt das Atomzeitalter an. Das Volk jubelt - endlich gibt es Hoffnung auf mehr Strom und ein besseres Leben. Die Parteipropaganda feiert den 'Roten Triumph der Wissenschaft'!",
+            "Kindheit", 90, 1954, "politisch",
+            p => {
+                Console.WriteLine("\n⚡ ATOMKRAFT FÜR DAS VOLK!");
+                Console.WriteLine("Obninsk-Reaktor startet! Das Volk hofft auf Wohlstand!");
+                p.EinflussInternational += 25;
+                p.LoyalitätVolk += 20;
+                p.Geld += 100;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➕ International: +25 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk-Loyalität: +20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Geld: +100 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "KGB gegründet 1954",
+            "GEBURT DES ALLMÄCHTIGEN AUGES! Das KGB wird offiziell gegründet - Nachfolger von NKWD und MGB. Ein gigantischer Geheimdienst-Apparat durchdringt jeden Winkel der Sowjetunion. Das Volk wird überwacht, abgehört, kontrolliert. Niemand ist sicher - nicht einmal Parteimitglieder.",
+            "Kindheit", 95, 1954, "politisch",
+            p => {
+                Console.WriteLine("\n👁️ DAS KGB WIRD GEBOREN!");
+                Console.WriteLine("Totale Überwachung beginnt! Das Volk wird kontrolliert!");
+                p.EinflussKGB += 30;
+                p.LoyalitätVolk -= 15;
+                p.LoyalitätPartei += 20;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➕ KGB-Einfluss: +30 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk-Loyalität: -15% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Partei-Loyalität: +20% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1955 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Entstalinisierung beginnt 1955",
+            "STALINS STATUEN STÜRZEN! Chruschtschow beginnt vorsichtig, Stalins Verbrechen anzudeuten. Tausende politische Gefangene werden aus Gulags entlassen. Das Volk atmet auf - doch viele fragen sich: War alles umsonst? Die Partei gibt zu, dass der 'große Führer' Millionen ermordet hat.",
+            "Kindheit", 85, 1955, "politisch",
+            p => {
+                Console.WriteLine("\n🗿 STALIN WIRD KRITISIERT!");
+                Console.WriteLine("Gefangene kehren heim! Das Volk ist verwirrt aber hoffnungsvoll!");
+                p.LoyalitätPartei -= 20;
+                p.LoyalitätVolk += 25;
+                p.Gesundheit += 10;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➖ Partei-Loyalität: -20% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Volk-Loyalität: +25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Gesundheit: +10% → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Belgrader Erklärung 1955",
+            "VERSÖHNUNG MIT DEM VERRÄTER! Chruschtschow reist nach Jugoslawien und entschuldigt sich bei Tito. Die UdSSR erkennt den 'eigenen Weg zum Sozialismus' an. Das Volk ist verwirrt - gestern noch Feind, heute Bruder? Die Parteilinie ändert sich schneller als das Wetter.",
+            "Kindheit", 70, 1955, "politisch",
+            p => {
+                Console.WriteLine("\n🇷🇸 VERSÖHNUNG MIT JUGOSLAWIEN!");
+                Console.WriteLine("Tito ist plötzlich Freund! Das Volk versteht nichts mehr!");
+                p.EinflussInternational += 15;
+                p.LoyalitätVolk -= 10;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ International: +15 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk-Loyalität: -10% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Charisma: +1 (du lernst Diplomatie)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Genfer Gipfel 1955",
+            "HOFFNUNG AUF FRIEDEN! Die 'Großen Vier' treffen sich in Genf - USA, UdSSR, UK, Frankreich. Chruschtschow lächelt, Eisenhower winkt. Das Volk träumt von Frieden und Wohlstand. Doch hinter den Kulissen bleibt das gegenseitige Misstrauen eisig. Der Kalte Krieg friert nur kurz.",
+            "Kindheit", 75, 1955, "politisch",
+            p => {
+                Console.WriteLine("\n☮️ GENFER GIPFEL - ENTSPANNUNG?");
+                Console.WriteLine("Weltmächte verhandeln! Das Volk hofft auf Frieden!");
+                p.EinflussInternational += 20;
+                p.LoyalitätVolk += 15;
+                p.Geld += 75;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ International: +20 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk-Loyalität: +15% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Geld: +75 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2001-2005 - Neue Events für Putin-Ära
+        allEvents.Add(new RandomEvent(
+            "9/11 Terror New York 2001",
+            "DIE WELT BRENNT! Zwei Flugzeuge rasen in die Twin Towers - 3000 Menschen sterben live im Fernsehen. Die USA erklären den 'Krieg gegen den Terror'. Putin sieht seine Chance: Russland wird plötzlich zum Verbündeten des Westens. Das Volk erinnert sich an eigene Terror-Anschläge.",
+            "Präsident", 95, 2001, "katastrophe",
+            p => {
+                Console.WriteLine("\n✈️💥 9/11 - WELTORDNUNG WANKT!");
+                Console.WriteLine("USA und Russland verbünden sich gegen Terror!");
+                p.EinflussInternational += 30;
+                p.LoyalitätVolk += 10;
+                p.USABeziehung += 25;
+                p.Geld += 200;
+                Console.WriteLine($"➕ International: +30 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk-Loyalität: +10% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ USA-Beziehung: +25 → {p.USABeziehung}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Moskau-Theater Geiselnahme 2002",
+            "HORROR IM DUBROWKA-THEATER! 40 tschetschenische Terroristen nehmen 900 Geiseln. Putin befiehlt Giftgas-Einsatz - 130 Geiseln sterben qualvoll. Das Volk ist geschockt, doch die Propaganda verdreht alles: 'Helden retteten Hunderte'. Die Wahrheit stirbt im Gas.",
+            "Präsident", 90, 2002, "katastrophe",
+            p => {
+                Console.WriteLine("\n☠️ THEATER-GEISELNAHME ENDET TÖDLICH!");
+                Console.WriteLine("130 Tote durch Giftgas! Das Volk ist erschüttert!");
+                p.EinflussMilitär += 20;
+                p.LoyalitätVolk -= 35;
+                p.Gesundheit -= 25;
+                p.LoyalitätPartei += 15;
+                Console.WriteLine($"➕ Militär: +20 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk-Loyalität: -35% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -25% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Chodorkowski verhaftet 2003",
+            "OLIGARCH IM KÄFIG! Michail Chodorkowski, reichster Mann Russlands, wird vom FSB verhaftet. Sein Verbrechen? Zu reich, zu mächtig, zu unabhängig. Putin zeigt allen: 'Ich bin der Boss'. Das Volk applaudiert - endlich werden die Oligarchen bestraft! Doch andere Oligarchen kriechen vor Putin.",
+            "Präsident", 85, 2003, "politisch",
+            p => {
+                Console.WriteLine("\n⛓️ OLIGARCH CHODORKOWSKI VERHAFTET!");
+                Console.WriteLine("Das Volk jubelt: Rache an den Reichen!");
+                p.EinflussKGB += 25;
+                p.LoyalitätVolk += 30;
+                p.Geld += 500;
+                p.LoyalitätPartei += 20;
+                Console.WriteLine($"➕ KGB/FSB-Einfluss: +25 → {p.EinflussKGB}");
+                Console.WriteLine($"➕ Volk-Loyalität: +30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Geld: +500 Rubel (beschlagnahmt) → {p.Geld}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Beslan Schulmassaker 2004",
+            "KINDER STERBEN IN FLAMMEN! Terroristen nehmen 1100 Menschen in einer Schule als Geiseln - darunter 777 Kinder. Die Armee stürmt mit Panzern und Flammenwerfern. 334 Tote, davon 186 Kinder. Das Volk trauert und weint. Putin schweigt drei Tage lang.",
+            "Präsident", 95, 2004, "katastrophe",
+            p => {
+                Console.WriteLine("\n💔 BESLAN - DIE NATION WEINT!");
+                Console.WriteLine("186 Kinder tot! Das Volk ist gebrochen!");
+                p.Gesundheit -= 30;
+                p.LoyalitätVolk -= 40;
+                p.EinflussMilitär -= 15;
+                p.Geld -= 300;
+                Console.WriteLine($"➖ Gesundheit: -30% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk-Loyalität: -40% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Militär: -15 → {p.EinflussMilitär}");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Orange Revolution Ukraine 2004",
+            "KIEWER MAIDAN BRENNT! Eine Million Ukrainer protestieren gegen Wahlfälschung. Der pro-russische Kandidat wird gestürzt, der Westen jubelt. Putin ist wütend - die Ukraine entgleitet seinem Griff. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren?",
+            "Präsident", 80, 2004, "politisch",
+            p => {
+                Console.WriteLine("\n🧡 ORANGE REVOLUTION IN UKRAINE!");
+                Console.WriteLine("Ukraine wendet sich dem Westen zu! Das Volk ist beunruhigt!");
+                p.EinflussInternational -= 30;
+                p.LoyalitätVolk -= 15;
+                p.Geld -= 200;
+                p.LoyalitätPartei -= 20;
+                Console.WriteLine($"➖ International: -30 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk-Loyalität: -15% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Verlust: -200 Rubel → {p.Geld}");
+                Thread.Sleep(4500);
+            }
+        ));
     }
     
     /// <summary>
