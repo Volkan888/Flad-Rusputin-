@@ -7339,6 +7339,400 @@ static class EventSystem
                 Thread.Sleep(5000);
             }
         ));
+        
+        // ═══════════════════════════════════════════════════════════════════
+        // WEITERE EVENTS FÜR UNTERVERSORGTE JAHRE (1953, 1956-1961, etc.)
+        // ═══════════════════════════════════════════════════════════════════
+        
+        // 1953 - 2 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Beria-Hinrichtung 1953",
+            "DER HENKER WIRD GEHÄNGT! Lawrenti Beria, Stalins Geheimdienstchef und Massenm&ouml;rder, wird verhaftet und hingerichtet. Das Volk jubelt heimlich - endlich wird einer der Schlächter bestraft! Doch die Angst bleibt: Wer ist der nächste? Die Säuberungen hören nie auf, nur die Namen der Täter wechseln.",
+            "Kindheit", 90, 1953, "politisch",
+            p => {
+                Console.WriteLine("\n⚖️ BERIA HINGERICHTET - GERECHTIGKEIT?");
+                Console.WriteLine("Der Monster ist tot! Das Volk atmet erleichtert auf!");
+                p.EinflussKGB -= 25;
+                p.LoyalitätVolk += 20;
+                p.Gesundheit += 10;
+                p.LoyalitätPartei += 15;
+                Console.WriteLine($"➖ KGB: -25 → {p.EinflussKGB}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Gesundheit: +10% → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Gulag-Entlassungen 1953",
+            "DIE TODESLAGER ÖFFNEN SICH! Nach Stalins Tod werden Hunderttausende Häftlinge aus Gulags entlassen. Skelette kehren heim - kaum wiederzuerkennen. Das Volk ist schockiert: Was haben wir unserem eigenen Volk angetan? Familien werden wiedervereinigt. Tränen der Freude und der Schuld.",
+            "Kindheit", 85, 1953, "politisch",
+            p => {
+                Console.WriteLine("\n⛓️ GULAG-HÄFTLINGE KEHREN HEIM!");
+                Console.WriteLine("Hunderttausende freigelassen! Das Volk feiert und weint!");
+                p.LoyalitätVolk += 30;
+                p.Gesundheit += 15;
+                p.LoyalitätPartei -= 15;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ Volk: +30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Gesundheit: +15% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Partei: -15% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1956 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Elvis Presley Phänomen 1956",
+            "WESTLICHE DEKADENZ VERFÜHRT DIE JUGEND! Elvis Presley erobert den Westen - seine Musik sickert heimlich in die Sowjetunion. Jugendliche hören verbotene Platten, tanzen Rock'n'Roll in Kellern. Das Volk ist gespalten: Die Alten sind empört, die Jungen rebellieren. Der eiserne Vorhang kann Musik nicht aufhalten.",
+            "Kindheit", 75, 1956, "politisch",
+            p => {
+                Console.WriteLine("\n🎸 ROCK'N'ROLL ERREICHT SOWJETUNION!");
+                Console.WriteLine("Jugend rebelliert heimlich! Das Volk ist gespalten!");
+                p.LoyalitätPartei -= 20;
+                p.LoyalitätVolk -= 10;
+                p.Charisma += 1;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➖ Partei: -20% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Charisma: +1 (kulturelle Bildung)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Suez-Krise 1956",
+            "WELTMÄCHTE AM RANDE DES KRIEGES! Großbritannien, Frankreich und Israel greifen Ägypten an. Die USA und UdSSR - zum ersten Mal vereint - zwingen sie zum Rückzug. Das Volk feiert: Sowjetmacht rettet die Welt! Der Kolonialismus stirbt, ein neues Zeitalter beginnt.",
+            "Kindheit", 80, 1956, "politisch",
+            p => {
+                Console.WriteLine("\n🌍 SUEZ-KRISE - SOWJETISCHE DIPLOMATIE!");
+                Console.WriteLine("UdSSR zwingt Kolonialisten zum Rückzug! Das Volk ist stolz!");
+                p.EinflussInternational += 30;
+                p.LoyalitätVolk += 20;
+                p.Geld += 150;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ International: +30 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "XX. Parteitag Entstalinisierung 1956",
+            "CHRUSCHTSCHOWS DONNERSCHLAG! In geheimer Rede prangert Chruschtschow Stalin als Massenmörder an. Das Volk erfährt es über Flüsterpost: Stalin war kein Gott, sondern ein Monster! Alles war Lüge! Die Grundfesten der sowjetischen Ideologie wanken. Manche sind befreit, andere fühlen sich betrogen.",
+            "Kindheit", 95, 1956, "politisch",
+            p => {
+                Console.WriteLine("\n🗣️ GEHEIMREDE ERSCHÜTTERT DIE UdSSR!");
+                Console.WriteLine("Stalin entlarvt! Das Volk ist erschüttert und befreit!");
+                p.LoyalitätPartei -= 30;
+                p.LoyalitätVolk += 25;
+                p.Intelligenz += 2;
+                p.Gesundheit += 10;
+                Console.WriteLine($"➖ Partei: -30% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Volk: +25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Intelligenz: +2 (Wahrheit entdeckt)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1957 - 2 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Anti-Partei-Gruppe 1957",
+            "INTRIGEN IM KREML! Malenkow, Molotow und Kaganowitsch versuchen Chruschtschow zu stürzen. Der Machtkampf tobt im Schatten. Chruschtschow gewinnt - die Verschwörer werden verbannt, nicht ermordet. Das Volk merkt: Die Zeit der Massenerschießungen ist vorbei. Jetzt reicht Verbannung.",
+            "Kindheit", 70, 1957, "politisch",
+            p => {
+                Console.WriteLine("\n⚔️ MACHTKAMPF IM KREML!");
+                Console.WriteLine("Chruschtschow siegt! Das Volk bemerkt: Weniger Blut!");
+                p.LoyalitätPartei += 15;
+                p.LoyalitätVolk += 10;
+                p.EinflussKGB -= 10;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➕ Partei: +15% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➖ KGB: -10 → {p.EinflussKGB}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Laika im Weltraum 1957",
+            "DIE HÜNDIN DER HOFFNUNG! Laika, ein Straßenhund aus Moskau, wird ins All geschossen - das erste Lebewesen im Orbit. Das Volk liebt Laika wie ein nationales Symbol. Doch niemand sagt die Wahrheit: Sie stirbt nach Stunden an Überhitzung. Der Triumph hat einen tödlichen Preis.",
+            "Kindheit", 85, 1957, "politisch",
+            p => {
+                Console.WriteLine("\n🐕 LAIKA - HÜNDIN IM WELTRAUM!");
+                Console.WriteLine("Das Volk feiert! Aber die Wahrheit wird verschwiegen...");
+                p.EinflussInternational += 25;
+                p.LoyalitätVolk += 20;
+                p.Gesundheit -= 5;
+                p.Geld += 100;
+                Console.WriteLine($"➕ International: +25 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1958 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Pasternak Nobelpreis 1958",
+            "LITERATUR-SKANDAL! Boris Pasternak erhält den Nobelpreis für 'Doktor Schiwago' - im Westen gefeiert, in der UdSSR verboten. Das Volk liest heimlich Samisdat-Kopien. Die Partei zwingt Pasternak zur Ablehnung. Das Volk sieht die Heuchelei: Der weltbeste russische Autor darf nicht gefeiert werden.",
+            "Kindheit", 80, 1958, "politisch",
+            p => {
+                Console.WriteLine("\n📚 PASTERNAK-SKANDAL!");
+                Console.WriteLine("Nobelpreis abgelehnt! Das Volk liest heimlich!");
+                p.Intelligenz += 2;
+                p.LoyalitätPartei -= 20;
+                p.LoyalitätVolk -= 15;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ Intelligenz: +2 (verbotene Literatur)");
+                Console.WriteLine($"➖ Partei: -20% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "China-Indien-Grenzkonflikt 1958",
+            "KOMMUNISTISCHE BRÜDER ZERSTREITEN SICH! China und Indien geraten aneinander - die UdSSR ist hin- und hergerissen. Das Volk versteht nicht: Sind wir nicht alle Genossen? Die Sino-Sowjetische Spaltung beginnt schleichend. Die kommunistische Einheit ist eine Illusion.",
+            "Kindheit", 70, 1958, "politisch",
+            p => {
+                Console.WriteLine("\n🇨🇳🇮🇳 KOMMUNISTISCHE ZWIETRACHT!");
+                Console.WriteLine("China und UdSSR entfremden sich! Das Volk ist verwirrt!");
+                p.ChinaBeziehung -= 15;
+                p.LoyalitätVolk -= 10;
+                p.EinflussInternational -= 10;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➖ China: -15 → {p.ChinaBeziehung}");
+                Console.WriteLine($"➖ Volk: -10% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kornkampagne Fiasko 1958",
+            "CHRUSCHTSCHOWS WAHN! 'Wir überholen Amerika beim Mais!' verkündet der Führer. Mais wird überall gepflanzt - selbst in Sibirien, wo er nicht wächst. Das Volk hungert, während Mais auf den Feldern verfault. Die grandiose Idee wird zur Farce. Das Volk lernt: Ideologie füllt keine Mägen.",
+            "Kindheit", 75, 1958, "katastrophe",
+            p => {
+                Console.WriteLine("\n🌽 MAIS-KAMPAGNE SCHEITERT!");
+                Console.WriteLine("Felder voller totem Mais! Das Volk hungert!");
+                p.Geld -= 200;
+                p.LoyalitätVolk -= 25;
+                p.Gesundheit -= 15;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine($"💰 Verlust: -200 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1959 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Chruschtschow USA-Besuch 1959",
+            "DER KREML-CHEF IN AMERIKA! Chruschtschow besucht die USA - erste Visite eines sowjetischen Führers. Er besucht Hollywood, streitet mit Nixon in einer Küche, will Disneyland sehen (Sicherheit verbietet es). Das Volk ist fasziniert: Amerika ist nicht nur der Feind. Die Entspannung riecht nach Hoffnung.",
+            "Kindheit", 85, 1959, "politisch",
+            p => {
+                Console.WriteLine("\n🇺🇸 CHRUSCHTSCHOW IN AMERIKA!");
+                Console.WriteLine("Das Volk staunt über Annäherung!");
+                p.USABeziehung += 30;
+                p.LoyalitätVolk += 15;
+                p.EinflussInternational += 20;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ USA: +30 → {p.USABeziehung}");
+                Console.WriteLine($"➕ Volk: +15% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Luna 2 trifft Mond 1959",
+            "DER MOND GEHÖRT UNS! Luna 2 schlägt auf dem Mond ein - erstes menschgemachtes Objekt auf einem anderen Himmelskörper! Das Volk jubelt vor Radios: Wir sind überlegen! Amerika hinkt hinterher! Der Kosmos ist rot! Die Sowjet-Propaganda feiert den größten Triumph seit Jahren.",
+            "Kindheit", 90, 1959, "politisch",
+            p => {
+                Console.WriteLine("\n🌙 LUNA 2 AUF DEM MOND!");
+                Console.WriteLine("Sowjetische Fahne auf dem Mond! Das Volk ist euphorisch!");
+                p.EinflussInternational += 35;
+                p.LoyalitätVolk += 25;
+                p.Geld += 150;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➕ International: +35 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +25% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sieben-Jahres-Plan 1959",
+            "NEUE VERSPRECHUNGEN, ALTE LÜGEN! Chruschtschow verkündet einen ambitionierten Wirtschaftsplan: 'Kommunismus in 20 Jahren!' Das Volk will glauben, ist aber skeptisch. Sie haben schon so viele Pläne scheitern sehen. Die Schlangen vor Läden werden länger, nicht kürzer. Realität und Propaganda driften auseinander.",
+            "Kindheit", 70, 1959, "politisch",
+            p => {
+                Console.WriteLine("\n📊 NEUER WIRTSCHAFTSPLAN VERKÜNDET!");
+                Console.WriteLine("Große Versprechen! Das Volk ist skeptisch!");
+                p.Geld += 100;
+                p.LoyalitätVolk -= 10;
+                p.LoyalitätPartei += 15;
+                p.Gesundheit -= 5;
+                Console.WriteLine($"💰 Geld: +100 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -10% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1960 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Belka und Strelka zurück 1960",
+            "DIE HÜNDINNEN KEHREN HEIM! Im Gegensatz zu Laika überleben Belka und Strelka ihren Raumflug - erstes Lebewesen, das aus dem Orbit zurückkehrt! Das Volk feiert die beiden Heldinnen. Kinder wollen Belka-und-Strelka-Spielzeug. Der Weltraum-Triumph überdeckt die Armut auf der Erde.",
+            "Kindheit", 85, 1960, "politisch",
+            p => {
+                Console.WriteLine("\n🐕🐕 BELKA UND STRELKA - LEBEND ZURÜCK!");
+                Console.WriteLine("Das Volk jubelt! Nationale Helden auf vier Pfoten!");
+                p.EinflussInternational += 25;
+                p.LoyalitätVolk += 20;
+                p.Gesundheit += 10;
+                p.Charisma += 1;
+                Console.WriteLine($"➕ International: +25 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Francis Gary Powers Prozess 1960",
+            "DER SPY IM KÄFIG! Der abgeschossene U-2-Pilot wird in Moskau vor Gericht gestellt. Millionen sehen den Prozess - Beweis für amerikanische Spionage! Das Volk fühlt sich bestätigt: Der Westen ist der Feind! Powers bekommt 10 Jahre, wird aber 1962 gegen einen sowjetischen Spion getauscht.",
+            "Kindheit", 80, 1960, "politisch",
+            p => {
+                Console.WriteLine("\n⚖️ POWERS-PROZESS - PROPAGANDA-TRIUMPH!");
+                Console.WriteLine("Amerikanischer Spion verurteilt! Das Volk ist empört!");
+                p.EinflussKGB += 20;
+                p.LoyalitätVolk += 15;
+                p.USABeziehung -= 20;
+                p.Geld += 100;
+                Console.WriteLine($"➕ KGB: +20 → {p.EinflussKGB}");
+                Console.WriteLine($"➕ Volk: +15% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kongo-Krise UdSSR involviert 1960",
+            "KALTER KRIEG IN AFRIKA! Nach der belgischen Dekolonisierung tobt ein Bürgerkrieg im Kongo. Die UdSSR unterstützt Lumumba, die USA Mobutu. Das Volk fragt: Warum kämpfen wir in Afrika, während wir hier hungern? Die globale Machtprojektion kostet Milliarden.",
+            "Kindheit", 75, 1960, "politisch",
+            p => {
+                Console.WriteLine("\n🌍 KONGO-KRISE - KALTER KRIEG GLOBAL!");
+                Console.WriteLine("UdSSR kämpft in Afrika! Das Volk versteht es nicht!");
+                p.EinflussInternational += 15;
+                p.Geld -= 250;
+                p.LoyalitätVolk -= 15;
+                p.EinflussMilitär += 10;
+                Console.WriteLine($"➕ International: +15 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Kosten: -250 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1961 - 3 zusätzliche Events
+        allEvents.Add(new RandomEvent(
+            "Titow 24 Stunden im All 1961",
+            "MARATHON IM ORBIT! Gherman Titow umkreist die Erde 17 Mal in 25 Stunden - Rekord! Das Volk ist stolz: Während Amerika 15-Minuten-Hüpfer macht, leben wir einen Tag im Weltraum! Der Weltraum-Wettlauf geht klar an die UdSSR. Amerika ist demütig geschlagen.",
+            "Jugend", 85, 1961, "politisch",
+            p => {
+                Console.WriteLine("\n🚀 TITOW - 24 STUNDEN IM ORBIT!");
+                Console.WriteLine("Neuer Rekord! Das Volk feiert sowjetische Überlegenheit!");
+                p.EinflussInternational += 30;
+                p.LoyalitätVolk += 20;
+                p.Geld += 150;
+                p.Intelligenz += 1;
+                Console.WriteLine($"➕ International: +30 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Währungsreform Rubel 1961",
+            "GELD WIRD NEU GEDRUCKT! Die alte Währung wird 10:1 umgetauscht. Das Volk steht in endlosen Schlangen vor Banken. Manche verlieren ihre Ersparnisse, wenn sie zu spät kommen. 'Reform' nennt es die Partei - 'Diebstahl' flüstert das Volk. Vertrauen in die Wirtschaft schwindet weiter.",
+            "Jugend", 70, 1961, "katastrophe",
+            p => {
+                Console.WriteLine("\n💰 WÄHRUNGSREFORM - RUBEL ENTWERTET!");
+                Console.WriteLine("10:1 Umtausch! Das Volk verliert Ersparnisse!");
+                p.Geld -= 300;
+                p.LoyalitätVolk -= 30;
+                p.Gesundheit -= 10;
+                p.LoyalitätPartei -= 20;
+                Console.WriteLine($"💰 Verlust: -300 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rudolf Nurejew defektiert 1961",
+            "BALLET-STAR FLIEHT IN DEN WESTEN! Rudolf Nurejew, Sowjet-Ballettstar, bleibt in Paris und bittet um Asyl. Schock im Kreml! Das Volk ist gespalten: Manche nennen ihn Verräter, andere verstehen seinen Freiheitsdrang. Der Eiserne Vorhang kann selbst Künstler nicht halten.",
+            "Jugend", 75, 1961, "politisch",
+            p => {
+                Console.WriteLine("\n🩰 NUREJEW DEFEKTIERT!");
+                Console.WriteLine("Ballet-Star flieht! Das Volk ist schockiert!");
+                p.EinflussInternational -= 20;
+                p.LoyalitätVolk -= 15;
+                p.Charisma += 1;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine($"➖ International: -20 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -15% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // TELEFONATE ALS EVENTS - Integration der Hotlines
+        allEvents.Add(new RandomEvent(
+            "📞 KGB-ANRUF: Verdächtige Aktivität",
+            "DAS ROTE TELEFON KLINGELT! Eine heisere Stimme vom KGB: 'Wir beobachten Sie. Ihre Loyalität wird geprüft.' Das Volk lebt in ständiger Angst vor diesen Anrufen. Ein falsches Wort am Telefon kann dein Leben zerstören. Big Brother hört immer zu.",
+            "Präsident", 40, 0, "kgb-telefon",
+            p => {
+                if (p.KGBAnrufeVerfügbar > 0)
+                {
+                    Console.WriteLine("\n📞 KGB RUFT AN!");
+                    Thread.Sleep(2000);
+                    KGBHotline.CallKGB(p);
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "📞 TRUMP-ANRUF aus dem Weißen Haus",
+            "DONALD RUFT AN! Das goldene Telefon klingelt. 'Hey Vladimir, it's Donald!' Die unglaublichsten Deals werden am Telefon besprochen. Das Volk erfährt nichts davon - bis Twitter explodiert. Geopolitik per Tweet und Hotline.",
+            "Präsident", 30, 0, "trump-telefon",
+            p => {
+                if (p.TrumpTelefonAktiv && p.TrumpAnrufeVerfügbar > 0)
+                {
+                    Console.WriteLine("\n📞 TRUMP RUFT AN!");
+                    Thread.Sleep(2000);
+                    TrumpHotline.CallTrump(p);
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "📞 ERDOGAN-ANRUF aus Ankara",
+            "DER SULTAN RUFT! Erdogan am Apparat - charmant und bedrohlich zugleich. Gas-Deals, Syrien-Absprachen, Touristenströme. Das Volk profitiert von türkischen Tomaten. Die Beziehung ist kompliziert: Partner und Rivalen zugleich.",
+            "Präsident", 25, 0, "erdogan-telefon",
+            p => {
+                if (p.ErdoganTelefonAktiv && p.ErdoganAnrufeVerfügbar > 0)
+                {
+                    Console.WriteLine("\n📞 ERDOGAN RUFT AN!");
+                    Thread.Sleep(2000);
+                    ErdoganHotline.CallErdogan(p);
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "📞 XI JINPING-ANRUF aus Beijing",
+            "DER DRACHE MELDET SICH! Xi Jinping persönlich - höflich aber bestimmt. 'Seidenstraße, Bruder?' Das Volk sieht chinesische Investitionen. Die Partnerschaft ist pragmatisch: Gemeinsam gegen den Westen, aber misstrauisch gegeneinander.",
+            "Präsident", 20, 0, "china-telefon",
+            p => {
+                if (p.ChinaTelefonAktiv && p.ChinaAnrufeVerfügbar > 0)
+                {
+                    Console.WriteLine("\n📞 CHINA RUFT AN!");
+                    Thread.Sleep(2000);
+                    ChinaHotline.CallChina(p);
+                }
+            }
+        ));
     }
     
     /// <summary>
