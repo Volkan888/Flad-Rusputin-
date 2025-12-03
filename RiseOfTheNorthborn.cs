@@ -4123,7 +4123,7 @@ static class EventSystem
         
         // ====== 2019-2020 ======
         historicalEvents.Add(new HistoricalEvent("RENTENREFORM_PROTESTE_2019", "Rentenalter erhöht - Proteste", "[RU]", "[EN]", "1. Januar 2019", "[RU]", "[EN]", 2019, 1, "POLITIK",
-            @"Putin erhöht das Rentenalter drastisch. Seine Beliebtheit sinkt erstmals deutlich. Die Menschen sind verärgert. Ein seltener Fehler.",
+            @"Flad erhöht das Rentenalter drastisch. Seine Beliebtheit sinkt erstmals deutlich. Die Menschen sind verärgert. Ein seltener Fehler.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 35; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
