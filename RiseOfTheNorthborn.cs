@@ -1556,6 +1556,252 @@ static class EventSystem
                 p.LoyalitätVolk -= 15; // Unzureichende Prävention
             }
         ));
+        
+        // ═══════════════════════════════════════════════════════════
+        // SIDECHICK / AFFÄREN-EVENTS (Neue Kategorie)
+        // Zufällige Affären führen zu unehelichen Kindern
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Geheime Affäre",
+            "Eine charmante Diplomatin aus Belarus zieht deine Aufmerksamkeit auf sich...",
+            "Präsident", 0, 0, "sidechick",
+            p => {
+                Console.WriteLine("\n[1] Affäre eingehen (riskant!)");
+                Console.WriteLine("[2] Ablehnen (treu bleiben)");
+                Console.Write("Wähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n💋 Die Affäre beginnt...");
+                    Thread.Sleep(1500);
+                    
+                    // 60% Chance auf uneheliches Kind
+                    if (rand.Next(100) < 60)
+                    {
+                        Console.WriteLine("\n👶 ÜBERRASCHUNG: Sie ist schwanger!");
+                        
+                        bool isBoy = rand.Next(2) == 0;
+                        Console.Write($"\nName für das uneheliche Kind (Enter = Standardname): ");
+                        string vorname = Console.ReadLine();
+                        
+                        if (string.IsNullOrWhiteSpace(vorname))
+                            vorname = isBoy ? "Alexei" : "Anastasia";
+                        
+                        string childName = $"{vorname} [Unehelich] Gen{p.Generation + 1}";
+                        
+                        PlayerCharacter child = new PlayerCharacter(childName, p.Generation + 1);
+                        child.Alter = 0;
+                        child.Phase = "Kind";
+                        child.Geburtsjahr = p.GetCurrentYear();
+                        
+                        // Attribute vererben
+                        child.Stärke = Math.Max(0, p.Stärke + rand.Next(-2, 2));
+                        child.Intelligenz = Math.Max(0, p.Intelligenz + rand.Next(-2, 2));
+                        child.Charisma = Math.Max(0, p.Charisma + rand.Next(-2, 2));
+                        child.Kraft = Math.Max(0, p.Kraft + rand.Next(-2, 2));
+                        
+                        p.Kinder.Add(child);
+                        
+                        Console.WriteLine($"\n✓ {childName} wurde heimlich geboren!");
+                        Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
+                    }
+                    
+                    // Negative Konsequenzen
+                    p.LoyalitätFamilie -= 30; // Familie leidet
+                    p.Geld -= 100; // Schweigegeld
+                    
+                    if (p.IstVerheiratet)
+                    {
+                        Console.WriteLine("\n⚠ Deine Ehe ist angespannt...");
+                        p.LoyalitätFamilie -= 20;
+                    }
+                    
+                    // 30% Chance auf Skandal
+                    if (rand.Next(100) < 30)
+                    {
+                        Console.WriteLine("\n📰 SKANDAL! Die Presse erfährt von der Affäre!");
+                        p.LoyalitätVolk -= 40;
+                        p.LoyalitätPartei -= 25;
+                        p.Geld -= 200; // Schadensbegrenzung
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\nDu bleibst deinen Prinzipien treu.");
+                    p.LoyalitätFamilie += 10;
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Alte Flamme",
+            "Eine Jugendliebe aus Leningrad taucht plötzlich wieder auf...",
+            "DDR-Einsatz", 0, 0, "sidechick",
+            p => {
+                Console.WriteLine("Sie behauptet, du seist der Vater ihres Kindes!");
+                Console.WriteLine("\n[1] DNA-Test machen (+Geld, Gewissheit)");
+                Console.WriteLine("[2] Kind anerkennen (Risiko)");
+                Console.WriteLine("[3] Ablehnen");
+                Console.Write("Wähle [1-3]: ");
+                
+                string choice = Console.ReadLine();
+                
+                if (choice == "1")
+                {
+                    p.Geld -= 50;
+                    if (rand.Next(100) < 40) // 40% tatsächlich dein Kind
+                    {
+                        Console.WriteLine("\n✓ DNA-Test positiv! Es ist dein Kind.");
+                        AddIllegitimateChild(p);
+                        p.LoyalitätFamilie -= 15;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n✗ DNA-Test negativ. Betrugsversuch!");
+                        p.EinflussKGB += 10; // Erfahrung
+                    }
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("\nDu erkennst das Kind an.");
+                    AddIllegitimateChild(p);
+                    p.Geld -= 80; // Unterhalt
+                    p.LoyalitätFamilie -= 20;
+                }
+                else
+                {
+                    Console.WriteLine("\nDu lehnst ab. Sie droht mit rechtlichen Schritten...");
+                    p.LoyalitätVolk -= 15;
+                    p.Geld -= 30; // Anwaltskosten
+                }
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
+        // FIKTIVE EREIGNISSE AB 2025+
+        // Spekulative Zukunfts-Events für verlängerten Spielspaß
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Arktis-Konflikt 2026",
+            "Streit um neu entdeckte Bodenschätze! NATO vs. Russland in der Arktis...",
+            "Präsident", 0, 2026, "fiktiv",
+            p => {
+                Console.WriteLine("\n[1] Militärische Eskalation");
+                Console.WriteLine("[2] Diplomatische Lösung");
+                Console.Write("Wähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    p.EinflussMilitär += 30;
+                    p.Geld -= 300; // Kriegskosten
+                    p.LoyalitätVolk -= 30;
+                    p.EinflussInternational -= 40;
+                    Console.WriteLine("Russland besetzt arktische Inseln! Weltweite Sanktionen.");
+                }
+                else
+                {
+                    p.EinflussInternational += 20;
+                    p.LoyalitätVolk += 15;
+                    p.Geld += 100; // Handel
+                    Console.WriteLine("Friedensabkommen erzielt. Russland erhält Schürfrechte.");
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "KI-Revolution 2028",
+            "Russische KI 'Sputnik-Mind' übertrifft westliche Konkurrenz! Wirtschaftsboom...",
+            "Präsident", 0, 2028, "fiktiv",
+            p => {
+                Console.WriteLine("Russland wird zum Tech-Giganten!");
+                p.Geld += 500;
+                p.LoyalitätVolk += 20;
+                p.EinflussInternational += 25;
+                p.LoyalitätPartei += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Cyber-Angriff 2030",
+            "Massiver Cyberangriff legt Infrastruktur lahm! Stromausfälle, Chaos...",
+            "Präsident", 0, 2030, "fiktiv",
+            p => {
+                Console.WriteLine("Wer steckt dahinter? China? USA? Innere Feinde?");
+                p.Gesundheit -= 25;
+                p.Geld -= 250;
+                p.LoyalitätVolk -= 40;
+                p.EinflussKGB += 20; // Sicherheitsapparat gestärkt
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Klima-Kollaps Sibirien 2032",
+            "Permafrost schmilzt! Methan-Freisetzung, Städte sinken ein...",
+            "Präsident", 0, 2032, "fiktiv",
+            p => {
+                Console.WriteLine("Umweltkatastrophe biblischen Ausmaßes in Sibirien.");
+                p.Gesundheit -= 20;
+                p.Geld -= 400; // Umsiedlungen
+                p.LoyalitätVolk -= 35;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Eurasische Union 2035",
+            "Russland, China, Indien gründen Eurasische Union! Neue Weltordnung?",
+            "Präsident", 0, 2035, "fiktiv",
+            p => {
+                Console.WriteLine("Geopolitische Neuordnung! Der Westen ist besorgt...");
+                p.EinflussInternational += 50;
+                p.Geld += 300;
+                p.LoyalitätPartei += 30;
+                p.LoyalitätVolk += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Mars-Kolonie 2040",
+            "Russland landet als erste Nation auf dem Mars! Nationale Euphorie...",
+            "Präsident", 0, 2040, "fiktiv",
+            p => {
+                Console.WriteLine("🚀 Russischer Kosmonaut betritt Mars! Weltweit gefeiert!");
+                p.Geld -= 200; // Kosten
+                p.LoyalitätVolk += 40;
+                p.EinflussInternational += 35;
+                p.LoyalitätPartei += 20;
+            }
+        ));
+    }
+    
+    // Hilfsfunktion für uneheliche Kinder
+    static void AddIllegitimateChild(PlayerCharacter player)
+    {
+        bool isBoy = rand.Next(2) == 0;
+        Console.Write($"\nName für das uneheliche Kind: ");
+        string vorname = Console.ReadLine();
+        
+        if (string.IsNullOrWhiteSpace(vorname))
+            vorname = isBoy ? "Dmitri" : "Irina";
+        
+        string childName = $"{vorname} [Unehelich] Gen{player.Generation + 1}";
+        
+        PlayerCharacter child = new PlayerCharacter(childName, player.Generation + 1);
+        child.Alter = 0;
+        child.Phase = "Kind";
+        child.Geburtsjahr = player.GetCurrentYear();
+        
+        child.Stärke = Math.Max(0, player.Stärke + rand.Next(-2, 2));
+        child.Intelligenz = Math.Max(0, player.Intelligenz + rand.Next(-2, 2));
+        child.Charisma = Math.Max(0, player.Charisma + rand.Next(-2, 2));
+        child.Kraft = Math.Max(0, player.Kraft + rand.Next(-2, 2));
+        
+        player.Kinder.Add(child);
+        
+        Console.WriteLine($"\n✓ {childName} wurde geboren!");
+        Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
+    }
     }
     
     /// <summary>
