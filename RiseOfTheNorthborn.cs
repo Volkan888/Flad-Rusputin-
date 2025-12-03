@@ -343,6 +343,19 @@ class PlayerCharacter
         TrumpTelefonAktiv = false;        // Wird durch Event freigeschaltet
         TrumpAnrufeVerfügbar = 3;         // 3 Anrufe mit Trump
         USABeziehung = 50;                // Neutrale Beziehung
+        
+        // NATO-Telefon initialisieren
+        NATOTelefonAktiv = false;         // Wird durch Event freigeschaltet
+        NATOAnrufeVerfügbar = 3;          // 3 Anrufe mit NATO
+        NATOBeziehung = 30;               // Angespannte Beziehung
+        
+        // Finka-System initialisieren
+        HatFinka = false;                 // Keine Finka zu Beginn
+        LetzterFinkabesuch = 0;
+        FinkaKosten = 800;                // Teuer!
+        
+        // Shortcut-Timer initialisieren
+        LetzteShortcutAnzeige = 0;
     }
     
     /// <summary>
