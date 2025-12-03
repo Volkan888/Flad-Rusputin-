@@ -11184,6 +11184,130 @@ class Program
     }
     
     /// <summary>
+    /// Show10YearMenu - Zeigt alle 10 Jahre Menü mit Laden/Speichern und Telefonate
+    /// Ersetzt das alte Shortcut-System
+    /// </summary>
+    static void Show10YearMenu(PlayerCharacter player)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(@"
+╔═══════════════════════════════════════════════════════════╗
+║           📅 10-JAHRES-CHECKPOINT 📅                      ║
+╚═══════════════════════════════════════════════════════════╝
+");
+        Console.ResetColor();
+        
+        Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
+        Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%\n");
+        
+        while (true)
+        {
+            Console.WriteLine("═══════════════════════════════════════════════════════════");
+            Console.WriteLine("[1] 💾 Spiel speichern");
+            Console.WriteLine("[2] 📂 Spiel laden");
+            Console.WriteLine("[3] 📞 Telefonate (Erdogan, Trump, China)");
+            Console.WriteLine("[4] ✅ Weiter spielen");
+            Console.WriteLine("═══════════════════════════════════════════════════════════");
+            Console.Write("\nWähle [1-4]: ");
+            
+            string choice = Console.ReadLine();
+            
+            if (choice == "1")
+            {
+                Console.WriteLine("\n>> Spiel wird gespeichert...");
+                SaveGame(player);
+                Console.WriteLine("✓ Gespeichert!");
+                Thread.Sleep(2000);
+                Console.Clear();
+            }
+            else if (choice == "2")
+            {
+                Console.WriteLine("\n⚠️  Laden beendet das aktuelle Spiel.");
+                Console.Write("Wirklich laden? [J/N]: ");
+                string confirm = Console.ReadLine()?.ToUpper();
+                if (confirm == "J")
+                {
+                    LoadGame();
+                    return;
+                }
+                Console.Clear();
+            }
+            else if (choice == "3")
+            {
+                ShowPhoneMenu(player);
+                Console.Clear();
+            }
+            else if (choice == "4")
+            {
+                Console.WriteLine("\n>> Weiter geht's!");
+                Thread.Sleep(1000);
+                return;
+            }
+            else
+            {
+                Console.WriteLine("\n❌ Ungültige Eingabe!");
+                Thread.Sleep(1500);
+                Console.Clear();
+            }
+        }
+    }
+    
+    /// <summary>
+    /// ShowPhoneMenu - Telefonate mit Staatschefs
+    /// </summary>
+    static void ShowPhoneMenu(PlayerCharacter player)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+╔═══════════════════════════════════════════════════════════╗
+║                  📞 TELEFONATE 📞                          ║
+╚═══════════════════════════════════════════════════════════╝
+");
+        Console.ResetColor();
+        
+        while (true)
+        {
+            Console.WriteLine("\n═══════════════════════════════════════════════════════════");
+            Console.WriteLine($"[1] 🇹🇷 Erdogan anrufen ({player.ErdoganAnrufeVerfügbar}/5 verfügbar)");
+            Console.WriteLine($"[2] 🇺🇸 Trump anrufen ({(player.TrumpTelefonAktiv ? player.TrumpAnrufeVerfügbar + "/3" : "nicht freigeschaltet")})");
+            Console.WriteLine($"[3] 🇨🇳 China anrufen ({(player.ChinaTelefonAktiv ? player.ChinaAnrufeVerfügbar + "/3" : "nicht freigeschaltet")})");
+            Console.WriteLine("[4] ⬅️  Zurück");
+            Console.WriteLine("═══════════════════════════════════════════════════════════");
+            Console.Write("\nWähle [1-4]: ");
+            
+            string choice = Console.ReadLine();
+            
+            if (choice == "1" && player.ErdoganAnrufeVerfügbar > 0)
+            {
+                ErdoganHotline.ShowHotlineMenu(player);
+                Console.Clear();
+            }
+            else if (choice == "2" && player.TrumpTelefonAktiv && player.TrumpAnrufeVerfügbar > 0)
+            {
+                TrumpHotline.CallTrump(player);
+                Console.Clear();
+            }
+            else if (choice == "3" && player.ChinaTelefonAktiv && player.ChinaAnrufeVerfügbar > 0)
+            {
+                ChinaHotline.CallChina(player);
+                Console.Clear();
+            }
+            else if (choice == "4")
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("\n❌ Nicht verfügbar oder keine Anrufe mehr!");
+                Thread.Sleep(1500);
+                Console.Clear();
+            }
+        }
+    }
+    
+    /// <summary>
     /// ShowShortcutReminder - Zeigt alle 5 Jahre Shortcut-Übersicht
     /// </summary>
     static void ShowShortcutReminder(PlayerCharacter player)
