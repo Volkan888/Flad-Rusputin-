@@ -361,6 +361,11 @@ class PlayerCharacter
         
         // Shortcut-Timer initialisieren
         LetzteShortcutAnzeige = 0;
+        
+        // China-Telefon initialisieren
+        ChinaTelefonAktiv = false;        // Wird durch Event freigeschaltet
+        ChinaAnrufeVerfügbar = 3;         // 3 Anrufe
+        ChinaBeziehung = 70;              // Gute Beziehung (Allianz)
     }
     
     /// <summary>
