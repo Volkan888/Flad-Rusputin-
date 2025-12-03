@@ -1,0 +1,540 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 1978-1984
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 21
+
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: AFGHANISTAN_REVOLUTION_1978
+JAHR: 1978
+
+TITEL_DE: Kommunisten putschen in Afghanistan
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 27. April 1978
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die kommunistische Partei putscht in Afghanistan! Ein prosowjetisches Regime übernimmt. Aber der Widerstand wächst. Der Weg in die Katastrophe beginnt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: PAPST_JOHANNES_PAUL_1978
+JAHR: 1978
+
+TITEL_DE: Polnischer Papst gewählt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 16. Oktober 1978
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Karol Wojtyła wird Papst Johannes Paul II. - der erste polnische Papst! Der KGB ist besorgt: Ein Papst aus dem Ostblock könnte gefährlich werden.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: CAMP_DAVID_1978
+JAHR: 1978
+
+TITEL_DE: Camp David Abkommen - Sowjetischer Verbündeter wechselt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 17. September 1978
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Ägypten und Israel schließen Frieden mit US-Vermittlung. Ägypten wendet sich vom sowjetischen Einfluss ab. Ein diplomatischer Verlust.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: AFGHANISTAN_INVASION_1979
+JAHR: 1979
+
+TITEL_DE: Invasion in Afghanistan
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 24. Dezember 1979
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Sowjetische Truppen marschieren in Afghanistan ein! 'Bruderhilfe' nennt es die Propaganda. Die Welt spricht von Invasion. Es wird Breschnews Vietnam - ein blutiger Sumpf.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: SALT_II_1979
+JAHR: 1979
+
+TITEL_DE: SALT II unterzeichnet - aber nicht ratifiziert
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 18. Juni 1979
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Carter und Breschnew unterzeichnen SALT II zur weiteren Rüstungskontrolle. Doch nach der Afghanistan-Invasion ratifiziert der US-Senat nicht. Die Entspannung ist tot.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: IRAN_REVOLUTION_1979
+JAHR: 1979
+
+TITEL_DE: Islamische Revolution im Iran
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. Februar 1979
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Schah flieht, Ayatollah Khomeini übernimmt. Der Iran wird islamische Republik. Weder pro-sowjetisch noch pro-amerikanisch - eine Niederlage für beide Supermächte.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: OLYMPIA_MOSKAU_BOYKOTT_1980
+JAHR: 1980
+
+TITEL_DE: Olympia in Moskau - Westlicher Boykott
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 19. Juli 1980
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die Sommerspiele in Moskau sollten ein Triumph werden - doch 65 Nationen boykottieren wegen Afghanistan! Die Propaganda versucht, es zu beschönigen. Eine Demütigung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: SACHAROW_VERBANNUNG_1980
+JAHR: 1980
+
+TITEL_DE: Sacharow nach Gorki verbannt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 22. Januar 1980
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Physiker und Dissident Andrej Sacharow wird nach Gorki verbannt - eine geschlossene Stadt. Isoliert von der Außenwelt. Der Westen protestiert lautstark.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: SOLIDARNOSC_POLEN_1980
+JAHR: 1980
+
+TITEL_DE: Solidarność in Polen gegründet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 31. August 1980
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die unabhängige Gewerkschaft Solidarność wird in Polen gegründet! 10 Millionen Mitglieder. Der Kreml ist alarmiert - ist das der Anfang vom Ende des Ostblocks?
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: REAGAN_PRAESIDENT_1981
+JAHR: 1981
+
+TITEL_DE: Ronald Reagan wird US-Präsident
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 20. Januar 1981
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Hardliner Reagan wird Präsident! Er nennt die UdSSR das 'Reich des Bösen' und rüstet massiv auf. Die Entspannung ist endgültig vorbei.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: PAPST_ATTENTAT_1981
+JAHR: 1981
+
+TITEL_DE: Attentat auf den Papst
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. Mai 1981
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der türkische Attentäter Mehmet Ali Ağca schießt auf Papst Johannes Paul II. Der Papst überlebt. Später tauchen Gerüchte auf: War der KGB beteiligt?
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: KRIEGSRECHT_POLEN_1981
+JAHR: 1981
+
+TITEL_DE: Kriegsrecht in Polen ausgerufen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. Dezember 1981
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+General Jaruzelski verhängt Kriegsrecht in Polen! Panzer auf den Straßen, Solidarność-Führer verhaftet. Der Kreml atmet auf - vorerst keine Invasion nötig.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: BRESCHNEW_TOD_1982
+JAHR: 1982
+
+TITEL_DE: Leonid Breschnew stirbt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 10. November 1982
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach 18 Jahren an der Macht stirbt Breschnew. Die 'Ära der Stagnation' endet. Juri Andropow, der KGB-Chef, übernimmt. Wird er Reformen wagen?
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_014_START]
+ID: ANDROPOW_MACHT_1982
+JAHR: 1982
+
+TITEL_DE: Andropow wird Generalsekretär
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 12. November 1982
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Juri Andropow, der ehemalige KGB-Chef, übernimmt die Führung. Er verspricht Disziplin und Effizienz. Aber er ist bereits krank.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_014_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_015_START]
+ID: AFGHANISTAN_SUMPF_1982
+JAHR: 1982
+
+TITEL_DE: Afghanistan - Der Krieg eskaliert
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. April 1982
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die Mudschahedin bekommen US-Waffen. Der Krieg wird brutaler. Sowjetische Soldaten sterben zu Hunderten. Zinksärge kommen nach Hause. Das Volk schweigt - aber es weiß.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_015_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_016_START]
+ID: KAL007_ABSCHUSS_1983
+JAHR: 1983
+
+TITEL_DE: Südkoreanisches Passagierflugzeug abgeschossen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. September 1983
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Ein sowjetisches Kampfjet schießt Korean Air 007 ab - 269 Tote! Die UdSSR behauptet, es war ein Spionageflugzeug. Die Welt ist entsetzt. Reagan nennt es 'Massaker'.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_016_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_017_START]
+ID: SDI_STAR_WARS_1983
+JAHR: 1983
+
+TITEL_DE: Reagan verkündet SDI - 'Star Wars'
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 23. März 1983
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Reagan kündigt das 'Strategic Defense Initiative' an - ein Raketenabwehrsystem im Weltraum! Die UdSSR kann wirtschaftlich nicht mithalten. Die Angst wächst.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_017_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_018_START]
+ID: ABLE_ARCHER_1983
+JAHR: 1983
+
+TITEL_DE: Able Archer 83 - Fast Atomkrieg
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. November 1983
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+NATO-Manöver 'Able Archer': Die sowjetische Führung glaubt, es ist Vorbereitung für einen Atomschlag! Die Welt steht am Abgrund - ohne es zu wissen.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_018_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_019_START]
+ID: ANDROPOW_TOD_1984
+JAHR: 1984
+
+TITEL_DE: Andropow stirbt - Tschernenko übernimmt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 9. Februar 1984
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Andropow stirbt nach nur 15 Monaten im Amt. Konstantin Tschernenko, 72 und krank, wird sein Nachfolger. Die Sowjetunion wird von einem Greis regiert.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_019_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_020_START]
+ID: OLYMPIA_BOYKOTT_LA_1984
+JAHR: 1984
+
+TITEL_DE: UdSSR boykottiert Olympia in Los Angeles
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 8. Mai 1984
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Als Vergeltung für 1980 boykottiert die UdSSR die Spiele in Los Angeles. Der Ostblock folgt. Der Kalte Krieg im Sport.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_020_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_021_START]
+ID: GORBATSCHOW_AUFSTIEG_1984
+JAHR: 1984
+
+TITEL_DE: Gorbatschow steigt auf
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. Dezember 1984
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Michail Gorbatschow, 53, wird zur Nummer 2 im Politbüro. Er gilt als Reformer. Viele hoffen: Vielleicht kann er das System retten?
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_021_END]
+
+──────────────────────────────────────────────────────────────────────
+

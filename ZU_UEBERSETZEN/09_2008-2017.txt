@@ -1,0 +1,515 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 2008-2017
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 20
+
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: MEDWEDJEW_PRAESIDENT_2008
+JAHR: 2008
+
+TITEL_DE: Medwedjew wird Präsident - Putin Premier
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 7. Mai 2008
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Dmitri Medwedjew wird Präsident, Putin wird Premierminister. Das 'Tandem' beginnt. Aber jeder weiß: Putin hat weiter das Sagen.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: GEORGIENKRIEG_2008
+JAHR: 2008
+
+TITEL_DE: Krieg mit Georgien - 5 Tage Blitzkrieg
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 8. August 2008
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Georgien greift Südossetien an. Russland marschiert ein! In 5 Tagen wird Georgien militärisch zerschlagen. Die Botschaft: Russland ist wieder eine Militärmacht! NATO schaut machtlos zu.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: FINANZKRISE_2008
+JAHR: 2008
+
+TITEL_DE: Weltweite Finanzkrise trifft Russland
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. September 2008
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die Lehman-Pleite löst Weltwirtschaftskrise aus. Der Ölpreis stürzt ab, Russlands Wirtschaft taumelt. Die Börse bricht um 70% ein.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: METRO_ANSCHLAEGE_2010
+JAHR: 2010
+
+TITEL_DE: Selbstmordattentate in Moskauer Metro
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 29. März 2010
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Zwei Selbstmordattentäterinnen sprengen sich in der Moskauer Metro - 40 Tote. Tschetschenischer Terror erreicht das Herz Russlands.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: PUTIN_KANDIDATUR_2011
+JAHR: 2011
+
+TITEL_DE: Putin kandidiert wieder für Präsidentschaft
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 24. September 2011
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin verkündet: Er will wieder Präsident werden! Das Tandem war nur Theater. Proteste beginnen: 'Putin muss weg!'
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: DUMAWAHLEN_PROTESTE_2011
+JAHR: 2011
+
+TITEL_DE: Dumawahlen - Vorwürfe massiver Fälschungen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 4. Dezember 2011
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die Dumawahlen sind offensichtlich gefälscht! Zehntausende protestieren in Moskau. Die größten Proteste seit den 90ern. 'Russland ohne Putin!'
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: PUTIN_DRITTE_AMTSZEIT_2012
+JAHR: 2012
+
+TITEL_DE: Putin wird zum dritten Mal Präsident
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 7. Mai 2012
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin kehrt als Präsident zurück - mit umstrittener Wahl. Am Wahltag: Proteste und Verhaftungen. Der 'Eiszeit' beginnt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: PUSSY_RIOT_2012
+JAHR: 2012
+
+TITEL_DE: Pussy Riot verhaftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 3. August 2012
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die Punk-Band Pussy Riot wird wegen 'Rowdytum aus religiösem Hass' zu 2 Jahren Haft verurteilt. Weltweite Empörung. Symbol für Putins autoritären Kurs.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: SNOWDEN_ASYL_2013
+JAHR: 2013
+
+TITEL_DE: Snowden erhält Asyl in Russland
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. August 2013
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der NSA-Whistleblower Edward Snowden erhält Asyl in Russland! Die USA sind wütend. Ein propagandistischer Coup für Putin.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: UKRAINE_EU_2013
+JAHR: 2013
+
+TITEL_DE: Ukraine wendet sich von EU ab
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 21. November 2013
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Unter russischem Druck sagt die Ukraine das EU-Assoziierungsabkommen ab. Massendemonstrationen beginnen auf dem Maidan. Der Euromaidan startet.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: SOTSCHI_OLYMPIA_2014
+JAHR: 2014
+
+TITEL_DE: Winterolympiade in Sotschi
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 7. Februar 2014
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die teuersten Winterspiele aller Zeiten! 50 Milliarden Dollar! Putins Prestigeprojekt. Prunk und Propaganda. Doch Dopingvorwürfe werfen Schatten.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: MAIDAN_JANUKOWITSCH_FLIEHT_2014
+JAHR: 2014
+
+TITEL_DE: Janukowitsch flieht aus Ukraine
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 22. Februar 2014
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der pro-russische Präsident Janukowitsch flieht! Die Maidan-Revolution siegt. Putin nennt es 'Putsch'. Die Ukraine wendet sich dem Westen zu.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: KRIM_ANNEXION_2014
+JAHR: 2014
+
+TITEL_DE: Annexion der Krim
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 18. März 2014
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+HISTORISCHER MOMENT! 'Grüne Männchen' (russische Soldaten ohne Abzeichen) besetzen die Krim. Ein inszeniertes 'Referendum': 97% für Russland. Putin verkündet: Die Krim ist wieder russisch! Der Westen schreit 'Völkerrechtsbruch!'. Sanktionen beginnen. In Russland Euphorie: 'Krim ist unser!' Putins Beliebtheit explodiert auf 80%+.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_014_START]
+ID: DONBASS_KRIEG_2014
+JAHR: 2014
+
+TITEL_DE: Krieg im Donbass beginnt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 12. April 2014
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach der Krim-Annexion brechen Kämpfe im Osten der Ukraine aus. Pro-russische Separatisten gegen ukrainische Armee. Russland liefert Waffen und 'Freiwillige'. Ein eingefrorener Konflikt entsteht.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_014_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_015_START]
+ID: MH17_ABSCHUSS_2014
+JAHR: 2014
+
+TITEL_DE: MH17 über Donbass abgeschossen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 17. Juli 2014
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Malaysian Airlines Flug MH17 wird über der Ostukraine abgeschossen - 298 Tote! Beweise zeigen: Eine russische Buk-Rakete. Moskau leugnet. Internationale Empörung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_015_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_016_START]
+ID: NEMZOW_MORD_2015
+JAHR: 2015
+
+TITEL_DE: Oppositionsführer Nemzow ermordet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 27. Februar 2015
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Boris Nemzow wird direkt vor dem Kreml erschossen! Der prominenteste Putin-Kritiker ist tot. Offiziell: Tschetschenen. Viele vermuten den Kreml. Ein Schock.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_016_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_017_START]
+ID: SYRIEN_INTERVENTION_2015
+JAHR: 2015
+
+TITEL_DE: Russland greift in Syrien ein
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 30. September 2015
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Russische Kampfjets bombardieren Syrien! Offiziell gegen ISIS, faktisch für Assad. Russland ist wieder eine globale Militärmacht! Der Westen ist überrumpelt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_017_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_018_START]
+ID: DOPING_SKANDAL_2016
+JAHR: 2016
+
+TITEL_DE: Russland-Dopingskandal - Olympia-Ausschluss
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 18. Juli 2016
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Systematisches Staatsdoping aufgedeckt! Russische Athleten werden von Rio ausgeschlossen. Putin nennt es 'anti-russische Kampagne'. Ein Imageschaden.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_018_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_019_START]
+ID: US_WAHL_HACK_2016
+JAHR: 2016
+
+TITEL_DE: Russland mischt sich in US-Wahl ein
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 8. November 2016
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Trump gewinnt die US-Wahl! US-Geheimdienste: Russland hat die Wahl beeinflusst (Hacks, Desinformation). Ein neues Kapitel des Cyberkriegs. Die Beziehungen werden noch eisiger.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_019_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_020_START]
+ID: TERRORANSCHLAG_METRO_2017
+JAHR: 2017
+
+TITEL_DE: Terroranschlag in St. Petersburger Metro
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 3. April 2017
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Bombenanschlag in der Metro von St. Petersburg - 15 Tote, 45 Verletzte. ISIS bekennt sich. Der Terror kehrt zurück.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_020_END]
+
+──────────────────────────────────────────────────────────────────────
+

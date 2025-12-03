@@ -1,0 +1,173 @@
+═══════════════════════════════════════════════════════════════════
+  ✅ SIDECHICKS & STAMMBAUM - STATUS REPORT
+═══════════════════════════════════════════════════════════════════
+
+## 1. ✅ SIDECHICK-SYSTEM (AFFÄREN)
+
+**WO:** Zeile 4954-5025
+
+**WIE FUNKTIONIERT:**
+- Random Event "Geheime Affäre" erscheint während Präsident-Phase
+- Spieler kann wählen:
+  [1] Affäre eingehen (riskant!)
+  [2] Ablehnen (treu bleiben)
+
+**BEI AFFÄRE:**
+- 60% Chance auf uneheliches Kind 👶
+- Kind wird als "[Unehelich]" markiert
+- Kind wird zu Kinderliste hinzugefügt
+- Attribute werden vererbt (mit Variation)
+
+**KONSEQUENZEN:**
+- LoyalitätFamilie: -30%
+- Geld: -100 (Schweigegeld)
+- Wenn verheiratet: zusätzlich -20% Familie-Loyalität
+- 30% Chance auf SKANDAL:
+  * LoyalitätVolk: -40%
+  * LoyalitätPartei: -25%
+  * Geld: -200 (Schadensbegrenzung)
+
+**BEISPIEL:**
+```
+💋 Die Affäre beginnt...
+👶 ÜBERRASCHUNG: Sie ist schwanger!
+Name für das uneheliche Kind: Igor
+✓ Igor [Unehelich] Gen2 wurde heimlich geboren!
+Attribute: S:7 I:8 C:6 K:9
+```
+
+═══════════════════════════════════════════════════════════════════
+
+## 2. ✅ STAMMBAUM-SYSTEM
+
+**WO:** Zeile 11145-11179
+
+**WIE AUFRUFEN:**
+Hauptmenü → [4] Stammbaum anzeigen
+
+**WAS WIRD GEZEIGT:**
+```
+╔═══════════════════════════════════════════════════════════╗
+║                   RUSPUTIN STAMMBAUM                      ║
+╚═══════════════════════════════════════════════════════════╝
+
+► Flad Rusputin (Gen 1) - Präsident
+  Attribute: S:10 I:9 C:8 K:11
+   ► Vladimir Rusputin (Gen 2) - Präsident
+     Attribute: S:9 I:10 C:7 K:10
+      ► Igor [Unehelich] (Gen 3) - Kind
+        Attribute: S:7 I:8 C:6 K:9
+   ► Anastasia [Unehelich] (Gen 2) - Kind
+     Attribute: S:8 I:7 C:9 K:8
+
+Aktueller Spieler: Vladimir Rusputin
+Generation: 2
+Kinder: 2
+```
+
+**FEATURES:**
+✅ Zeigt ALLE Generationen
+✅ Zeigt uneheliche Kinder mit [Unehelich] Markierung
+✅ Zeigt alle Attribute (S I C K)
+✅ Zeigt aktuelle Phase (Kind, Student, Präsident)
+✅ Hierarchische Darstellung (Einrückung)
+
+═══════════════════════════════════════════════════════════════════
+
+## 3. ✅ ERBEN-SYSTEM MIT UNEHELICHEN KINDERN
+
+**WIE FUNKTIONIERT:**
+1. Spieler stirbt → SelectHeir() wird aufgerufen
+2. ALLE Kinder werden aufgelistet (ehelich + unehelich)
+3. Spieler wählt einen Erben [1-N]
+4. Gewähltes Kind wird neuer Hauptcharakter
+
+**BEISPIEL ERBEN-AUSWAHL:**
+```
+╔═══════════════════════════════════════════════════════════╗
+║              WÄHLE DEINEN NACHFOLGER                      ║
+╚═══════════════════════════════════════════════════════════╝
+
+Flad Rusputin ist verstorben.
+Wähle ein Kind, um die Dynastie fortzuführen:
+
+[1] Vladimir Rusputin Gen2
+    Generation: 2
+    Attribute: S:10 I:11 C:9 K:12
+
+[2] Igor [Unehelich] Gen2
+    Generation: 2
+    Attribute: S:8 I:9 C:7 K:10
+
+[3] Anastasia [Unehelich] Gen2
+    Generation: 2
+    Attribute: S:9 I:8 C:10 K:9
+
+Wähle [1-3]:
+```
+
+**VERERBUNGS-MECHANIK:**
+- Geld: 50% vom Vater
+- Gesundheit: 100% (neu)
+- Alter: 25 Jahre
+- Phase: "Jurastudium"
+- KGB-Einfluss: 33% vom Vater
+- Militär-Einfluss: 33% vom Vater
+- Partei-Loyalität: 50% vom Vater
+- Attribute: Bereits bei Geburt vererbt
+
+═══════════════════════════════════════════════════════════════════
+
+## 4. ✅ STRATEGISCHE IMPLIKATIONEN
+
+**WARUM SIDECHICKS WICHTIG:**
+- Mehr Kinder = Mehr Erben bei Tod
+- Uneheliche Kinder können stark sein
+- Notfall-Erben falls eheliche Kinder schwach
+- Risiko vs. Reward: Skandal möglich!
+
+**RISIKEN:**
+- Familie-Loyalität sinkt
+- Skandal-Gefahr (30%)
+- Kostet Geld
+- Wenn verheiratet: Ehe-Probleme
+
+**VORTEILE:**
+- Zusätzliche Erben
+- Attribute-Variation (könnte besser sein!)
+- Game Over vermeiden
+- Mehr strategische Optionen
+
+═══════════════════════════════════════════════════════════════════
+
+## 5. ✅ TOD & DYNASTIE-FORTSETZUNG
+
+**ABLAUF BEI TOD:**
+1. Tod-Screen mit Statistiken
+2. `player.IstTot = true` (für Stammbaum)
+3. SelectHeir() wird aufgerufen
+4. Spieler wählt Erben
+5. Neuer Charakter startet mit 25 Jahren
+6. Dynastie geht weiter!
+
+**GAME OVER BEDINGUNG:**
+- Keine Kinder vorhanden
+- TIPP: Immer Kinder zeugen! (Ehe oder Affäre)
+
+═══════════════════════════════════════════════════════════════════
+
+## ✅ ZUSAMMENFASSUNG
+
+BEIDE SYSTEME SIND VOLL FUNKTIONSFÄHIG:
+
+✅ Sidechicks können Kinder bekommen
+✅ Uneheliche Kinder werden zu Kinderliste hinzugefügt
+✅ Uneheliche Kinder erscheinen im Stammbaum
+✅ Uneheliche Kinder können als Erben gewählt werden
+✅ Stammbaum zeigt alle Generationen hierarchisch
+✅ System ist strategisch relevant
+✅ Spiel kompiliert fehlerfrei
+
+KEINE PROBLEME GEFUNDEN! 🎮
+
+═══════════════════════════════════════════════════════════════════

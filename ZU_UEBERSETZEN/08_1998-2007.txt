@@ -1,0 +1,590 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 1998-2007
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 23
+
+ANLEITUNG:
+1. Übersetze die Felder mit [HIER...] / [HERE...]
+2. Behalte das Format GENAU bei!
+3. Kopiere die übersetzten Dateien nach russisch/ und englisch/
+4. Russische Datums: "5 марта 1953 года"
+5. Englische Datums: "March 5, 1953"
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: RUBELKRISE_1998
+JAHR: 1998
+
+TITEL_DE: Rubelkrise - Staatsbankrott
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 17. August 1998
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+KATASTROPHE! Russland erklärt Zahlungsunfähigkeit! Der Rubel stürzt ab, Banken kollabieren, Menschen verlieren alles. Die schlimmste Wirtschaftskrise seit 1991.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: PRIMAKOW_REGIERUNG_1998
+JAHR: 1998
+
+TITEL_DE: Primakow wird Premierminister
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. September 1998
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach der Rubelkrise ernennt Jelzin Jewgeni Primakow zum Premier. Ein erfahrener Außenpolitiker soll stabilisieren.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: ZWEITER_TSCHETSCHENIENKRIEG_1999
+JAHR: 1999
+
+TITEL_DE: Zweiter Tschetschenienkrieg beginnt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 26. August 1999
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach Anschlägen in Moskau startet Russland eine neue Offensive in Tschetschenien. Premierminister Putin führt den Krieg hart und populär. Seine Popularität steigt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: WOHNHAUSBOMBEN_1999
+JAHR: 1999
+
+TITEL_DE: Mysteriöse Bomben in Wohnhäusern
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 9. September 1999
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Wohnhäuser in Moskau und anderen Städten explodieren - 300 Tote. Offiziell: tschetschenische Terroristen. Kritiker vermuten FSB-Beteiligung. Die Wahrheit bleibt im Dunkeln.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: PUTIN_PREMIER_1999
+JAHR: 1999
+
+TITEL_DE: Putin wird Premierminister
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 9. August 1999
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der unbekannte Ex-KGB-Agent Wladimir Putin wird Premierminister. Er verspricht, Tschetschenien zu 'erledigen'. Die Ära Putin beginnt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: JELZIN_RUECKTRITT_1999
+JAHR: 1999
+
+TITEL_DE: Jelzin tritt zurück - Putin übernimmt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 31. Dezember 1999
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Silvester-Überraschung! Jelzin tritt zurück und übergibt die Macht an Putin. 'Russland muss ins 21. Jahrhundert mit neuer Führung gehen.' Die Jelzin-Ära endet.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: PUTIN_PRAESIDENT_2000
+JAHR: 2000
+
+TITEL_DE: Putin wird zum Präsidenten gewählt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 26. März 2000
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin gewinnt die Wahl mit 53%! Der ehemalige KGB-Agent ist nun offiziell Präsident. Er verspricht 'Diktatur des Gesetzes' und Ordnung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: KURSK_UNTERGANG_2000
+JAHR: 2000
+
+TITEL_DE: U-Boot Kursk sinkt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 12. August 2000
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Das Atom-U-Boot Kursk sinkt nach Explosion. 118 Seeleute sterben. Putin bleibt im Urlaub, lehnt ausländische Hilfe ab. Seine erste große Krise.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: GUSINSKI_VERHAFTET_2000
+JAHR: 2000
+
+TITEL_DE: Medien-Oligarch Gusinski verhaftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. Juni 2000
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Medien-Oligarch Gusinski wird verhaftet. Seine kritischen TV-Sender werden übernommen. Putins Kampf gegen die Oligarchen und freie Medien beginnt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: PUTIN_BUSH_2001
+JAHR: 2001
+
+TITEL_DE: Putin trifft Bush - 'Ich sah in seine Seele'
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 16. Juni 2001
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin trifft Bush in Slowenien. Bush: 'Ich sah in seine Seele und fand ihn vertrauenswürdig.' Eine kurze Phase guter Beziehungen beginnt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: 911_UNTERSTUETZUNG_2001
+JAHR: 2001
+
+TITEL_DE: 9/11 - Putin unterstützt USA
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. September 2001
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach den Anschlägen von 9/11 ist Putin der erste, der Bush anruft. Russland unterstützt den 'Krieg gegen Terror'. Kurze Annäherung an den Westen.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: DUBROWKA_GEISELNAHME_2002
+JAHR: 2002
+
+TITEL_DE: Geiselnahme im Dubrowka-Theater
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 23. Oktober 2002
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Tschetschenische Terroristen nehmen 900 Menschen als Geiseln in Moskau! Das Spezial-Kommando setzt Gas ein - 170 Geiseln sterben. Ein tragisches Fiasko.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: USA_ABM_AUSTRITT_2002
+JAHR: 2002
+
+TITEL_DE: USA steigen aus ABM-Vertrag aus
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. Juni 2002
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die USA kündigen den ABM-Vertrag über Raketenabwehr. Putin ist verärgert - ein wichtiger Abrüstungsvertrag ist Geschichte.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_014_START]
+ID: CHODORKOWSKI_VERHAFTET_2003
+JAHR: 2003
+
+TITEL_DE: Oligarch Chodorkowski verhaftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 25. Oktober 2003
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der reichste Mann Russlands, Michail Chodorkowski, wird verhaftet! Sein Ölkonzern Yukos wird zerschlagen. Die Botschaft: Wer sich Putin widersetzt, fällt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_014_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_015_START]
+ID: IRAKKRIEG_2003
+JAHR: 2003
+
+TITEL_DE: Irakkrieg - Russland dagegen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 20. März 2003
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die USA marschieren im Irak ein - ohne UN-Mandat. Russland ist strikt dagegen. Die Beziehungen zum Westen kühlen ab.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_015_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_016_START]
+ID: BESLAN_MASSAKER_2004
+JAHR: 2004
+
+TITEL_DE: Beslan-Massaker in Schule
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. September 2004
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Terroristen nehmen über 1000 Menschen, darunter 777 Kinder, in einer Schule in Beslan als Geiseln. Die Erstürmung endet katastrophal: 334 Tote, davon 186 Kinder. Russland steht unter Schock.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_016_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_017_START]
+ID: ORANGE_REVOLUTION_2004
+JAHR: 2004
+
+TITEL_DE: Orange Revolution in der Ukraine
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 22. November 2004
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Massendemonstrationen in der Ukraine! Der pro-westliche Kandidat Juschtschenko siegt. Russland sieht darin westliche Einmischung. Die Beziehungen zur Ukraine verschlechtern sich.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_017_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_018_START]
+ID: PUTIN_GOUVERNEURE_2004
+JAHR: 2004
+
+TITEL_DE: Putin schafft Gouverneurswahlen ab
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. September 2004
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach Beslan schafft Putin Gouverneurswahlen ab. Nun ernennt er alle Gouverneure selbst. Die Demokratie wird weiter abgebaut. 'Vertikale der Macht' nennt er es.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_018_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_019_START]
+ID: JUSCHTSCHENKO_VERGIFTET_2005
+JAHR: 2005
+
+TITEL_DE: Juschtschenko wurde vergiftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. Januar 2005
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der ukrainische Präsident Juschtschenko wurde 2004 mit Dioxin vergiftet! Verdacht: russische Geheimdienste. Sein Gesicht ist entstellt. Die Spannungen steigen.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_019_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_020_START]
+ID: GASSTREIT_UKRAINE_2006
+JAHR: 2006
+
+TITEL_DE: Gasstreit mit Ukraine - Lieferungen gestoppt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. Januar 2006
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Russland dreht der Ukraine den Gashahn zu! Auch Europa friert. 'Gas als Waffe' wird Realität. Die Welt lernt: Energie ist Macht.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_020_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_021_START]
+ID: LITWINENKO_MORD_2006
+JAHR: 2006
+
+TITEL_DE: Litwinenko in London vergiftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 23. November 2006
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Ex-FSB-Agent Litwinenko stirbt in London - vergiftet mit radioaktivem Polonium! Er beschuldigte vorher Putin. Ein britisches Gericht wird später FSB für schuldig erklären.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_021_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_022_START]
+ID: MUENCHNER_SICHERHEITSKONFERENZ_2007
+JAHR: 2007
+
+TITEL_DE: Putins Rede in München - scharfe Kritik
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 10. Februar 2007
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin hält explosive Rede in München! Scharfe Kritik an USA, NATO-Osterweiterung, US-Raketenabwehr. 'Eine unipolare Welt ist inakzeptabel!' Der Westen ist schockiert.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_022_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_023_START]
+ID: ESTONIA_CYBERANGRIFF_2007
+JAHR: 2007
+
+TITEL_DE: Cyberangriff auf Estland
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 27. April 2007
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Estland wird massiv cyber-angegriffen! Regierungsseiten, Banken, Medien - alles lahm. Verdacht: Russland. Der erste Cyberkrieg der Geschichte.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_023_END]
+
+──────────────────────────────────────────────────────────────────────
+

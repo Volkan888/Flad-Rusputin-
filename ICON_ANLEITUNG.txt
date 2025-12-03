@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════════
+  ANLEITUNG: RUSSISCHE FLAGGE ALS EXE-ICON HINZUFÜGEN
+═══════════════════════════════════════════════════════════════════
+
+Da wir in einer Linux-Umgebung arbeiten und die .exe für Windows erstellt 
+wird, kann das Icon nicht direkt hier eingebettet werden.
+
+OPTION 1 - Auf Windows (empfohlen):
+─────────────────────────────────────────────────────────────────
+
+1. Lade ein russisches Flaggen-Icon herunter:
+   → https://www.iconfinder.com/icons/92389/russia_icon
+   → Oder erstelle selbst eins (weiß-blau-rot horizontal)
+
+2. Konvertiere das Bild zu .ico Format (32x32 oder 64x64 Pixel):
+   → Online Tool: https://convertio.co/de/png-ico/
+   → Oder verwende GIMP/Photoshop
+
+3. Speichere als "russian_flag.ico" im selben Ordner wie die .cs Datei
+
+4. Kompiliere mit Icon:
+   csc /target:winexe /win32icon:russian_flag.ico RiseOfTheNorthborn.cs
+
+OPTION 2 - Mit Resource Hacker (nachträglich):
+─────────────────────────────────────────────────────────────────
+
+1. Öffne RiseOfTheNorthborn.exe mit "Resource Hacker"
+   → Download: http://www.angusj.com/resourcehacker/
+
+2. Ersetze das Icon:
+   → Action → Replace Icon
+   → Wähle russian_flag.ico aus
+
+3. Speichere die modifizierte .exe
+
+OPTION 3 - Mono/Linux (Teilweise):
+─────────────────────────────────────────────────────────────────
+
+Mono unterstützt kein natives Icon-Embedding für Windows-EXEs.
+Die .exe muss auf Windows neu kompiliert werden.
+
+FLAGGEN-LAYOUT (falls du selbst eins erstellst):
+─────────────────────────────────────────────────────────────────
+
+████████████████████████  ← Weiß  (RGB: 255, 255, 255)
+████████████████████████  
+████████████████████████  ← Blau   (RGB: 0, 57, 166)
+████████████████████████
+████████████████████████  ← Rot    (RGB: 213, 43, 30)
+████████████████████████
+
+═══════════════════════════════════════════════════════════════════

@@ -1,0 +1,16 @@
+WICHTIG: Diese Features müssen noch in RiseOfTheNorthborn.cs eingefügt werden!
+
+1. China-Telefon Shortcut 'C' zu ReadInputWithShortcuts hinzufügen
+2. ChinaHotline Klasse vor EventSystem einfügen
+3. China-Events zu InitializeEvents hinzufügen
+
+WICHTIGSTE CHINA-EVENTS:
+- 1950: Freundschaftsvertrag (+200 Geld, 80% Beziehung)
+- 1969: Grenzkonflikt Damanski (-50% Beziehung)
+- 1989: Gorbatschow Besuch (+30% Beziehung)
+- 2001: Freundschaftsvertrag (+300 Geld)
+- 2014: $400 Mrd Gas-Deal (+500 Geld, Telefon aktiviert)
+- 2022: Olympia-Treffen (+400 Geld)
+- 2024: Putin in Peking (+350 Geld)
+
+JEDES JAHR muss Event haben - fülle Lücken mit generischen Events!
