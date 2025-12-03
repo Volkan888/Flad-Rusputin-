@@ -1204,6 +1204,313 @@ static class EventSystem
                 p.LoyalitätFamilie += 15; // Familie steht bei
             }
         ));
+        
+        // ═══════════════════════════════════════════════════════════
+        // HISTORISCHE EREIGNISSE (1952-2024)
+        // Basierend auf realen Katastrophen und politischen Events
+        // ═══════════════════════════════════════════════════════════
+        
+        // KINDHEIT - Frühe sowjetische Ära
+        allEvents.Add(new RandomEvent(
+            "Kamtschatka-Erdbeben 1952",
+            "Ein gewaltiges Erdbeben der Stärke 9,0 erschüttert Kamtschatka. Über 2.300 Menschen sterben...",
+            "Kindheit", 15,
+            p => {
+                Console.WriteLine("Die Nachrichten vom fernen Osten erreichen auch die Straßen...");
+                p.Gesundheit -= 5;
+                p.LoyalitätPartei += 10; // Zusammenhalt in der Krise
+                p.LoyalitätFamilie += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kyshtym-Nuklearunfall 1957",
+            "Geheime Atomanlage explodiert! 23.000 km² kontaminiert, aber der Staat verschweigt alles...",
+            "Kindheit", 12,
+            p => {
+                Console.WriteLine("Gerüchte über eine mysteriöse Evakuierung erreichen Flad...");
+                p.Gesundheit -= 10; // Strahlenangst
+                p.LoyalitätPartei -= 15; // Misstrauen wegen Vertuschung
+                p.Intelligenz += 1; // Lernt, Propaganda zu hinterfragen
+            }
+        ));
+        
+        // KGB-PHASE - Kalter Krieg
+        allEvents.Add(new RandomEvent(
+            "Kuba-Krise 1962",
+            "Die Welt steht am Rand eines Atomkriegs! KGB in höchster Alarmbereitschaft...",
+            "KGB-Phase", 20,
+            p => {
+                Console.WriteLine("Flad und andere Kadetten werden für Notfallpläne mobilisiert.");
+                p.EinflussKGB += 20;
+                p.Gesundheit -= 15; // Stress
+                p.LoyalitätPartei += 25; // Patriotismus in der Krise
+            }
+        ));
+        
+        // STUDIUM - Spätsowjetische Stagnation
+        allEvents.Add(new RandomEvent(
+            "Tschernobyl-Katastrophe 1986",
+            "26. April: Kernschmelze! Radioaktive Wolke über Europa. Hunderttausende Liquidatoren mobilisiert...",
+            "Jurastudium", 25,
+            p => {
+                Console.WriteLine("\n[1] Freiwillig als Liquidator melden");
+                Console.WriteLine("[2] Im Hintergrund bleiben");
+                Console.Write("Wähle [1-2]: ");
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("Flad meldet sich freiwillig für den Einsatz in Tschernobyl!");
+                    p.Gesundheit -= 40; // Strahlenschäden
+                    p.LoyalitätPartei += 35;
+                    p.LoyalitätVolk += 25;
+                    p.Stärke += 2; // Härtet ab
+                }
+                else
+                {
+                    p.LoyalitätPartei -= 10;
+                    p.Gesundheit -= 5; // Strahlenangst
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Ufa-Gasexplosion 1989",
+            "4. Juni: 575 Tote bei Zugunglück! Undichte Pipeline entzündet sich...",
+            "Jurastudium", 15,
+            p => {
+                Console.WriteLine("Eine der schlimmsten Katastrophen der Sowjetzeit erschüttert das Land.");
+                p.Gesundheit -= 10;
+                p.LoyalitätPartei -= 20; // Versagen der Infrastruktur
+                p.LoyalitätVolk += 15; // Mitgefühl mit Opfern
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Fall der Berliner Mauer 1989",
+            "9. November: Die Mauer fällt! DDR kollabiert, der Ostblock bricht zusammen...",
+            "Jurastudium", 30,
+            p => {
+                Console.WriteLine("Das Ende des Kalten Krieges naht. Die sowjetische Ordnung bröckelt...");
+                p.EinflussInternational -= 30; // Machtverlust
+                p.EinflussKGB -= 20; // Demoralisierung
+                p.Intelligenz += 1; // Historischer Moment
+                p.Geld -= 50; // Wirtschaftschaos
+            }
+        ));
+        
+        // DDR-EINSATZ - Post-Sowjetischer Umbruch
+        allEvents.Add(new RandomEvent(
+            "Zerfall der Sowjetunion 1991",
+            "Dezember 1991: Die UdSSR existiert nicht mehr! Wirtschaftskrise, Hyperinflation, Verarmung...",
+            "DDR-Einsatz", 35,
+            p => {
+                Console.WriteLine("'Die größte geopolitische Katastrophe des Jahrhunderts' - Flad erlebt den Zusammenbruch.");
+                p.Geld -= 150; // Rubelverfall
+                p.LoyalitätPartei -= 40; // System kollabiert
+                p.Gesundheit -= 20; // Krisenstress
+                p.EinflussKGB -= 25; // Chaos im Apparat
+                p.Charisma += 1; // Überlebenswille
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Neftegorsk-Erdbeben 1995",
+            "28. Mai: Sakhalin-Siedlung in 17 Sekunden ausgelöscht. 2.000 Tote - zwei Drittel der Bevölkerung...",
+            "DDR-Einsatz", 12,
+            p => {
+                Console.WriteLine("Die Katastrophe im fernen Osten erschüttert das krisengeschüttelte Russland.");
+                p.Gesundheit -= 8;
+                p.LoyalitätVolk += 20; // Solidarität
+                p.Geld -= 30; // Spendensammlungen
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Russische Finanzkrise 1998",
+            "17. August: Rubel-Kollaps! Staatsdefault! Millionen verlieren Ersparnisse...",
+            "DDR-Einsatz", 30,
+            p => {
+                Console.WriteLine("Die 'Rubelkrise' vernichtet Flads Ersparnisse und stürzt Russland in Depression.");
+                p.Geld = Math.Max(0, p.Geld - 200); // Massive Verluste
+                p.LoyalitätPartei -= 35;
+                p.LoyalitätVolk -= 30;
+                p.Gesundheit -= 15; // Existenzangst
+            }
+        ));
+        
+        // PRÄSIDENT - Putin-Ära Ereignisse
+        allEvents.Add(new RandomEvent(
+            "Apartmenthaus-Bomben 1999",
+            "September: Terroranschläge auf Wohnhäuser! Über 300 Tote. Tschetschenien wird verantwortlich gemacht...",
+            "Präsident", 20,
+            p => {
+                Console.WriteLine("Die Anschläge lösen Angst aus und rechtfertigen den Zweiten Tschetschenienkrieg.");
+                p.EinflussKGB += 25; // Sicherheitsapparat gestärkt
+                p.EinflussMilitär += 20;
+                p.LoyalitätVolk -= 20; // Angst
+                p.Gesundheit -= 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kursk-U-Boot-Untergang 2000",
+            "12. August: Atomares U-Boot 'Kursk' sinkt. Alle 118 Besatzungsmitglieder tot. Internationale Hilfe zu spät...",
+            "Präsident", 18,
+            p => {
+                Console.WriteLine("\n[1] Sofort internationale Hilfe annehmen");
+                Console.WriteLine("[2] Auf Prestige achten, national reagieren");
+                Console.Write("Wähle [1-2]: ");
+                if (Console.ReadLine() == "1")
+                {
+                    p.EinflussInternational += 15;
+                    p.LoyalitätVolk += 10; // Transparenz geschätzt
+                    p.LoyalitätPartei -= 15; // Gilt als Schwäche
+                }
+                else
+                {
+                    p.LoyalitätVolk -= 25; // Kritik am Krisenmanagement
+                    p.LoyalitätPartei += 10;
+                    p.EinflussKGB += 10;
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Dubrowka-Theater-Geiselnahme 2002",
+            "23. Oktober: Tschetschenische Terroristen nehmen 850 Menschen als Geiseln. Gasbetäubung - 130 Geiseln sterben...",
+            "Präsident", 15,
+            p => {
+                Console.WriteLine("Flad muss eine unmögliche Entscheidung treffen...");
+                p.EinflussKGB += 20; // Harter Einsatz
+                p.LoyalitätVolk -= 30; // Zivile Opfer
+                p.Gesundheit -= 25; // Gewissenslast
+                p.LoyalitätPartei += 15; // 'Standhaftigkeit'
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Beslan-Schulmassaker 2004",
+            "1.-3. September: Terroristen nehmen Schule ein. Über 330 Tote, darunter 186 Kinder...",
+            "Präsident", 12,
+            p => {
+                Console.WriteLine("Die schlimmste Geiselnahme in der russischen Geschichte erschüttert das Land.");
+                p.Gesundheit -= 35; // Trauma
+                p.LoyalitätVolk -= 40; // Versagen des Staates
+                p.EinflussKGB -= 15;
+                p.LoyalitätPartei += 10; // Zentralisierung als Reaktion
+                Console.WriteLine("Flad nutzt die Tragödie, um Gouverneurswahlen abzuschaffen...");
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Hitzewelle & Waldbrände 2010",
+            "Sommer 2010: Rekordtemperaturen! Moskau unter Rauch. 127 Ortschaften brennen ab, Tausende Tote...",
+            "Präsident", 18,
+            p => {
+                Console.WriteLine("Die Klimakatastrophe zeigt Russlands Verwundbarkeit.");
+                p.Gesundheit -= 20; // Rauchvergiftung
+                p.LoyalitätVolk -= 25; // Unzureichende Hilfe
+                p.Geld -= 100; // Wiederaufbau
+                p.LoyalitätPartei -= 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Bulgaria-Schiffsunglück 2011",
+            "10. Juli: Überfülltes Ausflugsschiff sinkt auf der Wolga. 122 Tote, darunter 28 Kinder...",
+            "Präsident", 14,
+            p => {
+                Console.WriteLine("Mangelnde Sicherheitsstandards fordern ihren Tribut.");
+                p.LoyalitätVolk -= 20;
+                p.Gesundheit -= 10;
+                p.Geld -= 50; // Entschädigungen
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krymsk-Flutkatastrophe 2012",
+            "7. Juli: Ohne Warnung überschwemmt Flut die Kleinstadt. Über 150 Tote in einer Nacht...",
+            "Präsident", 13,
+            p => {
+                Console.WriteLine("Flad besucht das Katastrophengebiet und ordnet Hilfsmaßnahmen an.");
+                p.LoyalitätVolk -= 15; // Keine rechtzeitige Warnung
+                p.Geld -= 80;
+                p.Gesundheit -= 8;
+                if (p.Charisma >= 4)
+                {
+                    p.LoyalitätVolk += 10; // Persönliches Engagement hilft
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Amur-Hochwasser 2013",
+            "Sommer 2013: Schlimmste Überschwemmung seit Menschengedenken im Fernen Osten. 90.000 evakuiert...",
+            "Präsident", 16,
+            p => {
+                Console.WriteLine("Fünf Regionen unter Wasser. 13.000 Häuser überschwemmt. Monate des Wiederaufbaus...");
+                p.Geld -= 120; // Massive Wiederaufbaukosten
+                p.LoyalitätVolk -= 10;
+                p.EinflussMilitär += 10; // Militär hilft
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rubelkrise 2014",
+            "Dezember: Sanktionen & Ölpreisverfall! Rubel verliert 50% seines Wertes. Leitzins auf 17%...",
+            "Präsident", 25,
+            p => {
+                Console.WriteLine("Die Krim-Annexion hat ihren Preis: Wirtschaftskrise und Isolation.");
+                p.Geld -= 200; // Währungsverfall
+                p.EinflussInternational -= 40; // Sanktionen
+                p.Gesundheit -= 15;
+                p.LoyalitätVolk -= 30; // Realeinkommen sinken
+                p.LoyalitätPartei += 15; // Nationalismus als Kompensation
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kemerowo-Brand 2018",
+            "25. März: Einkaufszentrum brennt. 64 Tote, 40 davon Kinder. Notausgänge verschlossen...",
+            "Präsident", 14,
+            p => {
+                Console.WriteLine("Landesweite Trauer und Proteste gegen Sicherheitsverstöße. Nationaler Trauertag verhängt.");
+                p.LoyalitätVolk -= 35; // Wut über Versagen
+                p.Gesundheit -= 15;
+                p.Geld -= 60; // Entschädigungen
+                p.LoyalitätPartei -= 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "COVID-19-Pandemie 2020",
+            "Frühjahr 2020: Globale Pandemie erreicht Russland. Lockdowns, Krankenhäuser überlastet, über 500.000 Tote...",
+            "Präsident", 30,
+            p => {
+                Console.WriteLine("Die Jahrhundertpandemie trifft Russland hart. Sputnik-V-Impfung wird entwickelt.");
+                p.Gesundheit -= 30; // Pandemie-Risiko
+                p.Geld -= 150; // Wirtschaftseinbruch
+                p.LoyalitätVolk -= 25; // Unzureichende Maßnahmen
+                p.LoyalitätPartei -= 15;
+                if (p.Intelligenz >= 5)
+                {
+                    p.Gesundheit += 10; // Besseres Krisenmanagement
+                    p.LoyalitätVolk += 15;
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sibirische Megabrände 2021",
+            "Sommer 2021: Rekordwaldbrände in Sibirien. 3,4 Mio. Hektar brennen. Rauch erreicht Nordpol...",
+            "Präsident", 17,
+            p => {
+                Console.WriteLine("Der Klimawandel zeigt sein Gesicht: Die Taiga brennt lichterloh.");
+                p.Geld -= 90; // Löschkosten
+                p.Gesundheit -= 12; // Rauch
+                p.LoyalitätVolk -= 15; // Unzureichende Prävention
+            }
+        ));
     }
     
     /// <summary>
