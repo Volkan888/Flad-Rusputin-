@@ -4506,6 +4506,15 @@ class Program
                 Console.Write(prompt);  // Prompt erneut anzeigen
                 continue;
             }
+            else if (input == "Q")
+            {
+                Console.WriteLine("\n>> 🛒 Putin's Luxus-Shop wird geöffnet...");
+                Thread.Sleep(1000);
+                PutinShop.ShowShop(player);
+                Console.Clear();
+                Console.Write(prompt);  // Prompt erneut anzeigen
+                continue;
+            }
             
             return input;
         }
