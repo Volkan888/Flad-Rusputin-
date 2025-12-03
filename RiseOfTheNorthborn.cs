@@ -3811,6 +3811,11 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 500; p.LoyalitätVolk -= 40; Thread.Sleep(3000); }));
         
+        historicalEvents.Add(new HistoricalEvent("BUDENNOVSK_GEISELNAHME_1995", "Geiselnahme in Budennovsk", "[RU]", "[EN]", "14. Juni 1995", "[RU]", "[EN]", 1995, 6, "KATASTROPHE",
+            @"Tschetschenische Kämpfer nehmen über 1000 Menschen in einem Krankenhaus als Geiseln! Die Befreiungsaktion ist chaotisch - über 100 Tote. Russland ist gedemütigt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.LoyalitätVolk -= 30; p.Gesundheit -= 25; p.EinflussMilitär -= 20; Thread.Sleep(4000); }));
+        
         // ====== 1996 ======
         historicalEvents.Add(new HistoricalEvent("JELZIN_WIEDERWAHL_1996", "Jelzin wird wiedergewählt", "[RU]", "[EN]", "3. Juli 1996", "[RU]", "[EN]", 1996, 7, "POLITIK",
             @"Jelzin gewinnt die Wahl - mit massiver Unterstützung der Oligarchen und fragwürdigen Methoden. Der Westen atmet auf: kein kommunistisches Comeback.",
