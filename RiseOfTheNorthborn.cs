@@ -1934,9 +1934,36 @@ static class SoundSystem
     /// </summary>
     public static void PlayEventSound(string eventType)
     {
-        // Beeps deaktiviert - funktioniert nicht auf Linux/Mono
-        // Stattdessen nur Symbol anzeigen
-        Console.Write("♪ ");
+        try
+        {
+            // Versuche Beep-Sound (mit Error-Handling für Stabilität)
+            if (eventType == "katastrophe")
+            {
+                Console.Beep(200, 300);
+                Console.Beep(150, 400);
+            }
+            else if (eventType == "politisch")
+            {
+                Console.Beep(800, 150);
+                Console.Beep(600, 150);
+            }
+            else if (eventType == "türkei" || eventType == "usa" || eventType == "nato" || eventType == "china")
+            {
+                Console.Beep(1000, 100);
+                Console.Beep(800, 100);
+                Console.Beep(600, 100);
+            }
+            else
+            {
+                Console.Beep(440, 200);
+            }
+            Console.Write("♪ ");
+        }
+        catch
+        {
+            // Falls Beep nicht verfügbar (Linux/Mono) - nur Symbol
+            Console.Write("♪ ");
+        }
     }
     
     /// <summary>
