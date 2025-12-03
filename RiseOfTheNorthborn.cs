@@ -1742,6 +1742,167 @@ static class ErdoganHotline
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// FINKA-SYSTEM - Gesundheits-Regeneration
+// ═══════════════════════════════════════════════════════════════════
+/// <summary>
+/// FinkaSystem - Datsche/Finka für Gesundheits-Regeneration
+/// 
+/// FEATURES:
+/// - Kaufbar als Präsident für 800 Rubel
+/// - Gesundheit +30 pro Besuch
+/// - Cooldown: 2 Jahre zwischen Besuchen
+/// - Nur bei niedriger Gesundheit (<50) empfohlen
+/// </summary>
+static class FinkaSystem
+{
+    /// <summary>
+    /// ShowFinkaMenu - Hauptmenü für Finka
+    /// </summary>
+    public static void ShowFinkaMenu(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🏡 PRÄSIDENTEN-FINKA 🏡                  ║
+        ║   Datsche am Schwarzen Meer                ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        
+        if (!p.HatFinka)
+        {
+            Console.WriteLine("\n🏡 Sie haben noch keine Finka!");
+            Console.WriteLine($"\n💰 Kaufpreis: {p.FinkaKosten} Rubel");
+            Console.WriteLine("📍 Lage: Sotschi, Schwarzes Meer");
+            Console.WriteLine("✨ Bonus: +30 Gesundheit pro Besuch");
+            Console.WriteLine("⏰ Cooldown: 2 Jahre zwischen Besuchen");
+            
+            Console.WriteLine($"\n💰 Dein Geld: {p.Geld} Rubel");
+            Console.WriteLine($"❤️  Deine Gesundheit: {p.Gesundheit}%");
+            
+            if (p.Geld >= p.FinkaKosten)
+            {
+                Console.WriteLine("\n[1] Finka kaufen");
+                Console.WriteLine("[2] Zurück");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    p.Geld -= p.FinkaKosten;
+                    p.HatFinka = true;
+                    
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n✓ FINKA GEKAUFT!");
+                    Console.WriteLine("═══════════════════════════════════════════════════════\n");
+                    Console.ResetColor();
+                    
+                    Console.WriteLine("🏡 Prächtige Datsche am Schwarzen Meer erworben!");
+                    Console.WriteLine("🌊 Privater Strandzugang");
+                    Console.WriteLine("🍇 Weinberg inklusive");
+                    Console.WriteLine("🛡️  Private Sicherheit");
+                    
+                    Console.WriteLine($"\n💰 Geld: -{p.FinkaKosten} Rubel (jetzt {p.Geld})");
+                    
+                    Console.WriteLine("\n[Drücke eine Taste...]");
+                    Console.ReadKey(true);
+                    
+                    // Direkt nach Kauf besuchen?
+                    BesucheFinka(p);
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\n⚠️  Nicht genug Geld! Benötigt: {p.FinkaKosten} Rubel");
+                Console.ResetColor();
+                Console.WriteLine("\n[Drücke eine Taste...]");
+                Console.ReadKey(true);
+            }
+        }
+        else
+        {
+            // Finka bereits gekauft
+            Console.WriteLine("\n🏡 Deine Finka in Sotschi");
+            Console.WriteLine($"❤️  Gesundheit: {p.Gesundheit}%");
+            Console.WriteLine($"📅 Alter: {p.Alter} Jahre");
+            Console.WriteLine($"📆 Letzter Besuch: Jahr {p.LetzterFinkabesuch}");
+            
+            int jahreSeitBesuch = p.Alter - p.LetzterFinkabesuch;
+            
+            if (jahreSeitBesuch < 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"\n⏰ Cooldown aktiv! Noch {2 - jahreSeitBesuch} Jahr(e) warten.");
+                Console.ResetColor();
+                Console.WriteLine("\n[Drücke eine Taste...]");
+                Console.ReadKey(true);
+            }
+            else
+            {
+                Console.WriteLine("\n[1] Finka besuchen (+30 Gesundheit)");
+                Console.WriteLine("[2] Zurück");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    BesucheFinka(p);
+                }
+            }
+        }
+    }
+    
+    static void BesucheFinka(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🌊 URLAUB IN DER FINKA 🌊               ║
+        ╚════════════════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n🚗 Fahrt nach Sotschi...");
+        Thread.Sleep(1500);
+        Console.WriteLine("🏡 Ankunft an der Finka!");
+        Thread.Sleep(1000);
+        Console.WriteLine("🌊 Blick aufs Schwarze Meer...");
+        Thread.Sleep(1000);
+        Console.WriteLine("🍷 Ein Glas georgischen Wein...");
+        Thread.Sleep(1000);
+        Console.WriteLine("🛀 Entspannung in der Sauna...");
+        Thread.Sleep(1000);
+        Console.WriteLine("😴 Erholsamer Schlaf...");
+        Thread.Sleep(1500);
+        
+        int alteGesundheit = p.Gesundheit;
+        p.Gesundheit = Math.Min(100, p.Gesundheit + 30);
+        p.LetzterFinkabesuch = p.Alter;
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\n✓ ERHOLT UND ERFRISCHT!");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("🏖️  Eine Woche Entspannung hat Wunder gewirkt!");
+        Console.WriteLine($"\n❤️  Gesundheit: {alteGesundheit}% → {p.Gesundheit}% (+{p.Gesundheit - alteGesundheit})");
+        Console.WriteLine($"😌 Stress: REDUZIERT");
+        Console.WriteLine($"💪 Energie: AUFGELADEN");
+        
+        if (p.Gesundheit == 100)
+        {
+            Console.WriteLine("\n✨ Du fühlst dich wie neugeboren!");
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // SOUND SYSTEM & RUSSISCHE LIEDER
 // ═══════════════════════════════════════════════════════════════════
 /// <summary>
