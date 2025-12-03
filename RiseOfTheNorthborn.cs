@@ -5783,7 +5783,23 @@ static class EventSystem
             }
         ));
         // 1962 - 4 Events
-        allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 100, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent(
+            "Kubakrise 1962 - 13 Tage am Abgrund", 
+            "DIE WELT AM RANDE DES ATOMKRIEGS! Sowjetische Raketen auf Kuba, amerikanische Kriegsschiffe kreisen. Kennedy und Chruschtschow spielen atomares Schach - ein falscher Zug und die Menschheit ist ausgelöscht. Das Volk gräbt Luftschutzbunker, Kinder üben 'Duck and Cover'. 13 Tage purer Terror. Dann: Beide blinzeln. Die Welt atmet auf.", 
+            "Jugend", 100, 1962, "politisch", 
+            p => { 
+                Console.WriteLine("\n☢️ KUBAKRISE - ATOMKRIEG DROHT!");
+                Console.WriteLine("Die Welt steht 13 Tage vor der Auslöschung!");
+                p.EinflussMilitär += 20; 
+                p.Gesundheit -= 15; 
+                p.LoyalitätVolk -= 30;
+                p.EinflussInternational += 15;
+                Console.WriteLine($"➕ Militär: +20 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Gesundheit: -15% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk: -30% (Panik) → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000); 
+            }
+        ));
         allEvents.Add(new RandomEvent("Karibik-Blockade 1962", "Kennedy blockiert Kuba", "Jugend", 100, 1962, "politisch", p => { p.EinflussInternational -= 15; p.LoyalitätPartei += 10; Console.WriteLine("🚢 US-Blockade!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("U-2 über Kuba 1962", "Spionageflüge entdeckt", "Jugend", 100, 1962, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🔍 Spionage aufgedeckt!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Atomtest Nowaja Semlja 1962", "Weitere Nukleartests", "Jugend", 100, 1962, "politisch", p => { p.EinflussMilitär += 10; p.Gesundheit -= 5; Console.WriteLine("☢️ Atomtests!"); Thread.Sleep(3000); }));
