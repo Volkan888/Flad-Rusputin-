@@ -5806,7 +5806,21 @@ static class EventSystem
         
         // 1963 - 4 Events
         allEvents.Add(new RandomEvent("Teststopp-Vertrag 1963", "Atomtest-Abkommen", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 20; p.Gesundheit += 5; Console.WriteLine("☮️ Vertrag unterzeichnet!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Kennedy ermordet 1963", "US-Präsident getötet", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 Kennedy tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent(
+            "Kennedy-Attentat Dallas 1963", 
+            "SCHOCKWELLEN DURCH DIE WELT! 22. November, Dallas, Texas - drei Schüsse aus dem Texas School Book Depository. John F. Kennedy wird vor den Augen seiner Frau erschossen. Die Welt hält den Atem an. Das Volk in der UdSSR ist geschockt - selbst der Feind verdient keinen solchen Tod. Oswald verhaftet, Ruby erschießt Oswald. Verschwörungstheorien beginnen sofort.", 
+            "Jugend", 100, 1963, "politisch", 
+            p => { 
+                Console.WriteLine("\n🔫 KENNEDY ERMORDET IN DALLAS!");
+                Console.WriteLine("Der US-Präsident tot! Die Welt ist geschockt!");
+                p.EinflussInternational += 10; 
+                p.LoyalitätVolk += 15;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"➕ International: +10 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +15% (Mitgefühl) → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000); 
+            }
+        ));
         allEvents.Add(new RandomEvent("Heißer Draht 1963", "Direktleitung USA-UdSSR", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📞 Hotline aktiv!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Weltraumabkommen 1963", "Kooperation im All", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚀 Raumfahrt-Vertrag!"); Thread.Sleep(3000); }));
         
