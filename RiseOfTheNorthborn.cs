@@ -1773,9 +1773,11 @@ static class EventSystem
                 p.LoyalitätPartei += 20;
             }
         ));
-    }
     
-    // Hilfsfunktion für uneheliche Kinder
+    /// <summary>
+    /// AddIllegitimateChild - Hilfsfunktion für uneheliche Kinder
+    /// Erstellt ein uneheliches Kind aus einer Affäre
+    /// </summary>
     static void AddIllegitimateChild(PlayerCharacter player)
     {
         bool isBoy = rand.Next(2) == 0;
