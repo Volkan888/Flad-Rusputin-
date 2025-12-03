@@ -909,19 +909,19 @@ static class DeathSystem
         
         Console.WriteLine($"\n{player.Name} ist im Alter von {player.Alter} Jahren");
         Console.WriteLine($"an {cause} gestorben.\n");
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         
         Console.WriteLine("Seine Herrschaft war geprägt von:");
         Console.WriteLine($"  • Generation: {player.Generation}");
         Console.WriteLine($"  • Kinder: {player.Kinder.Count}");
         Console.WriteLine($"  • Vermögen: {player.Geld} Rubel");
         Console.WriteLine($"  • Gesundheit bei Tod: {player.Gesundheit}%\n");
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         
         Console.WriteLine($"Loyalität zur Partei: {player.LoyalitätPartei}%");
         Console.WriteLine($"Loyalität zum Volk: {player.LoyalitätVolk}%");
         Console.WriteLine($"Einfluss beim KGB: {player.EinflussKGB}%\n");
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         
         player.IstTot = true;  // Für Stammbaum-Visualisierung markieren
         
@@ -1346,7 +1346,7 @@ static class PutinShop
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\n⚠ Du besitzt bereits: {item.Icon} {item.Name}");
             Console.ResetColor();
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
             return;
         }
         
@@ -1358,7 +1358,7 @@ static class PutinShop
             Console.WriteLine($"Benötigt: {item.Preis} ₽");
             Console.WriteLine($"Verfügbar: {player.Geld} ₽");
             Console.ResetColor();
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
             return;
         }
         
@@ -1577,7 +1577,7 @@ static class ErdoganHotline
         {
             Console.WriteLine("❌ Nicht genug Geld! Benötigt: 300 Rubel");
             Console.WriteLine($"Aktuelles Geld: {p.Geld} Rubel");
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
             return;
         }
         
@@ -1707,7 +1707,7 @@ static class ErdoganHotline
         {
             Console.WriteLine("❌ Nicht genug Geld! Benötigt: 400 Rubel");
             Console.WriteLine($"Aktuelles Geld: {p.Geld} Rubel");
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
             return;
         }
         
@@ -2187,7 +2187,7 @@ static class SoundSystem
                 return;
         }
         
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
     }
 }
 
@@ -2843,7 +2843,7 @@ static class ChinaHotline
         else return;
         
         p.ChinaAnrufeVerfügbar--;
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
     }
 }
 
@@ -5461,7 +5461,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Damanski 1969", "Grenzkonflikt!", "KGB", 70, 1969, "china", p => { p.ChinaBeziehung -= 50; p.EinflussMilitär += 20; Console.WriteLine("💥 Grenzkrieg! China -50%"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Gorbatschow China 1989", "Normalisierung", "KGB", 50, 1989, "china", p => { p.ChinaBeziehung += 30; Console.WriteLine("🤝 +30% China"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Freundschaft 2001", "20-Jahres-Vertrag", "Präsident", 60, 2001, "china", p => { p.Geld += 300; p.ChinaBeziehung += 25; Console.WriteLine("✓ +300 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Gas-Deal 2014", "$400 Mrd Deal!", "Präsident", 80, 2014, "china", p => { p.Geld += 500; p.ChinaTelefonAktiv = true; Console.WriteLine("💰 +500 Rubel! 📞 China-Telefon aktiv!"); Thread.Sleep(2000); }));
+        allEvents.Add(new RandomEvent("Gas-Deal 2014", "$400 Mrd Deal!", "Präsident", 80, 2014, "china", p => { p.Geld += 500; p.ChinaTelefonAktiv = true; Console.WriteLine("💰 +500 Rubel! 📞 China-Telefon aktiv!"); Thread.Sleep(3500); }));
         allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; p.ChinaBeziehung += 20; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Handel 2019", "$110 Mrd", "Präsident", 55, 2019, "china", p => { p.Geld += 350; Console.WriteLine("💰 +350 Rubel!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Olympia 2022", "Peking-Treffen", "Präsident", 75, 2022, "china", p => { p.Geld += 400; p.ChinaBeziehung += 15; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(3000); }));
@@ -6424,7 +6424,7 @@ class Program
             
             Console.WriteLine("1952, Leningrad – In einer verfallenen Scheune");
             Console.WriteLine("erblickt Flad das Licht der Welt...\n");
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
         }
         else
         {
@@ -6528,7 +6528,7 @@ class Program
         
         Console.WriteLine("Alle Spieler durchlaufen parallel ihr Leben.");
         Console.WriteLine("Jeder Spieler erlebt eigene Zufallsereignisse!\n");
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         
         // Jeder Spieler durchläuft die komplette Story
         foreach (var player in players)
@@ -6903,7 +6903,7 @@ class Program
         {
             player.KGBEasterEgg = true;
             Console.WriteLine($"\n💀 Ein KGB-Agent beobachtet {player.GetFirstName()}...");
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
         }
         
         ShowStats(player);
@@ -6947,7 +6947,7 @@ class Program
             Console.WriteLine("Er wird abgewiesen. Muss erst Jura studieren...");
         }
         
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         ShowStats(player);
         Console.ReadKey(true);
         
@@ -7089,7 +7089,7 @@ class Program
             Console.WriteLine("\n>> Flad flieht aus der DDR!");
         }
         
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         ShowStats(player);
         Console.ReadKey(true);
     }
@@ -7110,7 +7110,7 @@ class Program
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(">> FLAD WIRD PRÄSIDENT VON RUSSLAND!");
         Console.ResetColor();
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         
         // Hochzeit anbieten
         if (!player.IstVerheiratet)
@@ -7153,7 +7153,7 @@ class Program
                 // Mit Erben weiterspielen
                 player = heir;
                 Console.WriteLine("\n>> Der neue Anführer beginnt seine Karriere...");
-                Thread.Sleep(2000);
+                Thread.Sleep(3500);
                 
                 // Erbe startet im Studium
                 PlayStoryFromPhase(player, "Jurastudium");
@@ -7253,7 +7253,7 @@ class Program
                 Console.WriteLine("\n★ Absolute Kontrolle erreicht!");
         }
         
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
         ShowStats(player);
         
         // BUG-FIX 5: Weiterspiel-Optionen nach Regierungsende
@@ -7275,7 +7275,7 @@ class Program
             // Weiterleben im Ruhestand
             player.Phase = "Ruhestand";
             Console.WriteLine("\n>> " + player.Name + " genießt den wohlverdienten Ruhestand...");
-            Thread.Sleep(2000);
+            Thread.Sleep(3500);
             
             // Alterungsprozess - kann zum Tod führen
             for (int jahre = 0; jahre < 10 && player.Gesundheit > 0; jahre++)
@@ -7440,7 +7440,7 @@ class Program
         Console.ResetColor();
         Console.WriteLine($"Name: {saveName}");
         Console.WriteLine($"Datum: {DateTime.Now:dd.MM.yyyy HH:mm:ss}");
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
     }
     
     static void LoadGame()
@@ -7481,7 +7481,7 @@ class Program
         Console.WriteLine("\n✓ Spiel geladen!");
         Console.ResetColor();
         ShowStats(currentPlayer);
-        Thread.Sleep(2000);
+        Thread.Sleep(3500);
     }
     
     static void ManageSaves()
