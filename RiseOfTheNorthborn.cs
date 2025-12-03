@@ -1871,9 +1871,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Geheimer Testeinsatz",
-            "p => $"{p.GetFirstName()} erhält seinen ersten Feldauftrag - Intellektuelle observieren!",
+            "Erster Feldauftrag: Intellektuelle observieren!",
             "Jurastudium", 40,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} erhält geheimen Auftrag!");
                 if (rand.Next(100) < 60) // Erfolg
                 {
                     p.EinflussKGB += 15;
