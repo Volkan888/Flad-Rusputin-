@@ -1840,7 +1840,7 @@ static class EventSystem
         // KGB AUSBILDUNG
         allEvents.Add(new RandomEvent(
             "Drill und Disziplin",
-            "Gnadenloser Drill in der KGB-Akademie. Flad trägt einen Kameraden kilometerweit...",
+            "Gnadenloser Drill in der KGB-Akademie...",
             "Jurastudium", 30,
             p => {
                 p.Gesundheit -= 15;
