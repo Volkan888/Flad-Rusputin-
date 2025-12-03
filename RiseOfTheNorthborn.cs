@@ -63,31 +63,68 @@ using System.Linq;                 // LINQ für Datenabfragen (All, Where, etc.)
 /// </summary>
 class PlayerCharacter
 {
-    public string Name;
-    public int Stärke, Intelligenz, Charisma, Kraft;
-    public int Geld, Gesundheit;
-    public int LoyalitätPartei, LoyalitätVolk, LoyalitätFamilie;
-    public int EinflussKGB, EinflussMilitär, EinflussInternational;
-    public int Alter, Generation;
-    public string Phase;
-    public bool KGBEasterEgg, GeheimeAusbildung;
-    public bool IstVerheiratet;
-    public string EhepartnerName;
-    public int GeburtenBonus; // Mehr Kinder = höherer Wert
-    public int FinanzBonus; // Weniger Kinder = höherer Bonus
-    public List<PlayerCharacter> Kinder;
-    public bool IstTot;
+    // ═══ BASIS-INFORMATIONEN ═══
+    public string Name;              // Voller Name des Charakters (z.B. "Vladimir Rusputin 2")
+    public int Alter;                // Aktuelles Alter in Jahren
+    public int Generation;           // Generationsnummer (1 = Gründer, 2 = Kinder, etc.)
+    public string Phase;             // Aktuelle Lebensphase (Kindheit, KGB, Studium, DDR, Präsident)
     
+    // ═══ ATTRIBUTE (Spieler-Fähigkeiten) ═══
+    // Diese 4 Attribute beeinflussen Ereignisse und Entscheidungen
+    public int Stärke;              // Körperliche Kraft, wichtig für Kämpfe
+    public int Intelligenz;         // Klugheit, wichtig für Spionage und Politik
+    public int Charisma;            // Überzeugungskraft, wichtig für Führung
+    public int Kraft;               // Ausdauer und Widerstandsfähigkeit
+    
+    // ═══ RESSOURCEN ═══
+    public int Geld;                // Finanzielle Mittel in Rubel
+    public int Gesundheit;          // Gesundheitszustand 0-100% (0 = Tod)
+    
+    // ═══ LOYALITÄT (0-100%) ═══
+    // Diese Werte zeigen, wie loyal verschiedene Gruppen dem Charakter gegenüber sind
+    public int LoyalitätPartei;     // Loyalität zur kommunistischen Partei
+    public int LoyalitätVolk;       // Unterstützung durch die Bevölkerung
+    public int LoyalitätFamilie;    // Familiäre Bindungen und Treue
+    
+    // ═══ EINFLUSS (0-100%) ═══
+    // Diese Werte zeigen den Einfluss in verschiedenen Machtbereichen
+    public int EinflussKGB;         // Macht im Geheimdienst/Sicherheitsapparat
+    public int EinflussMilitär;     // Einfluss beim Militär
+    public int EinflussInternational; // Ansehen und Macht im Ausland
+    
+    // ═══ BESONDERE FLAGS ═══
+    public bool KGBEasterEgg;       // TRUE wenn das geheime KGB-Event aktiviert wurde
+    public bool GeheimeAusbildung;  // TRUE wenn geheime KGB-Ausbildung absolviert
+    
+    // ═══ HOCHZEITS-SYSTEM (ÄNDERUNG 1) ═══
+    public bool IstVerheiratet;     // TRUE wenn verheiratet
+    public string EhepartnerName;   // Name der Ehefrau
+    public int GeburtenBonus;       // Geburtenrate 1-5 (höher = mehr Kinder)
+    public int FinanzBonus;         // Geld-Bonus bei Heirat (Trade-off: weniger Kinder = mehr Geld)
+    
+    // ═══ FAMILIEN-SYSTEM (ÄNDERUNG 2) ═══
+    public List<PlayerCharacter> Kinder;  // Liste aller Kinder (für Stammbaum)
+    public bool IstTot;             // TRUE wenn Charakter verstorben (für Stammbaum-Visualisierung)
+    
+    /// <summary>
+    /// Konstruktor - Erstellt einen neuen Charakter
+    /// </summary>
+    /// <param name="name">Vollständiger Name</param>
+    /// <param name="generation">Generationsnummer (1, 2, 3...)</param>
     public PlayerCharacter(string name, int generation)
     {
         Name = name;
         Generation = generation;
-        Gesundheit = 100;
-        Geld = 0;
-        LoyalitätPartei = 50;
-        LoyalitätVolk = 50;
-        LoyalitätFamilie = 80;
-        Phase = "Geburt";
+        
+        // Standard-Werte beim Start
+        Gesundheit = 100;           // Volle Gesundheit
+        Geld = 0;                   // Kein Startkapital
+        LoyalitätPartei = 50;       // Neutral zur Partei
+        LoyalitätVolk = 50;         // Neutral beim Volk
+        LoyalitätFamilie = 80;      // Hohe Familienbindung
+        Phase = "Geburt";           // Startet bei Geburt
+        
+        // Listen und Flags initialisieren
         Kinder = new List<PlayerCharacter>();
         IstVerheiratet = false;
         IstTot = false;
