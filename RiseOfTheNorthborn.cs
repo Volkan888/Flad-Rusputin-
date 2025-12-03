@@ -480,66 +480,31 @@ class GameSave
 class HistoricalEvent
 {
     public string ID;                      // Eindeutige ID (z.B. "UDSSR_ZERFALL_1991")
-    public string NameDE, NameRU, NameEN;  // Titel in 3 Sprachen
-    public string DatumDE, DatumRU, DatumEN;  // Datum in 3 Sprachen
+    public string Name;                    // Titel
+    public string Datum;                   // Datum
     public int Jahr;                       // Jahr für Sortierung
     public int Monat;                      // Monat für Sortierung (1-12)
-    public string GeschichteDE, GeschichteRU, GeschichteEN;  // Geschichte in 3 Sprachen
+    public string Geschichte;              // Geschichte/Beschreibung
     public string Kategorie;               // "POLITIK", "WIRTSCHAFT", "KRIEG", "KATASTROPHE"
     public Action<PlayerCharacter> Auswirkungen;  // Effekte auf Spieler
     
-    public HistoricalEvent(string id, string nameDE, string nameRU, string nameEN, 
-                          string datumDE, string datumRU, string datumEN,
-                          int jahr, int monat, string kategorie, 
-                          string geschichteDE, string geschichteRU, string geschichteEN,
-                          Action<PlayerCharacter> auswirkungen)
+    public HistoricalEvent(string id, string name, string datum, int jahr, int monat, 
+                          string kategorie, string geschichte, Action<PlayerCharacter> auswirkungen)
     {
         ID = id;
-        NameDE = nameDE;
-        NameRU = nameRU;
-        NameEN = nameEN;
-        DatumDE = datumDE;
-        DatumRU = datumRU;
-        DatumEN = datumEN;
+        Name = name;
+        Datum = datum;
         Jahr = jahr;
         Monat = monat;
-        GeschichteDE = geschichteDE;
-        GeschichteRU = geschichteRU;
-        GeschichteEN = geschichteEN;
+        Geschichte = geschichte;
         Kategorie = kategorie;
         Auswirkungen = auswirkungen;
     }
     
-    // Helper-Methoden um aktuelle Sprache zu bekommen
-    public string GetName()
-    {
-        switch (EventSystem.currentLanguage)
-        {
-            case "RU": return NameRU;
-            case "EN": return NameEN;
-            default: return NameDE;
-        }
-    }
-    
-    public string GetDatum()
-    {
-        switch (EventSystem.currentLanguage)
-        {
-            case "RU": return DatumRU;
-            case "EN": return DatumEN;
-            default: return DatumDE;
-        }
-    }
-    
-    public string GetGeschichte()
-    {
-        switch (EventSystem.currentLanguage)
-        {
-            case "RU": return GeschichteRU;
-            case "EN": return GeschichteEN;
-            default: return GeschichteDE;
-        }
-    }
+    // Helper-Methoden für Kompatibilität
+    public string GetName() { return Name; }
+    public string GetDatum() { return Datum; }
+    public string GetGeschichte() { return Geschichte; }
 }
 
 /// <summary>
