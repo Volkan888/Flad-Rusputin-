@@ -11482,6 +11482,9 @@ class Program
         {
             player.Alter++;
             
+            // TELEFONATE: Prüfe historische Anrufe
+            CheckTelefonateForYear(player);
+            
             // SIDECHICK-SYSTEM: Prüfe alle 10 Jahre
             CheckSidechickEvent(player);
             
