@@ -191,16 +191,45 @@ class RandomEvent
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// HOCHZEITS-SYSTEM
+// HOCHZEITS-SYSTEM (ÄNDERUNG 4)
 // ═══════════════════════════════════════════════════════════════════
+/*
+ * HOCHZEITS-MECHANIK:
+ * 
+ * Während der Präsidenten-Phase kann Flad eine von 5 Frauen heiraten.
+ * Jede Frau bietet einen anderen Trade-off:
+ * 
+ * ┌─────────────┬─────────────┬──────────────┬───────────────┐
+ * │ Frau        │ Kinderrate  │ Geld-Bonus   │ Loyalität     │
+ * ├─────────────┼─────────────┼──────────────┼───────────────┤
+ * │ Natasha     │ 1★ (wenig)  │ +300 Rubel   │ +5%           │
+ * │ Olga        │ 2★          │ +200 Rubel   │ +10%          │
+ * │ Svetlana    │ 3★          │ +100 Rubel   │ +15%          │
+ * │ Irina       │ 4★          │ +50 Rubel    │ +20%          │
+ * │ Katya       │ 5★ (viele)  │ +0 Rubel     │ +25%          │
+ * └─────────────┴─────────────┴──────────────┴───────────────┘
+ * 
+ * STRATEGISCHE ÜBERLEGUNG:
+ * - Mehr Kinder = Mehr Erben bei Tod = Sicherheit
+ * - Mehr Geld = Mehr Bestechung/Einfluss = Macht
+ * - Spieler muss abwägen: Sicherheit vs. Reichtum
+ * 
+ * IMPLEMENTIERUNG:
+ * - GeburtenRate bestimmt Wahrscheinlichkeit pro Jahr (15%, 30%, 45%, 60%, 75%)
+ * - GeldBonus wird sofort bei Heirat ausgezahlt
+ * - LoyalitätBonus erhöht Familien-Loyalität permanent
+ */
 
+/// <summary>
+/// WifeOption - Repräsentiert eine heiratsfähige Frau
+/// </summary>
 class WifeOption
 {
-    public string Name;
-    public string Beschreibung;
-    public int GeburtenRate; // 1-5 (höher = mehr Kinder)
-    public int GeldBonus; // Mehr Geld bei weniger Kindern
-    public int LoyalitätBonus;
+    public string Name;              // Name der Frau
+    public string Beschreibung;      // Kurzbeschreibung ihres Charakters
+    public int GeburtenRate;         // 1-5 Sterne (höher = mehr Kinder)
+    public int GeldBonus;            // Sofortige Mitgift in Rubel
+    public int LoyalitätBonus;       // Bonus auf Familien-Loyalität
     
     public WifeOption(string name, string desc, int kinder, int geld, int loy)
     {
@@ -212,6 +241,13 @@ class WifeOption
     }
 }
 
+/// <summary>
+/// MarriageSystem - Verwaltung von Hochzeit und Geburten
+/// 
+/// ÄNDERUNG 4: Komplett neues System
+/// ÄNDERUNG 5: Einzelgeburten mit Namenseingabe
+/// ÄNDERUNG 6: Zwillinge und Drillinge als Bonus
+/// </summary>
 static class MarriageSystem
 {
     static Random rand = new Random();
