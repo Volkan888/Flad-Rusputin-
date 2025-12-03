@@ -1937,7 +1937,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Erfolgreicher Coup",
-            "Flad rekrutiert einen hochrangigen westlichen Offizier!",
+            "p => $"{p.GetFirstName()} rekrutiert einen hochrangigen westlichen Offizier!",
             "DDR-Einsatz", 25,
             p => {
                 p.EinflussKGB += 30;
@@ -2055,7 +2055,7 @@ static class EventSystem
                 Console.Write("Wähle [1-2]: ");
                 if (Console.ReadLine() == "1")
                 {
-                    Console.WriteLine("Flad meldet sich freiwillig für den Einsatz in Tschernobyl!");
+                    Console.WriteLine("p => $"{p.GetFirstName()} meldet sich freiwillig für den Einsatz in Tschernobyl!");
                     p.Gesundheit -= 40; // Strahlenschäden
                     p.LoyalitätPartei += 35;
                     p.LoyalitätVolk += 25;
@@ -2194,7 +2194,7 @@ static class EventSystem
                 p.LoyalitätVolk -= 40; // Versagen des Staates
                 p.EinflussKGB -= 15;
                 p.LoyalitätPartei += 10; // Zentralisierung als Reaktion
-                Console.WriteLine("Flad nutzt die Tragödie, um Gouverneurswahlen abzuschaffen...");
+                Console.WriteLine("p => $"{p.GetFirstName()} nutzt die Tragödie, um Gouverneurswahlen abzuschaffen...");
             }
         ));
         
@@ -2228,7 +2228,7 @@ static class EventSystem
             "7. Juli: Ohne Warnung überschwemmt Flut die Kleinstadt. Über 150 Tote in einer Nacht...",
             "Präsident", 13,
             p => {
-                Console.WriteLine("Flad besucht das Katastrophengebiet und ordnet Hilfsmaßnahmen an.");
+                Console.WriteLine("p => $"{p.GetFirstName()} besucht das Katastrophengebiet und ordnet Hilfsmaßnahmen an.");
                 p.LoyalitätVolk -= 15; // Keine rechtzeitige Warnung
                 p.Geld -= 80;
                 p.Gesundheit -= 8;
