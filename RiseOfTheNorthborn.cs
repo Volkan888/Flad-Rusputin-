@@ -4377,7 +4377,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "🕵️ KGB-Archiv entdeckt!",
             "Ein vergessenes Archiv mit Geheimdokumenten wurde gefunden...",
-            "KGB", 5, "kgb_easter",
+            "KGB", 5, 0, "kgb_easter",
             p => {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
