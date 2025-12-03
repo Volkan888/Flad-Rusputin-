@@ -6186,6 +6186,8 @@ static class EventSystem
             Console.WriteLine($"║         💳 SCHULDEN-EREIGNIS 💳                          ║");
         else if (chosen.Type == "kgb_easter")
             Console.WriteLine($"║         🕵️ KGB EASTER EGG 🕵️                             ║");
+        else if (chosen.Type == "nato")
+            Console.WriteLine($"║         🛡️ NATO-RUSSLAND {chosen.Jahr} 🛡️                  ║");
         else if (chosen.Type == "fiktiv")
             Console.WriteLine($"║          🔮 ZUKUNFTSEREIGNIS {chosen.Jahr} 🔮             ║");
         else if (chosen.Type == "usa")
