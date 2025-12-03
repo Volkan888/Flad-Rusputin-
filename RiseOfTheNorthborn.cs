@@ -4370,6 +4370,394 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
+        // KGB EASTER EGGS - SELTENE GEHEIME EVENTS
+        // Zufallsprinzip: Niedrige Chance (5-15%), besondere Belohnungen
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "🕵️ KGB-Archiv entdeckt!",
+            "Ein vergessenes Archiv mit Geheimdokumenten wurde gefunden...",
+            "KGB", 5, "kgb_easter",
+            p => {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🕵️ KGB GEHEIMES ARCHIV 🕵️               ║
+        ║   ☭ STRENG VERTRAULICH ☭                  ║
+        ╚════════════════════════════════════════════╝
+                ");
+                Console.ResetColor();
+                
+                Console.WriteLine("\n📂 Du findest ein verstaubtes Dossier...");
+                Thread.Sleep(1500);
+                Console.WriteLine("\n🔍 Inhalt:");
+                Console.WriteLine("   - Operation 'Roter Schatten' (1976)");
+                Console.WriteLine("   - Agentennamen im Westen");
+                Console.WriteLine("   - Unbekannte Atombunker-Koordinaten");
+                Console.WriteLine("   - Persönliche Akte von Breschnew");
+                
+                Console.WriteLine("\n[1] Dokumente vernichten (Sicher spielen)");
+                Console.WriteLine("[2] Dokumente behalten (Erpressungsmaterial)");
+                Console.WriteLine("[3] Dokumente an CIA verkaufen ($$$ aber riskant!)");
+                Console.Write("\nWähle [1-3]: ");
+                
+                string choice = Console.ReadLine();
+                
+                Console.Clear();
+                if (choice == "1")
+                {
+                    Console.WriteLine("\n🔥 Dokumente verbrannt!");
+                    Console.WriteLine("\n✓ Keine Spuren, keine Gefahr.");
+                    p.EinflussKGB += 5; // Loyalität gezeigt
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("\n💼 Dokumente sicher versteckt!");
+                    Console.WriteLine("\n✓ Erpressungsmaterial gesammelt!");
+                    p.EinflussKGB += 30;
+                    p.LoyalitätPartei += 20;
+                    p.Geld += 150;
+                    Console.WriteLine($"\n💻 KGB-Einfluss: +30 (jetzt {p.EinflussKGB})");
+                    Console.WriteLine($"🏛️  Loyalität Partei: +20 (jetzt {p.LoyalitätPartei})");
+                    Console.WriteLine($"💰 Geld: +150 Rubel (jetzt {p.Geld})");
+                }
+                else
+                {
+                    // Riskanter Verkauf
+                    if (rand.Next(100) < 40)
+                    {
+                        Console.WriteLine("\n💰 CIA zahlt $$$!");
+                        p.Geld += 500;
+                        p.EinflussKGB -= 50; // Verräter!
+                        p.LoyalitätPartei -= 40;
+                        Console.WriteLine($"\n💰 Geld: +500 Rubel!");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"⚠️  KGB-Einfluss: -50 (VERRÄTER!)");
+                        Console.WriteLine($"⚠️  Loyalität Partei: -40");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n💀 AUFGEFLOGEN!");
+                        Console.WriteLine("\n⚠️  KGB hat die Operation entdeckt!");
+                        p.EinflussKGB -= 80;
+                        p.Geld -= 200;
+                        p.Gesundheit -= 40;
+                        Console.WriteLine($"\n💻 KGB-Einfluss: -80 (jetzt {p.EinflussKGB})");
+                        Console.WriteLine($"💰 Geld: -200 Rubel (Strafe!)");
+                        Console.WriteLine($"❤️  Gesundheit: -40 (Verhör!)");
+                        Console.ResetColor();
+                    }
+                }
+                
+                Console.WriteLine("\n[Drücke eine Taste...]");
+                Console.ReadKey(true);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "🎯 Geheime KGB-Mission",
+            "Ein alter KGB-Kontakt bietet dir eine geheime Mission an...",
+            "KGB", 8, "kgb_easter",
+            p => {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🎯 GEHEIME MISSION 🎯                    ║
+        ║   ☭ NUR FÜR AGENTEN ☭                     ║
+        ╚════════════════════════════════════════════╝
+                ");
+                Console.ResetColor();
+                
+                Console.WriteLine("\n📞 Spätabends klingelt das Telefon...");
+                Thread.Sleep(1500);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\n'Genosse... Wir brauchen jemanden für eine... heikle Aufgabe.'");
+                Console.ResetColor();
+                Thread.Sleep(1000);
+                
+                Console.WriteLine("\n🎯 Mission: Einen Überläufer in Berlin 'zurückholen'");
+                Console.WriteLine("\n⚠️  Risiko: HOCH");
+                Console.WriteLine("💰 Belohnung: EXZELLENT");
+                
+                Console.WriteLine("\n[1] Mission annehmen");
+                Console.WriteLine("[2] Zu riskant - ablehnen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n✈️  Flug nach Berlin...");
+                    Thread.Sleep(1500);
+                    
+                    // Zufälliger Ausgang
+                    int erfolg = rand.Next(100);
+                    
+                    if (erfolg < 60)
+                    {
+                        // Erfolg
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n✓ MISSION ERFOLGREICH!");
+                        Console.ResetColor();
+                        Console.WriteLine("\n🎖️  Der Überläufer wurde 'überzeugt' zurückzukehren.");
+                        Console.WriteLine("🏆 KGB ist sehr zufrieden!");
+                        
+                        p.EinflussKGB += 50;
+                        p.Geld += 300;
+                        p.LoyalitätPartei += 30;
+                        p.Charisma += 2;
+                        
+                        Console.WriteLine($"\n💻 KGB-Einfluss: +50 (jetzt {p.EinflussKGB})");
+                        Console.WriteLine($"💰 Geld: +300 Rubel");
+                        Console.WriteLine($"🎭 Charisma: +2");
+                    }
+                    else if (erfolg < 85)
+                    {
+                        // Teilerfolg
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("\n⚠️  MISSION TEILWEISE ERFOLGREICH");
+                        Console.ResetColor();
+                        Console.WriteLine("\n📰 Die Mission verlief nicht ganz nach Plan...");
+                        Console.WriteLine("Aber keine Spuren führen zu dir.");
+                        
+                        p.EinflussKGB += 20;
+                        p.Geld += 100;
+                        p.Gesundheit -= 15;
+                        
+                        Console.WriteLine($"\n💻 KGB-Einfluss: +20");
+                        Console.WriteLine($"❤️  Gesundheit: -15 (Stress)");
+                    }
+                    else
+                    {
+                        // Fehlschlag
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n💀 MISSION FEHLGESCHLAGEN!");
+                        Console.ResetColor();
+                        Console.WriteLine("\n⚠️  Der Überläufer entkam zur CIA!");
+                        Console.WriteLine("📰 Internationaler Skandal!");
+                        
+                        p.EinflussKGB -= 30;
+                        p.EinflussInternational -= 25;
+                        p.Gesundheit -= 30;
+                        
+                        Console.WriteLine($"\n💻 KGB-Einfluss: -30");
+                        Console.WriteLine($"🌍 Internationales Ansehen: -25");
+                        Console.WriteLine($"❤️  Gesundheit: -30");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Mission abgelehnt.");
+                    Console.WriteLine("\n'Schade... Du warst unsere erste Wahl.'");
+                    p.EinflussKGB -= 10;
+                }
+                
+                Console.WriteLine("\n[Drücke eine Taste...]");
+                Console.ReadKey(true);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "🔐 KGB-Safe entdeckt",
+            "Bei Renovierungsarbeiten im Kreml wird ein alter KGB-Safe gefunden...",
+            "Präsident", 10, "kgb_easter",
+            p => {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   🔐 VERGESSENER KGB-SAFE 🔐              ║
+        ║   ☭ KOMBINATIONSSCHLOSS ☭                 ║
+        ╚════════════════════════════════════════════╝
+                ");
+                Console.ResetColor();
+                
+                Console.WriteLine("\n🔨 Arbeiter finden einen alten Safe hinter der Wand...");
+                Thread.Sleep(1500);
+                Console.WriteLine("\n🔐 Rostiges Kombinationsschloss: _ _ _ _");
+                Console.WriteLine("\n💡 Hinweis auf Rückseite: 'Jahr des Sieges'");
+                
+                Console.Write("\n🔢 Gib die 4-stellige Kombination ein: ");
+                string code = Console.ReadLine();
+                
+                Console.Clear();
+                
+                if (code == "1945")
+                {
+                    // Richtige Kombination!
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\n✓ *KLICK* - SAFE GEÖFFNET!");
+                    Console.ResetColor();
+                    Thread.Sleep(1000);
+                    
+                    Console.WriteLine("\n📦 Inhalt:");
+                    Console.WriteLine("   💰 50.000 Rubel in Gold");
+                    Console.WriteLine("   📜 Originaldokumente von Stalin");
+                    Console.WriteLine("   🎖️  Lenin-Orden (selten!)");
+                    Console.WriteLine("   🗝️  Schlüssel zu geheimem Bunker");
+                    
+                    p.Geld += 500;
+                    p.EinflussKGB += 40;
+                    p.LoyalitätPartei += 25;
+                    p.EinflussInternational += 20;
+                    
+                    Console.WriteLine("\n🎉 JACKPOT!");
+                    Console.WriteLine($"💰 Geld: +500 Rubel");
+                    Console.WriteLine($"💻 KGB-Einfluss: +40");
+                    Console.WriteLine($"🏛️  Loyalität Partei: +25");
+                    Console.WriteLine($"🌍 Internationales Ansehen: +20 (historische Dokumente!)");
+                }
+                else if (code == "1917" || code == "1941" || code == "1991")
+                {
+                    // Falsch, aber historisch relevant
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n⚠️  Falsche Kombination...");
+                    Console.ResetColor();
+                    Console.WriteLine($"\n'{code}' - auch ein wichtiges Jahr, aber nicht das richtige!");
+                    Console.WriteLine("\n🔧 Safe wird aufgebrochen...");
+                    Thread.Sleep(1500);
+                    
+                    Console.WriteLine("\n📦 Inhalt (teilweise beschädigt):");
+                    Console.WriteLine("   💰 10.000 Rubel");
+                    Console.WriteLine("   📄 Vergilbte Dokumente");
+                    
+                    p.Geld += 150;
+                    p.EinflussKGB += 10;
+                    
+                    Console.WriteLine($"\n💰 Geld: +150 Rubel");
+                    Console.WriteLine($"💻 KGB-Einfluss: +10");
+                }
+                else
+                {
+                    // Komplett falsch
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n❌ FALSCHE KOMBINATION!");
+                    Console.ResetColor();
+                    Console.WriteLine("\n⚠️  Safe-Mechanismus blockiert!");
+                    Console.WriteLine("\n🔧 Muss von Experten geöffnet werden...");
+                    Thread.Sleep(1500);
+                    
+                    Console.WriteLine("\n📦 Inhalt (von Experten entnommen):");
+                    Console.WriteLine("   💰 5.000 Rubel (Finder-Prämie)");
+                    
+                    p.Geld += 50;
+                    Console.WriteLine($"\n💰 Geld: +50 Rubel");
+                }
+                
+                Console.WriteLine("\n[Drücke eine Taste...]");
+                Console.ReadKey(true);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "☎️ Anonymer Anruf",
+            "Ein verschlüsselter Anruf erreicht dich. 'Ich weiß, wer du wirklich bist...'",
+            "KGB", 5, "kgb_easter",
+            p => {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(@"
+        ╔════════════════════════════════════════════╗
+        ║   ☎️ VERSCHLÜSSELTER ANRUF ☎️             ║
+        ║   ⚠️  UNKNOWN NUMBER ⚠️                    ║
+        ╚════════════════════════════════════════════╝
+                ");
+                Console.ResetColor();
+                
+                Console.WriteLine("\n📞 *Ring Ring*");
+                Thread.Sleep(1500);
+                
+                try { Console.Beep(800, 300); Console.Beep(800, 300); } catch { }
+                
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("\n[Verzerrte Stimme]:");
+                Console.WriteLine("'Genosse... oder sollte ich sagen, Agent X-47?'");
+                Thread.Sleep(1500);
+                Console.WriteLine("'Ich kenne deine Vergangenheit. ALLE Geheimnisse.'");
+                Thread.Sleep(1500);
+                Console.WriteLine("'Ich will 1000 Rubel. Morgen. Gorky Park. Oder...'");
+                Console.ResetColor();
+                
+                Console.WriteLine("\n[1] Bezahlen (1000 Rubel - Problem verschwindet)");
+                Console.WriteLine("[2] Drohen ('Ich finde dich!')");
+                Console.WriteLine("[3] Auflegen und KGB informieren");
+                Console.Write("\nWähle [1-3]: ");
+                
+                string choice = Console.ReadLine();
+                
+                Console.Clear();
+                
+                if (choice == "1" && p.Geld >= 1000)
+                {
+                    Console.WriteLine("\n💰 Bezahlt...");
+                    p.Geld -= 1000;
+                    Console.WriteLine("\n✓ Der Anrufer verschwindet.");
+                    Console.WriteLine($"💰 Geld: -1000 Rubel (jetzt {p.Geld})");
+                }
+                else if (choice == "1")
+                {
+                    Console.WriteLine("\n⚠️  Nicht genug Geld!");
+                    Console.WriteLine("\n'Dann werden alle es erfahren...'");
+                    p.LoyalitätPartei -= 20;
+                    p.EinflussKGB -= 15;
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("\n😠 'WAGE ES NICHT, MICH ZU ERPRESSEN!'");
+                    Thread.Sleep(1000);
+                    
+                    if (rand.Next(100) < 50)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n✓ Die Drohung wirkt! Er gibt auf.");
+                        p.Charisma += 1;
+                        Console.WriteLine("\n🎭 Charisma: +1 (Einschüchterung!)");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n⚠️  Er lacht nur und legt auf...");
+                        Console.WriteLine("\n📰 Am nächsten Tag erscheinen Gerüchte in der Presse!");
+                        p.LoyalitätVolk -= 15;
+                        p.EinflussInternational -= 10;
+                        Console.ResetColor();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\n📞 KGB informiert...");
+                    Thread.Sleep(1500);
+                    Console.WriteLine("\n🔍 KGB Spezialeinheit aktiviert!");
+                    Thread.Sleep(1000);
+                    
+                    if (rand.Next(100) < 70)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("\n✓ Erpresser gefasst!");
+                        Console.WriteLine("\n🎖️  KGB ist beeindruckt von deiner Zusammenarbeit!");
+                        p.EinflussKGB += 25;
+                        p.LoyalitätPartei += 15;
+                        Console.WriteLine($"\n💻 KGB-Einfluss: +25");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n⚠️  Erpresser entkommen...");
+                        Console.WriteLine("\nAber deine Geheimnisse sind sicher.");
+                        p.EinflussKGB += 5;
+                    }
+                }
+                
+                Console.WriteLine("\n[Drücke eine Taste...]");
+                Console.ReadKey(true);
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
         // RUSSLAND-USA BEZIEHUNGEN (2000-2025)
         // Chronologie der politischen, wirtschaftlichen und militärischen Events
         // ═══════════════════════════════════════════════════════════
