@@ -2126,7 +2126,7 @@ static class EventSystem
             "17. August: Rubel-Kollaps! Staatsdefault! Millionen verlieren Ersparnisse...",
             "DDR-Einsatz", 30,
             p => {
-                Console.WriteLine("Die 'Rubelkrise' vernichtet Flads Ersparnisse und stürzt Russland in Depression.");
+                Console.WriteLine("Die 'Rubelkrise' vernichtet {player.GetFirstName()}s Ersparnisse und stürzt Russland in Depression.");
                 p.Geld = Math.Max(0, p.Geld - 200); // Massive Verluste
                 p.LoyalitätPartei -= 35;
                 p.LoyalitätVolk -= 30;
@@ -2176,7 +2176,7 @@ static class EventSystem
             "23. Oktober: Tschetschenische Terroristen nehmen 850 Menschen als Geiseln. Gasbetäubung - 130 Geiseln sterben...",
             "Präsident", 15,
             p => {
-                Console.WriteLine("Flad muss eine unmögliche Entscheidung treffen...");
+                Console.WriteLine("p => {player.GetFirstName()} muss eine unmögliche Entscheidung treffen...");
                 p.EinflussKGB += 20; // Harter Einsatz
                 p.LoyalitätVolk -= 30; // Zivile Opfer
                 p.Gesundheit -= 25; // Gewissenslast
