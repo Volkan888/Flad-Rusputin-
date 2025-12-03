@@ -1785,18 +1785,35 @@ class Program
         }
     }
     
+    /// <summary>
+    /// PlayMusic - Hintergrundmusik (optional)
+    /// 
+    /// BUG-FIX 4: Sound-Fehler auf Linux-Systemen
+    /// Problem: Console.Beep() funktioniert unter Linux/Mono nicht zuverlässig
+    ///          und kann Abstürze oder Fehler verursachen
+    /// Lösung: Try-Catch mit Thread.Sleep als Fallback
+    ///         Musik-Loop nur 3x statt endlos (verhindert CPU-Last)
+    /// </summary>
     static void PlayMusic()
     {
         int tempo = 150;
         int[] melody = { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659 };
         int[] durations = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2 };
         
-        while (!stopMusic)
+        // Nur 3 Durchläufe statt Endlos-Schleife
+        for (int loop = 0; loop < 3 && !stopMusic; loop++)
         {
             for (int i = 0; i < melody.Length && !stopMusic; i++)
             {
-                try { Console.Beep(melody[i], tempo * durations[i]); }
-                catch { }
+                try 
+                { 
+                    Console.Beep(melody[i], tempo * durations[i]); 
+                }
+                catch 
+                { 
+                    // Fallback: Stille Pause wenn Beep nicht funktioniert
+                    Thread.Sleep(tempo * durations[i]); 
+                }
             }
         }
     }
