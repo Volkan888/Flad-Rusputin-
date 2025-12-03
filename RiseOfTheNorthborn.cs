@@ -311,6 +311,9 @@ class PlayerCharacter
         ErdoganSchulden = 0;              // Keine Schulden zu Beginn
         ErdoganVermittlungAktiv = false;
         TürkeiBeziehung = 50;             // Neutrale Beziehung
+        
+        // Geburten-Cooldown initialisieren
+        LetzteGeburtJahr = 0;             // Keine vorherige Geburt
     }
     
     /// <summary>
