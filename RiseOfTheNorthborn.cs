@@ -7763,54 +7763,46 @@ static class EventSystem
             "DAS ROTE TELEFON KLINGELT! Eine heisere Stimme vom KGB: 'Wir beobachten Sie. Ihre Loyalität wird geprüft.' Das Volk lebt in ständiger Angst vor diesen Anrufen. Ein falsches Wort am Telefon kann dein Leben zerstören. Big Brother hört immer zu.",
             "Präsident", 40, 0, "kgb-telefon",
             p => {
-                if (p.KGBAnrufeVerfügbar > 0)
-                {
-                    Console.WriteLine("\n📞 KGB RUFT AN!");
-                    Thread.Sleep(2000);
-                    KGBHotline.CallKGB(p);
-                }
+                Console.WriteLine("\n📞 KGB RUFT DICH AN!");
+                Console.WriteLine("Das Volk fürchtet diese Anrufe...");
+                p.Gesundheit -= 10;
+                p.LoyalitätVolk -= 15;
+                p.EinflussKGB += 10;
+                Console.WriteLine($"➖ Gesundheit: -10% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk: -15% → {p.LoyalitätVolk}%");
+                Thread.Sleep(3000);
             }
         ));
         
         allEvents.Add(new RandomEvent(
-            "📞 TRUMP-ANRUF aus dem Weißen Haus",
-            "DONALD RUFT AN! Das goldene Telefon klingelt. 'Hey Vladimir, it's Donald!' Die unglaublichsten Deals werden am Telefon besprochen. Das Volk erfährt nichts davon - bis Twitter explodiert. Geopolitik per Tweet und Hotline.",
-            "Präsident", 30, 0, "trump-telefon",
+            "📞 INTERNATIONALE DIPLOMATIE-ANRUF",
+            "DAS TELEFON KLINGELT! Weltführer rufen an - Deals, Drohungen, Diplomatie. Das Volk erfährt nur, was die Propaganda zulässt. Im Hintergrund wird die Weltpolitik am Telefon gemacht. Jedes Gespräch kann Krieg oder Frieden bedeuten.",
+            "Präsident", 30, 0, "diplo-telefon",
             p => {
-                if (p.TrumpTelefonAktiv && p.TrumpAnrufeVerfügbar > 0)
+                Console.WriteLine("\n📞 DIPLOMATIE-ANRUF!");
+                Console.WriteLine("Internationale Verhandlungen! Das Volk hofft auf Frieden!");
+                int outcome = rand.Next(3);
+                if (outcome == 0)
                 {
-                    Console.WriteLine("\n📞 TRUMP RUFT AN!");
-                    Thread.Sleep(2000);
-                    TrumpHotline.CallTrump(p);
+                    p.EinflussInternational += 20;
+                    p.LoyalitätVolk += 10;
+                    Console.WriteLine("✓ Erfolgreiche Verhandlung!");
+                    Console.WriteLine($"➕ International: +20 → {p.EinflussInternational}");
                 }
-            }
-        ));
-        
-        allEvents.Add(new RandomEvent(
-            "📞 ERDOGAN-ANRUF aus Ankara",
-            "DER SULTAN RUFT! Erdogan am Apparat - charmant und bedrohlich zugleich. Gas-Deals, Syrien-Absprachen, Touristenströme. Das Volk profitiert von türkischen Tomaten. Die Beziehung ist kompliziert: Partner und Rivalen zugleich.",
-            "Präsident", 25, 0, "erdogan-telefon",
-            p => {
-                if (p.ErdoganTelefonAktiv && p.ErdoganAnrufeVerfügbar > 0)
+                else if (outcome == 1)
                 {
-                    Console.WriteLine("\n📞 ERDOGAN RUFT AN!");
-                    Thread.Sleep(2000);
-                    ErdoganHotline.CallErdogan(p);
+                    p.Geld += 200;
+                    Console.WriteLine("✓ Lukrativer Deal abgeschlossen!");
+                    Console.WriteLine($"💰 Geld: +200 Rubel → {p.Geld}");
                 }
-            }
-        ));
-        
-        allEvents.Add(new RandomEvent(
-            "📞 XI JINPING-ANRUF aus Beijing",
-            "DER DRACHE MELDET SICH! Xi Jinping persönlich - höflich aber bestimmt. 'Seidenstraße, Bruder?' Das Volk sieht chinesische Investitionen. Die Partnerschaft ist pragmatisch: Gemeinsam gegen den Westen, aber misstrauisch gegeneinander.",
-            "Präsident", 20, 0, "china-telefon",
-            p => {
-                if (p.ChinaTelefonAktiv && p.ChinaAnrufeVerfügbar > 0)
+                else
                 {
-                    Console.WriteLine("\n📞 CHINA RUFT AN!");
-                    Thread.Sleep(2000);
-                    ChinaHotline.CallChina(p);
+                    p.EinflussInternational -= 15;
+                    p.LoyalitätVolk -= 10;
+                    Console.WriteLine("✗ Verhandlungen gescheitert!");
+                    Console.WriteLine($"➖ International: -15 → {p.EinflussInternational}");
                 }
+                Thread.Sleep(3000);
             }
         ));
     }
