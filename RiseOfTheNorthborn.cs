@@ -10851,11 +10851,6 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine($"{player.GetFirstName()} wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine("═══════════════════════════════════════════════════════════");
-        Console.WriteLine("💾 Extras: 'S' = Speichern | 'L' = Laden | 'M' = 🎵 Musik");
-        Console.WriteLine("═══════════════════════════════════════════════════════════\n");
-        Console.ResetColor();
         Thread.Sleep(3000);
         
         // Zufallsereignis auslösen
