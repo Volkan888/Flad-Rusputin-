@@ -1,0 +1,58 @@
+═══════════════════════════════════════════════════════════════════
+  🎯 HIER SIND ALLE DATEIEN ZUR ÜBERSETZUNG!
+═══════════════════════════════════════════════════════════════════
+
+📁 ORDNER: /app/ZU_UEBERSETZEN/
+
+✅ 10 DATEIEN MIT 194 EVENTS BEREIT ZUR ÜBERSETZUNG:
+
+   01_1952-1956.txt  →  17 Events
+   02_1957-1962.txt  →  17 Events
+   03_1963-1969.txt  →  22 Events
+   04_1970-1977.txt  →  24 Events
+   05_1978-1984.txt  →  21 Events
+   06_1985-1990.txt  →  19 Events
+   07_1991-1997.txt  →  18 Events
+   08_1998-2007.txt  →  23 Events
+   09_2008-2017.txt  →  20 Events
+   10_2018-2025.txt  →  13 Events
+
+═══════════════════════════════════════════════════════════════════
+  🚀 SO GEHT'S:
+═══════════════════════════════════════════════════════════════════
+
+SCHRITT 1: Öffne eine Datei (z.B. 01_1952-1956.txt)
+
+SCHRITT 2: Ersetze die Platzhalter:
+   [HIER RUSSISCHE ÜBERSETZUNG]  →  Russischer Titel
+   [HERE ENGLISH TRANSLATION]     →  English Title
+   [HIER RUSSISCHES DATUM]        →  "5 марта 1953 года"
+   [HERE ENGLISH DATE]            →  "March 5, 1953"
+   [HIER RUSSISCHE GESCHICHTE]    →  Russischer Text
+   [HERE ENGLISH STORY]           →  English text
+
+SCHRITT 3: Speichere die Datei
+
+SCHRITT 4: Wiederhole für alle 10 Dateien
+
+SCHRITT 5: Sage mir Bescheid!
+   → Ich füge die Übersetzungen automatisch ins Spiel ein
+
+═══════════════════════════════════════════════════════════════════
+  💡 TIPP
+═══════════════════════════════════════════════════════════════════
+
+Fange mit der KLEINSTEN Datei an:
+→ 10_2018-2025.txt (nur 13 Events)
+
+Oder nutze ChatGPT/DeepL zum schnellen Übersetzen!
+
+═══════════════════════════════════════════════════════════════════
+  📖 MEHR INFO
+═══════════════════════════════════════════════════════════════════
+
+Lies:
+- README.txt         → Detaillierte Anleitung
+- ÜBERSICHT.txt      → Schnellübersicht
+
+═══════════════════════════════════════════════════════════════════

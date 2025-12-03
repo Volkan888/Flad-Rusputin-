@@ -1,0 +1,141 @@
+═══════════════════════════════════════════════════════════════════
+  ANLEITUNG: HISTORISCHE EVENTS HINZUFÜGEN
+═══════════════════════════════════════════════════════════════════
+
+Das Spiel hat jetzt 2 EVENT-SYSTEME:
+
+1. HISTORISCHE EVENTS → Chronologisch, mit Datum, GARANTIERT
+2. ZUFALLS-EVENTS → Bleiben zufällig wie bisher
+
+═══════════════════════════════════════════════════════════════════
+HISTORISCHES EVENT HINZUFÜGEN
+═══════════════════════════════════════════════════════════════════
+
+SCHRITT 1: Öffne die Funktion InitializeHistoricalEvents()
+           (ca. Zeile 3030 in RiseOfTheNorthborn.cs)
+
+SCHRITT 2: Füge ein neues Event hinzu nach diesem Muster:
+
+historicalEvents.Add(new HistoricalEvent(
+    "EINDEUTIGE_ID_1991",                    // Eindeutige ID (z.B. Jahr_Name)
+    "Titel des Ereignisses",                 // Kurzer Titel
+    "26. Dezember 1991",                     // GENAUES DATUM!
+    1991, 12,                                // Jahr, Monat (für Sortierung)
+    "POLITIK",                               // Kategorie: POLITIK, WIRTSCHAFT, KRIEG, KATASTROPHE
+    @"MOSKAU, 26. DEZEMBER 1991 - HIER DIE GESCHICHTE!
+    
+    Schreibe 3-6 Sätze die das Ereignis beschreiben:
+    - Was ist passiert?
+    - Wer war beteiligt?
+    - Was waren die Konsequenzen?
+    - Wie hat das Volk reagiert?
+    
+    Beispiel:
+    Die sowjetische Flagge wird zum letzten Mal eingeholt. Michail Gorbatschow 
+    tritt als Präsident der UdSSR zurück. 69 Jahre nach ihrer Gründung hört 
+    die Sowjetunion auf zu existieren. Das Volk ist geschockt und verwirrt - 
+    niemand weiß was die Zukunft bringt. Millionen werden verarmen, aber die 
+    Hoffnung auf Freiheit keimt.",
+    
+    p => {
+        // HIER DIE AUSWIRKUNGEN AUF DEN SPIELER:
+        Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+        
+        p.Gesundheit -= 40;
+        p.Geld -= 600;
+        p.LoyalitätVolk -= 70;
+        p.LoyalitätPartei -= 80;
+        
+        Console.WriteLine($"➖ Gesundheit: -40% → {p.Gesundheit}%");
+        Console.WriteLine($"💰 Geld: -600 Rubel → {p.Geld}");
+        Console.WriteLine($"➖ Volk: -70% → {p.LoyalitätVolk}%");
+        Console.WriteLine($"➖ Partei: -80% → {p.LoyalitätPartei}%");
+        
+        Thread.Sleep(4000);
+    }
+));
+
+═══════════════════════════════════════════════════════════════════
+WICHTIGE PUNKTE
+═══════════════════════════════════════════════════════════════════
+
+✅ GENAUES DATUM: Verwende das echte historische Datum!
+✅ GESCHICHTE: 3-6 Sätze mit dramatischer Erzählung
+✅ AUSWIRKUNGEN: Zeige ALLE veränderten Stats
+✅ KATEGORIE: Wähle die richtige (POLITIK/WIRTSCHAFT/KRIEG/KATASTROPHE)
+
+VERFÜGBARE PLAYER-ATTRIBUTE:
+- p.Gesundheit (0-100)
+- p.Geld (kann negativ sein)
+- p.LoyalitätVolk (0-100)
+- p.LoyalitätPartei (0-100)
+- p.EinflussKGB
+- p.EinflussMilitär
+- p.EinflussInternational
+- p.NATOBeziehung
+- p.USABeziehung
+- p.ChinaBeziehung
+- p.Kraft, Charisma, Intelligenz
+
+═══════════════════════════════════════════════════════════════════
+BEISPIEL: KOMPLETTES EVENT
+═══════════════════════════════════════════════════════════════════
+
+historicalEvents.Add(new HistoricalEvent(
+    "TSCHERNOBYL_1986",
+    "Reaktorkatastrophe von Tschernobyl",
+    "26. April 1986",
+    1986, 4,
+    "KATASTROPHE",
+    @"TSCHERNOBYL, 26. APRIL 1986, 01:23 UHR - DER SUPER-GAU! 
+    
+    Reaktor 4 des Atomkraftwerks Tschernobyl explodiert. Eine radioaktive 
+    Wolke steigt kilometerhoch in den Himmel. 50 Tonnen nukleares Material 
+    werden in die Atmosphäre geschleudert. Das Volk erfährt erst Tage später 
+    die Wahrheit - die Propaganda schweigt. 600.000 'Liquidatoren' werden in 
+    den Tod geschickt um den Schaden zu begrenzen. Die größte Atomkatastrophe 
+    der Menschheit markiert den Anfang vom Ende der Sowjetunion.",
+    
+    p => {
+        Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+        
+        p.Gesundheit -= 50;
+        p.Geld -= 1000;
+        p.LoyalitätVolk -= 60;
+        p.LoyalitätPartei -= 40;
+        p.EinflussInternational -= 50;
+        
+        Console.WriteLine($"➖ Gesundheit: -50% (Strahlung) → {p.Gesundheit}%");
+        Console.WriteLine($"💰 Kosten: -1000 Rubel → {p.Geld}");
+        Console.WriteLine($"➖ Volk: -60% (Vertuschung) → {p.LoyalitätVolk}%");
+        Console.WriteLine($"➖ Partei: -40% → {p.LoyalitätPartei}%");
+        Console.WriteLine($"➖ International: -50 → {p.EinflussInternational}");
+        
+        Thread.Sleep(5000);
+    }
+));
+
+═══════════════════════════════════════════════════════════════════
+CHRONOLOGIE WICHTIGER JAHRE
+═══════════════════════════════════════════════════════════════════
+
+1953 - Stalin stirbt, Beria hingerichtet
+1956 - Ungarn-Aufstand
+1961 - Berliner Mauer, Gagarin im Weltraum
+1962 - Kubakrise
+1963 - Kennedy ermordet
+1968 - Prager Frühling
+1979 - Afghanistan-Invasion
+1986 - Tschernobyl
+1989 - Berliner Mauer fällt
+1991 - UdSSR-Zerfall
+1999 - Putin wird Premierminister
+2000 - Putin wird Präsident
+2004 - Beslan
+2008 - Georgien-Krieg
+2014 - Krim-Annexion
+2022 - Ukraine-Invasion
+
+FÜGE FÜR JEDES WICHTIGE JAHR MINDESTENS 2-4 EVENTS HINZU!
+
+═══════════════════════════════════════════════════════════════════
