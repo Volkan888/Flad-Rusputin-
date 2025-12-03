@@ -1,0 +1,123 @@
+═══════════════════════════════════════════════════════════════════
+  WAS MUSS ÜBERSETZT WERDEN?
+═══════════════════════════════════════════════════════════════════
+
+📄 NUR EINE DATEI: /app/RiseOfTheNorthborn.cs
+
+📊 ANZAHL DER PLATZHALTER:
+   - [RU] → 194 mal (Russische Titel & Datums)
+   - [EN] → 194 mal (Englische Titel & Datums)
+   - [RUSSISCH SPÄTER] → 194 mal (Russische Geschichten)
+   - [ENGLISH LATER] → 194 mal (Englische Geschichten)
+   
+   GESAMT: 776 Platzhalter müssen ersetzt werden
+
+═══════════════════════════════════════════════════════════════════
+  WO SIND DIE PLATZHALTER?
+═══════════════════════════════════════════════════════════════════
+
+📍 Zeilen: ca. 3085 - 4126 in /app/RiseOfTheNorthborn.cs
+📍 Methode: InitializeHistoricalEvents()
+
+═══════════════════════════════════════════════════════════════════
+  BEISPIEL WIE ES AKTUELL AUSSIEHT
+═══════════════════════════════════════════════════════════════════
+
+historicalEvents.Add(new HistoricalEvent(
+    "STALIN_NOTE_1952",                  // ID
+    "Stalin-Note zur deutschen Einheit", // ✅ Deutscher Titel (FERTIG)
+    "[RU]",                              // ⏳ Russischer Titel (FEHLT)
+    "[EN]",                              // ⏳ Englischer Titel (FEHLT)
+    "10. März 1952",                     // ✅ Deutsches Datum (FERTIG)
+    "[RU]",                              // ⏳ Russisches Datum (FEHLT)
+    "[EN]",                              // ⏳ Englisches Datum (FEHLT)
+    1952, 3,                             // Jahr, Monat
+    "POLITIK",                           // Kategorie
+    @"Stalin bietet den Westmächten...", // ✅ Deutsche Geschichte (FERTIG)
+    "[RUSSISCH SPÄTER]",                 // ⏳ Russische Geschichte (FEHLT)
+    "[ENGLISH LATER]",                   // ⏳ Englische Geschichte (FEHLT)
+    p => { ... }                         // Auswirkungen
+));
+
+═══════════════════════════════════════════════════════════════════
+  BEISPIEL WIE ES SEIN SOLLTE (nach Übersetzung)
+═══════════════════════════════════════════════════════════════════
+
+historicalEvents.Add(new HistoricalEvent(
+    "STALIN_NOTE_1952",
+    "Stalin-Note zur deutschen Einheit",
+    "Сталинская нота об объединении Германии",    // Russischer Titel
+    "Stalin Note on German Reunification",        // Englischer Titel
+    "10. März 1952",
+    "10 марта 1952 года",                         // Russisches Datum
+    "March 10, 1952",                             // Englisches Datum
+    1952, 3,
+    "POLITIK",
+    @"Stalin bietet den Westmächten...",
+    @"Сталин предлагает западным державам...",    // Russische Geschichte
+    @"Stalin offers the Western powers...",        // Englische Geschichte
+    p => { ... }
+));
+
+═══════════════════════════════════════════════════════════════════
+  WIE ÜBERSETZUNGEN HINZUFÜGEN?
+═══════════════════════════════════════════════════════════════════
+
+OPTION 1: Manuell mit Editor
+   1. Öffne /app/RiseOfTheNorthborn.cs
+   2. Suche nach "[RU]" (Strg+F)
+   3. Ersetze einen nach dem anderen
+   4. Für jedes Event:
+      - Russischer Titel statt "[RU]"
+      - Englischer Titel statt "[EN]"
+      - Russisches Datum statt "[RU]"
+      - Englisches Datum statt "[EN]"
+      - Russische Geschichte statt "[RUSSISCH SPÄTER]"
+      - Englische Geschichte statt "[ENGLISH LATER]"
+
+OPTION 2: Mit ChatGPT/DeepL
+   1. Kopiere ein Event
+   2. Lass es übersetzen
+   3. Füge die Übersetzungen ein
+
+OPTION 3: Suchen & Ersetzen
+   - Nicht empfohlen, da jeder Event-Text individuell ist
+   - Jedes Event braucht eigene Übersetzung
+
+═══════════════════════════════════════════════════════════════════
+  DATUMS-FORMATE
+═══════════════════════════════════════════════════════════════════
+
+Deutsch:  "5. März 1953"
+Russisch: "5 марта 1953 года"
+Englisch: "March 5, 1953"
+
+Monatsnamen Russisch:
+января (Januar), февраля (Februar), марта (März),
+апреля (April), мая (Mai), июня (Juni),
+июля (Juli), августа (August), сентября (September),
+октября (Oktober), ноября (November), декабря (Dezember)
+
+═══════════════════════════════════════════════════════════════════
+  TIPP
+═══════════════════════════════════════════════════════════════════
+
+Du kannst auch TEILWEISE übersetzen:
+- Nur die wichtigsten 20-30 Events zuerst
+- Oder nur Russisch ODER Englisch zuerst
+- Das Spiel funktioniert auch mit Platzhaltern
+
+═══════════════════════════════════════════════════════════════════
+  BEFEHLE ZUM SUCHEN
+═══════════════════════════════════════════════════════════════════
+
+Wie viele Platzhalter noch übrig:
+  grep -c "\[RU\]" /app/RiseOfTheNorthborn.cs
+  grep -c "\[EN\]" /app/RiseOfTheNorthborn.cs
+  grep -c "RUSSISCH SPÄTER" /app/RiseOfTheNorthborn.cs
+  grep -c "ENGLISH LATER" /app/RiseOfTheNorthborn.cs
+
+Zeige erstes Event mit Platzhalter:
+  grep -A 5 "\[RU\]" /app/RiseOfTheNorthborn.cs | head -20
+
+═══════════════════════════════════════════════════════════════════
