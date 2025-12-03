@@ -280,6 +280,7 @@ class PlayerCharacter
     {
         Name = name;
         Generation = generation;
+        Geburtsjahr = generation == 1 ? 1952 : 0;  // Gen 1 = 1952, Rest wird bei Geburt gesetzt
         
         // Standard-Werte beim Start
         Gesundheit = 100;           // Volle Gesundheit
@@ -295,6 +296,14 @@ class PlayerCharacter
         IstTot = false;
         GeburtenBonus = 0;
         FinanzBonus = 0;
+    }
+    
+    /// <summary>
+    /// GetCurrentYear - Berechnet das aktuelle Spieljahr
+    /// </summary>
+    public int GetCurrentYear()
+    {
+        return Geburtsjahr + Alter;
     }
 }
 
