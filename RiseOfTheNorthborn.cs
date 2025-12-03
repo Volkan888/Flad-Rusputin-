@@ -1725,9 +1725,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Verlust des Bruders",
-            p => $"{p.GetFirstName()} verliert seinen Bruder durch Krankheit. Ein traumatisches Ereignis...",
+            "Tragischer Tod eines Familienmitglieds...",
             "Kindheit", 20,  // 20% Chance
             p => {
+                Console.WriteLine($"{p.GetFirstName()} verliert seinen Bruder durch Krankheit!");
                 p.Gesundheit -= 10;                            // Trauma
                 p.LoyalitätFamilie = Math.Min(100, p.LoyalitätFamilie + 20);  // Familie wird wichtiger
                 p.Stärke += 1;                                 // Härtet ihn ab
