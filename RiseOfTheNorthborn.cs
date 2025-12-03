@@ -1861,8 +1861,30 @@ class BattleshipGame
             PlayGame(true);   // PvP-Modus
     }
     
+    /// <summary>
+    /// PlayGame - Hauptspielschleife für Schiffe Versenken
+    /// 
+    /// ABLAUF:
+    /// 1. Namenseingabe der Spieler
+    /// 2. Feldgröße wählen (6x6 oder 8x8)
+    /// 3. Spieler 1 platziert Schiffe (manuell)
+    /// 4. Spieler 2 platziert Schiffe (manuell oder automatisch)
+    /// 5. Rundenbasiertes Spiel:
+    ///    - Angreifer wählt Zielfeld
+    ///    - Bei Treffer: Nochmal dran
+    ///    - Bei Fehlschuss: Spielerwechsel
+    /// 6. Spiel endet wenn alle Schiffe eines Spielers versenkt sind
+    /// 7. Gewinner-Bildschirm
+    /// 
+    /// BESONDERHEIT IM PVP-MODUS:
+    /// - Nach jedem Zug wird Bildschirm gelöscht
+    /// - Verhindert dass Spieler 2 das Feld von Spieler 1 sieht
+    /// - "Drücke Taste" als Pause zwischen Spielern
+    /// </summary>
+    /// <param name="pvp">true = Spieler vs Spieler, false = Spieler vs Computer</param>
     static void PlayGame(bool pvp)
     {
+        // ═══ SCHRITT 1: NAMENSEINGABE ═══
         Console.Clear();
         Console.Write("Name Spieler 1: ");
         string player1 = Console.ReadLine();
@@ -1876,13 +1898,14 @@ class BattleshipGame
             if (string.IsNullOrWhiteSpace(player2)) player2 = "Spieler 2";
         }
         
-        // Feldgröße
+        // ═══ SCHRITT 2: FELDGRÖSSE WÄHLEN ═══
         Console.WriteLine("\nFeldgröße:");
-        Console.WriteLine("[1] Klein (6x6)");
-        Console.WriteLine("[2] Groß (8x8)");
+        Console.WriteLine("[1] Klein (6x6) - Schnelles Spiel");
+        Console.WriteLine("[2] Groß (8x8) - Längeres Spiel");
         Console.Write("Wähle [1-2]: ");
         int size = Console.ReadLine() == "2" ? 8 : 6;
         
+        // ═══ SCHRITT 3: SPIELFELDER ERSTELLEN ═══
         Board board1 = new Board(size, player1);
         Board board2 = new Board(size, player2);
         
