@@ -20,7 +20,12 @@ class PlayerCharacter
     public int Alter, Generation;
     public string Phase;
     public bool KGBEasterEgg, GeheimeAusbildung;
+    public bool IstVerheiratet;
+    public string EhepartnerName;
+    public int GeburtenBonus; // Mehr Kinder = höherer Wert
+    public int FinanzBonus; // Weniger Kinder = höherer Bonus
     public List<PlayerCharacter> Kinder;
+    public bool IstTot;
     
     public PlayerCharacter(string name, int generation)
     {
@@ -33,6 +38,10 @@ class PlayerCharacter
         LoyalitätFamilie = 80;
         Phase = "Geburt";
         Kinder = new List<PlayerCharacter>();
+        IstVerheiratet = false;
+        IstTot = false;
+        GeburtenBonus = 0;
+        FinanzBonus = 0;
     }
 }
 
