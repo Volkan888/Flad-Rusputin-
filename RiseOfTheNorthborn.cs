@@ -1707,21 +1707,68 @@ class Program
         // Schwierigkeitsgrad
         int difficulty = ChooseDifficulty();
         
-        // Charakter erstellen
-        currentPlayer = new PlayerCharacter("Flad Rusputin", 1);
-        currentPlayer.Alter = 0;
+        // Charaktere erstellen
+        List<PlayerCharacter> players = new List<PlayerCharacter>();
         
-        // Attribute verteilen
-        DistributeAttributes(currentPlayer, difficulty);
+        for (int i = 0; i < playerCount; i++)
+        {
+            Console.Clear();
+            Console.WriteLine($"╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine($"║              SPIELER {i + 1} - CHARAKTERERSTELLUNG             ║");
+            Console.WriteLine($"╚═══════════════════════════════════════════════════════════╝\n");
+            
+            string playerName;
+            if (playerCount == 1)
+            {
+                playerName = "Flad Rusputin";
+                Console.WriteLine($"Dein Name: {playerName}\n");
+            }
+            else
+            {
+                Console.Write($"Name von Spieler {i + 1}: ");
+                playerName = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(playerName))
+                    playerName = $"Spieler {i + 1}";
+                Console.WriteLine();
+            }
+            
+            PlayerCharacter player = new PlayerCharacter(playerName, 1);
+            player.Alter = 0;
+            
+            // Attribute verteilen
+            DistributeAttributes(player, difficulty);
+            
+            players.Add(player);
+            Thread.Sleep(1000);
+        }
         
-        // Story durchspielen
-        PlayStory(currentPlayer);
+        // MULTIPLAYER: Alle Spieler durchlaufen die Story
+        if (playerCount > 1)
+        {
+            PlayMultiplayerStory(players);
+        }
+        else
+        {
+            // Singleplayer
+            currentPlayer = players[0];
+            PlayStory(currentPlayer);
+        }
         
         // Am Ende speichern anbieten
         Console.WriteLine("\n>> Möchtest du speichern? [J/N]");
         if (Console.ReadKey(true).Key == ConsoleKey.J)
         {
-            SaveGame(currentPlayer);
+            if (playerCount == 1)
+            {
+                SaveGame(players[0]);
+            }
+            else
+            {
+                foreach (var p in players)
+                {
+                    SaveGame(p);
+                }
+            }
         }
         
         stopMusic = false;
