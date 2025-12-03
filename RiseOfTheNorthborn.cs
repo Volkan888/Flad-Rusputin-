@@ -597,7 +597,7 @@ static class MarriageSystem
             
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"\n💒 Flad heiratet {chosen.Name}!");
+            Console.WriteLine($"\n💒 {player.Name.Split(' ')[0]} heiratet {chosen.Name}!");
             Console.ResetColor();
             Console.WriteLine($"\nMitgift: +{chosen.GeldBonus} Rubel");
             Console.WriteLine($"Familien-Loyalität: +{chosen.LoyalitätBonus}%");
