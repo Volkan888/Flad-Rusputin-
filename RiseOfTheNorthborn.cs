@@ -84,6 +84,305 @@ class RandomEvent
     }
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// HOCHZEITS-SYSTEM
+// ═══════════════════════════════════════════════════════════════════
+
+class WifeOption
+{
+    public string Name;
+    public string Beschreibung;
+    public int GeburtenRate; // 1-5 (höher = mehr Kinder)
+    public int GeldBonus; // Mehr Geld bei weniger Kindern
+    public int LoyalitätBonus;
+    
+    public WifeOption(string name, string desc, int kinder, int geld, int loy)
+    {
+        Name = name;
+        Beschreibung = desc;
+        GeburtenRate = kinder;
+        GeldBonus = geld;
+        LoyalitätBonus = loy;
+    }
+}
+
+static class MarriageSystem
+{
+    static Random rand = new Random();
+    
+    static List<WifeOption> wives = new List<WifeOption>
+    {
+        new WifeOption(
+            "Natasha - Die Oligarchin",
+            "Reiche Geschäftsfrau mit wenig Zeit für Familie",
+            1, 300, 5  // Wenig Kinder, viel Geld
+        ),
+        new WifeOption(
+            "Olga - Die Diplomatin",
+            "Karrierefrau, international angesehen",
+            2, 200, 10
+        ),
+        new WifeOption(
+            "Svetlana - Die Ausgewogene",
+            "Balance zwischen Karriere und Familie",
+            3, 100, 15
+        ),
+        new WifeOption(
+            "Irina - Die Traditionelle",
+            "Widmet sich der Familie und Kindern",
+            4, 50, 20
+        ),
+        new WifeOption(
+            "Katya - Die Mutter Russlands",
+            "Kinderreich, traditionell, häuslich",
+            5, 0, 25  // Viele Kinder, kein Geld
+        )
+    };
+    
+    public static void OfferMarriage(PlayerCharacter player)
+    {
+        if (player.IstVerheiratet)
+        {
+            Console.WriteLine("\n>> Du bist bereits verheiratet!");
+            return;
+        }
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                    💒 HOCHZEIT 💒                         ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        Console.WriteLine("\nFlad ist bereit zu heiraten! Wähle deine Ehefrau:\n");
+        
+        for (int i = 0; i < wives.Count; i++)
+        {
+            var wife = wives[i];
+            Console.WriteLine($"[{i + 1}] {wife.Name}");
+            Console.WriteLine($"    {wife.Beschreibung}");
+            Console.WriteLine($"    Kinder: {GetStars(wife.GeburtenRate)} | Geld-Bonus: +{wife.GeldBonus} Rubel");
+            Console.WriteLine($"    Loyalität-Bonus: +{wife.LoyalitätBonus}%");
+            Console.WriteLine();
+        }
+        
+        Console.Write($"Wähle [1-{wives.Count}]: ");
+        if (int.TryParse(Console.ReadLine(), out int choice) && choice >= 1 && choice <= wives.Count)
+        {
+            var chosen = wives[choice - 1];
+            player.IstVerheiratet = true;
+            player.EhepartnerName = chosen.Name;
+            player.GeburtenBonus = chosen.GeburtenRate;
+            player.FinanzBonus = chosen.GeldBonus;
+            player.Geld += chosen.GeldBonus;
+            player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + chosen.LoyalitätBonus);
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n💒 Flad heiratet {chosen.Name}!");
+            Console.ResetColor();
+            Console.WriteLine($"\nMitgift: +{chosen.GeldBonus} Rubel");
+            Console.WriteLine($"Familien-Loyalität: +{chosen.LoyalitätBonus}%");
+            Console.WriteLine($"Erwartete Kinderzahl: {chosen.GeburtenRate}");
+            Thread.Sleep(2500);
+        }
+    }
+    
+    public static void RandomBirth(PlayerCharacter player)
+    {
+        if (!player.IstVerheiratet) return;
+        
+        int chance = player.GeburtenBonus * 15; // 15%, 30%, 45%, 60%, 75%
+        
+        if (rand.Next(100) < chance)
+        {
+            string[] boyNames = { "Dimitri", "Vladimir", "Nikolai", "Alexei", "Boris", "Sergei", "Igor", "Yuri" };
+            string[] girlNames = { "Natasha", "Olga", "Svetlana", "Anastasia", "Irina", "Katya", "Ludmila", "Yelena" };
+            
+            bool isBoy = rand.Next(2) == 0;
+            string childName = (isBoy ? boyNames[rand.Next(boyNames.Length)] : girlNames[rand.Next(girlNames.Length)]) 
+                              + $" Rusputin {player.Generation + 1}";
+            
+            PlayerCharacter child = new PlayerCharacter(childName, player.Generation + 1);
+            child.Alter = 0;
+            child.Phase = "Kind";
+            
+            // Attribute vererben mit Variation
+            child.Stärke = Math.Max(0, player.Stärke + rand.Next(-1, 3));
+            child.Intelligenz = Math.Max(0, player.Intelligenz + rand.Next(-1, 3));
+            child.Charisma = Math.Max(0, player.Charisma + rand.Next(-1, 3));
+            child.Kraft = Math.Max(0, player.Kraft + rand.Next(-1, 3));
+            
+            player.Kinder.Add(child);
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                    👶 GEBURT! 👶                          ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+            
+            Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
+            Console.WriteLine($"Name: {childName}");
+            Console.WriteLine($"\nAttribute:");
+            Console.WriteLine($"  Stärke: {child.Stärke} | Intelligenz: {child.Intelligenz}");
+            Console.WriteLine($"  Charisma: {child.Charisma} | Kraft: {child.Kraft}");
+            Console.WriteLine($"\nFlad hat jetzt {player.Kinder.Count} Kind(er)!");
+            
+            player.LoyalitätFamilie = Math.Min(100, player.LoyalitätFamilie + 5);
+            
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+        }
+    }
+    
+    static string GetStars(int count)
+    {
+        return new string('★', count) + new string('☆', 5 - count);
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// TOD UND NACHFOLGE-SYSTEM
+// ═══════════════════════════════════════════════════════════════════
+
+static class DeathSystem
+{
+    static Random rand = new Random();
+    
+    public static bool CheckDeath(PlayerCharacter player)
+    {
+        // Tod durch Gesundheit
+        if (player.Gesundheit <= 0)
+        {
+            ShowDeathScene(player, "tödlichen Verletzungen");
+            return true;
+        }
+        
+        // Tod durch Alter (nach Präsident)
+        if (player.Phase == "Präsident" && player.Alter >= 65)
+        {
+            int deathChance = (player.Alter - 65) * 8; // 0% bei 65, 80% bei 75
+            if (rand.Next(100) < deathChance)
+            {
+                ShowDeathScene(player, "Altersschwäche");
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    static void ShowDeathScene(PlayerCharacter player, string cause)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                         † TOD †                           ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        Console.WriteLine($"\n{player.Name} ist im Alter von {player.Alter} Jahren");
+        Console.WriteLine($"an {cause} gestorben.\n");
+        Thread.Sleep(2000);
+        
+        Console.WriteLine("Seine Herrschaft war geprägt von:");
+        Console.WriteLine($"  • Generation: {player.Generation}");
+        Console.WriteLine($"  • Kinder: {player.Kinder.Count}");
+        Console.WriteLine($"  • Vermögen: {player.Geld} Rubel");
+        Console.WriteLine($"  • Gesundheit bei Tod: {player.Gesundheit}%\n");
+        Thread.Sleep(2000);
+        
+        Console.WriteLine($"Loyalität zur Partei: {player.LoyalitätPartei}%");
+        Console.WriteLine($"Loyalität zum Volk: {player.LoyalitätVolk}%");
+        Console.WriteLine($"Einfluss beim KGB: {player.EinflussKGB}%\n");
+        Thread.Sleep(2000);
+        
+        player.IstTot = true;
+        
+        Console.WriteLine("Die Dynastie geht weiter...");
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    public static PlayerCharacter SelectHeir(PlayerCharacter deceased)
+    {
+        if (deceased.Kinder.Count == 0)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                      GAME OVER                            ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+            
+            Console.WriteLine("\n⚠ Keine Erben vorhanden!");
+            Console.WriteLine("Die Linie der Rusputins endet hier...");
+            Console.WriteLine($"\nGeneration {deceased.Generation} war die letzte.");
+            Thread.Sleep(3000);
+            return null;
+        }
+        
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              WÄHLE DEINEN NACHFOLGER                      ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine($"{deceased.Name} ist verstorben.");
+        Console.WriteLine("Wähle ein Kind, um die Dynastie fortzuführen:\n");
+        
+        for (int i = 0; i < deceased.Kinder.Count; i++)
+        {
+            var child = deceased.Kinder[i];
+            Console.WriteLine($"[{i + 1}] {child.Name}");
+            Console.WriteLine($"    Generation: {child.Generation}");
+            Console.WriteLine($"    Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
+            Console.WriteLine();
+        }
+        
+        while (true)
+        {
+            Console.Write($"Wähle [1-{deceased.Kinder.Count}]: ");
+            if (int.TryParse(Console.ReadLine(), out int choice) && choice >= 1 && choice <= deceased.Kinder.Count)
+            {
+                var heir = deceased.Kinder[choice - 1];
+                
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                  NEUE GENERATION                          ║");
+                Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+                Console.ResetColor();
+                
+                Console.WriteLine($"\n{heir.Name} übernimmt die Dynastie!");
+                Console.WriteLine($"Generation: {heir.Generation}");
+                Console.WriteLine("\nGeerbte Attribute:");
+                Console.WriteLine($"  Stärke: {heir.Stärke}");
+                Console.WriteLine($"  Intelligenz: {heir.Intelligenz}");
+                Console.WriteLine($"  Charisma: {heir.Charisma}");
+                Console.WriteLine($"  Kraft: {heir.Kraft}");
+                
+                // Erbe erhält Teil des Vermögens
+                heir.Geld = deceased.Geld / 2;
+                heir.Alter = 25; // Startet als junger Erwachsener
+                heir.Phase = "Jurastudium";
+                heir.Gesundheit = 100;
+                
+                // Teil der Einflüsse wird vererbt
+                heir.EinflussKGB = deceased.EinflussKGB / 3;
+                heir.EinflussMilitär = deceased.EinflussMilitär / 3;
+                heir.LoyalitätPartei = deceased.LoyalitätPartei / 2;
+                
+                Console.WriteLine($"\nGeerbtes Vermögen: {heir.Geld} Rubel");
+                Console.WriteLine("\n[Drücke eine Taste um fortzufahren...]");
+                Console.ReadKey(true);
+                
+                return heir;
+            }
+        }
+    }
+}
+
 static class EventSystem
 {
     static Random rand = new Random();
