@@ -4338,6 +4338,10 @@ static class EventSystem
             Console.WriteLine($"\n{evt.GetGeschichte()}");
             Thread.Sleep(5000);
             
+            Console.WriteLine("\n╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║              ⚡ AUSWIRKUNGEN WERDEN AUSGEFÜHRT ⚡          ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            
             // Auswirkungen ausführen
             evt.Auswirkungen(player);
             
