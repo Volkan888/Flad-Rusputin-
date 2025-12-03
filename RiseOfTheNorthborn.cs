@@ -5632,6 +5632,16 @@ class Program
                     continue;
                 }
             }
+            else if (input == "M")
+            {
+                // Musik-Menü (immer verfügbar)
+                Console.WriteLine("\n>> 🎵 Russische Lieder...");
+                Thread.Sleep(1000);
+                SoundSystem.ShowMusicMenu(player);
+                Console.Clear();
+                Console.Write(prompt);  // Prompt erneut anzeigen
+                continue;
+            }
             
             return input;
         }
