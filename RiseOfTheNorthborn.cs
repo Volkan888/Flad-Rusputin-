@@ -6564,6 +6564,48 @@ class Program
                 Console.Write(prompt);  // Prompt erneut anzeigen
                 continue;
             }
+            else if (input == "N")
+            {
+                // NATO-Telefon (nur als Präsident)
+                if (player.Phase == "Präsident")
+                {
+                    Console.WriteLine("\n>> 📞 NATO-Telefon klingelt...");
+                    Thread.Sleep(1000);
+                    NATOHotline.CallNATO(player);
+                    Console.Clear();
+                    Console.Write(prompt);
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("\n⚠️  NATO-Telefon erst als Präsident verfügbar!");
+                    Console.WriteLine("   [Taste drücken]");
+                    Console.ReadKey(true);
+                    Console.Write(prompt);
+                    continue;
+                }
+            }
+            else if (input == "F")
+            {
+                // Finka (nur als Präsident)
+                if (player.Phase == "Präsident")
+                {
+                    Console.WriteLine("\n>> 🏡 Zur Finka reisen...");
+                    Thread.Sleep(1000);
+                    FinkaSystem.ShowFinkaMenu(player);
+                    Console.Clear();
+                    Console.Write(prompt);
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("\n⚠️  Finka erst als Präsident verfügbar!");
+                    Console.WriteLine("   [Taste drücken]");
+                    Console.ReadKey(true);
+                    Console.Write(prompt);
+                    continue;
+                }
+            }
             
             return input;
         }
