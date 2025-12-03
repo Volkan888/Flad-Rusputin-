@@ -537,6 +537,20 @@ static class DeathSystem
         return false;  // Charakter lebt
     }
     
+    /// <summary>
+    /// ShowDeathScene - Zeigt die Todesszene mit Statistiken
+    /// 
+    /// Wird aufgerufen wenn ein Charakter stirbt.
+    /// Zeigt eine dramatische Szene mit:
+    /// - Todesursache
+    /// - Alter bei Tod
+    /// - Wichtige Statistiken (Kinder, Vermögen, Loyalitäten)
+    /// - Abschiedsnachricht
+    /// 
+    /// Markiert den Charakter als tot (für Stammbaum-Visualisierung)
+    /// </summary>
+    /// <param name="player">Der verstorbene Charakter</param>
+    /// <param name="cause">Todesursache als Text</param>
     static void ShowDeathScene(PlayerCharacter player, string cause)
     {
         Console.Clear();
@@ -562,7 +576,7 @@ static class DeathSystem
         Console.WriteLine($"Einfluss beim KGB: {player.EinflussKGB}%\n");
         Thread.Sleep(2000);
         
-        player.IstTot = true;
+        player.IstTot = true;  // Für Stammbaum-Visualisierung markieren
         
         Console.WriteLine("Die Dynastie geht weiter...");
         Console.WriteLine("\n[Drücke eine Taste...]");
