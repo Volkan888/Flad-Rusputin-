@@ -3255,6 +3255,148 @@ static class EventSystem
             }
         ));
         
+        // 1963 - KENNEDY-MORD
+        historicalEvents.Add(new HistoricalEvent(
+            "KENNEDY_MORD_1963",
+            "Ermordung von John F. Kennedy",
+            "Убийство Джона Кеннеди",
+            "Assassination of John F. Kennedy",
+            "22. November 1963",
+            "22 ноября 1963 года",
+            "November 22, 1963",
+            1963, 11,
+            "POLITIK",
+            @"DALLAS, 22. NOVEMBER 1963 - SCHÜSSE AUF DEN PRÄSIDENTEN! John F. Kennedy wird um 12:30 Uhr bei einer Wagenfahrt durch Dallas erschossen. Drei Schüsse aus dem Texas School Book Depository treffen den Präsidenten tödlich. Die Welt steht still. Lee Harvey Oswald wird verhaftet, zwei Tage später von Jack Ruby erschossen. Das Volk in der UdSSR ist geschockt - selbst der Feind verdient keinen solchen Tod. Verschwörungstheorien beginnen sofort und werden nie verstummen.",
+            @"ДАЛЛАС, 22 НОЯБРЯ 1963 - ВЫСТРЕЛЫ В ПРЕЗИДЕНТА! Джон Кеннеди застрелен в 12:30 во время проезда через Даллас. Три выстрела из Депозитария учебников Техаса смертельно ранят президента. Мир замирает. Ли Харви Освальд арестован, через два дня убит Джеком Руби. Советский народ шокирован - даже враг не заслуживает такой смерти. Теории заговора начинаются немедленно и никогда не прекратятся.",
+            @"DALLAS, NOVEMBER 22, 1963 - SHOTS FIRED AT THE PRESIDENT! John F. Kennedy is shot at 12:30 PM during a motorcade through Dallas. Three shots from the Texas School Book Depository fatally wound the president. The world stands still. Lee Harvey Oswald is arrested, killed two days later by Jack Ruby. The Soviet people are shocked - even the enemy doesn't deserve such a death. Conspiracy theories begin immediately and will never cease.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN / ПОСЛЕДСТВИЯ / EFFECTS:");
+                p.EinflussInternational += 15;
+                p.LoyalitätVolk += 10;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"➕ International: +15 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk/Народ/People: +10% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit/Здоровье/Health: -10% → {p.Gesundheit}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        // 1968 - PRAGER FRÜHLING
+        historicalEvents.Add(new HistoricalEvent(
+            "PRAGER_FRUEHLING_1968",
+            "Prager Frühling - Panzer rollen nach Prag",
+            "Пражская весна - Танки входят в Прагу",
+            "Prague Spring - Tanks Roll into Prague",
+            "21. August 1968",
+            "21 августа 1968 года",
+            "August 21, 1968",
+            1968, 8,
+            "KRIEG",
+            @"PRAG, 21. AUGUST 1968 - PANZER GEGEN TRÄUME! Um Mitternacht rollen 500.000 Soldaten und 6000 Panzer des Warschauer Pakts in die Tschechoslowakei ein. Alexander Dubčeks 'Sozialismus mit menschlichem Antlitz' wird brutal niedergeschlagen. Das Volk in Moskau horcht auf - könnte das auch bei uns funktionieren? NEIN! Träume sterben unter Panzerketten. Die Breschnew-Doktrin wird verkündet: Die UdSSR darf eingreifen, wenn der Sozialismus gefährdet ist. Der Westen protestiert, aber tut nichts.",
+            @"ПРАГА, 21 АВГУСТА 1968 - ТАНКИ ПРОТИВ МЕЧТЫ! В полночь 500 000 солдат и 6000 танков Варшавского договора вторгаются в Чехословакию. 'Социализм с человеческим лицом' Александра Дубчека жестоко подавлен. Советский народ прислушивается - может, это сработает и у нас? НЕТ! Мечты умирают под гусеницами танков. Провозглашается доктрина Брежнева: СССР может вмешаться, если социализм под угрозой. Запад протестует, но ничего не делает.",
+            @"PRAGUE, AUGUST 21, 1968 - TANKS AGAINST DREAMS! At midnight, 500,000 soldiers and 6,000 tanks of the Warsaw Pact invade Czechoslovakia. Alexander Dubček's 'Socialism with a human face' is brutally crushed. The Soviet people listen - could this work for us too? NO! Dreams die under tank treads. The Brezhnev Doctrine is proclaimed: The USSR may intervene if socialism is threatened. The West protests but does nothing.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN / ПОСЛЕДСТВИЯ / EFFECTS:");
+                p.EinflussMilitär += 30;
+                p.LoyalitätVolk -= 40;
+                p.EinflussInternational -= 45;
+                p.Gesundheit -= 20;
+                p.Geld -= 400;
+                Console.WriteLine($"➕ Militär/Военные/Military: +30 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk/Народ/People: -40% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -45 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Kosten/Расходы/Cost: -400 → {p.Geld}");
+                Thread.Sleep(6000);
+            }
+        ));
+        
+        // 1979 - AFGHANISTAN
+        historicalEvents.Add(new HistoricalEvent(
+            "AFGHANISTAN_INVASION_1979",
+            "Einmarsch in Afghanistan",
+            "Вторжение в Афганистан",
+            "Invasion of Afghanistan",
+            "24. Dezember 1979",
+            "24 декабря 1979 года",
+            "December 24, 1979",
+            1979, 12,
+            "KRIEG",
+            @"KABUL, 24. DEZEMBER 1979 - DAS SOWJETISCHE VIETNAM BEGINNT! 100.000 sowjetische Soldaten überqueren die Grenze nach Afghanistan. 'Es wird nur ein paar Wochen dauern', lügt die Propaganda. Das Volk schickt seine Söhne in den Tod - in einen brutalen Partisanenkrieg in den Bergen. 10 Jahre später: 15.000 tote Sowjetsoldaten, unzählige Verwundete, eine gebrochene Generation. Afghanistan wird zum Friedhof sowjetischer Macht. Die Mudschahedin, mit US-Waffen ausgerüstet, machen jeden Tag zur Hölle.",
+            @"КАБУЛ, 24 ДЕКАБРЯ 1979 - НАЧИНАЕТСЯ СОВЕТСКИЙ ВЬЕТНАМ! 100 000 советских солдат пересекают границу Афганистана. 'Это займёт всего несколько недель', лжёт пропаганда. Народ отправляет своих сыновей на смерть - в жестокую партизанскую войну в горах. 10 лет спустя: 15 000 погибших советских солдат, бесчисленные раненые, сломленное поколение. Афганистан становится кладбищем советской мощи. Моджахеды, вооружённые США, превращают каждый день в ад.",
+            @"KABUL, DECEMBER 24, 1979 - THE SOVIET VIETNAM BEGINS! 100,000 Soviet soldiers cross the border into Afghanistan. 'It will only take a few weeks,' propaganda lies. The people send their sons to death - into a brutal guerrilla war in the mountains. 10 years later: 15,000 dead Soviet soldiers, countless wounded, a broken generation. Afghanistan becomes the graveyard of Soviet power. The Mujahideen, armed by the US, turn every day into hell.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN / ПОСЛЕДСТВИЯ / EFFECTS:");
+                p.EinflussMilitär += 25;
+                p.Geld -= 800;
+                p.LoyalitätVolk -= 35;
+                p.Gesundheit -= 25;
+                p.EinflussInternational -= 30;
+                Console.WriteLine($"➕ Militär/Военные/Military: +25 → {p.EinflussMilitär}");
+                Console.WriteLine($"💰 Kriegskosten/Расходы войны/War cost: -800 → {p.Geld}");
+                Console.WriteLine($"➖ Volk/Народ/People: -35% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit/Здоровье/Health: -25% → {p.Gesundheit}%");
+                Thread.Sleep(6000);
+            }
+        ));
+        
+        // 1986 - TSCHERNOBYL
+        historicalEvents.Add(new HistoricalEvent(
+            "TSCHERNOBYL_1986",
+            "Reaktorkatastrophe von Tschernobyl",
+            "Чернобыльская катастрофа",
+            "Chernobyl Nuclear Disaster",
+            "26. April 1986",
+            "26 апреля 1986 года",
+            "April 26, 1986",
+            1986, 4,
+            "KATASTROPHE",
+            @"TSCHERNOBYL, 26. APRIL 1986, 01:23 UHR - DER SUPER-GAU! Reaktor 4 explodiert. Eine radioaktive Wolke steigt kilometerhoch. 50 Tonnen nukleares Material werden in die Atmosphäre geschleudert. Das Volk erfährt erst Tage später die Wahrheit - die Propaganda schweigt. 600.000 'Liquidatoren' werden in den Tod geschickt um den Schaden zu begrenzen. Pripjat wird zur Geisterstadt. Kinder spielen im radioaktiven Regen. Die größte Atomkatastrophe der Menschheit markiert den Anfang vom Ende der Sowjetunion. Gorbatschow nennt es später 'den wahren Grund für den Zusammenbruch'.",
+            @"ЧЕРНОБЫЛЬ, 26 АПРЕЛЯ 1986, 01:23 - СУПЕРАВАРИЯ! Взрывается 4-й реактор. Радиоактивное облако поднимается на километры ввысь. 50 тонн ядерного материала выбрасываются в атмосферу. Народ узнаёт правду только через дни - пропаганда молчит. 600 000 'ликвидаторов' отправляют на смерть для ограничения ущерба. Припять становится городом-призраком. Дети играют под радиоактивным дождём. Крупнейшая ядерная катастрофа в истории человечества знаменует начало конца Советского Союза. Горбачёв позже назовёт это 'истинной причиной краха'.",
+            @"CHERNOBYL, APRIL 26, 1986, 01:23 AM - THE SUPER-GAU! Reactor 4 explodes. A radioactive cloud rises kilometers high. 50 tons of nuclear material are hurled into the atmosphere. The people learn the truth only days later - propaganda is silent. 600,000 'liquidators' are sent to their deaths to limit the damage. Pripyat becomes a ghost town. Children play in radioactive rain. The largest nuclear disaster in human history marks the beginning of the end of the Soviet Union. Gorbachev later calls it 'the real reason for the collapse'.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN / ПОСЛЕДСТВИЯ / EFFECTS:");
+                p.Gesundheit -= 50;
+                p.Geld -= 1500;
+                p.LoyalitätVolk -= 60;
+                p.LoyalitätPartei -= 45;
+                p.EinflussInternational -= 50;
+                Console.WriteLine($"➖ Gesundheit/Здоровье/Health: -50% (Strahlung/Радиация/Radiation) → {p.Gesundheit}%");
+                Console.WriteLine($"💰 Kosten/Расходы/Cost: -1500 → {p.Geld}");
+                Console.WriteLine($"➖ Volk/Народ/People: -60% (Vertuschung/Сокрытие/Cover-up) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Partei/Партия/Party: -45% → {p.LoyalitätPartei}%");
+                Thread.Sleep(7000);
+            }
+        ));
+        
+        // 1989 - MAUERFALL
+        historicalEvents.Add(new HistoricalEvent(
+            "MAUERFALL_1989",
+            "Fall der Berliner Mauer",
+            "Падение Берлинской стены",
+            "Fall of the Berlin Wall",
+            "9. November 1989",
+            "9 ноября 1989 года",
+            "November 9, 1989",
+            1989, 11,
+            "POLITIK",
+            @"BERLIN, 9. NOVEMBER 1989, 23:00 UHR - DIE MAUER FÄLLT! Nach einem Kommunikationsfehler öffnen DDR-Grenzposten die Mauer. Hunderttausende strömen nach West-Berlin. Menschen tanzen auf der Mauer, schlagen mit Hämmern darauf ein. 28 Jahre Trennung enden in einer Nacht. Das Volk in der UdSSR sieht die Bilder ungläubig: Der Eiserne Vorhang fällt! Gorbatschow lässt die Panzer in den Kasernen - keine Wiederholung von 1968. Das sowjetische Imperium bröckelt. Der Kalte Krieg ist vorbei.",
+            @"БЕРЛИН, 9 НОЯБРЯ 1989, 23:00 - СТЕНА ПАДАЕТ! После коммуникационной ошибки пограничники ГДР открывают стену. Сотни тысяч устремляются в Западный Берлин. Люди танцуют на стене, бьют по ней молотками. 28 лет разделения заканчиваются за одну ночь. Советский народ смотрит на эти кадры с недоверием: Железный занавес падает! Горбачёв оставляет танки в казармах - не будет повторения 1968 года. Советская империя рушится. Холодная война окончена.",
+            @"BERLIN, NOVEMBER 9, 1989, 11:00 PM - THE WALL FALLS! After a communication error, GDR border guards open the wall. Hundreds of thousands stream into West Berlin. People dance on the wall, hammer it with mallets. 28 years of separation end in one night. The Soviet people watch the images in disbelief: The Iron Curtain falls! Gorbachev keeps the tanks in the barracks - no repeat of 1968. The Soviet empire crumbles. The Cold War is over.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN / ПОСЛЕДСТВИЯ / EFFECTS:");
+                p.EinflussInternational -= 40;
+                p.LoyalitätPartei -= 35;
+                p.LoyalitätVolk += 20;
+                p.EinflussMilitär -= 25;
+                p.Gesundheit -= 15;
+                Console.WriteLine($"➖ International: -40 (Machtverlust/Потеря власти/Loss of power) → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Partei/Партия/Party: -35% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Volk/Народ/People: +20% (Hoffnung/Надежда/Hope) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Militär/Военные/Military: -25 → {p.EinflussMilitär}");
+                Thread.Sleep(6000);
+            }
+        ));
+        
         // Sortiere Events chronologisch nach Jahr und Monat
         historicalEvents = historicalEvents.OrderBy(e => e.Jahr).ThenBy(e => e.Monat).ToList();
     }
