@@ -2977,11 +2977,15 @@ static class ChinaHotline
     }
 }
 
+/// <summary>
+/// EventSystem - Verwaltet alle Zufallsereignisse UND historische Events
+/// </summary>
 static class EventSystem
 {
-    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
-    static Random rand => Program.rand;
-    static List<RandomEvent> allEvents = new List<RandomEvent>();
+    public static List<RandomEvent> allEvents = new List<RandomEvent>();  // Zufällige Events
+    public static List<HistoricalEvent> historicalEvents = new List<HistoricalEvent>();  // Historische Events chronologisch
+    public static HashSet<string> shownHistoricalEvents = new HashSet<string>();  // Bereits gezeigte historische Events
+    public static Random rand = new Random();
     
     /// <summary>
     /// PlayEventSound - Wrapper-Methode für SoundSystem
