@@ -654,30 +654,26 @@ static class MarriageSystem
                 
                 Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
                 
-                // BUG-FIX 8: Verbesserte Namenseingabe mit Timeout-Schutz
-                // Problem: Bei mehreren Geburten konnte System hängen bleiben
-                // Lösung: Direkter Console.ReadLine mit sofortiger Verarbeitung
-                Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen (Enter = Standard): ");
+                // BUG-FIX 9: Einzelne saubere Namenseingabe ohne Mehrfach-Loops
+                // Problem: ReadLine wurde mehrfach aufgerufen
+                // Lösung: Einzelner Aufruf mit klarer Validierung
+                Console.Write($"\nGib dem Kind #{i + 1} einen Vornamen: ");
                 
-                string vorname = "";
-                try
-                {
-                    vorname = Console.ReadLine();
-                }
-                catch
-                {
-                    vorname = "";
-                }
+                string vorname = Console.ReadLine()?.Trim() ?? "";
                 
                 // Überprüfung und Standard-Name falls leer
                 if (string.IsNullOrWhiteSpace(vorname))
+                {
                     vorname = isBoy ? "Vladimir" : "Natasha";
+                    Console.WriteLine($"(Standard-Name: {vorname})");
+                }
                 
                 string childName = $"{vorname} Rusputin {player.Generation + 1}";
                 
                 PlayerCharacter child = new PlayerCharacter(childName, player.Generation + 1);
                 child.Alter = 0;
                 child.Phase = "Kind";
+                child.Geburtsjahr = player.GetCurrentYear();
                 
                 // Attribute vererben mit Variation
                 child.Stärke = Math.Max(0, player.Stärke + rand.Next(-1, 3));
@@ -687,13 +683,14 @@ static class MarriageSystem
                 
                 player.Kinder.Add(child);
                 
-                Console.WriteLine($"\n✓ {childName} wurde geboren!");
+                Console.WriteLine($"\n✓ {childName} geboren ({player.GetCurrentYear()})!");
                 Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
                 
                 if (i < birthCount - 1)
                 {
-                    Console.WriteLine("\n[Drücke eine Taste für nächstes Kind...]");
+                    Console.WriteLine("\n[Nächstes Kind - Taste drücken...]");
                     Console.ReadKey(true);
+                    Console.Clear();
                 }
             }
             
