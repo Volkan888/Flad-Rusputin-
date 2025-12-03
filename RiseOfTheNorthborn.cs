@@ -11146,8 +11146,7 @@ class Program
         player.Alter = 35;
         player.Phase = "DDR-Einsatz";
         
-        // 5-Jahres Shortcut-Reminder
-        ShowShortcutReminder(player);
+        // Shortcuts entfernt
         
         // Zufallsereignis
         EventSystem.TriggerRandomEvent(player);
