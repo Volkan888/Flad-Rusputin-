@@ -2114,13 +2114,20 @@ static class SoundSystem
             for (int i = 0; i < notes.Length; i++)
             {
                 int duration = Math.Max(100, 300 - (i * 15)); // Wird schneller
-                // Beep deaktiviert
-                Thread.Sleep(20);
+                try
+                {
+                    Console.Beep(notes[i], duration);
+                }
+                catch
+                {
+                    // Einzelner Beep fehlgeschlagen - weiter
+                    Thread.Sleep(duration);
+                }
             }
         }
         catch
         {
-            Console.WriteLine("\n[Kalinka erklingt...]");
+            Console.WriteLine("\n♪ [Kalinka erklingt...] ♪");
             Thread.Sleep(2500);
         }
         
