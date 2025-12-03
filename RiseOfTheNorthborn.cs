@@ -1749,9 +1749,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Rauferei im Hinterhof",
-            "p => $"{p.GetFirstName()} gerät in eine Prügelei mit Straßenjungen. Er setzt sich durch!",
+            "Eine Prügelei mit Straßenjungen bricht aus!",
             "Kindheit", 40,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} setzt sich durch!");
                 p.Gesundheit -= 5;
                 p.Stärke += 1;
                 p.LoyalitätPartei -= 5; // Unruhestifter
