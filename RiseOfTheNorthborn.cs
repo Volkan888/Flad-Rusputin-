@@ -2870,6 +2870,202 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
+        // DEUTSCHLAND-RUSSLAND BEZIEHUNGEN (2000-2024)
+        // Historische Ereignisse der bilateralen Beziehungen
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Deutsch-russischer Gipfel Berlin 2000",
+            "Schröder und Putin vereinbaren 'strategische Partnerschaft'! Deutschland will Russland modernisieren...",
+            "Präsident", 0, 2000, "deutschland",
+            p => {
+                Console.WriteLine("Beginn enger Zusammenarbeit! Wirtschaftliche und politische Kooperation.");
+                p.Geld += 300;
+                p.EinflussInternational += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Putin-Rede im Bundestag 2001",
+            "25. September: Putin spricht im Deutschen Bundestag! Wunsch nach 'Großeuropa' und echter Partnerschaft...",
+            "Präsident", 0, 2001, "deutschland",
+            p => {
+                Console.WriteLine("Historischer Moment! Putin auf Deutsch: 'Niemand bezweifelt den großen Wert der Beziehungen'.");
+                p.Geld += 200;
+                p.EinflussInternational += 30;
+                p.LoyalitätPartei += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Regierungskonsultationen Weimar 2002",
+            "Jährliche deutsch-russische Konsultationen institutionalisiert! Themen: Schulden, NATO, Wirtschaft...",
+            "Präsident", 0, 2002, "deutschland",
+            p => {
+                Console.WriteLine("Regelmäßiger Dialog etabliert! Schröder und Putin persönlich eng.");
+                p.Geld += 250;
+                p.EinflussInternational += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nord Stream 1 Planung 2003",
+            "Gasleitung durch Ostsee geplant! Direkte Verbindung Russland-Deutschland, ohne Transitländer...",
+            "Präsident", 0, 2003, "deutschland",
+            p => {
+                Console.WriteLine("Strategisches Energieprojekt! Deutschland wird abhängig von russischem Gas.");
+                p.Geld += 500;
+                p.EinflussInternational += 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Schröder wird Rosneft-Aufsichtsrat 2005",
+            "Ex-Kanzler Schröder wechselt zu russischer Ölfirma! Kontroverse in Deutschland...",
+            "Präsident", 0, 2005, "deutschland",
+            p => {
+                Console.WriteLine("'Genosse der Bosse' - Schröder arbeitet für Russland! Kritik, aber gute Beziehungen.");
+                p.Geld += 300;
+                p.EinflussInternational += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Merkel trifft Putin in Moskau 2006",
+            "Neue Kanzlerin, neuer Ton! Merkel betont 'strategische Partnerschaft', aber kritischer...",
+            "Präsident", 0, 2006, "deutschland",
+            p => {
+                Console.WriteLine("Keine DDR-'Völkerfreundschaft' mehr! Pragmatische Zusammenarbeit.");
+                p.Geld += 200;
+                p.EinflussInternational += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Modernisierungspartnerschaft 2008",
+            "Merkel und Putin: Partnerschaft für Wirtschafts-Modernisierung! Aber: Fehlende Voraussetzungen...",
+            "Präsident", 0, 2008, "deutschland",
+            p => {
+                Console.WriteLine("Scheitert an mangelnder Rechtsstaatlichkeit und Zivilgesellschaft in Russland.");
+                p.Geld += 150;
+                p.EinflussInternational += 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nord Stream 1 in Betrieb 2011",
+            "Erste Gaslieferung durch Ostsee-Pipeline! 55 Mrd. m³/Jahr, Deutschland wird Hauptabnehmer...",
+            "Präsident", 0, 2011, "deutschland",
+            p => {
+                Console.WriteLine("Energieabhängigkeit steigt! Aber: günstiges Gas für deutsche Industrie.");
+                p.Geld += 700;
+                p.EinflussInternational += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krim-Annexion & Sanktionen 2014",
+            "Deutschland verhängt Sanktionen! Regierungskonsultationen eingestellt, Beziehungen dramatisch verschlechtert...",
+            "Präsident", 0, 2014, "deutschland",
+            p => {
+                Console.WriteLine("Merkel verurteilt Völkerrechtsbruch! Aber: Nord Stream 2 wird trotzdem geplant.");
+                p.Geld -= 400;
+                p.EinflussInternational -= 30;
+                p.LoyalitätPartei -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nord Stream 2 Planung beginnt 2015",
+            "Zweite Pipeline trotz Krim-Krise! Deutschland: 'Wirtschaftsprojekt'. USA und Osteuropa: Kritik...",
+            "Präsident", 0, 2015, "deutschland",
+            p => {
+                Console.WriteLine("Kontroverse in EU! Deutschland verteidigt Energiesicherheit.");
+                p.Geld += 600;
+                p.EinflussInternational -= 15; // EU-Partner verärgert
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Tiergarten-Mord Berlin 2019",
+            "August: Tschetschenischer Dissident in Berlin erschossen! Russischer Agent verdächtigt...",
+            "Präsident", 0, 2019, "deutschland",
+            p => {
+                Console.WriteLine("Deutschland weist russische Diplomaten aus! Beziehungen weiter belastet.");
+                p.EinflussInternational -= 20;
+                p.Geld -= 100;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nawalny in Berlin behandelt 2020",
+            "August: Vergifteter Nawalny nach Deutschland geflogen! Nowitschok nachgewiesen...",
+            "Präsident", 0, 2020, "deutschland",
+            p => {
+                Console.WriteLine("Deutschland fordert Aufklärung! Putin schweigt, Beziehungen auf Tiefpunkt.");
+                p.EinflussInternational -= 25;
+                p.Geld -= 150;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nord Stream 2 fertiggestellt 2021",
+            "September: Pipeline fertig! Aber: Keine Genehmigung wegen Ukraine-Spannungen...",
+            "Präsident", 0, 2021, "deutschland",
+            p => {
+                Console.WriteLine("11 Mrd. Euro Investition! USA drohen mit Sanktionen gegen Deutschland.");
+                p.Geld += 400;
+                p.EinflussInternational -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Scholz 'Zeitenwende'-Rede 2022",
+            "27. Februar: Drei Tage nach Ukraine-Invasion! Bundeskanzler Scholz im Bundestag...",
+            "Präsident", 0, 2022, "deutschland",
+            p => {
+                Console.WriteLine("'Zeitenwende'! Deutschland erhöht Militärausgaben massiv, Nord Stream 2 gestoppt!");
+                p.Geld -= 800;
+                p.EinflussInternational -= 50;
+                p.EinflussMilitär -= 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nord Stream Sabotage 2022",
+            "September: Explosionen an Nord Stream 1 und 2! Pipelines zerstört, Täter unklar...",
+            "Präsident", 0, 2022, "deutschland",
+            p => {
+                Console.WriteLine("Wer war es? Ukraine? Russland? USA? Gasleitungen unbrauchbar!");
+                p.Geld -= 600;
+                p.EinflussInternational -= 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Cyberangriffe auf Deutschland 2023",
+            "Russische Hacker greifen SPD und Bundestag an! APT28-Gruppe (GRU) identifiziert...",
+            "Präsident", 0, 2023, "deutschland",
+            p => {
+                Console.WriteLine("Digitaler Krieg! Deutschland ruft Botschafter zu Konsultationen zurück.");
+                p.EinflussInternational -= 25;
+                p.EinflussKGB += 15; // Cyber-Erfolg
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Deutschland größter EU-Unterstützer Ukraine 2024",
+            "Deutschland liefert Waffen für 28 Mrd. Euro! Beziehungen zu Russland auf absolutem Tiefpunkt...",
+            "Präsident", 0, 2024, "deutschland",
+            p => {
+                Console.WriteLine("Leopard-Panzer, Patriot-Systeme! Russland bezeichnet Deutschland als 'Kriegspartei'.");
+                p.Geld -= 500;
+                p.EinflussInternational -= 40;
+                p.EinflussMilitär -= 20;
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
         // FIKTIVE EREIGNISSE AB 2025+
         // Spekulative Zukunfts-Events für verlängerten Spielspaß
         // ═══════════════════════════════════════════════════════════
