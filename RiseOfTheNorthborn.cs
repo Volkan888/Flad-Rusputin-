@@ -480,31 +480,66 @@ class GameSave
 class HistoricalEvent
 {
     public string ID;                      // Eindeutige ID (z.B. "UDSSR_ZERFALL_1991")
-    public string Name;                    // Titel
-    public string Datum;                   // Datum
+    public string NameDE, NameRU, NameEN;  // Titel in 3 Sprachen
+    public string DatumDE, DatumRU, DatumEN;  // Datum in 3 Sprachen
     public int Jahr;                       // Jahr für Sortierung
     public int Monat;                      // Monat für Sortierung (1-12)
-    public string Geschichte;              // Geschichte/Beschreibung
+    public string GeschichteDE, GeschichteRU, GeschichteEN;  // Geschichte in 3 Sprachen
     public string Kategorie;               // "POLITIK", "WIRTSCHAFT", "KRIEG", "KATASTROPHE"
     public Action<PlayerCharacter> Auswirkungen;  // Effekte auf Spieler
     
-    public HistoricalEvent(string id, string name, string datum, int jahr, int monat, 
-                          string kategorie, string geschichte, Action<PlayerCharacter> auswirkungen)
+    public HistoricalEvent(string id, string nameDE, string nameRU, string nameEN, 
+                          string datumDE, string datumRU, string datumEN,
+                          int jahr, int monat, string kategorie, 
+                          string geschichteDE, string geschichteRU, string geschichteEN,
+                          Action<PlayerCharacter> auswirkungen)
     {
         ID = id;
-        Name = name;
-        Datum = datum;
+        NameDE = nameDE;
+        NameRU = nameRU;
+        NameEN = nameEN;
+        DatumDE = datumDE;
+        DatumRU = datumRU;
+        DatumEN = datumEN;
         Jahr = jahr;
         Monat = monat;
-        Geschichte = geschichte;
+        GeschichteDE = geschichteDE;
+        GeschichteRU = geschichteRU;
+        GeschichteEN = geschichteEN;
         Kategorie = kategorie;
         Auswirkungen = auswirkungen;
     }
     
-    // Helper-Methoden für Kompatibilität
-    public string GetName() { return Name; }
-    public string GetDatum() { return Datum; }
-    public string GetGeschichte() { return Geschichte; }
+    // Helper-Methoden um aktuelle Sprache zu bekommen
+    public string GetName()
+    {
+        switch (EventSystem.currentLanguage)
+        {
+            case "RU": return NameRU;
+            case "EN": return NameEN;
+            default: return NameDE;
+        }
+    }
+    
+    public string GetDatum()
+    {
+        switch (EventSystem.currentLanguage)
+        {
+            case "RU": return DatumRU;
+            case "EN": return DatumEN;
+            default: return DatumDE;
+        }
+    }
+    
+    public string GetGeschichte()
+    {
+        switch (EventSystem.currentLanguage)
+        {
+            case "RU": return GeschichteRU;
+            case "EN": return GeschichteEN;
+            default: return GeschichteDE;
+        }
+    }
 }
 
 /// <summary>
@@ -3066,1136 +3101,1136 @@ static class EventSystem
         // ═══════════════════════════════════════════════════════════════════
         
         // ====== 1952 ======
-        historicalEvents.Add(new HistoricalEvent("STALIN_NOTE_1952", "Stalin-Note zur deutschen Einheit", "10. März 1952", 1952, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("STALIN_NOTE_1952", "Stalin-Note zur deutschen Einheit", "[RU]", "[EN]", "10. März 1952", "[RU]", "[EN]", 1952, 3, "POLITIK",
+            @"Stalin bietet den Westmächten eine deutsche Wiedervereinigung an - unter Bedingung der Neutralität. Die Westmächte lehnen ab. Deutschland bleibt geteilt, der Kalte Krieg verhärtet sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; p.LoyalitätPartei += 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KOREA_KRIEG_1952", "Koreakrieg - Sowjetische Piloten im Einsatz", "15. Mai 1952", 1952, 5, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KOREA_KRIEG_1952", "Koreakrieg - Sowjetische Piloten im Einsatz", "[RU]", "[EN]", "15. Mai 1952", "[RU]", "[EN]", 1952, 5, "KRIEG",
+            @"Sowjetische MiG-15 fliegen 'inoffiziell' über Korea gegen US-Jets. Tausende sterben monatlich am 38. Breitengrad. Ein blutiger Stellvertreterkrieg.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 20; p.Geld -= 150; p.Gesundheit -= 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("EISENBAHN_KATASTROPHE_1952", "Zugexplosion bei Moskau", "23. Juli 1952", 1952, 7, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("EISENBAHN_KATASTROPHE_1952", "Zugexplosion bei Moskau", "[RU]", "[EN]", "23. Juli 1952", "[RU]", "[EN]", 1952, 7, "KATASTROPHE",
+            @"Über 100 Menschen sterben bei einer Zugexplosion nahe Moskau. Die Zensur verschleiert das Ausmaß. War es Sabotage oder marode Technik?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 15; p.Gesundheit -= 10; p.Geld -= 100; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("AERZTE_VERSCHWOERUNG_1952", "Ärzteverschwörung - Stalins Paranoia", "13. Januar 1953", 1953, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AERZTE_VERSCHWOERUNG_1952", "Ärzteverschwörung - Stalins Paranoia", "[RU]", "[EN]", "13. Januar 1953", "[RU]", "[EN]", 1953, 1, "POLITIK",
+            @"Stalin verkündet eine 'jüdische Ärzteverschwörung' gegen Kreml-Funktionäre. Eine neue antisemitische Säuberungswelle beginnt. Stalins letzter Wahnsinn.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.LoyalitätVolk -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
         // ====== 1953 ======
-        historicalEvents.Add(new HistoricalEvent("STALIN_TOD_1953", "Tod von Josef Stalin", "5. März 1953", 1953, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("STALIN_TOD_1953", "Tod von Josef Stalin", "[RU]", "[EN]", "5. März 1953", "[RU]", "[EN]", 1953, 3, "POLITIK",
+            @"Der Diktator stirbt nach einem Schlaganfall. 30 Jahre Terror enden. Das Volk zwischen Trauer und Erleichterung. Der Machtkampf um die Nachfolge beginnt: Malenkow, Beria, Chruschtschow.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 30; p.LoyalitätVolk += 20; p.EinflussKGB -= 20; p.Gesundheit += 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OSTBERLIN_AUFSTAND_1953", "Aufstand in Ostberlin niedergeschlagen", "17. Juni 1953", 1953, 6, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OSTBERLIN_AUFSTAND_1953", "Aufstand in Ostberlin niedergeschlagen", "[RU]", "[EN]", "17. Juni 1953", "[RU]", "[EN]", 1953, 6, "KRIEG",
+            @"Arbeiter demonstrieren in Ostberlin für Freiheit. Sowjetische Panzer rollen ein und schlagen den Aufstand brutal nieder. Dutzende sterben.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 25; p.LoyalitätVolk -= 30; p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KOREA_WAFFENSTILLSTAND_1953", "Koreakrieg endet", "27. Juli 1953", 1953, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KOREA_WAFFENSTILLSTAND_1953", "Koreakrieg endet", "[RU]", "[EN]", "27. Juli 1953", "[RU]", "[EN]", 1953, 7, "POLITIK",
+            @"Nach drei Jahren Krieg wird der Waffenstillstand unterzeichnet. Über 3 Millionen Tote. Korea bleibt geteilt. Die Sowjetunion verkündet einen 'Sieg'.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; p.EinflussMilitär += 10; p.LoyalitätVolk += 15; p.Geld += 150; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("BERIA_HINRICHTUNG_1953", "Lawrenti Beria hingerichtet", "23. Dezember 1953", 1953, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BERIA_HINRICHTUNG_1953", "Lawrenti Beria hingerichtet", "[RU]", "[EN]", "23. Dezember 1953", "[RU]", "[EN]", 1953, 12, "POLITIK",
+            @"Stalins gefürchteter Geheimdienstchef wird nach Schauprozess hingerichtet. Verrat, Spionage, Mord - die Anklagen sind endlos. Das Volk jubelt heimlich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB -= 25; p.LoyalitätVolk += 25; p.Gesundheit += 10; p.LoyalitätPartei += 10; Thread.Sleep(4000); }));
         
         // ====== 1954 ======
-        historicalEvents.Add(new HistoricalEvent("ATOMKRAFTWERK_OBNINSK_1954", "Erstes Atomkraftwerk der Welt", "27. Juni 1954", 1954, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ATOMKRAFTWERK_OBNINSK_1954", "Erstes Atomkraftwerk der Welt", "[RU]", "[EN]", "27. Juni 1954", "[RU]", "[EN]", 1954, 6, "POLITIK",
+            @"Die UdSSR eröffnet das weltweit erste Kernkraftwerk in Obninsk. Ein technologischer Triumph! Die friedliche Nutzung der Atomkraft zeigt sowjetische Überlegenheit.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 25; p.Intelligenz += 2; p.Geld += 200; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KGB_GRUENDUNG_1954", "KGB wird gegründet", "13. März 1954", 1954, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KGB_GRUENDUNG_1954", "KGB wird gegründet", "[RU]", "[EN]", "13. März 1954", "[RU]", "[EN]", 1954, 3, "POLITIK",
+            @"Das Komitee für Staatssicherheit (KGB) wird offiziell gegründet. Die neue Geheimpolizei soll 'effizienter' sein als die alte NKWD. Die Überwachung geht weiter.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 30; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("WASSERSTOFFBOMBE_1954", "Sowjetische H-Bombe getestet", "12. August 1954", 1954, 8, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WASSERSTOFFBOMBE_1954", "Sowjetische H-Bombe getestet", "[RU]", "[EN]", "12. August 1954", "[RU]", "[EN]", 1954, 8, "KRIEG",
+            @"Die UdSSR zündet ihre erste transportable Wasserstoffbombe. Die Zerstörungskraft ist monströs. Das nukleare Wettrüsten eskaliert.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 35; p.EinflussInternational += 20; p.Geld -= 200; Thread.Sleep(3000); }));
         
         // ====== 1955 ======
-        historicalEvents.Add(new HistoricalEvent("WARSCHAUER_PAKT_1955", "Warschauer Pakt gegründet", "14. Mai 1955", 1955, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WARSCHAUER_PAKT_1955", "Warschauer Pakt gegründet", "[RU]", "[EN]", "14. Mai 1955", "[RU]", "[EN]", 1955, 5, "POLITIK",
+            @"Als Antwort auf die NATO gründet die UdSSR den Warschauer Pakt. Ost europa wird militärisch geeint. Der Eiserne Vorhang verfestigt sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.EinflussInternational += 25; p.LoyalitätPartei += 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OESTERREICH_STAATSVERTRAG_1955", "Österreich wird neutral", "15. Mai 1955", 1955, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OESTERREICH_STAATSVERTRAG_1955", "Österreich wird neutral", "[RU]", "[EN]", "15. Mai 1955", "[RU]", "[EN]", 1955, 5, "POLITIK",
+            @"Die UdSSR zieht aus Österreich ab und akzeptiert dessen Neutralität. Ein seltener diplomatischer Erfolg und Zeichen der Entspannung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.LoyalitätVolk += 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("MALENKOW_STURZ_1955", "Malenkow verliert die Macht", "8. Februar 1955", 1955, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MALENKOW_STURZ_1955", "Malenkow verliert die Macht", "[RU]", "[EN]", "8. Februar 1955", "[RU]", "[EN]", 1955, 2, "POLITIK",
+            @"Chruschtschow drängt Malenkow aus dem Amt des Ministerpräsidenten. Die Machtkonsolidierung geht weiter. Chruschtschow steigt auf.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 15; p.EinflussKGB += 10; Thread.Sleep(3000); }));
         
         // ====== 1956 ======
-        historicalEvents.Add(new HistoricalEvent("XX_PARTEITAG_1956", "XX. Parteitag - Chruschtschows Geheimrede", "25. Februar 1956", 1956, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("XX_PARTEITAG_1956", "XX. Parteitag - Chruschtschows Geheimrede", "[RU]", "[EN]", "25. Februar 1956", "[RU]", "[EN]", 1956, 2, "POLITIK",
+            @"Chruschtschow prangert Stalin als Massenmörder an! Die vierstündige Geheimrede erschüttert die Partei. Entstalinisierung beginnt. Stalin-Statuen werden gestürzt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 35; p.LoyalitätVolk += 30; p.Intelligenz += 2; p.Gesundheit += 15; p.EinflussKGB -= 15; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("UNGARN_AUFSTAND_1956", "Ungarn-Aufstand niedergeschlagen", "4. November 1956", 1956, 11, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("UNGARN_AUFSTAND_1956", "Ungarn-Aufstand niedergeschlagen", "[RU]", "[EN]", "4. November 1956", "[RU]", "[EN]", 1956, 11, "KRIEG",
+            @"1000 sowjetische Panzer rollen durch Budapest. Der Freiheitsaufstand wird brutal niedergewalzt. 2500 Ungarn sterben, 200.000 fliehen. Die Botschaft: Freiheit wird mit Panzern beantwortet.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.LoyalitätVolk -= 40; p.EinflussInternational -= 35; p.Gesundheit -= 20; p.Geld -= 300; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SUEZ_KRISE_1956", "Suez-Krise - Sowjetische Drohungen", "5. November 1956", 1956, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SUEZ_KRISE_1956", "Suez-Krise - Sowjetische Drohungen", "[RU]", "[EN]", "5. November 1956", "[RU]", "[EN]", 1956, 11, "POLITIK",
+            @"Die UdSSR droht Großbritannien und Frankreich mit Raketenschlägen wegen Suez. Die Westmächte ziehen sich zurück. Ein außenpolitischer Sieg!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.EinflussMilitär += 20; p.LoyalitätVolk += 15; Thread.Sleep(3000); }));
         
         // ====== 1957 ======
-        historicalEvents.Add(new HistoricalEvent("SPUTNIK_1957", "Sputnik 1 - Erster Satellit im Orbit", "4. Oktober 1957", 1957, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SPUTNIK_1957", "Sputnik 1 - Erster Satellit im Orbit", "[RU]", "[EN]", "4. Oktober 1957", "[RU]", "[EN]", 1957, 10, "POLITIK",
+            @"Die UdSSR schickt den ersten Satelliten ins All! Das 'Piep-Piep-Piep' von Sputnik schockiert den Westen. Das Volk jubelt: WIR sind die Ersten im Weltraum!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 40; p.LoyalitätVolk += 35; p.Geld += 200; p.Intelligenz += 2; p.LoyalitätPartei += 25; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("LAIKA_HUND_1957", "Laika - Erster Hund im Weltraum", "3. November 1957", 1957, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LAIKA_HUND_1957", "Laika - Erster Hund im Weltraum", "[RU]", "[EN]", "3. November 1957", "[RU]", "[EN]", 1957, 11, "POLITIK",
+            @"Die Hündin Laika fliegt mit Sputnik 2 ins All - und stirbt dort. Ein tragischer Erfolg der Raumfahrt. Der Weg zum bemannten Flug ist geebnet.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Intelligenz += 1; p.LoyalitätVolk += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ANTI_PARTEI_GRUPPE_1957", "Putschversuch gegen Chruschtschow scheitert", "22. Juni 1957", 1957, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ANTI_PARTEI_GRUPPE_1957", "Putschversuch gegen Chruschtschow scheitert", "[RU]", "[EN]", "22. Juni 1957", "[RU]", "[EN]", 1957, 6, "POLITIK",
+            @"Altstalinisten versuchen Chruschtschow zu stürzen. Der Putsch scheitert. Chruschtschow festigt seine Macht und säubert die Partei von Gegnern.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         // ====== 1958 ======
-        historicalEvents.Add(new HistoricalEvent("CHRUSCHTSCHOW_ALLEIN_1958", "Chruschtschow übernimmt alle Macht", "27. März 1958", 1958, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CHRUSCHTSCHOW_ALLEIN_1958", "Chruschtschow übernimmt alle Macht", "[RU]", "[EN]", "27. März 1958", "[RU]", "[EN]", 1958, 3, "POLITIK",
+            @"Chruschtschow wird Ministerpräsident UND Parteichef. Die Machtkonzentration ist komplett. Ein neuer starker Mann im Kreml.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 25; p.EinflussKGB += 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("BERLIN_ULTIMATUM_1958", "Chruschtschow fordert: West-Berlin räumen!", "27. November 1958", 1958, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BERLIN_ULTIMATUM_1958", "Chruschtschow fordert: West-Berlin räumen!", "[RU]", "[EN]", "27. November 1958", "[RU]", "[EN]", 1958, 11, "POLITIK",
+            @"Chruschtschow stellt ein Ultimatum: Die Westmächte sollen West-Berlin verlassen! 6 Monate Frist. Die Berlin-Krise spitzt sich zu. Der Westen bleibt standhaft.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; p.EinflussMilitär += 20; p.Gesundheit -= 10; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SINO_SOVIET_SPLIT_1958", "Bruch mit China beginnt", "1. August 1958", 1958, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SINO_SOVIET_SPLIT_1958", "Bruch mit China beginnt", "[RU]", "[EN]", "1. August 1958", "[RU]", "[EN]", 1958, 8, "POLITIK",
+            @"Mao kritisiert Chruschtschows 'Revisionismus'. Der sino-sowjetische Konflikt beginnt. Zwei kommunistische Giganten werden zu Rivalen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; p.LoyalitätPartei -= 10; Thread.Sleep(3000); }));
         
         // ====== 1959 ======
-        historicalEvents.Add(new HistoricalEvent("LUNA_2_MOND_1959", "Luna 2 erreicht den Mond", "14. September 1959", 1959, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LUNA_2_MOND_1959", "Luna 2 erreicht den Mond", "[RU]", "[EN]", "14. September 1959", "[RU]", "[EN]", 1959, 9, "POLITIK",
+            @"Die sowjetische Sonde Luna 2 schlägt als erstes menschengemachtes Objekt auf dem Mond auf! Ein weiterer Triumph im Weltraumrennen!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.LoyalitätVolk += 30; p.Intelligenz += 2; p.Geld += 150; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("CHRUSCHTSCHOW_USA_1959", "Chruschtschow besucht die USA", "15. September 1959", 1959, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CHRUSCHTSCHOW_USA_1959", "Chruschtschow besucht die USA", "[RU]", "[EN]", "15. September 1959", "[RU]", "[EN]", 1959, 9, "POLITIK",
+            @"Erstmals besucht ein sowjetischer Führer die USA! Chruschtschow trifft Eisenhower. Das 'Tauwetter' im Kalten Krieg beginnt vorsichtig.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.LoyalitätVolk += 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("FIDEL_KUBA_1959", "Fidel Castro übernimmt Kuba", "1. Januar 1959", 1959, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FIDEL_KUBA_1959", "Fidel Castro übernimmt Kuba", "[RU]", "[EN]", "1. Januar 1959", "[RU]", "[EN]", 1959, 1, "POLITIK",
+            @"Castros Revolution siegt in Kuba! Bald wird Kuba ein sowjetischer Verbündeter - 90 Meilen vor der US-Küste. Ein strategischer Triumph!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.EinflussMilitär += 15; Thread.Sleep(3000); }));
         
         // ====== 1960 ======
-        historicalEvents.Add(new HistoricalEvent("U2_ABSCHUSS_1960", "US-Spionageflugzeug abgeschossen", "1. Mai 1960", 1960, 5, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("U2_ABSCHUSS_1960", "US-Spionageflugzeug abgeschossen", "[RU]", "[EN]", "1. Mai 1960", "[RU]", "[EN]", 1960, 5, "KRIEG",
+            @"Eine sowjetische Rakete schießt ein US-Spionageflugzeug U-2 ab! Pilot Gary Powers wird gefangen. Eisenhower muss Spionage zugeben. Blamage für die USA!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.EinflussInternational += 25; p.LoyalitätVolk += 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PARIS_GIPFEL_SCHEITERT_1960", "Pariser Gipfel scheitert", "17. Mai 1960", 1960, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PARIS_GIPFEL_SCHEITERT_1960", "Pariser Gipfel scheitert", "[RU]", "[EN]", "17. Mai 1960", "[RU]", "[EN]", 1960, 5, "POLITIK",
+            @"Wegen der U-2-Affäre verlässt Chruschtschow wütend den Pariser Gipfel. Das 'Tauwetter' ist vorbei. Der Kalte Krieg kehrt zurück.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; p.Gesundheit -= 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("AFRIKA_DEKOLONISATION_1960", "Afrika-Jahr - Sowjetischer Einfluss wächst", "17. August 1960", 1960, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AFRIKA_DEKOLONISATION_1960", "Afrika-Jahr - Sowjetischer Einfluss wächst", "[RU]", "[EN]", "17. August 1960", "[RU]", "[EN]", 1960, 8, "POLITIK",
+            @"17 afrikanische Staaten werden unabhängig. Die UdSSR bietet Unterstützung und konkurriert mit dem Westen um Einfluss im 'Dritten Welt'.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.Geld -= 100; Thread.Sleep(3000); }));
         
         // ====== 1961 ======
-        historicalEvents.Add(new HistoricalEvent("GAGARIN_WELTRAUM_1961", "Juri Gagarin - Erster Mensch im Weltraum", "12. April 1961", 1961, 4, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GAGARIN_WELTRAUM_1961", "Juri Gagarin - Erster Mensch im Weltraum", "[RU]", "[EN]", "12. April 1961", "[RU]", "[EN]", 1961, 4, "POLITIK",
+            @"'POJECHALI!' ruft Gagarin beim Start. 108 Minuten später: Der erste Mensch hat die Erde aus dem All gesehen! Die UdSSR ist im Weltraum unschlagbar! Das Volk feiert ihren Helden.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 50; p.LoyalitätVolk += 40; p.Geld += 300; p.Intelligenz += 3; p.LoyalitätPartei += 30; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("BERLINER_MAUER_1961", "Bau der Berliner Mauer", "13. August 1961", 1961, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BERLINER_MAUER_1961", "Bau der Berliner Mauer", "[RU]", "[EN]", "13. August 1961", "[RU]", "[EN]", 1961, 8, "POLITIK",
+            @"In der Nacht beginnt der Mauerbau! Berlin wird mit Stacheldraht und Beton geteilt. 'Niemand hat die Absicht, eine Mauer zu errichten' log Ulbricht. Die Welt ist entsetzt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 25; p.LoyalitätVolk -= 30; p.EinflussInternational -= 30; p.Gesundheit -= 15; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SCHWEINEBUCHT_1961", "Schweinebucht - CIA-Invasion scheitert", "17. April 1961", 1961, 4, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SCHWEINEBUCHT_1961", "Schweinebucht - CIA-Invasion scheitert", "[RU]", "[EN]", "17. April 1961", "[RU]", "[EN]", 1961, 4, "KRIEG",
+            @"CIA-gestützte Exilkubaner versuchen Castro zu stürzen - und scheitern kläglich! Ein Triumph für die UdSSR. Kuba rückt näher an Moskau.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 20; Thread.Sleep(3000); }));
         
         // ====== 1962 ======
-        historicalEvents.Add(new HistoricalEvent("KUBAKRISE_1962", "Kubakrise - Am Rand des Atomkriegs", "24. Oktober 1962", 1962, 10, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KUBAKRISE_1962", "Kubakrise - Am Rand des Atomkriegs", "[RU]", "[EN]", "24. Oktober 1962", "[RU]", "[EN]", 1962, 10, "KRIEG",
+            @"US-Seeblockade! Sowjetische Raketen auf Kuba! 13 Tage am Abgrund des Atomkriegs. Die Welt hält den Atem an. Chruschtschow lenkt ein - die Raketen werden abgezogen. Knapp vorbei am Weltuntergang.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 20; p.EinflussInternational -= 25; p.Gesundheit -= 30; p.LoyalitätVolk -= 20; p.Geld -= 250; Thread.Sleep(6000); }));
         
-        historicalEvents.Add(new HistoricalEvent("NOWOTSCHERKASSK_MASSAKER_1962", "Massaker in Nowotscherkassk", "2. Juni 1962", 1962, 6, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NOWOTSCHERKASSK_MASSAKER_1962", "Massaker in Nowotscherkassk", "[RU]", "[EN]", "2. Juni 1962", "[RU]", "[EN]", 1962, 6, "KATASTROPHE",
+            @"Arbeiter streiken gegen Preiserhöhungen. Das Militär schießt in die Menge! Mindestens 26 Tote. Das Massaker wird jahrzehntelang vertuscht.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 35; p.EinflussKGB += 20; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KUBA_US_EMBARGO_1962", "USA verhängen Kuba-Embargo", "7. Februar 1962", 1962, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KUBA_US_EMBARGO_1962", "USA verhängen Kuba-Embargo", "[RU]", "[EN]", "7. Februar 1962", "[RU]", "[EN]", 1962, 2, "POLITIK",
+            @"Kennedy verhängt totales Handelsembargo gegen Kuba! Die UdSSR muss nun Kuba massiv wirtschaftlich stützen. Ein teurer Verbündeter - aber ein wichtiger.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 150; p.EinflussInternational += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("TERESCHKOWA_WELTRAUM_1962", "Walentina Tereschkowa - Erste Frau im All", "16. Juni 1963", 1963, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TERESCHKOWA_WELTRAUM_1962", "Walentina Tereschkowa - Erste Frau im All", "[RU]", "[EN]", "16. Juni 1963", "[RU]", "[EN]", 1963, 6, "POLITIK",
+            @"Die 26-jährige Tereschkowa fliegt als erste Frau ins Weltall! Ein propagandistischer Triumph: Sowjetische Frauen sind gleichberechtigt!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 30; p.Intelligenz += 2; Thread.Sleep(4000); }));
         
         // ====== 1963 ======
-        historicalEvents.Add(new HistoricalEvent("KENNEDY_MORD_1963", "Kennedy ermordet", "22. November 1963", 1963, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KENNEDY_MORD_1963", "Kennedy ermordet", "[RU]", "[EN]", "22. November 1963", "[RU]", "[EN]", 1963, 11, "POLITIK",
+            @"Präsident Kennedy wird in Dallas erschossen! Die Welt steht unter Schock. Gerüchte über sowjetische Beteiligung kursieren - alle falsch. Die USA sind im Chaos.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; p.Gesundheit -= 10; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ATOMTESTSTOPP_1963", "Atomteststopp-Abkommen", "5. August 1963", 1963, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ATOMTESTSTOPP_1963", "Atomteststopp-Abkommen", "[RU]", "[EN]", "5. August 1963", "[RU]", "[EN]", 1963, 8, "POLITIK",
+            @"USA, UdSSR und Großbritannien verbieten oberirdische Atomtests. Ein kleiner Schritt zur Entspannung nach der Kubakrise.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.LoyalitätVolk += 20; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("MISSERNTE_1963", "Katastrophale Missernte", "15. September 1963", 1963, 9, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MISSERNTE_1963", "Katastrophale Missernte", "[RU]", "[EN]", "15. September 1963", "[RU]", "[EN]", 1963, 9, "WIRTSCHAFT",
+            @"Die schlechteste Ernte seit Jahrzehnten! Die UdSSR muss erstmals Getreide aus dem kapitalistischen Westen kaufen. Eine Blamage für das System.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 300; p.LoyalitätVolk -= 25; p.LoyalitätPartei -= 15; Thread.Sleep(3000); }));
         
         // ====== 1964 ======
-        historicalEvents.Add(new HistoricalEvent("CHRUSCHTSCHOW_STURZ_1964", "Chruschtschow gestürzt", "14. Oktober 1964", 1964, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CHRUSCHTSCHOW_STURZ_1964", "Chruschtschow gestürzt", "[RU]", "[EN]", "14. Oktober 1964", "[RU]", "[EN]", 1964, 10, "POLITIK",
+            @"Während Chruschtschow im Urlaub ist, putscht das Politbüro! Breschnew übernimmt. Die Ära Chruschtschow endet abrupt. Gründe: Kubakrise, Misswirtschaft, Unberechenbarkeit.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.EinflussKGB += 25; p.LoyalitätVolk -= 10; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("BRESCHNEW_MACHT_1964", "Breschnew übernimmt die Führung", "15. Oktober 1964", 1964, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BRESCHNEW_MACHT_1964", "Breschnew übernimmt die Führung", "[RU]", "[EN]", "15. Oktober 1964", "[RU]", "[EN]", 1964, 10, "POLITIK",
+            @"Leonid Breschnew wird neuer Generalsekretär. Die 'Ära der Stagnation' beginnt. Stabilität statt Reform, Kontrolle statt Experimente.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 25; p.EinflussKGB += 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("CHINA_ATOMBOMBE_1964", "China zündet Atombombe", "16. Oktober 1964", 1964, 10, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CHINA_ATOMBOMBE_1964", "China zündet Atombombe", "[RU]", "[EN]", "16. Oktober 1964", "[RU]", "[EN]", 1964, 10, "KRIEG",
+            @"China wird Atommacht! Der sowjetische Rivale im Osten ist nun nuklear bewaffnet. Die Spannungen zwischen UdSSR und China verschärfen sich dramatisch.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
         // ====== 1965 ======
-        historicalEvents.Add(new HistoricalEvent("VIETNAM_ESKALATION_1965", "Vietnamkrieg eskaliert - UdSSR unterstützt", "7. Februar 1965", 1965, 2, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("VIETNAM_ESKALATION_1965", "Vietnamkrieg eskaliert - UdSSR unterstützt", "[RU]", "[EN]", "7. Februar 1965", "[RU]", "[EN]", 1965, 2, "KRIEG",
+            @"USA bombardieren Nordvietnam massiv. Die UdSSR liefert Waffen, Flugabwehr und Berater. Ein neuer blutiger Stellvertreterkrieg beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 25; p.Geld -= 200; p.EinflussInternational += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("WOSCHOD_2_SPACEWALK_1965", "Erster Weltraumspaziergang", "18. März 1965", 1965, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WOSCHOD_2_SPACEWALK_1965", "Erster Weltraumspaziergang", "[RU]", "[EN]", "18. März 1965", "[RU]", "[EN]", 1965, 3, "POLITIK",
+            @"Alexei Leonow verlässt als erster Mensch sein Raumschiff! 12 Minuten im freien Weltraum - ein weiterer sowjetischer Rekord!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.LoyalitätVolk += 25; p.Intelligenz += 2; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KOSSYGIN_REFORM_1965", "Kossygin-Reformen in der Wirtschaft", "27. September 1965", 1965, 9, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KOSSYGIN_REFORM_1965", "Kossygin-Reformen in der Wirtschaft", "[RU]", "[EN]", "27. September 1965", "[RU]", "[EN]", 1965, 9, "WIRTSCHAFT",
+            @"Ministerpräsident Kossygin versucht zaghafte Wirtschaftsreformen. Mehr Autonomie für Betriebe, Gewinnorientierung. Aber der Widerstand ist groß.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld += 150; p.LoyalitätPartei -= 10; Thread.Sleep(3000); }));
         
         // ====== 1966 ======
-        historicalEvents.Add(new HistoricalEvent("LUNA_9_MONDLANDUNG_1966", "Luna 9 landet weich auf dem Mond", "3. Februar 1966", 1966, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LUNA_9_MONDLANDUNG_1966", "Luna 9 landet weich auf dem Mond", "[RU]", "[EN]", "3. Februar 1966", "[RU]", "[EN]", 1966, 2, "POLITIK",
+            @"Erste weiche Landung auf dem Mond! Luna 9 sendet Fotos von der Mondoberfläche. Die UdSSR führt weiter im Weltraumrennen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 25; p.Intelligenz += 2; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KULTURREVOLUTION_CHINA_1966", "Maos Kulturrevolution beginnt", "16. Mai 1966", 1966, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KULTURREVOLUTION_CHINA_1966", "Maos Kulturrevolution beginnt", "[RU]", "[EN]", "16. Mai 1966", "[RU]", "[EN]", 1966, 5, "POLITIK",
+            @"China versinkt im Chaos der Kulturrevolution. Mao hetzt Jugendliche gegen 'Revisionisten' auf - auch gegen die UdSSR. Der sino-sowjetische Bruch vertieft sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("XXIII_PARTEITAG_1966", "XXIII. Parteitag - Breschnew festigt Macht", "29. März 1966", 1966, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("XXIII_PARTEITAG_1966", "XXIII. Parteitag - Breschnew festigt Macht", "[RU]", "[EN]", "29. März 1966", "[RU]", "[EN]", 1966, 3, "POLITIK",
+            @"Breschnew lässt sich auf dem Parteitag als unumstrittener Führer bestätigen. Die De-Chruschtschowisierung ist komplett.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         // ====== 1967 ======
-        historicalEvents.Add(new HistoricalEvent("SECHSTAGEKRIEG_1967", "Sechstagekrieg - Sowjetische Verbündete verlieren", "10. Juni 1967", 1967, 6, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SECHSTAGEKRIEG_1967", "Sechstagekrieg - Sowjetische Verbündete verlieren", "[RU]", "[EN]", "10. Juni 1967", "[RU]", "[EN]", 1967, 6, "KRIEG",
+            @"Israel zerschlägt in 6 Tagen die arabischen Armeen - alle mit sowjetischen Waffen ausgerüstet! Eine außenpolitische Blamage für die UdSSR.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.Geld -= 250; p.LoyalitätVolk -= 10; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SOJUS_1_ABSTURZ_1967", "Komarow stirbt bei Sojus 1-Absturz", "24. April 1967", 1967, 4, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SOJUS_1_ABSTURZ_1967", "Komarow stirbt bei Sojus 1-Absturz", "[RU]", "[EN]", "24. April 1967", "[RU]", "[EN]", 1967, 4, "KATASTROPHE",
+            @"Der Kosmonaut Wladimir Komarow stirbt beim Absturz von Sojus 1! Der Fallschirm öffnet nicht. Der erste Todesfall im Weltraumprogramm erschüttert das Land.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 25; p.Gesundheit -= 20; p.EinflussInternational -= 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ANTIBALLISTIC_TREATY_TALKS_1967", "Verhandlungen über Raketenabwehr beginnen", "18. September 1967", 1967, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ANTIBALLISTIC_TREATY_TALKS_1967", "Verhandlungen über Raketenabwehr beginnen", "[RU]", "[EN]", "18. September 1967", "[RU]", "[EN]", 1967, 9, "POLITIK",
+            @"USA und UdSSR beginnen Gespräche über Rüstungskontrolle. Ein Hoffnungsschimmer in der nuklearen Konfrontation.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.Gesundheit += 10; Thread.Sleep(3000); }));
         
         // ====== 1968 ======
-        historicalEvents.Add(new HistoricalEvent("PRAGER_FRUEHLING_1968", "Prager Frühling niedergeschlagen", "21. August 1968", 1968, 8, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PRAGER_FRUEHLING_1968", "Prager Frühling niedergeschlagen", "[RU]", "[EN]", "21. August 1968", "[RU]", "[EN]", 1968, 8, "KRIEG",
+            @"'Sozialismus mit menschlichem Antlitz' in der Tschechoslowakei - VERBOTEN! 500.000 Soldaten des Warschauer Pakts marschieren ein. Panzer in Prag. Der Prager Frühling wird zum Winter. Die Welt ist entsetzt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.LoyalitätVolk -= 35; p.EinflussInternational -= 40; p.Gesundheit -= 25; p.Geld -= 300; Thread.Sleep(6000); }));
         
-        historicalEvents.Add(new HistoricalEvent("BRESCHNEW_DOKTRIN_1968", "Breschnew-Doktrin verkündet", "12. November 1968", 1968, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BRESCHNEW_DOKTRIN_1968", "Breschnew-Doktrin verkündet", "[RU]", "[EN]", "12. November 1968", "[RU]", "[EN]", 1968, 11, "POLITIK",
+            @"'Begrenzte Souveränität' nennt Breschnew es: Die UdSSR darf überall im Ostblock einmarschieren, wenn der Sozialismus 'bedroht' ist. Eine Doktrin der Unterdrückung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 20; p.EinflussInternational -= 25; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ATOMWAFFENSPERRVERTRAG_1968", "Atomwaffensperrvertrag unterzeichnet", "1. Juli 1968", 1968, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ATOMWAFFENSPERRVERTRAG_1968", "Atomwaffensperrvertrag unterzeichnet", "[RU]", "[EN]", "1. Juli 1968", "[RU]", "[EN]", 1968, 7, "POLITIK",
+            @"Der Vertrag zur Nichtverbreitung von Atomwaffen wird unterschrieben. USA und UdSSR wollen ihr Nuklearmonopol bewahren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
         // ====== 1969 ======
-        historicalEvents.Add(new HistoricalEvent("MONDLANDUNG_USA_1969", "USA landen auf dem Mond", "20. Juli 1969", 1969, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MONDLANDUNG_USA_1969", "USA landen auf dem Mond", "[RU]", "[EN]", "20. Juli 1969", "[RU]", "[EN]", 1969, 7, "POLITIK",
+            @"Apollo 11 - Armstrong betritt den Mond! Die USA haben das Weltraumrennen gewonnen. Die sowjetische Propaganda schweigt betreten. Eine schmerzhafte Niederlage.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.LoyalitätVolk -= 20; p.Gesundheit -= 15; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GRENZKONFLIKT_CHINA_1969", "Bewaffneter Konflikt mit China", "2. März 1969", 1969, 3, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GRENZKONFLIKT_CHINA_1969", "Bewaffneter Konflikt mit China", "[RU]", "[EN]", "2. März 1969", "[RU]", "[EN]", 1969, 3, "KRIEG",
+            @"Sowjetische und chinesische Truppen liefern sich blutige Gefechte am Grenzfluss Ussuri! Dutzende Tote. Die kommunistischen Brüder stehen am Rand eines Krieges.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 20; p.Geld -= 150; p.Gesundheit -= 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("WARSCHAU_PAKT_GIPFEL_1969", "Warschauer Pakt wird gestärkt", "17. März 1969", 1969, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WARSCHAU_PAKT_GIPFEL_1969", "Warschauer Pakt wird gestärkt", "[RU]", "[EN]", "17. März 1969", "[RU]", "[EN]", 1969, 3, "POLITIK",
+            @"Nach Prag wird der Warschauer Pakt militärisch verstärkt. Die Satellitenstaaten werden enger an Moskau gebunden.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 15; p.EinflussInternational += 10; Thread.Sleep(3000); }));
         
         // ====== 1970 ======
-        historicalEvents.Add(new HistoricalEvent("WILLY_BRANDT_OSTPOLITIK_1970", "Brandts Ostpolitik - Annäherung mit Deutschland", "12. August 1970", 1970, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WILLY_BRANDT_OSTPOLITIK_1970", "Brandts Ostpolitik - Annäherung mit Deutschland", "[RU]", "[EN]", "12. August 1970", "[RU]", "[EN]", 1970, 8, "POLITIK",
+            @"Bundeskanzler Brandt unterzeichnet den Moskauer Vertrag. Die BRD erkennt die Oder-Neiße-Grenze an. Ein Durchbruch in der Entspannungspolitik!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 15; p.Geld += 100; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("LUNA_16_PROBEN_1970", "Luna 16 bringt Mondgestein zur Erde", "24. September 1970", 1970, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LUNA_16_PROBEN_1970", "Luna 16 bringt Mondgestein zur Erde", "[RU]", "[EN]", "24. September 1970", "[RU]", "[EN]", 1970, 9, "POLITIK",
+            @"Die unbemannte Sonde Luna 16 bringt erstmals automatisch Mondgestein zur Erde! Ein technischer Triumph nach der Niederlage bei der bemannten Mondlandung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Intelligenz += 2; p.LoyalitätVolk += 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OSTPOLEN_UNRUHEN_1970", "Arbeiterunruhen in Polen", "14. Dezember 1970", 1970, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OSTPOLEN_UNRUHEN_1970", "Arbeiterunruhen in Polen", "[RU]", "[EN]", "14. Dezember 1970", "[RU]", "[EN]", 1970, 12, "POLITIK",
+            @"Arbeiter demonstrieren in Polen gegen Preiserhöhungen. Das Militär schießt - mindestens 44 Tote. Parteichef Gomułka muss zurücktreten.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 20; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         // ====== 1971 ======
-        historicalEvents.Add(new HistoricalEvent("XXIV_PARTEITAG_1971", "XXIV. Parteitag - Wirtschaftsprobleme", "30. März 1971", 1971, 3, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("XXIV_PARTEITAG_1971", "XXIV. Parteitag - Wirtschaftsprobleme", "[RU]", "[EN]", "30. März 1971", "[RU]", "[EN]", 1971, 3, "WIRTSCHAFT",
+            @"Der Parteitag offenbart: Die sowjetische Wirtschaft stagniert. Trotz Propaganda fehlt es an Konsumgütern. Die Unzufriedenheit wächst.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 100; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SALYUT_1_RAUMSTATION_1971", "Erste Raumstation Saljut 1 gestartet", "19. April 1971", 1971, 4, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SALYUT_1_RAUMSTATION_1971", "Erste Raumstation Saljut 1 gestartet", "[RU]", "[EN]", "19. April 1971", "[RU]", "[EN]", 1971, 4, "POLITIK",
+            @"Die weltweit erste Raumstation wird ins All geschossen! Saljut 1 markiert einen neuen Abschnitt in der Raumfahrt. Die UdSSR führt wieder!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.Intelligenz += 3; p.LoyalitätVolk += 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("VIERMÄCHTE_ABKOMMEN_1971", "Viermächteabkommen über Berlin", "3. September 1971", 1971, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("VIERMÄCHTE_ABKOMMEN_1971", "Viermächteabkommen über Berlin", "[RU]", "[EN]", "3. September 1971", "[RU]", "[EN]", 1971, 9, "POLITIK",
+            @"Die vier Siegermächte einigen sich auf ein Berlin-Abkommen. Die Zugangswege nach West-Berlin werden gesichert. Entspannung in Europa.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.Gesundheit += 10; Thread.Sleep(3000); }));
         
         // ====== 1972 ======
-        historicalEvents.Add(new HistoricalEvent("SALT_I_1972", "SALT I - Rüstungskontrolle vereinbart", "26. Mai 1972", 1972, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SALT_I_1972", "SALT I - Rüstungskontrolle vereinbart", "[RU]", "[EN]", "26. Mai 1972", "[RU]", "[EN]", 1972, 5, "POLITIK",
+            @"Nixon und Breschnew unterzeichnen SALT I - die Begrenzung strategischer Waffen. Ein historischer Moment der Entspannung!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.Gesundheit += 20; p.LoyalitätVolk += 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OLYMPIA_MUENCHEN_1972", "Olympia München - Terror überschattet Spiele", "5. September 1972", 1972, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OLYMPIA_MUENCHEN_1972", "Olympia München - Terror überschattet Spiele", "[RU]", "[EN]", "5. September 1972", "[RU]", "[EN]", 1972, 9, "POLITIK",
+            @"Palästinensische Terroristen ermorden israelische Sportler bei Olympia. Die Welt ist schockiert. Die Sowjetunion verurteilt den Terror.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 10; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GRUNDLAGENVERTRAG_DDR_BRD_1972", "Grundlagenvertrag BRD-DDR", "21. Dezember 1972", 1972, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GRUNDLAGENVERTRAG_DDR_BRD_1972", "Grundlagenvertrag BRD-DDR", "[RU]", "[EN]", "21. Dezember 1972", "[RU]", "[EN]", 1972, 12, "POLITIK",
+            @"Die beiden deutschen Staaten erkennen sich gegenseitig an. Die Teilung Deutschlands wird völkerrechtlich zementiert - aber die Entspannung schreitet voran.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; Thread.Sleep(3000); }));
         
         // ====== 1973 ======
-        historicalEvents.Add(new HistoricalEvent("JOMKIPPUR_KRIEG_1973", "Jom-Kippur-Krieg - Sowjetische Waffenlieferungen", "6. Oktober 1973", 1973, 10, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JOMKIPPUR_KRIEG_1973", "Jom-Kippur-Krieg - Sowjetische Waffenlieferungen", "[RU]", "[EN]", "6. Oktober 1973", "[RU]", "[EN]", 1973, 10, "KRIEG",
+            @"Ägypten und Syrien greifen Israel an - mit massiver sowjetischer Unterstützung. Die UdSSR fliegt Waffen ein. Die Welt am Rand der Supermacht-Konfrontation.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 25; p.Geld -= 300; p.EinflussInternational += 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OELKRISE_1973", "Ölkrise - UdSSR profitiert", "17. Oktober 1973", 1973, 10, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OELKRISE_1973", "Ölkrise - UdSSR profitiert", "[RU]", "[EN]", "17. Oktober 1973", "[RU]", "[EN]", 1973, 10, "WIRTSCHAFT",
+            @"Die OPEC verhängt ein Ölembargo. Die Ölpreise explodieren! Die UdSSR als Ölexporteur profitiert massiv. Die Kassen sind voll!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld += 500; p.LoyalitätVolk += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SOLSCHENIZYN_ARCHIPEL_1973", "Solschenizyns Archipel Gulag erscheint", "28. Dezember 1973", 1973, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SOLSCHENIZYN_ARCHIPEL_1973", "Solschenizyns Archipel Gulag erscheint", "[RU]", "[EN]", "28. Dezember 1973", "[RU]", "[EN]", 1973, 12, "POLITIK",
+            @"Der Dissident Solschenizyn veröffentlicht im Westen 'Archipel Gulag' - eine schonungslose Abrechnung mit dem Lagersystem. Der KGB ist alarmiert.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.EinflussKGB += 20; p.LoyalitätVolk -= 10; Thread.Sleep(4000); }));
         
         // ====== 1974 ======
-        historicalEvents.Add(new HistoricalEvent("BAM_BAUBEGINN_1974", "Baubeginn Baikal-Amur-Magistrale", "8. Juli 1974", 1974, 7, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BAM_BAUBEGINN_1974", "Baubeginn Baikal-Amur-Magistrale", "[RU]", "[EN]", "8. Juli 1974", "[RU]", "[EN]", 1974, 7, "WIRTSCHAFT",
+            @"Breschnew verkündet den Bau der BAM - eine riesige Eisenbahnstrecke durch Sibirien. Ein Prestigeprojekt, das Milliarden verschlingt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 400; p.LoyalitätPartei += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SOLSCHENIZYN_AUSGEWIESEN_1974", "Solschenizyn ausgewiesen", "13. Februar 1974", 1974, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SOLSCHENIZYN_AUSGEWIESEN_1974", "Solschenizyn ausgewiesen", "[RU]", "[EN]", "13. Februar 1974", "[RU]", "[EN]", 1974, 2, "POLITIK",
+            @"Der Literaturnobelpreisträger Solschenizyn wird verhaftet und in den Westen abgeschoben. Der Kreml will den Dissidenten loswerden.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 15; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("INDIEN_ATOMTEST_1974", "Indien testet Atombombe", "18. Mai 1974", 1974, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("INDIEN_ATOMTEST_1974", "Indien testet Atombombe", "[RU]", "[EN]", "18. Mai 1974", "[RU]", "[EN]", 1974, 5, "POLITIK",
+            @"Indien wird zur Atommacht! Der sowjetische Verbündete hat die Bombe - ein diplomatischer Erfolg in Südasien.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; Thread.Sleep(3000); }));
         
         // ====== 1975 ======
-        historicalEvents.Add(new HistoricalEvent("FALL_SAIGON_1975", "Fall von Saigon - Kommunisten siegen in Vietnam", "30. April 1975", 1975, 4, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FALL_SAIGON_1975", "Fall von Saigon - Kommunisten siegen in Vietnam", "[RU]", "[EN]", "30. April 1975", "[RU]", "[EN]", 1975, 4, "KRIEG",
+            @"Die nordvietnamesischen Panzer rollen in Saigon ein! Nach 20 Jahren Krieg haben die Kommunisten gesiegt. Ein gigantischer Triumph gegen die USA!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 40; p.LoyalitätVolk += 30; p.EinflussMilitär += 25; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("APOLLO_SOJUS_1975", "Apollo-Sojus - Händedruck im All", "17. Juli 1975", 1975, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("APOLLO_SOJUS_1975", "Apollo-Sojus - Händedruck im All", "[RU]", "[EN]", "17. Juli 1975", "[RU]", "[EN]", 1975, 7, "POLITIK",
+            @"US- und sowjetische Raumschiffe docken im Orbit an! Ein symbolischer Händedruck im Weltraum. Entspannung auch im All.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 25; p.Gesundheit += 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KSZE_HELSINKI_1975", "KSZE-Schlussakte in Helsinki", "1. August 1975", 1975, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KSZE_HELSINKI_1975", "KSZE-Schlussakte in Helsinki", "[RU]", "[EN]", "1. August 1975", "[RU]", "[EN]", 1975, 8, "POLITIK",
+            @"35 Staaten unterzeichnen die Helsinki-Schlussakte. Grenzen werden anerkannt, Menschenrechte vereinbart. Der Höhepunkt der Entspannungspolitik!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.Gesundheit += 20; p.LoyalitätVolk += 15; Thread.Sleep(4000); }));
         
         // ====== 1976 ======
-        historicalEvents.Add(new HistoricalEvent("VIKTOR_BELENKO_DEFEKT_1976", "MiG-25 Pilot flieht in den Westen", "6. September 1976", 1976, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("VIKTOR_BELENKO_DEFEKT_1976", "MiG-25 Pilot flieht in den Westen", "[RU]", "[EN]", "6. September 1976", "[RU]", "[EN]", 1976, 9, "POLITIK",
+            @"Der Pilot Viktor Belenko flieht mit einer top-secret MiG-25 nach Japan! Ein Propaganda-Desaster. Der Westen untersucht den Superfighter.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.EinflussKGB += 20; p.Gesundheit -= 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("XXV_PARTEITAG_1976", "XXV. Parteitag - Breschnew-Kult", "24. Februar 1976", 1976, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("XXV_PARTEITAG_1976", "XXV. Parteitag - Breschnew-Kult", "[RU]", "[EN]", "24. Februar 1976", "[RU]", "[EN]", 1976, 2, "POLITIK",
+            @"Breschnew lässt sich auf dem Parteitag feiern. Der Personenkult nimmt groteske Züge an. Aber hinter der Fassade verrottet das System.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 15; p.LoyalitätVolk -= 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("CONCORDE_STARTET_1976", "Concorde fliegt - Tupolew Tu-144 gestoppt", "21. Januar 1976", 1976, 1, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CONCORDE_STARTET_1976", "Concorde fliegt - Tupolew Tu-144 gestoppt", "[RU]", "[EN]", "21. Januar 1976", "[RU]", "[EN]", 1976, 1, "WIRTSCHAFT",
+            @"Die westliche Concorde startet Liniendienst. Die sowjetische Tu-144 hatte zu viele Unfälle und wird eingestellt. Eine technologische Niederlage.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; p.Geld -= 150; Thread.Sleep(3000); }));
         
         // ====== 1977 ======
-        historicalEvents.Add(new HistoricalEvent("NEUE_VERFASSUNG_1977", "Neue sowjetische Verfassung", "7. Oktober 1977", 1977, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NEUE_VERFASSUNG_1977", "Neue sowjetische Verfassung", "[RU]", "[EN]", "7. Oktober 1977", "[RU]", "[EN]", 1977, 10, "POLITIK",
+            @"Breschnew wird Staatsoberhaupt. Eine neue Verfassung wird verkündet. In der Theorie viele Rechte - in der Praxis pure Fassade.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.LoyalitätVolk -= 5; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SACHAROW_VERFOLGT_1977", "Sacharow verfolgt", "18. März 1977", 1977, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SACHAROW_VERFOLGT_1977", "Sacharow verfolgt", "[RU]", "[EN]", "18. März 1977", "[RU]", "[EN]", 1977, 3, "POLITIK",
+            @"Der Atomphysiker und Menschenrechtler Sacharow wird vom KGB massiv bedrängt. Seine Wohnung wird durchsucht, er wird verhört. Der Kreml will ihn brechen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SS20_RAKETEN_1977", "SS-20 Raketen stationiert", "15. Juli 1977", 1977, 7, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SS20_RAKETEN_1977", "SS-20 Raketen stationiert", "[RU]", "[EN]", "15. Juli 1977", "[RU]", "[EN]", 1977, 7, "KRIEG",
+            @"Die UdSSR stationiert moderne SS-20 Mittelstreckenraketen in Europa. Der NATO-Doppelbeschluss wird die Antwort sein. Das Wettrüsten eskaliert neu.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.Geld -= 300; p.EinflussInternational -= 15; Thread.Sleep(4000); }));
         
         // ====== 1978 ======
-        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_REVOLUTION_1978", "Kommunisten putschen in Afghanistan", "27. April 1978", 1978, 4, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_REVOLUTION_1978", "Kommunisten putschen in Afghanistan", "[RU]", "[EN]", "27. April 1978", "[RU]", "[EN]", 1978, 4, "POLITIK",
+            @"Die kommunistische Partei putscht in Afghanistan! Ein prosowjetisches Regime übernimmt. Aber der Widerstand wächst. Der Weg in die Katastrophe beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.Geld -= 100; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PAPST_JOHANNES_PAUL_1978", "Polnischer Papst gewählt", "16. Oktober 1978", 1978, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PAPST_JOHANNES_PAUL_1978", "Polnischer Papst gewählt", "[RU]", "[EN]", "16. Oktober 1978", "[RU]", "[EN]", 1978, 10, "POLITIK",
+            @"Karol Wojtyła wird Papst Johannes Paul II. - der erste polnische Papst! Der KGB ist besorgt: Ein Papst aus dem Ostblock könnte gefährlich werden.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; p.LoyalitätVolk -= 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("CAMP_DAVID_1978", "Camp David Abkommen - Sowjetischer Verbündeter wechselt", "17. September 1978", 1978, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CAMP_DAVID_1978", "Camp David Abkommen - Sowjetischer Verbündeter wechselt", "[RU]", "[EN]", "17. September 1978", "[RU]", "[EN]", 1978, 9, "POLITIK",
+            @"Ägypten und Israel schließen Frieden mit US-Vermittlung. Ägypten wendet sich vom sowjetischen Einfluss ab. Ein diplomatischer Verlust.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; Thread.Sleep(3000); }));
         
         // ====== 1979 ======
-        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_INVASION_1979", "Invasion in Afghanistan", "24. Dezember 1979", 1979, 12, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_INVASION_1979", "Invasion in Afghanistan", "[RU]", "[EN]", "24. Dezember 1979", "[RU]", "[EN]", 1979, 12, "KRIEG",
+            @"Sowjetische Truppen marschieren in Afghanistan ein! 'Bruderhilfe' nennt es die Propaganda. Die Welt spricht von Invasion. Es wird Breschnews Vietnam - ein blutiger Sumpf.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.Geld -= 400; p.EinflussInternational -= 40; p.Gesundheit -= 25; p.LoyalitätVolk -= 20; Thread.Sleep(6000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SALT_II_1979", "SALT II unterzeichnet - aber nicht ratifiziert", "18. Juni 1979", 1979, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SALT_II_1979", "SALT II unterzeichnet - aber nicht ratifiziert", "[RU]", "[EN]", "18. Juni 1979", "[RU]", "[EN]", 1979, 6, "POLITIK",
+            @"Carter und Breschnew unterzeichnen SALT II zur weiteren Rüstungskontrolle. Doch nach der Afghanistan-Invasion ratifiziert der US-Senat nicht. Die Entspannung ist tot.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; p.Gesundheit -= 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("IRAN_REVOLUTION_1979", "Islamische Revolution im Iran", "11. Februar 1979", 1979, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("IRAN_REVOLUTION_1979", "Islamische Revolution im Iran", "[RU]", "[EN]", "11. Februar 1979", "[RU]", "[EN]", 1979, 2, "POLITIK",
+            @"Der Schah flieht, Ayatollah Khomeini übernimmt. Der Iran wird islamische Republik. Weder pro-sowjetisch noch pro-amerikanisch - eine Niederlage für beide Supermächte.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
         // ====== 1980 ======
-        historicalEvents.Add(new HistoricalEvent("OLYMPIA_MOSKAU_BOYKOTT_1980", "Olympia in Moskau - Westlicher Boykott", "19. Juli 1980", 1980, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OLYMPIA_MOSKAU_BOYKOTT_1980", "Olympia in Moskau - Westlicher Boykott", "[RU]", "[EN]", "19. Juli 1980", "[RU]", "[EN]", 1980, 7, "POLITIK",
+            @"Die Sommerspiele in Moskau sollten ein Triumph werden - doch 65 Nationen boykottieren wegen Afghanistan! Die Propaganda versucht, es zu beschönigen. Eine Demütigung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.LoyalitätVolk -= 20; p.Geld -= 300; p.Gesundheit -= 20; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SACHAROW_VERBANNUNG_1980", "Sacharow nach Gorki verbannt", "22. Januar 1980", 1980, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SACHAROW_VERBANNUNG_1980", "Sacharow nach Gorki verbannt", "[RU]", "[EN]", "22. Januar 1980", "[RU]", "[EN]", 1980, 1, "POLITIK",
+            @"Der Physiker und Dissident Andrej Sacharow wird nach Gorki verbannt - eine geschlossene Stadt. Isoliert von der Außenwelt. Der Westen protestiert lautstark.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 20; p.EinflussInternational -= 25; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SOLIDARNOSC_POLEN_1980", "Solidarność in Polen gegründet", "31. August 1980", 1980, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SOLIDARNOSC_POLEN_1980", "Solidarność in Polen gegründet", "[RU]", "[EN]", "31. August 1980", "[RU]", "[EN]", 1980, 8, "POLITIK",
+            @"Die unabhängige Gewerkschaft Solidarność wird in Polen gegründet! 10 Millionen Mitglieder. Der Kreml ist alarmiert - ist das der Anfang vom Ende des Ostblocks?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 25; p.EinflussKGB += 25; p.Gesundheit -= 15; Thread.Sleep(4000); }));
         
         // ====== 1981 ======
-        historicalEvents.Add(new HistoricalEvent("REAGAN_PRAESIDENT_1981", "Ronald Reagan wird US-Präsident", "20. Januar 1981", 1981, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("REAGAN_PRAESIDENT_1981", "Ronald Reagan wird US-Präsident", "[RU]", "[EN]", "20. Januar 1981", "[RU]", "[EN]", 1981, 1, "POLITIK",
+            @"Der Hardliner Reagan wird Präsident! Er nennt die UdSSR das 'Reich des Bösen' und rüstet massiv auf. Die Entspannung ist endgültig vorbei.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PAPST_ATTENTAT_1981", "Attentat auf den Papst", "13. Mai 1981", 1981, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PAPST_ATTENTAT_1981", "Attentat auf den Papst", "[RU]", "[EN]", "13. Mai 1981", "[RU]", "[EN]", 1981, 5, "POLITIK",
+            @"Der türkische Attentäter Mehmet Ali Ağca schießt auf Papst Johannes Paul II. Der Papst überlebt. Später tauchen Gerüchte auf: War der KGB beteiligt?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; p.EinflussKGB += 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KRIEGSRECHT_POLEN_1981", "Kriegsrecht in Polen ausgerufen", "13. Dezember 1981", 1981, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KRIEGSRECHT_POLEN_1981", "Kriegsrecht in Polen ausgerufen", "[RU]", "[EN]", "13. Dezember 1981", "[RU]", "[EN]", 1981, 12, "POLITIK",
+            @"General Jaruzelski verhängt Kriegsrecht in Polen! Panzer auf den Straßen, Solidarność-Führer verhaftet. Der Kreml atmet auf - vorerst keine Invasion nötig.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 20; p.EinflussInternational -= 30; Thread.Sleep(4000); }));
         
         // ====== 1982 ======
-        historicalEvents.Add(new HistoricalEvent("BRESCHNEW_TOD_1982", "Leonid Breschnew stirbt", "10. November 1982", 1982, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BRESCHNEW_TOD_1982", "Leonid Breschnew stirbt", "[RU]", "[EN]", "10. November 1982", "[RU]", "[EN]", 1982, 11, "POLITIK",
+            @"Nach 18 Jahren an der Macht stirbt Breschnew. Die 'Ära der Stagnation' endet. Juri Andropow, der KGB-Chef, übernimmt. Wird er Reformen wagen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 15; p.EinflussKGB += 30; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ANDROPOW_MACHT_1982", "Andropow wird Generalsekretär", "12. November 1982", 1982, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ANDROPOW_MACHT_1982", "Andropow wird Generalsekretär", "[RU]", "[EN]", "12. November 1982", "[RU]", "[EN]", 1982, 11, "POLITIK",
+            @"Juri Andropow, der ehemalige KGB-Chef, übernimmt die Führung. Er verspricht Disziplin und Effizienz. Aber er ist bereits krank.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 35; p.LoyalitätPartei += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_SUMPF_1982", "Afghanistan - Der Krieg eskaliert", "15. April 1982", 1982, 4, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_SUMPF_1982", "Afghanistan - Der Krieg eskaliert", "[RU]", "[EN]", "15. April 1982", "[RU]", "[EN]", 1982, 4, "KRIEG",
+            @"Die Mudschahedin bekommen US-Waffen. Der Krieg wird brutaler. Sowjetische Soldaten sterben zu Hunderten. Zinksärge kommen nach Hause. Das Volk schweigt - aber es weiß.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 350; p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
         // ====== 1983 ======
-        historicalEvents.Add(new HistoricalEvent("KAL007_ABSCHUSS_1983", "Südkoreanisches Passagierflugzeug abgeschossen", "1. September 1983", 1983, 9, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KAL007_ABSCHUSS_1983", "Südkoreanisches Passagierflugzeug abgeschossen", "[RU]", "[EN]", "1. September 1983", "[RU]", "[EN]", 1983, 9, "KATASTROPHE",
+            @"Ein sowjetisches Kampfjet schießt Korean Air 007 ab - 269 Tote! Die UdSSR behauptet, es war ein Spionageflugzeug. Die Welt ist entsetzt. Reagan nennt es 'Massaker'.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 40; p.LoyalitätVolk -= 15; p.Gesundheit -= 25; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SDI_STAR_WARS_1983", "Reagan verkündet SDI - 'Star Wars'", "23. März 1983", 1983, 3, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SDI_STAR_WARS_1983", "Reagan verkündet SDI - 'Star Wars'", "[RU]", "[EN]", "23. März 1983", "[RU]", "[EN]", 1983, 3, "KRIEG",
+            @"Reagan kündigt das 'Strategic Defense Initiative' an - ein Raketenabwehrsystem im Weltraum! Die UdSSR kann wirtschaftlich nicht mithalten. Die Angst wächst.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 250; p.Gesundheit -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ABLE_ARCHER_1983", "Able Archer 83 - Fast Atomkrieg", "11. November 1983", 1983, 11, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ABLE_ARCHER_1983", "Able Archer 83 - Fast Atomkrieg", "[RU]", "[EN]", "11. November 1983", "[RU]", "[EN]", 1983, 11, "KRIEG",
+            @"NATO-Manöver 'Able Archer': Die sowjetische Führung glaubt, es ist Vorbereitung für einen Atomschlag! Die Welt steht am Abgrund - ohne es zu wissen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Gesundheit -= 30; p.EinflussMilitär += 15; Thread.Sleep(4000); }));
         
         // ====== 1984 ======
-        historicalEvents.Add(new HistoricalEvent("ANDROPOW_TOD_1984", "Andropow stirbt - Tschernenko übernimmt", "9. Februar 1984", 1984, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ANDROPOW_TOD_1984", "Andropow stirbt - Tschernenko übernimmt", "[RU]", "[EN]", "9. Februar 1984", "[RU]", "[EN]", 1984, 2, "POLITIK",
+            @"Andropow stirbt nach nur 15 Monaten im Amt. Konstantin Tschernenko, 72 und krank, wird sein Nachfolger. Die Sowjetunion wird von einem Greis regiert.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OLYMPIA_BOYKOTT_LA_1984", "UdSSR boykottiert Olympia in Los Angeles", "8. Mai 1984", 1984, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OLYMPIA_BOYKOTT_LA_1984", "UdSSR boykottiert Olympia in Los Angeles", "[RU]", "[EN]", "8. Mai 1984", "[RU]", "[EN]", 1984, 5, "POLITIK",
+            @"Als Vergeltung für 1980 boykottiert die UdSSR die Spiele in Los Angeles. Der Ostblock folgt. Der Kalte Krieg im Sport.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_AUFSTIEG_1984", "Gorbatschow steigt auf", "11. Dezember 1984", 1984, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_AUFSTIEG_1984", "Gorbatschow steigt auf", "[RU]", "[EN]", "11. Dezember 1984", "[RU]", "[EN]", 1984, 12, "POLITIK",
+            @"Michail Gorbatschow, 53, wird zur Nummer 2 im Politbüro. Er gilt als Reformer. Viele hoffen: Vielleicht kann er das System retten?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 15; p.Intelligenz += 1; Thread.Sleep(3000); }));
         
         // ====== 1985 ======
-        historicalEvents.Add(new HistoricalEvent("TSCHERNENKO_TOD_1985", "Tschernenko stirbt", "10. März 1985", 1985, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TSCHERNENKO_TOD_1985", "Tschernenko stirbt", "[RU]", "[EN]", "10. März 1985", "[RU]", "[EN]", 1985, 3, "POLITIK",
+            @"Nach nur 13 Monaten stirbt auch Tschernenko. Drei Generalsekretäre in 3 Jahren! Das System ist am Ende. Jetzt muss ein Jüngerer ran.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_GENERALSEKRETAER_1985", "Gorbatschow wird Generalsekretär", "11. März 1985", 1985, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_GENERALSEKRETAER_1985", "Gorbatschow wird Generalsekretär", "[RU]", "[EN]", "11. März 1985", "[RU]", "[EN]", 1985, 3, "POLITIK",
+            @"Michail Gorbatschow wird mit 54 Jahren jüngster Generalsekretär seit Jahrzehnten! Er spricht von 'Perestroika' und 'Glasnost'. Eine neue Ära beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 25; p.LoyalitätVolk += 30; p.Intelligenz += 2; p.Gesundheit += 20; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GENF_GIPFEL_1985", "Gorbatschow trifft Reagan in Genf", "19. November 1985", 1985, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GENF_GIPFEL_1985", "Gorbatschow trifft Reagan in Genf", "[RU]", "[EN]", "19. November 1985", "[RU]", "[EN]", 1985, 11, "POLITIK",
+            @"Der erste Gipfel zwischen Gorbatschow und Reagan! Die beiden reden stundenlang. Das Eis bricht langsam. Die Hoffnung auf Abrüstung wächst.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.Gesundheit += 20; Thread.Sleep(4000); }));
         
         // ====== 1986 ======
-        historicalEvents.Add(new HistoricalEvent("TSCHERNOBYL_1986", "Tschernobyl - Die Katastrophe", "26. April 1986", 1986, 4, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TSCHERNOBYL_1986", "Tschernobyl - Die Katastrophe", "[RU]", "[EN]", "26. April 1986", "[RU]", "[EN]", 1986, 4, "KATASTROPHE",
+            @"SUPER-GAU! Reaktor 4 im AKW Tschernobyl explodiert. Eine radioaktive Wolke zieht über Europa. Die Regierung verschweigt es tagelang. 31 Tote sofort, Tausende später. Glasnost wird zur bitteren Realität: Das System ist verrottet.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 50; p.Gesundheit -= 40; p.EinflussInternational -= 35; p.Geld -= 500; p.LoyalitätPartei -= 30; Thread.Sleep(6000); }));
         
-        historicalEvents.Add(new HistoricalEvent("REYKJAVIK_GIPFEL_1986", "Reykjavík-Gipfel - Fast Durchbruch", "12. Oktober 1986", 1986, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("REYKJAVIK_GIPFEL_1986", "Reykjavík-Gipfel - Fast Durchbruch", "[RU]", "[EN]", "12. Oktober 1986", "[RU]", "[EN]", 1986, 10, "POLITIK",
+            @"Gorbatschow und Reagan verhandeln in Island über nukleare Abrüstung. Man ist nah dran - doch SDI verhindert den Deal. Trotzdem: Ein Wendepunkt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SACHAROW_FREIGELASSEN_1986", "Sacharow aus Verbannung zurück", "23. Dezember 1986", 1986, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SACHAROW_FREIGELASSEN_1986", "Sacharow aus Verbannung zurück", "[RU]", "[EN]", "23. Dezember 1986", "[RU]", "[EN]", 1986, 12, "POLITIK",
+            @"Gorbatschow ruft Sacharow persönlich an: 'Kehren Sie nach Moskau zurück!' Der Dissident ist frei. Ein Symbol für Glasnost.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 25; Thread.Sleep(3000); }));
         
         // ====== 1987 ======
-        historicalEvents.Add(new HistoricalEvent("INF_VERTRAG_1987", "INF-Vertrag - Erste echte Abrüstung", "8. Dezember 1987", 1987, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("INF_VERTRAG_1987", "INF-Vertrag - Erste echte Abrüstung", "[RU]", "[EN]", "8. Dezember 1987", "[RU]", "[EN]", 1987, 12, "POLITIK",
+            @"Gorbatschow und Reagan unterzeichnen den INF-Vertrag: Alle Mittelstreckenraketen werden vernichtet! Erstmals werden Atomwaffen wirklich abgerüstet. 'Trust but verify' sagt Reagan.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 40; p.Gesundheit += 30; p.LoyalitätVolk += 30; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("RUST_LANDUNG_1987", "Mathias Rust landet auf dem Roten Platz", "28. Mai 1987", 1987, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("RUST_LANDUNG_1987", "Mathias Rust landet auf dem Roten Platz", "[RU]", "[EN]", "28. Mai 1987", "[RU]", "[EN]", 1987, 5, "POLITIK",
+            @"Ein deutscher Teenager fliegt mit einer Cessna durch die sowjetische Luftabwehr und landet auf dem Roten Platz! Eine unglaubliche Blamage für das Militär.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär -= 35; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GLASNOST_PRESSEFREIHEIT_1987", "Glasnost - Pressefreiheit nimmt zu", "15. Juni 1987", 1987, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GLASNOST_PRESSEFREIHEIT_1987", "Glasnost - Pressefreiheit nimmt zu", "[RU]", "[EN]", "15. Juni 1987", "[RU]", "[EN]", 1987, 6, "POLITIK",
+            @"Die Medien dürfen plötzlich kritisieren! Stalins Verbrechen, Tschernobyl, Afghanistan - alles wird diskutiert. Die Büchse der Pandora ist geöffnet.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk += 25; p.LoyalitätPartei -= 20; p.Intelligenz += 2; Thread.Sleep(3000); }));
         
         // ====== 1988 ======
-        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_RUECKZUG_1988", "Rückzug aus Afghanistan beginnt", "15. Mai 1988", 1988, 5, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_RUECKZUG_1988", "Rückzug aus Afghanistan beginnt", "[RU]", "[EN]", "15. Mai 1988", "[RU]", "[EN]", 1988, 5, "KRIEG",
+            @"Nach 9 Jahren Krieg beginnt der Abzug! 15.000 Sowjetsoldaten sind gefallen, Hunderttausende Afghanen. Gorbatschow nennt es 'blutende Wunde'. Ein gescheiterter Krieg.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk += 35; p.Gesundheit += 25; p.EinflussMilitär -= 25; p.EinflussInternational += 20; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ERDBEBEN_ARMENIEN_1988", "Verheerendes Erdbeben in Armenien", "7. Dezember 1988", 1988, 12, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ERDBEBEN_ARMENIEN_1988", "Verheerendes Erdbeben in Armenien", "[RU]", "[EN]", "7. Dezember 1988", "[RU]", "[EN]", 1988, 12, "KATASTROPHE",
+            @"Ein Erdbeben der Stärke 6,9 zerstört Teile Armeniens. 25.000 Tote, Hunderttausende obdachlos. Gorbatschow bricht einen USA-Besuch ab. Das System ist überfordert.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 30; p.Gesundheit -= 25; p.Geld -= 400; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_UN_REDE_1988", "Gorbatschow vor UN - Truppenabbau", "7. Dezember 1988", 1988, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_UN_REDE_1988", "Gorbatschow vor UN - Truppenabbau", "[RU]", "[EN]", "7. Dezember 1988", "[RU]", "[EN]", 1988, 12, "POLITIK",
+            @"Vor der UN verkündet Gorbatschow einseitig den Abbau von 500.000 Soldaten! Die Welt ist verblüfft. Der Kalte Krieg endet wirklich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.EinflussMilitär -= 30; p.Gesundheit += 20; Thread.Sleep(4000); }));
         
         // ====== 1989 ======
-        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_ABZUG_KOMPLETT_1989", "Letzter Soldat verlässt Afghanistan", "15. Februar 1989", 1989, 2, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AFGHANISTAN_ABZUG_KOMPLETT_1989", "Letzter Soldat verlässt Afghanistan", "[RU]", "[EN]", "15. Februar 1989", "[RU]", "[EN]", 1989, 2, "KRIEG",
+            @"General Gromow überquert als letzter sowjetischer Soldat die Brücke zurück. 9 Jahre, 15.000 Tote, 470 Milliarden Rubel - für nichts. Afghanistan versinkt weiter im Bürgerkrieg.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk += 40; p.Gesundheit += 30; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("VOLKSDEPUTIERTENKONGRESS_1989", "Erste freie Wahlen seit Jahrzehnten", "26. März 1989", 1989, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("VOLKSDEPUTIERTENKONGRESS_1989", "Erste freie Wahlen seit Jahrzehnten", "[RU]", "[EN]", "26. März 1989", "[RU]", "[EN]", 1989, 3, "POLITIK",
+            @"Erstmals dürfen die Bürger wählen - teils frei! Reformer wie Jelzin triumphieren, alte Kommunisten verlieren. Das System wankt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk += 30; p.LoyalitätPartei -= 25; p.Intelligenz += 2; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("TIANANMEN_MASSAKER_1989", "Tiananmen-Massaker in China", "4. Juni 1989", 1989, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TIANANMEN_MASSAKER_1989", "Tiananmen-Massaker in China", "[RU]", "[EN]", "4. Juni 1989", "[RU]", "[EN]", 1989, 6, "POLITIK",
+            @"Chinas Militär massakriert friedliche Demonstranten in Peking! Die Welt ist entsetzt. Gorbatschow zeigt: So macht man das NICHT. Der Kontrast ist deutlich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("MAUERFALL_1989", "Fall der Berliner Mauer", "9. November 1989", 1989, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MAUERFALL_1989", "Fall der Berliner Mauer", "[RU]", "[EN]", "9. November 1989", "[RU]", "[EN]", 1989, 11, "POLITIK",
+            @"DIE MAUER FÄLLT! Nach einem Kommunikationsfehler öffnen DDR-Grenzposten die Mauer. Hunderttausende strömen nach West-Berlin. Menschen tanzen auf der Mauer, schlagen mit Hämmern darauf ein. 28 Jahre Trennung enden in einer Nacht. Das Volk in der UdSSR sieht die Bilder ungläubig: Der Eiserne Vorhang fällt! Gorbatschow lässt die Panzer in den Kasernen - keine Wiederholung von 1968. Das sowjetische Imperium bröckelt. Der Kalte Krieg ist vorbei.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 40; p.LoyalitätPartei -= 35; p.LoyalitätVolk += 20; p.EinflussMilitär -= 25; p.Gesundheit -= 15; Thread.Sleep(6000); }));
         
         // ====== 1990 ======
-        historicalEvents.Add(new HistoricalEvent("LITAUEN_UNABHAENGIGKEIT_1990", "Litauen erklärt Unabhängigkeit", "11. März 1990", 1990, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LITAUEN_UNABHAENGIGKEIT_1990", "Litauen erklärt Unabhängigkeit", "[RU]", "[EN]", "11. März 1990", "[RU]", "[EN]", 1990, 3, "POLITIK",
+            @"Litauen erklärt sich als erste Sowjetrepublik für unabhängig! Der Zerfall der UdSSR beginnt. Moskau ist schockiert - aber machtlos.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 35; p.EinflussInternational -= 25; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_FRIEDENSNOBELPREIS_1990", "Gorbatschow erhält Friedensnobelpreis", "15. Oktober 1990", 1990, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GORBATSCHOW_FRIEDENSNOBELPREIS_1990", "Gorbatschow erhält Friedensnobelpreis", "[RU]", "[EN]", "15. Oktober 1990", "[RU]", "[EN]", 1990, 10, "POLITIK",
+            @"Gorbatschow wird mit dem Friedensnobelpreis geehrt - für das Ende des Kalten Krieges. Im Westen ein Held, zuhause immer unbeliebter.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 35; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("DEUTSCHE_WIEDERVEREINIGUNG_1990", "Deutsche Wiedervereinigung", "3. Oktober 1990", 1990, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("DEUTSCHE_WIEDERVEREINIGUNG_1990", "Deutsche Wiedervereinigung", "[RU]", "[EN]", "3. Oktober 1990", "[RU]", "[EN]", 1990, 10, "POLITIK",
+            @"Deutschland ist wieder eins! Die DDR tritt der BRD bei. Das sowjetische Imperium in Europa ist zu Ende. Gorbatschow stimmt zu - ein historischer Moment.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.LoyalitätPartei -= 30; Thread.Sleep(4000); }));
         
         // ====== 1991 ======
-        historicalEvents.Add(new HistoricalEvent("BLUTIGER_SONNTAG_VILNIUS_1991", "Blutiger Sonntag in Vilnius", "13. Januar 1991", 1991, 1, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BLUTIGER_SONNTAG_VILNIUS_1991", "Blutiger Sonntag in Vilnius", "[RU]", "[EN]", "13. Januar 1991", "[RU]", "[EN]", 1991, 1, "KRIEG",
+            @"Sowjetische Truppen stürmen den Fernsehturm in Vilnius, Litauen. 14 Zivilisten werden getötet. Gorbatschow verliert international massiv an Ansehen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GOLFKRIEG_1991", "Erster Golfkrieg - USA dominieren", "17. Januar 1991", 1991, 1, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GOLFKRIEG_1991", "Erster Golfkrieg - USA dominieren", "[RU]", "[EN]", "17. Januar 1991", "[RU]", "[EN]", 1991, 1, "KRIEG",
+            @"Die USA führen eine Koalition gegen Saddam Hussein im Irak. Die UdSSR kann nur zusehen - ein früherer Verbündeter wird besiegt. Die Supermacht ist nicht mehr super.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("AUGUSTPUTSCH_1991", "Augustputsch gegen Gorbatschow scheitert", "19. August 1991", 1991, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AUGUSTPUTSCH_1991", "Augustputsch gegen Gorbatschow scheitert", "[RU]", "[EN]", "19. August 1991", "[RU]", "[EN]", 1991, 8, "POLITIK",
+            @"Hardliner putschen! Panzer in Moskau! Gorbatschow wird auf der Krim festgehalten. Doch Boris Jelzin stellt sich auf einen Panzer und ruft zum Widerstand. Nach 3 Tagen scheitert der Putsch. Aber die UdSSR ist am Ende.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 50; p.EinflussMilitär -= 30; p.Gesundheit -= 30; Thread.Sleep(6000); }));
         
-        historicalEvents.Add(new HistoricalEvent("UKRAINE_UNABHAENGIGKEIT_1991", "Ukraine erklärt Unabhängigkeit", "24. August 1991", 1991, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("UKRAINE_UNABHAENGIGKEIT_1991", "Ukraine erklärt Unabhängigkeit", "[RU]", "[EN]", "24. August 1991", "[RU]", "[EN]", 1991, 8, "POLITIK",
+            @"Die Ukraine verlässt die Union! Ohne die Ukraine kann die UdSSR nicht existieren. Das Ende ist nah.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.LoyalitätPartei -= 40; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ZERFALL_UDSSR_1991", "Ende der Sowjetunion", "25. Dezember 1991", 1991, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ZERFALL_UDSSR_1991", "Ende der Sowjetunion", "[RU]", "[EN]", "25. Dezember 1991", "[RU]", "[EN]", 1991, 12, "POLITIK",
+            @"GESCHICHTSMOMENT! Um 19:32 Uhr wird die rote Fahne über dem Kreml eingeholtheolt und durch die russische Trikolore ersetzt. Gorbatschow tritt zurück. Die Sowjetunion existiert nicht mehr. 69 Jahre kommunistisches Experiment enden. Eine Supermacht stirbt. Chaos und Ungewissheit folgen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 60; p.EinflussInternational -= 50; p.Geld -= 500; p.Gesundheit -= 40; Thread.Sleep(8000); }));
         
         
         // ====== 1992 ======
-        historicalEvents.Add(new HistoricalEvent("JELZIN_SCHOCKTHERAPIE_1992", "Schocktherapie - Preise freigegeben", "2. Januar 1992", 1992, 1, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JELZIN_SCHOCKTHERAPIE_1992", "Schocktherapie - Preise freigegeben", "[RU]", "[EN]", "2. Januar 1992", "[RU]", "[EN]", 1992, 1, "WIRTSCHAFT",
+            @"Jelzin gibt alle Preise frei! Hyperinflation explodiert. Ersparnisse der Bürger werden über Nacht wertlos. Chaos und Armut greifen um sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 600; p.LoyalitätVolk -= 45; p.Gesundheit -= 30; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("TSCHETSCHENIEN_UNABHAENGIGKEIT_1992", "Tschetschenien will Unabhängigkeit", "1. März 1992", 1992, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TSCHETSCHENIEN_UNABHAENGIGKEIT_1992", "Tschetschenien will Unabhängigkeit", "[RU]", "[EN]", "1. März 1992", "[RU]", "[EN]", 1992, 3, "POLITIK",
+            @"Tschetschenien erklärt faktisch Unabhängigkeit von Russland. Moskau kann es nicht akzeptieren. Der Konflikt schwelt - und wird bald explodieren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär -= 20; p.LoyalitätPartei -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("RUSSLAND_IN_G7_1992", "Russland wird G7-Gast", "15. Juli 1992", 1992, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("RUSSLAND_IN_G7_1992", "Russland wird G7-Gast", "[RU]", "[EN]", "15. Juli 1992", "[RU]", "[EN]", 1992, 7, "POLITIK",
+            @"Russland wird in die G7 (später G8) aufgenommen. Jelzin verkündet: Russland gehört zum Westen! Doch die Realität ist komplizierter.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 10; Thread.Sleep(3000); }));
         
         // ====== 1993 ======
-        historicalEvents.Add(new HistoricalEvent("VERFASSUNGSKRISE_1993", "Verfassungskrise - Jelzin gegen Parlament", "21. September 1993", 1993, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("VERFASSUNGSKRISE_1993", "Verfassungskrise - Jelzin gegen Parlament", "[RU]", "[EN]", "21. September 1993", "[RU]", "[EN]", 1993, 9, "POLITIK",
+            @"Jelzin löst das Parlament auf! Die Parlamentarier weigern sich zu gehen. Showdown in Moskau - wer herrscht in Russland?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 30; p.Gesundheit -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("WEISSES_HAUS_BESCHUSS_1993", "Panzer beschießen das Weiße Haus", "4. Oktober 1993", 1993, 10, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WEISSES_HAUS_BESCHUSS_1993", "Panzer beschießen das Weiße Haus", "[RU]", "[EN]", "4. Oktober 1993", "[RU]", "[EN]", 1993, 10, "KRIEG",
+            @"Jelzin lässt Panzer auf das Parlament schießen! Das 'Weiße Haus' brennt, über 100 Tote. Die Demokratie wird mit Gewalt durchgesetzt. Die Welt schaut entsetzt zu.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.LoyalitätVolk -= 40; p.Gesundheit -= 35; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("NEUE_VERFASSUNG_1993", "Neue Verfassung per Referendum", "12. Dezember 1993", 1993, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NEUE_VERFASSUNG_1993", "Neue Verfassung per Referendum", "[RU]", "[EN]", "12. Dezember 1993", "[RU]", "[EN]", 1993, 12, "POLITIK",
+            @"Jelzins neue Verfassung wird angenommen - mit starkem Präsidialregime. Der Präsident hat enorme Macht. Die Weichen für Flad sind gestellt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.EinflussMilitär += 15; Thread.Sleep(3000); }));
         
         // ====== 1994 ======
-        historicalEvents.Add(new HistoricalEvent("ERSTER_TSCHETSCHENIENKRIEG_1994", "Erster Tschetschenienkrieg beginnt", "11. Dezember 1994", 1994, 12, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ERSTER_TSCHETSCHENIENKRIEG_1994", "Erster Tschetschenienkrieg beginnt", "[RU]", "[EN]", "11. Dezember 1994", "[RU]", "[EN]", 1994, 12, "KRIEG",
+            @"Russische Truppen marschieren in Tschetschenien ein! Ein brutaler Krieg beginnt. Grosny wird dem Erdboden gleichgemacht. Tausende sterben. Das Militär ist demoralisiert.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär -= 25; p.Geld -= 400; p.LoyalitätVolk -= 35; p.Gesundheit -= 30; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("NATO_OSTERWEITERUNG_PLAN_1994", "NATO plant Osterweiterung", "10. Januar 1994", 1994, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NATO_OSTERWEITERUNG_PLAN_1994", "NATO plant Osterweiterung", "[RU]", "[EN]", "10. Januar 1994", "[RU]", "[EN]", 1994, 1, "POLITIK",
+            @"Die NATO verkündet 'Partnerschaft für Frieden' - de facto Vorbereitung zur Osterweiterung. Russland fühlt sich betrogen und eingekreist.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("RUSSLAND_G7_EINGELADEN_1994", "Russland zu G7 eingeladen", "2. Juli 1994", 1994, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("RUSSLAND_G7_EINGELADEN_1994", "Russland zu G7 eingeladen", "[RU]", "[EN]", "2. Juli 1994", "[RU]", "[EN]", 1994, 7, "POLITIK",
+            @"Russland wird zu G7-Gipfeln eingeladen. Der Weg zur G8 beginnt. Jelzin feiert: Russland ist Teil des Westens!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.LoyalitätVolk += 15; Thread.Sleep(3000); }));
         
         // ====== 1995 ======
-        historicalEvents.Add(new HistoricalEvent("GROSNY_EROBERT_1995", "Grosny erobert - zu welchem Preis?", "8. Februar 1995", 1995, 2, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GROSNY_EROBERT_1995", "Grosny erobert - zu welchem Preis?", "[RU]", "[EN]", "8. Februar 1995", "[RU]", "[EN]", 1995, 2, "KRIEG",
+            @"Nach wochenlangen Kämpfen erobert Russland die zerstörte Stadt Grosny. Die UN nennt es 'die zerstörteste Stadt der Welt'. Ein Pyrrhussieg.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 300; p.LoyalitätVolk -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("OLIGARCHEN_AUFSTIEG_1995", "Oligarchen übernehmen Staatsbetriebe", "15. August 1995", 1995, 8, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("OLIGARCHEN_AUFSTIEG_1995", "Oligarchen übernehmen Staatsbetriebe", "[RU]", "[EN]", "15. August 1995", "[RU]", "[EN]", 1995, 8, "WIRTSCHAFT",
+            @"'Loans-for-Shares': Die reichsten Geschäftsleute kaufen Staatsbetriebe für einen Spottpreis. Die Oligarchen entstehen. Das Volk verarmt, wenige werden steinreich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 500; p.LoyalitätVolk -= 40; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("BUDENNOVSK_GEISELNAHME_1995", "Geiselnahme in Budennovsk", "14. Juni 1995", 1995, 6, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BUDENNOVSK_GEISELNAHME_1995", "Geiselnahme in Budennovsk", "[RU]", "[EN]", "14. Juni 1995", "[RU]", "[EN]", 1995, 6, "KATASTROPHE",
+            @"Tschetschenische Kämpfer nehmen über 1000 Menschen in einem Krankenhaus als Geiseln! Die Befreiungsaktion ist chaotisch - über 100 Tote. Russland ist gedemütigt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 30; p.Gesundheit -= 25; p.EinflussMilitär -= 20; Thread.Sleep(4000); }));
         
         // ====== 1996 ======
-        historicalEvents.Add(new HistoricalEvent("JELZIN_WIEDERWAHL_1996", "Jelzin wird wiedergewählt", "3. Juli 1996", 1996, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JELZIN_WIEDERWAHL_1996", "Jelzin wird wiedergewählt", "[RU]", "[EN]", "3. Juli 1996", "[RU]", "[EN]", 1996, 7, "POLITIK",
+            @"Jelzin gewinnt die Wahl - mit massiver Unterstützung der Oligarchen und fragwürdigen Methoden. Der Westen atmet auf: kein kommunistisches Comeback.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 15; p.EinflussInternational += 20; p.Geld -= 200; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("JELZIN_HERZ_1996", "Jelzin am Herzen operiert", "5. November 1996", 1996, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JELZIN_HERZ_1996", "Jelzin am Herzen operiert", "[RU]", "[EN]", "5. November 1996", "[RU]", "[EN]", 1996, 11, "POLITIK",
+            @"Jelzin wird am offenen Herzen operiert. Monatelang ist unklar, wer Russland regiert. Das Land taumelt führungslos.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Gesundheit -= 30; p.LoyalitätPartei -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("CHASAWJURT_WAFFENSTILLSTAND_1996", "Waffenstillstand Tschetschenien", "31. August 1996", 1996, 8, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CHASAWJURT_WAFFENSTILLSTAND_1996", "Waffenstillstand Tschetschenien", "[RU]", "[EN]", "31. August 1996", "[RU]", "[EN]", 1996, 8, "KRIEG",
+            @"Russland unterschreibt demütigenden Waffenstillstand! Tschetschenien ist de facto unabhängig. 80.000 Tote, keine Lösung. Russland hat verloren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär -= 30; p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
         // ====== 1997 ======
-        historicalEvents.Add(new HistoricalEvent("NATO_RUSSLAND_AKTE_1997", "NATO-Russland-Grundakte", "27. Mai 1997", 1997, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NATO_RUSSLAND_AKTE_1997", "NATO-Russland-Grundakte", "[RU]", "[EN]", "27. Mai 1997", "[RU]", "[EN]", 1997, 5, "POLITIK",
+            @"Russland und NATO unterzeichnen eine 'Partnerschaft'. Aber die NATO-Osterweiterung geht trotzdem weiter. Russland fühlt sich hintergangen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("LEBED_GOUVERNEUR_1997", "General Lebed wird Gouverneur", "20. Mai 1997", 1997, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LEBED_GOUVERNEUR_1997", "General Lebed wird Gouverneur", "[RU]", "[EN]", "20. Mai 1997", "[RU]", "[EN]", 1997, 5, "POLITIK",
+            @"Der populäre General Alexander Lebed wird Gouverneur von Krasnojarsk. Ein potentieller Jelzin-Nachfolger positioniert sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ASIEN_FINANZKRISE_1997", "Asiatische Finanzkrise", "2. Juli 1997", 1997, 7, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ASIEN_FINANZKRISE_1997", "Asiatische Finanzkrise", "[RU]", "[EN]", "2. Juli 1997", "[RU]", "[EN]", 1997, 7, "WIRTSCHAFT",
+            @"Die Finanzkrise in Asien erschüttert auch Russland. Der Rubel gerät unter Druck. Ein Vorbote der Katastrophe 1998.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 150; p.Gesundheit -= 10; Thread.Sleep(3000); }));
         
         // ====== 1998 ======
-        historicalEvents.Add(new HistoricalEvent("RUBELKRISE_1998", "Rubelkrise - Staatsbankrott", "17. August 1998", 1998, 8, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("RUBELKRISE_1998", "Rubelkrise - Staatsbankrott", "[RU]", "[EN]", "17. August 1998", "[RU]", "[EN]", 1998, 8, "WIRTSCHAFT",
+            @"KATASTROPHE! Russland erklärt Zahlungsunfähigkeit! Der Rubel stürzt ab, Banken kollabieren, Menschen verlieren alles. Die schlimmste Wirtschaftskrise seit 1991.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 700; p.LoyalitätVolk -= 50; p.Gesundheit -= 35; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PRIMAKOW_REGIERUNG_1998", "Primakow wird Premierminister", "11. September 1998", 1998, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PRIMAKOW_REGIERUNG_1998", "Primakow wird Premierminister", "[RU]", "[EN]", "11. September 1998", "[RU]", "[EN]", 1998, 9, "POLITIK",
+            @"Nach der Rubelkrise ernennt Jelzin Jewgeni Primakow zum Premier. Ein erfahrener Außenpolitiker soll stabilisieren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 15; p.EinflussInternational += 10; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("JELZIN_ENTLAESST_REGIERUNG_1998", "Jelzin entlässt gesamte Regierung", "23. März 1998", 1998, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JELZIN_ENTLAESST_REGIERUNG_1998", "Jelzin entlässt gesamte Regierung", "[RU]", "[EN]", "23. März 1998", "[RU]", "[EN]", 1998, 3, "POLITIK",
+            @"Jelzin feuert die komplette Regierung! Tschernomyrdin muss gehen. Politisches Chaos in Moskau. Wer regiert hier eigentlich?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
         // ====== 1999 ======
-        historicalEvents.Add(new HistoricalEvent("ZWEITER_TSCHETSCHENIENKRIEG_1999", "Zweiter Tschetschenienkrieg beginnt", "26. August 1999", 1999, 8, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ZWEITER_TSCHETSCHENIENKRIEG_1999", "Zweiter Tschetschenienkrieg beginnt", "[RU]", "[EN]", "26. August 1999", "[RU]", "[EN]", 1999, 8, "KRIEG",
+            @"Nach Anschlägen in Moskau startet Russland eine neue Offensive in Tschetschenien. Premierminister Flad führt den Krieg hart und populär. Seine Popularität steigt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.LoyalitätVolk += 25; p.Geld -= 350; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("WOHNHAUSBOMBEN_1999", "Mysteriöse Bomben in Wohnhäusern", "9. September 1999", 1999, 9, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("WOHNHAUSBOMBEN_1999", "Mysteriöse Bomben in Wohnhäusern", "[RU]", "[EN]", "9. September 1999", "[RU]", "[EN]", 1999, 9, "KATASTROPHE",
+            @"Wohnhäuser in Moskau und anderen Städten explodieren - 300 Tote. Offiziell: tschetschenische Terroristen. Kritiker vermuten FSB-Beteiligung. Die Wahrheit bleibt im Dunkeln.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.LoyalitätVolk -= 30; p.Gesundheit -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("FLAD_PREMIER_1999", "Flad wird Premierminister", "9. August 1999", 1999, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FLAD_PREMIER_1999", "Flad wird Premierminister", "[RU]", "[EN]", "9. August 1999", "[RU]", "[EN]", 1999, 8, "POLITIK",
+            @"Der unbekannte Ex-KGB-Agent Flad Rusputin wird Premierminister. Er verspricht, Tschetschenien zu 'erledigen'. Die Ära Flad beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 35; p.LoyalitätPartei += 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("JELZIN_RUECKTRITT_1999", "Jelzin tritt zurück - Flad übernimmt", "31. Dezember 1999", 1999, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JELZIN_RUECKTRITT_1999", "Jelzin tritt zurück - Flad übernimmt", "[RU]", "[EN]", "31. Dezember 1999", "[RU]", "[EN]", 1999, 12, "POLITIK",
+            @"Silvester-Überraschung! Jelzin tritt zurück und übergibt die Macht an Flad. 'Russland muss ins 21. Jahrhundert mit neuer Führung gehen.' Die Jelzin-Ära endet.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 30; p.Gesundheit += 20; Thread.Sleep(5000); }));
         
         // ====== 2000 ======
-        historicalEvents.Add(new HistoricalEvent("FLAD_PRAESIDENT_2000", "Flad wird zum Präsidenten gewählt", "26. März 2000", 2000, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FLAD_PRAESIDENT_2000", "Flad wird zum Präsidenten gewählt", "[RU]", "[EN]", "26. März 2000", "[RU]", "[EN]", 2000, 3, "POLITIK",
+            @"Flad gewinnt die Wahl mit 53%! Der ehemalige KGB-Agent ist nun offiziell Präsident. Er verspricht 'Diktatur des Gesetzes' und Ordnung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 35; p.EinflussKGB += 30; p.LoyalitätVolk += 30; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KURSK_UNTERGANG_2000", "U-Boot Kursk sinkt", "12. August 2000", 2000, 8, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KURSK_UNTERGANG_2000", "U-Boot Kursk sinkt", "[RU]", "[EN]", "12. August 2000", "[RU]", "[EN]", 2000, 8, "KATASTROPHE",
+            @"Das Atom-U-Boot Kursk sinkt nach Explosion. 118 Seeleute sterben. Flad bleibt im Urlaub, lehnt ausländische Hilfe ab. Seine erste große Krise.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 30; p.Gesundheit -= 25; p.EinflussInternational -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GUSINSKI_VERHAFTET_2000", "Medien-Oligarch Gusinski verhaftet", "13. Juni 2000", 2000, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GUSINSKI_VERHAFTET_2000", "Medien-Oligarch Gusinski verhaftet", "[RU]", "[EN]", "13. Juni 2000", "[RU]", "[EN]", 2000, 6, "POLITIK",
+            @"Medien-Oligarch Gusinski wird verhaftet. Seine kritischen TV-Sender werden übernommen. Flads Kampf gegen die Oligarchen und freie Medien beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
         // ====== 2001 ======
-        historicalEvents.Add(new HistoricalEvent("FLAD_BUSH_2001", "Flad trifft Bush - 'Ich sah in seine Seele'", "16. Juni 2001", 2001, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FLAD_BUSH_2001", "Flad trifft Bush - 'Ich sah in seine Seele'", "[RU]", "[EN]", "16. Juni 2001", "[RU]", "[EN]", 2001, 6, "POLITIK",
+            @"Flad trifft Bush in Slowenien. Bush: 'Ich sah in seine Seele und fand ihn vertrauenswürdig.' Eine kurze Phase guter Beziehungen beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("911_UNTERSTUETZUNG_2001", "9/11 - Flad unterstützt USA", "11. September 2001", 2001, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("911_UNTERSTUETZUNG_2001", "9/11 - Flad unterstützt USA", "[RU]", "[EN]", "11. September 2001", "[RU]", "[EN]", 2001, 9, "POLITIK",
+            @"Nach den Anschlägen von 9/11 ist Flad der erste, der Bush anruft. Russland unterstützt den 'Krieg gegen Terror'. Kurze Annäherung an den Westen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; Thread.Sleep(3000); }));
         
         // ====== 2002 ======
-        historicalEvents.Add(new HistoricalEvent("DUBROWKA_GEISELNAHME_2002", "Geiselnahme im Dubrowka-Theater", "23. Oktober 2002", 2002, 10, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("DUBROWKA_GEISELNAHME_2002", "Geiselnahme im Dubrowka-Theater", "[RU]", "[EN]", "23. Oktober 2002", "[RU]", "[EN]", 2002, 10, "KATASTROPHE",
+            @"Tschetschenische Terroristen nehmen 900 Menschen als Geiseln in Moskau! Das Spezial-Kommando setzt Gas ein - 170 Geiseln sterben. Ein tragisches Fiasko.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 35; p.Gesundheit -= 30; p.EinflussKGB += 20; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("USA_ABM_AUSTRITT_2002", "USA steigen aus ABM-Vertrag aus", "13. Juni 2002", 2002, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("USA_ABM_AUSTRITT_2002", "USA steigen aus ABM-Vertrag aus", "[RU]", "[EN]", "13. Juni 2002", "[RU]", "[EN]", 2002, 6, "POLITIK",
+            @"Die USA kündigen den ABM-Vertrag über Raketenabwehr. Putin ist verärgert - ein wichtiger Abrüstungsvertrag ist Geschichte.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
         // ====== 2003 ======
-        historicalEvents.Add(new HistoricalEvent("CHODORKOWSKI_VERHAFTET_2003", "Oligarch Chodorkowski verhaftet", "25. Oktober 2003", 2003, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("CHODORKOWSKI_VERHAFTET_2003", "Oligarch Chodorkowski verhaftet", "[RU]", "[EN]", "25. Oktober 2003", "[RU]", "[EN]", 2003, 10, "POLITIK",
+            @"Der reichste Mann Russlands, Michail Chodorkowski, wird verhaftet! Sein Ölkonzern Yukos wird zerschlagen. Die Botschaft: Wer sich Flad widersetzt, fällt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 40; p.Geld += 300; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("IRAKKRIEG_2003", "Irakkrieg - Russland dagegen", "20. März 2003", 2003, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("IRAKKRIEG_2003", "Irakkrieg - Russland dagegen", "[RU]", "[EN]", "20. März 2003", "[RU]", "[EN]", 2003, 3, "POLITIK",
+            @"Die USA marschieren im Irak ein - ohne UN-Mandat. Russland ist strikt dagegen. Die Beziehungen zum Westen kühlen ab.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 15; Thread.Sleep(3000); }));
         
         // ====== 2004 ======
-        historicalEvents.Add(new HistoricalEvent("BESLAN_MASSAKER_2004", "Beslan-Massaker in Schule", "1. September 2004", 2004, 9, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("BESLAN_MASSAKER_2004", "Beslan-Massaker in Schule", "[RU]", "[EN]", "1. September 2004", "[RU]", "[EN]", 2004, 9, "KATASTROPHE",
+            @"Terroristen nehmen über 1000 Menschen, darunter 777 Kinder, in einer Schule in Beslan als Geiseln. Die Erstürmung endet katastrophal: 334 Tote, davon 186 Kinder. Russland steht unter Schock.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 40; p.Gesundheit -= 40; p.EinflussKGB += 25; Thread.Sleep(6000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ORANGE_REVOLUTION_2004", "Orange Revolution in der Ukraine", "22. November 2004", 2004, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ORANGE_REVOLUTION_2004", "Orange Revolution in der Ukraine", "[RU]", "[EN]", "22. November 2004", "[RU]", "[EN]", 2004, 11, "POLITIK",
+            @"Massendemonstrationen in der Ukraine! Der pro-westliche Kandidat Juschtschenko siegt. Russland sieht darin westliche Einmischung. Die Beziehungen zur Ukraine verschlechtern sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("FLAD_GOUVERNEURE_2004", "Flad schafft Gouverneurswahlen ab", "13. September 2004", 2004, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FLAD_GOUVERNEURE_2004", "Flad schafft Gouverneurswahlen ab", "[RU]", "[EN]", "13. September 2004", "[RU]", "[EN]", 2004, 9, "POLITIK",
+            @"Nach Beslan schafft Flad Gouverneurswahlen ab. Nun ernennt er alle Gouverneure selbst. Die Demokratie wird weiter abgebaut. 'Vertikale der Macht' nennt er es.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 30; p.LoyalitätPartei += 20; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
         // ====== 2005 ======
-        historicalEvents.Add(new HistoricalEvent("JUSCHTSCHENKO_VERGIFTET_2005", "Juschtschenko wurde vergiftet", "11. Januar 2005", 2005, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("JUSCHTSCHENKO_VERGIFTET_2005", "Juschtschenko wurde vergiftet", "[RU]", "[EN]", "11. Januar 2005", "[RU]", "[EN]", 2005, 1, "POLITIK",
+            @"Der ukrainische Präsident Juschtschenko wurde 2004 mit Dioxin vergiftet! Verdacht: russische Geheimdienste. Sein Gesicht ist entstellt. Die Spannungen steigen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         // ====== 2006 ======
-        historicalEvents.Add(new HistoricalEvent("GASSTREIT_UKRAINE_2006", "Gasstreit mit Ukraine - Lieferungen gestoppt", "1. Januar 2006", 2006, 1, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GASSTREIT_UKRAINE_2006", "Gasstreit mit Ukraine - Lieferungen gestoppt", "[RU]", "[EN]", "1. Januar 2006", "[RU]", "[EN]", 2006, 1, "WIRTSCHAFT",
+            @"Russland dreht der Ukraine den Gashahn zu! Auch Europa friert. 'Gas als Waffe' wird Realität. Die Welt lernt: Energie ist Macht.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld += 200; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("LITWINENKO_MORD_2006", "Litwinenko in London vergiftet", "23. November 2006", 2006, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("LITWINENKO_MORD_2006", "Litwinenko in London vergiftet", "[RU]", "[EN]", "23. November 2006", "[RU]", "[EN]", 2006, 11, "POLITIK",
+            @"Der Ex-FSB-Agent Litwinenko stirbt in London - vergiftet mit radioaktivem Polonium! Er beschuldigte vorher Flad. Ein britisches Gericht wird später FSB für schuldig erklären.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.EinflussKGB += 25; Thread.Sleep(4000); }));
         
         // ====== 2007 ======
-        historicalEvents.Add(new HistoricalEvent("MUENCHNER_SICHERHEITSKONFERENZ_2007", "Flads Rede in München - scharfe Kritik", "10. Februar 2007", 2007, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MUENCHNER_SICHERHEITSKONFERENZ_2007", "Flads Rede in München - scharfe Kritik", "[RU]", "[EN]", "10. Februar 2007", "[RU]", "[EN]", 2007, 2, "POLITIK",
+            @"Flad hält explosive Rede in München! Scharfe Kritik an USA, NATO-Osterweiterung, US-Raketenabwehr. 'Eine unipolare Welt ist inakzeptabel!' Der Westen ist schockiert.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.LoyalitätVolk += 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("ESTONIA_CYBERANGRIFF_2007", "Cyberangriff auf Estland", "27. April 2007", 2007, 4, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ESTONIA_CYBERANGRIFF_2007", "Cyberangriff auf Estland", "[RU]", "[EN]", "27. April 2007", "[RU]", "[EN]", 2007, 4, "KRIEG",
+            @"Estland wird massiv cyber-angegriffen! Regierungsseiten, Banken, Medien - alles lahm. Verdacht: Russland. Der erste Cyberkrieg der Geschichte.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
         // ====== 2008 ======
-        historicalEvents.Add(new HistoricalEvent("MEDWEDJEW_PRAESIDENT_2008", "Medwedjew wird Präsident - Putin Premier", "7. Mai 2008", 2008, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MEDWEDJEW_PRAESIDENT_2008", "Medwedjew wird Präsident - Putin Premier", "[RU]", "[EN]", "7. Mai 2008", "[RU]", "[EN]", 2008, 5, "POLITIK",
+            @"Dmitri Medwedjew wird Präsident, Putin wird Premierminister. Das 'Tandem' beginnt. Aber jeder weiß: Putin hat weiter das Sagen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GEORGIENKRIEG_2008", "Krieg mit Georgien - 5 Tage Blitzkrieg", "8. August 2008", 2008, 8, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GEORGIENKRIEG_2008", "Krieg mit Georgien - 5 Tage Blitzkrieg", "[RU]", "[EN]", "8. August 2008", "[RU]", "[EN]", 2008, 8, "KRIEG",
+            @"Georgien greift Südossetien an. Russland marschiert ein! In 5 Tagen wird Georgien militärisch zerschlagen. Die Botschaft: Russland ist wieder eine Militärmacht! NATO schaut machtlos zu.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 40; p.LoyalitätVolk += 35; p.EinflussInternational -= 35; p.Geld -= 250; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("FINANZKRISE_2008", "Weltweite Finanzkrise trifft Russland", "15. September 2008", 2008, 9, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FINANZKRISE_2008", "Weltweite Finanzkrise trifft Russland", "[RU]", "[EN]", "15. September 2008", "[RU]", "[EN]", 2008, 9, "WIRTSCHAFT",
+            @"Die Lehman-Pleite löst Weltwirtschaftskrise aus. Der Ölpreis stürzt ab, Russlands Wirtschaft taumelt. Die Börse bricht um 70% ein.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 500; p.LoyalitätVolk -= 30; Thread.Sleep(3000); }));
         
         // ====== 2009-2010 ======
-        historicalEvents.Add(new HistoricalEvent("METRO_ANSCHLAEGE_2010", "Selbstmordattentate in Moskauer Metro", "29. März 2010", 2010, 3, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("METRO_ANSCHLAEGE_2010", "Selbstmordattentate in Moskauer Metro", "[RU]", "[EN]", "29. März 2010", "[RU]", "[EN]", 2010, 3, "KATASTROPHE",
+            @"Zwei Selbstmordattentäterinnen sprengen sich in der Moskauer Metro - 40 Tote. Tschetschenischer Terror erreicht das Herz Russlands.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 25; p.Gesundheit -= 20; p.EinflussKGB += 20; Thread.Sleep(4000); }));
         
         // ====== 2011 ======
-        historicalEvents.Add(new HistoricalEvent("PUTIN_KANDIDATUR_2011", "Putin kandidiert wieder für Präsidentschaft", "24. September 2011", 2011, 9, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PUTIN_KANDIDATUR_2011", "Putin kandidiert wieder für Präsidentschaft", "[RU]", "[EN]", "24. September 2011", "[RU]", "[EN]", 2011, 9, "POLITIK",
+            @"Putin verkündet: Er will wieder Präsident werden! Das Tandem war nur Theater. Proteste beginnen: 'Putin muss weg!'",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 25; p.LoyalitätVolk -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("DUMAWAHLEN_PROTESTE_2011", "Dumawahlen - Vorwürfe massiver Fälschungen", "4. Dezember 2011", 2011, 12, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("DUMAWAHLEN_PROTESTE_2011", "Dumawahlen - Vorwürfe massiver Fälschungen", "[RU]", "[EN]", "4. Dezember 2011", "[RU]", "[EN]", 2011, 12, "POLITIK",
+            @"Die Dumawahlen sind offensichtlich gefälscht! Zehntausende protestieren in Moskau. Die größten Proteste seit den 90ern. 'Russland ohne Putin!'",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 35; p.EinflussKGB += 25; p.Gesundheit -= 15; Thread.Sleep(4000); }));
         
         // ====== 2012 ======
-        historicalEvents.Add(new HistoricalEvent("PUTIN_DRITTE_AMTSZEIT_2012", "Putin wird zum dritten Mal Präsident", "7. Mai 2012", 2012, 5, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PUTIN_DRITTE_AMTSZEIT_2012", "Putin wird zum dritten Mal Präsident", "[RU]", "[EN]", "7. Mai 2012", "[RU]", "[EN]", 2012, 5, "POLITIK",
+            @"Putin kehrt als Präsident zurück - mit umstrittener Wahl. Am Wahltag: Proteste und Verhaftungen. Der 'Eiszeit' beginnt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 30; p.LoyalitätVolk -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUSSY_RIOT_2012", "Pussy Riot verhaftet", "3. August 2012", 2012, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PUSSY_RIOT_2012", "Pussy Riot verhaftet", "[RU]", "[EN]", "3. August 2012", "[RU]", "[EN]", 2012, 8, "POLITIK",
+            @"Die Punk-Band Pussy Riot wird wegen 'Rowdytum aus religiösem Hass' zu 2 Jahren Haft verurteilt. Weltweite Empörung. Symbol für Putins autoritären Kurs.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         // ====== 2013 ======
-        historicalEvents.Add(new HistoricalEvent("SNOWDEN_ASYL_2013", "Snowden erhält Asyl in Russland", "1. August 2013", 2013, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SNOWDEN_ASYL_2013", "Snowden erhält Asyl in Russland", "[RU]", "[EN]", "1. August 2013", "[RU]", "[EN]", 2013, 8, "POLITIK",
+            @"Der NSA-Whistleblower Edward Snowden erhält Asyl in Russland! Die USA sind wütend. Ein propagandistischer Coup für Putin.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("UKRAINE_EU_2013", "Ukraine wendet sich von EU ab", "21. November 2013", 2013, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("UKRAINE_EU_2013", "Ukraine wendet sich von EU ab", "[RU]", "[EN]", "21. November 2013", "[RU]", "[EN]", 2013, 11, "POLITIK",
+            @"Unter russischem Druck sagt die Ukraine das EU-Assoziierungsabkommen ab. Massendemonstrationen beginnen auf dem Maidan. Der Euromaidan startet.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; Thread.Sleep(3000); }));
         
         // ====== 2014 ======
-        historicalEvents.Add(new HistoricalEvent("SOTSCHI_OLYMPIA_2014", "Winterolympiade in Sotschi", "7. Februar 2014", 2014, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SOTSCHI_OLYMPIA_2014", "Winterolympiade in Sotschi", "[RU]", "[EN]", "7. Februar 2014", "[RU]", "[EN]", 2014, 2, "POLITIK",
+            @"Die teuersten Winterspiele aller Zeiten! 50 Milliarden Dollar! Putins Prestigeprojekt. Prunk und Propaganda. Doch Dopingvorwürfe werfen Schatten.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 600; p.EinflussInternational += 20; p.LoyalitätVolk += 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("MAIDAN_JANUKOWITSCH_FLIEHT_2014", "Janukowitsch flieht aus Ukraine", "22. Februar 2014", 2014, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MAIDAN_JANUKOWITSCH_FLIEHT_2014", "Janukowitsch flieht aus Ukraine", "[RU]", "[EN]", "22. Februar 2014", "[RU]", "[EN]", 2014, 2, "POLITIK",
+            @"Der pro-russische Präsident Janukowitsch flieht! Die Maidan-Revolution siegt. Putin nennt es 'Putsch'. Die Ukraine wendet sich dem Westen zu.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KRIM_ANNEXION_2014", "Annexion der Krim", "18. März 2014", 2014, 3, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KRIM_ANNEXION_2014", "Annexion der Krim", "[RU]", "[EN]", "18. März 2014", "[RU]", "[EN]", 2014, 3, "KRIEG",
+            @"HISTORISCHER MOMENT! 'Grüne Männchen' (russische Soldaten ohne Abzeichen) besetzen die Krim. Ein inszeniertes 'Referendum': 97% für Russland. Putin verkündet: Die Krim ist wieder russisch! Der Westen schreit 'Völkerrechtsbruch!'. Sanktionen beginnen. In Russland Euphorie: 'Krim ist unser!' Putins Beliebtheit explodiert auf 80%+.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 50; p.LoyalitätVolk += 50; p.EinflussMilitär += 40; p.Geld -= 400; Thread.Sleep(7000); }));
         
-        historicalEvents.Add(new HistoricalEvent("DONBASS_KRIEG_2014", "Krieg im Donbass beginnt", "12. April 2014", 2014, 4, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("DONBASS_KRIEG_2014", "Krieg im Donbass beginnt", "[RU]", "[EN]", "12. April 2014", "[RU]", "[EN]", 2014, 4, "KRIEG",
+            @"Nach der Krim-Annexion brechen Kämpfe im Osten der Ukraine aus. Pro-russische Separatisten gegen ukrainische Armee. Russland liefert Waffen und 'Freiwillige'. Ein eingefrorener Konflikt entsteht.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 25; p.Geld -= 300; p.EinflussInternational -= 35; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("MH17_ABSCHUSS_2014", "MH17 über Donbass abgeschossen", "17. Juli 2014", 2014, 7, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MH17_ABSCHUSS_2014", "MH17 über Donbass abgeschossen", "[RU]", "[EN]", "17. Juli 2014", "[RU]", "[EN]", 2014, 7, "KATASTROPHE",
+            @"Malaysian Airlines Flug MH17 wird über der Ostukraine abgeschossen - 298 Tote! Beweise zeigen: Eine russische Buk-Rakete. Moskau leugnet. Internationale Empörung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 45; p.Gesundheit -= 30; Thread.Sleep(5000); }));
         
         // ====== 2015 ======
-        historicalEvents.Add(new HistoricalEvent("NEMZOW_MORD_2015", "Oppositionsführer Nemzow ermordet", "27. Februar 2015", 2015, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NEMZOW_MORD_2015", "Oppositionsführer Nemzow ermordet", "[RU]", "[EN]", "27. Februar 2015", "[RU]", "[EN]", 2015, 2, "POLITIK",
+            @"Boris Nemzow wird direkt vor dem Kreml erschossen! Der prominenteste Putin-Kritiker ist tot. Offiziell: Tschetschenen. Viele vermuten den Kreml. Ein Schock.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 30; p.LoyalitätVolk -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SYRIEN_INTERVENTION_2015", "Russland greift in Syrien ein", "30. September 2015", 2015, 9, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SYRIEN_INTERVENTION_2015", "Russland greift in Syrien ein", "[RU]", "[EN]", "30. September 2015", "[RU]", "[EN]", 2015, 9, "KRIEG",
+            @"Russische Kampfjets bombardieren Syrien! Offiziell gegen ISIS, faktisch für Assad. Russland ist wieder eine globale Militärmacht! Der Westen ist überrumpelt.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 35; p.EinflussInternational += 25; p.Geld -= 350; Thread.Sleep(5000); }));
         
         // ====== 2016 ======
-        historicalEvents.Add(new HistoricalEvent("DOPING_SKANDAL_2016", "Russland-Dopingskandal - Olympia-Ausschluss", "18. Juli 2016", 2016, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("DOPING_SKANDAL_2016", "Russland-Dopingskandal - Olympia-Ausschluss", "[RU]", "[EN]", "18. Juli 2016", "[RU]", "[EN]", 2016, 7, "POLITIK",
+            @"Systematisches Staatsdoping aufgedeckt! Russische Athleten werden von Rio ausgeschlossen. Putin nennt es 'anti-russische Kampagne'. Ein Imageschaden.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.LoyalitätVolk -= 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("US_WAHL_HACK_2016", "Russland mischt sich in US-Wahl ein", "8. November 2016", 2016, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("US_WAHL_HACK_2016", "Russland mischt sich in US-Wahl ein", "[RU]", "[EN]", "8. November 2016", "[RU]", "[EN]", 2016, 11, "POLITIK",
+            @"Trump gewinnt die US-Wahl! US-Geheimdienste: Russland hat die Wahl beeinflusst (Hacks, Desinformation). Ein neues Kapitel des Cyberkriegs. Die Beziehungen werden noch eisiger.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 20; p.EinflussKGB += 30; Thread.Sleep(4000); }));
         
         // ====== 2017-2018 ======
-        historicalEvents.Add(new HistoricalEvent("TERRORANSCHLAG_METRO_2017", "Terroranschlag in St. Petersburger Metro", "3. April 2017", 2017, 4, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TERRORANSCHLAG_METRO_2017", "Terroranschlag in St. Petersburger Metro", "[RU]", "[EN]", "3. April 2017", "[RU]", "[EN]", 2017, 4, "KATASTROPHE",
+            @"Bombenanschlag in der Metro von St. Petersburg - 15 Tote, 45 Verletzte. ISIS bekennt sich. Der Terror kehrt zurück.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUTIN_VIERTE_AMTSZEIT_2018", "Putin wird zum vierten Mal Präsident", "18. März 2018", 2018, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PUTIN_VIERTE_AMTSZEIT_2018", "Putin wird zum vierten Mal Präsident", "[RU]", "[EN]", "18. März 2018", "[RU]", "[EN]", 2018, 3, "POLITIK",
+            @"Putin gewinnt mit 77% - ohne echte Opposition. Er kann bis 2024 regieren. De facto: Präsident auf Lebenszeit.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 25; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("FUSSBALL_WM_2018", "Fußball-WM in Russland", "14. Juni 2018", 2018, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("FUSSBALL_WM_2018", "Fußball-WM in Russland", "[RU]", "[EN]", "14. Juni 2018", "[RU]", "[EN]", 2018, 6, "POLITIK",
+            @"Russland richtet die Fußball-WM aus! Ein Erfolg: gute Organisation, friedliche Fans, Russland zeigt sich weltoffen. Aber: sehr teuer.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 500; p.EinflussInternational += 30; p.LoyalitätVolk += 30; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SKRIPAL_VERGIFTUNG_2018", "Skripal in Großbritannien vergiftet", "4. März 2018", 2018, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SKRIPAL_VERGIFTUNG_2018", "Skripal in Großbritannien vergiftet", "[RU]", "[EN]", "4. März 2018", "[RU]", "[EN]", 2018, 3, "POLITIK",
+            @"Der Ex-Spion Sergei Skripal wird in England mit Nowitschok vergiftet! Britische Ermittler: russische GRU. Diplomatenkrise: gegenseitige Ausweisungen. Moskau leugnet alles.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 40; p.EinflussKGB += 20; Thread.Sleep(4000); }));
         
         // ====== 2019-2020 ======
-        historicalEvents.Add(new HistoricalEvent("RENTENREFORM_PROTESTE_2019", "Rentenalter erhöht - Proteste", "1. Januar 2019", 2019, 1, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("RENTENREFORM_PROTESTE_2019", "Rentenalter erhöht - Proteste", "[RU]", "[EN]", "1. Januar 2019", "[RU]", "[EN]", 2019, 1, "POLITIK",
+            @"Flad erhöht das Rentenalter drastisch. Seine Beliebtheit sinkt erstmals deutlich. Die Menschen sind verärgert. Ein seltener Fehler.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 35; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("VERFASSUNGSREFORM_2020", "Verfassungsreform - Putin kann bis 2036 bleiben", "1. Juli 2020", 2020, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("VERFASSUNGSREFORM_2020", "Verfassungsreform - Putin kann bis 2036 bleiben", "[RU]", "[EN]", "1. Juli 2020", "[RU]", "[EN]", 2020, 7, "POLITIK",
+            @"Putin ändert die Verfassung! Der 'Amtszeiten-Zähler' wird auf Null gesetzt. Er kann bis 2036 Präsident bleiben. Ein Referendum wird abgehalten - 78% dafür (offiziell).",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 35; p.EinflussKGB += 30; p.LoyalitätVolk -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("NAWALNY_VERGIFTUNG_2020", "Nawalny vergiftet und verhaftet", "20. August 2020", 2020, 8, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NAWALNY_VERGIFTUNG_2020", "Nawalny vergiftet und verhaftet", "[RU]", "[EN]", "20. August 2020", "[RU]", "[EN]", 2020, 8, "POLITIK",
+            @"Oppositionsführer Nawalny wird mit Nowitschok vergiftet! Er überlebt knapp in Deutschland. Bei Rückkehr nach Russland sofort verhaftet. Weltweite Empörung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 40; p.EinflussKGB += 30; p.LoyalitätVolk -= 25; Thread.Sleep(5000); }));
         
         // ====== 2021 ======
-        historicalEvents.Add(new HistoricalEvent("NAWALNY_HAFT_2021", "Nawalny zu Straflager verurteilt", "2. Februar 2021", 2021, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NAWALNY_HAFT_2021", "Nawalny zu Straflager verurteilt", "[RU]", "[EN]", "2. Februar 2021", "[RU]", "[EN]", 2021, 2, "POLITIK",
+            @"Nawalny wird zu mehreren Jahren Straflager verurteilt. Zehntausende protestieren - es folgen Massenverhaftungen. Der Westen verhängt Sanktionen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 35; p.LoyalitätVolk -= 30; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("TRUPPENAUFMARSCH_UKRAINE_2021", "Truppenaufmarsch an ukrainischer Grenze", "1. April 2021", 2021, 4, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TRUPPENAUFMARSCH_UKRAINE_2021", "Truppenaufmarsch an ukrainischer Grenze", "[RU]", "[EN]", "1. April 2021", "[RU]", "[EN]", 2021, 4, "KRIEG",
+            @"Russland verlegt Zehntausende Soldaten an die ukrainische Grenze. Der Westen ist alarmiert. Putin testet die Reaktion. Ein Vorspiel für 2022.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 25; p.Geld -= 250; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
         // ====== 2022 ======
-        historicalEvents.Add(new HistoricalEvent("INVASION_UKRAINE_2022", "Invasion der Ukraine", "24. Februar 2022", 2022, 2, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("INVASION_UKRAINE_2022", "Invasion der Ukraine", "[RU]", "[EN]", "24. Februar 2022", "[RU]", "[EN]", 2022, 2, "KRIEG",
+            @"KRIEGSBEGINN! Russische Truppen marschieren in die Ukraine ein! Putin nennt es 'Spezialoperation'. Ziel: Regimewechsel in Kiew. Aber die Ukraine leistet erbitterten Widerstand. Der Westen verhängt massive Sanktionen. Russland wird international isoliert. Der größte Krieg in Europa seit 1945.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.Geld -= 800; p.EinflussInternational -= 70; p.LoyalitätVolk -= 40; p.Gesundheit -= 50; Thread.Sleep(8000); }));
         
-        historicalEvents.Add(new HistoricalEvent("SANKTIONEN_MASSIV_2022", "Schärfste Sanktionen aller Zeiten", "1. März 2022", 2022, 3, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("SANKTIONEN_MASSIV_2022", "Schärfste Sanktionen aller Zeiten", "[RU]", "[EN]", "1. März 2022", "[RU]", "[EN]", 2022, 3, "WIRTSCHAFT",
+            @"Der Westen verhängt beispiellose Sanktionen: Zentralbank-Reserven eingefroren, SWIFT-Ausschluss, Importverbote. Der Rubel stürzt ab. Russlands Wirtschaft isoliert wie nie zuvor.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 700; p.EinflussInternational -= 60; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("MOBILISIERUNG_2022", "Teilmobilmachung verkündet", "21. September 2022", 2022, 9, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("MOBILISIERUNG_2022", "Teilmobilmachung verkündet", "[RU]", "[EN]", "21. September 2022", "[RU]", "[EN]", 2022, 9, "KRIEG",
+            @"Putin verkündet 'Teilmobilmachung'! 300.000 Reservisten werden eingezogen. Zehntausende fliehen aus Russland. Die Realität des Krieges erreicht die russische Gesellschaft.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 20; p.LoyalitätVolk -= 50; p.Gesundheit -= 40; Thread.Sleep(5000); }));
         
         // ====== 2023 ======
-        historicalEvents.Add(new HistoricalEvent("PRIGOSCHIN_AUFSTAND_2023", "Prigoschin-Meuterei", "24. Juni 2023", 2023, 6, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PRIGOSCHIN_AUFSTAND_2023", "Prigoschin-Meuterei", "[RU]", "[EN]", "24. Juni 2023", "[RU]", "[EN]", 2023, 6, "KRIEG",
+            @"SCHOCK! Wagner-Chef Prigoschin marschiert mit Söldnern auf Moskau! Eine bewaffnete Meuterei gegen das Militär! Nach 24 Stunden wird verhandelt - Prigoschin zieht ab. Putins größte Krise. Zwei Monate später stirbt Prigoschin bei mysteriösem Flugzeugabsturz.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei -= 40; p.EinflussMilitär -= 35; p.Gesundheit -= 45; Thread.Sleep(7000); }));
         
-        historicalEvents.Add(new HistoricalEvent("NAWALNY_TOD_2024", "Nawalny stirbt in Straflager", "16. Februar 2024", 2024, 2, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("NAWALNY_TOD_2024", "Nawalny stirbt in Straflager", "[RU]", "[EN]", "16. Februar 2024", "[RU]", "[EN]", 2024, 2, "POLITIK",
+            @"Alexej Nawalny ist tot! Der bekannteste Putin-Kritiker stirbt mit 47 Jahren im Straflager. Offiziell: Kreislaufversagen. Der Westen: Mord. Weltweite Trauer und Empörung.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 45; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUTIN_WAHL_2024", "Putin zum fünften Mal 'gewählt'", "17. März 2024", 2024, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("PUTIN_WAHL_2024", "Putin zum fünften Mal 'gewählt'", "[RU]", "[EN]", "17. März 2024", "[RU]", "[EN]", 2024, 3, "POLITIK",
+            @"Putin gewinnt mit 87% - ohne echte Opposition. Er kann bis 2030 regieren. International: Scheinwahlen. In Russland: Business as usual.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 25; p.EinflussKGB += 20; p.EinflussInternational -= 30; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("KURSK_OFFENSIVE_2024", "Ukraine greift Kursk an", "6. August 2024", 2024, 8, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("KURSK_OFFENSIVE_2024", "Ukraine greift Kursk an", "[RU]", "[EN]", "6. August 2024", "[RU]", "[EN]", 2024, 8, "KRIEG",
+            @"Erstmals seit 1941 marschieren ausländische Truppen auf russischem Boden! Die Ukraine startet Offensive in Kursk. Der Kreml ist schockiert. Tausende Russen fliehen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär -= 30; p.LoyalitätVolk -= 35; p.Gesundheit -= 40; Thread.Sleep(5000); }));
         
         // === ZUSÄTZLICHE EVENTS FÜR VOLLSTÄNDIGKEIT ===
-        historicalEvents.Add(new HistoricalEvent("USA_911_TERROR_2001", "9/11 Terroranschläge", "11. September 2001", 2001, 9, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("USA_911_TERROR_2001", "9/11 Terroranschläge", "[RU]", "[EN]", "11. September 2001", "[RU]", "[EN]", 2001, 9, "KATASTROPHE",
+            @"Terroranschläge auf das World Trade Center! Putin ist der erste, der Bush anruft und Unterstützung anbietet. Kurze Annäherung im 'Krieg gegen Terror'.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.Gesundheit += 15; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("GASPROM_MONOPOL_2005", "Gasprom wird Energie-Gigant", "28. September 2005", 2005, 9, "WIRTSCHAFT",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("GASPROM_MONOPOL_2005", "Gasprom wird Energie-Gigant", "[RU]", "[EN]", "28. September 2005", "[RU]", "[EN]", 2005, 9, "WIRTSCHAFT",
+            @"Gasprom schluckt Sibneft. Der Staat kontrolliert die Energieressourcen. Gas als Waffe!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld += 300; p.EinflussInternational += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("POLITKOWSKAJA_MORD_2006", "Journalistin Politkowskaja ermordet", "7. Oktober 2006", 2006, 10, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("POLITKOWSKAJA_MORD_2006", "Journalistin Politkowskaja ermordet", "[RU]", "[EN]", "7. Oktober 2006", "[RU]", "[EN]", 2006, 10, "POLITIK",
+            @"Die kritische Journalistin Anna Politkowskaja wird in ihrem Wohnhaus erschossen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 25; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("RESET_BUTTON_USA_2009", "USA-Russland 'Reset'", "6. März 2009", 2009, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("RESET_BUTTON_USA_2009", "USA-Russland 'Reset'", "[RU]", "[EN]", "6. März 2009", "[RU]", "[EN]", 2009, 3, "POLITIK",
+            @"US-Außenministerin Clinton übergibt Lawrow symbolischen 'Reset-Button'. Obama will Neustart.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("START_VERTRAG_2010", "Neuer START-Vertrag", "8. April 2010", 2010, 4, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("START_VERTRAG_2010", "Neuer START-Vertrag", "[RU]", "[EN]", "8. April 2010", "[RU]", "[EN]", 2010, 4, "POLITIK",
+            @"Obama und Medwedjew unterzeichnen neuen Abrüstungsvertrag.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; p.Gesundheit += 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("AUSLANDS_NGO_GESETZ_2012", "Gesetz gegen ausländische NGOs", "20. Juli 2012", 2012, 7, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("AUSLANDS_NGO_GESETZ_2012", "Gesetz gegen ausländische NGOs", "[RU]", "[EN]", "20. Juli 2012", "[RU]", "[EN]", 2012, 7, "POLITIK",
+            @"NGOs mit ausländischer Finanzierung müssen sich als 'ausländische Agenten' registrieren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("COVID_PANDEMIE_2020", "COVID-19 Pandemie", "15. März 2020", 2020, 3, "KATASTROPHE",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("COVID_PANDEMIE_2020", "COVID-19 Pandemie", "[RU]", "[EN]", "15. März 2020", "[RU]", "[EN]", 2020, 3, "KATASTROPHE",
+            @"Das Coronavirus breitet sich aus! Lockdowns, Chaos. Die Wirtschaft leidet massiv.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Geld -= 500; p.LoyalitätVolk -= 30; p.Gesundheit -= 40; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("DROHNENANGRIFF_KREML_2023", "Drohnenangriff auf Kreml", "3. Mai 2023", 2023, 5, "KRIEG",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("DROHNENANGRIFF_KREML_2023", "Drohnenangriff auf Kreml", "[RU]", "[EN]", "3. Mai 2023", "[RU]", "[EN]", 2023, 5, "KRIEG",
+            @"Zwei Drohnen explodieren über dem Kreml! Putin bleibt unverletzt. Moskau beschuldigt die Ukraine.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.Gesundheit -= 20; p.EinflussMilitär += 15; Thread.Sleep(3000); }));
         
         // === TELEFON-EVENTS MIT JA/NEIN ANTWORTEN ===
         
-        historicalEvents.Add(new HistoricalEvent("ERDOGAN_ANRUF_2015", "Erdoğan ruft an - Syrien-Kooperation?", "15. November 2015", 2015, 11, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("ERDOGAN_ANRUF_2015", "Erdoğan ruft an - Syrien-Kooperation?", "[RU]", "[EN]", "15. November 2015", "[RU]", "[EN]", 2015, 11, "POLITIK",
+            @"TELEFON KLINGELT! Erdoğan: 'Wladimir, wir müssen über Syrien reden. Die Kurden sind unser gemeinsames Problem. Lass uns zusammenarbeiten!' Annehmen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => {
                 Console.WriteLine("\n[1] JA - Kooperation mit Türkei");
                 Console.WriteLine("[2] NEIN - Eigenständige Syrien-Politik");
@@ -4212,9 +4247,9 @@ static class EventSystem
                 Thread.Sleep(4000);
             }));
         
-        historicalEvents.Add(new HistoricalEvent("TRUMP_ANRUF_2019", "Trump ruft an - Nord Stream Deal?", "8. Juni 2019", 2019, 6, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("TRUMP_ANRUF_2019", "Trump ruft an - Nord Stream Deal?", "[RU]", "[EN]", "8. Juni 2019", "[RU]", "[EN]", 2019, 6, "POLITIK",
+            @"TELEFON! Trump: 'Vladimir! Nord Stream 2 ist UNFAIR für Amerika! Wir haben das beste Fracking-Gas. Stopp das Projekt, wir machen einen FANTASTIC Deal!' Annehmen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => {
                 Console.WriteLine("\n[1] JA - Nord Stream stoppen, US-Gas kaufen");
                 Console.WriteLine("[2] NEIN - Nord Stream weiterbauen");
@@ -4231,9 +4266,9 @@ static class EventSystem
                 Thread.Sleep(4000);
             }));
         
-        historicalEvents.Add(new HistoricalEvent("XI_ANRUF_2022", "Xi Jinping ruft an - Partnerschaft?", "10. März 2022", 2022, 3, "POLITIK",
-            @"
-            
+        historicalEvents.Add(new HistoricalEvent("XI_ANRUF_2022", "Xi Jinping ruft an - Partnerschaft?", "[RU]", "[EN]", "10. März 2022", "[RU]", "[EN]", 2022, 3, "POLITIK",
+            @"TELEFON! Xi: 'Genosse Putin, der Westen isoliert uns beide. Lass uns eine unzerbrechliche Allianz formen. China und Russland - grenzenlose Freundschaft!' Annehmen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => {
                 Console.WriteLine("\n[1] JA - Enge Partnerschaft mit China");
                 Console.WriteLine("[2] NEIN - Abstand halten zu China");
