@@ -3984,7 +3984,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Unerwarteter Machtwechsel 1999",
             "31. Dezember: Jelzin tritt überraschend zurück! Wladimir Putin - ehemaliger KGB-Offizier - wird amtierender Präsident...",
-            "Präsident", 0, 1999, "politisch",
+            "Präsident", 100, 1999, "politisch",
             p => {
                 Console.WriteLine("Der bis dahin kaum bekannte Putin übernimmt die Staatsführung!");
                 p.LoyalitätPartei += 40;
@@ -3998,7 +3998,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Putins erster Wahlsieg 2000",
             "26. März: Putin wird mit 53% zum Präsidenten gewählt! Verspricht Stabilität nach chaotischem Jelzin-Jahrzehnt...",
-            "Präsident", 0, 2000, "politisch",
+            "Präsident", 100, 2000, "politisch",
             p => {
                 Console.WriteLine("7. Mai: Feierliche Amtseinführung. Im Mai: Steuerfahnder stürmen oppositionellen Sender NTV!");
                 p.LoyalitätPartei += 45;
@@ -4012,7 +4012,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Zweiter Tschetschenienkrieg 2000-2003",
             "Putin führt Krieg in Tschetschenien mit harter Hand! Grosny in Trümmer gelegt...",
-            "Präsident", 0, 2003, "politisch",
+            "Präsident", 100, 2003, "politisch",
             p => {
                 Console.WriteLine("Tausende Zivilisten tot. Tschetschenien unter Kontrolle. Putins Popularität steigt!");
                 p.EinflussMilitär += 50;
@@ -4026,7 +4026,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Chodorkowski verhaftet 2003",
             "25. Oktober: Öl-Tycoon Michail Chodorkowski - reichster Mann Russlands - verhaftet!",
-            "Präsident", 0, 2003, "politisch",
+            "Präsident", 100, 2003, "politisch",
             p => {
                 Console.WriteLine("2005: 10 Jahre Lager wegen Steuerhinterziehung. Yukos zerschlagen, Rosneft übernimmt!");
                 p.LoyalitätPartei += 40;
@@ -4040,7 +4040,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Wiederwahl und Föderalreform 2004",
             "14. März: Putin mit 71% wiedergewählt! Nach Beslan-Tragödie: Gouverneurs-Direktwahlen abgeschafft...",
-            "Präsident", 0, 2004, "politisch",
+            "Präsident", 100, 2004, "politisch",
             p => {
                 Console.WriteLine("Präsident ernennt fortan Regionschefs direkt! 'Machtvertikale' massiv gestärkt.");
                 p.LoyalitätPartei += 50;
@@ -4054,7 +4054,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Sowjet-Nostalgie 2005",
             "25. April: Putin nennt Zerfall der UdSSR 'größte geopolitische Katastrophe des Jahrhunderts'!",
-            "Präsident", 0, 2005, "politisch",
+            "Präsident", 100, 2005, "politisch",
             p => {
                 Console.WriteLine("Signal: Russlands Größe soll wiederhergestellt werden! Westen besorgt.");
                 p.LoyalitätPartei += 35;
@@ -4067,7 +4067,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Münchner Sicherheitskonferenz 2007",
             "10. Februar: Putin überrascht mit scharfer Kritik an USA und 'unipolarer' Weltordnung!",
-            "Präsident", 0, 2007, "politisch",
+            "Präsident", 100, 2007, "politisch",
             p => {
                 Console.WriteLine("Warnung vor neuer Konfrontation! Beginn eines 'Kalten Tons' im Ost-West-Verhältnis.");
                 p.LoyalitätPartei += 40;
@@ -4080,7 +4080,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Ämtertausch mit Medwedew 2008",
             "8. Mai: Putin wird Premierminister, Medwedew Präsident! 'Tandem-Lösung' umgeht Verfassung...",
-            "Präsident", 0, 2008, "politisch",
+            "Präsident", 100, 2008, "politisch",
             p => {
                 Console.WriteLine("Putin bleibt faktisch der starke Mann! Ermöglicht spätere Rückkehr ins Präsidentenamt.");
                 p.LoyalitätPartei += 45;
@@ -4093,7 +4093,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Krieg gegen Georgien 2008",
             "8.-12. August: Russland führt Blitzkrieg gegen Georgien! Abchasien und Südossetien besetzt...",
-            "Präsident", 0, 2008, "politisch",
+            "Präsident", 100, 2008, "politisch",
             p => {
                 Console.WriteLine("Russland erkennt Regionen als unabhängig an! International scharf kritisiert, im Land gefeiert.");
                 p.EinflussMilitär += 50;
@@ -4107,7 +4107,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Proteste gegen Wahlmanipulation 2011",
             "Dezember 2011: Größte Anti-Regierungs-Proteste seit den 90ern! Zehntausende in Moskau...",
-            "Präsident", 0, 2011, "politisch",
+            "Präsident", 100, 2011, "politisch",
             p => {
                 Console.WriteLine("Protest gegen Wahlfälschungen und Putin-Medwedew-Rollentausch! Putin antwortet mit Repression.");
                 p.LoyalitätVolk -= 35;
@@ -4120,7 +4120,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Rückkehr ins Präsidentenamt 2012",
             "4. März: Putin für dritte Amtszeit gewählt (64%)! Amtszeit nun 6 Jahre statt 4...",
-            "Präsident", 0, 2012, "politisch",
+            "Präsident", 100, 2012, "politisch",
             p => {
                 Console.WriteLine("7. Mai: Amtseinführung mit Protesten! Kreml verschärft Gesetze gegen Opposition und NGOs.");
                 p.LoyalitätPartei += 50;
@@ -4134,7 +4134,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Olympische Spiele Sotschi 2014",
             "Februar: Russland richtet teuerste Winterspiele aller Zeiten aus! Milliarden-Prestigeprojekt...",
-            "Präsident", 0, 2014, "politisch",
+            "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("Russlands Wiedererstarken demonstriert! Doch einen Monat später folgt Krim-Annexion...");
                 p.LoyalitätVolk += 45;
@@ -4147,7 +4147,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Krim-Annexion 2014",
             "18. März: Putin annektiert die Krim! 'Grüne Männchen' besetzen Halbinsel, umstrittenes Referendum...",
-            "Präsident", 0, 2014, "politisch",
+            "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("In Russland gefeiert! Westliche Sanktionen und Ausschluss aus G8 folgen.");
                 p.LoyalitätVolk += 60; // Euphorie
@@ -4161,7 +4161,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Krieg in Ostukraine 2014",
             "Ab April: Prorussische Separatisten in Donezk und Luhansk! Verdeckte russische Unterstützung...",
-            "Präsident", 0, 2014, "politisch",
+            "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("Langwieriger Konflikt bis 2022. Über 13.000 Tote. Minsker Abkommen brüchig.");
                 p.EinflussMilitär += 35;
@@ -4174,7 +4174,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Mord an Boris Nemzow 2015",
             "27. Februar: Oppositionspolitiker Boris Nemzow unweit des Kreml erschossen!",
-            "Präsident", 0, 2015, "politisch",
+            "Präsident", 100, 2015, "politisch",
             p => {
                 Console.WriteLine("Hunderttausende beim Trauermarsch. Hintermänner ungeklärt. Kritische Stimmen in Lebensgefahr!");
                 p.LoyalitätVolk -= 30;
@@ -4186,7 +4186,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Militäreinsatz Syrien 2015",
             "30. September: Russland greift in syrischen Bürgerkrieg ein! Luftwaffe bombardiert Rebellen...",
-            "Präsident", 0, 2015, "politisch",
+            "Präsident", 100, 2015, "politisch",
             p => {
                 Console.WriteLine("Assad gerettet, Russland als Weltmacht zurück! Militärbasen Tartus und Hmeimim gesichert.");
                 p.EinflussMilitär += 45;
@@ -4200,7 +4200,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Vierte Amtszeit 2018",
             "18. März: Putin mit 77% wiedergewählt! Unpopuläre Rentenreform folgt...",
-            "Präsident", 0, 2018, "politisch",
+            "Präsident", 100, 2018, "politisch",
             p => {
                 Console.WriteLine("Ruhestandsalter um 5 Jahre angehoben! Zustimmung sinkt von 80% auf 60%.");
                 p.LoyalitätPartei += 40;
@@ -4213,7 +4213,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Krim-Brücke eröffnet 2018",
             "Mai: Putin eröffnet persönlich 18 km Brücke von Russland zur Krim!",
-            "Präsident", 0, 2018, "politisch",
+            "Präsident", 100, 2018, "politisch",
             p => {
                 Console.WriteLine("Symbol der Krim-Integration! 2022 im Ukrainekrieg zum Angriffsziel.");
                 p.LoyalitätVolk += 35;
@@ -4226,7 +4226,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Verfassungsänderung 2020",
             "1. Juli: Referendum über Verfassungsreform! 'Nullstellung' ermöglicht Putin Präsidentschaft bis 2036...",
-            "Präsident", 0, 2020, "politisch",
+            "Präsident", 100, 2020, "politisch",
             p => {
                 Console.WriteLine("78% Zustimmung (offiziell). Kritiker sprechen von Machtsicherung auf Lebenszeit!");
                 p.LoyalitätPartei += 50;
@@ -4239,7 +4239,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Lebenslange Immunität 2020",
             "Dezember: Putin unterschreibt Gesetz für lebenslange Immunität von Ex-Präsidenten!",
-            "Präsident", 0, 2020, "politisch",
+            "Präsident", 100, 2020, "politisch",
             p => {
                 Console.WriteLine("Garantiert Schutz vor Strafverfolgung - auch für Putin selbst!");
                 p.LoyalitätPartei += 35;
@@ -4252,7 +4252,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Anschlag auf Nawalny 2020",
             "20. August: Oppositionsführer Alexei Nawalny mit Nowitschok vergiftet!",
-            "Präsident", 0, 2020, "politisch",
+            "Präsident", 100, 2020, "politisch",
             p => {
                 Console.WriteLine("Zur Behandlung nach Deutschland. Nawalny bezichtigt Putin persönlich! Neue Sanktionen.");
                 p.LoyalitätVolk -= 25;
@@ -4264,7 +4264,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Ausschaltung der Opposition 2021",
             "17. Januar: Nawalny bei Rückkehr verhaftet! Später zu 30+ Jahren Haft verurteilt...",
-            "Präsident", 0, 2021, "politisch",
+            "Präsident", 100, 2021, "politisch",
             p => {
                 Console.WriteLine("Nawalnys Organisationen verboten, kritische Medien geschlossen. Opposition ausgeschaltet!");
                 p.LoyalitätPartei += 40;
@@ -4277,7 +4277,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "'Ein Volk'-Aufsatz 2021",
             "Juli: Putin publiziert Aufsatz: Russen und Ukrainer sind 'ein Volk'...",
-            "Präsident", 0, 2021, "politisch",
+            "Präsident", 100, 2021, "politisch",
             p => {
                 Console.WriteLine("Ideologische Rechtfertigung für territoriale Ansprüche! Vorwand für Invasion 2022.");
                 p.LoyalitätPartei += 35;
@@ -4289,7 +4289,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Großinvasion Ukraine 2022",
             "24. Februar: Putin befiehlt umfassende Invasion der Ukraine! 'Spezialoperation zur Entnazifizierung'...",
-            "Präsident", 0, 2022, "politisch",
+            "Präsident", 100, 2022, "politisch",
             p => {
                 Console.WriteLine("Größter Konflikt in Europa seit 1945! Beispiellose Sanktionen, Russland isoliert.");
                 p.EinflussMilitär += 40;
@@ -4303,7 +4303,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Kriegszensur 2022",
             "4. März: Gesetz gegen 'Verleumdung der Armee' - bis zu 15 Jahre Haft!",
-            "Präsident", 0, 2022, "politisch",
+            "Präsident", 100, 2022, "politisch",
             p => {
                 Console.WriteLine("Unabhängige Medien blockiert oder geflohen. Proteste erstickt. Totale Informationskontrolle!");
                 p.EinflussKGB += 50;
@@ -4316,7 +4316,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "IStGH-Haftbefehl 2023",
             "17. März: Internationaler Strafgerichtshof erlässt Haftbefehl gegen Putin wegen Kriegsverbrechen!",
-            "Präsident", 0, 2023, "politisch",
+            "Präsident", 100, 2023, "politisch",
             p => {
                 Console.WriteLine("Vorwurf: Deportation ukrainischer Kinder. Putin international offiziell angeklagt!");
                 p.LoyalitätPartei += 30; // 'Siegsmentalität'
@@ -4328,7 +4328,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Wagner-Meuterei 2023",
             "23./24. Juni: Jewgeni Prigoschin startet bewaffneten Aufstand! Wagner marschiert auf Moskau...",
-            "Präsident", 0, 2023, "politisch",
+            "Präsident", 100, 2023, "politisch",
             p => {
                 Console.WriteLine("Putin nennt es 'Verrat'! Nach 24h beendet. Prigoschin stirbt im August bei Flugzeugabsturz.");
                 p.EinflussMilitär -= 30; // Risse im Apparat
@@ -4341,7 +4341,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Fünfte Amtszeit 2024",
             "17. März: Putin bei inszenierter Wahl mit 87% 'wiedergewählt'. Keine echten Gegenkandidaten...",
-            "Präsident", 0, 2024, "politisch",
+            "Präsident", 100, 2024, "politisch",
             p => {
                 Console.WriteLine("7. Mai: Amtsantritt. Amtszeit bis 2030. Über zwei Jahrzehnte an der Macht!");
                 p.LoyalitätPartei += 50;
@@ -5580,7 +5580,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Stalin stirbt 1953",
             "5. März: Josef Stalin stirbt in Moskau - Machtvakuum entsteht. 1. Mai: UdSSR zündet erste Wasserstoffbombe. 17. Juni: Arbeiteraufstand in Ost-Berlin wird niedergeschlagen.",
-            "Kindheit", 95, 1953, "politisch",
+            "Kindheit", 100, 1953, "politisch",
             p => {
                 Console.WriteLine("\n📅 1953 - STALINS TOD");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5601,7 +5601,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Krim-Übergabe 1954",
             "19. Februar: Chruschtschow überträgt die Krim von Russland an die Ukraine. Juni: Kengir-Gulag-Aufstand wird niedergeschlagen. Erstes Atomkraftwerk in Obninsk.",
-            "Kindheit", 85, 1954, "politisch",
+            "Kindheit", 100, 1954, "politisch",
             p => {
                 Console.WriteLine("\n📅 1954 - KRIM-TRANSFER");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5621,7 +5621,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Warschauer Pakt 1955",
             "14. Mai: Gründung des Warschauer Pakts - Ostblock wird militärisch geeint. 22. Nov: Erste leistungsstarke H-Bombe (RDS-37).",
-            "Kindheit", 80, 1955, "politisch",
+            "Kindheit", 100, 1955, "politisch",
             p => {
                 Console.WriteLine("\n📅 1955 - WARSCHAUER PAKT");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5641,7 +5641,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Ungarn-Aufstand 1956",
             "25. Feb: Chruschtschows Geheimrede verurteilt Stalin. 23.-31. Okt: Ungarischer Volksaufstand wird blutig niedergeschlagen.",
-            "Kindheit", 90, 1956, "politisch",
+            "Kindheit", 100, 1956, "politisch",
             p => {
                 Console.WriteLine("\n📅 1956 - UNGARN-KRISE");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5664,7 +5664,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Sputnik 1957",
             "4. Okt: Sputnik 1 startet - erster Satellit! 29. Sept: Kyshtym-Katastrophe (geheim). Anti-Chruschtschow-Gruppe scheitert.",
-            "Kindheit", 95, 1957, "politisch",
+            "Kindheit", 100, 1957, "politisch",
             p => {
                 Console.WriteLine("\n📅 1957 - WELTRAUM-ÄRA");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5685,7 +5685,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Sputnik 3 & Grosny 1958",
             "27. März: Chruschtschow wird Premierminister. 15. Mai: Sputnik 3 gestartet. Anti-sowjetische Unruhen in Tschetschenien.",
-            "Kindheit", 75, 1958, "politisch",
+            "Kindheit", 100, 1958, "politisch",
             p => {
                 Console.WriteLine("\n📅 1958 - RAUMFAHRT FORTSETZUNG");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5705,7 +5705,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Luna 1 & Dyatlov 1959",
             "2. Jan: Luna 1 umkreist als erstes Objekt die Sonne! Feb: Dyatlov-Pass-Vorfall - 9 Wanderer sterben mysteriös.",
-            "Kindheit", 80, 1959, "politisch",
+            "Kindheit", 100, 1959, "politisch",
             p => {
                 Console.WriteLine("\n📅 1959 - LUNA & MYSTERIUM");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5726,7 +5726,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "U-2 Abschuss 1960",
             "1. Mai: US-Spionageflugzeug U-2 über Ural abgeschossen! Gary Powers gefangen. Chruschtschow schlägt mit Schuh auf UN-Tisch.",
-            "Kindheit", 90, 1960, "politisch",
+            "Kindheit", 100, 1960, "politisch",
             p => {
                 Console.WriteLine("\n📅 1960 - U-2 KRISE");
                 Console.WriteLine("═══════════════════════════════════════════");
@@ -5770,167 +5770,167 @@ static class EventSystem
             }
         ));
         // 1962 - 4 Events
-        allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 85, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Karibik-Blockade 1962", "Kennedy blockiert Kuba", "Jugend", 70, 1962, "politisch", p => { p.EinflussInternational -= 15; p.LoyalitätPartei += 10; Console.WriteLine("🚢 US-Blockade!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("U-2 über Kuba 1962", "Spionageflüge entdeckt", "Jugend", 65, 1962, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🔍 Spionage aufgedeckt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Atomtest Nowaja Semlja 1962", "Weitere Nukleartests", "Jugend", 60, 1962, "politisch", p => { p.EinflussMilitär += 10; p.Gesundheit -= 5; Console.WriteLine("☢️ Atomtests!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 100, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Karibik-Blockade 1962", "Kennedy blockiert Kuba", "Jugend", 100, 1962, "politisch", p => { p.EinflussInternational -= 15; p.LoyalitätPartei += 10; Console.WriteLine("🚢 US-Blockade!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("U-2 über Kuba 1962", "Spionageflüge entdeckt", "Jugend", 100, 1962, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🔍 Spionage aufgedeckt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Atomtest Nowaja Semlja 1962", "Weitere Nukleartests", "Jugend", 100, 1962, "politisch", p => { p.EinflussMilitär += 10; p.Gesundheit -= 5; Console.WriteLine("☢️ Atomtests!"); Thread.Sleep(3000); }));
         
         // 1963 - 4 Events
-        allEvents.Add(new RandomEvent("Teststopp-Vertrag 1963", "Atomtest-Abkommen", "Jugend", 70, 1963, "politisch", p => { p.EinflussInternational += 20; p.Gesundheit += 5; Console.WriteLine("☮️ Vertrag unterzeichnet!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Kennedy ermordet 1963", "US-Präsident getötet", "Jugend", 75, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 Kennedy tot!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Heißer Draht 1963", "Direktleitung USA-UdSSR", "Jugend", 60, 1963, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📞 Hotline aktiv!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Weltraumabkommen 1963", "Kooperation im All", "Jugend", 55, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚀 Raumfahrt-Vertrag!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Teststopp-Vertrag 1963", "Atomtest-Abkommen", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 20; p.Gesundheit += 5; Console.WriteLine("☮️ Vertrag unterzeichnet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kennedy ermordet 1963", "US-Präsident getötet", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 Kennedy tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Heißer Draht 1963", "Direktleitung USA-UdSSR", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📞 Hotline aktiv!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Weltraumabkommen 1963", "Kooperation im All", "Jugend", 100, 1963, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚀 Raumfahrt-Vertrag!"); Thread.Sleep(3000); }));
         
         // 1964 - 4 Events
-        allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 90, 1964, "politisch", p => { p.LoyalitätPartei += 15; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Chruschtschow gestürzt 1964", "Machtwechsel in Moskau", "Jugend", 80, 1964, "politisch", p => { p.EinflussKGB += 20; p.LoyalitätPartei += 10; Console.WriteLine("🔄 Putsch erfolgreich!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Woschod 1 im All 1964", "Erste 3-Mann-Crew", "Jugend", 65, 1964, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Weltraumerfolg!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("China-Atombombe 1964", "China wird Atommacht", "Jugend", 70, 1964, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussMilitär -= 10; Console.WriteLine("☢️ China nuklear!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 100, 1964, "politisch", p => { p.LoyalitätPartei += 15; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Chruschtschow gestürzt 1964", "Machtwechsel in Moskau", "Jugend", 100, 1964, "politisch", p => { p.EinflussKGB += 20; p.LoyalitätPartei += 10; Console.WriteLine("🔄 Putsch erfolgreich!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Woschod 1 im All 1964", "Erste 3-Mann-Crew", "Jugend", 100, 1964, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Weltraumerfolg!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("China-Atombombe 1964", "China wird Atommacht", "Jugend", 100, 1964, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussMilitär -= 10; Console.WriteLine("☢️ China nuklear!"); Thread.Sleep(3000); }));
         // 1965 - 4 Events
-        allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 85, 1965, "politisch", p => { p.Geld += 150; p.EinflussMilitär += 15; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Woschod 2 Weltraumspaziergang 1965", "Erster Ausstieg ins All", "Jugend", 75, 1965, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("👨‍🚀 Weltraumspaziergang!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Wirtschaftsreform 1965", "Kossygin-Reform", "Jugend", 60, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("💰 Wirtschaft gestärkt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Strelnikow-Affäre 1965", "KGB-Operationen", "Jugend", 55, 1965, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🕵️ KGB aktiv!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 100, 1965, "politisch", p => { p.Geld += 150; p.EinflussMilitär += 15; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Woschod 2 Weltraumspaziergang 1965", "Erster Ausstieg ins All", "Jugend", 100, 1965, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("👨‍🚀 Weltraumspaziergang!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Wirtschaftsreform 1965", "Kossygin-Reform", "Jugend", 100, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("💰 Wirtschaft gestärkt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Strelnikow-Affäre 1965", "KGB-Operationen", "Jugend", 100, 1965, "politisch", p => { p.EinflussKGB += 15; Console.WriteLine("🕵️ KGB aktiv!"); Thread.Sleep(3000); }));
         
         // 1966 - 4 Events
-        allEvents.Add(new RandomEvent("Luna 9 Landung 1966", "Erste Mondlandung (unbemannt)", "Jugend", 80, 1966, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Luna 9 auf dem Mond!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Kulturrevolution China 1966", "Mao startet Revolution", "Jugend", 70, 1966, "politisch", p => { p.ChinaBeziehung -= 25; Console.WriteLine("🇨🇳 Chaos in China!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Venera 3 zur Venus 1966", "Erste Venus-Sonde", "Jugend", 65, 1966, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🪐 Venus erreicht!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Breschnjew-Doktrin 1966", "Intervention gerechtfertigt", "Jugend", 60, 1966, "politisch", p => { p.EinflussMilitär += 20; p.EinflussInternational -= 15; Console.WriteLine("⚔️ Doktrin verkündet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Luna 9 Landung 1966", "Erste Mondlandung (unbemannt)", "Jugend", 100, 1966, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Luna 9 auf dem Mond!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kulturrevolution China 1966", "Mao startet Revolution", "Jugend", 100, 1966, "politisch", p => { p.ChinaBeziehung -= 25; Console.WriteLine("🇨🇳 Chaos in China!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Venera 3 zur Venus 1966", "Erste Venus-Sonde", "Jugend", 100, 1966, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🪐 Venus erreicht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew-Doktrin 1966", "Intervention gerechtfertigt", "Jugend", 100, 1966, "politisch", p => { p.EinflussMilitär += 20; p.EinflussInternational -= 15; Console.WriteLine("⚔️ Doktrin verkündet!"); Thread.Sleep(3000); }));
         
         // 1967 - 4 Events
         allEvents.Add(new RandomEvent("Sojus 1 Katastrophe 1967", "Kosmonaut stirbt", "Jugend", 80, 1967, "katastrophe", p => { p.Gesundheit -= 15; p.EinflussInternational -= 20; Console.WriteLine("💀 Komarow tot!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sechstagekrieg 1967", "Israel besiegt Araber", "Jugend", 75, 1967, "politisch", p => { p.Geld -= 100; p.EinflussInternational -= 15; Console.WriteLine("🇮🇱 Arabische Niederlage!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Venera 4 Venus 1967", "Venus-Atmosphäre erforscht", "Jugend", 65, 1967, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🪐 Venus-Daten!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Atomwaffensperrvertrag 1967", "Verhandlungen beginnen", "Jugend", 60, 1967, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("☮️ Abrüstungsgespräche!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sechstagekrieg 1967", "Israel besiegt Araber", "Jugend", 100, 1967, "politisch", p => { p.Geld -= 100; p.EinflussInternational -= 15; Console.WriteLine("🇮🇱 Arabische Niederlage!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Venera 4 Venus 1967", "Venus-Atmosphäre erforscht", "Jugend", 100, 1967, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🪐 Venus-Daten!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Atomwaffensperrvertrag 1967", "Verhandlungen beginnen", "Jugend", 100, 1967, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("☮️ Abrüstungsgespräche!"); Thread.Sleep(3000); }));
         
         // 1968 - 4 Events
-        allEvents.Add(new RandomEvent("Prager Frühling 1968", "Panzer nach Prag", "KGB", 90, 1968, "politisch", p => { p.EinflussMilitär += 30; p.EinflussInternational -= 35; Console.WriteLine("🇨🇿 Prag besetzt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Dubček gestürzt 1968", "Reformer entmachtet", "KGB", 80, 1968, "politisch", p => { p.EinflussKGB += 25; Console.WriteLine("🔨 Reform niedergeschlagen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("MLK ermordet 1968", "US-Bürgerrechtler tot", "KGB", 65, 1968, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 MLK ermordet!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("My Lai Massaker 1968", "US-Kriegsverbrechen", "KGB", 70, 1968, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("⚠️ US-Skandal!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Prager Frühling 1968", "Panzer nach Prag", "KGB", 100, 1968, "politisch", p => { p.EinflussMilitär += 30; p.EinflussInternational -= 35; Console.WriteLine("🇨🇿 Prag besetzt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Dubček gestürzt 1968", "Reformer entmachtet", "KGB", 100, 1968, "politisch", p => { p.EinflussKGB += 25; Console.WriteLine("🔨 Reform niedergeschlagen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("MLK ermordet 1968", "US-Bürgerrechtler tot", "KGB", 100, 1968, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("📰 MLK ermordet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("My Lai Massaker 1968", "US-Kriegsverbrechen", "KGB", 100, 1968, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("⚠️ US-Skandal!"); Thread.Sleep(3000); }));
         
         // 1969 - 4 Events
-        allEvents.Add(new RandomEvent("Mondlandung Apollo 11 1969", "USA auf dem Mond", "KGB", 85, 1969, "politisch", p => { p.EinflussInternational -= 25; p.Gesundheit -= 10; Console.WriteLine("🌕 USA siegt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Grenzkonflikt Damanski 1969", "Kampf mit China", "KGB", 80, 1969, "politisch", p => { p.ChinaBeziehung -= 40; p.EinflussMilitär += 15; Console.WriteLine("💥 Gefecht mit China!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sojus 4/5 Kopplung 1969", "Erste Raumstation-Basis", "KGB", 70, 1969, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Kopplung gelungen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("SALT-Verhandlungen 1969", "Abrüstung beginnt", "KGB", 60, 1969, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("☮️ Gespräche starten!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mondlandung Apollo 11 1969", "USA auf dem Mond", "KGB", 100, 1969, "politisch", p => { p.EinflussInternational -= 25; p.Gesundheit -= 10; Console.WriteLine("🌕 USA siegt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Grenzkonflikt Damanski 1969", "Kampf mit China", "KGB", 100, 1969, "politisch", p => { p.ChinaBeziehung -= 40; p.EinflussMilitär += 15; Console.WriteLine("💥 Gefecht mit China!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus 4/5 Kopplung 1969", "Erste Raumstation-Basis", "KGB", 100, 1969, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Kopplung gelungen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("SALT-Verhandlungen 1969", "Abrüstung beginnt", "KGB", 100, 1969, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("☮️ Gespräche starten!"); Thread.Sleep(3000); }));
         
         // 1970 - 4 Events
-        allEvents.Add(new RandomEvent("Mondlandung USA 1970", "Apollo 13 Drama", "KGB", 75, 1970, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🌕 USA Mondprogramm!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Lunochod 1 Rover 1970", "Erster Mondrover", "KGB", 80, 1970, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Rover auf Mond!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Allende Chile 1970", "Sozialist siegt", "KGB", 65, 1970, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇨🇱 Verbündeter in Chile!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Ostverträge 1970", "Deutschland-Entspannung", "KGB", 70, 1970, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Brandt in Moskau!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mondlandung USA 1970", "Apollo 13 Drama", "KGB", 100, 1970, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🌕 USA Mondprogramm!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Lunochod 1 Rover 1970", "Erster Mondrover", "KGB", 100, 1970, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🌙 Rover auf Mond!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Allende Chile 1970", "Sozialist siegt", "KGB", 100, 1970, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇨🇱 Verbündeter in Chile!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Ostverträge 1970", "Deutschland-Entspannung", "KGB", 100, 1970, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Brandt in Moskau!"); Thread.Sleep(3000); }));
         // 1971-1975 (Détente-Ära)
-        allEvents.Add(new RandomEvent("Saljut 1 Raumstation 1971", "Erste Raumstation", "KGB", 80, 1971, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🛰️ Raumstation!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Viermächte-Abkommen 1971", "Berlin-Status", "KGB", 65, 1971, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🏛️ Berlin-Vertrag!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Ping-Pong China 1971", "Annäherung USA-China", "KGB", 70, 1971, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussInternational -= 10; Console.WriteLine("🏓 China-USA nähern sich!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Saljut 1 Raumstation 1971", "Erste Raumstation", "KGB", 100, 1971, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🛰️ Raumstation!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Viermächte-Abkommen 1971", "Berlin-Status", "KGB", 100, 1971, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🏛️ Berlin-Vertrag!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Ping-Pong China 1971", "Annäherung USA-China", "KGB", 100, 1971, "politisch", p => { p.ChinaBeziehung -= 20; p.EinflussInternational -= 10; Console.WriteLine("🏓 China-USA nähern sich!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Sojus 11 Tragödie 1971", "3 Kosmonauten sterben", "KGB", 75, 1971, "katastrophe", p => { p.Gesundheit -= 20; Console.WriteLine("💀 Raumfahrt-Tod!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("SALT I 1972", "Rüstungskontrolle", "KGB", 85, 1972, "politisch", p => { p.EinflussInternational += 20; p.Geld += 100; Console.WriteLine("🕊️ Entspannung!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Nixon Moskau 1972", "US-Präsident besucht", "KGB", 75, 1972, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Nixon in Moskau!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Olympia München 1972", "Terror-Anschlag", "KGB", 70, 1972, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🏅 Olympia-Drama!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Mars 2 Mars-Landung 1972", "Erste Mars-Landung", "KGB", 80, 1972, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🔴 Mars erreicht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("SALT I 1972", "Rüstungskontrolle", "KGB", 100, 1972, "politisch", p => { p.EinflussInternational += 20; p.Geld += 100; Console.WriteLine("🕊️ Entspannung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Nixon Moskau 1972", "US-Präsident besucht", "KGB", 100, 1972, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🤝 Nixon in Moskau!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia München 1972", "Terror-Anschlag", "KGB", 100, 1972, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🏅 Olympia-Drama!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mars 2 Mars-Landung 1972", "Erste Mars-Landung", "KGB", 100, 1972, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🔴 Mars erreicht!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Jom-Kippur-Krieg 1973", "Nahost-Krieg", "KGB", 80, 1973, "politisch", p => { p.Geld += 150; p.EinflussMilitär += 20; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Ölkrise 1973", "OPEC-Embargo", "KGB", 75, 1973, "politisch", p => { p.Geld += 200; Console.WriteLine("🛢️ Ölpreise steigen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sacharow-Protest 1973", "Dissident warnt", "KGB", 65, 1973, "politisch", p => { p.LoyalitätPartei -= 10; p.EinflussKGB += 15; Console.WriteLine("⚠️ Dissidenten aktiv!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sojus-Apollo Vorbereitung 1973", "Gemeinsame Mission geplant", "KGB", 70, 1973, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 US-UdSSR Kooperation!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jom-Kippur-Krieg 1973", "Nahost-Krieg", "KGB", 100, 1973, "politisch", p => { p.Geld += 150; p.EinflussMilitär += 20; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Ölkrise 1973", "OPEC-Embargo", "KGB", 100, 1973, "politisch", p => { p.Geld += 200; Console.WriteLine("🛢️ Ölpreise steigen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sacharow-Protest 1973", "Dissident warnt", "KGB", 100, 1973, "politisch", p => { p.LoyalitätPartei -= 10; p.EinflussKGB += 15; Console.WriteLine("⚠️ Dissidenten aktiv!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus-Apollo Vorbereitung 1973", "Gemeinsame Mission geplant", "KGB", 100, 1973, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 US-UdSSR Kooperation!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Solschenizyn ausgewiesen 1974", "Kritiker verbannt", "KGB", 70, 1974, "politisch", p => { p.EinflussKGB += 20; p.EinflussInternational -= 15; Console.WriteLine("📚 Autor ausgewiesen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Watergate Nixon 1974", "US-Präsident zurückgetreten", "KGB", 75, 1974, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📰 Nixon-Skandal!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Zypern-Krise 1974", "Türkei-Griechenland", "KGB", 65, 1974, "politisch", p => { p.EinflussMilitär += 10; Console.WriteLine("🇹🇷 Zypern-Konflikt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sojus-Apollo Test 1974", "Gemeinsame Tests", "KGB", 70, 1974, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Kooperation läuft!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Solschenizyn ausgewiesen 1974", "Kritiker verbannt", "KGB", 100, 1974, "politisch", p => { p.EinflussKGB += 20; p.EinflussInternational -= 15; Console.WriteLine("📚 Autor ausgewiesen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Watergate Nixon 1974", "US-Präsident zurückgetreten", "KGB", 100, 1974, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("📰 Nixon-Skandal!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Zypern-Krise 1974", "Türkei-Griechenland", "KGB", 100, 1974, "politisch", p => { p.EinflussMilitär += 10; Console.WriteLine("🇹🇷 Zypern-Konflikt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus-Apollo Test 1974", "Gemeinsame Tests", "KGB", 100, 1974, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Kooperation läuft!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Helsinki 1975", "KSZE-Konferenz", "KGB", 85, 1975, "politisch", p => { p.EinflussInternational += 25; p.LoyalitätPartei += 15; Console.WriteLine("🤝 Menschenrechte!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sojus-Apollo Kopplung 1975", "US-Sowjet im All", "KGB", 80, 1975, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🚀 Historische Kopplung!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Saigon fällt 1975", "Vietnam-Sieg", "KGB", 75, 1975, "politisch", p => { p.EinflussMilitär += 20; p.Geld += 150; Console.WriteLine("🇻🇳 USA verliert Vietnam!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Angola-Intervention 1975", "Kubanische Truppen", "KGB", 70, 1975, "politisch", p => { p.EinflussMilitär += 15; p.Geld -= 100; Console.WriteLine("🇦🇴 Afrika-Engagement!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Helsinki 1975", "KSZE-Konferenz", "KGB", 100, 1975, "politisch", p => { p.EinflussInternational += 25; p.LoyalitätPartei += 15; Console.WriteLine("🤝 Menschenrechte!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus-Apollo Kopplung 1975", "US-Sowjet im All", "KGB", 100, 1975, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🚀 Historische Kopplung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Saigon fällt 1975", "Vietnam-Sieg", "KGB", 100, 1975, "politisch", p => { p.EinflussMilitär += 20; p.Geld += 150; Console.WriteLine("🇻🇳 USA verliert Vietnam!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Angola-Intervention 1975", "Kubanische Truppen", "KGB", 100, 1975, "politisch", p => { p.EinflussMilitär += 15; p.Geld -= 100; Console.WriteLine("🇦🇴 Afrika-Engagement!"); Thread.Sleep(3000); }));
         
         // 1976-1980
-        allEvents.Add(new RandomEvent("Mao stirbt 1976", "China-Wandel", "KGB", 75, 1976, "politisch", p => { p.ChinaBeziehung += 10; Console.WriteLine("🇨🇳 Mao tot!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Viking Mars 1976", "US-Mars-Landung", "KGB", 70, 1976, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🔴 USA auf Mars!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sacharow Verbannung 1976", "Friedensnobelpreis verbannt", "KGB", 65, 1976, "politisch", p => { p.EinflussKGB += 15; p.EinflussInternational -= 10; Console.WriteLine("⚠️ Dissident verbannt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Carter gewählt 1976", "Menschenrechtler", "KGB", 60, 1976, "politisch", p => { p.EinflussInternational -= 10; Console.WriteLine("🇺🇸 Carter Präsident!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mao stirbt 1976", "China-Wandel", "KGB", 100, 1976, "politisch", p => { p.ChinaBeziehung += 10; Console.WriteLine("🇨🇳 Mao tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Viking Mars 1976", "US-Mars-Landung", "KGB", 100, 1976, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🔴 USA auf Mars!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sacharow Verbannung 1976", "Friedensnobelpreis verbannt", "KGB", 100, 1976, "politisch", p => { p.EinflussKGB += 15; p.EinflussInternational -= 10; Console.WriteLine("⚠️ Dissident verbannt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Carter gewählt 1976", "Menschenrechtler", "KGB", 100, 1976, "politisch", p => { p.EinflussInternational -= 10; Console.WriteLine("🇺🇸 Carter Präsident!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Breschnjew-Verfassung 1977", "Neue Verfassung", "KGB", 70, 1977, "politisch", p => { p.LoyalitätPartei += 15; Console.WriteLine("📜 Verfassung!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Charta 77 1977", "Dissidenten Osteuropa", "KGB", 65, 1977, "politisch", p => { p.EinflussKGB += 15; p.EinflussInternational -= 10; Console.WriteLine("📄 Opposition wächst!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sadat Jerusalem 1977", "Ägypten-Israel", "KGB", 75, 1977, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🇮🇱 Arabische Wende!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Neutronenbombe 1977", "US-Waffe diskutiert", "KGB", 70, 1977, "politisch", p => { p.EinflussMilitär += 15; Console.WriteLine("☢️ Neue Waffe!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew-Verfassung 1977", "Neue Verfassung", "KGB", 100, 1977, "politisch", p => { p.LoyalitätPartei += 15; Console.WriteLine("📜 Verfassung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Charta 77 1977", "Dissidenten Osteuropa", "KGB", 100, 1977, "politisch", p => { p.EinflussKGB += 15; p.EinflussInternational -= 10; Console.WriteLine("📄 Opposition wächst!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sadat Jerusalem 1977", "Ägypten-Israel", "KGB", 100, 1977, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🇮🇱 Arabische Wende!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Neutronenbombe 1977", "US-Waffe diskutiert", "KGB", 100, 1977, "politisch", p => { p.EinflussMilitär += 15; Console.WriteLine("☢️ Neue Waffe!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Camp David 1978", "Israel-Ägypten Frieden", "KGB", 75, 1978, "politisch", p => { p.EinflussInternational -= 20; Console.WriteLine("🕊️ Frieden ohne UdSSR!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Afghanistan-Putsch 1978", "Kommunisten an Macht", "KGB", 80, 1978, "politisch", p => { p.EinflussMilitär += 15; p.EinflussKGB += 20; Console.WriteLine("🇦🇫 Kabul-Putsch!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Papst Johannes Paul II 1978", "Polnischer Papst", "KGB", 70, 1978, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("⛪ Polen-Papst!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sojus 29 Langzeit 1978", "175 Tage im All", "KGB", 65, 1978, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Rekord im All!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Camp David 1978", "Israel-Ägypten Frieden", "KGB", 100, 1978, "politisch", p => { p.EinflussInternational -= 20; Console.WriteLine("🕊️ Frieden ohne UdSSR!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan-Putsch 1978", "Kommunisten an Macht", "KGB", 100, 1978, "politisch", p => { p.EinflussMilitär += 15; p.EinflussKGB += 20; Console.WriteLine("🇦🇫 Kabul-Putsch!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Papst Johannes Paul II 1978", "Polnischer Papst", "KGB", 100, 1978, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("⛪ Polen-Papst!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sojus 29 Langzeit 1978", "175 Tage im All", "KGB", 100, 1978, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🚀 Rekord im All!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Afghanistan 1979", "Invasion", "KGB", 90, 1979, "politisch", p => { p.EinflussMilitär += 35; p.Geld -= 250; p.Gesundheit -= 15; Console.WriteLine("🇦🇫 Krieg beginnt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Iranische Revolution 1979", "Schah gestürzt", "KGB", 80, 1979, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🇮🇷 Khomeini siegt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("SALT II 1979", "Neuer Abrüstungsvertrag", "KGB", 70, 1979, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("☮️ SALT II!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Nicaragua-Revolution 1979", "Sandinisten siegen", "KGB", 75, 1979, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇳🇮 Verbündeter!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan 1979", "Invasion", "KGB", 100, 1979, "politisch", p => { p.EinflussMilitär += 35; p.Geld -= 250; p.Gesundheit -= 15; Console.WriteLine("🇦🇫 Krieg beginnt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Iranische Revolution 1979", "Schah gestürzt", "KGB", 100, 1979, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🇮🇷 Khomeini siegt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("SALT II 1979", "Neuer Abrüstungsvertrag", "KGB", 100, 1979, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("☮️ SALT II!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Nicaragua-Revolution 1979", "Sandinisten siegen", "KGB", 100, 1979, "politisch", p => { p.Geld += 100; p.EinflussInternational += 15; Console.WriteLine("🇳🇮 Verbündeter!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 85, 1980, "politisch", p => { p.EinflussInternational -= 30; p.LoyalitätPartei += 15; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Solidarność 1980", "Polnische Gewerkschaft", "KGB", 80, 1980, "politisch", p => { p.LoyalitätPartei -= 20; p.EinflussKGB += 15; Console.WriteLine("⚠️ Polen rebelliert!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Reagan gewählt 1980", "Hardliner-Präsident", "KGB", 75, 1980, "politisch", p => { p.EinflussMilitär += 15; p.EinflussInternational -= 15; Console.WriteLine("🇺🇸 Reagan an Macht!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Iran-Irak Krieg 1980", "Nahostkonflikt", "KGB", 70, 1980, "politisch", p => { p.Geld += 150; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 70, 1980, "politisch", p => { p.EinflussInternational -= 25; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 100, 1980, "politisch", p => { p.EinflussInternational -= 30; p.LoyalitätPartei += 15; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Solidarność 1980", "Polnische Gewerkschaft", "KGB", 100, 1980, "politisch", p => { p.LoyalitätPartei -= 20; p.EinflussKGB += 15; Console.WriteLine("⚠️ Polen rebelliert!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan gewählt 1980", "Hardliner-Präsident", "KGB", 100, 1980, "politisch", p => { p.EinflussMilitär += 15; p.EinflussInternational -= 15; Console.WriteLine("🇺🇸 Reagan an Macht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Iran-Irak Krieg 1980", "Nahostkonflikt", "KGB", 100, 1980, "politisch", p => { p.Geld += 150; Console.WriteLine("⚔️ Waffenexport!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 100, 1980, "politisch", p => { p.EinflussInternational -= 25; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
         // 1981-1985
-        allEvents.Add(new RandomEvent("Kriegsrecht Polen 1981", "Jaruzelski-Putsch", "KGB", 80, 1981, "politisch", p => { p.EinflussMilitär += 20; p.EinflussInternational -= 20; Console.WriteLine("🇵🇱 Kriegsrecht!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Reagan Attentat 1981", "US-Präsident überlebt", "KGB", 70, 1981, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🔫 Attentat!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sadat ermordet 1981", "Ägypten-Präsident tot", "KGB", 65, 1981, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("💀 Sadat tot!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Afghanistan-Krieg 1981", "Mudschahedin kämpfen", "KGB", 75, 1981, "politisch", p => { p.Geld -= 150; p.EinflussMilitär += 10; Console.WriteLine("🇦🇫 Krieg eskaliert!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kriegsrecht Polen 1981", "Jaruzelski-Putsch", "KGB", 100, 1981, "politisch", p => { p.EinflussMilitär += 20; p.EinflussInternational -= 20; Console.WriteLine("🇵🇱 Kriegsrecht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan Attentat 1981", "US-Präsident überlebt", "KGB", 100, 1981, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🔫 Attentat!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sadat ermordet 1981", "Ägypten-Präsident tot", "KGB", 100, 1981, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("💀 Sadat tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan-Krieg 1981", "Mudschahedin kämpfen", "KGB", 100, 1981, "politisch", p => { p.Geld -= 150; p.EinflussMilitär += 10; Console.WriteLine("🇦🇫 Krieg eskaliert!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Breschnjew stirbt 1982", "Ende einer Ära", "KGB", 85, 1982, "politisch", p => { p.LoyalitätPartei -= 20; p.Gesundheit -= 10; Console.WriteLine("☭ Führerwechsel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Andropow KGB-Chef 1982", "KGB übernimmt", "KGB", 80, 1982, "politisch", p => { p.EinflussKGB += 30; Console.WriteLine("🕵️ KGB an Macht!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Falklandkrieg 1982", "GB-Argentinien", "KGB", 70, 1982, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Falkland-Krieg!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Libanon-Invasion 1982", "Israel marschiert ein", "KGB", 75, 1982, "politisch", p => { p.Geld += 120; Console.WriteLine("🇱🇧 Nahost-Krise!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew stirbt 1982", "Ende einer Ära", "KGB", 100, 1982, "politisch", p => { p.LoyalitätPartei -= 20; p.Gesundheit -= 10; Console.WriteLine("☭ Führerwechsel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Andropow KGB-Chef 1982", "KGB übernimmt", "KGB", 100, 1982, "politisch", p => { p.EinflussKGB += 30; Console.WriteLine("🕵️ KGB an Macht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Falklandkrieg 1982", "GB-Argentinien", "KGB", 100, 1982, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Falkland-Krieg!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Libanon-Invasion 1982", "Israel marschiert ein", "KGB", 100, 1982, "politisch", p => { p.Geld += 120; Console.WriteLine("🇱🇧 Nahost-Krise!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Reagan SDI 1983", "Star Wars Programm", "KGB", 90, 1983, "politisch", p => { p.EinflussMilitär -= 25; p.Geld -= 200; Console.WriteLine("🛰️ Wettrüsten!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan SDI 1983", "Star Wars Programm", "KGB", 100, 1983, "politisch", p => { p.EinflussMilitär -= 25; p.Geld -= 200; Console.WriteLine("🛰️ Wettrüsten!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("KAL 007 Abschuss 1983", "Passagierflugzeug abgeschossen", "KGB", 85, 1983, "katastrophe", p => { p.EinflussInternational -= 35; p.EinflussMilitär += 10; Console.WriteLine("✈️ 269 Tote!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Andropow stirbt 1983", "Zweiter Tod", "KGB", 75, 1983, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("☭ Erneuter Führerwechsel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Andropow stirbt 1983", "Zweiter Tod", "KGB", 100, 1983, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("☭ Erneuter Führerwechsel!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Able Archer 1983", "Fast-Atomkrieg", "KGB", 80, 1983, "katastrophe", p => { p.Gesundheit -= 20; p.EinflussMilitär += 15; Console.WriteLine("☢️ Beinahe-Krieg!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Tschernenko Generalsekretär 1984", "Kranker Führer", "KGB", 70, 1984, "politisch", p => { p.LoyalitätPartei -= 10; Console.WriteLine("☭ Schwacher Führer!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Olympia LA Boykott 1984", "Sowjet boykottiert", "KGB", 75, 1984, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🏅 Gegenboykott!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Indira Gandhi ermordet 1984", "Indien-Krise", "KGB", 65, 1984, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🇮🇳 Gandhi tot!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Reagan wiedergewählt 1984", "Hardliner bleibt", "KGB", 70, 1984, "politisch", p => { p.EinflussMilitär += 10; Console.WriteLine("🇺🇸 Reagan 2. Amtszeit!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschernenko Generalsekretär 1984", "Kranker Führer", "KGB", 100, 1984, "politisch", p => { p.LoyalitätPartei -= 10; Console.WriteLine("☭ Schwacher Führer!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia LA Boykott 1984", "Sowjet boykottiert", "KGB", 100, 1984, "politisch", p => { p.EinflussInternational -= 15; Console.WriteLine("🏅 Gegenboykott!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Indira Gandhi ermordet 1984", "Indien-Krise", "KGB", 100, 1984, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🇮🇳 Gandhi tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan wiedergewählt 1984", "Hardliner bleibt", "KGB", 100, 1984, "politisch", p => { p.EinflussMilitär += 10; Console.WriteLine("🇺🇸 Reagan 2. Amtszeit!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Gorbatschow 1985", "Glasnost & Perestroika", "KGB", 95, 1985, "politisch", p => { p.LoyalitätPartei -= 30; p.EinflussInternational += 25; p.Gesundheit += 10; Console.WriteLine("🌍 Reformen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Genfer Gipfel 1985", "Reagan-Gorbatschow", "KGB", 80, 1985, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🤝 Gipfeltreffen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Achille Lauro 1985", "Schiffsentführung", "KGB", 65, 1985, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚢 Terror auf See!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Afghanistan Rückzug beginnt 1985", "Erste Signale", "KGB", 70, 1985, "politisch", p => { p.Geld += 100; Console.WriteLine("🇦🇫 Rückzugspläne!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gorbatschow 1985", "Glasnost & Perestroika", "KGB", 100, 1985, "politisch", p => { p.LoyalitätPartei -= 30; p.EinflussInternational += 25; p.Gesundheit += 10; Console.WriteLine("🌍 Reformen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Genfer Gipfel 1985", "Reagan-Gorbatschow", "KGB", 100, 1985, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🤝 Gipfeltreffen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Achille Lauro 1985", "Schiffsentführung", "KGB", 100, 1985, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🚢 Terror auf See!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan Rückzug beginnt 1985", "Erste Signale", "KGB", 100, 1985, "politisch", p => { p.Geld += 100; Console.WriteLine("🇦🇫 Rückzugspläne!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Tschernobyl 1986", "Atomkatastrophe", "KGB", 90, 1986, "katastrophe", p => { p.Gesundheit -= 25; p.Geld -= 300; Console.WriteLine("☢️ Reaktor explodiert!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("INF-Vertrag 1987", "Abrüstung", "KGB", 60, 1987, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🕊️ Frieden!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Afghanistan-Abzug 1988", "Rückzug", "KGB", 70, 1988, "politisch", p => { p.Geld += 150; p.EinflussMilitär -= 20; Console.WriteLine("🇦🇫 Rückzug!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Mauerfall 1990", "DDR fällt", "KGB", 85, 1989, "politisch", p => { p.EinflussInternational -= 40; Console.WriteLine("🇩🇪 Mauer fällt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("UdSSR-Ende 1991", "Sowjetunion zerfällt", "KGB", 95, 1991, "politisch", p => { p.Geld -= 500; p.LoyalitätPartei -= 50; Console.WriteLine("☭ UdSSR endet!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Jelzin 1992", "Neue Ära", "Präsident", 70, 1992, "politisch", p => { p.Geld -= 200; Console.WriteLine("🇷🇺 Russland geboren!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Verfassungskrise 1993", "Parlament gestürmt", "Präsident", 80, 1993, "politisch", p => { p.EinflussMilitär += 25; Console.WriteLine("🏛️ Panzer auf Parlament!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Tschetschenien I 1994", "Erster Krieg", "Präsident", 85, 1994, "politisch", p => { p.EinflussMilitär += 20; p.Geld -= 250; Console.WriteLine("⚔️ Krieg im Kaukasus!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 80, 1998, "politisch", p => { p.Geld -= 400; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("INF-Vertrag 1987", "Abrüstung", "KGB", 100, 1987, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🕊️ Frieden!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan-Abzug 1988", "Rückzug", "KGB", 100, 1988, "politisch", p => { p.Geld += 150; p.EinflussMilitär -= 20; Console.WriteLine("🇦🇫 Rückzug!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mauerfall 1990", "DDR fällt", "KGB", 100, 1989, "politisch", p => { p.EinflussInternational -= 40; Console.WriteLine("🇩🇪 Mauer fällt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("UdSSR-Ende 1991", "Sowjetunion zerfällt", "KGB", 100, 1991, "politisch", p => { p.Geld -= 500; p.LoyalitätPartei -= 50; Console.WriteLine("☭ UdSSR endet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin 1992", "Neue Ära", "Präsident", 100, 1992, "politisch", p => { p.Geld -= 200; Console.WriteLine("🇷🇺 Russland geboren!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Verfassungskrise 1993", "Parlament gestürmt", "Präsident", 100, 1993, "politisch", p => { p.EinflussMilitär += 25; Console.WriteLine("🏛️ Panzer auf Parlament!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien I 1994", "Erster Krieg", "Präsident", 100, 1994, "politisch", p => { p.EinflussMilitär += 20; p.Geld -= 250; Console.WriteLine("⚔️ Krieg im Kaukasus!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 100, 1998, "politisch", p => { p.Geld -= 400; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
         // 1995-2000 (Jelzin-Ära Fortsetzung)
-        allEvents.Add(new RandomEvent("Srebrenica 1995", "Massaker Bosnien", "Präsident", 70, 1995, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🇧🇦 Balkan-Massaker!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Srebrenica 1995", "Massaker Bosnien", "Präsident", 100, 1995, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🇧🇦 Balkan-Massaker!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Budjonowsk 1995", "Tschetschenischer Terror", "Präsident", 75, 1995, "katastrophe", p => { p.Gesundheit -= 15; p.EinflussMilitär += 15; Console.WriteLine("💣 Geiselnahme!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Oklahoma Bombing 1995", "US-Terror", "Präsident", 60, 1995, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("💣 USA-Anschlag!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Oklahoma Bombing 1995", "US-Terror", "Präsident", 100, 1995, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("💣 USA-Anschlag!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Jelzin wiedergewählt 1996", "Umstrittene Wahl", "Präsident", 80, 1996, "politisch", p => { p.LoyalitätPartei += 15; p.Geld -= 200; Console.WriteLine("🗳️ Jelzin bleibt!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Tschetschenien Waffenstillstand 1996", "Kriegsende", "Präsident", 70, 1996, "politisch", p => { p.Geld += 100; p.EinflussMilitär -= 10; Console.WriteLine("🕊️ Waffenruhe!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Minenverbot 1996", "Ottawa-Vertrag", "Präsident", 60, 1996, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("⚠️ Minenverbot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin wiedergewählt 1996", "Umstrittene Wahl", "Präsident", 100, 1996, "politisch", p => { p.LoyalitätPartei += 15; p.Geld -= 200; Console.WriteLine("🗳️ Jelzin bleibt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien Waffenstillstand 1996", "Kriegsende", "Präsident", 100, 1996, "politisch", p => { p.Geld += 100; p.EinflussMilitär -= 10; Console.WriteLine("🕊️ Waffenruhe!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Minenverbot 1996", "Ottawa-Vertrag", "Präsident", 100, 1996, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("⚠️ Minenverbot!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Hongkong China 1997", "Rückgabe an China", "Präsident", 70, 1997, "politisch", p => { p.ChinaBeziehung += 15; Console.WriteLine("🇨🇳 Hongkong chinesisch!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Prinzessin Diana 1997", "Tod in Paris", "Präsident", 60, 1997, "politisch", p => { p.EinflussInternational += 5; Console.WriteLine("💔 Diana tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Hongkong China 1997", "Rückgabe an China", "Präsident", 100, 1997, "politisch", p => { p.ChinaBeziehung += 15; Console.WriteLine("🇨🇳 Hongkong chinesisch!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Prinzessin Diana 1997", "Tod in Paris", "Präsident", 100, 1997, "politisch", p => { p.EinflussInternational += 5; Console.WriteLine("💔 Diana tot!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Mir-Station Kollision 1997", "Raumstation beschädigt", "Präsident", 65, 1997, "katastrophe", p => { p.Gesundheit -= 10; Console.WriteLine("🛰️ Weltraum-Unfall!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 90, 1998, "politisch", p => { p.Geld -= 500; p.Gesundheit -= 20; p.LoyalitätPartei -= 25; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("IWF-Kredite 1998", "Rettungspaket", "Präsident", 80, 1998, "politisch", p => { p.Geld += 300; p.EinflussInternational -= 15; Console.WriteLine("💸 IWF-Hilfe!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Primakow Premier 1998", "Neuer Premierminister", "Präsident", 70, 1998, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("🏛️ Regierungswechsel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 100, 1998, "politisch", p => { p.Geld -= 500; p.Gesundheit -= 20; p.LoyalitätPartei -= 25; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("IWF-Kredite 1998", "Rettungspaket", "Präsident", 100, 1998, "politisch", p => { p.Geld += 300; p.EinflussInternational -= 15; Console.WriteLine("💸 IWF-Hilfe!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Primakow Premier 1998", "Neuer Premierminister", "Präsident", 100, 1998, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("🏛️ Regierungswechsel!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Kosovo-Krieg 1999", "NATO bombardiert Serbien", "Präsident", 85, 1999, "politisch", p => { p.EinflussInternational -= 25; p.EinflussMilitär += 15; Console.WriteLine("💥 NATO-Angriff!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Tschetschenien II 1999", "Zweiter Krieg", "Präsident", 80, 1999, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 200; Console.WriteLine("⚔️ Neuer Tschetschenien-Krieg!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Putin wird Präsident", "Präsident", 90, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kosovo-Krieg 1999", "NATO bombardiert Serbien", "Präsident", 100, 1999, "politisch", p => { p.EinflussInternational -= 25; p.EinflussMilitär += 15; Console.WriteLine("💥 NATO-Angriff!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien II 1999", "Zweiter Krieg", "Präsident", 100, 1999, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 200; Console.WriteLine("⚔️ Neuer Tschetschenien-Krieg!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Putin wird Präsident", "Präsident", 100, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
         
-        allEvents.Add(new RandomEvent("Putin 2000", "Neuer Präsident", "Präsident", 95, 2000, "politisch", p => { p.LoyalitätPartei += 35; p.EinflussKGB += 25; Console.WriteLine("🇷🇺 Putin an der Macht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Putin 2000", "Neuer Präsident", "Präsident", 100, 2000, "politisch", p => { p.LoyalitätPartei += 35; p.EinflussKGB += 25; Console.WriteLine("🇷🇺 Putin an der Macht!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Kursk-Untergang 2000", "U-Boot sinkt", "Präsident", 85, 2000, "katastrophe", p => { p.Gesundheit -= 25; p.LoyalitätPartei -= 15; Console.WriteLine("💀 118 Tote!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Y2K-Bug überstanden 2000", "Millennium", "Präsident", 60, 2000, "politisch", p => { p.Geld += 50; Console.WriteLine("💻 Y2K geschafft!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Y2K-Bug überstanden 2000", "Millennium", "Präsident", 100, 2000, "politisch", p => { p.Geld += 50; Console.WriteLine("💻 Y2K geschafft!"); Thread.Sleep(3000); }));
         
         // CHINA-EVENTS
         allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(3000); }));
@@ -6555,29 +6555,29 @@ static class EventSystem
         // ZUSÄTZLICHE EVENTS FÜR ERHÖHTE DICHTE (1987-1996)
         // 1987 - 3 neue Events
         allEvents.Add(new RandomEvent("Mathias Rust Moskau 1987", "Deutscher landet am Roten Platz", "Präsident", 75, 1987, "katastrophe", p => { p.EinflussMilitär -= 25; p.Gesundheit -= 15; Console.WriteLine("✈️ Sicherheitsversagen!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("INF-Vertrag Verhandlungen 1987", "Abrüstungsgespräche", "Präsident", 65, 1987, "politisch", p => { p.EinflussInternational += 20; p.Geld += 100; Console.WriteLine("☮️ Entspannung!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Jelzin vs Gorbatschow 1987", "Parteistreit", "Präsident", 60, 1987, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("⚔️ Machtkampf!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("INF-Vertrag Verhandlungen 1987", "Abrüstungsgespräche", "Präsident", 100, 1987, "politisch", p => { p.EinflussInternational += 20; p.Geld += 100; Console.WriteLine("☮️ Entspannung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin vs Gorbatschow 1987", "Parteistreit", "Präsident", 100, 1987, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("⚔️ Machtkampf!"); Thread.Sleep(3000); }));
         
         // 1988 - 3 neue Events
         allEvents.Add(new RandomEvent("Erdbeben Armenien 1988", "25.000 Tote in Spitak", "Präsident", 80, 1988, "katastrophe", p => { p.Gesundheit -= 20; p.Geld -= 300; p.LoyalitätVolk -= 15; Console.WriteLine("💀 Katastrophe!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Rückzug Afghanistan 1988", "Ende des Krieges", "Präsident", 85, 1988, "politisch", p => { p.EinflussMilitär -= 20; p.Geld += 150; p.LoyalitätVolk += 10; Console.WriteLine("✈️ Truppen kehren heim!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Olympia Seoul 1988", "Sowjetische Erfolge", "Präsident", 55, 1988, "politisch", p => { p.EinflussInternational += 15; p.LoyalitätVolk += 10; Console.WriteLine("🏅 Gold-Rausch!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Rückzug Afghanistan 1988", "Ende des Krieges", "Präsident", 100, 1988, "politisch", p => { p.EinflussMilitär -= 20; p.Geld += 150; p.LoyalitätVolk += 10; Console.WriteLine("✈️ Truppen kehren heim!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia Seoul 1988", "Sowjetische Erfolge", "Präsident", 100, 1988, "politisch", p => { p.EinflussInternational += 15; p.LoyalitätVolk += 10; Console.WriteLine("🏅 Gold-Rausch!"); Thread.Sleep(3000); }));
         
         // 1990 - 4 neue Events
-        allEvents.Add(new RandomEvent("Deutsche Wiedervereinigung 1990", "Berliner Mauer fällt", "Präsident", 90, 1990, "politisch", p => { p.EinflussInternational -= 30; p.EinflussMilitär -= 20; Console.WriteLine("🧱 DDR endet!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Baltikum Unabhängigkeit 1990", "Litauen erklärt Unabhängigkeit", "Präsident", 85, 1990, "politisch", p => { p.LoyalitätPartei -= 20; p.EinflussMilitär -= 15; Console.WriteLine("🇱🇹 UdSSR zerbricht!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Gorbatschow Friedensnobelpreis 1990", "Internationale Anerkennung", "Präsident", 70, 1990, "politisch", p => { p.EinflussInternational += 25; p.LoyalitätVolk -= 10; Console.WriteLine("🏆 Nobelpreis!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Deutsche Wiedervereinigung 1990", "Berliner Mauer fällt", "Präsident", 100, 1990, "politisch", p => { p.EinflussInternational -= 30; p.EinflussMilitär -= 20; Console.WriteLine("🧱 DDR endet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Baltikum Unabhängigkeit 1990", "Litauen erklärt Unabhängigkeit", "Präsident", 100, 1990, "politisch", p => { p.LoyalitätPartei -= 20; p.EinflussMilitär -= 15; Console.WriteLine("🇱🇹 UdSSR zerbricht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gorbatschow Friedensnobelpreis 1990", "Internationale Anerkennung", "Präsident", 100, 1990, "politisch", p => { p.EinflussInternational += 25; p.LoyalitätVolk -= 10; Console.WriteLine("🏆 Nobelpreis!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Wirtschaftskrise 1990", "Versorgungsengpässe", "Präsident", 80, 1990, "katastrophe", p => { p.Geld -= 400; p.LoyalitätVolk -= 25; p.Gesundheit -= 10; Console.WriteLine("🍞 Lebensmittelknappheit!"); Thread.Sleep(3000); }));
         
         // 1993 - 3 neue Events
         allEvents.Add(new RandomEvent("Panzerschlacht Moskau 1993", "Jelzin beschießt Parlament", "Präsident", 95, 1993, "katastrophe", p => { p.EinflussMilitär += 20; p.LoyalitätVolk -= 30; p.Gesundheit -= 20; Console.WriteLine("💥 Bürgerkrieg droht!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Hyperinflation 1993", "Rubel-Verfall", "Präsident", 85, 1993, "katastrophe", p => { p.Geld -= 500; p.LoyalitätVolk -= 20; Console.WriteLine("💸 Währungskollaps!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Tschetschenien Unabhängigkeit 1993", "Dudajew erklärt Unabhängigkeit", "Präsident", 75, 1993, "politisch", p => { p.EinflussMilitär -= 15; p.LoyalitätPartei -= 10; Console.WriteLine("⚔️ Separatismus!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien Unabhängigkeit 1993", "Dudajew erklärt Unabhängigkeit", "Präsident", 100, 1993, "politisch", p => { p.EinflussMilitär -= 15; p.LoyalitätPartei -= 10; Console.WriteLine("⚔️ Separatismus!"); Thread.Sleep(3000); }));
         
         // 1994 - 3 neue Events
-        allEvents.Add(new RandomEvent("Erster Tschetschenienkrieg 1994", "Invasion Grosnys", "Präsident", 90, 1994, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 400; p.LoyalitätVolk -= 20; Console.WriteLine("⚔️ Krieg beginnt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Erster Tschetschenienkrieg 1994", "Invasion Grosnys", "Präsident", 100, 1994, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 400; p.LoyalitätVolk -= 20; Console.WriteLine("⚔️ Krieg beginnt!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Schwarzer Dienstag 1994", "Rubel stürzt ab", "Präsident", 80, 1994, "katastrophe", p => { p.Geld -= 600; p.Gesundheit -= 15; Console.WriteLine("📉 Finanzcrash!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("NATO-Erweiterung Debatte 1994", "Polen will NATO beitreten", "Präsident", 70, 1994, "politisch", p => { p.EinflussInternational -= 20; p.NATOBeziehung -= 25; Console.WriteLine("⚠️ NATO-Bedrohung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("NATO-Erweiterung Debatte 1994", "Polen will NATO beitreten", "Präsident", 100, 1994, "politisch", p => { p.EinflussInternational -= 20; p.NATOBeziehung -= 25; Console.WriteLine("⚠️ NATO-Bedrohung!"); Thread.Sleep(3000); }));
         
         // ═══════════════════════════════════════════════════════════════════
         // MASSIVE EVENT-DICHTE-ERWEITERUNG (1952-2025)
@@ -6606,7 +6606,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Ärzte-Verschwörung Panik 1952",
             "STALINS TERROR ERREICHT HÖHEPUNKT! Neun jüdische Ärzte werden beschuldigt, Kreml-Führer vergiften zu wollen. Massenverhaftungen in Moskau! Das Volk erstarrt in Angst - niemand ist mehr sicher. Nachbarn denunzieren Nachbarn. Die Paranoia des Führers infiziert die gesamte Nation.",
-            "Kindheit", 85, 1952, "politisch",
+            "Kindheit", 100, 1952, "politisch",
             p => {
                 Console.WriteLine("\n🏥 ÄRZTE-VERSCHWÖRUNG - TERROR ÜBERALL!");
                 Console.WriteLine("Jüdische Ärzte werden verhaftet! Das Volk lebt in Angst!");
@@ -6624,7 +6624,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Schauprozesse 1952",
             "BLUTIGER SÄUBERUNGSWAHN! 13 jüdische Intellektuelle werden in Moskau hingerichtet. Die Slánský-Prozesse in Prag erschüttern den Ostblock. Das Volk beobachtet schweigend die Hinrichtungen - niemand wagt zu protestieren. Stalin ist allmächtig, unberechenbar und tödlich.",
-            "Kindheit", 75, 1952, "politisch",
+            "Kindheit", 100, 1952, "politisch",
             p => {
                 Console.WriteLine("\n⚖️ SCHAUPROZESSE & EXEKUTIONEN!");
                 Console.WriteLine("13 Intellektuelle hingerichtet! Das Volk schweigt aus Angst!");
@@ -6661,7 +6661,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Erste Atomkraft Obninsk 1954",
             "SOWJETMACHT ERLEUCHTET DIE ZUKUNFT! Das weltweit erste kommerzielle Atomkraftwerk wird in Obninsk eröffnet! Die UdSSR führt das Atomzeitalter an. Das Volk jubelt - endlich gibt es Hoffnung auf mehr Strom und ein besseres Leben. Die Parteipropaganda feiert den 'Roten Triumph der Wissenschaft'!",
-            "Kindheit", 90, 1954, "politisch",
+            "Kindheit", 100, 1954, "politisch",
             p => {
                 Console.WriteLine("\n⚡ ATOMKRAFT FÜR DAS VOLK!");
                 Console.WriteLine("Obninsk-Reaktor startet! Das Volk hofft auf Wohlstand!");
@@ -6679,7 +6679,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "KGB gegründet 1954",
             "GEBURT DES ALLMÄCHTIGEN AUGES! Das KGB wird offiziell gegründet - Nachfolger von NKWD und MGB. Ein gigantischer Geheimdienst-Apparat durchdringt jeden Winkel der Sowjetunion. Das Volk wird überwacht, abgehört, kontrolliert. Niemand ist sicher - nicht einmal Parteimitglieder.",
-            "Kindheit", 95, 1954, "politisch",
+            "Kindheit", 100, 1954, "politisch",
             p => {
                 Console.WriteLine("\n👁️ DAS KGB WIRD GEBOREN!");
                 Console.WriteLine("Totale Überwachung beginnt! Das Volk wird kontrolliert!");
@@ -6698,7 +6698,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Entstalinisierung beginnt 1955",
             "STALINS STATUEN STÜRZEN! Chruschtschow beginnt vorsichtig, Stalins Verbrechen anzudeuten. Tausende politische Gefangene werden aus Gulags entlassen. Das Volk atmet auf - doch viele fragen sich: War alles umsonst? Die Partei gibt zu, dass der 'große Führer' Millionen ermordet hat.",
-            "Kindheit", 85, 1955, "politisch",
+            "Kindheit", 100, 1955, "politisch",
             p => {
                 Console.WriteLine("\n🗿 STALIN WIRD KRITISIERT!");
                 Console.WriteLine("Gefangene kehren heim! Das Volk ist verwirrt aber hoffnungsvoll!");
@@ -6716,7 +6716,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Belgrader Erklärung 1955",
             "VERSÖHNUNG MIT DEM VERRÄTER! Chruschtschow reist nach Jugoslawien und entschuldigt sich bei Tito. Die UdSSR erkennt den 'eigenen Weg zum Sozialismus' an. Das Volk ist verwirrt - gestern noch Feind, heute Bruder? Die Parteilinie ändert sich schneller als das Wetter.",
-            "Kindheit", 70, 1955, "politisch",
+            "Kindheit", 100, 1955, "politisch",
             p => {
                 Console.WriteLine("\n🇷🇸 VERSÖHNUNG MIT JUGOSLAWIEN!");
                 Console.WriteLine("Tito ist plötzlich Freund! Das Volk versteht nichts mehr!");
@@ -6733,7 +6733,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Genfer Gipfel 1955",
             "HOFFNUNG AUF FRIEDEN! Die 'Großen Vier' treffen sich in Genf - USA, UdSSR, UK, Frankreich. Chruschtschow lächelt, Eisenhower winkt. Das Volk träumt von Frieden und Wohlstand. Doch hinter den Kulissen bleibt das gegenseitige Misstrauen eisig. Der Kalte Krieg friert nur kurz.",
-            "Kindheit", 75, 1955, "politisch",
+            "Kindheit", 100, 1955, "politisch",
             p => {
                 Console.WriteLine("\n☮️ GENFER GIPFEL - ENTSPANNUNG?");
                 Console.WriteLine("Weltmächte verhandeln! Das Volk hofft auf Frieden!");
@@ -6788,7 +6788,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Chodorkowski verhaftet 2003",
             "OLIGARCH IM KÄFIG! Michail Chodorkowski, reichster Mann Russlands, wird vom FSB verhaftet. Sein Verbrechen? Zu reich, zu mächtig, zu unabhängig. Putin zeigt allen: 'Ich bin der Boss'. Das Volk applaudiert - endlich werden die Oligarchen bestraft! Doch andere Oligarchen kriechen vor Putin.",
-            "Präsident", 85, 2003, "politisch",
+            "Präsident", 100, 2003, "politisch",
             p => {
                 Console.WriteLine("\n⛓️ OLIGARCH CHODORKOWSKI VERHAFTET!");
                 Console.WriteLine("Das Volk jubelt: Rache an den Reichen!");
@@ -6824,7 +6824,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Orange Revolution Ukraine 2004",
             "KIEWER MAIDAN BRENNT! Eine Million Ukrainer protestieren gegen Wahlfälschung. Der pro-russische Kandidat wird gestürzt, der Westen jubelt. Putin ist wütend - die Ukraine entgleitet seinem Griff. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren?",
-            "Präsident", 80, 2004, "politisch",
+            "Präsident", 100, 2004, "politisch",
             p => {
                 Console.WriteLine("\n🧡 ORANGE REVOLUTION IN UKRAINE!");
                 Console.WriteLine("Ukraine wendet sich dem Westen zu! Das Volk ist beunruhigt!");
@@ -6843,7 +6843,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Leonid Breschnew Macht 1965",
             "NEUE ÄRA DER STAGNATION! Breschnew übernimmt die Macht und beendet Chruschtschows Reformen. Die Hoffnung auf Veränderung stirbt. Das Volk spürt, dass die Uhr rückwärts dreht. Panzer statt Brot, Propaganda statt Wahrheit. Die 'Ära der Stagnation' beginnt - 18 Jahre Stillstand.",
-            "Jugend", 85, 1965, "politisch",
+            "Jugend", 100, 1965, "politisch",
             p => {
                 Console.WriteLine("\n☭ BRESCHNEW ÜBERNIMMT - STAGNATION BEGINNT!");
                 Console.WriteLine("Reformen enden! Das Volk verliert die Hoffnung!");
@@ -6861,7 +6861,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Vietnam-Krieg Eskalation 1965",
             "PROXY-KRIEG IN ASIEN! Die USA bombardieren Nordvietnam - sowjetische Waffen schießen zurück. Das Volk sieht die Wochenschau: Amerikanische Jets brennen, sowjetische SAM-Raketen triumphieren. 'Wir bekämpfen den Imperialismus', sagt die Propaganda. Das Volk zahlt mit Rubeln und Hunger.",
-            "Jugend", 80, 1965, "politisch",
+            "Jugend", 100, 1965, "politisch",
             p => {
                 Console.WriteLine("\n💥 VIETNAM - SOWJETISCHE WAFFEN IM EINSATZ!");
                 Console.WriteLine("Kalter Krieg wird heiß! Das Volk zahlt die Rechnung!");
@@ -6879,7 +6879,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Leonid Breschnew Kultpersönlichkeit 1966",
             "DER NEUE GOTT! Breschnews Gesicht ist überall - Plakate, Statuen, Briefmarken. Er verleiht sich selbst Orden und Medaillen wie Bonbons. Das Volk lacht heimlich über den aufgeblasenen Greis. 'Genosse Augenbrauen' nennen sie ihn. Doch laut lachen kostet 5 Jahre Gulag.",
-            "Jugend", 70, 1966, "politisch",
+            "Jugend", 100, 1966, "politisch",
             p => {
                 Console.WriteLine("\n🏅 BRESCHNEW-KULT BEGINNT!");
                 Console.WriteLine("Selbstverherrlichung ohne Ende! Das Volk spottet heimlich!");
@@ -6934,7 +6934,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Dissidenten-Bewegung 1970",
             "MUTIGE STIMMEN ERHEBEN SICH! Sacharow, Solschenizyn und andere Dissidenten kritisieren offen das Regime. Das Volk liest heimlich Samisdat-Literatur - auf Schreibmaschinen kopierte verbotene Texte. Jeder, der erwischt wird, verschwindet. Doch die Wahrheit lässt sich nicht mehr stoppen.",
-            "KGB", 75, 1970, "politisch",
+            "KGB", 100, 1970, "politisch",
             p => {
                 Console.WriteLine("\n✊ DISSIDENTEN FORDERN FREIHEIT!");
                 Console.WriteLine("Untergrund-Literatur verbreitet sich! Das Volk erwacht langsam!");
@@ -6952,7 +6952,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Öl-Boom 1973",
             "SCHWARZES GOLD RETTET DIE SOWJETUNION! Die Ölkrise lässt Preise explodieren - Petrodollars fluten Moskau. Das Volk bemerkt winzige Verbesserungen: mehr Wurst, weniger Schlangen. Doch das Geld wird nicht investiert - es verschwindet in Korruption und Rüstung. Der Untergang wird nur vertagt.",
-            "KGB", 90, 1973, "politisch",
+            "KGB", 100, 1973, "politisch",
             p => {
                 Console.WriteLine("\n🛢️ ÖL-BOOM - KURZER WOHLSTAND!");
                 Console.WriteLine("Petrodollars fließen! Das Volk atmet auf - vorerst!");
@@ -6970,7 +6970,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Helsinki-Abkommen 1975",
             "SCHEIN-ENTSPANNUNG IN EUROPA! 35 Nationen unterzeichnen Abkommen über Menschenrechte und Grenzen. Breschnew unterschreibt lächelnd - und ignoriert alles sofort. Das Volk hofft kurz auf Reisefreiheit. FEHLANZEIGE! Die Mauer steht, die Grenzen töten. Helsinki ist nur Papier.",
-            "KGB", 70, 1975, "politisch",
+            "KGB", 100, 1975, "politisch",
             p => {
                 Console.WriteLine("\n📜 HELSINKI - LEERE VERSPRECHEN!");
                 Console.WriteLine("Menschenrechte unterschrieben, aber ignoriert! Das Volk ist enttäuscht!");
@@ -7007,7 +7007,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Proteste gegen Wahlfälschung 2011",
             "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Putin ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Putin lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
-            "Präsident", 85, 2011, "politisch",
+            "Präsident", 100, 2011, "politisch",
             p => {
                 Console.WriteLine("\n✊ PROTESTE GEGEN PUTIN!");
                 Console.WriteLine("100.000 auf den Straßen! Das Volk will Wandel!");
@@ -7025,7 +7025,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Pussy Riot Verhaftung 2012",
             "PUNK-GEBET IM ERLÖSER-KATHEDRALE! Drei Frauen stürmen die Hauptkirche und singen 'Mutter Gottes, vertreibe Putin!' 2 Jahre Straflager. Das Volk ist gespalten: Helden oder Gotteslästerer? Der Westen protestiert. Putin ist es egal. Die Nachricht ist klar: Widerstand wird gebrochen.",
-            "Präsident", 80, 2012, "politisch",
+            "Präsident", 100, 2012, "politisch",
             p => {
                 Console.WriteLine("\n🎸 PUSSY RIOT - PROTEST WIRD BESTRAFT!");
                 Console.WriteLine("2 Jahre Lager für ein Lied! Das Volk ist gespalten!");
@@ -7061,7 +7061,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Olympia Sotschi 2014",
             "DIE TEUERSTEN SPIELE ALLER ZEITEN! 51 Milliarden Dollar für Putins Prestige-Projekt. Korruption frisst Milliarden. Das Volk sieht glitzernde Stadien im Fernsehen - während sie in verfallenen Plattenbauten frieren. 'Brot und Spiele', sagen die Zyniker. Eine Woche später: Krim-Annexion beginnt.",
-            "Präsident", 85, 2014, "politisch",
+            "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("\n🏅 SOTSCHI-OLYMPIA - VERSCHWENDUNG!");
                 Console.WriteLine("51 Milliarden für Propaganda! Das Volk zahlt die Zeche!");
@@ -7079,7 +7079,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Krim-Annexion 2014",
             "DIE KRIM IST UNSER! 'Grüne Männchen' ohne Abzeichen übernehmen die Halbinsel. Putin leugnet alles - dann gibt er später zu, es waren russische Soldaten. Das Volk jubelt: Endlich Stärke! Westliche Sanktionen folgen sofort. Der Rubel stürzt ab. Patriotismus füllt keine Mägen.",
-            "Präsident", 95, 2014, "politisch",
+            "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("\n🇷🇺 KRIM ZURÜCK ZU RUSSLAND!");
                 Console.WriteLine("Das Volk jubelt! Aber Sanktionen folgen sofort!");
@@ -7152,7 +7152,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Donald Trump gewählt 2016",
             "CHAOS IM WEISSEN HAUS! Donald Trump wird US-Präsident - ein Geschenk für Putin. Die Propaganda jubelt: 'Amerikas Niedergang hat begonnen!' Das Volk hofft auf Entspannung. Trump lobt Putin öffentlich. Die Beziehungen könnten sich verbessern - doch der Deep State lauert bereits.",
-            "Präsident", 85, 2016, "politisch",
+            "Präsident", 100, 2016, "politisch",
             p => {
                 Console.WriteLine("\n🇺🇸 TRUMP GEWINNT - NEUE ÄRA?");
                 Console.WriteLine("Putin hofft auf bessere Beziehungen! Das Volk ist optimistisch!");
@@ -7170,7 +7170,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Syrien-Intervention 2016",
             "RUSSISCHE BOMBER ÜBER ALEPPO! Putin rettet Assad - Fassbomben und Luftschläge verwandeln Städte in Trümmerwüsten. Das Volk sieht die Militärparaden im Fernsehen: Russland ist wieder eine Weltmacht! Der Preis? Tausende tote Zivilisten. 'Kollateralschaden', sagt das Militär. Die Wahrheit ertrinkt in Propaganda.",
-            "Präsident", 90, 2016, "politisch",
+            "Präsident", 100, 2016, "politisch",
             p => {
                 Console.WriteLine("\n💣 SYRIEN - RUSSLAND GREIFT EIN!");
                 Console.WriteLine("Assad gerettet! Das Volk feiert militärische Stärke!");
@@ -7224,7 +7224,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "WM 2018 Russland",
             "DIE WELT ZU GAST BEI FREUNDEN? Millionen Touristen strömen nach Russland. Moskau putzt sich heraus. Das Volk genießt die Party - eine Woche lang sind sie stolz. Die Mannschaft erreicht das Viertelfinale! Doch nach der WM kehrt die graue Realität zurück: Steigende Preise, sinkende Renten.",
-            "Präsident", 85, 2018, "politisch",
+            "Präsident", 100, 2018, "politisch",
             p => {
                 Console.WriteLine("\n⚽ WM 2018 - RUSSLAND FEIERT!");
                 Console.WriteLine("Das Volk ist glücklich! Aber nur kurz...");
@@ -7428,7 +7428,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Beria-Hinrichtung 1953",
             "DER HENKER WIRD GEHÄNGT! Lawrenti Beria, Stalins Geheimdienstchef und Massenm&ouml;rder, wird verhaftet und hingerichtet. Das Volk jubelt heimlich - endlich wird einer der Schlächter bestraft! Doch die Angst bleibt: Wer ist der nächste? Die Säuberungen hören nie auf, nur die Namen der Täter wechseln.",
-            "Kindheit", 90, 1953, "politisch",
+            "Kindheit", 100, 1953, "politisch",
             p => {
                 Console.WriteLine("\n⚖️ BERIA HINGERICHTET - GERECHTIGKEIT?");
                 Console.WriteLine("Der Monster ist tot! Das Volk atmet erleichtert auf!");
@@ -7446,7 +7446,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Gulag-Entlassungen 1953",
             "DIE TODESLAGER ÖFFNEN SICH! Nach Stalins Tod werden Hunderttausende Häftlinge aus Gulags entlassen. Skelette kehren heim - kaum wiederzuerkennen. Das Volk ist schockiert: Was haben wir unserem eigenen Volk angetan? Familien werden wiedervereinigt. Tränen der Freude und der Schuld.",
-            "Kindheit", 85, 1953, "politisch",
+            "Kindheit", 100, 1953, "politisch",
             p => {
                 Console.WriteLine("\n⛓️ GULAG-HÄFTLINGE KEHREN HEIM!");
                 Console.WriteLine("Hunderttausende freigelassen! Das Volk feiert und weint!");
@@ -7465,7 +7465,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Elvis Presley Phänomen 1956",
             "WESTLICHE DEKADENZ VERFÜHRT DIE JUGEND! Elvis Presley erobert den Westen - seine Musik sickert heimlich in die Sowjetunion. Jugendliche hören verbotene Platten, tanzen Rock'n'Roll in Kellern. Das Volk ist gespalten: Die Alten sind empört, die Jungen rebellieren. Der eiserne Vorhang kann Musik nicht aufhalten.",
-            "Kindheit", 75, 1956, "politisch",
+            "Kindheit", 100, 1956, "politisch",
             p => {
                 Console.WriteLine("\n🎸 ROCK'N'ROLL ERREICHT SOWJETUNION!");
                 Console.WriteLine("Jugend rebelliert heimlich! Das Volk ist gespalten!");
@@ -7482,7 +7482,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Suez-Krise 1956",
             "WELTMÄCHTE AM RANDE DES KRIEGES! Großbritannien, Frankreich und Israel greifen Ägypten an. Die USA und UdSSR - zum ersten Mal vereint - zwingen sie zum Rückzug. Das Volk feiert: Sowjetmacht rettet die Welt! Der Kolonialismus stirbt, ein neues Zeitalter beginnt.",
-            "Kindheit", 80, 1956, "politisch",
+            "Kindheit", 100, 1956, "politisch",
             p => {
                 Console.WriteLine("\n🌍 SUEZ-KRISE - SOWJETISCHE DIPLOMATIE!");
                 Console.WriteLine("UdSSR zwingt Kolonialisten zum Rückzug! Das Volk ist stolz!");
@@ -7499,7 +7499,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "XX. Parteitag Entstalinisierung 1956",
             "CHRUSCHTSCHOWS DONNERSCHLAG! In geheimer Rede prangert Chruschtschow Stalin als Massenmörder an. Das Volk erfährt es über Flüsterpost: Stalin war kein Gott, sondern ein Monster! Alles war Lüge! Die Grundfesten der sowjetischen Ideologie wanken. Manche sind befreit, andere fühlen sich betrogen.",
-            "Kindheit", 95, 1956, "politisch",
+            "Kindheit", 100, 1956, "politisch",
             p => {
                 Console.WriteLine("\n🗣️ GEHEIMREDE ERSCHÜTTERT DIE UdSSR!");
                 Console.WriteLine("Stalin entlarvt! Das Volk ist erschüttert und befreit!");
@@ -7518,7 +7518,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Anti-Partei-Gruppe 1957",
             "INTRIGEN IM KREML! Malenkow, Molotow und Kaganowitsch versuchen Chruschtschow zu stürzen. Der Machtkampf tobt im Schatten. Chruschtschow gewinnt - die Verschwörer werden verbannt, nicht ermordet. Das Volk merkt: Die Zeit der Massenerschießungen ist vorbei. Jetzt reicht Verbannung.",
-            "Kindheit", 70, 1957, "politisch",
+            "Kindheit", 100, 1957, "politisch",
             p => {
                 Console.WriteLine("\n⚔️ MACHTKAMPF IM KREML!");
                 Console.WriteLine("Chruschtschow siegt! Das Volk bemerkt: Weniger Blut!");
@@ -7535,7 +7535,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Laika im Weltraum 1957",
             "DIE HÜNDIN DER HOFFNUNG! Laika, ein Straßenhund aus Moskau, wird ins All geschossen - das erste Lebewesen im Orbit. Das Volk liebt Laika wie ein nationales Symbol. Doch niemand sagt die Wahrheit: Sie stirbt nach Stunden an Überhitzung. Der Triumph hat einen tödlichen Preis.",
-            "Kindheit", 85, 1957, "politisch",
+            "Kindheit", 100, 1957, "politisch",
             p => {
                 Console.WriteLine("\n🐕 LAIKA - HÜNDIN IM WELTRAUM!");
                 Console.WriteLine("Das Volk feiert! Aber die Wahrheit wird verschwiegen...");
@@ -7553,7 +7553,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Pasternak Nobelpreis 1958",
             "LITERATUR-SKANDAL! Boris Pasternak erhält den Nobelpreis für 'Doktor Schiwago' - im Westen gefeiert, in der UdSSR verboten. Das Volk liest heimlich Samisdat-Kopien. Die Partei zwingt Pasternak zur Ablehnung. Das Volk sieht die Heuchelei: Der weltbeste russische Autor darf nicht gefeiert werden.",
-            "Kindheit", 80, 1958, "politisch",
+            "Kindheit", 100, 1958, "politisch",
             p => {
                 Console.WriteLine("\n📚 PASTERNAK-SKANDAL!");
                 Console.WriteLine("Nobelpreis abgelehnt! Das Volk liest heimlich!");
@@ -7570,7 +7570,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "China-Indien-Grenzkonflikt 1958",
             "KOMMUNISTISCHE BRÜDER ZERSTREITEN SICH! China und Indien geraten aneinander - die UdSSR ist hin- und hergerissen. Das Volk versteht nicht: Sind wir nicht alle Genossen? Die Sino-Sowjetische Spaltung beginnt schleichend. Die kommunistische Einheit ist eine Illusion.",
-            "Kindheit", 70, 1958, "politisch",
+            "Kindheit", 100, 1958, "politisch",
             p => {
                 Console.WriteLine("\n🇨🇳🇮🇳 KOMMUNISTISCHE ZWIETRACHT!");
                 Console.WriteLine("China und UdSSR entfremden sich! Das Volk ist verwirrt!");
@@ -7605,7 +7605,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Chruschtschow USA-Besuch 1959",
             "DER KREML-CHEF IN AMERIKA! Chruschtschow besucht die USA - erste Visite eines sowjetischen Führers. Er besucht Hollywood, streitet mit Nixon in einer Küche, will Disneyland sehen (Sicherheit verbietet es). Das Volk ist fasziniert: Amerika ist nicht nur der Feind. Die Entspannung riecht nach Hoffnung.",
-            "Kindheit", 85, 1959, "politisch",
+            "Kindheit", 100, 1959, "politisch",
             p => {
                 Console.WriteLine("\n🇺🇸 CHRUSCHTSCHOW IN AMERIKA!");
                 Console.WriteLine("Das Volk staunt über Annäherung!");
@@ -7622,7 +7622,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Luna 2 trifft Mond 1959",
             "DER MOND GEHÖRT UNS! Luna 2 schlägt auf dem Mond ein - erstes menschgemachtes Objekt auf einem anderen Himmelskörper! Das Volk jubelt vor Radios: Wir sind überlegen! Amerika hinkt hinterher! Der Kosmos ist rot! Die Sowjet-Propaganda feiert den größten Triumph seit Jahren.",
-            "Kindheit", 90, 1959, "politisch",
+            "Kindheit", 100, 1959, "politisch",
             p => {
                 Console.WriteLine("\n🌙 LUNA 2 AUF DEM MOND!");
                 Console.WriteLine("Sowjetische Fahne auf dem Mond! Das Volk ist euphorisch!");
@@ -7639,7 +7639,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Sieben-Jahres-Plan 1959",
             "NEUE VERSPRECHUNGEN, ALTE LÜGEN! Chruschtschow verkündet einen ambitionierten Wirtschaftsplan: 'Kommunismus in 20 Jahren!' Das Volk will glauben, ist aber skeptisch. Sie haben schon so viele Pläne scheitern sehen. Die Schlangen vor Läden werden länger, nicht kürzer. Realität und Propaganda driften auseinander.",
-            "Kindheit", 70, 1959, "politisch",
+            "Kindheit", 100, 1959, "politisch",
             p => {
                 Console.WriteLine("\n📊 NEUER WIRTSCHAFTSPLAN VERKÜNDET!");
                 Console.WriteLine("Große Versprechen! Das Volk ist skeptisch!");
@@ -7657,7 +7657,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Belka und Strelka zurück 1960",
             "DIE HÜNDINNEN KEHREN HEIM! Im Gegensatz zu Laika überleben Belka und Strelka ihren Raumflug - erstes Lebewesen, das aus dem Orbit zurückkehrt! Das Volk feiert die beiden Heldinnen. Kinder wollen Belka-und-Strelka-Spielzeug. Der Weltraum-Triumph überdeckt die Armut auf der Erde.",
-            "Kindheit", 85, 1960, "politisch",
+            "Kindheit", 100, 1960, "politisch",
             p => {
                 Console.WriteLine("\n🐕🐕 BELKA UND STRELKA - LEBEND ZURÜCK!");
                 Console.WriteLine("Das Volk jubelt! Nationale Helden auf vier Pfoten!");
@@ -7674,7 +7674,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Francis Gary Powers Prozess 1960",
             "DER SPY IM KÄFIG! Der abgeschossene U-2-Pilot wird in Moskau vor Gericht gestellt. Millionen sehen den Prozess - Beweis für amerikanische Spionage! Das Volk fühlt sich bestätigt: Der Westen ist der Feind! Powers bekommt 10 Jahre, wird aber 1962 gegen einen sowjetischen Spion getauscht.",
-            "Kindheit", 80, 1960, "politisch",
+            "Kindheit", 100, 1960, "politisch",
             p => {
                 Console.WriteLine("\n⚖️ POWERS-PROZESS - PROPAGANDA-TRIUMPH!");
                 Console.WriteLine("Amerikanischer Spion verurteilt! Das Volk ist empört!");
@@ -7691,7 +7691,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Kongo-Krise UdSSR involviert 1960",
             "KALTER KRIEG IN AFRIKA! Nach der belgischen Dekolonisierung tobt ein Bürgerkrieg im Kongo. Die UdSSR unterstützt Lumumba, die USA Mobutu. Das Volk fragt: Warum kämpfen wir in Afrika, während wir hier hungern? Die globale Machtprojektion kostet Milliarden.",
-            "Kindheit", 75, 1960, "politisch",
+            "Kindheit", 100, 1960, "politisch",
             p => {
                 Console.WriteLine("\n🌍 KONGO-KRISE - KALTER KRIEG GLOBAL!");
                 Console.WriteLine("UdSSR kämpft in Afrika! Das Volk versteht es nicht!");
@@ -7709,7 +7709,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Titow 24 Stunden im All 1961",
             "MARATHON IM ORBIT! Gherman Titow umkreist die Erde 17 Mal in 25 Stunden - Rekord! Das Volk ist stolz: Während Amerika 15-Minuten-Hüpfer macht, leben wir einen Tag im Weltraum! Der Weltraum-Wettlauf geht klar an die UdSSR. Amerika ist demütig geschlagen.",
-            "Jugend", 85, 1961, "politisch",
+            "Jugend", 100, 1961, "politisch",
             p => {
                 Console.WriteLine("\n🚀 TITOW - 24 STUNDEN IM ORBIT!");
                 Console.WriteLine("Neuer Rekord! Das Volk feiert sowjetische Überlegenheit!");
@@ -7743,7 +7743,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Rudolf Nurejew defektiert 1961",
             "BALLET-STAR FLIEHT IN DEN WESTEN! Rudolf Nurejew, Sowjet-Ballettstar, bleibt in Paris und bittet um Asyl. Schock im Kreml! Das Volk ist gespalten: Manche nennen ihn Verräter, andere verstehen seinen Freiheitsdrang. Der Eiserne Vorhang kann selbst Künstler nicht halten.",
-            "Jugend", 75, 1961, "politisch",
+            "Jugend", 100, 1961, "politisch",
             p => {
                 Console.WriteLine("\n🩰 NUREJEW DEFEKTIERT!");
                 Console.WriteLine("Ballet-Star flieht! Das Volk ist schockiert!");
@@ -7811,7 +7811,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Gorbatschow verkündet Glasnost 1986",
             "TRANSPARENZ UND WAHRHEIT! Michail Gorbatschow verkündet 'Glasnost' - Offenheit! Die Presse darf kritisieren, das Volk darf reden. Nach 70 Jahren Lügen ein revolutionärer Schritt! Das Volk ist misstrauisch: Ist das eine Falle? Oder der Beginn echter Freiheit? Die Büchse der Pandora öffnet sich.",
-            "Präsident", 90, 1986, "politisch",
+            "Präsident", 100, 1986, "politisch",
             p => {
                 Console.WriteLine("\n📰 GLASNOST - OFFENHEIT BEGINNT!");
                 Console.WriteLine("Das Volk darf endlich die Wahrheit sprechen!");
@@ -7830,7 +7830,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Boris Jelzin auf dem Panzer 1991",
             "DER MANN AUF DEM PANZER! Hardliner putschen gegen Gorbatschow. Boris Jelzin klettert auf einen Panzer und ruft zum Widerstand! Das Volk strömt auf die Straßen - sie haben keine Angst mehr! Der Putsch scheitert nach drei Tagen. Die Sowjetunion hat nur noch Monate zu leben.",
-            "Präsident", 95, 1991, "politisch",
+            "Präsident", 100, 1991, "politisch",
             p => {
                 Console.WriteLine("\n✊ JELZIN AUF DEM PANZER - DEMOKRATIE SIEGT!");
                 Console.WriteLine("Der Putsch scheitert! Das Volk feiert Freiheit!");
@@ -7867,7 +7867,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Voucher-Privatisierung 1992",
             "JEDEM RUSSEN EINE AKTIE! Jelzin verteilt Privatisierungs-Voucher: 'Das Volkseigentum gehört dem Volk!' Das Volk bekommt Papiere im Wert von 10.000 Rubel. Doch clevere Oligarchen kaufen sie für Wodka auf. Das Volk wird betrogen - das Staatsvermögen landet in Oligarchen-Händen.",
-            "Präsident", 90, 1992, "politisch",
+            "Präsident", 100, 1992, "politisch",
             p => {
                 Console.WriteLine("\n📜 VOUCHER-PRIVATISIERUNG - DAS GROSSE BETRUG!");
                 Console.WriteLine("Oligarchen stehlen Volksvermögen! Das Volk ist wütend!");
@@ -7885,7 +7885,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Orange Revolution Nachwehen 2005",
             "UKRAINE WENDET SICH NACH WESTEN! Viktor Juschtschenko wird Präsident - Putins Kandidat verlor. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren? Putin zieht die Schrauben an. Die 'farbigen Revolutionen' werden zum Feindbild. Der Kreml hat Angst.",
-            "Präsident", 80, 2005, "politisch",
+            "Präsident", 100, 2005, "politisch",
             p => {
                 Console.WriteLine("\n🧡 UKRAINE-SCHOCK WIRKT NACH!");
                 Console.WriteLine("Putin sieht Bedrohung! Das Volk wird überwacht!");
@@ -7921,7 +7921,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Georgien-Russland Spionage-Krise 2006",
             "VIER OFFIZIERE VERHAFTET! Georgien verhaftet russische Offiziere wegen Spionage. Putin ist wütend - totales Embargo gegen Georgien! Wein, Wasser, alles verboten. Das Volk leidet unter höheren Preisen. Die Beziehungen sind am Nullpunkt. Zwei Jahre später: Krieg.",
-            "Präsident", 75, 2006, "politisch",
+            "Präsident", 100, 2006, "politisch",
             p => {
                 Console.WriteLine("\n🇬🇪 GEORGIEN-KRISE ESKALIERT!");
                 Console.WriteLine("Embargo verhängt! Das Volk zahlt die Rechnung!");
@@ -7939,7 +7939,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Putin München-Rede 2007",
             "KRIEGSERKLÄRUNG AN DEN WESTEN! Putin hält eine flammende Rede auf der Münchner Sicherheitskonferenz: 'Die USA wollen eine unipolare Welt!' Das Volk jubelt - endlich zeigt Russland Stärke! Der Westen ist schockiert. Der neue Kalte Krieg beginnt offiziell. Die Maske ist gefallen.",
-            "Präsident", 90, 2007, "politisch",
+            "Präsident", 100, 2007, "politisch",
             p => {
                 Console.WriteLine("\n🎤 MÜNCHEN-REDE - PUTIN GEGEN DEN WESTEN!");
                 Console.WriteLine("Das Volk feiert russische Stärke!");
@@ -7995,7 +7995,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "Anti-LGBT-Gesetze 2013",
             "'HOMOSEXUELLEN-PROPAGANDA' VERBOTEN! Putin unterzeichnet drakonische Anti-LGBT-Gesetze. Das Volk ist gespalten: Konservative jubeln, Liberale sind entsetzt. Der Westen protestiert - Putin ist es egal. 'Traditionelle Werte' werden zum Kampfbegriff gegen den dekadenten Westen.",
-            "Präsident", 75, 2013, "politisch",
+            "Präsident", 100, 2013, "politisch",
             p => {
                 Console.WriteLine("\n🏳️‍🌈 ANTI-LGBT-GESETZE ERLASSEN!");
                 Console.WriteLine("Das Volk ist tief gespalten!");
