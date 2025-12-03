@@ -4196,11 +4196,6 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("IRAKKRIEG_2003", "Irakkrieg - Russland dagegen", "[RU]", "[EN]", "20. März 2003", "[RU]", "[EN]", 2003, 3, "POLITIK",
-            @"Die USA marschieren im Irak ein - ohne UN-Mandat. Russland ist strikt dagegen.",
-            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
-            p => { p.EinflussInternational -= 15; Thread.Sleep(3000); }));
-        
         historicalEvents.Add(new HistoricalEvent("GASPROM_MONOPOL_2005", "Gasprom wird Energie-Gigant", "[RU]", "[EN]", "28. September 2005", "[RU]", "[EN]", 2005, 9, "WIRTSCHAFT",
             @"Gasprom schluckt Sibneft. Der Staat kontrolliert die Energieressourcen. Gas als Waffe!",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
