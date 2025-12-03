@@ -1158,25 +1158,7 @@ class Program
         }
     }
     
-    static void GenerateChildren(PlayerCharacter parent, int count)
-    {
-        string[] names = { "Dimitri", "Vladimir", "Nikolai", "Alexei", "Natasha", "Olga", "Irina", "Katya" };
-        
-        for (int i = 0; i < count; i++)
-        {
-            string childName = names[rand.Next(names.Length)] + " Rusputin Jr.";
-            PlayerCharacter child = new PlayerCharacter(childName, parent.Generation + 1);
-            
-            child.Stärke = Math.Max(0, parent.Stärke + rand.Next(-1, 3));
-            child.Intelligenz = Math.Max(0, parent.Intelligenz + rand.Next(-1, 3));
-            child.Charisma = Math.Max(0, parent.Charisma + rand.Next(-1, 3));
-            child.Kraft = Math.Max(0, parent.Kraft + rand.Next(-1, 3));
-            child.Alter = 5;
-            child.Phase = "Kind";
-            
-            parent.Kinder.Add(child);
-        }
-    }
+    // GenerateChildren entfernt - wird jetzt durch MarriageSystem.RandomBirth ersetzt
     
     static void ShowEnding(PlayerCharacter player, string type)
     {
