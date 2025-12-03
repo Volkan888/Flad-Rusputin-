@@ -8933,6 +8933,10 @@ class Program
         try
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+            
+            // SPRACHAUSWAHL
+            ChooseLanguage();
+            
             EventSystem.InitializeEvents(); // Zufalls-Ereignisse laden
             EventSystem.InitializeHistoricalEvents(); // Historische Ereignisse laden
             ShowIntro();
