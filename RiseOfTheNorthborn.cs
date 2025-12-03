@@ -1644,16 +1644,16 @@ class Program
                 case "1": StartNewGame(1); break;
                 case "2": StartMultiplayerGame(); break;
                 case "3": LoadGame(); break;
-                case "3": ShowFamilyTree(); break;
-                case "4":
+                case "4": ShowFamilyTree(); break;
+                case "5":
                     stopMusic = true;
                     Thread.Sleep(200);
                     BattleshipGame.Play();
                     stopMusic = false;
                     Task.Run(() => PlayMusic());
                     break;
-                case "5": ManageSaves(); break;
-                case "6":
+                case "6": ManageSaves(); break;
+                case "7":
                     stopMusic = true;
                     Console.WriteLine("\n>> Auf Wiedersehen, Genosse!");
                     Thread.Sleep(1000);
