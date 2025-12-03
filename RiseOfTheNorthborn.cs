@@ -8229,7 +8229,7 @@ static class EventSystem
 
 class Program
 {
-    static bool stopMusic = false;
+    public static bool stopMusic = false;
     public static int currentMusicTrack = 1; // Aktuelle Melodie (1-4)
     static Dictionary<int, GameSave> saveSlots = new Dictionary<int, GameSave>();
     public static Random rand = new Random();  // Public für Zugriff von anderen Klassen
