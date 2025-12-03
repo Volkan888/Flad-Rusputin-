@@ -2166,6 +2166,11 @@ class Program
         
         // Mehrere Jahre als Präsident - zufällige Geburten
         Console.WriteLine("\n>> Flad regiert mehrere Jahre...");
+        
+        // BUG-FIX 8: Zusätzliche Sicherheit gegen Endlosschleife
+        int kinderVorPhase = player.Kinder.Count;
+        int maxNeugeburten = 4; // Maximum 4 neue Kinder in dieser Phase
+        
         for (int jahr = 0; jahr < 10; jahr++)
         {
             player.Alter++;
@@ -2174,7 +2179,8 @@ class Program
             // Problem: Bei hoher Geburtenrate (z.B. 75%) traten zu viele Geburten
             //          direkt hintereinander auf → Spieler hing in Namenseingabe fest
             // Lösung: Geburten nur noch alle 2 Jahre möglich (realistischer + spielbar)
-            if (jahr % 2 == 0)
+            // BUG-FIX 8: Zusätzlich maximale Anzahl neuer Kinder pro Phase
+            if (jahr % 2 == 0 && (player.Kinder.Count - kinderVorPhase) < maxNeugeburten)
                 MarriageSystem.RandomBirth(player);
             
             // Tod prüfen
