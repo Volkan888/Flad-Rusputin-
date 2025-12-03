@@ -3068,6 +3068,8 @@ static class EventSystem
     
     /// <summary>
     /// InitializeHistoricalEvents - Lädt ALLE historischen/politischen/wirtschaftlichen Events CHRONOLOGISCH
+    /// 1952-2024: Circa 150 Events mit 2-3 Events pro Jahr
+    /// Übersetzungen (RU/EN) werden später hinzugefügt - aktuell Platzhalter
     /// </summary>
     public static void InitializeHistoricalEvents()
     {
