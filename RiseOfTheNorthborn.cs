@@ -9950,10 +9950,15 @@ class Program
     /// </summary>
     static void CheckSidechickEvent(PlayerCharacter player)
     {
+        // Nur in Präsidenten-Phase
+        if (player.Phase != "Präsident")
+            return;
+            
         // Alle 10 Jahre ab Alter 20 (20, 30, 40, 50, 60, 70, 80...)
-        if (player.Alter % 10 == 0 && player.Alter >= 20 && player.Alter != player.LetztesSidechickJahr)
+        int currentYear = player.GetCurrentYear();
+        if (player.Alter >= 20 && (currentYear % 10 == 0) && currentYear != player.LetztesSidechickJahr)
         {
-            player.LetztesSidechickJahr = player.Alter;
+            player.LetztesSidechickJahr = currentYear;
             TriggerSidechickEvent(player);
         }
     }
