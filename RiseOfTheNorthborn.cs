@@ -5254,10 +5254,10 @@ class Program
     }
     
     /// <summary>
-    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L/E/Q-Shortcuts
+    /// ReadInputWithShortcuts - Erweiterte Eingabe mit S/L/E/Q/T-Shortcuts
     /// 
-    /// FEATURE: Speichern/Laden/Erdogan-Nottelefon/Shop während des Spiels
-    /// Shortcuts: 'S' = Speichern, 'L' = Laden, 'E' = Erdogan-Nottelefon, 'Q' = Shop
+    /// FEATURE: Speichern/Laden/Erdogan-Nottelefon/Shop/Trump-Telefon während des Spiels
+    /// Shortcuts: 'S' = Speichern, 'L' = Laden, 'E' = Erdogan-Nottelefon, 'Q' = Shop, 'T' = Trump-Telefon
     /// </summary>
     static string ReadInputWithShortcuts(PlayerCharacter player, string prompt = "")
     {
@@ -5299,6 +5299,15 @@ class Program
                 Console.WriteLine("\n>> 🛒 Putin's Luxus-Shop wird geöffnet...");
                 Thread.Sleep(1000);
                 PutinShop.ShowShop(player);
+                Console.Clear();
+                Console.Write(prompt);  // Prompt erneut anzeigen
+                continue;
+            }
+            else if (input == "T")
+            {
+                Console.WriteLine("\n>> 📞 Trump-Telefon klingelt...");
+                Thread.Sleep(1000);
+                TrumpHotline.CallTrump(player);
                 Console.Clear();
                 Console.Write(prompt);  // Prompt erneut anzeigen
                 continue;
