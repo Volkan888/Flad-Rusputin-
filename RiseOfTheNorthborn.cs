@@ -1506,7 +1506,10 @@ class Program
         for (int jahr = 0; jahr < 10; jahr++)
         {
             player.Alter++;
-            MarriageSystem.RandomBirth(player);
+            
+            // Geburt nur alle 2 Jahre möglich (realistischer)
+            if (jahr % 2 == 0)
+                MarriageSystem.RandomBirth(player);
             
             // Tod prüfen
             if (DeathSystem.CheckDeath(player))
