@@ -2185,7 +2185,7 @@ static class EventSystem
             "23. Oktober: Tschetschenische Terroristen nehmen 850 Menschen als Geiseln. Gasbetäubung - 130 Geiseln sterben...",
             "Präsident", 15,
             p => {
-                Console.WriteLine("p => {player.GetFirstName()} muss eine unmögliche Entscheidung treffen...");
+                Console.WriteLine($"{p.GetFirstName()} muss eine unmögliche Entscheidung treffen...");
                 p.EinflussKGB += 20; // Harter Einsatz
                 p.LoyalitätVolk -= 30; // Zivile Opfer
                 p.Gesundheit -= 25; // Gewissenslast
