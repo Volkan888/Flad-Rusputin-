@@ -2058,13 +2058,20 @@ static class SoundSystem
             
             for (int i = 0; i < notes.Length; i++)
             {
-                // Beep deaktiviert
-                Thread.Sleep(30);
+                try
+                {
+                    Console.Beep(notes[i], durations[i]);
+                }
+                catch
+                {
+                    // Einzelner Beep fehlgeschlagen - weiter
+                    Thread.Sleep(durations[i]);
+                }
             }
         }
         catch
         {
-            Console.WriteLine("\n[Katyusha erklingt...]");
+            Console.WriteLine("\n♪ [Katyusha erklingt...] ♪");
             Thread.Sleep(3000);
         }
         
