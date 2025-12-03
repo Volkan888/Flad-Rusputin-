@@ -1137,7 +1137,7 @@ class Program
         Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)\n");
         Console.Write("Wähle [1-3]: ");
         
-        choice = Console.ReadLine();
+        string choice = Console.ReadLine();
         if (choice == "1")
         {
             player.EinflussMilitär += 50;
