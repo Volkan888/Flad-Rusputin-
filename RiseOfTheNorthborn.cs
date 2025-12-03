@@ -1431,7 +1431,8 @@ static class PutinShop
 /// </summary>
 static class ErdoganHotline
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     
     /// <summary>
     /// ShowHotlineMenu - Zeigt das Erdogan-Nottelefon Menü
