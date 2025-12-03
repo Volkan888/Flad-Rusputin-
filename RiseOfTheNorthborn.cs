@@ -6758,6 +6758,315 @@ static class EventSystem
                 Thread.Sleep(4500);
             }
         ));
+        
+        // 1965-1970 - Vietnam-Krieg Ära
+        allEvents.Add(new RandomEvent(
+            "Leonid Breschnew Macht 1965",
+            "NEUE ÄRA DER STAGNATION! Breschnew übernimmt die Macht und beendet Chruschtschows Reformen. Die Hoffnung auf Veränderung stirbt. Das Volk spürt, dass die Uhr rückwärts dreht. Panzer statt Brot, Propaganda statt Wahrheit. Die 'Ära der Stagnation' beginnt - 18 Jahre Stillstand.",
+            "Jugend", 85, 1965, "politisch",
+            p => {
+                Console.WriteLine("\n☭ BRESCHNEW ÜBERNIMMT - STAGNATION BEGINNT!");
+                Console.WriteLine("Reformen enden! Das Volk verliert die Hoffnung!");
+                p.LoyalitätPartei += 20;
+                p.LoyalitätVolk -= 25;
+                p.Geld -= 100;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"➕ Partei: +20% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -10% → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Vietnam-Krieg Eskalation 1965",
+            "PROXY-KRIEG IN ASIEN! Die USA bombardieren Nordvietnam - sowjetische Waffen schießen zurück. Das Volk sieht die Wochenschau: Amerikanische Jets brennen, sowjetische SAM-Raketen triumphieren. 'Wir bekämpfen den Imperialismus', sagt die Propaganda. Das Volk zahlt mit Rubeln und Hunger.",
+            "Jugend", 80, 1965, "politisch",
+            p => {
+                Console.WriteLine("\n💥 VIETNAM - SOWJETISCHE WAFFEN IM EINSATZ!");
+                Console.WriteLine("Kalter Krieg wird heiß! Das Volk zahlt die Rechnung!");
+                p.EinflussMilitär += 25;
+                p.Geld -= 300;
+                p.LoyalitätVolk -= 15;
+                p.EinflussInternational += 20;
+                Console.WriteLine($"➕ Militär: +25 → {p.EinflussMilitär}");
+                Console.WriteLine($"💰 Kosten: -300 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -15% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Leonid Breschnew Kultpersönlichkeit 1966",
+            "DER NEUE GOTT! Breschnews Gesicht ist überall - Plakate, Statuen, Briefmarken. Er verleiht sich selbst Orden und Medaillen wie Bonbons. Das Volk lacht heimlich über den aufgeblasenen Greis. 'Genosse Augenbrauen' nennen sie ihn. Doch laut lachen kostet 5 Jahre Gulag.",
+            "Jugend", 70, 1966, "politisch",
+            p => {
+                Console.WriteLine("\n🏅 BRESCHNEW-KULT BEGINNT!");
+                Console.WriteLine("Selbstverherrlichung ohne Ende! Das Volk spottet heimlich!");
+                p.LoyalitätPartei += 15;
+                p.LoyalitätVolk -= 20;
+                p.Charisma -= 1;
+                p.Geld -= 50;
+                Console.WriteLine($"➕ Partei: +15% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Charisma: -1 (Personenkult ist peinlich)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sechs-Tage-Krieg 1967",
+            "DEMÜTIGUNG IM NAHEN OSTEN! Israel zerschmettert arabische Armeen in nur 6 Tagen - alle mit sowjetischen Waffen ausgerüstet! Das Volk hört die Nachrichten ungläubig: MiGs vom Himmel geschossen, Panzer verbrannt. 'Unsere Waffen taugen nichts', flüstern sie. Die Propaganda schweigt betreten.",
+            "Jugend", 85, 1967, "katastrophe",
+            p => {
+                Console.WriteLine("\n✡️ SECHS-TAGE-KRIEG - SOWJETISCHE NIEDERLAGE!");
+                Console.WriteLine("Arabische Armeen vernichtet! Das Volk zweifelt an der Macht!");
+                p.EinflussMilitär -= 30;
+                p.LoyalitätVolk -= 20;
+                p.EinflussInternational -= 25;
+                p.Geld -= 400;
+                Console.WriteLine($"➖ Militär: -30 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -25 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Prager Frühling 1968",
+            "PANZER GEGEN TRÄUME! Alexander Dubček versucht 'Sozialismus mit menschlichem Antlitz' in der Tschechoslowakei. Das Volk in Moskau horcht auf - könnte das auch bei uns funktionieren? NEIN! 500.000 Soldaten und 6000 Panzer walzen Prag nieder. Träume sterben unter Ketten.",
+            "Jugend", 95, 1968, "katastrophe",
+            p => {
+                Console.WriteLine("\n🇨🇿 PRAGER FRÜHLING BLUTIG BEENDET!");
+                Console.WriteLine("Panzer rollen durch Prag! Das Volk weint um zerstörte Hoffnungen!");
+                p.EinflussMilitär += 30;
+                p.LoyalitätVolk -= 35;
+                p.EinflussInternational -= 40;
+                p.Gesundheit -= 15;
+                Console.WriteLine($"➕ Militär: +30 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk: -35% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -40 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 1970er - Breschnew-Stagnation
+        allEvents.Add(new RandomEvent(
+            "Dissidenten-Bewegung 1970",
+            "MUTIGE STIMMEN ERHEBEN SICH! Sacharow, Solschenizyn und andere Dissidenten kritisieren offen das Regime. Das Volk liest heimlich Samisdat-Literatur - auf Schreibmaschinen kopierte verbotene Texte. Jeder, der erwischt wird, verschwindet. Doch die Wahrheit lässt sich nicht mehr stoppen.",
+            "KGB", 75, 1970, "politisch",
+            p => {
+                Console.WriteLine("\n✊ DISSIDENTEN FORDERN FREIHEIT!");
+                Console.WriteLine("Untergrund-Literatur verbreitet sich! Das Volk erwacht langsam!");
+                p.EinflussKGB += 20;
+                p.LoyalitätVolk -= 25;
+                p.Intelligenz += 2;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine($"➕ KGB: +20 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Intelligenz: +2 (du liest verbotene Bücher)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Öl-Boom 1973",
+            "SCHWARZES GOLD RETTET DIE SOWJETUNION! Die Ölkrise lässt Preise explodieren - Petrodollars fluten Moskau. Das Volk bemerkt winzige Verbesserungen: mehr Wurst, weniger Schlangen. Doch das Geld wird nicht investiert - es verschwindet in Korruption und Rüstung. Der Untergang wird nur vertagt.",
+            "KGB", 90, 1973, "politisch",
+            p => {
+                Console.WriteLine("\n🛢️ ÖL-BOOM - KURZER WOHLSTAND!");
+                Console.WriteLine("Petrodollars fließen! Das Volk atmet auf - vorerst!");
+                p.Geld += 800;
+                p.LoyalitätVolk += 20;
+                p.EinflussInternational += 15;
+                p.Gesundheit += 10;
+                Console.WriteLine($"💰 Geld: +800 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Gesundheit: +10% → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Helsinki-Abkommen 1975",
+            "SCHEIN-ENTSPANNUNG IN EUROPA! 35 Nationen unterzeichnen Abkommen über Menschenrechte und Grenzen. Breschnew unterschreibt lächelnd - und ignoriert alles sofort. Das Volk hofft kurz auf Reisefreiheit. FEHLANZEIGE! Die Mauer steht, die Grenzen töten. Helsinki ist nur Papier.",
+            "KGB", 70, 1975, "politisch",
+            p => {
+                Console.WriteLine("\n📜 HELSINKI - LEERE VERSPRECHEN!");
+                Console.WriteLine("Menschenrechte unterschrieben, aber ignoriert! Das Volk ist enttäuscht!");
+                p.EinflussInternational += 20;
+                p.LoyalitätVolk -= 15;
+                p.Charisma += 1;
+                p.Geld += 100;
+                Console.WriteLine($"➕ International: +20 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -15% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Charisma: +1 (du lernst Doppelzüngigkeit)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Afghanistan-Invasion 1979",
+            "DIE SOWJETUNION MARSCHIERT IN DEN ABGRUND! 100.000 Soldaten überqueren die Grenze nach Afghanistan. 'Es wird nur ein paar Wochen dauern', lügt die Propaganda. Das Volk schickt seine Söhne in den Tod. 10 Jahre Krieg, 15.000 tote Russen, unzählige Mütter weinen. Afghanistans Berge werden zum Friedhof.",
+            "KGB", 95, 1979, "katastrophe",
+            p => {
+                Console.WriteLine("\n⚔️ AFGHANISTAN - DAS SOWJETISCHE VIETNAM!");
+                Console.WriteLine("Die Invasion beginnt! Das Volk ahnt das Desaster!");
+                p.EinflussMilitär += 25;
+                p.Geld -= 600;
+                p.LoyalitätVolk -= 30;
+                p.Gesundheit -= 20;
+                Console.WriteLine($"➕ Militär: +25 → {p.EinflussMilitär}");
+                Console.WriteLine($"💰 Kosten: -600 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 2010er - Moderne Putin-Ära
+        allEvents.Add(new RandomEvent(
+            "Proteste gegen Wahlfälschung 2011",
+            "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Putin ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Putin lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
+            "Präsident", 85, 2011, "politisch",
+            p => {
+                Console.WriteLine("\n✊ PROTESTE GEGEN PUTIN!");
+                Console.WriteLine("100.000 auf den Straßen! Das Volk will Wandel!");
+                p.LoyalitätVolk -= 35;
+                p.EinflussKGB += 20;
+                p.LoyalitätPartei -= 15;
+                p.Gesundheit -= 15;
+                Console.WriteLine($"➖ Volk: -35% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ KGB/FSB: +20 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Partei: -15% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Pussy Riot Verhaftung 2012",
+            "PUNK-GEBET IM ERLÖSER-KATHEDRALE! Drei Frauen stürmen die Hauptkirche und singen 'Mutter Gottes, vertreibe Putin!' 2 Jahre Straflager. Das Volk ist gespalten: Helden oder Gotteslästerer? Der Westen protestiert. Putin ist es egal. Die Nachricht ist klar: Widerstand wird gebrochen.",
+            "Präsident", 80, 2012, "politisch",
+            p => {
+                Console.WriteLine("\n🎸 PUSSY RIOT - PROTEST WIRD BESTRAFT!");
+                Console.WriteLine("2 Jahre Lager für ein Lied! Das Volk ist gespalten!");
+                p.EinflussKGB += 15;
+                p.LoyalitätVolk -= 20;
+                p.EinflussInternational -= 25;
+                p.LoyalitätPartei += 10;
+                Console.WriteLine($"➕ KGB/FSB: +15 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -25 → {p.EinflussInternational}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Meteorit Tscheljabinsk 2013",
+            "DER HIMMEL EXPLODIERT! Ein 20-Meter-Asteroid rast über Tscheljabinsk - die Druckwelle zerstört 7000 Gebäude! 1500 Verletzte. Dashcam-Videos gehen viral - die ganze Welt sieht russische Autofahrer, die nicht mal blinzeln. 'Normaler Tag in Russland', witzelt das Volk. Galgenhumor gegen die Härte des Lebens.",
+            "Präsident", 90, 2013, "katastrophe",
+            p => {
+                Console.WriteLine("\n☄️ METEORIT SCHOCKT RUSSLAND!");
+                Console.WriteLine("7000 Gebäude zerstört! Das Volk bleibt stoisch!");
+                p.Gesundheit -= 20;
+                p.Geld -= 500;
+                p.LoyalitätVolk += 10;
+                p.Kraft += 1;
+                Console.WriteLine($"➖ Gesundheit: -20% → {p.Gesundheit}%");
+                Console.WriteLine($"💰 Schaden: -500 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ Kraft: +1 (russische Härte)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Olympia Sotschi 2014",
+            "DIE TEUERSTEN SPIELE ALLER ZEITEN! 51 Milliarden Dollar für Putins Prestige-Projekt. Korruption frisst Milliarden. Das Volk sieht glitzernde Stadien im Fernsehen - während sie in verfallenen Plattenbauten frieren. 'Brot und Spiele', sagen die Zyniker. Eine Woche später: Krim-Annexion beginnt.",
+            "Präsident", 85, 2014, "politisch",
+            p => {
+                Console.WriteLine("\n🏅 SOTSCHI-OLYMPIA - VERSCHWENDUNG!");
+                Console.WriteLine("51 Milliarden für Propaganda! Das Volk zahlt die Zeche!");
+                p.EinflussInternational += 20;
+                p.Geld -= 1000;
+                p.LoyalitätVolk -= 25;
+                p.LoyalitätPartei += 15;
+                Console.WriteLine($"➕ International: +20 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Kosten: -1000 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krim-Annexion 2014",
+            "DIE KRIM IST UNSER! 'Grüne Männchen' ohne Abzeichen übernehmen die Halbinsel. Putin leugnet alles - dann gibt er später zu, es waren russische Soldaten. Das Volk jubelt: Endlich Stärke! Westliche Sanktionen folgen sofort. Der Rubel stürzt ab. Patriotismus füllt keine Mägen.",
+            "Präsident", 95, 2014, "politisch",
+            p => {
+                Console.WriteLine("\n🇷🇺 KRIM ZURÜCK ZU RUSSLAND!");
+                Console.WriteLine("Das Volk jubelt! Aber Sanktionen folgen sofort!");
+                p.EinflussMilitär += 40;
+                p.LoyalitätVolk += 30;
+                p.EinflussInternational -= 50;
+                p.Geld -= 700;
+                Console.WriteLine($"➕ Militär: +40 → {p.EinflussMilitär}");
+                Console.WriteLine($"➕ Volk: +30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -50 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "MH17 über Ukraine abgeschossen 2014",
+            "298 UNSCHULDIGE STERBEN! Eine malaysische Boeing wird über der Ostukraine abgeschossen - alle tot. Beweise zeigen: russische BUK-Rakete. Putin leugnet alles, zeigt auf Ukraine. Das Volk glaubt der Propaganda - oder schweigt. Die Familien der Opfer fordern Gerechtigkeit. Russland blockiert alles.",
+            "Präsident", 90, 2014, "katastrophe",
+            p => {
+                Console.WriteLine("\n✈️💥 MH17 ABGESCHOSSEN - 298 TOTE!");
+                Console.WriteLine("Russland wird beschuldigt! Das Volk ist verwirrt!");
+                p.EinflussInternational -= 40;
+                p.LoyalitätVolk -= 20;
+                p.Gesundheit -= 15;
+                p.Geld -= 300;
+                Console.WriteLine($"➖ International: -40 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -15% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rubel-Kollaps 2014",
+            "SCHWARZER DEZEMBER! Der Rubel verliert 50% seines Wertes in Wochen. Sanktionen und Ölpreisverfall treffen brutal. Das Volk stürmt Geschäfte, kauft panisch Elektronik und Autos. Renten sind plötzlich wertlos. Alte Frauen weinen - schon wieder alles verloren, wie 1998, wie 1991. Die Erinnerung an Zusammenbrüche brennt.",
+            "Präsident", 95, 2014, "katastrophe",
+            p => {
+                Console.WriteLine("\n💸 RUBEL-KOLLAPS - WÄHRUNG IM FREIEN FALL!");
+                Console.WriteLine("Das Volk verliert alles! Panik und Wut überall!");
+                p.Geld -= 800;
+                p.LoyalitätVolk -= 40;
+                p.Gesundheit -= 25;
+                p.LoyalitätPartei -= 20;
+                Console.WriteLine($"💰 Verlust: -800 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -40% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -25% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Boris Nemzow ermordet 2015",
+            "OPPOSITIONSFÜHRER VOR DEM KREML ERSCHOSSEN! Boris Nemzow stirbt in Sichtweite des Kremls - 4 Kugeln in den Rücken. Das Volk ist schockiert: Selbst in Moskau ist niemand sicher. Die Täter werden schnell gefasst - Tschetschenen. Doch wer gab den Auftrag? Die Frage darf nicht gestellt werden.",
+            "Präsident", 85, 2015, "katastrophe",
+            p => {
+                Console.WriteLine("\n🔫 NEMZOW ERMORDET - TERROR IM ZENTRUM!");
+                Console.WriteLine("Kreml-Kritiker tot! Das Volk versteht die Botschaft!");
+                p.EinflussKGB += 25;
+                p.LoyalitätVolk -= 30;
+                p.EinflussInternational -= 30;
+                p.Gesundheit -= 15;
+                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -30 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
     }
     
     /// <summary>
