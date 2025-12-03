@@ -283,6 +283,11 @@ class PlayerCharacter
     // ═══ PUTIN-LUXUS-SHOP (NEUE FEATURE) ═══
     public List<ShopItem> Besitztümer;   // Gekaufte Luxusgegenstände (Autos, Pferde, etc.)
     
+    // ═══ TRUMP-TELEFON EASTER EGG ═══
+    public bool TrumpTelefonAktiv;       // TRUE wenn Trump-Telefon freigeschaltet
+    public int TrumpAnrufeVerfügbar;     // Anzahl verbleibender Anrufe (max 3)
+    public int USABeziehung;             // Beziehungswert zu USA (0-100)
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
