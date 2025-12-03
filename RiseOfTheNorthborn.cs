@@ -2125,19 +2125,46 @@ class BattleshipGame
     }
 }
 
+/// <summary>
+/// Board - Repräsentiert ein Schiffe-Versenken-Spielfeld
+/// 
+/// Verwaltet ein 2D-Gitter für das Battleship-Spiel.
+/// 
+/// GRÖSSEN:
+/// - 6x6 (Klein): Schnelles Spiel
+/// - 8x8 (Groß): Längeres Spiel
+/// 
+/// ZEICHEN IM GRID:
+/// '~' = Wasser (unberührt)
+/// 'S' = Schiff (Ship)
+/// 'X' = Treffer (Hit)
+/// 'O' = Fehlschuss (Miss)
+/// 
+/// METHODEN:
+/// - PlaceShip(): Schiff platzieren mit Kollisionsprüfung
+/// - Attack(): Angriff auf Feld ausführen
+/// - AllShipsSunk(): Prüft ob alle Schiffe versenkt sind
+/// - Display(): Zeigt Spielfeld an (mit/ohne Schiffe)
+/// </summary>
 class Board
 {
-    public int Size;
-    public char[,] Grid;
-    public string PlayerName;
-    List<Ship> ships = new List<Ship>();
+    public int Size;                 // Feldgröße (6 oder 8)
+    public char[,] Grid;             // 2D-Array für das Spielfeld
+    public string PlayerName;        // Name des Besitzers
+    List<Ship> ships = new List<Ship>();  // Liste aller Schiffe auf diesem Feld
     
+    /// <summary>
+    /// Konstruktor - Erstellt ein neues Spielfeld
+    /// </summary>
+    /// <param name="size">Feldgröße (6 oder 8)</param>
+    /// <param name="name">Name des Spielers</param>
     public Board(int size, string name)
     {
         Size = size;
         PlayerName = name;
-        Grid = new char[size, size];
+        Grid = new char[size, size];  // 2D-Array erstellen
         
+        // Initialisiere gesamtes Feld mit Wasser ('~')
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 Grid[i, j] = '~';
