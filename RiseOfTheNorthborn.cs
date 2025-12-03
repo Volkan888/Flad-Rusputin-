@@ -133,17 +133,35 @@ class PlayerCharacter
     }
 }
 
+/// <summary>
+/// GameSave - Speicherstand-Klasse
+/// 
+/// ÄNDERUNG 3: Erweitertes Speicher/Laden-System
+/// 
+/// Diese Klasse speichert einen kompletten Spielstand mit:
+/// - Benutzerdefiniertem Namen (vom Spieler eingegeben)
+/// - Datum und Uhrzeit der Speicherung
+/// - Kompletten Charakterdaten
+/// - Generationsnummer für Übersicht
+/// 
+/// VERBESSERUNG gegenüber vorher:
+/// - Vorher: Nur automatische Namen
+/// - Jetzt: Spieler kann eigenen Namen vergeben (z.B. "Mein Hardliner-Durchlauf")
+/// </summary>
 class GameSave
 {
-    public string SaveName;
-    public DateTime SaveDate;
-    public PlayerCharacter Character;
-    public int Generation;
+    public string SaveName;          // Vom Spieler vergebener Name
+    public DateTime SaveDate;        // Zeitstempel der Speicherung (DD.MM.YYYY HH:MM:SS)
+    public PlayerCharacter Character; // Kompletter Charakterzustand
+    public int Generation;           // Generationsnummer für Übersicht
     
+    /// <summary>
+    /// Konstruktor - Erstellt einen neuen Spielstand
+    /// </summary>
     public GameSave(string name, PlayerCharacter character)
     {
         SaveName = name;
-        SaveDate = DateTime.Now;
+        SaveDate = DateTime.Now;      // Aktuelles Datum/Uhrzeit
         Character = character;
         Generation = character.Generation;
     }
