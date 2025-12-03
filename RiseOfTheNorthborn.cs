@@ -1679,6 +1679,673 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
+        // HISTORISCHE KATASTROPHEN (1952-2021)
+        // Reale Ereignisse in chronologischer Reihenfolge
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Kamtschatka-Erdbeben 1952",
+            "Ein gewaltiges Beben der Stärke 9,0 erschüttert Kamtschatka! Tsunami verwüstet Küstensiedlungen. Severo-Kurilsk wird zerstört...",
+            "Präsident", 0, 1952, "katastrophe",
+            p => {
+                Console.WriteLine("Über 2.300 Menschen kommen ums Leben. Stärkstes Beben in Russlands Geschichte!");
+                p.Gesundheit -= 30;
+                p.Geld -= 400;
+                p.LoyalitätVolk -= 35;
+                p.EinflussMilitär += 10; // Armee hilft bei Rettung
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kyshtym-Nuklearunfall 1957",
+            "GEHEIM! In der Atomanlage Mayak explodiert ein Tank mit radioaktiven Abfällen. 23.000 km² Land kontaminiert...",
+            "Präsident", 0, 1957, "katastrophe",
+            p => {
+                Console.WriteLine("Über 10.000 Menschen evakuiert. Hunderte Strahlentote. Bis 1989 geheim gehalten!");
+                p.Gesundheit -= 40;
+                p.Geld -= 500;
+                p.LoyalitätVolk -= 50; // Wenn bekannt wird
+                p.LoyalitätPartei -= 30; // Vertuschung
+                p.EinflussKGB += 25; // Geheimhaltung
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Tschernobyl-Katastrophe 1986",
+            "26. April: Block 4 des Kernkraftwerks Tschernobyl explodiert! Kernschmelze, radioaktive Wolke über Europa...",
+            "Präsident", 0, 1986, "katastrophe",
+            p => {
+                Console.WriteLine("Hunderttausende Liquidatoren mobilisiert. Schlimmste Nuklearkatastrophe der Geschichte!");
+                p.Gesundheit -= 50;
+                p.Geld -= 800;
+                p.LoyalitätVolk -= 60;
+                p.LoyalitätPartei -= 40;
+                p.EinflussInternational -= 50;
+                p.EinflussKGB += 15; // Informationskontrolle
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Ufa-Gasexplosion 1989",
+            "4. Juni: Undichte Pipeline explodiert, als zwei Züge vorbeifahren! Feuersturm nahe Ufa...",
+            "Präsident", 0, 1989, "katastrophe",
+            p => {
+                Console.WriteLine("575 Tote, 800 Verletzte. Schwerstes Zugunglück der sowjetischen Geschichte!");
+                p.Gesundheit -= 35;
+                p.Geld -= 350;
+                p.LoyalitätVolk -= 40;
+                p.LoyalitätPartei -= 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Zerfall der Sowjetunion 1991",
+            "Ende 1991: Die UdSSR zerfällt! Wirtschaftskollaps, Inflation explodiert, Millionen verarmen...",
+            "Präsident", 0, 1991, "katastrophe",
+            p => {
+                Console.WriteLine("'Größte geopolitische Katastrophe des 20. Jahrhunderts' - Putin");
+                p.Gesundheit -= 40;
+                p.Geld -= 600;
+                p.LoyalitätVolk -= 70;
+                p.LoyalitätPartei -= 80;
+                p.EinflussInternational -= 60;
+                p.EinflussKGB -= 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Erdbeben von Neftegorsk 1995",
+            "28. Mai: Beben der Stärke 7,6 auf Sachalin! Neftegorsk in 17 Sekunden ausgelöscht...",
+            "Präsident", 0, 1995, "katastrophe",
+            p => {
+                Console.WriteLine("Über 2.000 Tote - zwei Drittel der Einwohner! Stadt wird nicht wiederaufgebaut.");
+                p.Gesundheit -= 35;
+                p.Geld -= 300;
+                p.LoyalitätVolk -= 35;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Russische Finanzkrise 1998",
+            "17. August: Russland erklärt Staatsinsolvenz! Rubel stürzt ab, Banken brechen zusammen...",
+            "Präsident", 0, 1998, "katastrophe",
+            p => {
+                Console.WriteLine("Millionen Russen verlieren ihre Ersparnisse. Wirtschaft in Rezession!");
+                p.Gesundheit -= 30;
+                p.Geld -= 700;
+                p.LoyalitätVolk -= 65;
+                p.LoyalitätPartei -= 50;
+                p.EinflussInternational -= 45;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Apartmenthaus-Bombenserie 1999",
+            "September: Bombenanschläge auf Wohnhäuser in Moskau, Buinaksk, Wolgodonsk...",
+            "Präsident", 0, 1999, "katastrophe",
+            p => {
+                Console.WriteLine("Über 300 Tote, 1.000+ Verletzte! Tschetschenischen Terroristen zugeschrieben.");
+                p.Gesundheit -= 40;
+                p.Geld -= 250;
+                p.LoyalitätVolk -= 50;
+                p.EinflussKGB += 30; // Sicherheitsapparat gestärkt
+                p.EinflussMilitär += 25; // Kriegsgrund Tschetschenien
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Untergang U-Boot Kursk 2000",
+            "12. August: Atomares U-Boot Kursk sinkt in der Barentssee nach Explosion...",
+            "Präsident", 0, 2000, "katastrophe",
+            p => {
+                Console.WriteLine("Alle 118 Besatzungsmitglieder tot. Putin bleibt im Urlaub - heftige Kritik!");
+                p.Gesundheit -= 35;
+                p.Geld -= 200;
+                p.LoyalitätVolk -= 40;
+                p.LoyalitätPartei -= 20;
+                p.EinflussInternational -= 25;
+                p.EinflussMilitär -= 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Dubrowka-Geiseldrama 2002",
+            "23. Oktober: Tschetschenische Terroristen nehmen 850 Menschen im Moskauer Theater als Geiseln...",
+            "Präsident", 0, 2002, "katastrophe",
+            p => {
+                Console.WriteLine("Spezialeinheiten leiten Gas ein und stürmen. 130 Geiseln sterben durch Gas und Gefechte!");
+                p.Gesundheit -= 45;
+                p.Geld -= 150;
+                p.LoyalitätVolk -= 35;
+                p.EinflussKGB += 25; // Harter Einsatz
+                p.EinflussMilitär += 20;
+                p.EinflussInternational -= 30; // Kontroverse
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Geiselnahme von Beslan 2004",
+            "1. September: Islamistische Terroristen stürmen Schule in Beslan, über 1.100 Geiseln...",
+            "Präsident", 0, 2004, "katastrophe",
+            p => {
+                Console.WriteLine("3. September: Blutiges Ende! Über 330 Tote, darunter viele Kinder. Russland in Schock!");
+                p.Gesundheit -= 55;
+                p.Geld -= 200;
+                p.LoyalitätVolk -= 50;
+                p.LoyalitätPartei -= 30;
+                p.EinflussMilitär += 20;
+                p.EinflussKGB += 35; // Zentralisierung folgt
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sajano-Schuschensker Dammunglück 2009",
+            "17. August: Turbine 2 explodiert im größten Wasserkraftwerk Russlands! Turbinenhalle überflutet...",
+            "Präsident", 0, 2009, "katastrophe",
+            p => {
+                Console.WriteLine("75 Tote. 9 von 10 Turbinen zerstört! Kompletter Stromausfall in Sibirien.");
+                p.Gesundheit -= 30;
+                p.Geld -= 450;
+                p.LoyalitätVolk -= 35;
+                p.LoyalitätPartei -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Hitzewelle und Waldbrände 2010",
+            "Sommer 2010: Rekord-Hitze über 40°C! Moskau in Rauchschwaden, 127 Ortschaften brennen ab...",
+            "Präsident", 0, 2010, "katastrophe",
+            p => {
+                Console.WriteLine("Über 50 direkte Brandtote, mehrere Tausend Hitzetote insgesamt. 1.200 Häuser zerstört!");
+                p.Gesundheit -= 40;
+                p.Geld -= 500;
+                p.LoyalitätVolk -= 45;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Flugzeugabsturz Smolensk 2010",
+            "10. April: Polnisches Regierungsflugzeug stürzt bei Smolensk ab...",
+            "Präsident", 0, 2010, "katastrophe",
+            p => {
+                Console.WriteLine("Alle 96 Insassen tot, darunter polnischer Präsident Kaczyński! Polen in Schock.");
+                p.Gesundheit -= 25;
+                p.Geld -= 100;
+                p.EinflussInternational -= 30; // Belastetes Verhältnis zu Polen
+                p.LoyalitätVolk += 10; // Mitgefühl
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Untergang Flusskreuzer Bulgaria 2011",
+            "10. Juli: Marodes Ausflugsschiff Bulgaria sinkt auf der Wolga...",
+            "Präsident", 0, 2011, "katastrophe",
+            p => {
+                Console.WriteLine("122 Tote, darunter 28 Kinder! Schiff war überladen und ohne Lizenz.");
+                p.Gesundheit -= 35;
+                p.Geld -= 150;
+                p.LoyalitätVolk -= 40;
+                p.LoyalitätPartei -= 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Überschwemmung Krymsk 2012",
+            "Juli: Extreme Regenfälle! Kleinstadt Krymsk nachts von Flutwelle getroffen...",
+            "Präsident", 0, 2012, "katastrophe",
+            p => {
+                Console.WriteLine("Über 150 Tote, 50.000 Betroffene! Keine rechtzeitige Warnung der Bevölkerung.");
+                p.Gesundheit -= 35;
+                p.Geld -= 300;
+                p.LoyalitätVolk -= 40;
+                p.LoyalitätPartei -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Flutkatastrophe Ferner Osten 2013",
+            "Sommer 2013: Amur tritt kilometerweit über die Ufer! 235 Ortschaften überflutet...",
+            "Präsident", 0, 2013, "katastrophe",
+            p => {
+                Console.WriteLine("90.000 Evakuierte, 13.000 Häuser unter Wasser! Schlimmstes Hochwasser seit Menschengedenken.");
+                p.Gesundheit -= 40;
+                p.Geld -= 550;
+                p.LoyalitätVolk -= 35;
+                p.EinflussMilitär += 15; // Militär hilft
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rubelkrise 2014",
+            "Ende 2014: Westliche Sanktionen und Ölpreis-Verfall! Rubel verliert 50% seines Wertes...",
+            "Präsident", 0, 2014, "katastrophe",
+            p => {
+                Console.WriteLine("Leitzins auf 17% angehoben! Inflation zweistellig, Wirtschaft in Rezession.");
+                p.Gesundheit -= 30;
+                p.Geld -= 600;
+                p.LoyalitätVolk -= 50;
+                p.LoyalitätPartei -= 25;
+                p.EinflussInternational -= 40;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Brand Kemerowo 2018",
+            "25. März: Feuer im 'Winterkirsch'-Einkaufszentrum! Notausgänge verschlossen, Alarm versagt...",
+            "Präsident", 0, 2018, "katastrophe",
+            p => {
+                Console.WriteLine("64 Tote, darunter 40 Kinder! Landesweite Trauerkundgebungen und Proteste.");
+                p.Gesundheit -= 40;
+                p.Geld -= 200;
+                p.LoyalitätVolk -= 50;
+                p.LoyalitätPartei -= 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "COVID-19-Pandemie 2020",
+            "Frühjahr 2020: Globale Corona-Pandemie erreicht Russland! Strikte Ausgangsbeschränkungen...",
+            "Präsident", 0, 2020, "katastrophe",
+            p => {
+                Console.WriteLine("Bis 2023 über 500.000 Tote (Schätzung)! Krankenhäuser an Kapazitätsgrenzen.");
+                p.Gesundheit -= 60;
+                p.Geld -= 800;
+                p.LoyalitätVolk -= 55;
+                p.LoyalitätPartei -= 20;
+                p.EinflussInternational -= 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rekord-Waldbrände Sibirien 2021",
+            "Sommer 2021: Zweitgrößte Waldbrände des 21. Jahrhunderts! 3,4 Millionen Hektar brennen...",
+            "Präsident", 0, 2021, "katastrophe",
+            p => {
+                Console.WriteLine("Rauch erreicht erstmals den Nordpol! Klimawandel und mangelnde Finanzierung kritisiert.");
+                p.Gesundheit -= 35;
+                p.Geld -= 400;
+                p.LoyalitätVolk -= 40;
+                p.EinflussInternational -= 25; // Klimakritik
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
+        // HISTORISCHE POLITISCHE EREIGNISSE (Putin-Ära 1999-2024)
+        // Chronologie der Machtergreifung und -sicherung Putins
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Unerwarteter Machtwechsel 1999",
+            "31. Dezember: Jelzin tritt überraschend zurück! Wladimir Putin - ehemaliger KGB-Offizier - wird amtierender Präsident...",
+            "Präsident", 0, 1999, "politisch",
+            p => {
+                Console.WriteLine("Der bis dahin kaum bekannte Putin übernimmt die Staatsführung!");
+                p.LoyalitätPartei += 40;
+                p.EinflussKGB += 50;
+                p.EinflussMilitär += 30;
+                p.LoyalitätVolk += 25; // Hoffnung auf Stabilität
+                p.Geld += 100;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Putins erster Wahlsieg 2000",
+            "26. März: Putin wird mit 53% zum Präsidenten gewählt! Verspricht Stabilität nach chaotischem Jelzin-Jahrzehnt...",
+            "Präsident", 0, 2000, "politisch",
+            p => {
+                Console.WriteLine("7. Mai: Feierliche Amtseinführung. Im Mai: Steuerfahnder stürmen oppositionellen Sender NTV!");
+                p.LoyalitätPartei += 45;
+                p.LoyalitätVolk += 35;
+                p.EinflussKGB += 30;
+                p.Geld += 150;
+                p.EinflussInternational += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Zweiter Tschetschenienkrieg 2000-2003",
+            "Putin führt Krieg in Tschetschenien mit harter Hand! Grosny in Trümmer gelegt...",
+            "Präsident", 0, 2003, "politisch",
+            p => {
+                Console.WriteLine("Tausende Zivilisten tot. Tschetschenien unter Kontrolle. Putins Popularität steigt!");
+                p.EinflussMilitär += 50;
+                p.EinflussKGB += 35;
+                p.LoyalitätVolk += 30; // Trotz Opfer
+                p.Geld -= 400; // Kriegskosten
+                p.EinflussInternational -= 35; // Menschenrechtsvorwürfe
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Chodorkowski verhaftet 2003",
+            "25. Oktober: Öl-Tycoon Michail Chodorkowski - reichster Mann Russlands - verhaftet!",
+            "Präsident", 0, 2003, "politisch",
+            p => {
+                Console.WriteLine("2005: 10 Jahre Lager wegen Steuerhinterziehung. Yukos zerschlagen, Rosneft übernimmt!");
+                p.LoyalitätPartei += 40;
+                p.EinflussKGB += 30;
+                p.Geld += 300; // Staat übernimmt Yukos-Vermögen
+                p.LoyalitätVolk += 20; // Oligarchen bestraft
+                p.EinflussInternational -= 30; // Kritik an Willkür
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Wiederwahl und Föderalreform 2004",
+            "14. März: Putin mit 71% wiedergewählt! Nach Beslan-Tragödie: Gouverneurs-Direktwahlen abgeschafft...",
+            "Präsident", 0, 2004, "politisch",
+            p => {
+                Console.WriteLine("Präsident ernennt fortan Regionschefs direkt! 'Machtvertikale' massiv gestärkt.");
+                p.LoyalitätPartei += 50;
+                p.EinflussKGB += 40;
+                p.EinflussMilitär += 30;
+                p.LoyalitätVolk += 15;
+                p.EinflussInternational -= 25; // Demokratie-Abbau
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sowjet-Nostalgie 2005",
+            "25. April: Putin nennt Zerfall der UdSSR 'größte geopolitische Katastrophe des Jahrhunderts'!",
+            "Präsident", 0, 2005, "politisch",
+            p => {
+                Console.WriteLine("Signal: Russlands Größe soll wiederhergestellt werden! Westen besorgt.");
+                p.LoyalitätPartei += 35;
+                p.LoyalitätVolk += 40; // Nostalgie
+                p.EinflussInternational -= 20;
+                p.EinflussKGB += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Münchner Sicherheitskonferenz 2007",
+            "10. Februar: Putin überrascht mit scharfer Kritik an USA und 'unipolarer' Weltordnung!",
+            "Präsident", 0, 2007, "politisch",
+            p => {
+                Console.WriteLine("Warnung vor neuer Konfrontation! Beginn eines 'Kalten Tons' im Ost-West-Verhältnis.");
+                p.LoyalitätPartei += 40;
+                p.LoyalitätVolk += 35;
+                p.EinflussInternational += 20; // Selbstbewusster
+                p.EinflussMilitär += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Ämtertausch mit Medwedew 2008",
+            "8. Mai: Putin wird Premierminister, Medwedew Präsident! 'Tandem-Lösung' umgeht Verfassung...",
+            "Präsident", 0, 2008, "politisch",
+            p => {
+                Console.WriteLine("Putin bleibt faktisch der starke Mann! Ermöglicht spätere Rückkehr ins Präsidentenamt.");
+                p.LoyalitätPartei += 45;
+                p.EinflussKGB += 35;
+                p.LoyalitätVolk += 20;
+                p.Geld += 200;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krieg gegen Georgien 2008",
+            "8.-12. August: Russland führt Blitzkrieg gegen Georgien! Abchasien und Südossetien besetzt...",
+            "Präsident", 0, 2008, "politisch",
+            p => {
+                Console.WriteLine("Russland erkennt Regionen als unabhängig an! International scharf kritisiert, im Land gefeiert.");
+                p.EinflussMilitär += 50;
+                p.LoyalitätVolk += 40;
+                p.LoyalitätPartei += 35;
+                p.Geld -= 250; // Kriegskosten
+                p.EinflussInternational -= 45;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Proteste gegen Wahlmanipulation 2011",
+            "Dezember 2011: Größte Anti-Regierungs-Proteste seit den 90ern! Zehntausende in Moskau...",
+            "Präsident", 0, 2011, "politisch",
+            p => {
+                Console.WriteLine("Protest gegen Wahlfälschungen und Putin-Medwedew-Rollentausch! Putin antwortet mit Repression.");
+                p.LoyalitätVolk -= 35;
+                p.LoyalitätPartei -= 15;
+                p.EinflussKGB += 30; // Härtere Gesetze
+                p.EinflussInternational -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rückkehr ins Präsidentenamt 2012",
+            "4. März: Putin für dritte Amtszeit gewählt (64%)! Amtszeit nun 6 Jahre statt 4...",
+            "Präsident", 0, 2012, "politisch",
+            p => {
+                Console.WriteLine("7. Mai: Amtseinführung mit Protesten! Kreml verschärft Gesetze gegen Opposition und NGOs.");
+                p.LoyalitätPartei += 50;
+                p.EinflussKGB += 40;
+                p.LoyalitätVolk += 25;
+                p.Geld += 250;
+                p.EinflussInternational -= 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Olympische Spiele Sotschi 2014",
+            "Februar: Russland richtet teuerste Winterspiele aller Zeiten aus! Milliarden-Prestigeprojekt...",
+            "Präsident", 0, 2014, "politisch",
+            p => {
+                Console.WriteLine("Russlands Wiedererstarken demonstriert! Doch einen Monat später folgt Krim-Annexion...");
+                p.LoyalitätVolk += 45;
+                p.LoyalitätPartei += 35;
+                p.Geld -= 500; // Enorme Kosten
+                p.EinflussInternational += 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krim-Annexion 2014",
+            "18. März: Putin annektiert die Krim! 'Grüne Männchen' besetzen Halbinsel, umstrittenes Referendum...",
+            "Präsident", 0, 2014, "politisch",
+            p => {
+                Console.WriteLine("In Russland gefeiert! Westliche Sanktionen und Ausschluss aus G8 folgen.");
+                p.LoyalitätVolk += 60; // Euphorie
+                p.LoyalitätPartei += 50;
+                p.EinflussMilitär += 40;
+                p.Geld -= 300;
+                p.EinflussInternational -= 60;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krieg in Ostukraine 2014",
+            "Ab April: Prorussische Separatisten in Donezk und Luhansk! Verdeckte russische Unterstützung...",
+            "Präsident", 0, 2014, "politisch",
+            p => {
+                Console.WriteLine("Langwieriger Konflikt bis 2022. Über 13.000 Tote. Minsker Abkommen brüchig.");
+                p.EinflussMilitär += 35;
+                p.LoyalitätPartei += 30;
+                p.Geld -= 400;
+                p.EinflussInternational -= 50;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Mord an Boris Nemzow 2015",
+            "27. Februar: Oppositionspolitiker Boris Nemzow unweit des Kreml erschossen!",
+            "Präsident", 0, 2015, "politisch",
+            p => {
+                Console.WriteLine("Hunderttausende beim Trauermarsch. Hintermänner ungeklärt. Kritische Stimmen in Lebensgefahr!");
+                p.LoyalitätVolk -= 30;
+                p.EinflussKGB += 25; // Einschüchterung
+                p.EinflussInternational -= 35;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Militäreinsatz Syrien 2015",
+            "30. September: Russland greift in syrischen Bürgerkrieg ein! Luftwaffe bombardiert Rebellen...",
+            "Präsident", 0, 2015, "politisch",
+            p => {
+                Console.WriteLine("Assad gerettet, Russland als Weltmacht zurück! Militärbasen Tartus und Hmeimim gesichert.");
+                p.EinflussMilitär += 45;
+                p.EinflussInternational += 35;
+                p.LoyalitätPartei += 40;
+                p.LoyalitätVolk += 30;
+                p.Geld -= 350; // Kriegskosten
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Vierte Amtszeit 2018",
+            "18. März: Putin mit 77% wiedergewählt! Unpopuläre Rentenreform folgt...",
+            "Präsident", 0, 2018, "politisch",
+            p => {
+                Console.WriteLine("Ruhestandsalter um 5 Jahre angehoben! Zustimmung sinkt von 80% auf 60%.");
+                p.LoyalitätPartei += 40;
+                p.EinflussKGB += 30;
+                p.LoyalitätVolk -= 25; // Rentenreform
+                p.Geld += 200;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Krim-Brücke eröffnet 2018",
+            "Mai: Putin eröffnet persönlich 18 km Brücke von Russland zur Krim!",
+            "Präsident", 0, 2018, "politisch",
+            p => {
+                Console.WriteLine("Symbol der Krim-Integration! 2022 im Ukrainekrieg zum Angriffsziel.");
+                p.LoyalitätVolk += 35;
+                p.LoyalitätPartei += 30;
+                p.Geld -= 400; // Baukosten
+                p.EinflussInternational -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Verfassungsänderung 2020",
+            "1. Juli: Referendum über Verfassungsreform! 'Nullstellung' ermöglicht Putin Präsidentschaft bis 2036...",
+            "Präsident", 0, 2020, "politisch",
+            p => {
+                Console.WriteLine("78% Zustimmung (offiziell). Kritiker sprechen von Machtsicherung auf Lebenszeit!");
+                p.LoyalitätPartei += 50;
+                p.EinflussKGB += 40;
+                p.LoyalitätVolk += 20;
+                p.EinflussInternational -= 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Lebenslange Immunität 2020",
+            "Dezember: Putin unterschreibt Gesetz für lebenslange Immunität von Ex-Präsidenten!",
+            "Präsident", 0, 2020, "politisch",
+            p => {
+                Console.WriteLine("Garantiert Schutz vor Strafverfolgung - auch für Putin selbst!");
+                p.LoyalitätPartei += 35;
+                p.EinflussKGB += 30;
+                p.LoyalitätVolk -= 15;
+                p.EinflussInternational -= 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Anschlag auf Nawalny 2020",
+            "20. August: Oppositionsführer Alexei Nawalny mit Nowitschok vergiftet!",
+            "Präsident", 0, 2020, "politisch",
+            p => {
+                Console.WriteLine("Zur Behandlung nach Deutschland. Nawalny bezichtigt Putin persönlich! Neue Sanktionen.");
+                p.LoyalitätVolk -= 25;
+                p.EinflussKGB += 30; // Einschüchterung
+                p.EinflussInternational -= 40;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Ausschaltung der Opposition 2021",
+            "17. Januar: Nawalny bei Rückkehr verhaftet! Später zu 30+ Jahren Haft verurteilt...",
+            "Präsident", 0, 2021, "politisch",
+            p => {
+                Console.WriteLine("Nawalnys Organisationen verboten, kritische Medien geschlossen. Opposition ausgeschaltet!");
+                p.LoyalitätPartei += 40;
+                p.EinflussKGB += 45;
+                p.LoyalitätVolk -= 30;
+                p.EinflussInternational -= 45;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "'Ein Volk'-Aufsatz 2021",
+            "Juli: Putin publiziert Aufsatz: Russen und Ukrainer sind 'ein Volk'...",
+            "Präsident", 0, 2021, "politisch",
+            p => {
+                Console.WriteLine("Ideologische Rechtfertigung für territoriale Ansprüche! Vorwand für Invasion 2022.");
+                p.LoyalitätPartei += 35;
+                p.LoyalitätVolk += 25;
+                p.EinflussInternational -= 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Großinvasion Ukraine 2022",
+            "24. Februar: Putin befiehlt umfassende Invasion der Ukraine! 'Spezialoperation zur Entnazifizierung'...",
+            "Präsident", 0, 2022, "politisch",
+            p => {
+                Console.WriteLine("Größter Konflikt in Europa seit 1945! Beispiellose Sanktionen, Russland isoliert.");
+                p.EinflussMilitär += 40;
+                p.LoyalitätPartei += 45;
+                p.LoyalitätVolk += 30; // Anfangs
+                p.Geld -= 900; // Kriegskosten
+                p.EinflussInternational -= 80;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kriegszensur 2022",
+            "4. März: Gesetz gegen 'Verleumdung der Armee' - bis zu 15 Jahre Haft!",
+            "Präsident", 0, 2022, "politisch",
+            p => {
+                Console.WriteLine("Unabhängige Medien blockiert oder geflohen. Proteste erstickt. Totale Informationskontrolle!");
+                p.EinflussKGB += 50;
+                p.LoyalitätPartei += 35;
+                p.LoyalitätVolk -= 20;
+                p.EinflussInternational -= 50;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "IStGH-Haftbefehl 2023",
+            "17. März: Internationaler Strafgerichtshof erlässt Haftbefehl gegen Putin wegen Kriegsverbrechen!",
+            "Präsident", 0, 2023, "politisch",
+            p => {
+                Console.WriteLine("Vorwurf: Deportation ukrainischer Kinder. Putin international offiziell angeklagt!");
+                p.LoyalitätPartei += 30; // 'Siegsmentalität'
+                p.LoyalitätVolk += 15;
+                p.EinflussInternational -= 60;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Wagner-Meuterei 2023",
+            "23./24. Juni: Jewgeni Prigoschin startet bewaffneten Aufstand! Wagner marschiert auf Moskau...",
+            "Präsident", 0, 2023, "politisch",
+            p => {
+                Console.WriteLine("Putin nennt es 'Verrat'! Nach 24h beendet. Prigoschin stirbt im August bei Flugzeugabsturz.");
+                p.EinflussMilitär -= 30; // Risse im Apparat
+                p.EinflussKGB += 25; // Härte nach Meuterei
+                p.LoyalitätVolk -= 25;
+                p.LoyalitätPartei -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Fünfte Amtszeit 2024",
+            "17. März: Putin bei inszenierter Wahl mit 87% 'wiedergewählt'. Keine echten Gegenkandidaten...",
+            "Präsident", 0, 2024, "politisch",
+            p => {
+                Console.WriteLine("7. Mai: Amtsantritt. Amtszeit bis 2030. Über zwei Jahrzehnte an der Macht!");
+                p.LoyalitätPartei += 50;
+                p.EinflussKGB += 40;
+                p.LoyalitätVolk += 15;
+                p.Geld += 150;
+                p.EinflussInternational -= 40;
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
         // FIKTIVE EREIGNISSE AB 2025+
         // Spekulative Zukunfts-Events für verlängerten Spielspaß
         // ═══════════════════════════════════════════════════════════
