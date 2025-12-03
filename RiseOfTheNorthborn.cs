@@ -5903,7 +5903,7 @@ class Program
         Console.WriteLine("🎵 Musik: 'M' = Russische Lieder");
         Console.WriteLine("💾 System: 'S' = Speichern | 'L' = Laden");
         Console.ResetColor();
-        Console.WriteLine("\n" + "═".Repeat(60) + "\n");
+        Console.WriteLine("\n" + new string('═', 60) + "\n");
         Console.WriteLine("[1] Imperiale Expansion (+50 Militär, -200 Geld)");
         Console.WriteLine("[2] Diplomatie (+300 Geld, +40 International)");
         Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)");
