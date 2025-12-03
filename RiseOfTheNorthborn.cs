@@ -2198,46 +2198,59 @@ static class SoundSystem
             switch (choice)
             {
                 case "1":
+                    // Stoppe Musik kurz für Neustart mit neuer Melodie
+                    bool wasPlaying = !Program.stopMusic;
+                    Program.stopMusic = true;
+                    Thread.Sleep(300); // Kurze Pause
                     Program.currentMusicTrack = 1;
-                    if (Program.stopMusic)
+                    if (wasPlaying)
                     {
                         Program.stopMusic = false;
                         Task.Run(() => Program.PlayMusic());
                     }
-                    Console.WriteLine("\n✓ Melodie 1 aktiviert!");
+                    Console.WriteLine("\n✓ Melodie 1 - Klassische Sowjet-Hymne aktiviert!");
                     Thread.Sleep(2000);
                     break;
                     
                 case "2":
+                    wasPlaying = !Program.stopMusic;
+                    Program.stopMusic = true;
+                    Thread.Sleep(300);
                     Program.currentMusicTrack = 2;
-                    if (Program.stopMusic)
+                    if (wasPlaying)
                     {
                         Program.stopMusic = false;
                         Task.Run(() => Program.PlayMusic());
                     }
-                    Console.WriteLine("\n✓ Melodie 2 aktiviert!");
+                    Console.WriteLine("\n✓ Melodie 2 - Katyusha-Variation aktiviert!");
                     Thread.Sleep(2000);
                     break;
                     
                 case "3":
+                    wasPlaying = !Program.stopMusic;
+                    Program.stopMusic = true;
+                    Thread.Sleep(300);
                     Program.currentMusicTrack = 3;
-                    if (Program.stopMusic)
+                    if (wasPlaying)
                     {
                         Program.stopMusic = false;
                         Task.Run(() => Program.PlayMusic());
                     }
-                    Console.WriteLine("\n✓ Melodie 3 aktiviert!");
+                    Console.WriteLine("\n✓ Melodie 3 - Kalinka-Remix aktiviert!");
                     Thread.Sleep(2000);
                     break;
                     
                 case "4":
+                    wasPlaying = !Program.stopMusic;
+                    Program.stopMusic = true;
+                    Thread.Sleep(300);
                     Program.currentMusicTrack = 4;
-                    if (Program.stopMusic)
+                    if (wasPlaying)
                     {
                         Program.stopMusic = false;
                         Task.Run(() => Program.PlayMusic());
                     }
-                    Console.WriteLine("\n✓ Melodie 4 aktiviert!");
+                    Console.WriteLine("\n✓ Melodie 4 - Roter Oktober Marsch aktiviert!");
                     Thread.Sleep(2000);
                     break;
                     
