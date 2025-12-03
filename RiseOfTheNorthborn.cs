@@ -6090,6 +6090,179 @@ static class EventSystem
                 }
             }
         ));
+        
+        // ═══════════════════════════════════════════════════════════
+        // FUTURISTISCHE EREIGNISSE (2026-2100)
+        // Prognosen für Russlands Zukunft
+        // ═══════════════════════════════════════════════════════════
+        
+        // 2026
+        allEvents.Add(new RandomEvent(
+            "Arktische Allianz 2026",
+            "Gründung eines neuen nordöstlichen Militärbündnisses mit China und Ex-Sowjetrepubliken. Putin tritt nach 25+ Jahren ab.",
+            "Präsident", 75, 2026, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2026 - NEUE WELTORDNUNG");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🌏 'Arktische Allianz' mit China gegründet!");
+                Console.WriteLine("👴 Putin tritt nach über 25 Jahren ab");
+                Console.WriteLine("🤝 Technokratische Regierung formiert sich");
+                p.EinflussInternational += 20;
+                p.Geld += 200;
+                p.LoyalitätPartei += 15;
+                Console.WriteLine($"\n➕ International: +20 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Geld: +200 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2030
+        allEvents.Add(new RandomEvent(
+            "Energiekrise 2030",
+            "Globale Energiekrise trifft Russland hart - Öl- und Gasexporte brechen ein. Größter sibirischer Solarkomplex wird errichtet.",
+            "Präsident", 80, 2030, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2030 - ENERGIEWENDE");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("⚡ Globale Energiekrise schlägt zu!");
+                Console.WriteLine("📉 Öl- und Gasexporte brechen ein");
+                Console.WriteLine("☀️  Größter Solarkomplex Sibiriens entsteht");
+                Console.WriteLine("🏭 Verlagerung zu Hochtechnologie");
+                p.Geld -= 300;
+                p.EinflussInternational += 10;
+                p.Gesundheit -= 5;
+                Console.WriteLine($"\n💰 Geld: -300 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ International: +10 → {p.EinflussInternational}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2035
+        allEvents.Add(new RandomEvent(
+            "Arktis-Boom 2035",
+            "Arktisches Eis schmilzt fast komplett - neue Schifffahrtswege! Russland beansprucht rohstoffreiche Gebiete. Waldbrände im Süden.",
+            "Präsident", 85, 2035, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2035 - ARKTIS-GOLDENER ZEITALTER");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🧊 Arktis eisfrei - Nordmeerweg offen!");
+                Console.WriteLine("💎 Rohstoffreiche Gebiete beansprucht");
+                Console.WriteLine("🔥 Waldbrände und Überflutungen im Süden");
+                p.Geld += 400;
+                p.EinflussInternational += 25;
+                p.Gesundheit -= 10;
+                Console.WriteLine($"\n💰 Geld: +400 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ International: +25 → {p.EinflussInternational}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2040
+        allEvents.Add(new RandomEvent(
+            "Alzheimer-Impfstoff 2040",
+            "Moskau entwickelt Alzheimer-Impfstoff! Eurasische Wirtschaftsunion wird echter Binnenmarkt. Rivalisierende Blöcke in Zentralasien.",
+            "Präsident", 70, 2040, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2040 - MEDIZINISCHER DURCHBRUCH");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("💉 Alzheimer-Impfstoff in Moskau entwickelt!");
+                Console.WriteLine("🏆 Putin als 'Wissenschafts-Fürst' gefeiert");
+                Console.WriteLine("🌐 Eurasische Union wird Binnenmarkt");
+                Console.WriteLine("⚔️  Rivalisierende Blöcke in Zentralasien");
+                p.Gesundheit += 20;
+                p.Geld += 300;
+                p.EinflussInternational += 30;
+                Console.WriteLine($"\n➕ Gesundheit: +20% → {p.Gesundheit}%");
+                Console.WriteLine($"💰 Geld: +300 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2050
+        allEvents.Add(new RandomEvent(
+            "Tech-Aufschwung 2050",
+            "Weltweite Deindustrialisierungswelle - Russland erlebt Tech-Boom! Posthumes Putin-Image als 'Vater der Zivilisation'.",
+            "Präsident", 75, 2050, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2050 - RUSSISCHES TECH-ZEITALTER");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🚀 Russland: Technologie-Exporteur #1");
+                Console.WriteLine("👴 Putin posthum als 'Zivilisations-Vater'");
+                Console.WriteLine("🇪🇺 Grenzstreitigkeiten mit EU (gelöst)");
+                p.Geld += 500;
+                p.EinflussInternational += 35;
+                p.LoyalitätPartei += 20;
+                Console.WriteLine($"\n💰 Geld: +500 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ International: +35 → {p.EinflussInternational}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2061
+        allEvents.Add(new RandomEvent(
+            "Gagarin-100 2061",
+            "100. Jahrestag Gagarins Flug! Internationale Mond-Raumstation. Volksreferendum über 'Neue UdSSR'. Putin: 'Generalsekretär der Ahnen'.",
+            "Präsident", 80, 2061, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2061 - GAGARIN JAHRHUNDERT");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🚀 100 Jahre seit Gagarins Flug!");
+                Console.WriteLine("🌙 Internationale Mond-Raumstation");
+                Console.WriteLine("☭  'Neue UdSSR' Referendum diskutiert");
+                Console.WriteLine("👴 Putin: 'Generalsekretär der Ahnen'");
+                p.EinflussInternational += 40;
+                p.LoyalitätPartei += 25;
+                Console.WriteLine($"\n➕ International: +40 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Partei: +25% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2075
+        allEvents.Add(new RandomEvent(
+            "Sonnensturm 2075",
+            "Gewaltiger Sonnensturm beschädigt Stromnetze in ganz Russland! Wissenschaft entdeckt Gravitationsphänomen im Kosmos.",
+            "Präsident", 85, 2075, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2075 - SONNENSTURM-KRISE");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("☀️  Gewaltiger Sonnensturm trifft Erde!");
+                Console.WriteLine("⚡ Stromnetze beschädigt");
+                Console.WriteLine("🔬 Gravitationsphänomen entdeckt");
+                Console.WriteLine("🇷🇺 Russland als Innovationsführer gefeiert");
+                p.Geld -= 200;
+                p.Gesundheit -= 15;
+                p.EinflussInternational += 20;
+                Console.WriteLine($"\n💰 Geld: -200 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Gesundheit: -15% → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 2100
+        allEvents.Add(new RandomEvent(
+            "Klimaneutral 2100",
+            "Russland ist klimaneutrales Großreich! Erneuerbare Energie dominiert. Putins Vermächtnis: Archaischer Machtpolitiker oder Retter Russlands?",
+            "Präsident", 90, 2100, "zukunft",
+            p => {
+                Console.WriteLine("\n📅 2100 - NEUES ZEITALTER");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🌱 Russland: Klimaneutrales Großreich!");
+                Console.WriteLine("⚡ 100% Erneuerbare Energie");
+                Console.WriteLine("🌍 Biomaterialien ersetzen Öl");
+                Console.WriteLine("👴 Putins Vermächtnis kontrovers:");
+                Console.WriteLine("   Machtpolitiker oder Retter?");
+                p.Geld += 600;
+                p.EinflussInternational += 50;
+                p.Gesundheit += 10;
+                p.LoyalitätPartei += 30;
+                Console.WriteLine($"\n💰 Geld: +600 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ International: +50 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Gesundheit: +10% → {p.Gesundheit}%");
+                Console.WriteLine($"➕ Partei: +30% → {p.LoyalitätPartei}%");
+                Thread.Sleep(5000);
+            }
+        ));
     }
     
     /// <summary>
