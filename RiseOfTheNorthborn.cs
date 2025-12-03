@@ -581,7 +581,7 @@ static class MarriageSystem
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
         
-        Console.WriteLine($"\n{player.Name.Split(' ')[0]} ist bereit zu heiraten! Wähle deine Ehefrau:\n");
+        Console.WriteLine($"\n{player.GetFirstName()} ist bereit zu heiraten! Wähle deine Ehefrau:\n");
         
         for (int i = 0; i < wives.Count; i++)
         {
