@@ -6294,10 +6294,37 @@ class Program
     
     static void Main()
     {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
-        EventSystem.InitializeEvents(); // Ereignisse laden
-        ShowIntro();
-        MainMenu();
+        try
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            EventSystem.InitializeEvents(); // Ereignisse laden
+            ShowIntro();
+            MainMenu();
+        }
+        catch (Exception ex)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("═══════════════════════════════════════════════════════════");
+            Console.WriteLine("║            KRITISCHER FEHLER / CRITICAL ERROR          ║");
+            Console.WriteLine("═══════════════════════════════════════════════════════════\n");
+            Console.ResetColor();
+            Console.WriteLine("Das Spiel ist auf einen unerwarteten Fehler gestoßen:");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("FEHLERDETAILS:");
+            Console.WriteLine("─────────────────────────────────────────────────────────");
+            Console.ResetColor();
+            Console.WriteLine(ex.ToString());
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("═══════════════════════════════════════════════════════════");
+            Console.WriteLine("Bitte sende diese Fehlermeldung an den Entwickler!");
+            Console.WriteLine("═══════════════════════════════════════════════════════════");
+            Console.ResetColor();
+            Console.WriteLine("\nDrücke eine beliebige Taste zum Beenden...");
+            Console.ReadKey();
+        }
     }
     
     static void ShowIntro()
