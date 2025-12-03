@@ -1736,9 +1736,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Nächtliche Verhaftung",
-            "p => $"{p.GetFirstName()} beobachtet, wie der KGB einen Nachbarn abholt. Die Schritte hallen im Treppenhaus...",
+            "Der Spieler beobachtet, wie der KGB einen Nachbarn abholt. Die Schritte hallen im Treppenhaus...",
             "Kindheit", 30,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} beobachtet die Verhaftung mit Angst...");
                 if (rand.Next(2) == 0)
                     p.LoyalitätPartei += 15; // Aus Angst
                 else
