@@ -2879,16 +2879,31 @@ class Board
         return ships.All(s => s.IsSunk());
     }
     
+    /// <summary>
+    /// Display - Zeigt das Spielfeld an
+    /// 
+    /// BUG-FIX 7: Felder visuell vergrößert für bessere Lesbarkeit
+    /// Problem: Zu kleine Darstellung, schwer zu lesen
+    /// Lösung: Doppelte Breite pro Feld (4 Zeichen statt 3)
+    /// </summary>
     public void Display(bool showShips)
     {
-        Console.Write("   ");
+        // Header mit Spaltennummern (vergrößert)
+        Console.Write("     ");
         for (int c = 0; c < Size; c++)
-            Console.Write($" {c + 1} ");
+            Console.Write($"  {c + 1:D2} ");  // 2-stellig mit Padding
         Console.WriteLine();
         
+        // Obere Trennlinie
+        Console.Write("   ╔");
+        for (int c = 0; c < Size; c++)
+            Console.Write("════");
+        Console.WriteLine("╗");
+        
+        // Spielfeld-Reihen
         for (int r = 0; r < Size; r++)
         {
-            Console.Write($" {(char)('A' + r)} │");
+            Console.Write($" {(char)('A' + r)} ║");
             
             for (int c = 0; c < Size; c++)
             {
@@ -2899,27 +2914,33 @@ class Board
                 {
                     case '~':
                         Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(" ~ ");
+                        Console.Write("  ~ ");
                         break;
                     case 'S':
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write(" ■ ");
+                        Console.Write("  ■ ");
                         break;
                     case 'X':
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(" X ");
+                        Console.Write("  X ");
                         break;
                     case 'O':
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write(" ○ ");
+                        Console.Write("  ○ ");
                         break;
                 }
                 Console.ResetColor();
             }
-            Console.WriteLine("│");
+            Console.WriteLine("║");
         }
         
-        Console.WriteLine("\n~ Wasser | ■ Schiff | X Treffer | ○ Fehlschuss");
+        // Untere Trennlinie
+        Console.Write("   ╚");
+        for (int c = 0; c < Size; c++)
+            Console.Write("════");
+        Console.WriteLine("╝");
+        
+        Console.WriteLine("\n  ~ Wasser │ ■ Schiff │ X Treffer │ ○ Fehlschuss");
     }
 }
 
