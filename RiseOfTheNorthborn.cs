@@ -2170,39 +2170,95 @@ class Board
                 Grid[i, j] = '~';
     }
     
+    /// <summary>
+    /// PlaceShip - Platziert ein Schiff auf dem Spielfeld
+    /// 
+    /// VALIDIERUNG:
+    /// 1. Prüft ob Schiff innerhalb des Feldes passt
+    /// 2. Prüft ob alle benötigten Felder frei sind ('~')
+    /// 3. Bei Kollision: return false
+    /// 
+    /// PLATZIERUNG:
+    /// - Erstellt neues Ship-Objekt
+    /// - Markiert alle Felder mit 'S' (Ship)
+    /// - Fügt Schiff zur ships-Liste hinzu
+    /// 
+    /// BEISPIEL:
+    /// PlaceShip(0, 0, 3, true) → Schiff A1-C1 (horizontal)
+    /// PlaceShip(0, 0, 3, false) → Schiff A1-A3 (vertikal)
+    /// </summary>
+    /// <param name="row">Start-Reihe (0-basiert)</param>
+    /// <param name="col">Start-Spalte (0-basiert)</param>
+    /// <param name="size">Schiffslänge (2-5)</param>
+    /// <param name="horizontal">true = horizontal, false = vertikal</param>
+    /// <returns>true wenn platziert, false bei Kollision</returns>
     public bool PlaceShip(int row, int col, int size, bool horizontal)
     {
+        // ═══ VALIDIERUNG ═══
         if (horizontal)
         {
+            // Horizontal: Prüfe ob Schiff rechts rausragt
             if (col + size > Size) return false;
+            // Prüfe ob alle Felder frei sind
             for (int c = col; c < col + size; c++)
-                if (Grid[row, c] != '~') return false;
+                if (Grid[row, c] != '~') return false;  // Kollision!
         }
         else
         {
+            // Vertikal: Prüfe ob Schiff unten rausragt
             if (row + size > Size) return false;
+            // Prüfe ob alle Felder frei sind
             for (int r = row; r < row + size; r++)
-                if (Grid[r, col] != '~') return false;
+                if (Grid[r, col] != '~') return false;  // Kollision!
         }
         
+        // ═══ PLATZIERUNG ═══
+        // Erstelle Ship-Objekt für Treffer-Tracking
         Ship ship = new Ship(row, col, size, horizontal);
         ships.Add(ship);
         
+        // Markiere Felder im Grid
         if (horizontal)
             for (int c = col; c < col + size; c++)
-                Grid[row, c] = 'S';
+                Grid[row, c] = 'S';  // Ship
         else
             for (int r = row; r < row + size; r++)
                 Grid[r, col] = 'S';
         
-        return true;
+        return true;  // Erfolgreich platziert
     }
     
+    /// <summary>
+    /// Attack - Führt einen Angriff auf ein Feld aus
+    /// 
+    /// LOGIK:
+    /// 1. Prüft ob Feld bereits beschossen wurde (X oder O)
+    ///    → return '?' (ungültig)
+    /// 
+    /// 2. Wenn Schiff getroffen ('S'):
+    ///    - Markiere mit 'X' (Treffer)
+    ///    - Informiere Ship-Objekt über Treffer
+    ///    - return 'X'
+    /// 
+    /// 3. Wenn Wasser getroffen ('~'):
+    ///    - Markiere mit 'O' (Fehlschuss)
+    ///    - return 'O'
+    /// 
+    /// RÜCKGABEWERTE:
+    /// 'X' = Treffer!
+    /// 'O' = Wasser (Fehlschuss)
+    /// '?' = Ungültig (bereits beschossen)
+    /// </summary>
+    /// <param name="row">Ziel-Reihe</param>
+    /// <param name="col">Ziel-Spalte</param>
+    /// <returns>'X' (Treffer), 'O' (Fehlschuss), oder '?' (ungültig)</returns>
     public char Attack(int row, int col)
     {
+        // Bereits beschossen? → Ungültig
         if (Grid[row, col] == 'X' || Grid[row, col] == 'O')
             return '?';
         
+        // ═══ TREFFER ═══
         if (Grid[row, col] == 'S')
         {
             Grid[row, col] = 'X';
