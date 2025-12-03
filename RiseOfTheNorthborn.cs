@@ -10424,8 +10424,8 @@ class Program
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             
-            // SPRACHAUSWAHL
-            ChooseLanguage();
+            // Sprache ist fest auf Deutsch
+            EventSystem.currentLanguage = "DE";
             
             EventSystem.InitializeEvents(); // Zufalls-Ereignisse laden
             EventSystem.InitializeHistoricalEvents(); // Historische Ereignisse laden
