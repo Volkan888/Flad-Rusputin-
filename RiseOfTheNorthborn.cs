@@ -1995,20 +1995,27 @@ static class SoundSystem
         
         try
         {
-            // Melodie (vereinfacht)
+            // Melodie (vereinfacht) - Russische Hymne
             int[] notes = {392, 440, 494, 523, 587, 523, 494, 440, 392, 349, 330, 349, 392, 440, 392};
             int[] durations = {400, 400, 400, 600, 400, 400, 400, 400, 600, 400, 400, 400, 400, 600, 800};
             
             for (int i = 0; i < notes.Length; i++)
             {
-                // Beep deaktiviert
-                Thread.Sleep(50);
+                try
+                {
+                    Console.Beep(notes[i], durations[i]);
+                }
+                catch
+                {
+                    // Einzelner Beep fehlgeschlagen - weiter
+                    Thread.Sleep(durations[i]);
+                }
             }
         }
         catch
         {
-            // Beep nicht verfügbar
-            Console.WriteLine("\n[Hymne erklingt...]");
+            // Beep nicht verfügbar auf diesem System
+            Console.WriteLine("\n♪ [Hymne erklingt...] ♪");
             Thread.Sleep(3000);
         }
         
