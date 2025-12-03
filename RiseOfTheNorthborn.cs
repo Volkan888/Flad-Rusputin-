@@ -1232,6 +1232,87 @@ static class ErdoganHotline
         Console.WriteLine($"🤝 Beziehung zu Türkei: +20% (jetzt {p.TürkeiBeziehung}%)");
         Console.ResetColor();
     }
+    
+    /// <summary>
+    /// TourismusBoost - Förderung des russisch-türkischen Tourismus
+    /// </summary>
+    static void TourismusBoost(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n🏖️  TOURISMUS-BOOST PROGRAMM");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        p.Geld += 350;
+        p.LoyalitätVolk += 20;
+        p.TürkeiBeziehung += 25;
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ Visafreie Einreise! Millionen russische Touristen nach Türkei.");
+        Console.WriteLine($"💰 Geld: +350 Rubel (Tourismussektor belebt)");
+        Console.WriteLine($"👥 Loyalität Volk: +20 (Urlaubsmöglichkeiten!)");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +25% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ResetColor();
+    }
+    
+    /// <summary>
+    /// AkkuyuInvestition - Investition in türkisches Atomkraftwerk
+    /// </summary>
+    static void AkkuyuInvestition(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("\n🏗️  AKKUYU-ATOMKRAFTWERK INVESTITION");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        if (p.Geld < 400)
+        {
+            Console.WriteLine("❌ Nicht genug Geld! Benötigt: 400 Rubel");
+            Console.WriteLine($"Aktuelles Geld: {p.Geld} Rubel");
+            Thread.Sleep(2000);
+            return;
+        }
+        
+        p.Geld -= 400;
+        p.Geld += 600; // Langfristiger Gewinn
+        p.EinflussInternational += 30;
+        p.TürkeiBeziehung += 30;
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ Rosatom baut Akkuyu-AKW! 4 Reaktorblöcke, 20 Mrd. USD Projekt.");
+        Console.WriteLine($"💰 Geld: +200 Rubel netto (langfristiger Energievertrag)");
+        Console.WriteLine($"🌍 Internationaler Einfluss: +30 (Technologie-Export!)");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +30% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ResetColor();
+    }
+    
+    /// <summary>
+    /// Waffenhandel - Export russischer Waffen an Türkei
+    /// </summary>
+    static void Waffenhandel(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\n🔫 MILITÄR-WAFFENHANDEL");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        p.Geld += 450;
+        p.EinflussMilitär += 25;
+        p.TürkeiBeziehung += 20;
+        p.EinflussInternational -= 15; // NATO-Kritik
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ Waffenexport an Türkei! Su-35 Kampfjets, Panir-Systeme...");
+        Console.WriteLine($"💰 Geld: +450 Rubel (Rüstungsgeschäft)");
+        Console.WriteLine($"⚔️  Militäreinfluss: +25 (jetzt {p.EinflussMilitär})");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +20% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"⚠ Internationaler Einfluss: -15 (NATO besorgt!)");
+        Console.ResetColor();
+    }
 }
 
 static class EventSystem
