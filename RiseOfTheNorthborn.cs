@@ -5456,17 +5456,45 @@ static class EventSystem
             }
         ));
         
-        // CHINA-EVENTS (1950-2025) - Kompakt
-        allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China Freundschaft", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Damanski 1969", "Grenzkonflikt!", "KGB", 70, 1969, "china", p => { p.ChinaBeziehung -= 50; p.EinflussMilitär += 20; Console.WriteLine("💥 Grenzkrieg! China -50%"); Thread.Sleep(3000); }));
+        // LÜCKEN-JAHRE EVENTS (1952-2000) - Chronologisch
+        allEvents.Add(new RandomEvent("Stalin stirbt 1953", "Tod des Führers", "Kindheit", 80, 1953, "politisch", p => { p.LoyalitätPartei -= 20; Console.WriteLine("☭ Stalin ist tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Entstalinisierung 1956", "Chruschtschow Rede", "Kindheit", 70, 1956, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("📢 Stalin kritisiert!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Sputnik 1957", "Erster Satellit", "Kindheit", 60, 1957, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🚀 Weltraum-Triumph!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gagarin 1961", "Erster Mensch im All", "Jugend", 70, 1961, "politisch", p => { p.EinflussInternational += 30; Console.WriteLine("👨‍🚀 Gagarin im All!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 85, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 60, 1964, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 65, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Prager Frühling 1968", "Panzer nach Prag", "KGB", 80, 1968, "politisch", p => { p.EinflussMilitär += 25; p.EinflussInternational -= 30; Console.WriteLine("🇨🇿 Prag besetzt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mondlandung 1970", "USA auf dem Mond", "KGB", 70, 1970, "politisch", p => { p.EinflussInternational -= 20; Console.WriteLine("🌕 USA gewinnt Wettlauf!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("SALT I 1972", "Rüstungskontrolle", "KGB", 55, 1972, "politisch", p => { p.EinflussInternational += 15; Console.WriteLine("🕊️ Entspannung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Helsinki 1975", "KSZE-Konferenz", "KGB", 60, 1975, "politisch", p => { p.EinflussInternational += 20; Console.WriteLine("🤝 Menschenrechte!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan 1979", "Invasion", "KGB", 85, 1979, "politisch", p => { p.EinflussMilitär += 30; p.Geld -= 200; Console.WriteLine("🇦🇫 Krieg beginnt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia-Boykott 1980", "USA boykottieren", "KGB", 70, 1980, "politisch", p => { p.EinflussInternational -= 25; Console.WriteLine("🏅 Boykott!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Breschnjew stirbt 1982", "Ende einer Ära", "KGB", 65, 1982, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("☭ Führerwechsel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Reagan SDI 1983", "Star Wars Programm", "KGB", 75, 1983, "politisch", p => { p.EinflussMilitär -= 20; Console.WriteLine("🛰️ Wettrüsten!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gorbatschow 1985", "Glasnost & Perestroika", "KGB", 70, 1985, "politisch", p => { p.LoyalitätPartei -= 25; p.EinflussInternational += 20; Console.WriteLine("🌍 Reformen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschernobyl 1986", "Atomkatastrophe", "KGB", 90, 1986, "katastrophe", p => { p.Gesundheit -= 25; p.Geld -= 300; Console.WriteLine("☢️ Reaktor explodiert!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("INF-Vertrag 1987", "Abrüstung", "KGB", 60, 1987, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🕊️ Frieden!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Afghanistan-Abzug 1988", "Rückzug", "KGB", 70, 1988, "politisch", p => { p.Geld += 150; p.EinflussMilitär -= 20; Console.WriteLine("🇦🇫 Rückzug!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mauerfall 1990", "DDR fällt", "KGB", 85, 1989, "politisch", p => { p.EinflussInternational -= 40; Console.WriteLine("🇩🇪 Mauer fällt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("UdSSR-Ende 1991", "Sowjetunion zerfällt", "KGB", 95, 1991, "politisch", p => { p.Geld -= 500; p.LoyalitätPartei -= 50; Console.WriteLine("☭ UdSSR endet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin 1992", "Neue Ära", "Präsident", 70, 1992, "politisch", p => { p.Geld -= 200; Console.WriteLine("🇷🇺 Russland geboren!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Verfassungskrise 1993", "Parlament gestürmt", "Präsident", 80, 1993, "politisch", p => { p.EinflussMilitär += 25; Console.WriteLine("🏛️ Panzer auf Parlament!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien I 1994", "Erster Krieg", "Präsident", 85, 1994, "politisch", p => { p.EinflussMilitär += 20; p.Geld -= 250; Console.WriteLine("⚔️ Krieg im Kaukasus!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 80, 1998, "politisch", p => { p.Geld -= 400; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Putin 2000", "Neuer Präsident", "Präsident", 90, 2000, "politisch", p => { p.LoyalitätPartei += 30; Console.WriteLine("🇷🇺 Putin an der Macht!"); Thread.Sleep(3000); }));
+        
+        // CHINA-EVENTS
+        allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Damanski 1969", "Grenzkrieg", "KGB", 70, 1969, "china", p => { p.ChinaBeziehung -= 50; Console.WriteLine("💥 China -50%"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Gorbatschow China 1989", "Normalisierung", "KGB", 50, 1989, "china", p => { p.ChinaBeziehung += 30; Console.WriteLine("🤝 +30% China"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Freundschaft 2001", "20-Jahres-Vertrag", "Präsident", 60, 2001, "china", p => { p.Geld += 300; p.ChinaBeziehung += 25; Console.WriteLine("✓ +300 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Gas-Deal 2014", "$400 Mrd Deal!", "Präsident", 80, 2014, "china", p => { p.Geld += 500; p.ChinaTelefonAktiv = true; Console.WriteLine("💰 +500 Rubel! 📞 China-Telefon aktiv!"); Thread.Sleep(3500); }));
-        allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; p.ChinaBeziehung += 20; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Freundschaft 2001", "20-Jahres-Vertrag", "Präsident", 60, 2001, "china", p => { p.Geld += 300; Console.WriteLine("✓ +300 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gas-Deal 2014", "$400 Mrd Deal!", "Präsident", 80, 2014, "china", p => { p.Geld += 500; p.ChinaTelefonAktiv = true; Console.WriteLine("💰 +500 Rubel! 📞 China aktiv!"); Thread.Sleep(3500); }));
+        allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Handel 2019", "$110 Mrd", "Präsident", 55, 2019, "china", p => { p.Geld += 350; Console.WriteLine("💰 +350 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Olympia 2022", "Peking-Treffen", "Präsident", 75, 2022, "china", p => { p.Geld += 400; p.ChinaBeziehung += 15; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Putin Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; p.EinflussMilitär += 25; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("China-Allianz 2025", "Strategisch", "Präsident", 60, 2025, "china", p => { p.Geld += 300; p.ChinaBeziehung += 10; Console.WriteLine("🤝 +300 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia 2022", "Peking", "Präsident", 75, 2022, "china", p => { p.Geld += 400; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Putin Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("China-Allianz 2025", "Strategisch", "Präsident", 60, 2025, "china", p => { p.Geld += 300; Console.WriteLine("🤝 +300 Rubel!"); Thread.Sleep(3000); }));
         
         // ═══════════════════════════════════════════════════════════
         // RUSSLAND-USA BEZIEHUNGEN (2000-2025)
