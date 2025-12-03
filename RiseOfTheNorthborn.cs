@@ -583,8 +583,42 @@ static class DeathSystem
         Console.ReadKey(true);
     }
     
+    /// <summary>
+    /// SelectHeir - Ermöglicht Spieler-Wahl des Nachfolgers
+    /// 
+    /// KERNMECHANIK DES GENERATIONEN-SPIELS!
+    /// 
+    /// ABLAUF:
+    /// 1. Prüfung: Hat Verstorbener Kinder?
+    ///    - NEIN → GAME OVER (Dynastie endet)
+    ///    - JA → Weiter zu Schritt 2
+    /// 
+    /// 2. Zeige alle Kinder mit Attributen an
+    /// 
+    /// 3. Spieler wählt ein Kind aus [1-N]
+    /// 
+    /// 4. Gewähltes Kind wird zum neuen Hauptcharakter:
+    ///    - Alter: 25 Jahre (junger Erwachsener)
+    ///    - Phase: "Jurastudium" (startet hier)
+    ///    - Gesundheit: 100% (voll regeneriert)
+    ///    - Vermögen: 50% des Eltern-Vermögens
+    ///    - KGB-Einfluss: 33% des Eltern-Einflusses
+    ///    - Militär-Einfluss: 33%
+    ///    - Partei-Loyalität: 50%
+    ///    - Attribute: Bereits bei Geburt vererbt
+    /// 
+    /// STRATEGISCHE WAHL:
+    /// - Spieler sollte Kind mit besten Attributen wählen
+    /// - Oder spezialisiertes Kind je nach gewünschtem Spielstil
+    /// 
+    /// RÜCKGABE: Gewählter Erbe ODER null bei Game Over
+    /// </summary>
+    /// <param name="deceased">Der verstorbene Eltern-Charakter</param>
+    /// <returns>Gewählter Erbe oder null (Game Over)</returns>
     public static PlayerCharacter SelectHeir(PlayerCharacter deceased)
     {
+        // ═══ GAME OVER PRÜFUNG ═══
+        // Keine Kinder = Ende der Dynastie
         if (deceased.Kinder.Count == 0)
         {
             Console.Clear();
@@ -598,9 +632,10 @@ static class DeathSystem
             Console.WriteLine("Die Linie der Rusputins endet hier...");
             Console.WriteLine($"\nGeneration {deceased.Generation} war die letzte.");
             Thread.Sleep(3000);
-            return null;
+            return null;  // Signalisiert Game Over
         }
         
+        // ═══ ERBEN-AUSWAHL-BILDSCHIRM ═══
         Console.Clear();
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
         Console.WriteLine("║              WÄHLE DEINEN NACHFOLGER                      ║");
@@ -609,6 +644,7 @@ static class DeathSystem
         Console.WriteLine($"{deceased.Name} ist verstorben.");
         Console.WriteLine("Wähle ein Kind, um die Dynastie fortzuführen:\n");
         
+        // Liste alle Kinder mit ihren Attributen auf
         for (int i = 0; i < deceased.Kinder.Count; i++)
         {
             var child = deceased.Kinder[i];
@@ -618,6 +654,8 @@ static class DeathSystem
             Console.WriteLine();
         }
         
+        // ═══ EINGABE-SCHLEIFE ═══
+        // Wiederholt bis gültige Auswahl getroffen wurde
         while (true)
         {
             Console.Write($"Wähle [1-{deceased.Kinder.Count}]: ");
@@ -625,6 +663,7 @@ static class DeathSystem
             {
                 var heir = deceased.Kinder[choice - 1];
                 
+                // ═══ NACHFOLGE-ANKÜNDIGUNG ═══
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
@@ -640,22 +679,23 @@ static class DeathSystem
                 Console.WriteLine($"  Charisma: {heir.Charisma}");
                 Console.WriteLine($"  Kraft: {heir.Kraft}");
                 
-                // Erbe erhält Teil des Vermögens
-                heir.Geld = deceased.Geld / 2;
-                heir.Alter = 25; // Startet als junger Erwachsener
-                heir.Phase = "Jurastudium";
-                heir.Gesundheit = 100;
+                // ═══ VERERBUNGS-MECHANIK ═══
+                // Erbe erhält einen Teil des elterlichen Erfolgs
+                heir.Geld = deceased.Geld / 2;              // 50% Vermögen
+                heir.Alter = 25;                            // Junger Erwachsener
+                heir.Phase = "Jurastudium";                 // Beginnt im Studium
+                heir.Gesundheit = 100;                      // Volle Gesundheit
                 
-                // Teil der Einflüsse wird vererbt
-                heir.EinflussKGB = deceased.EinflussKGB / 3;
-                heir.EinflussMilitär = deceased.EinflussMilitär / 3;
-                heir.LoyalitätPartei = deceased.LoyalitätPartei / 2;
+                // Teil der politischen Einflüsse wird vererbt
+                heir.EinflussKGB = deceased.EinflussKGB / 3;           // 33% KGB-Einfluss
+                heir.EinflussMilitär = deceased.EinflussMilitär / 3;   // 33% Militär-Einfluss
+                heir.LoyalitätPartei = deceased.LoyalitätPartei / 2;   // 50% Partei-Loyalität
                 
                 Console.WriteLine($"\nGeerbtes Vermögen: {heir.Geld} Rubel");
                 Console.WriteLine("\n[Drücke eine Taste um fortzufahren...]");
                 Console.ReadKey(true);
                 
-                return heir;
+                return heir;  // Rückgabe des neuen Hauptcharakters
             }
         }
     }
