@@ -484,7 +484,7 @@ class HistoricalEvent
         DatumEN = datumEN;
         Jahr = jahr;
         Monat = monat;
-        Geschichte geschichteDE = geschichteDE;
+        GeschichteDE = geschichteDE;
         GeschichteRU = geschichteRU;
         GeschichteEN = geschichteEN;
         Kategorie = kategorie;
