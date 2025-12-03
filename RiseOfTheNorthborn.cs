@@ -701,22 +701,67 @@ static class DeathSystem
     }
 }
 
+/// <summary>
+/// EventSystem - Zentrale Verwaltung aller Zufallsereignisse
+/// 
+/// ÄNDERUNG 9: Umfangreiches Event-System mit 20+ Ereignissen
+/// 
+/// Dieses System fügt dem Spiel Dynamik und Unvorhersehbarkeit hinzu.
+/// Ereignisse können in jeder Lebensphase auftreten und das Schicksal
+/// von Flad massiv beeinflussen.
+/// 
+/// EVENT-TYPEN:
+/// 1. PASSIVE EVENTS: Automatische Effekte
+///    Beispiel: "Verlust des Bruders" → -10 Gesundheit, +20 Familie
+/// 
+/// 2. INTERAKTIVE EVENTS: Spieler muss wählen
+///    Beispiel: "Gefährlicher Freundeskreis" → [Decken] oder [Melden]
+/// 
+/// 3. ATTRIBUT-ABHÄNGIGE EVENTS: Ergebnis variiert je nach Werten
+///    Beispiel: "Intrige" → Erfolg wenn Intelligenz ≥4 ODER KGB ≥50
+/// 
+/// 4. ERFOLG/MISSERFOLG EVENTS: Zufälliges Ergebnis
+///    Beispiel: "Geheimer Testeinsatz" → 60% Erfolg, 40% Fehlschlag
+/// 
+/// VERTEILUNG:
+/// - Kindheit: 5 Events
+/// - KGB-Phase: 2 Events
+/// - Jurastudium: 5 Events
+/// - DDR-Einsatz: 3 Events
+/// - Präsident: 4 Events
+/// 
+/// TRIGGER-MECHANIK:
+/// - Jedes Event hat Wahrscheinlichkeit (z.B. 20%)
+/// - Bei jedem Phase-Fortschritt wird geprüft
+/// - Passende Events der aktuellen Phase werden gefiltert
+/// - Zufällig eines der möglichen Events wird ausgeführt
+/// </summary>
 static class EventSystem
 {
     static Random rand = new Random();
     static List<RandomEvent> allEvents = new List<RandomEvent>();
     
+    /// <summary>
+    /// InitializeEvents - Lädt alle 20+ Zufallsereignisse
+    /// 
+    /// Wird beim Programmstart aufgerufen.
+    /// Definiert alle Events mit ihren Effekten.
+    /// </summary>
     public static void InitializeEvents()
     {
-        // KINDHEIT EREIGNISSE
+        // ═══════════════════════════════════════════════════════════
+        // KINDHEIT EREIGNISSE (5 Events)
+        // Phase: "Kindheit"
+        // ═══════════════════════════════════════════════════════════
+        
         allEvents.Add(new RandomEvent(
             "Verlust des Bruders",
             "Flad verliert seinen Bruder durch Krankheit. Ein traumatisches Ereignis...",
-            "Kindheit", 20,
+            "Kindheit", 20,  // 20% Chance
             p => {
-                p.Gesundheit -= 10;
-                p.LoyalitätFamilie = Math.Min(100, p.LoyalitätFamilie + 20);
-                p.Stärke += 1; // Entschlossenheit
+                p.Gesundheit -= 10;                            // Trauma
+                p.LoyalitätFamilie = Math.Min(100, p.LoyalitätFamilie + 20);  // Familie wird wichtiger
+                p.Stärke += 1;                                 // Härtet ihn ab
             }
         ));
         
