@@ -10220,9 +10220,222 @@ class Program
     
     static void TriggerVaterschaftstestEvent(PlayerCharacter player, PlayerCharacter.UnanerkanntesSidechickKind kind)
     {
-        // Wird implementiert
-        Console.WriteLine("Vaterschaftstest Event - Coming soon!");
-        Thread.Sleep(2000);
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              ⚖️  VATERSCHAFTSTEST GEFORDERT ⚖️           ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        Console.WriteLine($"\n18 JAHRE SIND VERGANGEN...");
+        Thread.Sleep(3000);
+        
+        Console.WriteLine($"\n{kind.MutterName} kontaktiert dich:");
+        Console.WriteLine($"'Unser Kind ist 18! Es will wissen, wer sein Vater ist.'");
+        Console.WriteLine($"'Mach einen Test - oder zahl was du schuldest!'");
+        Thread.Sleep(5000);
+        
+        Console.WriteLine("\n═══════════════════════════════════════════════════════════");
+        Console.WriteLine("[1] 💰 Vaterschaftstest (500₽) - 30% positiv");
+        Console.WriteLine("[2] 🚫 Ablehnen und Kontakt abbrechen");
+        Console.WriteLine("[3] ☠️  'Problem lösen' - KGB (1000₽)");
+        Console.Write("\nWähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        if (choice == "1")
+        {
+            if (player.Geld < 500)
+            {
+                Console.WriteLine("\n💸 Nicht genug Geld!");
+                Thread.Sleep(3000);
+                return;
+            }
+            
+            player.Geld -= 500;
+            Console.WriteLine("\n🧬 Test läuft...");
+            Thread.Sleep(3000);
+            
+            bool istDeinKind = rand.Next(100) < 30;
+            
+            if (istDeinKind)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                  ✅ TEST POSITIV ✅                       ║");
+                Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+                Console.ResetColor();
+                
+                Console.WriteLine($"\nDas Kind ist WIRKLICH von dir!");
+                Thread.Sleep(4000);
+                
+                int alimenteGesamt = kind.DatumKosten * 18;
+                int studiengebuehren = 1500;
+                int gesamt = alimenteGesamt + studiengebuehren;
+                
+                Console.WriteLine("\n💰 FORDERUNGEN:");
+                Console.WriteLine($"  • Alimente (18 Jahre): {alimenteGesamt}₽");
+                Console.WriteLine($"  • Studium (Elite-Uni): {studiengebuehren}₽");
+                Console.WriteLine($"  • GESAMT: {gesamt}₽");
+                Thread.Sleep(5000);
+                
+                if (player.Geld < gesamt)
+                {
+                    Console.WriteLine($"\n⚠️ Nicht genug Geld! (Nur {player.Geld}₽)");
+                    Console.WriteLine("Kredite... Ratenzahlung...");
+                    player.Geld -= player.Geld / 2;
+                    player.LoyalitätVolk -= 30;
+                    Console.WriteLine("\n📰 SKANDAL! Zahlungsunfähigkeit!");
+                }
+                else
+                {
+                    player.Geld -= gesamt;
+                    Console.WriteLine($"\n✓ Bezahlt: -{gesamt}₽");
+                }
+                
+                Thread.Sleep(3000);
+                
+                Console.WriteLine($"\n👨‍👦 Kind wird anerkannt!");
+                
+                string[] maennlicheVornamen = { "Igor", "Dmitri", "Alexei", "Viktor", "Roman", "Pavel", "Kirill", "Maxim" };
+                string[] weiblicheVornamen = { "Svetlana", "Natasha", "Katerina", "Irina", "Polina", "Daria", "Alina", "Sofia" };
+                
+                string vorname = kind.IstJunge ? 
+                    maennlicheVornamen[rand.Next(maennlicheVornamen.Length)] :
+                    weiblicheVornamen[rand.Next(weiblicheVornamen.Length)];
+                
+                Console.Write($"\nName (Enter = {vorname}): ");
+                string eingabe = Console.ReadLine();
+                if (!string.IsNullOrWhiteSpace(eingabe)) vorname = eingabe;
+                
+                string kindName = $"{vorname} [Unehelich] Gen{player.Generation + 1}";
+                
+                PlayerCharacter child = new PlayerCharacter(kindName, player.Generation + 1);
+                child.Alter = 18;
+                child.Phase = "Jurastudium";
+                child.Geburtsjahr = kind.GeburtsjahR;
+                child.Stärke = kind.Staerke;
+                child.Intelligenz = kind.Intelligenz + 3; // BONUS!
+                child.Charisma = kind.Charisma;
+                child.Kraft = kind.Kraft;
+                
+                player.Kinder.Add(child);
+                
+                Console.WriteLine($"\n✓ {kindName} zur Familie!");
+                Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz}(+3!) C:{child.Charisma} K:{child.Kraft}");
+                Console.WriteLine($"\n🎓 Studiert an Elite-Uni!");
+                
+                player.LoyalitätFamilie -= 30;
+                Console.WriteLine($"\n💔 Familie: -30%");
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+                Console.WriteLine("║                  ❌ TEST NEGATIV ❌                       ║");
+                Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+                Console.ResetColor();
+                
+                Console.WriteLine($"\nNICHT dein Kind!");
+                Console.WriteLine($"{kind.MutterName} hat gelogen!");
+                Thread.Sleep(4000);
+                
+                Console.WriteLine("\n😤 Was tust du?");
+                Console.WriteLine("\n[1] 🚫 Kontakt abbrechen");
+                Console.WriteLine("[2] ☠️  'KGB regelt das' (1000₽)");
+                Console.Write("\nWähle [1-2]: ");
+                
+                string revenge = Console.ReadLine();
+                
+                if (revenge == "2")
+                {
+                    if (player.Geld < 1000)
+                    {
+                        Console.WriteLine("\n💸 Nicht genug Geld!");
+                        Thread.Sleep(2000);
+                    }
+                    else
+                    {
+                        player.Geld -= 1000;
+                        player.EinflussKGB += 20;
+                        
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine("\n☠️  KGB-OPERATION AKTIVIERT ☠️");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("\nEin Anruf...");
+                        Thread.Sleep(2000);
+                        Console.WriteLine($"\n{kind.MutterName} und Kind verschwinden spurlos.");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("\nOffiziell: 'Tragischer Autounfall'");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("\nAkten vernichtet.");
+                        Console.ResetColor();
+                        Thread.Sleep(3000);
+                        
+                        Console.WriteLine("\n✓ Problem gelöst.");
+                        Console.WriteLine($"💀 KGB: +20");
+                        
+                        player.Gesundheit -= 20;
+                        Console.WriteLine($"💔 Gesundheit: -20% (Gewissen...)");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"\nKontakt abgebrochen.");
+                    player.LoyalitätFamilie += 10;
+                }
+            }
+        }
+        else if (choice == "2")
+        {
+            Console.WriteLine($"\nDu ignorierst die Forderung.");
+            Console.WriteLine("Sie droht mit Presse...");
+            
+            if (rand.Next(100) < 50)
+            {
+                Console.WriteLine("\n📰 SKANDAL! Zeitungen!");
+                player.LoyalitätVolk -= 40;
+                player.LoyalitätPartei -= 25;
+                Console.WriteLine($"\n👥 Volk: -40% | 🏛️ Partei: -25%");
+            }
+        }
+        else if (choice == "3")
+        {
+            if (player.Geld < 1000)
+            {
+                Console.WriteLine("\n💸 Nicht genug Geld!");
+                Thread.Sleep(3000);
+                return;
+            }
+            
+            player.Geld -= 1000;
+            player.EinflussKGB += 25;
+            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("\n☠️  KGB-OPERATION ☠️");
+            Thread.Sleep(2000);
+            Console.WriteLine($"\nVerschlüsselter Anruf. Einsatzkommando.");
+            Thread.Sleep(2000);
+            Console.WriteLine($"\n{kind.MutterName} und Kind: Nie wieder gesehen.");
+            Thread.Sleep(2000);
+            Console.WriteLine("\nBericht: 'Ausgewandert'");
+            Thread.Sleep(2000);
+            Console.WriteLine("\nSpuren gelöscht.");
+            Console.ResetColor();
+            Thread.Sleep(3000);
+            
+            Console.WriteLine("\n✓ Problem permanent gelöst.");
+            Console.WriteLine($"💀 KGB: +25");
+            
+            player.Gesundheit -= 25;
+            Console.WriteLine($"💔 Gesundheit: -25%");
+        }
+        
+        Thread.Sleep(7000);
     }
 
     /// <summary>
