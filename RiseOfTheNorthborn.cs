@@ -3025,10 +3025,122 @@ static class EventSystem
     }
     
     /// <summary>
-    /// InitializeEvents - Lädt alle 20+ Zufallsereignisse
-    /// 
-    /// Wird beim Programmstart aufgerufen.
-    /// Definiert alle Events mit ihren Effekten.
+    /// InitializeHistoricalEvents - Lädt ALLE historischen/politischen/wirtschaftlichen Events CHRONOLOGISCH
+    /// </summary>
+    public static void InitializeHistoricalEvents()
+    {
+        // ═══════════════════════════════════════════════════════════════════
+        // HISTORISCHE EVENTS 1952-2025
+        // Chronologisch sortiert, mit genauem Datum und Geschichte
+        // ═══════════════════════════════════════════════════════════════════
+        
+        historicalEvents.Add(new HistoricalEvent(
+            "STALIN_TOD_1953",
+            "Tod von Josef Stalin",
+            "5. März 1953",
+            1953, 3,
+            "POLITIK",
+            @"MOSKAU, 5. MÄRZ 1953 - Der Diktator ist tot! Nach einem Schlaganfall stirbt Josef Stalin im Alter von 74 Jahren in seiner Datscha bei Moskau. 30 Jahre absolute Macht enden abrupt. Das Volk ist geschockt und verwirrt - manche weinen, andere atmen erleichtert auf. Die Leichnam wird einbalsamiert und neben Lenin ausgestellt. Hunderttausende pilgern zum Roten Platz. Doch hinter den Kulissen beginnt bereits der brutale Machtkampf: Malenkow, Beria, Chruschtschow - wer wird der neue 'Führer der Völker'?",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.LoyalitätPartei -= 30;
+                p.LoyalitätVolk += 20;
+                p.EinflussKGB -= 20;
+                p.Gesundheit += 15;
+                Console.WriteLine($"➖ Partei-Loyalität: -30% (Unsicherheit) → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Volk-Loyalität: +20% (Hoffnung) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ KGB-Einfluss: -20 (Machtvakuum) → {p.EinflussKGB}");
+                Console.WriteLine($"➕ Gesundheit: +15% (Erleichterung) → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        historicalEvents.Add(new HistoricalEvent(
+            "BERIA_HINRICHTUNG_1953",
+            "Lawrenti Beria hingerichtet",
+            "23. Dezember 1953",
+            1953, 12,
+            "POLITIK",
+            @"MOSKAU, 23. DEZEMBER 1953 - Der Henker wird gehängt! Lawrenti Beria, Stalins gefürchteter Geheimdienstchef und mutmaßlicher Serienmörder, wird nach einem Schauprozess hingerichtet. Die Anklage: Verrat, Spionage für den Westen, sexuelle Verbrechen. Das Todesurteil wird sofort vollstreckt - eine Kugel in die Stirn. Das Volk jubelt heimlich: Endlich zahlt einer der größten Monster des Stalin-Terrors! Doch die Angst bleibt - die NKWD-Strukturen existieren weiter, nur mit anderen Gesichtern.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.EinflussKGB -= 25;
+                p.LoyalitätVolk += 25;
+                p.Gesundheit += 10;
+                p.LoyalitätPartei += 10;
+                Console.WriteLine($"➖ KGB: -25 (Entmachtung) → {p.EinflussKGB}");
+                Console.WriteLine($"➕ Volk: +25% (Gerechtigkeit) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Gesundheit: +10% (Erleichterung) → {p.Gesundheit}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // Sortiere Events chronologisch nach Jahr und Monat
+        historicalEvents = historicalEvents.OrderBy(e => e.Jahr).ThenBy(e => e.Monat).ToList();
+    }
+    
+    /// <summary>
+    /// ShowHistoricalEventsForYear - Zeigt ALLE historischen Events für ein bestimmtes Jahr
+    /// </summary>
+    public static void ShowHistoricalEventsForYear(PlayerCharacter player, int year)
+    {
+        var eventsThisYear = historicalEvents.Where(e => 
+            e.Jahr == year && 
+            !shownHistoricalEvents.Contains(e.ID)
+        ).ToList();
+        
+        foreach (var evt in eventsThisYear)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            
+            string header = "";
+            switch (evt.Kategorie)
+            {
+                case "POLITIK":
+                    header = "║          🏛️  POLITISCHES EREIGNIS  🏛️                     ║";
+                    break;
+                case "WIRTSCHAFT":
+                    header = "║          💰 WIRTSCHAFTLICHES EREIGNIS 💰                  ║";
+                    break;
+                case "KRIEG":
+                    header = "║               ⚔️  KRIEGSEREIGNIS  ⚔️                       ║";
+                    break;
+                case "KATASTROPHE":
+                    header = "║             🔥 KATASTROPHE 🔥                             ║";
+                    break;
+            }
+            Console.WriteLine(header);
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+            
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n📅 {evt.Datum}");
+            Console.ResetColor();
+            Thread.Sleep(2000);
+            
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"\n🏛️ {evt.Name.ToUpper()}");
+            Console.ResetColor();
+            Thread.Sleep(2000);
+            
+            Console.WriteLine($"\n{evt.Geschichte}");
+            Thread.Sleep(5000);
+            
+            // Auswirkungen ausführen
+            evt.Auswirkungen(player);
+            
+            Console.WriteLine("\n[Drücke eine Taste um fortzufahren...]");
+            Console.ReadKey(true);
+            
+            // Markiere als gezeigt
+            shownHistoricalEvents.Add(evt.ID);
+        }
+    }
+    
+    /// <summary>
+    /// InitializeEvents - Lädt alle ZUFALLS-Ereignisse (nicht historische!)
     /// </summary>
     public static void InitializeEvents()
     {
