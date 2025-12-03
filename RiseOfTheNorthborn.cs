@@ -2202,7 +2202,7 @@ static class EventSystem
                 p.LoyalitätVolk -= 40; // Versagen des Staates
                 p.EinflussKGB -= 15;
                 p.LoyalitätPartei += 10; // Zentralisierung als Reaktion
-                Console.WriteLine("p => $"{p.GetFirstName()} nutzt die Tragödie, um Gouverneurswahlen abzuschaffen...");
+                Console.WriteLine($"{p.GetFirstName()} nutzt die Tragödie, um Gouverneurswahlen abzuschaffen...");
             }
         ));
         
