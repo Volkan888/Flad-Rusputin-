@@ -382,7 +382,9 @@ class PlayerCharacter
     public string GetFirstName()
     {
         if (string.IsNullOrEmpty(Name)) return "Spieler";
-        return Name.Split(' ')[0];
+        // .NET Framework 4.0 kompatible Version
+        string[] parts = Name.Split(new char[] { ' ' });
+        return parts[0];
     }
 }
 
