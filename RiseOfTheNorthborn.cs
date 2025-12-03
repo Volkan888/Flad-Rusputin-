@@ -3916,7 +3916,7 @@ static class EventSystem
             p => { p.LoyalitätVolk -= 30; p.Gesundheit -= 25; p.EinflussInternational -= 20; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("GUSINSKI_VERHAFTET_2000", "Medien-Oligarch Gusinski verhaftet", "[RU]", "[EN]", "13. Juni 2000", "[RU]", "[EN]", 2000, 6, "POLITIK",
-            @"Medien-Oligarch Gusinski wird verhaftet. Seine kritischen TV-Sender werden übernommen. Putins Kampf gegen die Oligarchen und freie Medien beginnt.",
+            @"Medien-Oligarch Gusinski wird verhaftet. Seine kritischen TV-Sender werden übernommen. Flads Kampf gegen die Oligarchen und freie Medien beginnt.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
