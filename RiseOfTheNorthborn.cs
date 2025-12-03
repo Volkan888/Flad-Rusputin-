@@ -1573,12 +1573,22 @@ class Program
     
     // GenerateChildren entfernt - wird jetzt durch MarriageSystem.RandomBirth ersetzt
     
+    /// <summary>
+    /// ShowEnding - Zeigt Ende der Regierungsphase
+    /// 
+    /// BUG-FIX 5: Spiel sollte nach Regierung weitergehen
+    /// Problem: Spiel endete nach Präsidentschaft, auch wenn Charakter noch lebt
+    /// Lösung: Spieler kann wählen:
+    ///         [1] Mit diesem Charakter weiterleben (Ruhestand)
+    ///         [2] An einen Erben übergeben (falls Kinder vorhanden)
+    ///         [3] Spiel speichern und beenden
+    /// </summary>
     static void ShowEnding(PlayerCharacter player, string type)
     {
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-        Console.WriteLine($"║              {type.ToUpper()} ENDE                               ║");
+        Console.WriteLine($"║              {type.ToUpper()} ENDE DER AMTSZEIT                  ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
         
@@ -1608,6 +1618,74 @@ class Program
         
         Thread.Sleep(2000);
         ShowStats(player);
+        
+        // BUG-FIX 5: Weiterspiel-Optionen nach Regierungsende
+        Console.WriteLine("\n\n╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                   WIE WEITER?                             ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.WriteLine("\n[1] Im Ruhestand weiterleben (als aktueller Charakter)");
+        
+        if (player.Kinder.Count > 0)
+            Console.WriteLine("[2] An einen Erben übergeben (neue Generation)");
+        
+        Console.WriteLine("[3] Spiel speichern und beenden");
+        Console.Write("\nWähle: ");
+        
+        string choice = Console.ReadLine();
+        
+        if (choice == "1")
+        {
+            // Weiterleben im Ruhestand
+            player.Phase = "Ruhestand";
+            Console.WriteLine("\n>> " + player.Name + " genießt den wohlverdienten Ruhestand...");
+            Thread.Sleep(2000);
+            
+            // Alterungsprozess - kann zum Tod führen
+            for (int jahre = 0; jahre < 10 && player.Gesundheit > 0; jahre++)
+            {
+                player.Alter++;
+                player.Gesundheit -= rand.Next(5, 15); // Alterung
+                
+                if (DeathSystem.CheckDeath(player))
+                {
+                    // Tod im Ruhestand
+                    var heir = DeathSystem.SelectHeir(player);
+                    if (heir != null)
+                    {
+                        currentPlayer = heir;
+                        Console.WriteLine("\n>> Die nächste Generation übernimmt...");
+                        SaveGame(heir);
+                    }
+                    return;
+                }
+                
+                Thread.Sleep(200);
+            }
+            
+            Console.WriteLine($"\n>> {player.Name} ist {player.Alter} Jahre alt und lebt friedlich weiter.");
+            SaveGame(player);
+        }
+        else if (choice == "2" && player.Kinder.Count > 0)
+        {
+            // An Erben übergeben
+            var heir = DeathSystem.SelectHeir(player);
+            if (heir != null)
+            {
+                currentPlayer = heir;
+                player.IstTot = true; // Markiere als verstorben/zurückgetreten
+                Console.WriteLine("\n>> Die Dynastie geht weiter...");
+                Thread.Sleep(1500);
+                SaveGame(heir);
+            }
+        }
+        else
+        {
+            // Speichern und beenden
+            SaveGame(player);
+            Console.WriteLine("\n>> Auf Wiedersehen!");
+            Thread.Sleep(1500);
+        }
+        
         Console.WriteLine("\n[Drücke eine Taste...]");
         Console.ReadKey(true);
     }
