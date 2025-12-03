@@ -8753,7 +8753,8 @@ class Program
         try
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            EventSystem.InitializeEvents(); // Ereignisse laden
+            EventSystem.InitializeEvents(); // Zufalls-Ereignisse laden
+            EventSystem.InitializeHistoricalEvents(); // Historische Ereignisse laden
             ShowIntro();
             MainMenu();
         }
