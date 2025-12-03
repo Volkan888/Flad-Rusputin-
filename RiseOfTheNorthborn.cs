@@ -1783,9 +1783,10 @@ static class EventSystem
         // JUGEND/KGB EREIGNISSE
         allEvents.Add(new RandomEvent(
             "Aufstieg in der Komsomol",
-            "p => $"{p.GetFirstName()} wird zum Anführer der lokalen Jugendorganisation gewählt!",
+            "Zum Anführer der Jugendorganisation gewählt!",
             "KGB-Ambitionen", 40,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} führt die Komsomol!");
                 p.Charisma += 1;
                 p.LoyalitätPartei += 20;
                 p.EinflussKGB += 10;
