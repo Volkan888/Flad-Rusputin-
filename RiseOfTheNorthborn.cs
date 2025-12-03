@@ -1035,7 +1035,6 @@ class Program
     
     static void PlayDDRPhase(PlayerCharacter player)
     {
-        // DDR
         player.Alter = 35;
         player.Phase = "DDR-Einsatz";
         
@@ -1071,7 +1070,10 @@ class Program
         Thread.Sleep(2000);
         ShowStats(player);
         Console.ReadKey(true);
-        
+    }
+    
+    static void PlayPresidentPhase(PlayerCharacter player)
+    {
         // PRÄSIDENT
         player.Alter = 48;
         player.Phase = "Präsident";
