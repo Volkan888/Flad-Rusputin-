@@ -1426,3 +1426,432 @@ class Program
         }
     }
 }
+
+// ═══════════════════════════════════════════════════════════════════
+// SCHIFFE VERSENKEN MINI-GAME
+// ═══════════════════════════════════════════════════════════════════
+
+class BattleshipGame
+{
+    static Random rand = new Random();
+    
+    public static void Play()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║           ⚓ SCHIFFE VERSENKEN ⚓                          ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Spieler vs Computer");
+        Console.WriteLine("[2] Spieler vs Spieler");
+        Console.WriteLine("[3] Zurück zum Hauptmenü");
+        Console.Write("\nWähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        if (choice == "1")
+            PlayGame(false);
+        else if (choice == "2")
+            PlayGame(true);
+    }
+    
+    static void PlayGame(bool pvp)
+    {
+        Console.Clear();
+        Console.Write("Name Spieler 1: ");
+        string player1 = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(player1)) player1 = "Spieler 1";
+        
+        string player2 = pvp ? "" : "Computer";
+        if (pvp)
+        {
+            Console.Write("Name Spieler 2: ");
+            player2 = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(player2)) player2 = "Spieler 2";
+        }
+        
+        // Feldgröße
+        Console.WriteLine("\nFeldgröße:");
+        Console.WriteLine("[1] Klein (6x6)");
+        Console.WriteLine("[2] Groß (8x8)");
+        Console.Write("Wähle [1-2]: ");
+        int size = Console.ReadLine() == "2" ? 8 : 6;
+        
+        Board board1 = new Board(size, player1);
+        Board board2 = new Board(size, player2);
+        
+        // Platzierung
+        Console.Clear();
+        Console.WriteLine($"═══ {player1}, platziere deine Schiffe! ═══\n");
+        PlaceShipsManual(board1);
+        
+        if (pvp)
+        {
+            Console.Clear();
+            Console.WriteLine("═══════════════════════════════════════════════");
+            Console.WriteLine($"Spieler 2 ist an der Reihe!");
+            Console.WriteLine("═══════════════════════════════════════════════");
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+            Console.Clear();
+            Console.WriteLine($"═══ {player2}, platziere deine Schiffe! ═══\n");
+            PlaceShipsManual(board2);
+        }
+        else
+        {
+            PlaceShipsAuto(board2);
+        }
+        
+        // Spielschleife
+        bool player1Turn = true;
+        while (!board1.AllShipsSunk() && !board2.AllShipsSunk())
+        {
+            Console.Clear();
+            
+            if (pvp && !player1Turn)
+            {
+                Console.WriteLine($"\n{player2} ist dran! [Taste drücken...]");
+                Console.ReadKey(true);
+                Console.Clear();
+            }
+            
+            Board attacker = player1Turn ? board1 : board2;
+            Board defender = player1Turn ? board2 : board1;
+            
+            Console.WriteLine($"═══ {attacker.PlayerName} ist am Zug ═══\n");
+            Console.WriteLine("Dein Feld:");
+            attacker.Display(true);
+            Console.WriteLine($"\nGegnerisches Feld ({defender.PlayerName}):");
+            defender.Display(false);
+            
+            bool hit = false;
+            if (!pvp && !player1Turn)
+            {
+                hit = ComputerAttack(defender);
+                Thread.Sleep(1500);
+            }
+            else
+            {
+                hit = PlayerAttack(defender);
+            }
+            
+            if (!hit)
+                player1Turn = !player1Turn;
+        }
+        
+        // Gewinner
+        string winner = board2.AllShipsSunk() ? player1 : player2;
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine($"║  🎉 {winner} HAT GEWONNEN! 🎉");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    static void PlaceShipsManual(Board board)
+    {
+        int[] shipSizes = board.Size == 6 ? new[] { 4, 3, 2 } : new[] { 5, 4, 3, 2 };
+        
+        foreach (int size in shipSizes)
+        {
+            bool placed = false;
+            while (!placed)
+            {
+                Console.Clear();
+                Console.WriteLine($"Platziere Schiff (Größe {size})\n");
+                board.Display(true);
+                
+                Console.Write("\nPosition (z.B. A1): ");
+                string pos = Console.ReadLine()?.ToUpper();
+                if (string.IsNullOrEmpty(pos) || pos.Length < 2) continue;
+                
+                int row = pos[0] - 'A';
+                if (!int.TryParse(pos.Substring(1), out int col)) continue;
+                col--;
+                
+                Console.Write("Richtung ([H]orizontal / [V]ertikal): ");
+                bool horizontal = Console.ReadLine()?.ToUpper() == "H";
+                
+                if (board.PlaceShip(row, col, size, horizontal))
+                {
+                    placed = true;
+                    Console.WriteLine("✓ Schiff platziert!");
+                    Thread.Sleep(500);
+                }
+                else
+                {
+                    Console.WriteLine("✗ Ungültig!");
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+        
+        Console.Clear();
+        Console.WriteLine("Alle Schiffe platziert!\n");
+        board.Display(true);
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    static void PlaceShipsAuto(Board board)
+    {
+        int[] shipSizes = board.Size == 6 ? new[] { 4, 3, 2 } : new[] { 5, 4, 3, 2 };
+        
+        foreach (int size in shipSizes)
+        {
+            bool placed = false;
+            int attempts = 0;
+            while (!placed && attempts < 100)
+            {
+                int row = rand.Next(board.Size);
+                int col = rand.Next(board.Size);
+                bool horizontal = rand.Next(2) == 0;
+                placed = board.PlaceShip(row, col, size, horizontal);
+                attempts++;
+            }
+        }
+    }
+    
+    static bool PlayerAttack(Board board)
+    {
+        while (true)
+        {
+            Console.Write("\nZiel (z.B. B3): ");
+            string input = Console.ReadLine()?.ToUpper();
+            if (string.IsNullOrEmpty(input) || input.Length < 2) continue;
+            
+            int row = input[0] - 'A';
+            if (!int.TryParse(input.Substring(1), out int col)) continue;
+            col--;
+            
+            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size)
+            {
+                Console.WriteLine("Ungültig!");
+                continue;
+            }
+            
+            char result = board.Attack(row, col);
+            
+            if (result == '?')
+            {
+                Console.WriteLine("⚠ Schon beschossen!");
+                continue;
+            }
+            
+            if (result == 'X')
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("💥 TREFFER!");
+                Console.ResetColor();
+                try { Console.Beep(800, 200); } catch { }
+                Thread.Sleep(1000);
+                return true;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("💧 Wasser!");
+                Console.ResetColor();
+                try { Console.Beep(300, 200); } catch { }
+                Thread.Sleep(1000);
+                return false;
+            }
+        }
+    }
+    
+    static bool ComputerAttack(Board board)
+    {
+        int row, col;
+        int attempts = 0;
+        do
+        {
+            row = rand.Next(board.Size);
+            col = rand.Next(board.Size);
+            attempts++;
+        } while (board.Grid[row, col] == 'X' || board.Grid[row, col] == 'O' && attempts < 100);
+        
+        Console.WriteLine($"\nComputer greift an: {(char)('A' + row)}{col + 1}");
+        
+        char result = board.Attack(row, col);
+        
+        if (result == 'X')
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("💥 Computer trifft!");
+            Console.ResetColor();
+            try { Console.Beep(800, 200); } catch { }
+            return true;
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("💧 Computer verfehlt!");
+            Console.ResetColor();
+            try { Console.Beep(300, 200); } catch { }
+            return false;
+        }
+    }
+}
+
+class Board
+{
+    public int Size;
+    public char[,] Grid;
+    public string PlayerName;
+    List<Ship> ships = new List<Ship>();
+    
+    public Board(int size, string name)
+    {
+        Size = size;
+        PlayerName = name;
+        Grid = new char[size, size];
+        
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                Grid[i, j] = '~';
+    }
+    
+    public bool PlaceShip(int row, int col, int size, bool horizontal)
+    {
+        if (horizontal)
+        {
+            if (col + size > Size) return false;
+            for (int c = col; c < col + size; c++)
+                if (Grid[row, c] != '~') return false;
+        }
+        else
+        {
+            if (row + size > Size) return false;
+            for (int r = row; r < row + size; r++)
+                if (Grid[r, col] != '~') return false;
+        }
+        
+        Ship ship = new Ship(row, col, size, horizontal);
+        ships.Add(ship);
+        
+        if (horizontal)
+            for (int c = col; c < col + size; c++)
+                Grid[row, c] = 'S';
+        else
+            for (int r = row; r < row + size; r++)
+                Grid[r, col] = 'S';
+        
+        return true;
+    }
+    
+    public char Attack(int row, int col)
+    {
+        if (Grid[row, col] == 'X' || Grid[row, col] == 'O')
+            return '?';
+        
+        if (Grid[row, col] == 'S')
+        {
+            Grid[row, col] = 'X';
+            
+            foreach (var ship in ships)
+            {
+                if (ship.IsAt(row, col))
+                {
+                    ship.Hit(row, col);
+                    break;
+                }
+            }
+            return 'X';
+        }
+        else
+        {
+            Grid[row, col] = 'O';
+            return 'O';
+        }
+    }
+    
+    public bool AllShipsSunk()
+    {
+        return ships.All(s => s.IsSunk());
+    }
+    
+    public void Display(bool showShips)
+    {
+        Console.Write("   ");
+        for (int c = 0; c < Size; c++)
+            Console.Write($" {c + 1} ");
+        Console.WriteLine();
+        
+        for (int r = 0; r < Size; r++)
+        {
+            Console.Write($" {(char)('A' + r)} │");
+            
+            for (int c = 0; c < Size; c++)
+            {
+                char cell = Grid[r, c];
+                if (cell == 'S' && !showShips) cell = '~';
+                
+                switch (cell)
+                {
+                    case '~':
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.Write(" ~ ");
+                        break;
+                    case 'S':
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.Write(" ■ ");
+                        break;
+                    case 'X':
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(" X ");
+                        break;
+                    case 'O':
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.Write(" ○ ");
+                        break;
+                }
+                Console.ResetColor();
+            }
+            Console.WriteLine("│");
+        }
+        
+        Console.WriteLine("\n~ Wasser | ■ Schiff | X Treffer | ○ Fehlschuss");
+    }
+}
+
+class Ship
+{
+    int row, col, size;
+    bool horizontal;
+    bool[] hits;
+    
+    public Ship(int r, int c, int s, bool h)
+    {
+        row = r;
+        col = c;
+        size = s;
+        horizontal = h;
+        hits = new bool[s];
+    }
+    
+    public bool IsAt(int r, int c)
+    {
+        if (horizontal)
+            return r == row && c >= col && c < col + size;
+        else
+            return c == col && r >= row && r < row + size;
+    }
+    
+    public void Hit(int r, int c)
+    {
+        if (horizontal)
+            hits[c - col] = true;
+        else
+            hits[r - row] = true;
+    }
+    
+    public bool IsSunk()
+    {
+        return hits.All(h => h);
+    }
+}
