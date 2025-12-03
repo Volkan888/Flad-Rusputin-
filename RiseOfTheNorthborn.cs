@@ -888,6 +888,25 @@ class Program
         Thread.Sleep(1500);
     }
     
+    static void PlayStoryFromPhase(PlayerCharacter player, string startPhase)
+    {
+        switch (startPhase)
+        {
+            case "Jurastudium":
+                PlayJurastudium(player);
+                PlayDDRPhase(player);
+                PlayPresidentPhase(player);
+                break;
+            case "DDR-Einsatz":
+                PlayDDRPhase(player);
+                PlayPresidentPhase(player);
+                break;
+            case "Präsident":
+                PlayPresidentPhase(player);
+                break;
+        }
+    }
+    
     static void PlayStory(PlayerCharacter player)
     {
         // KINDHEIT
