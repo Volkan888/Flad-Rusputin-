@@ -3926,8 +3926,8 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 25; p.Gesundheit += 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("911_UNTERSTUETZUNG_2001", "9/11 - Putin unterstützt USA", "[RU]", "[EN]", "11. September 2001", "[RU]", "[EN]", 2001, 9, "POLITIK",
-            @"Nach den Anschlägen von 9/11 ist Putin der erste, der Bush anruft. Russland unterstützt den 'Krieg gegen Terror'. Kurze Annäherung an den Westen.",
+        historicalEvents.Add(new HistoricalEvent("911_UNTERSTUETZUNG_2001", "9/11 - Flad unterstützt USA", "[RU]", "[EN]", "11. September 2001", "[RU]", "[EN]", 2001, 9, "POLITIK",
+            @"Nach den Anschlägen von 9/11 ist Flad der erste, der Bush anruft. Russland unterstützt den 'Krieg gegen Terror'. Kurze Annäherung an den Westen.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 30; Thread.Sleep(3000); }));
         
