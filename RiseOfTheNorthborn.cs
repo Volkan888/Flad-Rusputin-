@@ -7,6 +7,170 @@
  * Ein textbasiertes Rollenspiel in C#, das die fiktive Geschichte von Flad Rusputin
  * erzählt - vom Straßenkind bis zum Präsidenten einer dystopischen sowjetischen Nation.
  * 
+ * ════════════════════════════════════════════════════════════════════════════════
+ * 📖 SPIELANLEITUNG - HAUPTSPIEL
+ * ════════════════════════════════════════════════════════════════════════════════
+ * 
+ * SPIELZIEL:
+ * -----------
+ * Führe Flad Rusputin von der Kindheit bis zur Präsidentschaft und darüber hinaus.
+ * Baue eine mächtige Dynastie auf, die über mehrere Generationen fortbesteht.
+ * 
+ * SPIELSTART:
+ * -----------
+ * 1. Wähle einen Schwierigkeitsgrad (Leicht/Normal/Schwer)
+ * 2. Verteile Attributspunkte auf: Stärke, Intelligenz, Charisma, Kraft
+ * 3. Beginne deine Geschichte in der Kindheit
+ * 
+ * DIE 5 LEBENSPHASEN:
+ * -------------------
+ * 
+ * 1. KINDHEIT (Alter 10-15)
+ *    - Überlebe auf den Straßen
+ *    - Erste Entscheidungen prägen deinen Charakter
+ *    - Zufallsereignisse: Bruder-Verlust, Raufereien, Jungpioniere
+ * 
+ * 2. KGB-PHASE (Alter 15-18)
+ *    - Rekrutierung durch den Geheimdienst
+ *    - Lerne Loyalität und Misstrauen
+ *    - Wichtige Wahl: Freunde decken oder verraten?
+ * 
+ * 3. JURASTUDIUM (Alter 18-25)
+ *    - Ausbildung an der Geheimdienstakademie
+ *    - Events: Erbe, Judo-Training, Drill & Disziplin
+ *    - Erste Einfluss-Aufbau-Möglichkeiten
+ * 
+ * 4. DDR-EINSATZ (Alter 25-35)
+ *    - Auslandseinsatz in Ost-Berlin
+ *    - Kritische diplomatische Entscheidungen
+ *    - Aufbau von internationalem Einfluss
+ * 
+ * 5. PRÄSIDENT (Alter 35+)
+ *    - Höhepunkt der Karriere
+ *    - Hochzeit und Familiengründung
+ *    - Regierungsstil-Wahl am Ende
+ *    - Optionen nach Amtszeit: Ruhestand, Nachfolger, oder Speichern
+ * 
+ * WICHTIGE SPIELSYSTEME:
+ * ----------------------
+ * 
+ * ► ATTRIBUTE (0-10):
+ *   • Stärke: Wichtig für Kämpfe, militärische Aktionen
+ *   • Intelligenz: Entscheidend für Spionage, Intrigen, Politik
+ *   • Charisma: Beeinflusst Führung, Diplomatie, Volksgunst
+ *   • Kraft: Gesundheits-Puffer, Durchhaltevermögen
+ * 
+ * ► RESSOURCEN:
+ *   • Geld: Für Bestechungen und Investitionen (Start: 0 Rubel)
+ *   • Gesundheit: 0-100% (Bei 0% → Tod)
+ * 
+ * ► LOYALITÄTEN (0-100%):
+ *   • Partei: Unterstützung der kommunistischen Partei
+ *   • Volk: Popularität bei der Bevölkerung
+ *   • Familie: Familiäre Bindungen
+ * 
+ * ► EINFLUSS (0-100%):
+ *   • KGB: Macht im Geheimdienst
+ *   • Militär: Einfluss bei den Streitkräften
+ *   • International: Ansehen im Ausland
+ * 
+ * HOCHZEITS-SYSTEM:
+ * -----------------
+ * In der Präsidenten-Phase kannst du heiraten. 5 Optionen verfügbar:
+ * 
+ * │ Name      │ Kinderrate │ Geld-Bonus │ Strategie                    │
+ * ├───────────┼────────────┼────────────┼──────────────────────────────┤
+ * │ Natasha   │ ★☆☆☆☆ 15% │ +300 Rubel │ Reich, wenig Erben (riskant) │
+ * │ Olga      │ ★★☆☆☆ 30% │ +200 Rubel │ Ausgewogen                   │
+ * │ Svetlana  │ ★★★☆☆ 45% │ +100 Rubel │ Mittelweg                    │
+ * │ Irina     │ ★★★★☆ 60% │ +50 Rubel  │ Viele Kinder                 │
+ * │ Katya     │ ★★★★★ 75% │ +0 Rubel   │ Maximum Kinder (sicher)      │
+ * 
+ * TIPP: Mehr Kinder = Mehr Erben bei Tod = Sicherheit für die Dynastie!
+ * 
+ * GEBURTEN-SYSTEM:
+ * ----------------
+ * - Geburten erfolgen zufällig über 10 Regierungsjahre
+ * - Nur alle 2 Jahre möglich (realistisch)
+ * - Maximal 8 Kinder
+ * - Zwillinge (5%) und Drillinge (1%) möglich
+ * - Du gibst jedem Kind einen Namen
+ * - Attribute werden mit Variation vererbt (Elternwert ±1-2)
+ * 
+ * TOD UND NACHFOLGE:
+ * ------------------
+ * Dein Charakter kann sterben durch:
+ * 1. Gesundheit sinkt auf 0% (Ereignisse, Kämpfe)
+ * 2. Altersschwäche ab 65 Jahren (progressives Risiko)
+ * 
+ * Bei Tod MIT Kindern:
+ * → Wähle einen Erben aus deinen Kindern
+ * → Erbe erbt 50% Geld, 33% Einfluss, 50% Loyalität
+ * → Erbe startet mit 25 Jahren im Jurastudium
+ * → SPIEL GEHT WEITER!
+ * 
+ * Bei Tod OHNE Kinder:
+ * → GAME OVER
+ * → Dynastie endet
+ * 
+ * ZUFALLSEREIGNISSE:
+ * ------------------
+ * 20+ dynamische Events können jederzeit auftreten:
+ * - Passive Events: Automatische Effekte auf Attribute
+ * - Interaktive Events: Du musst eine Wahl treffen
+ * - Attribut-abhängige Events: Erfolg hängt von deinen Werten ab
+ * - Erfolg/Misserfolg-Events: Zufälliges Ergebnis
+ * 
+ * SPEICHERN/LADEN:
+ * ----------------
+ * - 5 Speicherslots verfügbar
+ * - Vergib eigene Namen für deine Spielstände
+ * - Datum/Uhrzeit wird automatisch gespeichert
+ * - Jederzeit speicherbar über Hauptmenü oder nach Phasen
+ * 
+ * STAMMBAUM:
+ * ----------
+ * - Zeigt alle Generationen deiner Dynastie
+ * - Sehe alle Kinder und ihre Attribute
+ * - Übersicht über lebende und verstorbene Charaktere
+ * - Zugriff über Hauptmenü [3]
+ * 
+ * ════════════════════════════════════════════════════════════════════════════════
+ * 📖 SPIELANLEITUNG - MINI-GAME: SCHIFFE VERSENKEN
+ * ════════════════════════════════════════════════════════════════════════════════
+ * 
+ * SPIELMODI:
+ * ----------
+ * 1. Spieler vs Computer (KI mit Zufalls-Angriffen)
+ * 2. Spieler vs Spieler (Hotseat-Modus, abwechselnd am PC)
+ * 
+ * SPIELREGELN:
+ * ------------
+ * 1. Wähle Feldgröße: Klein (6x6) oder Groß (8x8)
+ * 2. Platziere deine Schiffe:
+ *    - Klein: 3 Schiffe (Größe 4, 3, 2)
+ *    - Groß: 4 Schiffe (Größe 5, 4, 3, 2)
+ * 3. Abwechselnd angreifen:
+ *    - Gib Koordinate ein (z.B. "B3")
+ *    - Bei TREFFER: Nochmal dran
+ *    - Bei FEHLSCHUSS: Gegner ist dran
+ * 4. Gewinner: Wer alle gegnerischen Schiffe versenkt
+ * 
+ * SPIELFELD-ZEICHEN:
+ * ------------------
+ * ~ = Wasser (unberührt)
+ * ■ = Dein Schiff (nur auf eigenem Feld sichtbar)
+ * X = Treffer (rot)
+ * O = Fehlschuss (blau)
+ * 
+ * STEUERUNG:
+ * ----------
+ * - Position: Buchstabe + Zahl (A1, B3, C5, etc.)
+ * - Richtung: [H] für Horizontal, [V] für Vertikal
+ * - Bei Angriffen: Koordinate eingeben (z.B. "D4")
+ * 
+ * ════════════════════════════════════════════════════════════════════════════════
+ * 
  * HAUPTFEATURES:
  * - Lebensphasen-System: 5 verschiedene Lebensabschnitte spielbar
  * - Attribut-System: Stärke, Intelligenz, Charisma, Kraft
@@ -26,7 +190,7 @@
  * 
  * ENTWICKELT: Dezember 2024
  * VERSION: 1.0
- * ZEILEN CODE: ~1857
+ * ZEILEN CODE: ~2450
  * 
  * ════════════════════════════════════════════════════════════════════════════════
  */
