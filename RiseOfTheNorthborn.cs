@@ -6729,7 +6729,7 @@ class Program
 {
     static bool stopMusic = false;
     static Dictionary<int, GameSave> saveSlots = new Dictionary<int, GameSave>();
-    static Random rand = new Random();
+    public static Random rand = new Random();  // Public für Zugriff von anderen Klassen
     static PlayerCharacter currentPlayer = null;
     
     static void Main()
