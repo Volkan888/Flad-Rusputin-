@@ -1788,13 +1788,57 @@ class Program
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SCHIFFE VERSENKEN MINI-GAME
+// SCHIFFE VERSENKEN MINI-GAME (ÄNDERUNG 10)
 // ═══════════════════════════════════════════════════════════════════
+/*
+ * VOLLSTÄNDIGES SCHIFFE-VERSENKEN-SPIEL:
+ * 
+ * Klassisches Battleship-Spiel als Easter Egg / Pause vom Hauptspiel.
+ * Über Hauptmenü zugänglich.
+ * 
+ * SPIELMODI:
+ * 1. Spieler vs Computer (KI mit Zufalls-Angriffen)
+ * 2. Spieler vs Spieler (Hotseat-Modus)
+ * 
+ * FELDGRÖ§EN:
+ * - Klein (6x6): Schiffe der Größe 4, 3, 2
+ * - Groß (8x8): Schiffe der Größe 5, 4, 3, 2
+ * 
+ * SPIELFELD-ZEICHEN:
+ * ~ = Wasser (noch nicht beschossen)
+ * ■ = Schiff (nur auf eigenem Feld sichtbar)
+ * X = Treffer (rot angezeigt)
+ * O = Fehlschuss (blau angezeigt)
+ * 
+ * GEWINNBEDINGUNG:
+ * Alle Schiffe des Gegners versenkt.
+ * 
+ * BESONDERE REGEL:
+ * Bei Treffer ist der Spieler nochmal dran (wie im echten Spiel).
+ * 
+ * KLASSEN-STRUKTUR:
+ * - BattleshipGame: Haupt-Spiellogik und Menü
+ * - Board: Spielfeld-Verwaltung und Angriffe
+ * - Ship: Einzelne Schiffe mit Treffer-Tracking
+ */
 
+/// <summary>
+/// BattleshipGame - Hauptklasse für das Schiffe-Versenken-Minigame
+/// 
+/// ÄNDERUNG 10: Vollständiges Battleship-Spiel ins Hauptmenü integriert
+/// </summary>
 class BattleshipGame
 {
     static Random rand = new Random();
     
+    /// <summary>
+    /// Play - Zeigt Spielmodus-Auswahl
+    /// 
+    /// Einstiegspunkt des Minigames.
+    /// Spieler wählt zwischen:
+    /// - PvC (Spieler gegen Computer)
+    /// - PvP (Spieler gegen Spieler, Hotseat)
+    /// </summary>
     public static void Play()
     {
         Console.Clear();
@@ -1812,9 +1856,9 @@ class BattleshipGame
         string choice = Console.ReadLine();
         
         if (choice == "1")
-            PlayGame(false);
+            PlayGame(false);  // PvC-Modus
         else if (choice == "2")
-            PlayGame(true);
+            PlayGame(true);   // PvP-Modus
     }
     
     static void PlayGame(bool pvp)
