@@ -2201,16 +2201,26 @@ class BattleshipGame
         }
     }
     
+    /// <summary>
+    /// ComputerAttack - Computer wählt Zufallsfeld für Angriff
+    /// 
+    /// BUG-FIX 6: Fehlerhafte Bedingung in Computer-KI
+    /// Problem: Bedingung "|| board.Grid[row, col] == 'O' && attempts < 100"
+    ///          war falsch geklammert → Computer griff bereits beschossene Felder an
+    /// Lösung: Korrekte Klammerung mit (... || ...) && attempts < 100
+    /// </summary>
     static bool ComputerAttack(Board board)
     {
         int row, col;
         int attempts = 0;
+        
+        // Suche unbeschossenes Feld (max 100 Versuche)
         do
         {
             row = rand.Next(board.Size);
             col = rand.Next(board.Size);
             attempts++;
-        } while (board.Grid[row, col] == 'X' || board.Grid[row, col] == 'O' && attempts < 100);
+        } while ((board.Grid[row, col] == 'X' || board.Grid[row, col] == 'O') && attempts < 100);
         
         Console.WriteLine($"\nComputer greift an: {(char)('A' + row)}{col + 1}");
         
