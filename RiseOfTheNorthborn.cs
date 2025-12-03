@@ -11085,12 +11085,10 @@ class Program
         else if (choice == "2") { player.Kraft += 2; player.Charisma++; }
         else { player.Intelligenz += 3; player.Charisma++; }
         
-        if (player.Intelligenz >= 2 || player.Charisma >= 2)
-        {
-            player.KGBEasterEgg = true;
-            Console.WriteLine($"\n💀 Ein KGB-Agent beobachtet {player.GetFirstName()}...");
-            Thread.Sleep(3500);
-        }
+        // KGB Easter Egg erscheint jetzt IMMER (nicht mehr selten)
+        player.KGBEasterEgg = true;
+        Console.WriteLine($"\n💀 Ein KGB-Agent beobachtet {player.GetFirstName()}...");
+        Thread.Sleep(3500);
         
         ShowStats(player);
         Console.ReadKey(true);
