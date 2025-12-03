@@ -7200,10 +7200,10 @@ class Program
         Console.WriteLine("║            SCHWIERIGKEITSGRAD WÄHLEN                      ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        Console.WriteLine("[1] Leicht - Alle Attribute bei 1, +500 Rubel");
-        Console.WriteLine("[2] Mittel - 3 Attributpunkte verteilen");
-        Console.WriteLine("[3] Hart - 2 Punkte, 70% Gesundheit");
-        Console.WriteLine("[4] Kalter Krieg - 1 Punkt, Schulden, +20% KGB\n");
+        Console.WriteLine("[1] Leicht - Alle Attribute bei 1, +800 Rubel, gute Beziehungen");
+        Console.WriteLine("[2] Mittel - 3 Attributpunkte, +500 Rubel, normale Beziehungen");
+        Console.WriteLine("[3] Hart - 2 Punkte, 70% Gesundheit, -200 Rubel");
+        Console.WriteLine("[4] Kalter Krieg - 1 Punkt, -500 Rubel Schulden, Feindschaft, +40% KGB\n");
         
         while (true)
         {
