@@ -9881,6 +9881,259 @@ class Program
     static PlayerCharacter currentPlayer = null;
     
     // ═══════════════════════════════════════════════════════════════════
+    // TELEFONATE-SYSTEM: Historische Anrufe mit Staatsführern
+    // ═══════════════════════════════════════════════════════════════════
+    
+    public class TelefonatEvent
+    {
+        public DateTime Datum;
+        public string Anrufer;
+        public string Empfaenger;
+        public string Thema;
+        public string Beschreibung;
+        public List<TelefonatOption> Optionen;
+        public bool Ausgeloest = false;
+    }
+    
+    public class TelefonatOption
+    {
+        public string Text;
+        public int VolkAenderung;
+        public int ArmeeAenderung;
+        public int WirtschaftAenderung;
+        public int DiplomatieAenderung;
+        public int KGBAenderung;
+    }
+    
+    static List<TelefonatEvent> telefonate = new List<TelefonatEvent>();
+    
+    /// <summary>
+    /// InitializeTelefonate - Lädt alle historischen Telefonate
+    /// </summary>
+    static void InitializeTelefonate()
+    {
+        // 1953 - Stalins Tod
+        telefonate.Add(new TelefonatEvent
+        {
+            Datum = new DateTime(1953, 3, 5),
+            Anrufer = "US-Präsident Dwight D. Eisenhower",
+            Empfaenger = "Georgi Malenkow (UdSSR)",
+            Thema = "Stalins Tod – Zukunft des Kalten Krieges",
+            Beschreibung = "Washington kondoliert, doch der Subtext ist klar: Die USA wittern eine Schwächephase der Sowjets. Eisenhower fragt, ob die UdSSR 'bereit sei für De-Eskalation'. Moskau reagiert misstrauisch.",
+            Optionen = new List<TelefonatOption>
+            {
+                new TelefonatOption { Text = "Die Sowjetunion bleibt stark. Kein Dialog.", VolkAenderung = 5, ArmeeAenderung = 0, WirtschaftAenderung = 0, DiplomatieAenderung = -10, KGBAenderung = 5 },
+                new TelefonatOption { Text = "Wir reden – aber nur zu unseren Bedingungen.", VolkAenderung = 0, ArmeeAenderung = 5, WirtschaftAenderung = 0, DiplomatieAenderung = 0, KGBAenderung = 0 },
+                new TelefonatOption { Text = "Lasst uns ein neues Kapitel aufschlagen.", VolkAenderung = -10, ArmeeAenderung = 0, WirtschaftAenderung = 50, DiplomatieAenderung = 20, KGBAenderung = -5 }
+            }
+        });
+        
+        // 1953 - Korea Waffenstillstand
+        telefonate.Add(new TelefonatEvent
+        {
+            Datum = new DateTime(1953, 7, 27),
+            Anrufer = "Pentagon Joint Chiefs",
+            Empfaenger = "Politbüro UdSSR",
+            Thema = "Waffenstillstand Korea",
+            Beschreibung = "Die USA warnen, dass ein erneutes militärisches Eingreifen der UdSSR als 'Akt der Aggression' gewertet würde. Die UdSSR weigert sich, ihren Einfluss auf Nordkorea zu reduzieren.",
+            Optionen = new List<TelefonatOption>
+            {
+                new TelefonatOption { Text = "Wir halten uns raus – vorerst.", VolkAenderung = -5, ArmeeAenderung = -5, WirtschaftAenderung = 0, DiplomatieAenderung = 10, KGBAenderung = 0 },
+                new TelefonatOption { Text = "Wir unterstützen Nordkorea weiter im Geheimen.", VolkAenderung = 5, ArmeeAenderung = 10, WirtschaftAenderung = -20, DiplomatieAenderung = -15, KGBAenderung = 10 },
+                new TelefonatOption { Text = "Wir drohen mit Vergeltungsschlägen.", VolkAenderung = 10, ArmeeAenderung = 15, WirtschaftAenderung = -30, DiplomatieAenderung = -25, KGBAenderung = 5 }
+            }
+        });
+        
+        // 1957 - Sputnik Schock
+        telefonate.Add(new TelefonatEvent
+        {
+            Datum = new DateTime(1957, 10, 4),
+            Anrufer = "US-Präsident Eisenhower",
+            Empfaenger = "Nikita Chruschtschow",
+            Thema = "Sputnik-Schock",
+            Beschreibung = "Der erste Satellit der Menschheit schockiert die USA. Eisenhower klingt nervös, fast panisch: 'Was habt ihr da hochgeschickt?' Chruschtschow lacht ihn am Telefon aus.",
+            Optionen = new List<TelefonatOption>
+            {
+                new TelefonatOption { Text = "Wir bieten wissenschaftlichen Austausch an.", VolkAenderung = 5, ArmeeAenderung = 0, WirtschaftAenderung = 30, DiplomatieAenderung = 15, KGBAenderung = -5 },
+                new TelefonatOption { Text = "Wir prahlen mit sowjetischer Überlegenheit.", VolkAenderung = 15, ArmeeAenderung = 10, WirtschaftAenderung = 10, DiplomatieAenderung = -10, KGBAenderung = 5 },
+                new TelefonatOption { Text = "Wir drohen mit neuen Waffenprogrammen.", VolkAenderung = 10, ArmeeAenderung = 20, WirtschaftAenderung = -20, DiplomatieAenderung = -20, KGBAenderung = 10 },
+                new TelefonatOption { Text = "Wir schweigen arrogant.", VolkAenderung = 20, ArmeeAenderung = 5, WirtschaftAenderung = 0, DiplomatieAenderung = -15, KGBAenderung = 15 }
+            }
+        });
+        
+        // 1958 - Berlin Ultimatum
+        telefonate.Add(new TelefonatEvent
+        {
+            Datum = new DateTime(1958, 11, 1),
+            Anrufer = "US-Außenminister John Foster Dulles",
+            Empfaenger = "Nikita Chruschtschow",
+            Thema = "Berlin-Ultimatum",
+            Beschreibung = "Die USA fordern freien Zugang nach West-Berlin. Die Spannung steigt. Beide Seiten drohen hinter höflichen Worten mit Krieg.",
+            Optionen = new List<TelefonatOption>
+            {
+                new TelefonatOption { Text = "Wir lockern die Kontrollen.", VolkAenderung = -10, ArmeeAenderung = -5, WirtschaftAenderung = 0, DiplomatieAenderung = 15, KGBAenderung = -10 },
+                new TelefonatOption { Text = "Wir verstärken die Kontrollen.", VolkAenderung = 5, ArmeeAenderung = 10, WirtschaftAenderung = -10, DiplomatieAenderung = -10, KGBAenderung = 10 },
+                new TelefonatOption { Text = "Wir drohen mit Schließung aller Zugänge.", VolkAenderung = 10, ArmeeAenderung = 15, WirtschaftAenderung = -25, DiplomatieAenderung = -30, KGBAenderung = 20 }
+            }
+        });
+    }
+    
+    /// <summary>
+    /// CheckTelefonateForYear - Prüft ob Telefonate für aktuelles Jahr vorhanden sind
+    /// </summary>
+    static void CheckTelefonateForYear(PlayerCharacter player)
+    {
+        int currentYear = player.GetCurrentYear();
+        
+        foreach (var telefonat in telefonate)
+        {
+            if (telefonat.Datum.Year == currentYear && !telefonat.Ausgeloest)
+            {
+                // KGB Easter Egg Chance berechnen
+                int kgbLevel = player.EinflussKGB;
+                int chance = 10 + (kgbLevel * 2);
+                if (chance > 85) chance = 85;
+                
+                bool kgbEasterEgg = (kgbLevel >= 30 && rand.Next(100) < chance);
+                
+                TriggerTelefonat(player, telefonat, kgbEasterEgg);
+                telefonat.Ausgeloest = true;
+                return; // Nur ein Telefonat pro Jahr
+            }
+        }
+    }
+    
+    /// <summary>
+    /// TriggerTelefonat - Zeigt ein Telefonat und lässt Spieler entscheiden
+    /// </summary>
+    static void TriggerTelefonat(PlayerCharacter player, TelefonatEvent telefonat, bool kgbEasterEgg)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(@"
+╔═══════════════════════════════════════════════════════════╗
+║                 📞 WICHTIGER ANRUF! 📞                    ║
+╚═══════════════════════════════════════════════════════════╝
+");
+        Console.ResetColor();
+        
+        Console.WriteLine($"📅 {telefonat.Datum.ToString("dd.MM.yyyy")}\n");
+        Console.WriteLine($"📞 {telefonat.Anrufer}");
+        Console.WriteLine($"   → {telefonat.Empfaenger}\n");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"THEMA: {telefonat.Thema}");
+        Console.ResetColor();
+        Console.WriteLine();
+        Console.WriteLine(telefonat.Beschreibung);
+        Console.WriteLine();
+        
+        Thread.Sleep(4000);
+        
+        if (kgbEasterEgg)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║          🕵️ KGB EASTER EGG FREIGESCHALTET! 🕵️            ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+            Console.WriteLine("\nEin KGB-Agent flüstert dir geheime Informationen zu...");
+            Console.WriteLine("'Genosse, ich habe... alternative Optionen für Sie...'");
+            Thread.Sleep(3000);
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine("═══════════════════════════════════════════════════════════");
+        Console.WriteLine("WIE REAGIERST DU?");
+        Console.WriteLine("═══════════════════════════════════════════════════════════\n");
+        
+        for (int i = 0; i < telefonat.Optionen.Count; i++)
+        {
+            Console.WriteLine($"[{i + 1}] {telefonat.Optionen[i].Text}");
+        }
+        
+        if (kgbEasterEgg)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"[{telefonat.Optionen.Count + 1}] 🕵️ KGB-Option: Geheime Operation durchführen");
+            Console.ResetColor();
+        }
+        
+        Console.Write($"\nWähle [1-{telefonat.Optionen.Count + (kgbEasterEgg ? 1 : 0)}]: ");
+        string choice = Console.ReadLine();
+        
+        int choiceNum = 0;
+        int.TryParse(choice, out choiceNum);
+        
+        if (choiceNum >= 1 && choiceNum <= telefonat.Optionen.Count)
+        {
+            var option = telefonat.Optionen[choiceNum - 1];
+            ApplyTelefonatEffects(player, option);
+        }
+        else if (kgbEasterEgg && choiceNum == telefonat.Optionen.Count + 1)
+        {
+            // KGB Easter Egg Option
+            Console.WriteLine("\n🕵️ Der KGB führt eine geheime Operation durch...");
+            player.EinflussKGB += 25;
+            player.Geld += 500;
+            player.LoyalitätVolk -= 15;
+            Console.WriteLine("\n✓ +25 KGB-Einfluss");
+            Console.WriteLine("✓ +500 Rubel (aus geheimen Fonds)");
+            Console.WriteLine("✓ -15 Volk (Gerüchte verbreiten sich)");
+            Thread.Sleep(4000);
+        }
+        else
+        {
+            Console.WriteLine("\n❌ Ungültige Wahl! Keine Entscheidung getroffen.");
+            Thread.Sleep(2000);
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    /// <summary>
+    /// ApplyTelefonatEffects - Wendet die Auswirkungen einer Telefonat-Option an
+    /// </summary>
+    static void ApplyTelefonatEffects(PlayerCharacter player, TelefonatOption option)
+    {
+        Console.WriteLine("\n═══════════════════════════════════════════════════════════");
+        Console.WriteLine("AUSWIRKUNGEN:");
+        Console.WriteLine("═══════════════════════════════════════════════════════════");
+        
+        if (option.VolkAenderung != 0)
+        {
+            player.LoyalitätVolk += option.VolkAenderung;
+            Console.WriteLine($"{(option.VolkAenderung > 0 ? "✓" : "✗")} Volk: {option.VolkAenderung:+0;-0} → {player.LoyalitätVolk}%");
+        }
+        
+        if (option.ArmeeAenderung != 0)
+        {
+            player.EinflussMilitär += option.ArmeeAenderung;
+            Console.WriteLine($"{(option.ArmeeAenderung > 0 ? "✓" : "✗")} Armee: {option.ArmeeAenderung:+0;-0} → {player.EinflussMilitär}%");
+        }
+        
+        if (option.WirtschaftAenderung != 0)
+        {
+            player.Geld += option.WirtschaftAenderung;
+            Console.WriteLine($"{(option.WirtschaftAenderung > 0 ? "✓" : "✗")} Wirtschaft: {option.WirtschaftAenderung:+0;-0} Rubel → {player.Geld}₽");
+        }
+        
+        if (option.DiplomatieAenderung != 0)
+        {
+            player.EinflussInternational += option.DiplomatieAenderung;
+            Console.WriteLine($"{(option.DiplomatieAenderung > 0 ? "✓" : "✗")} Diplomatie: {option.DiplomatieAenderung:+0;-0} → {player.EinflussInternational}%");
+        }
+        
+        if (option.KGBAenderung != 0)
+        {
+            player.EinflussKGB += option.KGBAenderung;
+            Console.WriteLine($"{(option.KGBAenderung > 0 ? "✓" : "✗")} KGB: {option.KGBAenderung:+0;-0} → {player.EinflussKGB}%");
+        }
+        
+        Thread.Sleep(4000);
+    }
+    
+    // ═══════════════════════════════════════════════════════════════════
     // SIDECHICK-SYSTEM: Alle 10 Jahre + Vaterschaftstest nach 18 Jahren
     // ═══════════════════════════════════════════════════════════════════
     
