@@ -10046,6 +10046,21 @@ class Program
                 return; // Nur ein Event pro Jahr
             }
         }
+    
+    static void TriggerSidechickEvent(PlayerCharacter player)
+    {
+        // Wird implementiert
+        Console.WriteLine("Sidechick Event - Coming soon!");
+        Thread.Sleep(2000);
+    }
+    
+    static void TriggerVaterschaftstestEvent(PlayerCharacter player, PlayerCharacter.UnanerkanntesSidechickKind kind)
+    {
+        // Wird implementiert
+        Console.WriteLine("Vaterschaftstest Event - Coming soon!");
+        Thread.Sleep(2000);
+    }
+
     }
 
     /// <summary>
