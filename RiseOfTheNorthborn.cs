@@ -5238,7 +5238,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "🔐 KGB-Safe entdeckt",
             "Bei Renovierungsarbeiten im Kreml wird ein alter KGB-Safe gefunden...",
-            "Präsident", 10, 0, "kgb_easter",
+            "Präsident", 70, 0, "kgb_easter",
             p => {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Cyan;
