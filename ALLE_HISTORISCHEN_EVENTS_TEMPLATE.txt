@@ -1,0 +1,35 @@
+═══════════════════════════════════════════════════════════════════
+  ALLE HISTORISCHEN EVENTS 1952-2023 MIT ÜBERSETZUNGEN
+═══════════════════════════════════════════════════════════════════
+
+DIESE DATEI ENTHÄLT ALLE EVENTS MIT:
+- Deutschem Text
+- Russischem Text (Русский)
+- Englischem Text
+- Datum in allen 3 Sprachen
+- Auswirkungen
+
+FORMAT:
+
+historicalEvents.Add(new HistoricalEvent(
+    "EVENT_ID",
+    "Deutscher Titel",
+    "Русский заголовок",
+    "English Title",
+    "5. März 1953",
+    "5 марта 1953 года",
+    "March 5, 1953",
+    1953, 3,
+    "POLITIK",
+    @"Deutsche Geschichte...",
+    @"Русская история...",
+    @"English story...",
+    p => { /* Auswirkungen */ }
+));
+
+═══════════════════════════════════════════════════════════════════
+
+WICHTIG: Diese Datei muss in RiseOfTheNorthborn.cs in die Funktion
+InitializeHistoricalEvents() eingefügt werden!
+
+═══════════════════════════════════════════════════════════════════
