@@ -7136,12 +7136,14 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine("Alle Spieler durchlaufen parallel ihr Leben.");
-        Console.WriteLine("Jeder Spieler erlebt eigene Zufallsereignisse!\n");
-        Thread.Sleep(3500);
+        Console.WriteLine("Jeder Spieler erlebt eigene Zufallsereignisse!");
+        Console.WriteLine("Am Ende der Präsidentschaft könnt ihr die Dynastie an Erben weitergeben.\n");
+        Thread.Sleep(4000);
         
         // Jeder Spieler durchläuft die komplette Story
-        foreach (var player in players)
+        for (int i = 0; i < players.Count; i++)
         {
+            var player = players[i];
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
@@ -7153,7 +7155,44 @@ class Program
             currentPlayer = player;
             PlayStory(player);
             
-            Console.WriteLine($"\n>> {player.Name} hat das Spiel beendet!");
+            // Dynastie-Weitergabe im Multiplayer
+            if (player.Kinder.Count > 0)
+            {
+                Console.WriteLine($"\n>> {player.Name} hat Kinder!");
+                Console.WriteLine("[1] Dynastie an Erben weitergeben");
+                Console.WriteLine("[2] Mit diesem Charakter abschließen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                string choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    var heir = DeathSystem.SelectHeir(player);
+                    if (heir != null)
+                    {
+                        Console.WriteLine($"\n>> {heir.Name} übernimmt die Dynastie von {player.Name}!");
+                        Thread.Sleep(3000);
+                        
+                        // Speichere Erben und ersetze Spieler in Liste
+                        SaveGame(heir);
+                        players[i] = heir;
+                        
+                        Console.WriteLine($"\n>> Möchtest du mit {heir.Name} weiterspielen? [J/N]");
+                        if (Console.ReadKey(true).Key == ConsoleKey.J)
+                        {
+                            Console.WriteLine("\n\n>> Die Dynastie geht weiter...");
+                            Thread.Sleep(2000);
+                            currentPlayer = heir;
+                            PlayStory(heir);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                SaveGame(player);
+            }
+            
+            Console.WriteLine($"\n>> {player.Name} hat seine Runde beendet!");
             Console.WriteLine("\n[Drücke eine Taste für nächsten Spieler...]");
             Console.ReadKey(true);
         }
