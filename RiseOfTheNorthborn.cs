@@ -3982,7 +3982,7 @@ static class EventSystem
             p => { p.Geld += 200; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("LITWINENKO_MORD_2006", "Litwinenko in London vergiftet", "[RU]", "[EN]", "23. November 2006", "[RU]", "[EN]", 2006, 11, "POLITIK",
-            @"Der Ex-FSB-Agent Litwinenko stirbt in London - vergiftet mit radioaktivem Polonium! Er beschuldigte vorher Putin. Ein britisches Gericht wird später FSB für schuldig erklären.",
+            @"Der Ex-FSB-Agent Litwinenko stirbt in London - vergiftet mit radioaktivem Polonium! Er beschuldigte vorher Flad. Ein britisches Gericht wird später FSB für schuldig erklären.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 35; p.EinflussKGB += 25; Thread.Sleep(4000); }));
         
