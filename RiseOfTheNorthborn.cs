@@ -5658,7 +5658,11 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine($"{player.GetFirstName()} wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
-        Console.WriteLine("💾 Shortcuts: 'S' = Speichern | 'L' = Laden\n");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("═══════════════════════════════════════════════════════════");
+        Console.WriteLine("💾 Extras: 'S' = Speichern | 'L' = Laden | 'M' = 🎵 Musik");
+        Console.WriteLine("═══════════════════════════════════════════════════════════\n");
+        Console.ResetColor();
         Thread.Sleep(1500);
         
         // Zufallsereignis auslösen
