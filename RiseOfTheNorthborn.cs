@@ -7067,6 +7067,278 @@ static class EventSystem
                 Thread.Sleep(4500);
             }
         ));
+        
+        // 2016-2020 - Trump-Ära & Corona
+        allEvents.Add(new RandomEvent(
+            "Donald Trump gewählt 2016",
+            "CHAOS IM WEISSEN HAUS! Donald Trump wird US-Präsident - ein Geschenk für Putin. Die Propaganda jubelt: 'Amerikas Niedergang hat begonnen!' Das Volk hofft auf Entspannung. Trump lobt Putin öffentlich. Die Beziehungen könnten sich verbessern - doch der Deep State lauert bereits.",
+            "Präsident", 85, 2016, "politisch",
+            p => {
+                Console.WriteLine("\n🇺🇸 TRUMP GEWINNT - NEUE ÄRA?");
+                Console.WriteLine("Putin hofft auf bessere Beziehungen! Das Volk ist optimistisch!");
+                p.USABeziehung += 30;
+                p.LoyalitätVolk += 15;
+                p.Geld += 200;
+                p.EinflussInternational += 20;
+                Console.WriteLine($"➕ USA-Beziehung: +30 → {p.USABeziehung}");
+                Console.WriteLine($"➕ Volk: +15% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Geld: +200 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Syrien-Intervention 2016",
+            "RUSSISCHE BOMBER ÜBER ALEPPO! Putin rettet Assad - Fassbomben und Luftschläge verwandeln Städte in Trümmerwüsten. Das Volk sieht die Militärparaden im Fernsehen: Russland ist wieder eine Weltmacht! Der Preis? Tausende tote Zivilisten. 'Kollateralschaden', sagt das Militär. Die Wahrheit ertrinkt in Propaganda.",
+            "Präsident", 90, 2016, "politisch",
+            p => {
+                Console.WriteLine("\n💣 SYRIEN - RUSSLAND GREIFT EIN!");
+                Console.WriteLine("Assad gerettet! Das Volk feiert militärische Stärke!");
+                p.EinflussMilitär += 35;
+                p.Geld -= 600;
+                p.LoyalitätVolk += 20;
+                p.EinflussInternational -= 30;
+                Console.WriteLine($"➕ Militär: +35 → {p.EinflussMilitär}");
+                Console.WriteLine($"💰 Kosten: -600 Rubel → {p.Geld}");
+                Console.WriteLine($"➕ Volk: +20% → {p.LoyalitätVolk}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Doping-Skandal Olympia 2016",
+            "STAATLICHES DOPING AUFGEDECKT! Whistleblower Rodtschenkow enthüllt: Russland hat jahrelang systematisch gedopt. Die Olympia-Mannschaft wird gesperrt. Das Volk ist empört - nicht über das Doping, sondern dass Russland erwischt wurde. 'Alle dopen doch', ist der Konsens. Nationalstolz > Fairness.",
+            "Präsident", 80, 2016, "katastrophe",
+            p => {
+                Console.WriteLine("\n💉 DOPING-SKANDAL - RUSSLAND GESPERRT!");
+                Console.WriteLine("Das Volk ist wütend auf den Westen, nicht auf die Betrüger!");
+                p.EinflussInternational -= 35;
+                p.LoyalitätVolk -= 20;
+                p.Gesundheit -= 10;
+                p.LoyalitätPartei += 15;
+                Console.WriteLine($"➖ International: -35 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -20% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Partei: +15% (Nationalismus steigt)");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "St. Petersburg Metro-Anschlag 2017",
+            "TERROR IN DER U-BAHN! Eine Bombe reißt 15 Menschen in den Tod, 50 weitere werden verletzt. Der Täter: ein Kirgise mit Verbindungen zum IS. Das Volk trauert - und fragt: Warum schützt uns der allmächtige FSB nicht? Putin verspricht Härte. Die Überwachung wird noch brutaler.",
+            "Präsident", 85, 2017, "katastrophe",
+            p => {
+                Console.WriteLine("\n💣 METRO-ANSCHLAG - 15 TOTE!");
+                Console.WriteLine("Terror in St. Petersburg! Das Volk fordert Sicherheit!");
+                p.Gesundheit -= 20;
+                p.LoyalitätVolk -= 25;
+                p.EinflussKGB += 25;
+                p.Geld -= 200;
+                Console.WriteLine($"➖ Gesundheit: -20% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "WM 2018 Russland",
+            "DIE WELT ZU GAST BEI FREUNDEN? Millionen Touristen strömen nach Russland. Moskau putzt sich heraus. Das Volk genießt die Party - eine Woche lang sind sie stolz. Die Mannschaft erreicht das Viertelfinale! Doch nach der WM kehrt die graue Realität zurück: Steigende Preise, sinkende Renten.",
+            "Präsident", 85, 2018, "politisch",
+            p => {
+                Console.WriteLine("\n⚽ WM 2018 - RUSSLAND FEIERT!");
+                Console.WriteLine("Das Volk ist glücklich! Aber nur kurz...");
+                p.LoyalitätVolk += 25;
+                p.EinflussInternational += 30;
+                p.Geld -= 800;
+                p.Gesundheit += 10;
+                Console.WriteLine($"➕ Volk: +25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ International: +30 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Kosten: -800 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Rentenreform 2018",
+            "PUTIN STIEHLT DIE RENTEN! Das Rentenalter wird drastisch erhöht - Männer auf 65, Frauen auf 60. Das Volk ist außer sich! Proteste überall. Putin versteckt sich, lässt Medwedew die Nachricht verkünden. Seine Beliebtheit stürzt ab. Das Vertrauen ist gebrochen. Selbst Loyalisten sind entsetzt.",
+            "Präsident", 95, 2018, "katastrophe",
+            p => {
+                Console.WriteLine("\n👴 RENTENREFORM - DAS VOLK REBELLIERT!");
+                Console.WriteLine("Rentenalter erhöht! Massiver Vertrauensverlust!");
+                p.LoyalitätVolk -= 45;
+                p.Gesundheit -= 20;
+                p.Geld += 300;
+                p.LoyalitätPartei -= 25;
+                Console.WriteLine($"➖ Volk: -45% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -20% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Partei: -25% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Skripal-Vergiftung UK 2018",
+            "NOWITSCHOK IN SALISBURY! Der Ex-Spion Sergei Skripal wird mit Nervengas vergiftet - auf britischem Boden! Die Spuren führen direkt zum GRU. Massiver diplomatischer Eklat: 150 russische Diplomaten werden ausgewiesen. Das Volk glaubt der Propaganda: 'Alles eine Lüge! Die Briten haben sich selbst vergiftet!'",
+            "Präsident", 80, 2018, "katastrophe",
+            p => {
+                Console.WriteLine("\n☠️ SKRIPAL-AFFÄRE - DIPLOMATISCHES DESASTER!");
+                Console.WriteLine("Massenausweisung russischer Diplomaten! Das Volk leugnet alles!");
+                p.EinflussInternational -= 40;
+                p.EinflussKGB += 20;
+                p.LoyalitätVolk += 10;
+                p.Geld -= 200;
+                Console.WriteLine($"➖ International: -40 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ KGB/FSB: +20 → {p.EinflussKGB}");
+                Console.WriteLine($"➕ Volk: +10% (Nationalismus)");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Corona-Pandemie Russland 2020",
+            "DAS UNSICHTBARE VIRUS! COVID-19 erreicht Russland. Putin versteckt sich monatelang in seiner Residenz. Ärzte sterben zu Dutzenden - manche 'fallen' aus Fenstern, nachdem sie kritisierten. Das Volk stirbt, während die Propaganda von 'Sputnik V' schwärmt. Die offiziellen Zahlen sind Lügen. Jeder kennt Tote.",
+            "Präsident", 95, 2020, "katastrophe",
+            p => {
+                Console.WriteLine("\n🦠 CORONA TRIFFT RUSSLAND!");
+                Console.WriteLine("Offiziell 'unter Kontrolle', inoffiziell: Katastrophe! Das Volk leidet!");
+                p.Gesundheit -= 35;
+                p.LoyalitätVolk -= 30;
+                p.Geld -= 500;
+                p.LoyalitätPartei -= 20;
+                Console.WriteLine($"➖ Gesundheit: -35% → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"💰 Verlust: -500 Rubel → {p.Geld}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nawalny vergiftet 2020",
+            "DER AUFRECHTE WIRD NIEDERGESTRECKT! Alexei Nawalny kollabiert im Flugzeug - Nowitschok im Blut. Er überlebt knapp in Deutschland. Putin leugnet alles. Das Volk ist gespalten: Manche nennen ihn Held, andere Landesverräter. Als Nawalny zurückkehrt, wird er sofort verhaftet. Der Mut hat seinen Preis.",
+            "Präsident", 90, 2020, "katastrophe",
+            p => {
+                Console.WriteLine("\n☠️ NAWALNY VERGIFTET - ÜBERLEBT KNAPP!");
+                Console.WriteLine("Kreml-Kritiker fast getötet! Das Volk ist tief gespalten!");
+                p.EinflussInternational -= 35;
+                p.LoyalitätVolk -= 25;
+                p.EinflussKGB += 25;
+                p.Gesundheit -= 15;
+                Console.WriteLine($"➖ International: -35 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -25% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nawalny verhaftet 2021",
+            "RÜCKKEHR IN DIE HÖLLE! Nawalny landet in Moskau - und wird am Gate verhaftet. Hunderttausende protestieren landesweit. Die Polizei schlägt brutal zu: 11.000 Festnahmen. Das Volk sieht die Brutalität live auf YouTube. Putin hat entschieden: Keine Opposition mehr. Die Schrauben werden angezogen bis zum Anschlag.",
+            "Präsident", 95, 2021, "katastrophe",
+            p => {
+                Console.WriteLine("\n⛓️ NAWALNY VERHAFTET - MASSENPROTESTE!");
+                Console.WriteLine("11.000 Festnahmen! Das Volk sieht die Brutalität!");
+                p.LoyalitätVolk -= 40;
+                p.EinflussKGB += 30;
+                p.EinflussInternational -= 30;
+                p.Gesundheit -= 20;
+                Console.WriteLine($"➖ Volk: -40% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ KGB/FSB: +30 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ International: -30 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 2022-2025 - Ukraine-Krieg
+        allEvents.Add(new RandomEvent(
+            "Invasion Ukraine 2022",
+            "KRIEG IN EUROPA! 24. Februar, 04:00 Uhr - Raketen hageln auf Kiew. 200.000 russische Soldaten überqueren die Grenze. Putin nennt es 'Spezialoperation'. Das Volk glaubt der Propaganda: 'Wir befreien die Ukraine von Nazis!' Doch bald kommen die Zinksärge zurück. Mütter weinen, der Kreml schweigt.",
+            "Präsident", 100, 2022, "katastrophe",
+            p => {
+                Console.WriteLine("\n💥 UKRAINE-KRIEG BEGINNT!");
+                Console.WriteLine("Russland marschiert ein! Das Volk ist gespalten zwischen Propaganda und Realität!");
+                p.EinflussMilitär += 40;
+                p.Geld -= 1500;
+                p.LoyalitätVolk -= 35;
+                p.EinflussInternational -= 60;
+                Console.WriteLine($"➕ Militär: +40 → {p.EinflussMilitär}");
+                Console.WriteLine($"💰 Kriegskosten: -1500 Rubel → {p.Geld}");
+                Console.WriteLine($"➖ Volk: -35% → {p.LoyalitätVolk}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Butscha-Massaker 2022",
+            "GRÄUEL IN DER VORSTADT! Als russische Truppen Butscha verlassen, finden Ukrainer Hunderte ermordete Zivilisten - gefoltert, hingerichtet. Die Bilder schockieren die Welt. Russland leugnet alles: 'Alles inszeniert!' Das Volk glaubt der Lüge - oder will sie glauben. Die Wahrheit ist zu schmerzhaft.",
+            "Präsident", 90, 2022, "katastrophe",
+            p => {
+                Console.WriteLine("\n💀 BUTSCHA - KRIEGSVERBRECHEN AUFGEDECKT!");
+                Console.WriteLine("Die Welt ist entsetzt! Das Volk leugnet oder schweigt!");
+                p.EinflussInternational -= 50;
+                p.LoyalitätVolk -= 30;
+                p.Gesundheit -= 25;
+                p.EinflussMilitär -= 20;
+                Console.WriteLine($"➖ International: -50 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Volk: -30% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -25% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Mobilmachung 2022",
+            "ALLE MÄNNER AN DIE FRONT! Putin verkündet 'Teilmobilmachung' - 300.000 Reservisten werden eingezogen. Panik bricht aus! Männer fliehen über die Grenzen, Flugtickets kosten Tausende. Das Volk realisiert: Der Krieg ist real. Frauen weinen auf Bahnhöfen. Der Staat jagt Wehrpflichtige wie Wild.",
+            "Präsident", 95, 2022, "katastrophe",
+            p => {
+                Console.WriteLine("\n🪖 MOBILMACHUNG - PANIK UND FLUCHT!");
+                Console.WriteLine("300.000 an die Front! Männer fliehen! Das Volk ist in Panik!");
+                p.EinflussMilitär += 30;
+                p.LoyalitätVolk -= 50;
+                p.Geld -= 800;
+                p.Gesundheit -= 30;
+                Console.WriteLine($"➕ Militär: +30 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk: -50% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Gesundheit: -30% → {p.Gesundheit}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Prigoschin-Aufstand 2023",
+            "WAGNERS MARSCH AUF MOSKAU! Jewgeni Prigoschin, der Chef der Wagner-Söldner, rebelliert! Seine Armee marschiert auf Moskau zu. Putin flieht. 24 Stunden purer Wahnsinn. Dann: Deal. Prigoschin dreht um. Das Volk ist geschockt - wie schwach ist Putin wirklich? 2 Monate später: Prigoschins Jet explodiert.",
+            "Präsident", 100, 2023, "katastrophe",
+            p => {
+                Console.WriteLine("\n⚔️ WAGNER-AUFSTAND - PUTIN WACKELT!");
+                Console.WriteLine("Beinahe-Putsch! Das Volk sieht Putins Schwäche!");
+                p.EinflussMilitär -= 40;
+                p.LoyalitätVolk -= 45;
+                p.LoyalitätPartei -= 30;
+                p.Gesundheit -= 35;
+                Console.WriteLine($"➖ Militär: -40 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk: -45% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ Partei: -30% → {p.LoyalitätPartei}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Nawalny stirbt im Lager 2024",
+            "DER LETZTE HELD IST TOT! Alexei Nawalny stirbt mit 47 Jahren in der Arktis-Strafkolonie. 'Natürliche Ursachen', sagt der Kreml. Das Volk weiß: Mord. Zehntausende trauern - heimlich. Wer zu laut weint, wird verhaftet. Die Opposition ist endgültig geköpft. Putin hat gewonnen. Die Dunkelheit ist komplett.",
+            "Präsident", 95, 2024, "katastrophe",
+            p => {
+                Console.WriteLine("\n💔 NAWALNY TOT - DIE HOFFNUNG STIRBT!");
+                Console.WriteLine("Ermordet im Gulag! Das Volk trauert heimlich!");
+                p.LoyalitätVolk -= 35;
+                p.EinflussInternational -= 40;
+                p.EinflussKGB += 25;
+                p.Gesundheit -= 20;
+                Console.WriteLine($"➖ Volk: -35% → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -40 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ KGB/FSB: +25 → {p.EinflussKGB}");
+                Thread.Sleep(5000);
+            }
+        ));
     }
     
     /// <summary>
