@@ -5597,7 +5597,30 @@ static class EventSystem
                 Thread.Sleep(4500);
             }
         ));
-        allEvents.Add(new RandomEvent("Gagarin 1961", "Erster Mensch im All", "Jugend", 70, 1961, "politisch", p => { p.EinflussInternational += 30; Console.WriteLine("👨‍🚀 Gagarin im All!"); Thread.Sleep(3000); }));
+        // 1961
+        allEvents.Add(new RandomEvent(
+            "Gagarin im All 1961",
+            "12. Apr: Juri Gagarin - ERSTER MENSCH IM WELTRAUM! 6. Aug: Gherman Titow 17 Mal um die Erde. 13. Aug: Berliner Mauer gebaut. 30. Okt: Zar-Bombe - stärkste Explosion!",
+            "Jugend", 100, 1961, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1961 - GAGARINS TRIUMPH");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("👨‍🚀 12. APR: JURI GAGARIN IM ALL!");
+                Console.WriteLine("🌍 ERSTER MENSCH IM ERDORBIT (WOSTOK 1)");
+                Console.WriteLine("🇷🇺 UdSSR SIEGT IM WELTRAUM-WETTLAUF!");
+                Console.WriteLine("🚀 6. Aug: Titow umkreist 17x die Erde");
+                Console.WriteLine("🧱 13. Aug: Berliner Mauer wird gebaut");
+                Console.WriteLine("💣 30. Okt: ZAR-BOMBE - 50 Megatonnen!");
+                Console.WriteLine("☢️  Stärkste jemals gezündete Bombe");
+                p.EinflussInternational += 40;
+                p.EinflussMilitär += 30;
+                p.LoyalitätPartei += 25;
+                Console.WriteLine($"\n➕ International: +40 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Militär: +30 → {p.EinflussMilitär}");
+                Console.WriteLine($"➕ Partei: +25% → {p.LoyalitätPartei}%");
+                Thread.Sleep(5000);
+            }
+        ));
         allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 85, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 60, 1964, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Vietnamkrieg 1965", "USA in Vietnam", "Jugend", 65, 1965, "politisch", p => { p.Geld += 100; Console.WriteLine("⚔️ Waffenlieferungen!"); Thread.Sleep(3000); }));
