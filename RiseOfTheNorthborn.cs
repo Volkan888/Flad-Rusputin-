@@ -1944,9 +1944,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Erfolgreicher Coup",
-            "p => $"{p.GetFirstName()} rekrutiert einen hochrangigen westlichen Offizier!",
+            "Hochrangiger westlicher Offizier rekrutiert!",
             "DDR-Einsatz", 25,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} gelingt ein großer Coup!");
                 p.EinflussKGB += 30;
                 p.Geld += 100;
                 p.LoyalitätPartei += 20;
