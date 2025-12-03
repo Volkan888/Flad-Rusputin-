@@ -3964,8 +3964,8 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational -= 30; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUTIN_GOUVERNEURE_2004", "Putin schafft Gouverneurswahlen ab", "[RU]", "[EN]", "13. September 2004", "[RU]", "[EN]", 2004, 9, "POLITIK",
-            @"Nach Beslan schafft Putin Gouverneurswahlen ab. Nun ernennt er alle Gouverneure selbst. Die Demokratie wird weiter abgebaut. 'Vertikale der Macht' nennt er es.",
+        historicalEvents.Add(new HistoricalEvent("FLAD_GOUVERNEURE_2004", "Flad schafft Gouverneurswahlen ab", "[RU]", "[EN]", "13. September 2004", "[RU]", "[EN]", 2004, 9, "POLITIK",
+            @"Nach Beslan schafft Flad Gouverneurswahlen ab. Nun ernennt er alle Gouverneure selbst. Die Demokratie wird weiter abgebaut. 'Vertikale der Macht' nennt er es.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 30; p.LoyalitätPartei += 20; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
