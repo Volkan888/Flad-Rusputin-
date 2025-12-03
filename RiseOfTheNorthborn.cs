@@ -7827,7 +7827,7 @@ class BattleshipGame
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("💥 TREFFER!");
                 Console.ResetColor();
-                try { // Beep deaktiviert } catch { }
+                
                 Thread.Sleep(2500);
                 return true;
             }
@@ -7836,7 +7836,7 @@ class BattleshipGame
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("💧 Wasser!");
                 Console.ResetColor();
-                try { // Beep deaktiviert } catch { }
+                
                 Thread.Sleep(2500);
                 return false;
             }
@@ -7873,7 +7873,7 @@ class BattleshipGame
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("💥 Computer trifft!");
             Console.ResetColor();
-            try { // Beep deaktiviert } catch { }
+            
             return true;
         }
         else
@@ -7881,7 +7881,7 @@ class BattleshipGame
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("💧 Computer verfehlt!");
             Console.ResetColor();
-            try { // Beep deaktiviert } catch { }
+            
             return false;
         }
     }
