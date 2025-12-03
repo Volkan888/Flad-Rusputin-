@@ -4951,80 +4951,8 @@ static class EventSystem
         
         // ═══════════════════════════════════════════════════════════
         // SIDECHICK / AFFÄREN-EVENTS (Neue Kategorie)
-        // Zufällige Affären führen zu unehelichen Kindern
-        // ═══════════════════════════════════════════════════════════
-        
-        allEvents.Add(new RandomEvent(
-            "Geheime Affäre",
-            "Eine charmante Diplomatin aus Belarus zieht deine Aufmerksamkeit auf sich...",
-            "Präsident", 0, 0, "sidechick",
-            p => {
-                Console.WriteLine("\n[1] Affäre eingehen (riskant!)");
-                Console.WriteLine("[2] Ablehnen (treu bleiben)");
-                Console.Write("Wähle [1-2]: ");
-                
-                if (Console.ReadLine() == "1")
-                {
-                    Console.WriteLine("\n💋 Die Affäre beginnt...");
-                    Thread.Sleep(3000);
-                    
-                    // 60% Chance auf uneheliches Kind
-                    if (rand.Next(100) < 60)
-                    {
-                        Console.WriteLine("\n👶 ÜBERRASCHUNG: Sie ist schwanger!");
-                        
-                        bool isBoy = rand.Next(2) == 0;
-                        Console.Write($"\nName für das uneheliche Kind (Enter = Standardname): ");
-                        string vorname = Console.ReadLine();
-                        
-                        if (string.IsNullOrWhiteSpace(vorname))
-                            vorname = isBoy ? "Alexei" : "Anastasia";
-                        
-                        string childName = $"{vorname} [Unehelich] Gen{p.Generation + 1}";
-                        
-                        PlayerCharacter child = new PlayerCharacter(childName, p.Generation + 1);
-                        child.Alter = 0;
-                        child.Phase = "Kind";
-                        child.Geburtsjahr = p.GetCurrentYear();
-                        
-                        // Attribute vererben
-                        child.Stärke = Math.Max(0, p.Stärke + rand.Next(-2, 2));
-                        child.Intelligenz = Math.Max(0, p.Intelligenz + rand.Next(-2, 2));
-                        child.Charisma = Math.Max(0, p.Charisma + rand.Next(-2, 2));
-                        child.Kraft = Math.Max(0, p.Kraft + rand.Next(-2, 2));
-                        
-                        p.Kinder.Add(child);
-                        
-                        Console.WriteLine($"\n✓ {childName} wurde heimlich geboren!");
-                        Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
-                    }
-                    
-                    // Negative Konsequenzen
-                    p.LoyalitätFamilie -= 30; // Familie leidet
-                    p.Geld -= 100; // Schweigegeld
-                    
-                    if (p.IstVerheiratet)
-                    {
-                        Console.WriteLine("\n⚠ Deine Ehe ist angespannt...");
-                        p.LoyalitätFamilie -= 20;
-                    }
-                    
-                    // 30% Chance auf Skandal
-                    if (rand.Next(100) < 30)
-                    {
-                        Console.WriteLine("\n📰 SKANDAL! Die Presse erfährt von der Affäre!");
-                        p.LoyalitätVolk -= 40;
-                        p.LoyalitätPartei -= 25;
-                        p.Geld -= 200; // Schadensbegrenzung
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\nDu bleibst deinen Prinzipien treu.");
-                    p.LoyalitätFamilie += 10;
-                }
-            }
-        ));
+        // SIDECHICK-EVENTS ENTFERNT - Jetzt als historische Events alle 10 Jahre
+        // Siehe InitializeHistoricalEvents() für neue Sidechick-Mechanik
         
         allEvents.Add(new RandomEvent(
             "Alte Flamme",
