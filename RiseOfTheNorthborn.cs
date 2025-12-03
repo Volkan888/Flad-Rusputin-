@@ -966,6 +966,262 @@ static class DeathSystem
 /// - Passende Events der aktuellen Phase werden gefiltert
 /// - Zufällig eines der möglichen Events wird ausgeführt
 /// </summary>
+
+// ═══════════════════════════════════════════════════════════════════
+// ERDOGAN-NOTTELEFON SYSTEM
+// ═══════════════════════════════════════════════════════════════════
+
+/// <summary>
+/// ErdoganHotline - Strategisches Hilfesystem via Türkei
+/// 
+/// KONZEPT:
+/// Der Spieler hat Zugang zu einem "Nottelefon" zu Präsident Erdogan.
+/// Über die Taste 'E' kann er in kritischen Situationen Hilfe anfordern.
+/// 
+/// FEATURES:
+/// - 💰 Geld leihen (mit Zinsen und Rückzahlungspflicht)
+/// - 🛡️ S-400 Militärhilfe (Verteidigungsbonus)
+/// - ⚡ Gas-Deal (Energie-Rabatt)
+/// - 🤝 Diplomatische Vermittlung (Krisenlösung)
+/// - 🌾 Getreide-Deal (Nahrungsbonus)
+/// 
+/// LIMITIERUNG:
+/// - Nur 5 Anrufe pro Durchlauf möglich
+/// - Schulden müssen zurückgezahlt werden
+/// - Beziehung zur Türkei beeinflusst Konditionen
+/// </summary>
+static class ErdoganHotline
+{
+    static Random rand = new Random();
+    
+    /// <summary>
+    /// ShowHotlineMenu - Zeigt das Erdogan-Nottelefon Menü
+    /// </summary>
+    public static void ShowHotlineMenu(PlayerCharacter p)
+    {
+        if (p.ErdoganAnrufeVerfügbar <= 0)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n╔══════════════════════════════════════════════════════╗");
+            Console.WriteLine("║       📞 ERDOGAN-NOTTELEFON - NICHT VERFÜGBAR       ║");
+            Console.WriteLine("╚══════════════════════════════════════════════════════╝\n");
+            Console.ResetColor();
+            Console.WriteLine("Du hast alle Anrufe aufgebraucht!");
+            Console.WriteLine($"Schulden bei Türkei: {p.ErdoganSchulden} Rubel");
+            Console.WriteLine("\nDrücke eine Taste...");
+            Console.ReadKey();
+            return;
+        }
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\n╔══════════════════════════════════════════════════════╗");
+        Console.WriteLine("║           📞 ERDOGAN-NOTTELEFON AKTIVIERT           ║");
+        Console.WriteLine("╚══════════════════════════════════════════════════════╝\n");
+        Console.ResetColor();
+        
+        Console.WriteLine($"🔋 Verbleibende Anrufe: {p.ErdoganAnrufeVerfügbar}/5");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: {p.TürkeiBeziehung}%");
+        Console.WriteLine($"💳 Aktuelle Schulden: {p.ErdoganSchulden} Rubel");
+        Console.WriteLine("\n═══════════════════════════════════════════════════════\n");
+        
+        Console.WriteLine("[1] 💰 Geld leihen (500-2000 Rubel + 25% Zinsen)");
+        Console.WriteLine("[2] 🛡️  S-400 System kaufen (Militärischer Schutz)");
+        Console.WriteLine("[3] ⚡ Gas-Deal abschließen (Energie-Rabatt)");
+        Console.WriteLine("[4] 🤝 Diplomatische Vermittlung (Krisenbonus)");
+        Console.WriteLine("[5] 🌾 Getreide-Abkommen (Nahrungssicherheit)");
+        Console.WriteLine("[6] ❌ Abbrechen");
+        
+        Console.Write("\nWähle [1-6]: ");
+        string choice = Console.ReadLine();
+        
+        switch (choice)
+        {
+            case "1":
+                LeiheGeld(p);
+                break;
+            case "2":
+                KaufeS400(p);
+                break;
+            case "3":
+                GasDeal(p);
+                break;
+            case "4":
+                DiplomatischeVermittlung(p);
+                break;
+            case "5":
+                GetreideAbkommen(p);
+                break;
+            case "6":
+                Console.WriteLine("\nAnruf abgebrochen.");
+                Thread.Sleep(1500);
+                return;
+            default:
+                Console.WriteLine("\nUngültige Wahl!");
+                Thread.Sleep(1500);
+                return;
+        }
+        
+        p.ErdoganAnrufeVerfügbar--;
+        Console.WriteLine($"\n📞 Verbleibende Anrufe: {p.ErdoganAnrufeVerfügbar}/5");
+        Console.WriteLine("\nDrücke eine Taste...");
+        Console.ReadKey();
+    }
+    
+    /// <summary>
+    /// LeiheGeld - Leihe Geld von der Türkei mit 25% Zinsen
+    /// </summary>
+    static void LeiheGeld(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n💰 GELD-KREDIT VON TÜRKEI");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("Wie viel möchtest du leihen?");
+        Console.WriteLine("[1] 500 Rubel (Rückzahlung: 625)");
+        Console.WriteLine("[2] 1000 Rubel (Rückzahlung: 1250)");
+        Console.WriteLine("[3] 1500 Rubel (Rückzahlung: 1875)");
+        Console.WriteLine("[4] 2000 Rubel (Rückzahlung: 2500)");
+        Console.Write("\nWähle [1-4]: ");
+        
+        string choice = Console.ReadLine();
+        int betrag = 0;
+        int rückzahlung = 0;
+        
+        switch (choice)
+        {
+            case "1": betrag = 500; rückzahlung = 625; break;
+            case "2": betrag = 1000; rückzahlung = 1250; break;
+            case "3": betrag = 1500; rückzahlung = 1875; break;
+            case "4": betrag = 2000; rückzahlung = 2500; break;
+            default:
+                Console.WriteLine("\nUngültige Wahl!");
+                Thread.Sleep(1500);
+                return;
+        }
+        
+        p.Geld += betrag;
+        p.ErdoganSchulden += rückzahlung;
+        p.TürkeiBeziehung += 10; // Beziehung verbessert sich
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"\n✓ Erdogan überweist {betrag} Rubel!");
+        Console.WriteLine($"⚠ Rückzahlung fällig: {rückzahlung} Rubel (inkl. 25% Zinsen)");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +10% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ResetColor();
+    }
+    
+    /// <summary>
+    /// KaufeS400 - Kaufe S-400 Flugabwehrsystem
+    /// </summary>
+    static void KaufeS400(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\n🛡️  S-400 FLUGABWEHRSYSTEM");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        if (p.Geld < 300)
+        {
+            Console.WriteLine("❌ Nicht genug Geld! Benötigt: 300 Rubel");
+            Console.WriteLine($"Aktuelles Geld: {p.Geld} Rubel");
+            Thread.Sleep(2000);
+            return;
+        }
+        
+        p.Geld -= 300;
+        p.EinflussMilitär += 40;
+        p.TürkeiBeziehung += 15;
+        p.EinflussInternational -= 20; // NATO verärgert
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ S-400 System erfolgreich erworben!");
+        Console.WriteLine($"⚔️  Militärischer Einfluss: +40 (jetzt {p.EinflussMilitär})");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +15% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"⚠ Internationaler Einfluss: -20 (NATO verärgert!)");
+        Console.ResetColor();
+    }
+    
+    /// <summary>
+    /// GasDeal - Schließe günstigen Energie-Deal ab
+    /// </summary>
+    static void GasDeal(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("\n⚡ TÜRKSTREAM GAS-DEAL");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        p.Geld += 400; // Energieverkauf
+        p.TürkeiBeziehung += 20;
+        p.EinflussInternational += 10; // Energiemacht
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ TurkStream-Pipeline liefert Gas!");
+        Console.WriteLine($"💰 Geld: +400 Rubel (Energieexport)");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +20% (jetzt {p.TürkeiBeziehung}%)");
+        Console.WriteLine($"🌍 Internationaler Einfluss: +10 (Energiemacht!)");
+        Console.ResetColor();
+    }
+    
+    /// <summary>
+    /// DiplomatischeVermittlung - Erdogan vermittelt in Krise
+    /// </summary>
+    static void DiplomatischeVermittlung(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("\n🤝 DIPLOMATISCHE VERMITTLUNG");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        p.LoyalitätVolk += 20;
+        p.LoyalitätPartei += 15;
+        p.EinflussInternational += 25;
+        p.TürkeiBeziehung += 15;
+        p.ErdoganVermittlungAktiv = true;
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ Erdogan vermittelt erfolgreich in internationaler Krise!");
+        Console.WriteLine($"👥 Loyalität Volk: +20 (jetzt {p.LoyalitätVolk})");
+        Console.WriteLine($"🏛️  Loyalität Partei: +15 (jetzt {p.LoyalitätPartei})");
+        Console.WriteLine($"🌍 Internationaler Einfluss: +25 (jetzt {p.EinflussInternational})");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +15% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ResetColor();
+    }
+    
+    /// <summary>
+    /// GetreideAbkommen - Schwarzmeer-Getreide-Deal
+    /// </summary>
+    static void GetreideAbkommen(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n🌾 SCHWARZMEER-GETREIDEABKOMMEN");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        p.Geld += 300;
+        p.LoyalitätVolk += 25;
+        p.EinflussInternational += 20;
+        p.TürkeiBeziehung += 20;
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("✓ Getreide-Deal erfolgreich! Nahrungssicherheit gewährleistet.");
+        Console.WriteLine($"💰 Geld: +300 Rubel (Getreidehandel)");
+        Console.WriteLine($"👥 Loyalität Volk: +25 (Nahrung gesichert!)");
+        Console.WriteLine($"🌍 Internationaler Einfluss: +20 (Mediator-Rolle!)");
+        Console.WriteLine($"🤝 Beziehung zu Türkei: +20% (jetzt {p.TürkeiBeziehung}%)");
+        Console.ResetColor();
+    }
+}
+
 static class EventSystem
 {
     static Random rand = new Random();
