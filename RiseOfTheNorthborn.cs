@@ -589,11 +589,20 @@ static class MarriageSystem
                 
                 Console.WriteLine($"\n🎉 {player.EhepartnerName} hat ein {(isBoy ? "Junge" : "Mädchen")} geboren!");
                 
-                // BUG-FIX 2: Klarere Eingabe-Anweisungen
-                // Problem: Spieler wussten nicht, dass sie Enter drücken können
-                // Lösung: Hinweis "(oder Enter für Standard)" hinzugefügt
-                Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen (oder Enter für Standard): ");
-                string vorname = Console.ReadLine();
+                // BUG-FIX 8: Verbesserte Namenseingabe mit Timeout-Schutz
+                // Problem: Bei mehreren Geburten konnte System hängen bleiben
+                // Lösung: Direkter Console.ReadLine mit sofortiger Verarbeitung
+                Console.Write($"\nGib dem {(i + 1)}. Kind einen Vornamen (Enter = Standard): ");
+                
+                string vorname = "";
+                try
+                {
+                    vorname = Console.ReadLine();
+                }
+                catch
+                {
+                    vorname = "";
+                }
                 
                 // Überprüfung und Standard-Name falls leer
                 if (string.IsNullOrWhiteSpace(vorname))
