@@ -9946,6 +9946,73 @@ class Program
         Thread.Sleep(2000);
     }
     
+    // ═══════════════════════════════════════════════════════════════════
+    // SIDECHICK-SYSTEM: Alle 10 Jahre + Vaterschaftstest nach 18 Jahren
+    // ═══════════════════════════════════════════════════════════════════
+    
+    static string[] WeiblicheNamen = new string[] {
+        "Natasha", "Svetlana", "Olga", "Katerina", "Anastasia",
+        "Irina", "Marina", "Elena", "Tatiana", "Yulia",
+        "Vera", "Daria", "Alina", "Oksana", "Ludmila",
+        "Galina", "Nina", "Valentina", "Polina", "Sofia"
+    };
+    
+    static string[] MaennlicheNamen = new string[] {
+        "Dmitri", "Alexander", "Sergei", "Vladimir", "Nikolai",
+        "Ivan", "Mikhail", "Alexei", "Boris", "Yuri",
+        "Pavel", "Roman", "Kirill", "Maxim", "Oleg",
+        "Viktor", "Andrei", "Stanislav", "Leonid", "Grigori"
+    };
+    
+    static string[] WeiblicheBerufe = new string[] {
+        "charmante Diplomatin aus Belarus",
+        "mysteriöse Balletttänzerin aus St. Petersburg",
+        "atemberaubende Oligarchen-Tochter aus Moskau",
+        "bezaubernde Journalistin aus Kiew",
+        "elegante Geschäftsfrau aus London",
+        "verführerische Spionin aus Paris",
+        "schöne Sängerin aus der Ukraine",
+        "betörende Model aus Mailand",
+        "faszinierende Anwältin aus Berlin",
+        "hinreißende Schauspielerin aus Hollywood",
+        "exotische Prinzessin aus Dubai",
+        "reizende Ärztin aus Wien",
+        "verlockende Bankerin aus Zürich",
+        "anmutige Pianistin aus Warschau",
+        "bildschöne Fernsehmoderatorin aus Moskau",
+        "geheimnisvolle Kunsthändlerin aus New York",
+        "begehrenswerte Ministerin aus der Türkei",
+        "betörende Parfümeurin aus Paris",
+        "verführerische Juwelenhändlerin aus Antwerpen",
+        "faszinierende Rennfahrerin aus Monaco"
+    };
+    
+    static string[] MaennlicheBerufe = new string[] {
+        "charmanter Diplomat aus Deutschland",
+        "mysteriöser Geheimagent aus London",
+        "atemberaubender Oligarch aus Moskau",
+        "bezaubernder Journalist aus Paris",
+        "eleganter Geschäftsmann aus Dubai",
+        "verführerischer Spion aus Amerika",
+        "schöner Sänger aus Italien",
+        "betörender Model aus New York",
+        "faszinierender Anwalt aus der Schweiz",
+        "hinreißender Schauspieler aus Hollywood",
+        "exotischer Prinz aus Saudi-Arabien",
+        "reizender Arzt aus Österreich",
+        "verlockender Banker aus London",
+        "anmutiger Pianist aus Wien",
+        "bildschöner Fernsehmoderator aus Moskau",
+        "geheimnisvoller Kunsthändler aus Paris",
+        "begehrenswerter Minister aus Frankreich",
+        "betörender Parfümeur aus Italien",
+        "verführerischer Juwelenhändler aus Belgien",
+        "faszinierender Rennfahrer aus Monaco"
+    };
+    
+    /// <summary>
+    /// ENTRY POINT - Startet das Spiel
+    /// </summary>
     static void Main()
     {
         try
