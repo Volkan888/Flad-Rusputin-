@@ -454,6 +454,37 @@ class GameSave
 /// - Jahr = 0 bedeutet: Kann in jeder Phase auftreten (klassisches Event)
 /// - Jahr > 0 bedeutet: Tritt nur in diesem spezifischen Jahr auf
 /// </summary>
+/// <summary>
+/// HistoricalEvent - Historische/Politische/Wirtschaftliche Ereignisse mit genauem Datum
+/// Diese Events erscheinen CHRONOLOGISCH und GARANTIERT (nicht zufällig!)
+/// </summary>
+class HistoricalEvent
+{
+    public string ID;                      // Eindeutige ID (z.B. "UDSSR_ZERFALL_1991")
+    public string Name;                    // Titel des Ereignisses
+    public string Datum;                   // Genaues Datum (z.B. "26. Dezember 1991")
+    public int Jahr;                       // Jahr für Sortierung
+    public int Monat;                      // Monat für Sortierung (1-12)
+    public string Geschichte;              // Ausführliche geschichtliche Beschreibung (3-6 Sätze)
+    public string Kategorie;               // "POLITIK", "WIRTSCHAFT", "KRIEG", "KATASTROPHE"
+    public Action<PlayerCharacter> Auswirkungen;  // Effekte auf Spieler
+    
+    public HistoricalEvent(string id, string name, string datum, int jahr, int monat, string kategorie, string geschichte, Action<PlayerCharacter> auswirkungen)
+    {
+        ID = id;
+        Name = name;
+        Datum = datum;
+        Jahr = jahr;
+        Monat = monat;
+        Geschichte = geschichte;
+        Kategorie = kategorie;
+        Auswirkungen = auswirkungen;
+    }
+}
+
+/// <summary>
+/// RandomEvent - Zufällige Ereignisse (alte Klasse bleibt für Zufalls-Events)
+/// </summary>
 class RandomEvent
 {
     public string Name;              // Bezeichnung des Ereignisses
@@ -461,9 +492,7 @@ class RandomEvent
     public string Phase;             // In welcher Lebensphase tritt es auf?
     public int Chance;               // Wahrscheinlichkeit 0-100%
     public int Jahr;                 // Spezifisches Jahr (0 = jederzeit in Phase)
-    public int Monat;                // Monat (1-12, 0 = unspezifisch)
-    public string Datum;             // Genaues Datum als String (z.B. "26. Dezember 1991")
-    public string Type;              // "normal", "sidechick", "historisch", "fiktiv"
+    public string Type;              // "normal", "sidechick", "fiktiv"
     
     public Action<PlayerCharacter> Apply;  // Lambda-Funktion die die Effekte ausführt
     
