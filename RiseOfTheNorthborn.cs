@@ -3885,7 +3885,7 @@ static class EventSystem
         
         // ====== 1999 ======
         historicalEvents.Add(new HistoricalEvent("ZWEITER_TSCHETSCHENIENKRIEG_1999", "Zweiter Tschetschenienkrieg beginnt", "[RU]", "[EN]", "26. August 1999", "[RU]", "[EN]", 1999, 8, "KRIEG",
-            @"Nach Anschlägen in Moskau startet Russland eine neue Offensive in Tschetschenien. Premierminister Putin führt den Krieg hart und populär. Seine Popularität steigt.",
+            @"Nach Anschlägen in Moskau startet Russland eine neue Offensive in Tschetschenien. Premierminister Flad führt den Krieg hart und populär. Seine Popularität steigt.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussMilitär += 30; p.LoyalitätVolk += 25; p.Geld -= 350; Thread.Sleep(4000); }));
         
