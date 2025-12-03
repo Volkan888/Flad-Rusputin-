@@ -2614,6 +2614,262 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
+        // TÜRKEI-RUSSLAND BEZIEHUNGEN (1952-2025)
+        // Historische Ereignisse der bilateralen Beziehungen
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Türkei tritt NATO bei 1952",
+            "Türkei wird NATO-Mitglied! Klare Westbindung, sowjetische Einflusserwartungen zurückgedrängt...",
+            "Präsident", 0, 1952, "türkei",
+            p => {
+                Console.WriteLine("Türkei wählt westliche Allianz! Russlands Unsicherheit steigt.");
+                p.TürkeiBeziehung -= 30;
+                p.EinflussInternational -= 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sowjetische Gebietsansprüche aufgegeben 1953",
+            "Nach Stalins Tod: USSR verzichtet auf Bosporus-Ansprüche gegen Türkei...",
+            "Präsident", 0, 1953, "türkei",
+            p => {
+                Console.WriteLine("Erste Annäherung! Spannungen um Bosporus-Kontrolle gehen zurück.");
+                p.TürkeiBeziehung += 15;
+                p.EinflussInternational += 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Kuba-Krise 1962",
+            "Abtausch: USA zieht Jupiter-Raketen aus Türkei ab, USSR aus Kuba...",
+            "Präsident", 0, 1962, "türkei",
+            p => {
+                Console.WriteLine("Nukleare Bedrohung endet! Ost-West-Entspannung.");
+                p.TürkeiBeziehung += 10;
+                p.EinflussInternational += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Türkei-Russland Freundschaftsvertrag 1992",
+            "25. Mai: Präsident Demirel besucht Moskau! Freundschaftsvertrag unterzeichnet...",
+            "Präsident", 0, 1992, "türkei",
+            p => {
+                Console.WriteLine("Normalisierung nach Sowjet-Zerfall! Handel, Energie, Tourismus intensiviert.");
+                p.TürkeiBeziehung += 30;
+                p.Geld += 200;
+                p.EinflussInternational += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Blue Stream Pipeline-Vertrag 1997",
+            "Gas-Pipeline-Abkommen! 16 Mrd. m³ russisches Erdgas pro Jahr für Türkei...",
+            "Präsident", 0, 1997, "türkei",
+            p => {
+                Console.WriteLine("Langfristige Energiekooperation beginnt!");
+                p.TürkeiBeziehung += 25;
+                p.Geld += 300;
+                p.EinflussInternational += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Blue Stream beginnt Betrieb 2003",
+            "Pipeline liefert! Russland deckt 56% des türkischen Erdgasbedarfs...",
+            "Präsident", 0, 2003, "türkei",
+            p => {
+                Console.WriteLine("Energieversorgung steigt massiv! Wirtschaftswachstum.");
+                p.TürkeiBeziehung += 30;
+                p.Geld += 400;
+                p.EinflussInternational += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Akkuyu-Atomkraftwerk-Vertrag 2010",
+            "Türkei und Russland: Bau von Kernkraftwerk Akkuyu (20 Mrd. USD)...",
+            "Präsident", 0, 2010, "türkei",
+            p => {
+                Console.WriteLine("Russland baut türkische Nuklearenergie! Technologie-Transfer.");
+                p.TürkeiBeziehung += 35;
+                p.Geld += 500;
+                p.EinflussInternational += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "TurkStream-Initiative 2014",
+            "Putin verkündet neue Pipeline! Ersatz für Südstraßen-Projekt...",
+            "Präsident", 0, 2014, "türkei",
+            p => {
+                Console.WriteLine("Neue direkte Gaspipeline geplant! Umgehung der Ukraine.");
+                p.TürkeiBeziehung += 25;
+                p.Geld += 300;
+                p.EinflussInternational += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Su-24-Abschuss 2015",
+            "24. November: Türkei schießt russischen Bomber über Syrien ab! KRISE...",
+            "Präsident", 0, 2015, "türkei",
+            p => {
+                Console.WriteLine("Strafmaßnahmen! Tourismus-Stopp, Lebensmittel-Verbot. Türkei verliert 840 Mio. USD!");
+                p.TürkeiBeziehung -= 60;
+                p.Geld -= 400;
+                p.EinflussInternational -= 30;
+                p.LoyalitätVolk -= 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Erdogans Entschuldigung 2016",
+            "Juni: Erdogan entschuldigt sich! August: Treffen in St. Petersburg...",
+            "Präsident", 0, 2016, "türkei",
+            p => {
+                Console.WriteLine("Sanktionen aufgehoben! Handel und Tourismus erholen sich rasch.");
+                p.TürkeiBeziehung += 50;
+                p.Geld += 350;
+                p.EinflussInternational += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Botschafter Karlow ermordet 2016",
+            "Dezember: Russischer Botschafter in Ankara erschossen! Diplomatische Krise...",
+            "Präsident", 0, 2016, "türkei",
+            p => {
+                Console.WriteLine("Schockmoment! Krise aber vermieden, Beziehungen normalisieren sich.");
+                p.TürkeiBeziehung -= 15;
+                p.EinflussInternational -= 10;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Visumfreiheit für Türken 2017",
+            "Juni: Russland hebt Sanktionen auf! Visa-Lockerung für türkische Bürger...",
+            "Präsident", 0, 2017, "türkei",
+            p => {
+                Console.WriteLine("Reisefreiheit wiederhergestellt! Tourismus-Boom.");
+                p.TürkeiBeziehung += 30;
+                p.Geld += 200;
+                p.LoyalitätVolk += 15;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "S-400-Kaufvertrag 2017",
+            "Türkei kauft russisches Flugabwehrsystem S-400! USA verärgert...",
+            "Präsident", 0, 2017, "türkei",
+            p => {
+                Console.WriteLine("Militär-Upgrade für Türkei! NATO-Spannung, US-Sanktionen folgen.");
+                p.TürkeiBeziehung += 40;
+                p.Geld += 300;
+                p.EinflussMilitär += 30;
+                p.EinflussInternational -= 25; // NATO verärgert
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "TurkStream eröffnet 2020",
+            "Januar: Putin und Erdogan eröffnen TurkStream-Pipeline! 31,5 Mrd. m³/Jahr...",
+            "Präsident", 0, 2020, "türkei",
+            p => {
+                Console.WriteLine("Gas fließt direkt an Türkei und weiter nach Europa! Energiesicherheit.");
+                p.TürkeiBeziehung += 35;
+                p.Geld += 600;
+                p.EinflussInternational += 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Eskalation Nordsyrien 2020",
+            "Februar: Türkei schießt syrische Su-24 ab! Russland auf Assad-Seite...",
+            "Präsident", 0, 2020, "türkei",
+            p => {
+                Console.WriteLine("Militärischer Konflikt! Kriegerische Spannung zwischen Russland und Türkei.");
+                p.TürkeiBeziehung -= 40;
+                p.EinflussMilitär += 20;
+                p.EinflussInternational -= 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Idlib-Waffenruhe 2020",
+            "März: Putin und Erdogan verkünden Waffenstillstand in Nordsyrien...",
+            "Präsident", 0, 2020, "türkei",
+            p => {
+                Console.WriteLine("Deeskalation! Sicherheitskorridor, Flüchtlingskrise entspannt sich.");
+                p.TürkeiBeziehung += 30;
+                p.LoyalitätVolk += 20;
+                p.EinflussInternational += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Ukraine-Krieg & Handelspartner 2022",
+            "Türkei bleibt Russlands größter Partner! 54 Mrd. USD Handelsvolumen...",
+            "Präsident", 0, 2022, "türkei",
+            p => {
+                Console.WriteLine("Türkei tritt nicht in Sanktionen ein! Vermittelt Schwarzmeer-Getreideabkommen.");
+                p.TürkeiBeziehung += 40;
+                p.Geld += 700;
+                p.EinflussInternational += 30;
+                p.LoyalitätPartei += 20;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Sotschi-Gipfel August 2022",
+            "Putin-Erdogan Treffen! Intensivierung Handel, Gas in Rubel, Getreide-Deal...",
+            "Präsident", 0, 2022, "türkei",
+            p => {
+                Console.WriteLine("Bilateraler Handel ausgebaut! Mediator-Rolle gestärkt.");
+                p.TürkeiBeziehung += 30;
+                p.Geld += 500;
+                p.EinflussInternational += 25;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Getreide-Abkommen Gespräche 2023",
+            "September: Sotschi - Wiederaufnahme Ukraine-Getreide-Deal besprochen...",
+            "Präsident", 0, 2023, "türkei",
+            p => {
+                Console.WriteLine("Türkische Vermittlung! Nahrungssicherheit für globale Lieferketten.");
+                p.TürkeiBeziehung += 25;
+                p.Geld += 300;
+                p.EinflussInternational += 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "SCO-Gipfel Astana 2024",
+            "Juli: Erdogan-Putin besprechen Sinop-Nuklearprojekt! Ziel: 100 Mrd. USD Handel...",
+            "Präsident", 0, 2024, "türkei",
+            p => {
+                Console.WriteLine("2. Atomkraftwerk geplant! Handelsvolumen-Hochziel gesetzt.");
+                p.TürkeiBeziehung += 35;
+                p.Geld += 600;
+                p.EinflussInternational += 30;
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "TurkStream-Drohnenangriff 2025",
+            "Januar: Ukraine greift TurkStream-Station an! Russische Medien: 'Energie-Terrorismus'...",
+            "Präsident", 0, 2025, "türkei",
+            p => {
+                Console.WriteLine("Pipeline beschädigt! Energieversorgungsrisiko, Kosten für Reparatur.");
+                p.TürkeiBeziehung -= 20;
+                p.Geld -= 300;
+                p.EinflussInternational -= 15;
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
         // FIKTIVE EREIGNISSE AB 2025+
         // Spekulative Zukunfts-Events für verlängerten Spielspaß
         // ═══════════════════════════════════════════════════════════
