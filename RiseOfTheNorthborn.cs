@@ -1031,9 +1031,12 @@ static class ErdoganHotline
         Console.WriteLine("[3] ⚡ Gas-Deal abschließen (Energie-Rabatt)");
         Console.WriteLine("[4] 🤝 Diplomatische Vermittlung (Krisenbonus)");
         Console.WriteLine("[5] 🌾 Getreide-Abkommen (Nahrungssicherheit)");
-        Console.WriteLine("[6] ❌ Abbrechen");
+        Console.WriteLine("[6] 🏖️  Tourismus-Boost (Wirtschaftsförderung)");
+        Console.WriteLine("[7] 🏗️  Akkuyu-AKW Investition (Energie-Zukunft)");
+        Console.WriteLine("[8] 🔫 Waffenhandel (Militär-Export)");
+        Console.WriteLine("[9] ❌ Abbrechen");
         
-        Console.Write("\nWähle [1-6]: ");
+        Console.Write("\nWähle [1-9]: ");
         string choice = Console.ReadLine();
         
         switch (choice)
