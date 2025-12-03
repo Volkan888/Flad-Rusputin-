@@ -356,7 +356,7 @@ class PlayerCharacter
         // Geburten-Cooldown initialisieren
         LetzteGeburtJahr = 0;             // Keine vorherige Geburt
         
-        // Putin-Shop initialisieren
+        // Flad-Shop initialisieren
         Besitztümer = new List<ShopItem>();
         
         // Trump-Telefon initialisieren
