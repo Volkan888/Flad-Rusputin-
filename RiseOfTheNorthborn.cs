@@ -1716,7 +1716,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Verlust des Bruders",
-            "Flad verliert seinen Bruder durch Krankheit. Ein traumatisches Ereignis...",
+            p => $"{p.Name.Split(' ')[0]} verliert seinen Bruder durch Krankheit. Ein traumatisches Ereignis...",
             "Kindheit", 20,  // 20% Chance
             p => {
                 p.Gesundheit -= 10;                            // Trauma
