@@ -1773,6 +1773,7 @@ static class EventSystem
                 p.LoyalitätPartei += 20;
             }
         ));
+    }
     
     /// <summary>
     /// AddIllegitimateChild - Hilfsfunktion für uneheliche Kinder
