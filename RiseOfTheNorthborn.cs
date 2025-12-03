@@ -5602,12 +5602,16 @@ class Program
         Console.WriteLine($"\n>> Flad hat {player.Kinder.Count} Kind(er)!");
         
         Console.WriteLine("\nRegierungsstil wählen:\n");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("💾 NEUE FEATURES VERFÜGBAR:");
+        Console.WriteLine("   'E' = 📞 Erdogan-Nottelefon | 'Q' = 🛒 Putin's Luxus-Shop | 'T' = 📞 Trump-Telefon");
+        Console.ResetColor();
+        Console.WriteLine();
         Console.WriteLine("[1] Imperiale Expansion (+50 Militär, -200 Geld)");
         Console.WriteLine("[2] Diplomatie (+300 Geld, +40 International)");
         Console.WriteLine("[3] Eiserne Faust (+40 Partei, -50 Volk)\n");
-        Console.Write("Wähle [1-3]: ");
         
-        string choice = Console.ReadLine();
+        string choice = ReadInputWithShortcuts(player, "Wähle [1-3]: ");
         if (choice == "1")
         {
             player.EinflussMilitär += 50;
