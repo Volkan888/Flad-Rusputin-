@@ -2797,7 +2797,8 @@ static class ChinaHotline
 
 static class EventSystem
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     static List<RandomEvent> allEvents = new List<RandomEvent>();
     
     /// <summary>
