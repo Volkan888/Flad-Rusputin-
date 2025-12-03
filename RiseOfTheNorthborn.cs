@@ -1748,7 +1748,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Rauferei im Hinterhof",
-            "Flad gerät in eine Prügelei mit Straßenjungen. Er setzt sich durch!",
+            "p => $"{p.GetFirstName()} gerät in eine Prügelei mit Straßenjungen. Er setzt sich durch!",
             "Kindheit", 40,
             p => {
                 p.Gesundheit -= 5;
@@ -1769,7 +1769,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Aufnahme bei den Jungpionieren",
-            "Flad wird feierlich mit dem roten Halstuch ausgezeichnet!",
+            "p => $"{p.GetFirstName()} wird feierlich mit dem roten Halstuch ausgezeichnet!",
             "Kindheit", 60,
             p => {
                 p.LoyalitätPartei += 15;
@@ -1780,7 +1780,7 @@ static class EventSystem
         // JUGEND/KGB EREIGNISSE
         allEvents.Add(new RandomEvent(
             "Aufstieg in der Komsomol",
-            "Flad wird zum Anführer der lokalen Jugendorganisation gewählt!",
+            "p => $"{p.GetFirstName()} wird zum Anführer der lokalen Jugendorganisation gewählt!",
             "KGB-Ambitionen", 40,
             p => {
                 p.Charisma += 1;
@@ -1823,7 +1823,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Triumph auf der Judomatte",
-            "Flad gewinnt die Stadtmeisterschaft im Judo!",
+            "p => $"{p.GetFirstName()} gewinnt die Stadtmeisterschaft im Judo!",
             "Jurastudium", 35,
             p => {
                 p.Kraft += 2;
@@ -1865,7 +1865,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Geheimer Testeinsatz",
-            "Flad erhält seinen ersten Feldauftrag - Intellektuelle observieren!",
+            "p => $"{p.GetFirstName()} erhält seinen ersten Feldauftrag - Intellektuelle observieren!",
             "Jurastudium", 40,
             p => {
                 if (rand.Next(100) < 60) // Erfolg
