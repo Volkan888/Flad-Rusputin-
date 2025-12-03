@@ -3905,8 +3905,8 @@ static class EventSystem
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 30; p.Gesundheit += 20; Thread.Sleep(5000); }));
         
         // ====== 2000 ======
-        historicalEvents.Add(new HistoricalEvent("PUTIN_PRAESIDENT_2000", "Putin wird zum Präsidenten gewählt", "[RU]", "[EN]", "26. März 2000", "[RU]", "[EN]", 2000, 3, "POLITIK",
-            @"Putin gewinnt die Wahl mit 53%! Der ehemalige KGB-Agent ist nun offiziell Präsident. Er verspricht 'Diktatur des Gesetzes' und Ordnung.",
+        historicalEvents.Add(new HistoricalEvent("FLAD_PRAESIDENT_2000", "Flad wird zum Präsidenten gewählt", "[RU]", "[EN]", "26. März 2000", "[RU]", "[EN]", 2000, 3, "POLITIK",
+            @"Flad gewinnt die Wahl mit 53%! Der ehemalige KGB-Agent ist nun offiziell Präsident. Er verspricht 'Diktatur des Gesetzes' und Ordnung.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 35; p.EinflussKGB += 30; p.LoyalitätVolk += 30; Thread.Sleep(4000); }));
         
