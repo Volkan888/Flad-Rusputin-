@@ -3838,6 +3838,16 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussInternational += 15; Thread.Sleep(3000); }));
         
+        historicalEvents.Add(new HistoricalEvent("LEBED_GOUVERNEUR_1997", "General Lebed wird Gouverneur", "[RU]", "[EN]", "20. Mai 1997", "[RU]", "[EN]", 1997, 5, "POLITIK",
+            @"Der populäre General Alexander Lebed wird Gouverneur von Krasnojarsk. Ein potentieller Jelzin-Nachfolger positioniert sich.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussMilitär += 15; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("ASIEN_FINANZKRISE_1997", "Asiatische Finanzkrise", "[RU]", "[EN]", "2. Juli 1997", "[RU]", "[EN]", 1997, 7, "WIRTSCHAFT",
+            @"Die Finanzkrise in Asien erschüttert auch Russland. Der Rubel gerät unter Druck. Ein Vorbote der Katastrophe 1998.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.Geld -= 150; p.Gesundheit -= 10; Thread.Sleep(3000); }));
+        
         // ====== 1998 ======
         historicalEvents.Add(new HistoricalEvent("RUBELKRISE_1998", "Rubelkrise - Staatsbankrott", "[RU]", "[EN]", "17. August 1998", "[RU]", "[EN]", 1998, 8, "WIRTSCHAFT",
             @"KATASTROPHE! Russland erklärt Zahlungsunfähigkeit! Der Rubel stürzt ab, Banken kollabieren, Menschen verlieren alles. Die schlimmste Wirtschaftskrise seit 1991.",
