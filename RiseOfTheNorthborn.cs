@@ -4589,7 +4589,7 @@ class Program
         if (player.Intelligenz >= 2 || player.Charisma >= 2)
         {
             player.KGBEasterEgg = true;
-            Console.WriteLine("\n💀 Ein KGB-Agent beobachtet Flad...");
+            Console.WriteLine($"\n💀 Ein KGB-Agent beobachtet {player.GetFirstName()}...");
             Thread.Sleep(2000);
         }
         
