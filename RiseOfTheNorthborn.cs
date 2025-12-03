@@ -1328,7 +1328,7 @@ static class PutinShop
             else
             {
                 Console.WriteLine("\nUngültige Auswahl!");
-                Thread.Sleep(1000);
+                Thread.Sleep(2500);
             }
         }
     }
@@ -1877,13 +1877,13 @@ static class FinkaSystem
         Console.WriteLine("\n🚗 Fahrt nach Sotschi...");
         Thread.Sleep(1500);
         Console.WriteLine("🏡 Ankunft an der Finka!");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.WriteLine("🌊 Blick aufs Schwarze Meer...");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.WriteLine("🍷 Ein Glas georgischen Wein...");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.WriteLine("🛀 Entspannung in der Sauna...");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.WriteLine("😴 Erholsamer Schlaf...");
         Thread.Sleep(1500);
         
@@ -2295,7 +2295,7 @@ static class TrumpHotline
         Console.ResetColor();
         
         Console.WriteLine("📞 *Ring Ring*");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nTrump: 'Wladimir, mein Freund! Dies ist ein HISTORIC call!'");
         Console.WriteLine("Trump: 'I make the BEST deals, believe me. You need money?'");
@@ -2349,7 +2349,7 @@ static class TrumpHotline
         Console.ResetColor();
         
         Console.WriteLine("📞 *Ring Ring*");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nTrump: 'Vlad! NATO is a disaster. Total disaster!'");
         Console.WriteLine("Trump: 'They don't pay their bills. Germany, France - FREELOADERS!'");
@@ -2418,7 +2418,7 @@ static class TrumpHotline
         Console.ResetColor();
         
         Console.WriteLine("📞 *Ring Ring*");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nTrump: 'Vladimir! I heard you have some... troll factories?'");
         Console.WriteLine("Trump: 'GENIUS idea! The media - all fake news anyway, right?'");
@@ -2582,7 +2582,7 @@ static class NATOHotline
         Console.ResetColor();
         
         Console.WriteLine("📞 *Ring Ring*");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nNATO-Generalsekretär: 'Herr Präsident, guten Tag!'");
         Console.WriteLine("NATO: 'Ich rufe an wegen Ihrer... Bedenken bezüglich unserer Osterweiterung.'");
@@ -2661,7 +2661,7 @@ static class NATOHotline
         Console.ResetColor();
         
         Console.WriteLine("📞 *Ring Ring*");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nNATO: 'Ich wollte Sie informieren - wir diskutieren über neue Mitglieder.'");
         Console.WriteLine("NATO: 'Baltikum, Polen, vielleicht sogar Ukraine in Zukunft...'");
@@ -2744,7 +2744,7 @@ static class NATOHotline
         Console.ResetColor();
         
         Console.WriteLine("📞 *Ring Ring*");
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("\nNATO: 'Herr Präsident! Ich habe eine... ungewöhnliche Idee.'");
         Console.WriteLine("NATO: 'Wie wäre es mit einer Partie Schach? Strategen unter sich!'");
@@ -5055,7 +5055,7 @@ static class EventSystem
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\n'Genosse... Wir brauchen jemanden für eine... heikle Aufgabe.'");
                 Console.ResetColor();
-                Thread.Sleep(1000);
+                Thread.Sleep(2500);
                 
                 Console.WriteLine("\n🎯 Mission: Einen Überläufer in Berlin 'zurückholen'");
                 Console.WriteLine("\n⚠️  Risiko: HOCH");
@@ -5169,7 +5169,7 @@ static class EventSystem
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\n✓ *KLICK* - SAFE GEÖFFNET!");
                     Console.ResetColor();
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     
                     Console.WriteLine("\n📦 Inhalt:");
                     Console.WriteLine("   💰 50.000 Rubel in Gold");
@@ -5285,7 +5285,7 @@ static class EventSystem
                 else if (choice == "2")
                 {
                     Console.WriteLine("\n😠 'WAGE ES NICHT, MICH ZU ERPRESSEN!'");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     
                     if (rand.Next(100) < 50)
                     {
@@ -5310,7 +5310,7 @@ static class EventSystem
                     Console.WriteLine("\n📞 KGB informiert...");
                     Thread.Sleep(1500);
                     Console.WriteLine("\n🔍 KGB Spezialeinheit aktiviert!");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     
                     if (rand.Next(100) < 70)
                     {
@@ -6389,7 +6389,7 @@ class Program
                 case "7":
                     stopMusic = true;
                     Console.WriteLine("\n>> Auf Wiedersehen, Genosse!");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     return;
             }
         }
@@ -6483,7 +6483,7 @@ class Program
             DistributeAttributes(player, difficulty);
             
             players.Add(player);
-            Thread.Sleep(1000);
+            Thread.Sleep(2500);
         }
         
         // MULTIPLAYER: Alle Spieler durchlaufen die Story
@@ -6734,7 +6734,7 @@ class Program
                 if (player.Phase == "Präsident")
                 {
                     Console.WriteLine("\n>> 📞 Erdogan-Nottelefon wird gewählt...");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     ErdoganHotline.ShowHotlineMenu(player);
                     Console.Clear();
                     Console.Write(prompt);  // Prompt erneut anzeigen
@@ -6755,7 +6755,7 @@ class Program
                 if (player.Phase == "Präsident")
                 {
                     Console.WriteLine("\n>> 🛒 Putin's Luxus-Shop wird geöffnet...");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     PutinShop.ShowShop(player);
                     Console.Clear();
                     Console.Write(prompt);  // Prompt erneut anzeigen
@@ -6776,7 +6776,7 @@ class Program
                 if (player.Phase == "Präsident")
                 {
                     Console.WriteLine("\n>> 📞 Trump-Telefon klingelt...");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     TrumpHotline.CallTrump(player);
                     Console.Clear();
                     Console.Write(prompt);  // Prompt erneut anzeigen
@@ -6795,7 +6795,7 @@ class Program
             {
                 // Musik-Menü (immer verfügbar)
                 Console.WriteLine("\n>> 🎵 Russische Lieder...");
-                Thread.Sleep(1000);
+                Thread.Sleep(2500);
                 SoundSystem.ShowMusicMenu(player);
                 Console.Clear();
                 Console.Write(prompt);  // Prompt erneut anzeigen
@@ -6807,7 +6807,7 @@ class Program
                 if (player.Phase == "Präsident")
                 {
                     Console.WriteLine("\n>> 📞 NATO-Telefon klingelt...");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     NATOHotline.CallNATO(player);
                     Console.Clear();
                     Console.Write(prompt);
@@ -6827,7 +6827,7 @@ class Program
                 if (player.Phase == "Präsident")
                 {
                     Console.WriteLine("\n>> 🏡 Zur Finka...");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     FinkaSystem.ShowFinkaMenu(player);
                     Console.Clear();
                     Console.Write(prompt);
@@ -6846,7 +6846,7 @@ class Program
                 if (player.Phase == "Präsident")
                 {
                     Console.WriteLine("\n>> 📞 China ruft an...");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                     ChinaHotline.CallChina(player);
                     Console.Clear();
                     Console.Write(prompt);
@@ -7116,7 +7116,7 @@ class Program
         if (!player.IstVerheiratet)
         {
             Console.WriteLine("\n>> Als Präsident sollte Flad heiraten...");
-            Thread.Sleep(1000);
+            Thread.Sleep(2500);
             MarriageSystem.OfferMarriage(player);
         }
         
@@ -7229,7 +7229,7 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
         
-        Thread.Sleep(1000);
+        Thread.Sleep(2500);
         
         if (type == "Imperial")
         {
@@ -7783,7 +7783,7 @@ class BattleshipGame
                 else
                 {
                     Console.WriteLine("✗ Ungültig!");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2500);
                 }
             }
         }
@@ -7846,7 +7846,7 @@ class BattleshipGame
                 Console.WriteLine("💥 TREFFER!");
                 Console.ResetColor();
                 try { Console.Beep(800, 200); } catch { }
-                Thread.Sleep(1000);
+                Thread.Sleep(2500);
                 return true;
             }
             else
@@ -7855,7 +7855,7 @@ class BattleshipGame
                 Console.WriteLine("💧 Wasser!");
                 Console.ResetColor();
                 try { Console.Beep(300, 200); } catch { }
-                Thread.Sleep(1000);
+                Thread.Sleep(2500);
                 return false;
             }
         }
