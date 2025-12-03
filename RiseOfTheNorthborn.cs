@@ -2153,7 +2153,8 @@ static class SoundSystem
 /// </summary>
 static class TrumpHotline
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     
     /// <summary>
     /// CallTrump - Hauptmenü für Trump-Telefon
