@@ -3075,6 +3075,144 @@ static class EventSystem
             }
         ));
         
+        // 1956 - ENTSTALINISIERUNG
+        historicalEvents.Add(new HistoricalEvent(
+            "XX_PARTEITAG_1956",
+            "XX. Parteitag - Chruschtschows Geheimrede",
+            "25. Februar 1956",
+            1956, 2,
+            "POLITIK",
+            @"MOSKAU, 25. FEBRUAR 1956 - DONNERSCHLAG IM KREML! In einer vierstündigen Geheimrede prangert Nikita Chruschtschow Stalin als Massenmörder und Despoten an. 'Personenkult', 'Massenrepressionen', 'Gesetzlosigkeit' - Worte, die niemand zuvor auszusprechen wagte. Die Delegierten sitzen wie versteinert. Das Volk erfährt es über Flüsterpost: Alles war Lüge! Der Gott war ein Monster! Die Grundfesten der sowjetischen Ideologie wanken. Manche fühlen sich befreit, andere verraten. Die Entstalinisierung beginnt - Stalin-Statuen werden gestürzt, Gulags geleert.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.LoyalitätPartei -= 35;
+                p.LoyalitätVolk += 30;
+                p.Intelligenz += 2;
+                p.Gesundheit += 15;
+                p.EinflussKGB -= 15;
+                Console.WriteLine($"➖ Partei: -35% (Ideologie erschüttert) → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Volk: +30% (Wahrheit befreit) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Intelligenz: +2 (Erkenntnis) → {p.Intelligenz}");
+                Console.WriteLine($"➕ Gesundheit: +15% → {p.Gesundheit}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        historicalEvents.Add(new HistoricalEvent(
+            "UNGARN_AUFSTAND_1956",
+            "Ungarn-Aufstand niedergeschlagen",
+            "4. November 1956",
+            1956, 11,
+            "KRIEG",
+            @"BUDAPEST, 4. NOVEMBER 1956 - PANZER ROLLEN DURCH BUDAPEST! Über 1000 sowjetische Panzer walzen den Ungarn-Aufstand nieder. Studenten und Arbeiter hatten für Freiheit und Demokratie gekämpft - nun werden sie gnadenlos niedergemacht. Imre Nagy, der reformistische Premierminister, wird später hingerichtet. 2500 Ungarn sterben, 200.000 fliehen. Das Volk in der UdSSR sieht die Bilder im Fernsehen - zensiert, verfälscht. 'Konterrevolution' nennt es die Propaganda. Die Botschaft ist klar: Freiheit wird mit Panzern beantwortet.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.EinflussMilitär += 30;
+                p.LoyalitätVolk -= 40;
+                p.EinflussInternational -= 35;
+                p.Gesundheit -= 20;
+                p.Geld -= 300;
+                Console.WriteLine($"➕ Militär: +30 (Machtdemonstration) → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk: -40% (Brutale Unterdrückung) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -35 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Gesundheit: -20% → {p.Gesundheit}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        // 1957 - WELTRAUM-WETTLAUF
+        historicalEvents.Add(new HistoricalEvent(
+            "SPUTNIK_1957",
+            "Sputnik 1 - Erster Satellit im Orbit",
+            "4. Oktober 1957",
+            1957, 10,
+            "POLITIK",
+            @"BAIKONUR, 4. OKTOBER 1957 - DIE SOWJETUNION EROBERT DEN WELTRAUM! Um 19:28 Uhr Moskauer Zeit hebt eine R-7-Rakete ab und bringt Sputnik 1, einen 83kg schweren Metallball, ins All. Das 'Piep-Piep-Piep' seiner Funksignale ist auf der ganzen Welt zu hören. Der Westen ist geschockt - die Russen sind technologisch überlegen! Das Volk in der UdSSR jubelt vor den Radios: WIR sind die Ersten! Die Propaganda feiert den größten Triumph seit dem Kriegsende. Der Weltraum-Wettlauf hat begonnen, und die Sowjetunion führt. Amerika zittert.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.EinflussInternational += 40;
+                p.LoyalitätVolk += 35;
+                p.Geld += 200;
+                p.Intelligenz += 2;
+                p.LoyalitätPartei += 25;
+                Console.WriteLine($"➕ International: +40 (Weltweiter Triumph) → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +35% (Nationalstolz) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Intelligenz: +2 (Wissenschaftlicher Fortschritt) → {p.Intelligenz}");
+                Console.WriteLine($"💰 +200 Rubel (Technologie-Boom) → {p.Geld}");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        // 1961 - GAGARIN & BERLINER MAUER
+        historicalEvents.Add(new HistoricalEvent(
+            "GAGARIN_WELTRAUM_1961",
+            "Juri Gagarin - Erster Mensch im Weltraum",
+            "12. April 1961",
+            1961, 4,
+            "POLITIK",
+            @"BAIKONUR, 12. APRIL 1961, 09:07 UHR - 'POJECHALI!' ('Auf geht's!') ruft Juri Gagarin, als die Wostok 1-Rakete zündet. 108 Minuten später ist Geschichte geschrieben: Der erste Mensch hat den Weltraum erreicht und die Erde umrundet! Gagarin, ein 27-jähriger Bauersohn, wird zum größten Helden der Sowjetunion. Das Volk feiert auf den Straßen, Kinder träumen davon Kosmonauten zu werden. Die Propaganda explodiert vor Euphorie: 'Der sowjetische Mensch hat die Sterne erreicht!' Amerika ist erneut geschlagen. Der Kalte Krieg wird im Orbit gewonnen.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.EinflussInternational += 50;
+                p.LoyalitätVolk += 40;
+                p.Geld += 300;
+                p.Intelligenz += 3;
+                p.Charisma += 2;
+                p.LoyalitätPartei += 30;
+                Console.WriteLine($"➕ International: +50 (Weltweiter Triumph!) → {p.EinflussInternational}");
+                Console.WriteLine($"➕ Volk: +40% (Euphorie) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➕ Intelligenz: +3 → {p.Intelligenz}");
+                Console.WriteLine($"➕ Charisma: +2 (Held der Nation) → {p.Charisma}");
+                Console.WriteLine($"💰 +300 Rubel → {p.Geld}");
+                Thread.Sleep(6000);
+            }
+        ));
+        
+        historicalEvents.Add(new HistoricalEvent(
+            "BERLINER_MAUER_1961",
+            "Berliner Mauer wird errichtet",
+            "13. August 1961",
+            1961, 8,
+            "POLITIK",
+            @"BERLIN, 13. AUGUST 1961, 01:00 UHR - DEUTSCHLAND WIRD GETEILT! In einer Nacht-und-Nebel-Aktion beginnt der Mauerbau. Stacheldraht, Betonblöcke, bewaffnete Soldaten. Ost-Berlin wird abgeriegelt. Familien werden getrennt, Liebende voneinander gerissen. 'Niemand hat die Absicht, eine Mauer zu errichten', hatte Ulbricht zwei Monate zuvor gelogen. Das Volk in der DDR ist geschockt - aus dem 'Arbeiter- und Bauernstaat' ist ein Gefängnis geworden. In Moskau atmet die Führung auf: Die Massenflucht nach Westen ist gestoppt. Die Mauer wird 28 Jahre stehen - ein Monument der Unterdrückung.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.EinflussMilitär += 25;
+                p.LoyalitätVolk -= 30;
+                p.EinflussInternational -= 40;
+                p.Gesundheit -= 15;
+                p.LoyalitätPartei += 20;
+                Console.WriteLine($"➕ Militär: +25 (Machtsicherung) → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Volk: -30% (Symbol der Unfreiheit) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -40 (Weltweite Empörung) → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Gesundheit: -15% → {p.Gesundheit}%");
+                Thread.Sleep(5000);
+            }
+        ));
+        
+        // 1962 - KUBAKRISE
+        historicalEvents.Add(new HistoricalEvent(
+            "KUBAKRISE_1962",
+            "Kubakrise - 13 Tage am Abgrund",
+            "16. Oktober 1962",
+            1962, 10,
+            "KRIEG",
+            @"MOSKAU/WASHINGTON, 16. OKTOBER 1962 - DIE WELT AM RANDE DES ATOMKRIEGS! US-Aufklärungsflugzeuge entdecken sowjetische Mittelstreckenraketen auf Kuba - nur 150 km von Florida entfernt. Kennedy verhängt eine Seeblockade. Chruschtschow schickt Kriegsschiffe. 13 Tage lang steht die Menschheit am Abgrund der Auslöschung. Jeder Fehler, jeder Irrtum könnte Millionen töten. Das Volk gräbt Luftschutzbunker, hortet Lebensmittel. Am 28. Oktober blinzelt Chruschtschow zuerst: Die Raketen werden abgezogen. Die Welt atmet auf. Der Kalte Krieg erreicht seinen gefährlichsten Moment - und beide Seiten lernen: Atomkrieg ist keine Option.",
+            p => {
+                Console.WriteLine("\n📊 AUSWIRKUNGEN:");
+                p.EinflussMilitär += 20;
+                p.Gesundheit -= 25;
+                p.LoyalitätVolk -= 35;
+                p.EinflussInternational -= 20;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine($"➕ Militär: +20 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ Gesundheit: -25% (Stress & Panik) → {p.Gesundheit}%");
+                Console.WriteLine($"➖ Volk: -35% (Todesangst) → {p.LoyalitätVolk}%");
+                Console.WriteLine($"➖ International: -20 (Fast-Atomkrieg) → {p.EinflussInternational}");
+                Thread.Sleep(6000);
+            }
+        ));
+        
         // Sortiere Events chronologisch nach Jahr und Monat
         historicalEvents = historicalEvents.OrderBy(e => e.Jahr).ThenBy(e => e.Monat).ToList();
     }
