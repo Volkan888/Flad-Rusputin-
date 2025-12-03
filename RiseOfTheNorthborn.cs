@@ -2275,6 +2275,14 @@ static class EventSystem
     static List<RandomEvent> allEvents = new List<RandomEvent>();
     
     /// <summary>
+    /// PlayEventSound - Wrapper-Methode für SoundSystem
+    /// </summary>
+    static void PlayEventSound(string eventType)
+    {
+        SoundSystem.PlayEventSound(eventType);
+    }
+    
+    /// <summary>
     /// InitializeEvents - Lädt alle 20+ Zufallsereignisse
     /// 
     /// Wird beim Programmstart aufgerufen.
