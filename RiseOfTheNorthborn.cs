@@ -1775,6 +1775,71 @@ class Program
         Task.Run(() => PlayMusic());
     }
     
+    static void PlayMultiplayerStory(List<PlayerCharacter> players)
+    {
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              MULTIPLAYER-KAMPAGNE                         ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.WriteLine("Alle Spieler durchlaufen parallel ihr Leben.");
+        Console.WriteLine("Jeder Spieler erlebt eigene Zufallsereignisse!\n");
+        Thread.Sleep(2000);
+        
+        // Jeder Spieler durchläuft die komplette Story
+        foreach (var player in players)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine($"║         JETZT SPIELT: {player.Name.ToUpper().PadRight(40)}║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
+            Thread.Sleep(1500);
+            
+            currentPlayer = player;
+            PlayStory(player);
+            
+            Console.WriteLine($"\n>> {player.Name} hat das Spiel beendet!");
+            Console.WriteLine("\n[Drücke eine Taste für nächsten Spieler...]");
+            Console.ReadKey(true);
+        }
+        
+        // Zeige Endergebnis
+        ShowMultiplayerResults(players);
+    }
+    
+    static void ShowMultiplayerResults(List<PlayerCharacter> players)
+    {
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              MULTIPLAYER - ENDERGEBNIS                    ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        // Sortiere nach Gesamt-Score
+        var ranked = players.OrderByDescending(p => 
+            p.Geld + (p.LoyalitätPartei * 10) + (p.LoyalitätVolk * 10) + 
+            (p.EinflussKGB * 5) + (p.Kinder.Count * 50)
+        ).ToList();
+        
+        Console.WriteLine("🏆 RANGLISTE:\n");
+        for (int i = 0; i < ranked.Count; i++)
+        {
+            var p = ranked[i];
+            int score = p.Geld + (p.LoyalitätPartei * 10) + (p.LoyalitätVolk * 10) + 
+                        (p.EinflussKGB * 5) + (p.Kinder.Count * 50);
+            
+            string medal = i == 0 ? "🥇" : i == 1 ? "🥈" : i == 2 ? "🥉" : "  ";
+            Console.WriteLine($"{medal} Platz {i + 1}: {p.Name}");
+            Console.WriteLine($"   Score: {score} | Alter: {p.Alter} | Kinder: {p.Kinder.Count}");
+            Console.WriteLine($"   Geld: {p.Geld} | Partei: {p.LoyalitätPartei}% | Volk: {p.LoyalitätVolk}%");
+            Console.WriteLine($"   Phase: {p.Phase} | {(p.IstTot ? "†" : "Lebt")}\n");
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
     static int ChooseDifficulty()
     {
         Console.Clear();
