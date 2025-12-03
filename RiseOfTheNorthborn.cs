@@ -1780,29 +1780,29 @@ static class EventSystem
     /// </summary>
     static void AddIllegitimateChild(PlayerCharacter player)
     {
-        bool isBoy = rand.Next(2) == 0;
+        bool isBoyIlleg = rand.Next(2) == 0;
         Console.Write($"\nName für das uneheliche Kind: ");
-        string vorname = Console.ReadLine();
+        string vornameIlleg = Console.ReadLine();
         
-        if (string.IsNullOrWhiteSpace(vorname))
-            vorname = isBoy ? "Dmitri" : "Irina";
+        if (string.IsNullOrWhiteSpace(vornameIlleg))
+            vornameIlleg = isBoyIlleg ? "Dmitri" : "Irina";
         
-        string childName = $"{vorname} [Unehelich] Gen{player.Generation + 1}";
+        string childNameIlleg = $"{vornameIlleg} [Unehelich] Gen{player.Generation + 1}";
         
-        PlayerCharacter child = new PlayerCharacter(childName, player.Generation + 1);
-        child.Alter = 0;
-        child.Phase = "Kind";
-        child.Geburtsjahr = player.GetCurrentYear();
+        PlayerCharacter childIlleg = new PlayerCharacter(childNameIlleg, player.Generation + 1);
+        childIlleg.Alter = 0;
+        childIlleg.Phase = "Kind";
+        childIlleg.Geburtsjahr = player.GetCurrentYear();
         
-        child.Stärke = Math.Max(0, player.Stärke + rand.Next(-2, 2));
-        child.Intelligenz = Math.Max(0, player.Intelligenz + rand.Next(-2, 2));
-        child.Charisma = Math.Max(0, player.Charisma + rand.Next(-2, 2));
-        child.Kraft = Math.Max(0, player.Kraft + rand.Next(-2, 2));
+        childIlleg.Stärke = Math.Max(0, player.Stärke + rand.Next(-2, 2));
+        childIlleg.Intelligenz = Math.Max(0, player.Intelligenz + rand.Next(-2, 2));
+        childIlleg.Charisma = Math.Max(0, player.Charisma + rand.Next(-2, 2));
+        childIlleg.Kraft = Math.Max(0, player.Kraft + rand.Next(-2, 2));
         
-        player.Kinder.Add(child);
+        player.Kinder.Add(childIlleg);
         
-        Console.WriteLine($"\n✓ {childName} wurde geboren!");
-        Console.WriteLine($"Attribute: S:{child.Stärke} I:{child.Intelligenz} C:{child.Charisma} K:{child.Kraft}");
+        Console.WriteLine($"\n✓ {childNameIlleg} wurde geboren!");
+        Console.WriteLine($"Attribute: S:{childIlleg.Stärke} I:{childIlleg.Intelligenz} C:{childIlleg.Charisma} K:{childIlleg.Kraft}");
     }
     
     /// <summary>
