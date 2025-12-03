@@ -3015,6 +3015,7 @@ static class EventSystem
     public static List<HistoricalEvent> historicalEvents = new List<HistoricalEvent>();  // Historische Events chronologisch
     public static HashSet<string> shownHistoricalEvents = new HashSet<string>();  // Bereits gezeigte historische Events
     public static Random rand = new Random();
+    public static string currentLanguage = "DE";  // DE, RU, EN
     
     /// <summary>
     /// PlayEventSound - Wrapper-Methode für SoundSystem
