@@ -3796,6 +3796,442 @@ static class EventSystem
                 p.LoyalitätPartei += 20;
             }
         ));
+        
+        // ═══════════════════════════════════════════════════════════
+        // RUSSLAND-USA BEZIEHUNGEN (2000-2025)
+        // Chronologie der politischen, wirtschaftlichen und militärischen Events
+        // ═══════════════════════════════════════════════════════════
+        
+        // 2001 - 9/11 und Kooperation
+        allEvents.Add(new RandomEvent(
+            "11. September 2001 - Terroranschläge",
+            "Nach den Anschlägen vom 11. September bietet Russland den USA Zusammenarbeit im 'Krieg gegen den Terror' an...",
+            "Präsident", 50, 2001, "usa",
+            p => {
+                Console.WriteLine("\n🇺🇸 Die USA wurden angegriffen! Putin bietet Kooperation an.");
+                Console.WriteLine("\n[1] Zusammenarbeit anbieten (Luftbasen + Geheimdienstinfo)");
+                Console.WriteLine("[2] Neutral bleiben");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Russland stellt Luftbasen bereit und teilt Informationen!");
+                    p.EinflussInternational += 25;
+                    p.LoyalitätPartei += 15;
+                    p.Geld += 50; // Kompensation
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Russland bleibt neutral.");
+                    p.EinflussInternational -= 10;
+                }
+            }
+        ));
+        
+        // 2003 - Irakkrieg
+        allEvents.Add(new RandomEvent(
+            "Irakkrieg 2003",
+            "Die USA planen Invasion im Irak. Russland kann in der UN mit Veto drohen...",
+            "Präsident", 60, 2003, "usa",
+            p => {
+                Console.WriteLine("\n⚠️ USA bereiten Irakkrieg vor!");
+                Console.WriteLine("\n[1] Veto in UN androhen (Anti-Kriegsposition)");
+                Console.WriteLine("[2] Abwarten und nicht einmischen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Russland droht mit Veto! USA ignorieren es und marschieren trotzdem ein.");
+                    p.EinflussInternational += 20; // Anti-Kriegs-Ansehen
+                    p.LoyalitätVolk += 15;
+                    p.Geld -= 30; // Wirtschaftliche Spannungen
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Russland bleibt passiv.");
+                    p.EinflussInternational -= 15;
+                }
+            }
+        ));
+        
+        // 2004 - NATO-Osterweiterung
+        allEvents.Add(new RandomEvent(
+            "NATO-Osterweiterung 2004",
+            "Am 2. März 2004 treten sieben Staaten der NATO bei (Baltikum, Rumänien...). Moskau sieht dies als Bedrohung.",
+            "Präsident", 70, 2004, "usa",
+            p => {
+                Console.WriteLine("\n🛡️ NATO erweitert sich nach Osten!");
+                p.EinflussInternational -= 20; // Einfluss-Verlust
+                p.EinflussMilitär -= 15;
+                p.LoyalitätPartei -= 10; // Innenpolitischer Druck
+                Console.WriteLine("\n⚠️ Beziehungen zur NATO verschlechtern sich dramatisch!");
+            }
+        ));
+        
+        // 2008 - Georgien-Krieg
+        allEvents.Add(new RandomEvent(
+            "Kaukasuskrieg 2008",
+            "Konflikt um Südossetien eskaliert. Russland kann militärisch eingreifen...",
+            "Präsident", 65, 2008, "usa",
+            p => {
+                Console.WriteLine("\n⚔️ Georgien greift Südossetien an!");
+                Console.WriteLine("\n[1] Militärisch eingreifen (Invasion)");
+                Console.WriteLine("[2] Diplomatisch reagieren");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Russische Truppen marschieren ein! Südossetien und Abchasien werden besetzt.");
+                    p.EinflussMilitär += 30;
+                    p.EinflussInternational -= 35; // Internationale Verurteilung
+                    p.Geld -= 80; // Kriegskosten
+                    p.LoyalitätVolk += 20; // Patriotismus
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Russland bleibt zurückhaltend.");
+                    p.LoyalitätPartei -= 20; // Als schwach gesehen
+                }
+            }
+        ));
+        
+        // 2008 - NATO-Beitrittsversprechen
+        allEvents.Add(new RandomEvent(
+            "NATO-Gipfel Bukarest 2008",
+            "NATO verspricht Ukraine und Georgien Beitrittsperspektive. Moskau ist verärgert!",
+            "Präsident", 55, 2008, "usa",
+            p => {
+                Console.WriteLine("\n🛡️ NATO öffnet Tür für Ukraine und Georgien!");
+                p.EinflussInternational -= 25;
+                p.EinflussMilitär -= 20;
+                p.LoyalitätPartei -= 15;
+                Console.WriteLine("\n⚠️ Dies wird als direkte Bedrohung gesehen!");
+            }
+        ));
+        
+        // 2010 - New START
+        allEvents.Add(new RandomEvent(
+            "New START Vertrag 2010",
+            "Obama und Medwedew unterzeichnen neuen Abrüstungsvertrag. Hoffnung auf bessere Beziehungen...",
+            "Präsident", 45, 2010, "usa",
+            p => {
+                Console.WriteLine("\n🕊️ Neue Abrüstungsvereinbarung unterzeichnet!");
+                p.EinflussInternational += 20;
+                p.EinflussMilitär -= 10; // Arsenale begrenzt
+                p.LoyalitätVolk += 10;
+                Console.WriteLine("\n✓ Strategische Stabilität verbessert sich!");
+            }
+        ));
+        
+        // 2014 - Krim-Annexion
+        allEvents.Add(new RandomEvent(
+            "Krim-Annexion 2014",
+            "Nach Maidan-Revolution in Kiew: Russland kann die Krim annektieren...",
+            "Präsident", 75, 2014, "usa",
+            p => {
+                Console.WriteLine("\n🇺🇦 Ukraine in Chaos! Krim-Referendum steht bevor.");
+                Console.WriteLine("\n[1] Krim annektieren ('grüne Männchen' einsetzen)");
+                Console.WriteLine("[2] Nicht einmischen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Krim ist jetzt russisch! Sewastopol gesichert.");
+                    p.EinflussMilitär += 40; // Schwarzmeerflotte
+                    p.EinflussInternational -= 50; // Massive Verurteilung
+                    p.Geld -= 150; // Sanktionen folgen
+                    p.LoyalitätVolk += 35; // Patriotischer Rausch
+                    p.LoyalitätPartei += 25;
+                    Console.WriteLine("\n⚠️ USA und EU verhängen Sanktionen!");
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Krim bleibt ukrainisch.");
+                    p.LoyalitätPartei -= 30; // Als Verräter gesehen
+                }
+            }
+        ));
+        
+        // 2014 - G8 Ausschluss
+        allEvents.Add(new RandomEvent(
+            "Ausschluss aus G8 (2014)",
+            "Nach Krim-Annexion: G7 boykottiert Gipfel in Sotschi. Russland wird ausgeschlossen.",
+            "Präsident", 60, 2014, "usa",
+            p => {
+                Console.WriteLine("\n🚫 Russland aus G8 (jetzt G7) ausgeschlossen!");
+                p.EinflussInternational -= 30;
+                p.LoyalitätPartei -= 15;
+                p.Geld -= 50;
+                Console.WriteLine("\n⚠️ Internationale Isolation verstärkt sich!");
+            }
+        ));
+        
+        // 2015 - Syrien-Intervention
+        allEvents.Add(new RandomEvent(
+            "Syrien-Intervention 2015",
+            "Assad-Regime droht zu fallen. Russland kann militärisch in Syrien intervenieren...",
+            "Präsident", 55, 2015, "usa",
+            p => {
+                Console.WriteLine("\n🇸🇾 Bürgerkrieg in Syrien eskaliert!");
+                Console.WriteLine("\n[1] Militärisch Assad unterstützen (Luftangriffe)");
+                Console.WriteLine("[2] Nicht eingreifen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Russische Luftwaffe greift ein! Stützpunkt Latakia eröffnet.");
+                    p.EinflussMilitär += 35;
+                    p.EinflussInternational -= 20; // 'Benzin ins Feuer'
+                    p.Geld -= 100; // Kriegskosten
+                    p.LoyalitätVolk += 25; // Gegen Islamisten
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Russland bleibt raus.");
+                    p.EinflussInternational -= 25; // Einfluss-Verlust in Nahost
+                }
+            }
+        ));
+        
+        // 2016 - US-Wahleinmischung
+        allEvents.Add(new RandomEvent(
+            "US-Wahl 2016 - Cyberoperation",
+            "US-Präsidentschaftswahl steht bevor. GRU plant Cyberoperation zur Einflussnahme...",
+            "Präsident", 40, 2016, "usa",
+            p => {
+                Console.WriteLine("\n💻 Geheimoperation: US-Wahl beeinflussen?");
+                Console.WriteLine("\n[1] Cyberangriff genehmigen (DNC hacken, Desinformation)");
+                Console.WriteLine("[2] Ablehnen (zu riskant)");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Operation läuft! 'Fancy Bear' hackt DNC-Server.");
+                    p.EinflussKGB += 30;
+                    p.EinflussInternational += 15; // Kurzfristig
+                    // Später Entdeckung:
+                    if (rand.Next(100) < 70)
+                    {
+                        Console.WriteLine("\n⚠️ SPÄTER: Operation aufgedeckt! Skandal!");
+                        p.EinflussInternational -= 45;
+                        p.Geld -= 100; // Sanktionen
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Operation abgelehnt.");
+                }
+            }
+        ));
+        
+        // 2017 - CAATSA Sanktionen
+        allEvents.Add(new RandomEvent(
+            "CAATSA-Sanktionen 2017",
+            "US-Kongress verabschiedet umfassendes Sanktionsgesetz gegen Russland...",
+            "Präsident", 65, 2017, "usa",
+            p => {
+                Console.WriteLine("\n💳 USA verhängen dauerhafte Sanktionen (CAATSA)!");
+                p.Geld -= 200;
+                p.EinflussInternational -= 25;
+                p.LoyalitätPartei -= 20; // Wirtschaftlicher Druck
+                Console.WriteLine("\n⚠️ Russische Wirtschaft leidet stark!");
+            }
+        ));
+        
+        // 2018 - Helsinki-Gipfel
+        allEvents.Add(new RandomEvent(
+            "Trump-Putin Gipfel Helsinki 2018",
+            "Präsident Trump trifft Putin in Helsinki. Eine Annäherung ist möglich...",
+            "Präsident", 50, 2018, "usa",
+            p => {
+                Console.WriteLine("\n🤝 Historisches Treffen mit Donald Trump!");
+                Console.WriteLine("\nTrump: 'I don't see any reason why it would be Russia...'");
+                p.EinflussInternational += 20;
+                p.LoyalitätVolk += 15;
+                p.Geld += 50;
+                Console.WriteLine("\n✓ Beziehungen verbessern sich vorübergehend!");
+                
+                // Aktiviere Trump-Telefon Easter Egg
+                p.TrumpTelefonAktiv = true;
+                Console.WriteLine("\n📞 Das 'Trump-Telefon' wurde freigeschaltet!");
+            }
+        ));
+        
+        // 2018 - INF-Vertrag endet
+        allEvents.Add(new RandomEvent(
+            "Ende des INF-Vertrags 2018",
+            "Trump kündigt INF-Raketenvertrag. Rüstungsspirale droht...",
+            "Präsident", 55, 2018, "usa",
+            p => {
+                Console.WriteLine("\n🚀 USA steigen aus INF-Vertrag aus!");
+                Console.WriteLine("\n[1] Auch aussteigen (Wettrüsten)");
+                Console.WriteLine("[2] Im Vertrag bleiben");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Russland steigt ebenfalls aus!");
+                    p.EinflussMilitär += 25;
+                    p.Geld -= 120; // Aufrüstungskosten
+                    p.EinflussInternational -= 20;
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Russland bleibt im Vertrag.");
+                    p.EinflussMilitär -= 15; // Nachteil
+                }
+            }
+        ));
+        
+        // 2019 - Nord Stream 2 Sanktionen
+        allEvents.Add(new RandomEvent(
+            "Nord Stream 2 Sanktionen 2019",
+            "USA drohen mit Sanktionen gegen Pipeline-Verlegefirmen...",
+            "Präsident", 60, 2019, "usa",
+            p => {
+                Console.WriteLine("\n⛽ USA sanktionieren Nord Stream 2!");
+                p.Geld -= 80; // Pipeline-Verzögerung
+                p.EinflussInternational -= 15;
+                Console.WriteLine("\n⚠️ Pipeline-Bau verzögert sich!");
+            }
+        ));
+        
+        // 2019 - Terrorabwehr-Kooperation
+        allEvents.Add(new RandomEvent(
+            "Terrorabwehr-Kooperation 2019",
+            "US-Geheimdienste warnen vor Anschlag in Russland. Putin dankt Trump persönlich...",
+            "Präsident", 35, 2019, "usa",
+            p => {
+                Console.WriteLine("\n🔒 CIA warnt vor Terroranschlag in St. Petersburg!");
+                Console.WriteLine("\n✓ Anschlag verhindert! Trump und Putin telefonieren.");
+                p.EinflussInternational += 15;
+                p.LoyalitätVolk += 10;
+                p.Gesundheit = Math.Min(100, p.Gesundheit + 5);
+            }
+        ));
+        
+        // 2020 - SolarWinds Cyberangriff
+        allEvents.Add(new RandomEvent(
+            "SolarWinds-Hack 2020",
+            "GRU plant massiven Cyberangriff auf US-Netzwerke via SolarWinds...",
+            "Präsident", 45, 2020, "usa",
+            p => {
+                Console.WriteLine("\n💻 Massive Spionageoperation möglich...");
+                Console.WriteLine("\n[1] Operation durchführen (Großes Risiko!)");
+                Console.WriteLine("[2] Zu riskant - ablehnen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ SolarWinds infiltriert! Tausende US-Systeme kompromittiert.");
+                    p.EinflussKGB += 40;
+                    p.Geld -= 50;
+                    // Später Entdeckung
+                    Console.WriteLine("\n⚠️ SPÄTER: Hack aufgedeckt! Massive Gegensanktionen!");
+                    p.EinflussInternational -= 50;
+                    p.Geld -= 150;
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Operation zu riskant - abgelehnt.");
+                }
+            }
+        ));
+        
+        // 2021 - Biden "Killer"-Äußerung
+        allEvents.Add(new RandomEvent(
+            "Biden nennt Putin 'Killer' 2021",
+            "Neuer US-Präsident Biden bezeichnet Putin als 'Killer'. Diplomatischer Eklat!",
+            "Präsident", 70, 2021, "usa",
+            p => {
+                Console.WriteLine("\n😠 Biden: 'Putin is a killer!'");
+                Console.WriteLine("\n[1] Botschafter zurückrufen (harte Reaktion)");
+                Console.WriteLine("[2] Ignorieren");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Russischer Botschafter zurückgerufen!");
+                    p.EinflussInternational -= 25;
+                    p.LoyalitätPartei += 15; // Zeigt Stärke
+                    p.LoyalitätVolk += 10;
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Russland ignoriert die Beleidigung.");
+                    p.LoyalitätPartei -= 15; // Als schwach gesehen
+                }
+            }
+        ));
+        
+        // 2021 - New START Verlängerung
+        allEvents.Add(new RandomEvent(
+            "New START Verlängerung 2021",
+            "Kurz vor Ablauf: Biden bietet Verlängerung um 5 Jahre an...",
+            "Präsident", 50, 2021, "usa",
+            p => {
+                Console.WriteLine("\n🕊️ USA bieten Verlängerung von New START an!");
+                Console.WriteLine("\n[1] Zustimmen (Abrüstung)");
+                Console.WriteLine("[2] Ablehnen");
+                Console.Write("\nWähle [1-2]: ");
+                
+                if (Console.ReadLine() == "1")
+                {
+                    Console.WriteLine("\n✓ Vertrag verlängert bis 2026!");
+                    p.EinflussInternational += 20;
+                    p.EinflussMilitär -= 5;
+                    Console.WriteLine("\n✓ Strategische Stabilität wiederhergestellt!");
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Vertrag läuft aus. Rüstungswettlauf!");
+                    p.EinflussMilitär += 15;
+                    p.EinflussInternational -= 25;
+                }
+            }
+        ));
+        
+        // 2022 - Ukraine-Invasion
+        allEvents.Add(new RandomEvent(
+            "Ukraine-Invasion 24. Feb. 2022",
+            "Entscheidung: Umfassende Invasion der Ukraine oder diplomatische Lösung?",
+            "Präsident", 80, 2022, "usa",
+            p => {
+                Console.WriteLine("\n⚔️ KRITISCHE ENTSCHEIDUNG: Ukraine-Krise eskaliert!");
+                Console.WriteLine("\nNATO-Erweiterung droht, Donbass unter Beschuss...");
+                Console.WriteLine("\n[1] Vollständige Invasion ('Spezialoperation')");
+                Console.WriteLine("[2] Nur Donbass anerkennen (begrenzt)");
+                Console.WriteLine("[3] Diplomatische Lösung suchen");
+                Console.Write("\nWähle [1-3]: ");
+                
+                string choice = Console.ReadLine();
+                if (choice == "1")
+                {
+                    Console.WriteLine("\n✓ 24. Februar: Russische Truppen marschieren ein!");
+                    p.EinflussMilitär += 50;
+                    p.EinflussInternational -= 80; // Weltweite Verurteilung
+                    p.Geld -= 500; // Massive Kriegskosten + Sanktionen
+                    p.LoyalitätPartei += 30;
+                    p.LoyalitätVolk += 20; // Initial
+                    p.Gesundheit -= 30; // Stress
+                    Console.WriteLine("\n⚠️ HISTORISCHE SANKTIONEN! Wirtschaft im freien Fall!");
+                    Console.WriteLine("\n⚠️ NATO verstärkt Osteuropa massiv!");
+                }
+                else if (choice == "2")
+                {
+                    Console.WriteLine("\n✓ Russland erkennt Donbass-Republiken an.");
+                    p.EinflussMilitär += 20;
+                    p.EinflussInternational -= 30;
+                    p.Geld -= 150;
+                }
+                else
+                {
+                    Console.WriteLine("\n→ Diplomatischer Weg gewählt.");
+                    p.EinflussInternational += 10;
+                    p.LoyalitätPartei -= 40; // Als Verräter gebrandmarkt
+                }
+            }
+        ));
     }
     
     /// <summary>
