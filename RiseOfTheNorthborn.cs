@@ -5827,7 +5827,30 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Verfassungskrise 1993", "Parlament gestürmt", "Präsident", 80, 1993, "politisch", p => { p.EinflussMilitär += 25; Console.WriteLine("🏛️ Panzer auf Parlament!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Tschetschenien I 1994", "Erster Krieg", "Präsident", 85, 1994, "politisch", p => { p.EinflussMilitär += 20; p.Geld -= 250; Console.WriteLine("⚔️ Krieg im Kaukasus!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 80, 1998, "politisch", p => { p.Geld -= 400; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Putin 2000", "Neuer Präsident", "Präsident", 90, 2000, "politisch", p => { p.LoyalitätPartei += 30; Console.WriteLine("🇷🇺 Putin an der Macht!"); Thread.Sleep(3000); }));
+        // 1995-2000 (Jelzin-Ära Fortsetzung)
+        allEvents.Add(new RandomEvent("Srebrenica 1995", "Massaker Bosnien", "Präsident", 70, 1995, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("🇧🇦 Balkan-Massaker!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Budjonowsk 1995", "Tschetschenischer Terror", "Präsident", 75, 1995, "katastrophe", p => { p.Gesundheit -= 15; p.EinflussMilitär += 15; Console.WriteLine("💣 Geiselnahme!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Oklahoma Bombing 1995", "US-Terror", "Präsident", 60, 1995, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("💣 USA-Anschlag!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Jelzin wiedergewählt 1996", "Umstrittene Wahl", "Präsident", 80, 1996, "politisch", p => { p.LoyalitätPartei += 15; p.Geld -= 200; Console.WriteLine("🗳️ Jelzin bleibt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien Waffenstillstand 1996", "Kriegsende", "Präsident", 70, 1996, "politisch", p => { p.Geld += 100; p.EinflussMilitär -= 10; Console.WriteLine("🕊️ Waffenruhe!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Minenverbot 1996", "Ottawa-Vertrag", "Präsident", 60, 1996, "politisch", p => { p.EinflussInternational += 10; Console.WriteLine("⚠️ Minenverbot!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Hongkong China 1997", "Rückgabe an China", "Präsident", 70, 1997, "politisch", p => { p.ChinaBeziehung += 15; Console.WriteLine("🇨🇳 Hongkong chinesisch!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Prinzessin Diana 1997", "Tod in Paris", "Präsident", 60, 1997, "politisch", p => { p.EinflussInternational += 5; Console.WriteLine("💔 Diana tot!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Mir-Station Kollision 1997", "Raumstation beschädigt", "Präsident", 65, 1997, "katastrophe", p => { p.Gesundheit -= 10; Console.WriteLine("🛰️ Weltraum-Unfall!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Rubelkrise 1998", "Wirtschaftskollaps", "Präsident", 90, 1998, "politisch", p => { p.Geld -= 500; p.Gesundheit -= 20; p.LoyalitätPartei -= 25; Console.WriteLine("💰 Rubel-Crash!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("IWF-Kredite 1998", "Rettungspaket", "Präsident", 80, 1998, "politisch", p => { p.Geld += 300; p.EinflussInternational -= 15; Console.WriteLine("💸 IWF-Hilfe!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Primakow Premier 1998", "Neuer Premierminister", "Präsident", 70, 1998, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("🏛️ Regierungswechsel!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Kosovo-Krieg 1999", "NATO bombardiert Serbien", "Präsident", 85, 1999, "politisch", p => { p.EinflussInternational -= 25; p.EinflussMilitär += 15; Console.WriteLine("💥 NATO-Angriff!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien II 1999", "Zweiter Krieg", "Präsident", 80, 1999, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 200; Console.WriteLine("⚔️ Neuer Tschetschenien-Krieg!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Putin wird Präsident", "Präsident", 90, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
+        
+        allEvents.Add(new RandomEvent("Putin 2000", "Neuer Präsident", "Präsident", 95, 2000, "politisch", p => { p.LoyalitätPartei += 35; p.EinflussKGB += 25; Console.WriteLine("🇷🇺 Putin an der Macht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Kursk-Untergang 2000", "U-Boot sinkt", "Präsident", 85, 2000, "katastrophe", p => { p.Gesundheit -= 25; p.LoyalitätPartei -= 15; Console.WriteLine("💀 118 Tote!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Y2K-Bug überstanden 2000", "Millennium", "Präsident", 60, 2000, "politisch", p => { p.Geld += 50; Console.WriteLine("💻 Y2K geschafft!"); Thread.Sleep(3000); }));
         
         // CHINA-EVENTS
         allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(3000); }));
