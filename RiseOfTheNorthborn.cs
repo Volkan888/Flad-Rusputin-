@@ -3705,7 +3705,7 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine("Flad wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
-        Console.WriteLine("💾 Tipp: Drücke 'S' zum Speichern, 'L' zum Laden\n");
+        Console.WriteLine("💾 Tipp: 'S' = Speichern | 'L' = Laden | 'E' = 📞 Erdogan-Nottelefon\n");
         Thread.Sleep(1500);
         
         // Zufallsereignis auslösen
