@@ -1807,30 +1807,34 @@ static class EventSystem
     /// <summary>
     /// TriggerRandomEvent - Löst ein Zufallsereignis aus
     /// 
-    /// TRIGGER-ALGORITHMUS:
-    /// 1. Filtere alle Events nach aktueller Lebensphase
-    /// 2. Würfle für jedes Event ob Wahrscheinlichkeit eintrifft
-    /// 3. Wenn mehrere Events möglich: Wähle zufällig eines
-    /// 4. Zeige Event-Beschreibung
-    /// 5. Führe Effekte aus (via Lambda-Funktion)
+    /// ÄNDERUNG 11: Erweitert um jahr-basierte Events
     /// 
-    /// BEISPIEL:
-    /// - Phase: "Kindheit"
-    /// - Mögliche Events: "Verlust des Bruders" (20%), "Rauferei" (40%)
-    /// - Würfel für "Verlust": 18 < 20 → TRIFFT ZU
-    /// - Würfel für "Rauferei": 67 < 40 → TRIFFT NICHT ZU
-    /// - Ergebnis: "Verlust des Bruders" wird ausgeführt
+    /// TRIGGER-ALGORITHMUS:
+    /// 1. Filtere Events nach Phase UND Jahr
+    /// 2. Jahr = 0: Klassisches Event, jederzeit in Phase möglich
+    /// 3. Jahr > 0: Nur wenn aktuelles Spieljahr = Event-Jahr
+    /// 4. Würfle für Wahrscheinlichkeit
+    /// 5. Zeige Event und führe Effekte aus
+    /// 
+    /// BEISPIELE:
+    /// - Event ohne Jahr: Kann mehrfach auftreten
+    /// - Event mit Jahr 1986: Nur wenn Spieler in 1986 ist
+    /// - Sidechick-Event: Zufällig, nicht jahr-gebunden
+    /// - Fiktives Event 2030: Nur im Jahr 2030
     /// 
     /// Wird an kritischen Story-Punkten in jeder Phase aufgerufen.
     /// </summary>
     /// <param name="player">Der aktuelle Spieler-Charakter</param>
     public static void TriggerRandomEvent(PlayerCharacter player)
     {
+        int currentYear = player.GetCurrentYear();
+        
         // ═══ SCHRITT 1: FILTERE PASSENDE EVENTS ═══
-        // LINQ-Abfrage: Nur Events der aktuellen Phase die "würfeln"
+        // LINQ-Abfrage: Events nach Phase UND Jahr filtern
         var possibleEvents = allEvents.Where(e => 
-            e.Phase == player.Phase &&           // Richtige Phase?
-            rand.Next(100) < e.Chance            // Wahrscheinlichkeit getroffen?
+            e.Phase == player.Phase &&                          // Richtige Phase?
+            (e.Jahr == 0 || e.Jahr == currentYear) &&          // Jahr passt?
+            rand.Next(100) < e.Chance                           // Wahrscheinlichkeit getroffen?
         ).ToList();
         
         // Kein Event möglich? Beende frühzeitig
@@ -1841,16 +1845,39 @@ static class EventSystem
         
         // ═══ SCHRITT 3: ZEIGE EVENT ═══
         Console.Clear();
-        Console.ForegroundColor = ConsoleColor.Magenta;
+        
+        // Spezielle Farben für Event-Typen
+        if (chosen.Type == "sidechick")
+            Console.ForegroundColor = ConsoleColor.Red;
+        else if (chosen.Type == "historisch")
+            Console.ForegroundColor = ConsoleColor.Yellow;
+        else if (chosen.Type == "fiktiv")
+            Console.ForegroundColor = ConsoleColor.Cyan;
+        else
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            
         Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║                  ⚡ ZUFALLSEREIGNIS ⚡                     ║");
+        
+        if (chosen.Type == "sidechick")
+            Console.WriteLine("║                  💋 PERSÖNLICHES EVENT 💋                 ║");
+        else if (chosen.Type == "historisch")
+            Console.WriteLine($"║         📅 HISTORISCHES EREIGNIS {chosen.Jahr} 📅            ║");
+        else if (chosen.Type == "fiktiv")
+            Console.WriteLine($"║          🔮 ZUKUNFTSEREIGNIS {chosen.Jahr} 🔮             ║");
+        else
+            Console.WriteLine("║                  ⚡ ZUFALLSEREIGNIS ⚡                     ║");
+            
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
         
         Console.WriteLine($"\n📰 {chosen.Name}\n");
         Console.WriteLine(chosen.Description);
-        Console.WriteLine("\n[Drücke eine Taste...]");
-        Console.ReadKey(true);
+        
+        if (chosen.Type != "sidechick")  // Sidechick-Events haben eigene Interaktion
+        {
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+        }
         
         // ═══ SCHRITT 4: FÜHRE EFFEKTE AUS ═══
         // Lambda-Funktion (Action<PlayerCharacter>) wird ausgeführt
