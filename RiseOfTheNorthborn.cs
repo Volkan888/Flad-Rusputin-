@@ -9539,15 +9539,45 @@ class Program
     /// Lösung: Try-Catch mit Thread.Sleep als Fallback
     ///         Musik-Loop nur 3x statt endlos (verhindert CPU-Last)
     /// </summary>
-    static void PlayMusic()
+    public static void PlayMusic()
     {
         int tempo = 150;
-        int[] melody = { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659 };
-        int[] durations = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2 };
         
         // ENDLOS-SCHLEIFE - Musik läuft permanent während des Spiels
         while (!stopMusic)
         {
+            int[] melody;
+            int[] durations;
+            
+            // Wähle Melodie basierend auf currentMusicTrack
+            switch (currentMusicTrack)
+            {
+                case 1: // Klassische Sowjet-Hymne
+                    melody = new int[] { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659 };
+                    durations = new int[] { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2 };
+                    break;
+                    
+                case 2: // Katyusha-Variation
+                    melody = new int[] { 523, 587, 659, 698, 659, 587, 523, 494, 440, 494, 523, 523 };
+                    durations = new int[] { 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2 };
+                    break;
+                    
+                case 3: // Kalinka-Remix
+                    melody = new int[] { 440, 494, 523, 494, 440, 392, 440, 494, 523, 587, 659, 587 };
+                    durations = new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 2 };
+                    break;
+                    
+                case 4: // Roter Oktober Marsch
+                    melody = new int[] { 392, 440, 494, 523, 587, 523, 494, 440, 494, 523, 587, 659, 698, 659 };
+                    durations = new int[] { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 3 };
+                    break;
+                    
+                default:
+                    melody = new int[] { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659 };
+                    durations = new int[] { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2 };
+                    break;
+            }
+            
             for (int i = 0; i < melody.Length && !stopMusic; i++)
             {
                 try 
