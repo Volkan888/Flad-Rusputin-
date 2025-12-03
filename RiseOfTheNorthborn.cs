@@ -3911,7 +3911,7 @@ static class EventSystem
             p => { p.LoyalitätPartei += 35; p.EinflussKGB += 30; p.LoyalitätVolk += 30; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("KURSK_UNTERGANG_2000", "U-Boot Kursk sinkt", "[RU]", "[EN]", "12. August 2000", "[RU]", "[EN]", 2000, 8, "KATASTROPHE",
-            @"Das Atom-U-Boot Kursk sinkt nach Explosion. 118 Seeleute sterben. Putin bleibt im Urlaub, lehnt ausländische Hilfe ab. Seine erste große Krise.",
+            @"Das Atom-U-Boot Kursk sinkt nach Explosion. 118 Seeleute sterben. Flad bleibt im Urlaub, lehnt ausländische Hilfe ab. Seine erste große Krise.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätVolk -= 30; p.Gesundheit -= 25; p.EinflussInternational -= 20; Thread.Sleep(4000); }));
         
