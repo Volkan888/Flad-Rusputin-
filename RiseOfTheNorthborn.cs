@@ -1503,11 +1503,11 @@ static class ErdoganHotline
                 break;
             case "9":
                 Console.WriteLine("\nAnruf abgebrochen.");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 return;
             default:
                 Console.WriteLine("\nUngültige Wahl!");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 return;
         }
         
@@ -1547,7 +1547,7 @@ static class ErdoganHotline
             case "4": betrag = 2000; rückzahlung = 2500; break;
             default:
                 Console.WriteLine("\nUngültige Wahl!");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 return;
         }
         
@@ -1875,7 +1875,7 @@ static class FinkaSystem
         Console.ResetColor();
         
         Console.WriteLine("\n🚗 Fahrt nach Sotschi...");
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
         Console.WriteLine("🏡 Ankunft an der Finka!");
         Thread.Sleep(2500);
         Console.WriteLine("🌊 Blick aufs Schwarze Meer...");
@@ -1885,7 +1885,7 @@ static class FinkaSystem
         Console.WriteLine("🛀 Entspannung in der Sauna...");
         Thread.Sleep(2500);
         Console.WriteLine("😴 Erholsamer Schlaf...");
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
         
         int alteGesundheit = p.Gesundheit;
         p.Gesundheit = Math.Min(100, p.Gesundheit + 30);
@@ -2768,7 +2768,7 @@ static class NATOHotline
             Console.WriteLine("═══════════════════════════════════════════════════════\n");
             
             Console.WriteLine("NATO: 'Ausgezeichnet! Sehen Sie sich diese Karte an...'");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             Console.WriteLine("\n🗺️  Du erhältst geheime NATO-Stellungsinformationen!");
             
             p.NATOBeziehung += 15;
@@ -2826,7 +2826,7 @@ static class ChinaHotline
         if (!p.ChinaTelefonAktiv || p.ChinaAnrufeVerfügbar <= 0)
         {
             Console.WriteLine("China-Telefon nicht verfügbar!");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             return;
         }
         
@@ -3484,7 +3484,7 @@ static class EventSystem
                 if (Console.ReadLine() == "1")
                 {
                     Console.WriteLine("\n💋 Die Affäre beginnt...");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(3000);
                     
                     // 60% Chance auf uneheliches Kind
                     if (rand.Next(100) < 60)
@@ -4968,7 +4968,7 @@ static class EventSystem
                 Console.ResetColor();
                 
                 Console.WriteLine("\n📂 Du findest ein verstaubtes Dossier...");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 Console.WriteLine("\n🔍 Inhalt:");
                 Console.WriteLine("   - Operation 'Roter Schatten' (1976)");
                 Console.WriteLine("   - Agentennamen im Westen");
@@ -5051,7 +5051,7 @@ static class EventSystem
                 Console.ResetColor();
                 
                 Console.WriteLine("\n📞 Spätabends klingelt das Telefon...");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\n'Genosse... Wir brauchen jemanden für eine... heikle Aufgabe.'");
                 Console.ResetColor();
@@ -5069,7 +5069,7 @@ static class EventSystem
                 {
                     Console.Clear();
                     Console.WriteLine("\n✈️  Flug nach Berlin...");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(3000);
                     
                     // Zufälliger Ausgang
                     int erfolg = rand.Next(100);
@@ -5154,7 +5154,7 @@ static class EventSystem
                 Console.ResetColor();
                 
                 Console.WriteLine("\n🔨 Arbeiter finden einen alten Safe hinter der Wand...");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 Console.WriteLine("\n🔐 Rostiges Kombinationsschloss: _ _ _ _");
                 Console.WriteLine("\n💡 Hinweis auf Rückseite: 'Jahr des Sieges'");
                 
@@ -5196,7 +5196,7 @@ static class EventSystem
                     Console.ResetColor();
                     Console.WriteLine($"\n'{code}' - auch ein wichtiges Jahr, aber nicht das richtige!");
                     Console.WriteLine("\n🔧 Safe wird aufgebrochen...");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(3000);
                     
                     Console.WriteLine("\n📦 Inhalt (teilweise beschädigt):");
                     Console.WriteLine("   💰 10.000 Rubel");
@@ -5216,7 +5216,7 @@ static class EventSystem
                     Console.ResetColor();
                     Console.WriteLine("\n⚠️  Safe-Mechanismus blockiert!");
                     Console.WriteLine("\n🔧 Muss von Experten geöffnet werden...");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(3000);
                     
                     Console.WriteLine("\n📦 Inhalt (von Experten entnommen):");
                     Console.WriteLine("   💰 5.000 Rubel (Finder-Prämie)");
@@ -5246,16 +5246,16 @@ static class EventSystem
                 Console.ResetColor();
                 
                 Console.WriteLine("\n📞 *Ring Ring*");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 
                 try { Console.Beep(800, 300); Console.Beep(800, 300); } catch { }
                 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("\n[Verzerrte Stimme]:");
                 Console.WriteLine("'Genosse... oder sollte ich sagen, Agent X-47?'");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 Console.WriteLine("'Ich kenne deine Vergangenheit. ALLE Geheimnisse.'");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 Console.WriteLine("'Ich will 1000 Rubel. Morgen. Gorky Park. Oder...'");
                 Console.ResetColor();
                 
@@ -5308,7 +5308,7 @@ static class EventSystem
                 else
                 {
                     Console.WriteLine("\n📞 KGB informiert...");
-                    Thread.Sleep(1500);
+                    Thread.Sleep(3000);
                     Console.WriteLine("\n🔍 KGB Spezialeinheit aktiviert!");
                     Thread.Sleep(2500);
                     
@@ -5457,16 +5457,16 @@ static class EventSystem
         ));
         
         // CHINA-EVENTS (1950-2025) - Kompakt
-        allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China Freundschaft", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("Damanski 1969", "Grenzkonflikt!", "KGB", 70, 1969, "china", p => { p.ChinaBeziehung -= 50; p.EinflussMilitär += 20; Console.WriteLine("💥 Grenzkrieg! China -50%"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("Gorbatschow China 1989", "Normalisierung", "KGB", 50, 1989, "china", p => { p.ChinaBeziehung += 30; Console.WriteLine("🤝 +30% China"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("Freundschaft 2001", "20-Jahres-Vertrag", "Präsident", 60, 2001, "china", p => { p.Geld += 300; p.ChinaBeziehung += 25; Console.WriteLine("✓ +300 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("China-Vertrag 1950", "UdSSR-China Freundschaft", "Kindheit", 60, 1950, "china", p => { p.Geld += 200; p.ChinaBeziehung = 80; Console.WriteLine("🇨🇳 +200 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Damanski 1969", "Grenzkonflikt!", "KGB", 70, 1969, "china", p => { p.ChinaBeziehung -= 50; p.EinflussMilitär += 20; Console.WriteLine("💥 Grenzkrieg! China -50%"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gorbatschow China 1989", "Normalisierung", "KGB", 50, 1989, "china", p => { p.ChinaBeziehung += 30; Console.WriteLine("🤝 +30% China"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Freundschaft 2001", "20-Jahres-Vertrag", "Präsident", 60, 2001, "china", p => { p.Geld += 300; p.ChinaBeziehung += 25; Console.WriteLine("✓ +300 Rubel!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Gas-Deal 2014", "$400 Mrd Deal!", "Präsident", 80, 2014, "china", p => { p.Geld += 500; p.ChinaTelefonAktiv = true; Console.WriteLine("💰 +500 Rubel! 📞 China-Telefon aktiv!"); Thread.Sleep(2000); }));
-        allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; p.ChinaBeziehung += 20; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("Handel 2019", "$110 Mrd", "Präsident", 55, 2019, "china", p => { p.Geld += 350; Console.WriteLine("💰 +350 Rubel!"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("Olympia 2022", "Peking-Treffen", "Präsident", 75, 2022, "china", p => { p.Geld += 400; p.ChinaBeziehung += 15; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("Putin Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; p.EinflussMilitär += 25; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(1500); }));
-        allEvents.Add(new RandomEvent("China-Allianz 2025", "Strategisch", "Präsident", 60, 2025, "china", p => { p.Geld += 300; p.ChinaBeziehung += 10; Console.WriteLine("🤝 +300 Rubel!"); Thread.Sleep(1500); }));
+        allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; p.ChinaBeziehung += 20; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Handel 2019", "$110 Mrd", "Präsident", 55, 2019, "china", p => { p.Geld += 350; Console.WriteLine("💰 +350 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia 2022", "Peking-Treffen", "Präsident", 75, 2022, "china", p => { p.Geld += 400; p.ChinaBeziehung += 15; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Putin Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; p.EinflussMilitär += 25; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("China-Allianz 2025", "Strategisch", "Präsident", 60, 2025, "china", p => { p.Geld += 300; p.ChinaBeziehung += 10; Console.WriteLine("🤝 +300 Rubel!"); Thread.Sleep(3000); }));
         
         // ═══════════════════════════════════════════════════════════
         // RUSSLAND-USA BEZIEHUNGEN (2000-2025)
@@ -6299,7 +6299,7 @@ static class EventSystem
         chosen.Apply(player);
         
         Console.WriteLine("\n✓ Ereignis verarbeitet!");
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
     }
 }
 
@@ -6434,7 +6434,7 @@ class Program
             
             Console.WriteLine($"{playerCount} Spieler treten gegeneinander an!");
             Console.WriteLine("Wer wird die mächtigste Dynastie aufbauen?\n");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
         }
         
         // Schwierigkeitsgrad
@@ -6539,7 +6539,7 @@ class Program
             Console.WriteLine($"║         JETZT SPIELT: {player.Name.ToUpper().PadRight(40)}║");
             Console.WriteLine("╚═══════════════════════════════════════════════════════════╝");
             Console.ResetColor();
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             
             currentPlayer = player;
             PlayStory(player);
@@ -6638,7 +6638,7 @@ class Program
                 player.NATOBeziehung = 20; // Schlechtere NATO-Beziehung
                 player.USABeziehung = 40;
                 Console.WriteLine("SCHWER: -30 Gesundheit | Weniger Geld | Schlechtere Auslandsbeziehungen");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 break;
             case 4: // Brutal
                 points = 1;
@@ -6647,7 +6647,7 @@ class Program
                 player.NATOBeziehung = 10; // Sehr schlecht
                 player.USABeziehung = 30;
                 Console.WriteLine("BRUTAL: Schulden | NATO-Feindschaft | Harte Sanktionen");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 break;
         }
         
@@ -6674,7 +6674,7 @@ class Program
         }
         
         Console.WriteLine("\n✓ Attribute verteilt!");
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
     }
     
     static void PlayStoryFromPhase(PlayerCharacter player, string startPhase)
@@ -6881,7 +6881,7 @@ class Program
         Console.WriteLine("💾 Extras: 'S' = Speichern | 'L' = Laden | 'M' = 🎵 Musik");
         Console.WriteLine("═══════════════════════════════════════════════════════════\n");
         Console.ResetColor();
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
         
         // Zufallsereignis auslösen
         EventSystem.TriggerRandomEvent(player);
@@ -6921,7 +6921,7 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine($"Mit 16 marschiert {player.GetFirstName()} zur KGB-Zentrale!\n");
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
         
         if (player.KGBEasterEgg)
         {
@@ -6994,7 +6994,7 @@ class Program
             player.LoyalitätVolk = Math.Min(100, player.LoyalitätVolk + 20);
         }
         
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
         ShowStats(player);
         Console.ReadKey(true);
     }
@@ -7068,7 +7068,7 @@ class Program
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
         Console.WriteLine("Dresden, 1989: Demonstranten vor dem KGB-Gebäude!\n");
-        Thread.Sleep(1500);
+        Thread.Sleep(3000);
         
         Console.WriteLine("[1] Aufstand niederschlagen (+30 KGB, +100 Geld, -25 Gesundheit)");
         Console.WriteLine("[2] Sympathisieren & Flucht (+40 Volk, -40 KGB, -50 Geld)\n");
@@ -7311,7 +7311,7 @@ class Program
                 currentPlayer = heir;
                 player.IstTot = true; // Markiere als verstorben/zurückgetreten
                 Console.WriteLine("\n>> Die Dynastie geht weiter...");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
                 SaveGame(heir);
             }
         }
@@ -7320,7 +7320,7 @@ class Program
             // Speichern und beenden
             SaveGame(player);
             Console.WriteLine("\n>> Auf Wiedersehen!");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
         }
         
         Console.WriteLine("\n[Drücke eine Taste...]");
@@ -7364,7 +7364,7 @@ class Program
         if (currentPlayer == null)
         {
             Console.WriteLine("\n>> Kein Spielstand vorhanden!");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             return;
         }
         
@@ -7453,7 +7453,7 @@ class Program
         if (saveSlots.Count == 0)
         {
             Console.WriteLine("Keine Spielstände vorhanden!");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             return;
         }
         
@@ -7471,7 +7471,7 @@ class Program
         if (!saveSlots.ContainsKey(slot))
         {
             Console.WriteLine($"Slot {slot} ist leer!");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             return;
         }
         
@@ -7494,7 +7494,7 @@ class Program
         if (saveSlots.Count == 0)
         {
             Console.WriteLine("Keine Spielstände vorhanden!");
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
             return;
         }
         
@@ -7515,7 +7515,7 @@ class Program
             {
                 saveSlots.Remove(slot);
                 Console.WriteLine($"\n\n✓ Slot {slot} gelöscht!");
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
             }
         }
     }
@@ -7727,7 +7727,7 @@ class BattleshipGame
             if (!pvp && !player1Turn)
             {
                 hit = ComputerAttack(defender);
-                Thread.Sleep(1500);
+                Thread.Sleep(3000);
             }
             else
             {
