@@ -3296,16 +3296,16 @@ static class EventSystem
             Console.ResetColor();
             
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"\n📅 {evt.Datum}");
+            Console.WriteLine($"\n📅 {evt.GetDatum()}");
             Console.ResetColor();
             Thread.Sleep(2000);
             
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\n🏛️ {evt.Name.ToUpper()}");
+            Console.WriteLine($"\n🏛️ {evt.GetName().ToUpper()}");
             Console.ResetColor();
             Thread.Sleep(2000);
             
-            Console.WriteLine($"\n{evt.Geschichte}");
+            Console.WriteLine($"\n{evt.GetGeschichte()}");
             Thread.Sleep(5000);
             
             // Auswirkungen ausführen
