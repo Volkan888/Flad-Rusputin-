@@ -1827,9 +1827,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Triumph auf der Judomatte",
-            "p => $"{p.GetFirstName()} gewinnt die Stadtmeisterschaft im Judo!",
+            "Stadtmeisterschaft im Judo gewonnen!",
             "Jurastudium", 35,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} ist Stadtmeister!");
                 p.Kraft += 2;
                 p.Gesundheit = Math.Min(100, p.Gesundheit + 10);
                 p.Charisma += 1;
