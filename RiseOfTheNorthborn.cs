@@ -8232,8 +8232,8 @@ class Program
         int[] melody = { 659, 494, 523, 587, 523, 494, 440, 440, 523, 659 };
         int[] durations = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 2 };
         
-        // Nur 3 Durchläufe statt Endlos-Schleife
-        for (int loop = 0; loop < 3 && !stopMusic; loop++)
+        // ENDLOS-SCHLEIFE - Musik läuft permanent während des Spiels
+        while (!stopMusic)
         {
             for (int i = 0; i < melody.Length && !stopMusic; i++)
             {
@@ -8247,6 +8247,8 @@ class Program
                     Thread.Sleep(tempo * durations[i]); 
                 }
             }
+            // Kurze Pause zwischen Durchläufen
+            Thread.Sleep(500);
         }
     }
 }
