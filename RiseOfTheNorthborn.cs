@@ -6757,10 +6757,9 @@ class Program
             }
             else if (input == "F")
             {
-                // Finka (nur als Präsident)
                 if (player.Phase == "Präsident")
                 {
-                    Console.WriteLine("\n>> 🏡 Zur Finka reisen...");
+                    Console.WriteLine("\n>> 🏡 Zur Finka...");
                     Thread.Sleep(1000);
                     FinkaSystem.ShowFinkaMenu(player);
                     Console.Clear();
@@ -6769,8 +6768,26 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("\n⚠️  Finka erst als Präsident verfügbar!");
-                    Console.WriteLine("   [Taste drücken]");
+                    Console.WriteLine("\n⚠️  Finka erst als Präsident!");
+                    Console.ReadKey(true);
+                    Console.Write(prompt);
+                    continue;
+                }
+            }
+            else if (input == "C")
+            {
+                if (player.Phase == "Präsident")
+                {
+                    Console.WriteLine("\n>> 📞 China ruft an...");
+                    Thread.Sleep(1000);
+                    ChinaHotline.CallChina(player);
+                    Console.Clear();
+                    Console.Write(prompt);
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("\n⚠️  China-Telefon erst als Präsident!");
                     Console.ReadKey(true);
                     Console.Write(prompt);
                     continue;
