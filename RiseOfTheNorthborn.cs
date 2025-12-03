@@ -468,6 +468,35 @@ class RandomEvent
  */
 
 /// <summary>
+/// ShopItem - Repräsentiert einen Luxusgegenstand im Putin-Shop
+/// </summary>
+class ShopItem
+{
+    public string Name;              // Name des Gegenstands
+    public string Icon;              // Emoji/Symbol
+    public int Preis;                // Kosten in Rubel
+    public int StärkeBonus;          // Bonus auf Stärke
+    public int IntelligenzBonus;     // Bonus auf Intelligenz
+    public int CharismaBonus;        // Bonus auf Charisma
+    public int LoyalitätBonus;       // Bonus auf Loyalität Volk
+    public int EinflussBonus;        // Bonus auf Internationalen Einfluss
+    public string Beschreibung;      // Kurzbeschreibung
+    
+    public ShopItem(string name, string icon, int preis, int str, int int_, int cha, int loy, int einf, string desc)
+    {
+        Name = name;
+        Icon = icon;
+        Preis = preis;
+        StärkeBonus = str;
+        IntelligenzBonus = int_;
+        CharismaBonus = cha;
+        LoyalitätBonus = loy;
+        EinflussBonus = einf;
+        Beschreibung = desc;
+    }
+}
+
+/// <summary>
 /// WifeOption - Repräsentiert eine heiratsfähige Frau
 /// </summary>
 class WifeOption
