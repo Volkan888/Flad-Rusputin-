@@ -1771,9 +1771,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Aufnahme bei den Jungpionieren",
-            "p => $"{p.GetFirstName()} wird feierlich mit dem roten Halstuch ausgezeichnet!",
+            "Feierliche Auszeichnung mit dem roten Halstuch!",
             "Kindheit", 60,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} wird Jungpionier!");
                 p.LoyalitätPartei += 15;
                 p.Charisma += 1;
             }
