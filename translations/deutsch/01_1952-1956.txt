@@ -1,0 +1,436 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 1952-1956
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 17
+
+WICHTIG: Behalte das Format genau bei!
+Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: STALIN_NOTE_1952
+JAHR: 1952
+
+TITEL_DE: Stalin-Note zur deutschen Einheit
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 10. März 1952
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: KOREA_KRIEG_1952
+JAHR: 1952
+
+TITEL_DE: Koreakrieg - Sowjetische Piloten im Einsatz
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Mai 1952
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Sowjetische MiG-15 fliegen 'inoffiziell' über Korea gegen US-Jets. Tausende sterben monatlich am 38. Breitengrad. Ein blutiger Stellvertreterkrieg.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: EISENBAHN_KATASTROPHE_1952
+JAHR: 1952
+
+TITEL_DE: Zugexplosion bei Moskau
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 23. Juli 1952
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Über 100 Menschen sterben bei einer Zugexplosion nahe Moskau. Die Zensur verschleiert das Ausmaß. War es Sabotage oder marode Technik?
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: AERZTE_VERSCHWOERUNG_1952
+JAHR: 1953
+
+TITEL_DE: Ärzteverschwörung - Stalins Paranoia
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. Januar 1953
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Stalin verkündet eine 'jüdische Ärzteverschwörung' gegen Kreml-Funktionäre. Eine neue antisemitische Säuberungswelle beginnt. Stalins letzter Wahnsinn.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: STALIN_TOD_1953
+JAHR: 1953
+
+TITEL_DE: Tod von Josef Stalin
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 5. März 1953
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: OSTBERLIN_AUFSTAND_1953
+JAHR: 1953
+
+TITEL_DE: Aufstand in Ostberlin niedergeschlagen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 17. Juni 1953
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Arbeiter demonstrieren in Ostberlin für Freiheit. Sowjetische Panzer rollen ein und schlagen den Aufstand brutal nieder. Dutzende sterben.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: KOREA_WAFFENSTILLSTAND_1953
+JAHR: 1953
+
+TITEL_DE: Koreakrieg endet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 27. Juli 1953
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach drei Jahren Krieg wird der Waffenstillstand unterzeichnet. Über 3 Millionen Tote. Korea bleibt geteilt. Die Sowjetunion verkündet einen 'Sieg'.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: BERIA_HINRICHTUNG_1953
+JAHR: 1953
+
+TITEL_DE: Lawrenti Beria hingerichtet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 23. Dezember 1953
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: ATOMKRAFTWERK_OBNINSK_1954
+JAHR: 1954
+
+TITEL_DE: Erstes Atomkraftwerk der Welt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 27. Juni 1954
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die UdSSR eröffnet das weltweit erste Kernkraftwerk in Obninsk. Ein technologischer Triumph! Die friedliche Nutzung der Atomkraft zeigt sowjetische Überlegenheit.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: KGB_GRUENDUNG_1954
+JAHR: 1954
+
+TITEL_DE: KGB wird gegründet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. März 1954
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Das Komitee für Staatssicherheit (KGB) wird offiziell gegründet. Die neue Geheimpolizei soll 'effizienter' sein als die alte NKWD. Die Überwachung geht weiter.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: WASSERSTOFFBOMBE_1954
+JAHR: 1954
+
+TITEL_DE: Sowjetische H-Bombe getestet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 12. August 1954
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die UdSSR zündet ihre erste transportable Wasserstoffbombe. Die Zerstörungskraft ist monströs. Das nukleare Wettrüsten eskaliert.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: WARSCHAUER_PAKT_1955
+JAHR: 1955
+
+TITEL_DE: Warschauer Pakt gegründet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 14. Mai 1955
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Als Antwort auf die NATO gründet die UdSSR den Warschauer Pakt. Ost europa wird militärisch geeint. Der Eiserne Vorhang verfestigt sich.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: OESTERREICH_STAATSVERTRAG_1955
+JAHR: 1955
+
+TITEL_DE: Österreich wird neutral
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Mai 1955
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die UdSSR zieht aus Österreich ab und akzeptiert dessen Neutralität. Ein seltener diplomatischer Erfolg und Zeichen der Entspannung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_014_START]
+ID: MALENKOW_STURZ_1955
+JAHR: 1955
+
+TITEL_DE: Malenkow verliert die Macht
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 8. Februar 1955
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Chruschtschow drängt Malenkow aus dem Amt des Ministerpräsidenten. Die Machtkonsolidierung geht weiter. Chruschtschow steigt auf.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_014_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_015_START]
+ID: XX_PARTEITAG_1956
+JAHR: 1956
+
+TITEL_DE: XX. Parteitag - Chruschtschows Geheimrede
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 25. Februar 1956
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Chruschtschow prangert Stalin als Massenmörder an! Die vierstündige Geheimrede erschüttert die Partei. Entstalinisierung beginnt. Stalin-Statuen werden gestürzt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_015_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_016_START]
+ID: UNGARN_AUFSTAND_1956
+JAHR: 1956
+
+TITEL_DE: Ungarn-Aufstand niedergeschlagen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 4. November 1956
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_016_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_017_START]
+ID: SUEZ_KRISE_1956
+JAHR: 1956
+
+TITEL_DE: Suez-Krise - Sowjetische Drohungen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 5. November 1956
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die UdSSR droht Großbritannien und Frankreich mit Raketenschlägen wegen Suez. Die Westmächte ziehen sich zurück. Ein außenpolitischer Sieg!
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_017_END]
+
+──────────────────────────────────────────────────────────────────────
+

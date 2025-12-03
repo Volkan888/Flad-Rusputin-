@@ -1,0 +1,486 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 1985-1990
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 19
+
+WICHTIG: Behalte das Format genau bei!
+Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: TSCHERNENKO_TOD_1985
+JAHR: 1985
+
+TITEL_DE: Tschernenko stirbt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 10. März 1985
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nach nur 13 Monaten stirbt auch Tschernenko. Drei Generalsekretäre in 3 Jahren! Das System ist am Ende. Jetzt muss ein Jüngerer ran.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: GORBATSCHOW_GENERALSEKRETAER_1985
+JAHR: 1985
+
+TITEL_DE: Gorbatschow wird Generalsekretär
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. März 1985
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Michail Gorbatschow wird mit 54 Jahren jüngster Generalsekretär seit Jahrzehnten! Er spricht von 'Perestroika' und 'Glasnost'. Eine neue Ära beginnt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: GENF_GIPFEL_1985
+JAHR: 1985
+
+TITEL_DE: Gorbatschow trifft Reagan in Genf
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 19. November 1985
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der erste Gipfel zwischen Gorbatschow und Reagan! Die beiden reden stundenlang. Das Eis bricht langsam. Die Hoffnung auf Abrüstung wächst.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: TSCHERNOBYL_1986
+JAHR: 1986
+
+TITEL_DE: Tschernobyl - Die Katastrophe
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 26. April 1986
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: REYKJAVIK_GIPFEL_1986
+JAHR: 1986
+
+TITEL_DE: Reykjavík-Gipfel - Fast Durchbruch
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 12. Oktober 1986
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Gorbatschow und Reagan verhandeln in Island über nukleare Abrüstung. Man ist nah dran - doch SDI verhindert den Deal. Trotzdem: Ein Wendepunkt.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: SACHAROW_FREIGELASSEN_1986
+JAHR: 1986
+
+TITEL_DE: Sacharow aus Verbannung zurück
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 23. Dezember 1986
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Gorbatschow ruft Sacharow persönlich an: 'Kehren Sie nach Moskau zurück!' Der Dissident ist frei. Ein Symbol für Glasnost.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: INF_VERTRAG_1987
+JAHR: 1987
+
+TITEL_DE: INF-Vertrag - Erste echte Abrüstung
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 8. Dezember 1987
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Gorbatschow und Reagan unterzeichnen den INF-Vertrag: Alle Mittelstreckenraketen werden vernichtet! Erstmals werden Atomwaffen wirklich abgerüstet. 'Trust but verify' sagt Reagan.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: RUST_LANDUNG_1987
+JAHR: 1987
+
+TITEL_DE: Mathias Rust landet auf dem Roten Platz
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 28. Mai 1987
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Ein deutscher Teenager fliegt mit einer Cessna durch die sowjetische Luftabwehr und landet auf dem Roten Platz! Eine unglaubliche Blamage für das Militär.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: GLASNOST_PRESSEFREIHEIT_1987
+JAHR: 1987
+
+TITEL_DE: Glasnost - Pressefreiheit nimmt zu
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Juni 1987
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: AFGHANISTAN_RUECKZUG_1988
+JAHR: 1988
+
+TITEL_DE: Rückzug aus Afghanistan beginnt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Mai 1988
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: ERDBEBEN_ARMENIEN_1988
+JAHR: 1988
+
+TITEL_DE: Verheerendes Erdbeben in Armenien
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 7. Dezember 1988
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: GORBATSCHOW_UN_REDE_1988
+JAHR: 1988
+
+TITEL_DE: Gorbatschow vor UN - Truppenabbau
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 7. Dezember 1988
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Vor der UN verkündet Gorbatschow einseitig den Abbau von 500.000 Soldaten! Die Welt ist verblüfft. Der Kalte Krieg endet wirklich.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: AFGHANISTAN_ABZUG_KOMPLETT_1989
+JAHR: 1989
+
+TITEL_DE: Letzter Soldat verlässt Afghanistan
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Februar 1989
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_014_START]
+ID: VOLKSDEPUTIERTENKONGRESS_1989
+JAHR: 1989
+
+TITEL_DE: Erste freie Wahlen seit Jahrzehnten
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 26. März 1989
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_014_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_015_START]
+ID: TIANANMEN_MASSAKER_1989
+JAHR: 1989
+
+TITEL_DE: Tiananmen-Massaker in China
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 4. Juni 1989
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Chinas Militär massakriert friedliche Demonstranten in Peking! Die Welt ist entsetzt. Gorbatschow zeigt: So macht man das NICHT. Der Kontrast ist deutlich.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_015_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_016_START]
+ID: MAUERFALL_1989
+JAHR: 1989
+
+TITEL_DE: Fall der Berliner Mauer
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 9. November 1989
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_016_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_017_START]
+ID: LITAUEN_UNABHAENGIGKEIT_1990
+JAHR: 1990
+
+TITEL_DE: Litauen erklärt Unabhängigkeit
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 11. März 1990
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Litauen erklärt sich als erste Sowjetrepublik für unabhängig! Der Zerfall der UdSSR beginnt. Moskau ist schockiert - aber machtlos.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_017_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_018_START]
+ID: GORBATSCHOW_FRIEDENSNOBELPREIS_1990
+JAHR: 1990
+
+TITEL_DE: Gorbatschow erhält Friedensnobelpreis
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Oktober 1990
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_018_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_019_START]
+ID: DEUTSCHE_WIEDERVEREINIGUNG_1990
+JAHR: 1990
+
+TITEL_DE: Deutsche Wiedervereinigung
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 3. Oktober 1990
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Deutschland ist wieder eins! Die DDR tritt der BRD bei. Das sowjetische Imperium in Europa ist zu Ende. Gorbatschow stimmt zu - ein historischer Moment.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_019_END]
+
+──────────────────────────────────────────────────────────────────────
+

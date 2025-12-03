@@ -1,0 +1,336 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 2018-2025
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 13
+
+WICHTIG: Behalte das Format genau bei!
+Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: PUTIN_VIERTE_AMTSZEIT_2018
+JAHR: 2018
+
+TITEL_DE: Putin wird zum vierten Mal Präsident
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 18. März 2018
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin gewinnt mit 77% - ohne echte Opposition. Er kann bis 2024 regieren. De facto: Präsident auf Lebenszeit.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: FUSSBALL_WM_2018
+JAHR: 2018
+
+TITEL_DE: Fußball-WM in Russland
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 14. Juni 2018
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: SKRIPAL_VERGIFTUNG_2018
+JAHR: 2018
+
+TITEL_DE: Skripal in Großbritannien vergiftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 4. März 2018
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Ex-Spion Sergei Skripal wird in England mit Nowitschok vergiftet! Britische Ermittler: russische GRU. Diplomatenkrise: gegenseitige Ausweisungen. Moskau leugnet alles.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: RENTENREFORM_PROTESTE_2019
+JAHR: 2019
+
+TITEL_DE: Rentenalter erhöht - Proteste
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. Januar 2019
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin erhöht das Rentenalter drastisch. Seine Beliebtheit sinkt erstmals deutlich. Die Menschen sind verärgert. Ein seltener Fehler.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: VERFASSUNGSREFORM_2020
+JAHR: 2020
+
+TITEL_DE: Verfassungsreform - Putin kann bis 2036 bleiben
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. Juli 2020
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin ändert die Verfassung! Der 'Amtszeiten-Zähler' wird auf Null gesetzt. Er kann bis 2036 Präsident bleiben. Ein Referendum wird abgehalten - 78% dafür (offiziell).
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: NAWALNY_VERGIFTUNG_2020
+JAHR: 2020
+
+TITEL_DE: Nawalny vergiftet und verhaftet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 20. August 2020
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Oppositionsführer Nawalny wird mit Nowitschok vergiftet! Er überlebt knapp in Deutschland. Bei Rückkehr nach Russland sofort verhaftet. Weltweite Empörung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: NAWALNY_HAFT_2021
+JAHR: 2021
+
+TITEL_DE: Nawalny zu Straflager verurteilt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 2. Februar 2021
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nawalny wird zu mehreren Jahren Straflager verurteilt. Zehntausende protestieren - es folgen Massenverhaftungen. Der Westen verhängt Sanktionen.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: TRUPPENAUFMARSCH_UKRAINE_2021
+JAHR: 2021
+
+TITEL_DE: Truppenaufmarsch an ukrainischer Grenze
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. April 2021
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Russland verlegt Zehntausende Soldaten an die ukrainische Grenze. Der Westen ist alarmiert. Putin testet die Reaktion. Ein Vorspiel für 2022.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: INVASION_UKRAINE_2022
+JAHR: 2022
+
+TITEL_DE: Invasion der Ukraine
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 24. Februar 2022
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+KRIEGSBEGINN! Russische Truppen marschieren in die Ukraine ein! Putin nennt es 'Spezialoperation'. Ziel: Regimewechsel in Kiew. Aber die Ukraine leistet erbitterten Widerstand. Der Westen verhängt massive Sanktionen. Russland wird international isoliert. Der größte Krieg in Europa seit 1945.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: SANKTIONEN_MASSIV_2022
+JAHR: 2022
+
+TITEL_DE: Schärfste Sanktionen aller Zeiten
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. März 2022
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: MOBILISIERUNG_2022
+JAHR: 2022
+
+TITEL_DE: Teilmobilmachung verkündet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 21. September 2022
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Putin verkündet 'Teilmobilmachung'! 300.000 Reservisten werden eingezogen. Zehntausende fliehen aus Russland. Die Realität des Krieges erreicht die russische Gesellschaft.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: PRIGOSCHIN_AUFSTAND_2023
+JAHR: 2023
+
+TITEL_DE: Prigoschin-Meuterei
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 24. Juni 2023
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+SCHOCK! Wagner-Chef Prigoschin marschiert mit Söldnern auf Moskau! Eine bewaffnete Meuterei gegen das Militär! Nach 24 Stunden wird verhandelt - Prigoschin zieht ab. Putins größte Krise. Zwei Monate später stirbt Prigoschin bei mysteriösem Flugzeugabsturz.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: NAWALNY_TOD_2024
+JAHR: 2024
+
+TITEL_DE: Nawalny stirbt in Straflager
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 16. Februar 2024
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Alexej Nawalny ist tot! Der bekannteste Putin-Kritiker stirbt mit 47 Jahren im Straflager. Offiziell: Kreislaufversagen. Der Westen: Mord. Weltweite Trauer und Empörung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+

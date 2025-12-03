@@ -1,0 +1,611 @@
+══════════════════════════════════════════════════════════════════════
+  HISTORISCHE EVENTS 1970-1977
+══════════════════════════════════════════════════════════════════════
+
+ANZAHL EVENTS: 24
+
+WICHTIG: Behalte das Format genau bei!
+Jeder Block muss mit [EVENT_START] beginnen und [EVENT_END] enden.
+
+══════════════════════════════════════════════════════════════════════
+
+[EVENT_001_START]
+ID: WILLY_BRANDT_OSTPOLITIK_1970
+JAHR: 1970
+
+TITEL_DE: Brandts Ostpolitik - Annäherung mit Deutschland
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 12. August 1970
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Bundeskanzler Brandt unterzeichnet den Moskauer Vertrag. Die BRD erkennt die Oder-Neiße-Grenze an. Ein Durchbruch in der Entspannungspolitik!
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_001_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_002_START]
+ID: LUNA_16_PROBEN_1970
+JAHR: 1970
+
+TITEL_DE: Luna 16 bringt Mondgestein zur Erde
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 24. September 1970
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die unbemannte Sonde Luna 16 bringt erstmals automatisch Mondgestein zur Erde! Ein technischer Triumph nach der Niederlage bei der bemannten Mondlandung.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_002_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_003_START]
+ID: OSTPOLEN_UNRUHEN_1970
+JAHR: 1970
+
+TITEL_DE: Arbeiterunruhen in Polen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 14. Dezember 1970
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Arbeiter demonstrieren in Polen gegen Preiserhöhungen. Das Militär schießt - mindestens 44 Tote. Parteichef Gomułka muss zurücktreten.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_003_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_004_START]
+ID: XXIV_PARTEITAG_1971
+JAHR: 1971
+
+TITEL_DE: XXIV. Parteitag - Wirtschaftsprobleme
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 30. März 1971
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Parteitag offenbart: Die sowjetische Wirtschaft stagniert. Trotz Propaganda fehlt es an Konsumgütern. Die Unzufriedenheit wächst.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_004_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_005_START]
+ID: SALYUT_1_RAUMSTATION_1971
+JAHR: 1971
+
+TITEL_DE: Erste Raumstation Saljut 1 gestartet
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 19. April 1971
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die weltweit erste Raumstation wird ins All geschossen! Saljut 1 markiert einen neuen Abschnitt in der Raumfahrt. Die UdSSR führt wieder!
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_005_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_006_START]
+ID: VIERMÄCHTE_ABKOMMEN_1971
+JAHR: 1971
+
+TITEL_DE: Viermächteabkommen über Berlin
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 3. September 1971
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die vier Siegermächte einigen sich auf ein Berlin-Abkommen. Die Zugangswege nach West-Berlin werden gesichert. Entspannung in Europa.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_006_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_007_START]
+ID: SALT_I_1972
+JAHR: 1972
+
+TITEL_DE: SALT I - Rüstungskontrolle vereinbart
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 26. Mai 1972
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Nixon und Breschnew unterzeichnen SALT I - die Begrenzung strategischer Waffen. Ein historischer Moment der Entspannung!
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_007_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_008_START]
+ID: OLYMPIA_MUENCHEN_1972
+JAHR: 1972
+
+TITEL_DE: Olympia München - Terror überschattet Spiele
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 5. September 1972
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Palästinensische Terroristen ermorden israelische Sportler bei Olympia. Die Welt ist schockiert. Die Sowjetunion verurteilt den Terror.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_008_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_009_START]
+ID: GRUNDLAGENVERTRAG_DDR_BRD_1972
+JAHR: 1972
+
+TITEL_DE: Grundlagenvertrag BRD-DDR
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 21. Dezember 1972
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die beiden deutschen Staaten erkennen sich gegenseitig an. Die Teilung Deutschlands wird völkerrechtlich zementiert - aber die Entspannung schreitet voran.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_009_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_010_START]
+ID: JOMKIPPUR_KRIEG_1973
+JAHR: 1973
+
+TITEL_DE: Jom-Kippur-Krieg - Sowjetische Waffenlieferungen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 6. Oktober 1973
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Ägypten und Syrien greifen Israel an - mit massiver sowjetischer Unterstützung. Die UdSSR fliegt Waffen ein. Die Welt am Rand der Supermacht-Konfrontation.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_010_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_011_START]
+ID: OELKRISE_1973
+JAHR: 1973
+
+TITEL_DE: Ölkrise - UdSSR profitiert
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 17. Oktober 1973
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die OPEC verhängt ein Ölembargo. Die Ölpreise explodieren! Die UdSSR als Ölexporteur profitiert massiv. Die Kassen sind voll!
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_011_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_012_START]
+ID: SOLSCHENIZYN_ARCHIPEL_1973
+JAHR: 1973
+
+TITEL_DE: Solschenizyns Archipel Gulag erscheint
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 28. Dezember 1973
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Dissident Solschenizyn veröffentlicht im Westen 'Archipel Gulag' - eine schonungslose Abrechnung mit dem Lagersystem. Der KGB ist alarmiert.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_012_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_013_START]
+ID: BAM_BAUBEGINN_1974
+JAHR: 1974
+
+TITEL_DE: Baubeginn Baikal-Amur-Magistrale
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 8. Juli 1974
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_013_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_014_START]
+ID: SOLSCHENIZYN_AUSGEWIESEN_1974
+JAHR: 1974
+
+TITEL_DE: Solschenizyn ausgewiesen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 13. Februar 1974
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Literaturnobelpreisträger Solschenizyn wird verhaftet und in den Westen abgeschoben. Der Kreml will den Dissidenten loswerden.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_014_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_015_START]
+ID: INDIEN_ATOMTEST_1974
+JAHR: 1974
+
+TITEL_DE: Indien testet Atombombe
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 18. Mai 1974
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Indien wird zur Atommacht! Der sowjetische Verbündete hat die Bombe - ein diplomatischer Erfolg in Südasien.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_015_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_016_START]
+ID: FALL_SAIGON_1975
+JAHR: 1975
+
+TITEL_DE: Fall von Saigon - Kommunisten siegen in Vietnam
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 30. April 1975
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die nordvietnamesischen Panzer rollen in Saigon ein! Nach 20 Jahren Krieg haben die Kommunisten gesiegt. Ein gigantischer Triumph gegen die USA!
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_016_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_017_START]
+ID: APOLLO_SOJUS_1975
+JAHR: 1975
+
+TITEL_DE: Apollo-Sojus - Händedruck im All
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 17. Juli 1975
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+US- und sowjetische Raumschiffe docken im Orbit an! Ein symbolischer Händedruck im Weltraum. Entspannung auch im All.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_017_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_018_START]
+ID: KSZE_HELSINKI_1975
+JAHR: 1975
+
+TITEL_DE: KSZE-Schlussakte in Helsinki
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 1. August 1975
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_018_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_019_START]
+ID: VIKTOR_BELENKO_DEFEKT_1976
+JAHR: 1976
+
+TITEL_DE: MiG-25 Pilot flieht in den Westen
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 6. September 1976
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Der Pilot Viktor Belenko flieht mit einer top-secret MiG-25 nach Japan! Ein Propaganda-Desaster. Der Westen untersucht den Superfighter.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_019_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_020_START]
+ID: XXV_PARTEITAG_1976
+JAHR: 1976
+
+TITEL_DE: XXV. Parteitag - Breschnew-Kult
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 24. Februar 1976
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Breschnew lässt sich auf dem Parteitag feiern. Der Personenkult nimmt groteske Züge an. Aber hinter der Fassade verrottet das System.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_020_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_021_START]
+ID: CONCORDE_STARTET_1976
+JAHR: 1976
+
+TITEL_DE: Concorde fliegt - Tupolew Tu-144 gestoppt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 21. Januar 1976
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die westliche Concorde startet Liniendienst. Die sowjetische Tu-144 hatte zu viele Unfälle und wird eingestellt. Eine technologische Niederlage.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_021_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_022_START]
+ID: NEUE_VERFASSUNG_1977
+JAHR: 1977
+
+TITEL_DE: Neue sowjetische Verfassung
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 7. Oktober 1977
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Breschnew wird Staatsoberhaupt. Eine neue Verfassung wird verkündet. In der Theorie viele Rechte - in der Praxis pure Fassade.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_022_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_023_START]
+ID: SACHAROW_VERFOLGT_1977
+JAHR: 1977
+
+TITEL_DE: Sacharow verfolgt
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 18. März 1977
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_023_END]
+
+──────────────────────────────────────────────────────────────────────
+
+[EVENT_024_START]
+ID: SS20_RAKETEN_1977
+JAHR: 1977
+
+TITEL_DE: SS-20 Raketen stationiert
+TITEL_RU: [HIER RUSSISCHE ÜBERSETZUNG]
+TITEL_EN: [HERE ENGLISH TRANSLATION]
+
+DATUM_DE: 15. Juli 1977
+DATUM_RU: [HIER RUSSISCHES DATUM]
+DATUM_EN: [HERE ENGLISH DATE]
+
+GESCHICHTE_DE:
+Die UdSSR stationiert moderne SS-20 Mittelstreckenraketen in Europa. Der NATO-Doppelbeschluss wird die Antwort sein. Das Wettrüsten eskaliert neu.
+
+GESCHICHTE_RU:
+[HIER RUSSISCHE GESCHICHTE]
+
+GESCHICHTE_EN:
+[HERE ENGLISH STORY]
+
+[EVENT_024_END]
+
+──────────────────────────────────────────────────────────────────────
+
