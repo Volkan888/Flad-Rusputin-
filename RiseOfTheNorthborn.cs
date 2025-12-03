@@ -4570,7 +4570,7 @@ class Program
         Console.WriteLine("║              KINDHEIT IN LENINGRAD (1950er)               ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        Console.WriteLine("Flad wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
+        Console.WriteLine($"{player.GetFirstName()} wächst in Armut auf. Sein Vater gibt ihm Judo-Training.\n");
         Console.WriteLine("💾 Shortcuts: 'S' = Speichern | 'L' = Laden | 'E' = 📞 Erdogan | 'Q' = 🛒 Shop\n");
         Thread.Sleep(1500);
         
