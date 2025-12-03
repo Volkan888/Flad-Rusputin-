@@ -4655,7 +4655,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent(
             "☎️ Anonymer Anruf",
             "Ein verschlüsselter Anruf erreicht dich. 'Ich weiß, wer du wirklich bist...'",
-            "KGB", 5, "kgb_easter",
+            "KGB", 5, 0, "kgb_easter",
             p => {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
