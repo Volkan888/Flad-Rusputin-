@@ -4842,6 +4842,9 @@ static class EventSystem
         
         Console.WriteLine();  // Leerzeile
         
+        // Event-Sound abspielen
+        PlayEventSound(chosen.Type);
+        
         // Spezielle Farben für Event-Typen
         if (chosen.Type == "sidechick")
             Console.ForegroundColor = ConsoleColor.Red;
