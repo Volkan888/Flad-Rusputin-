@@ -4257,7 +4257,7 @@ class Program
             Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
             
             Console.WriteLine("1952, Leningrad – In einer verfallenen Scheune");
-            Console.WriteLine("erblickt Flad das Licht der Welt...\n");
+            Console.WriteLine($"erblickt {playerCount == 1 ? playerName.Split(' ')[0] : "ein Kind"} das Licht der Welt...\n");
             Thread.Sleep(2000);
         }
         else
