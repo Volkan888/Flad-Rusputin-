@@ -4154,7 +4154,132 @@ static class EventSystem
         historicalEvents.Add(new HistoricalEvent("NAWALNY_TOD_2024", "Nawalny stirbt in Straflager", "[RU]", "[EN]", "16. Februar 2024", "[RU]", "[EN]", 2024, 2, "POLITIK",
             @"Alexej Nawalny ist tot! Der bekannteste Putin-Kritiker stirbt mit 47 Jahren im Straflager. Offiziell: Kreislaufversagen. Der Westen: Mord. Weltweite Trauer und Empörung.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
-            p => { p.EinflussInternational -= 45; p.EinflussKGB += 25; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
+            p => { p.EinflussKGB += 25; p.EinflussInternational -= 45; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("PUTIN_WAHL_2024", "Putin zum fünften Mal 'gewählt'", "[RU]", "[EN]", "17. März 2024", "[RU]", "[EN]", 2024, 3, "POLITIK",
+            @"Putin gewinnt mit 87% - ohne echte Opposition. Er kann bis 2030 regieren. International: Scheinwahlen. In Russland: Business as usual.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.LoyalitätPartei += 25; p.EinflussKGB += 20; p.EinflussInternational -= 30; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("KURSK_OFFENSIVE_2024", "Ukraine greift Kursk an", "[RU]", "[EN]", "6. August 2024", "[RU]", "[EN]", 2024, 8, "KRIEG",
+            @"Erstmals seit 1941 marschieren ausländische Truppen auf russischem Boden! Die Ukraine startet Offensive in Kursk. Der Kreml ist schockiert. Tausende Russen fliehen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussMilitär -= 30; p.LoyalitätVolk -= 35; p.Gesundheit -= 40; Thread.Sleep(5000); }));
+        
+        // === ZUSÄTZLICHE EVENTS FÜR VOLLSTÄNDIGKEIT ===
+        historicalEvents.Add(new HistoricalEvent("USA_911_TERROR_2001", "9/11 Terroranschläge", "[RU]", "[EN]", "11. September 2001", "[RU]", "[EN]", 2001, 9, "KATASTROPHE",
+            @"Terroranschläge auf das World Trade Center! Putin ist der erste, der Bush anruft und Unterstützung anbietet. Kurze Annäherung im 'Krieg gegen Terror'.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational += 30; p.Gesundheit += 15; Thread.Sleep(4000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("USA_ABM_AUSTRITT_2002", "USA steigen aus ABM-Vertrag aus", "[RU]", "[EN]", "13. Juni 2002", "[RU]", "[EN]", 2002, 6, "POLITIK",
+            @"Die USA kündigen den ABM-Vertrag. Putin ist verärgert - ein wichtiger Abrüstungsvertrag ist Geschichte.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("IRAKKRIEG_2003", "Irakkrieg - Russland dagegen", "[RU]", "[EN]", "20. März 2003", "[RU]", "[EN]", 2003, 3, "POLITIK",
+            @"Die USA marschieren im Irak ein - ohne UN-Mandat. Russland ist strikt dagegen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational -= 15; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("GASPROM_MONOPOL_2005", "Gasprom wird Energie-Gigant", "[RU]", "[EN]", "28. September 2005", "[RU]", "[EN]", 2005, 9, "WIRTSCHAFT",
+            @"Gasprom schluckt Sibneft. Der Staat kontrolliert die Energieressourcen. Gas als Waffe!",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.Geld += 300; p.EinflussInternational += 15; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("POLITKOWSKAJA_MORD_2006", "Journalistin Politkowskaja ermordet", "[RU]", "[EN]", "7. Oktober 2006", "[RU]", "[EN]", 2006, 10, "POLITIK",
+            @"Die kritische Journalistin Anna Politkowskaja wird in ihrem Wohnhaus erschossen.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational -= 25; p.EinflussKGB += 15; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("ESTONIA_CYBERANGRIFF_2007", "Cyberangriff auf Estland", "[RU]", "[EN]", "27. April 2007", "[RU]", "[EN]", 2007, 4, "KRIEG",
+            @"Estland wird massiv cyber-angegriffen! Verdacht: Russland. Der erste Cyberkrieg.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("RESET_BUTTON_USA_2009", "USA-Russland 'Reset'", "[RU]", "[EN]", "6. März 2009", "[RU]", "[EN]", 2009, 3, "POLITIK",
+            @"US-Außenministerin Clinton übergibt Lawrow symbolischen 'Reset-Button'. Obama will Neustart.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational += 25; p.Gesundheit += 15; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("START_VERTRAG_2010", "Neuer START-Vertrag", "[RU]", "[EN]", "8. April 2010", "[RU]", "[EN]", 2010, 4, "POLITIK",
+            @"Obama und Medwedjew unterzeichnen neuen Abrüstungsvertrag.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussInternational += 30; p.Gesundheit += 20; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("AUSLANDS_NGO_GESETZ_2012", "Gesetz gegen ausländische NGOs", "[RU]", "[EN]", "20. Juli 2012", "[RU]", "[EN]", 2012, 7, "POLITIK",
+            @"NGOs mit ausländischer Finanzierung müssen sich als 'ausländische Agenten' registrieren.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("COVID_PANDEMIE_2020", "COVID-19 Pandemie", "[RU]", "[EN]", "15. März 2020", "[RU]", "[EN]", 2020, 3, "KATASTROPHE",
+            @"Das Coronavirus breitet sich aus! Lockdowns, Chaos. Die Wirtschaft leidet massiv.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.Geld -= 500; p.LoyalitätVolk -= 30; p.Gesundheit -= 40; Thread.Sleep(4000); }));
+        
+        historicalEvents.Add(new HistoricalEvent("DROHNENANGRIFF_KREML_2023", "Drohnenangriff auf Kreml", "[RU]", "[EN]", "3. Mai 2023", "[RU]", "[EN]", 2023, 5, "KRIEG",
+            @"Zwei Drohnen explodieren über dem Kreml! Putin bleibt unverletzt. Moskau beschuldigt die Ukraine.",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => { p.Gesundheit -= 20; p.EinflussMilitär += 15; Thread.Sleep(3000); }));
+        
+        // === TELEFON-EVENTS MIT JA/NEIN ANTWORTEN ===
+        
+        historicalEvents.Add(new HistoricalEvent("ERDOGAN_ANRUF_2015", "Erdoğan ruft an - Syrien-Kooperation?", "[RU]", "[EN]", "15. November 2015", "[RU]", "[EN]", 2015, 11, "POLITIK",
+            @"TELEFON KLINGELT! Erdoğan: 'Wladimir, wir müssen über Syrien reden. Die Kurden sind unser gemeinsames Problem. Lass uns zusammenarbeiten!' Annehmen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => {
+                Console.WriteLine("\n[1] JA - Kooperation mit Türkei");
+                Console.WriteLine("[2] NEIN - Eigenständige Syrien-Politik");
+                var choice = Console.ReadLine();
+                if (choice == "1") {
+                    Console.WriteLine("\n✅ Du arbeitest mit Erdoğan! Türkei kauft S-400 Raketen.");
+                    p.Geld += 300; p.EinflussInternational += 20; p.EinflussMilitär += 15;
+                    Console.WriteLine("💰 +300 Geld | 🌍 +20 International | 🪖 +15 Militär");
+                } else {
+                    Console.WriteLine("\n❌ Du lehnst ab. Russland agiert allein in Syrien.");
+                    p.EinflussInternational -= 10;
+                    Console.WriteLine("🌍 -10 International");
+                }
+                Thread.Sleep(4000);
+            }));
+        
+        historicalEvents.Add(new HistoricalEvent("TRUMP_ANRUF_2019", "Trump ruft an - Nord Stream Deal?", "[RU]", "[EN]", "8. Juni 2019", "[RU]", "[EN]", 2019, 6, "POLITIK",
+            @"TELEFON! Trump: 'Vladimir! Nord Stream 2 ist UNFAIR für Amerika! Wir haben das beste Fracking-Gas. Stopp das Projekt, wir machen einen FANTASTIC Deal!' Annehmen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => {
+                Console.WriteLine("\n[1] JA - Nord Stream stoppen, US-Gas kaufen");
+                Console.WriteLine("[2] NEIN - Nord Stream weiterbauen");
+                var choice = Console.ReadLine();
+                if (choice == "1") {
+                    Console.WriteLine("\n✅ Du stoppst Nord Stream 2! Trump ist glücklich.");
+                    p.EinflussInternational += 30; p.Geld -= 200;
+                    Console.WriteLine("🌍 +30 International | 💸 -200 Geld");
+                } else {
+                    Console.WriteLine("\n❌ Nord Stream 2 wird gebaut! USA verhängen Sanktionen.");
+                    p.Geld += 400; p.EinflussInternational -= 30;
+                    Console.WriteLine("💰 +400 Geld | 🌍 -30 International");
+                }
+                Thread.Sleep(4000);
+            }));
+        
+        historicalEvents.Add(new HistoricalEvent("XI_ANRUF_2022", "Xi Jinping ruft an - Partnerschaft?", "[RU]", "[EN]", "10. März 2022", "[RU]", "[EN]", 2022, 3, "POLITIK",
+            @"TELEFON! Xi: 'Genosse Putin, der Westen isoliert uns beide. Lass uns eine unzerbrechliche Allianz formen. China und Russland - grenzenlose Freundschaft!' Annehmen?",
+            "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
+            p => {
+                Console.WriteLine("\n[1] JA - Enge Partnerschaft mit China");
+                Console.WriteLine("[2] NEIN - Abstand halten zu China");
+                var choice = Console.ReadLine();
+                if (choice == "1") {
+                    Console.WriteLine("\n✅ Russland und China bilden Achse! Handel explodiert.");
+                    p.Geld += 500; p.EinflussInternational += 25;
+                    Console.WriteLine("💰 +500 Geld | 🌍 +25 International");
+                } else {
+                    Console.WriteLine("\n❌ Du bleibst neutral. China ist enttäuscht.");
+                    p.EinflussInternational -= 15;
+                    Console.WriteLine("🌍 -15 International");
+                }
+                Thread.Sleep(4000);
+            }));
         
         // Sortiere Events chronologisch
         historicalEvents = historicalEvents.OrderBy(e => e.Jahr).ThenBy(e => e.Monat).ToList();
