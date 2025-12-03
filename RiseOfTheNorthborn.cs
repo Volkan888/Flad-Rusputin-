@@ -5405,10 +5405,198 @@ static class EventSystem
             }
         ));
         
-        // LÜCKEN-JAHRE EVENTS (1952-2000) - Chronologisch
-        allEvents.Add(new RandomEvent("Stalin stirbt 1953", "Tod des Führers", "Kindheit", 80, 1953, "politisch", p => { p.LoyalitätPartei -= 20; Console.WriteLine("☭ Stalin ist tot!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Entstalinisierung 1956", "Chruschtschow Rede", "Kindheit", 70, 1956, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("📢 Stalin kritisiert!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Sputnik 1957", "Erster Satellit", "Kindheit", 60, 1957, "politisch", p => { p.EinflussInternational += 25; Console.WriteLine("🚀 Weltraum-Triumph!"); Thread.Sleep(3000); }));
+        // ═══════════════════════════════════════════════════════════
+        // DETAILLIERTE HISTORISCHE EREIGNISSE (1952-2100)
+        // Putin & Russland - Ausführlich mit Spielmechanik
+        // ═══════════════════════════════════════════════════════════
+        
+        // 1952
+        allEvents.Add(new RandomEvent(
+            "Putin wird geboren 1952",
+            "7. Oktober 1952: Wladimir Putin wird in Leningrad geboren. Stalin ordnet die Ärzte-Verschwörung an und lässt 13 jüdische Dichter exekutieren.",
+            "Kindheit", 100, 1952, "putinleben",
+            p => {
+                Console.WriteLine("\n📅 1952 - PUTINS GEBURT");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🍼 Am 7. Oktober wird Wladimir Putin in Leningrad geboren");
+                Console.WriteLine("☭  Stalin ordnet die Ärzte-Verschwörung an");
+                Console.WriteLine("💀 13 jüdische Dichter werden exekutiert");
+                Console.WriteLine("📊 19. Parteikongress stabilisiert das Stalin-Regime");
+                p.LoyalitätPartei += 10;
+                Console.WriteLine($"\n➕ Partei-Loyalität: +10% → {p.LoyalitätPartei}%");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1953
+        allEvents.Add(new RandomEvent(
+            "Stalin stirbt 1953",
+            "5. März: Josef Stalin stirbt in Moskau - Machtvakuum entsteht. 1. Mai: UdSSR zündet erste Wasserstoffbombe. 17. Juni: Arbeiteraufstand in Ost-Berlin wird niedergeschlagen.",
+            "Kindheit", 95, 1953, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1953 - STALINS TOD");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("☭  5. März: Josef Stalin stirbt!");
+                Console.WriteLine("💥 Machtvakuum und Führungskampf beginnen");
+                Console.WriteLine("☢️  1. Mai: Erste sowjetische Wasserstoffbombe (RDS-6s)");
+                Console.WriteLine("🛡️  17. Juni: Ost-Berlin-Aufstand niedergeschlagen");
+                Console.WriteLine("⛓️  Gulag-Aufstände in Norilsk und Wladiwostok");
+                p.LoyalitätPartei -= 20;
+                p.EinflussMilitär += 15;
+                Console.WriteLine($"\n➖ Partei-Loyalität: -20% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Militär-Einfluss: +15 → {p.EinflussMilitär}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 1954
+        allEvents.Add(new RandomEvent(
+            "Krim-Übergabe 1954",
+            "19. Februar: Chruschtschow überträgt die Krim von Russland an die Ukraine. Juni: Kengir-Gulag-Aufstand wird niedergeschlagen. Erstes Atomkraftwerk in Obninsk.",
+            "Kindheit", 85, 1954, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1954 - KRIM-TRANSFER");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🗺️  19. Feb: Krim wird der Ukraine übergeben!");
+                Console.WriteLine("⛓️  Kengir-Gulag-Aufstand niedergeschlagen");
+                Console.WriteLine("⚡ 26. Juni: Erstes Atomkraftwerk (Obninsk)");
+                Console.WriteLine("🏛️  Moskau feiert 800. Stadtjubiläum");
+                p.EinflussInternational += 10;
+                p.Geld += 50;
+                Console.WriteLine($"\n➕ International: +10 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Geld: +50 Rubel → {p.Geld}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1955
+        allEvents.Add(new RandomEvent(
+            "Warschauer Pakt 1955",
+            "14. Mai: Gründung des Warschauer Pakts - Ostblock wird militärisch geeint. 22. Nov: Erste leistungsstarke H-Bombe (RDS-37).",
+            "Kindheit", 80, 1955, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1955 - WARSCHAUER PAKT");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🛡️  14. Mai: Warschauer Pakt gegründet!");
+                Console.WriteLine("🤝 Ostblock-Staaten an UdSSR gebunden");
+                Console.WriteLine("☢️  22. Nov: RDS-37 H-Bombe getestet");
+                Console.WriteLine("🇷🇸 Belgrader Erklärung mit Jugoslawien");
+                p.EinflussMilitär += 20;
+                p.EinflussInternational += 15;
+                Console.WriteLine($"\n➕ Militär: +20 → {p.EinflussMilitär}");
+                Console.WriteLine($"➕ International: +15 → {p.EinflussInternational}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1956
+        allEvents.Add(new RandomEvent(
+            "Ungarn-Aufstand 1956",
+            "25. Feb: Chruschtschows Geheimrede verurteilt Stalin. 23.-31. Okt: Ungarischer Volksaufstand wird blutig niedergeschlagen.",
+            "Kindheit", 90, 1956, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1956 - UNGARN-KRISE");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("📢 25. Feb: Chruschtschows Geheimrede!");
+                Console.WriteLine("☭  Stalin wird scharf kritisiert");
+                Console.WriteLine("🇭🇺 23.-31. Okt: Ungarn-Aufstand niedergeschlagen");
+                Console.WriteLine("💥 Sowjetarmee marschiert in Budapest ein");
+                Console.WriteLine("🌍 Westliche Welt empört");
+                p.LoyalitätPartei -= 15;
+                p.EinflussMilitär += 25;
+                p.EinflussInternational -= 30;
+                Console.WriteLine($"\n➖ Partei: -15% → {p.LoyalitätPartei}%");
+                Console.WriteLine($"➕ Militär: +25 → {p.EinflussMilitär}");
+                Console.WriteLine($"➖ International: -30 → {p.EinflussInternational}");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 1957
+        allEvents.Add(new RandomEvent(
+            "Sputnik 1957",
+            "4. Okt: Sputnik 1 startet - erster Satellit! 29. Sept: Kyshtym-Katastrophe (geheim). Anti-Chruschtschow-Gruppe scheitert.",
+            "Kindheit", 95, 1957, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1957 - WELTRAUM-ÄRA");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🚀 4. Okt: SPUTNIK 1 STARTET!");
+                Console.WriteLine("🌍 Erste künstliche Erdumlaufbahn");
+                Console.WriteLine("⚡ Weltweit Schock und Bewunderung");
+                Console.WriteLine("☢️  Kyshtym-Katastrophe (geheim gehalten)");
+                Console.WriteLine("📚 Doktor Schiwago im Ausland veröffentlicht");
+                p.EinflussInternational += 30;
+                p.Gesundheit -= 5;
+                Console.WriteLine($"\n➕ International: +30 → {p.EinflussInternational}");
+                Console.WriteLine($"➖ Gesundheit: -5% → {p.Gesundheit}%");
+                Thread.Sleep(4500);
+            }
+        ));
+        
+        // 1958
+        allEvents.Add(new RandomEvent(
+            "Sputnik 3 & Grosny 1958",
+            "27. März: Chruschtschow wird Premierminister. 15. Mai: Sputnik 3 gestartet. Anti-sowjetische Unruhen in Tschetschenien.",
+            "Kindheit", 75, 1958, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1958 - RAUMFAHRT FORTSETZUNG");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("☭  27. März: Chruschtschow Premierminister");
+                Console.WriteLine("🚀 15. Mai: Sputnik 3 im All");
+                Console.WriteLine("⚔️  Unruhen in Grosny (Tschetschenien)");
+                Console.WriteLine("✈️  C-130 von UdSSR abgeschossen");
+                p.EinflussKGB += 15;
+                p.EinflussInternational += 10;
+                Console.WriteLine($"\n➕ KGB: +15 → {p.EinflussKGB}");
+                Console.WriteLine($"➕ International: +10 → {p.EinflussInternational}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1959
+        allEvents.Add(new RandomEvent(
+            "Luna 1 & Dyatlov 1959",
+            "2. Jan: Luna 1 umkreist als erstes Objekt die Sonne! Feb: Dyatlov-Pass-Vorfall - 9 Wanderer sterben mysteriös.",
+            "Kindheit", 80, 1959, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1959 - LUNA & MYSTERIUM");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("🌞 2. Jan: Luna 1 umkreist die Sonne!");
+                Console.WriteLine("📡 Neue Ära des Raumfahrt-Wettlaufs");
+                Console.WriteLine("❄️  Feb: Dyatlov-Pass-Vorfall");
+                Console.WriteLine("💀 9 Wanderer sterben unter mysteriösen Umständen");
+                Console.WriteLine("🤐 KGB schweigt");
+                p.EinflussInternational += 20;
+                p.EinflussKGB += 10;
+                Console.WriteLine($"\n➕ International: +20 → {p.EinflussInternational}");
+                Console.WriteLine($"➕ KGB: +10 → {p.EinflussKGB}");
+                Thread.Sleep(4000);
+            }
+        ));
+        
+        // 1960
+        allEvents.Add(new RandomEvent(
+            "U-2 Abschuss 1960",
+            "1. Mai: US-Spionageflugzeug U-2 über Ural abgeschossen! Gary Powers gefangen. Chruschtschow schlägt mit Schuh auf UN-Tisch.",
+            "Kindheit", 90, 1960, "politisch",
+            p => {
+                Console.WriteLine("\n📅 1960 - U-2 KRISE");
+                Console.WriteLine("═══════════════════════════════════════════");
+                Console.WriteLine("✈️  1. Mai: U-2 über Ural ABGESCHOSSEN!");
+                Console.WriteLine("🎯 Pilot Gary Powers gefangen genommen");
+                Console.WriteLine("💥 Paris-Gipfel platzt");
+                Console.WriteLine("👞 Chruschtschow: Berühmter Schuh-Vorfall UN");
+                Console.WriteLine("🇨🇳 Sino-sowjetischer Bruch beginnt");
+                Console.WriteLine("🐕 Belka und Strelka im Orbit");
+                p.EinflussKGB += 25;
+                p.EinflussInternational -= 15;
+                p.Geld += 100;
+                Console.WriteLine($"\n➕ KGB: +25 → {p.EinflussKGB}");
+                Console.WriteLine($"➖ International: -15 → {p.EinflussInternational}");
+                Console.WriteLine($"💰 Geld: +100 Rubel → {p.Geld}");
+                Thread.Sleep(4500);
+            }
+        ));
         allEvents.Add(new RandomEvent("Gagarin 1961", "Erster Mensch im All", "Jugend", 70, 1961, "politisch", p => { p.EinflussInternational += 30; Console.WriteLine("👨‍🚀 Gagarin im All!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Kubakrise 1962", "Atomkrieg droht", "Jugend", 85, 1962, "politisch", p => { p.EinflussMilitär += 20; p.Gesundheit -= 15; Console.WriteLine("☢️ Atomkrise!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Breschnjew 1964", "Neuer Generalsekretär", "Jugend", 60, 1964, "politisch", p => { p.LoyalitätPartei += 10; Console.WriteLine("☭ Neue Führung!"); Thread.Sleep(3000); }));
