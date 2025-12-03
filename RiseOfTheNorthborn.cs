@@ -1843,6 +1843,7 @@ static class EventSystem
             "Gnadenloser Drill in der KGB-Akademie...",
             "Jurastudium", 30,
             p => {
+                Console.WriteLine($"{p.GetFirstName()} trägt Kameraden kilometerweit!");
                 p.Gesundheit -= 15;
                 p.Kraft += 2;
                 p.Stärke += 1;
