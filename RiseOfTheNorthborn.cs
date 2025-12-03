@@ -3894,8 +3894,8 @@ static class EventSystem
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 25; p.LoyalitätVolk -= 30; p.Gesundheit -= 25; Thread.Sleep(4000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUTIN_PREMIER_1999", "Putin wird Premierminister", "[RU]", "[EN]", "9. August 1999", "[RU]", "[EN]", 1999, 8, "POLITIK",
-            @"Der unbekannte Ex-KGB-Agent Wladimir Putin wird Premierminister. Er verspricht, Tschetschenien zu 'erledigen'. Die Ära Putin beginnt.",
+        historicalEvents.Add(new HistoricalEvent("FLAD_PREMIER_1999", "Flad wird Premierminister", "[RU]", "[EN]", "9. August 1999", "[RU]", "[EN]", 1999, 8, "POLITIK",
+            @"Der unbekannte Ex-KGB-Agent Flad Rusputin wird Premierminister. Er verspricht, Tschetschenien zu 'erledigen'. Die Ära Flad beginnt.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.EinflussKGB += 35; p.LoyalitätPartei += 25; Thread.Sleep(4000); }));
         
