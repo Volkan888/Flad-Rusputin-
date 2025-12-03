@@ -301,6 +301,11 @@ class PlayerCharacter
     // ═══ SHORTCUT-MENÜ TIMER ═══
     public int LetzteShortcutAnzeige;    // Alter bei letzter Shortcut-Menü-Anzeige
     
+    // ═══ CHINA-TELEFON EASTER EGG ═══
+    public bool ChinaTelefonAktiv;       // TRUE wenn China-Telefon freigeschaltet
+    public int ChinaAnrufeVerfügbar;     // Anzahl verbleibender Anrufe (max 3)
+    public int ChinaBeziehung;           // Beziehungswert zu China (0-100)
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
