@@ -1957,7 +1957,7 @@ static class EventSystem
         // PRÄSIDENT
         allEvents.Add(new RandomEvent(
             "Intrige im Politbüro",
-            "Ein Rivale versucht, Flad zu stürzen!",
+            "Ein Rivale versucht einen Putsch!",
             "Präsident", 35,
             p => {
                 if (p.Intelligenz >= 4 || p.EinflussKGB >= 50)
