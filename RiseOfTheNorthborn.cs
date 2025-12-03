@@ -271,6 +271,12 @@ class PlayerCharacter
     public List<PlayerCharacter> Kinder;  // Liste aller Kinder (für Stammbaum)
     public bool IstTot;             // TRUE wenn Charakter verstorben (für Stammbaum-Visualisierung)
     
+    // ═══ ERDOGAN-NOTTELEFON (NEUE FEATURE) ═══
+    public int ErdoganAnrufeVerfügbar;   // Anzahl verbleibender Notrufe (max 5)
+    public int ErdoganSchulden;          // Geliehenes Geld von Türkei (muss zurückgezahlt werden)
+    public bool ErdoganVermittlungAktiv; // TRUE wenn diplomatische Vermittlung läuft
+    public int TürkeiBeziehung;          // Beziehungswert zu Türkei (0-100)
+    
     /// <summary>
     /// Konstruktor - Erstellt einen neuen Charakter
     /// </summary>
