@@ -1715,6 +1715,299 @@ static class ErdoganHotline
     }
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// TRUMP-TELEFON EASTER EGG
+// ═══════════════════════════════════════════════════════════════════
+/// <summary>
+/// TrumpHotline - Das legendäre Trump-Telefon
+/// 
+/// Ein rotes Telefon aus den 2010er Jahren klingelt im Kreml.
+/// Donald Trump ruft persönlich an mit verrückten Vorschlägen!
+/// 
+/// FEATURES:
+/// - 3 Anrufe verfügbar (nach Helsinki-Gipfel freigeschaltet)
+/// - Skurrile Dialoge basierend auf echten Trump-Zitaten
+/// - Optionen mit positiven/negativen Konsequenzen
+/// - USA-Beziehung beeinflusst Optionen
+/// </summary>
+static class TrumpHotline
+{
+    static Random rand = new Random();
+    
+    /// <summary>
+    /// CallTrump - Hauptmenü für Trump-Telefon
+    /// </summary>
+    public static void CallTrump(PlayerCharacter p)
+    {
+        if (!p.TrumpTelefonAktiv)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n📞 TRUMP-TELEFON");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            Console.ResetColor();
+            Console.WriteLine("Das Trump-Telefon ist noch nicht freigeschaltet!");
+            Console.WriteLine("\n💡 Tipp: Wird beim Helsinki-Gipfel 2018 aktiviert.");
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+            return;
+        }
+        
+        if (p.TrumpAnrufeVerfügbar <= 0)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n📞 TRUMP-TELEFON");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            Console.ResetColor();
+            Console.WriteLine("Alle Anrufe aufgebraucht!");
+            Console.WriteLine("\nTrump ist nicht mehr im Amt...");
+            Console.WriteLine("\n[Drücke eine Taste...]");
+            Console.ReadKey(true);
+            return;
+        }
+        
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(@"
+        ╔═══════════════════════════════════╗
+        ║   📞 TRUMP-TELEFON 📞            ║
+        ║   🇺🇸 DIREKT-LEITUNG 🇺🇸          ║
+        ╚═══════════════════════════════════╝
+        ");
+        Console.ResetColor();
+        
+        Console.WriteLine($"🔋 Verbleibende Anrufe: {p.TrumpAnrufeVerfügbar}/3");
+        Console.WriteLine($"🤝 USA-Beziehung: {p.USABeziehung}%");
+        Console.WriteLine();
+        
+        Console.WriteLine("[1] 💰 Deal-Making (Wirtschaftshilfe anfragen)");
+        Console.WriteLine("[2] 🛡️  NATO diskutieren (Sicherheitspolitik)");
+        Console.WriteLine("[3] 📰 Fake News Kampagne (Desinformation)");
+        Console.WriteLine("[4] 🔙 Zurück");
+        Console.Write("\nWähle [1-4]: ");
+        
+        string choice = Console.ReadLine();
+        
+        switch (choice)
+        {
+            case "1":
+                DealMaking(p);
+                break;
+            case "2":
+                NATODiskussion(p);
+                break;
+            case "3":
+                FakeNewsKampagne(p);
+                break;
+            case "4":
+                return;
+        }
+        
+        p.TrumpAnrufeVerfügbar--;
+    }
+    
+    /// <summary>
+    /// DealMaking - Trump's berühmte "Art of the Deal"
+    /// </summary>
+    static void DealMaking(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("\n💰 DEAL-MAKING MIT TRUMP");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("📞 *Ring Ring*");
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\nTrump: 'Wladimir, mein Freund! Dies ist ein HISTORIC call!'");
+        Console.WriteLine("Trump: 'I make the BEST deals, believe me. You need money?'");
+        Console.WriteLine("Trump: 'The sanctions - terrible, terrible situation. But I have an idea!'");
+        Console.WriteLine("Trump: 'You help me with something, I help you with Congress. Deal?'");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Deal annehmen (Gegendienst nötig)");
+        Console.WriteLine("[2] Höflich ablehnen");
+        Console.Write("\nWähle [1-2]: ");
+        
+        if (Console.ReadLine() == "1")
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n✓ DEAL GEMACHT!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            p.Geld += 300;
+            p.USABeziehung += 25;
+            p.EinflussInternational -= 15; // Verdächtiger Deal
+            p.LoyalitätPartei += 10;
+            
+            Console.WriteLine("Trump: 'FANTASTIC! This is going to be YUGE!'");
+            Console.WriteLine("\n💰 Geld: +300 Rubel (Trump-Investitionen)");
+            Console.WriteLine($"🤝 USA-Beziehung: +25% (jetzt {p.USABeziehung}%)");
+            Console.WriteLine($"🏛️  Loyalität Partei: +10 (jetzt {p.LoyalitätPartei})");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"⚠ Internationales Ansehen: -15 (verdächtiger Deal!)");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.WriteLine("\nTrump: 'Your loss, buddy. Could've been tremendous!'");
+            p.USABeziehung -= 10;
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    /// <summary>
+    /// NATODiskussion - Trump's kritische Sicht auf NATO
+    /// </summary>
+    static void NATODiskussion(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("\n🛡️  NATO-DISKUSSION");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("📞 *Ring Ring*");
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\nTrump: 'Vlad! NATO is a disaster. Total disaster!'");
+        Console.WriteLine("Trump: 'They don't pay their bills. Germany, France - FREELOADERS!'");
+        Console.WriteLine("Trump: 'Maybe we should talk about... alternatives? Ukraine in NATO?'");
+        Console.WriteLine("Trump: 'I could slow things down. What do you think about that?'");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Zustimmen (NATO-Erweiterung stoppen)");
+        Console.WriteLine("[2] Neutral bleiben");
+        Console.WriteLine("[3] NATO-Erweiterung befürworten (Falle!)");
+        Console.Write("\nWähle [1-3]: ");
+        
+        string choice = Console.ReadLine();
+        
+        Console.Clear();
+        
+        if (choice == "1")
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n✓ GEHEIME VEREINBARUNG!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            p.EinflussMilitär += 30;
+            p.USABeziehung += 20;
+            p.EinflussInternational += 15;
+            
+            Console.WriteLine("Trump: 'Smart move! NATO expansion - PAUSED!'");
+            Console.WriteLine("\n⚔️  Militärischer Einfluss: +30 (Sicherheitszone!)");
+            Console.WriteLine($"🤝 USA-Beziehung: +20% (jetzt {p.USABeziehung}%)");
+            Console.WriteLine($"🌍 Internationaler Einfluss: +15 (jetzt {p.EinflussInternational})");
+            Console.ResetColor();
+        }
+        else if (choice == "2")
+        {
+            Console.WriteLine("\nTrump: 'Playing it safe, huh? Smart guy!'");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n⚠️  FALLE!");
+            Console.WriteLine("═══════════════════════════════════════════════════════\n");
+            
+            p.EinflussMilitär -= 25;
+            p.USABeziehung -= 30;
+            
+            Console.WriteLine("Trump: 'Haha! Just kidding! NATO expands BIGLY!'");
+            Console.WriteLine("\n⚠️  Das war eine Falle! NATO erweitert sich!");
+            Console.WriteLine($"⚔️  Militäreinfluss: -25 (jetzt {p.EinflussMilitär})");
+            Console.WriteLine($"🤝 USA-Beziehung: -30% (jetzt {p.USABeziehung}%)");
+            Console.ResetColor();
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+    
+    /// <summary>
+    /// FakeNewsKampagne - Trump's Expertise in Desinformation
+    /// </summary>
+    static void FakeNewsKampagne(PlayerCharacter p)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine("\n📰 FAKE NEWS KAMPAGNE");
+        Console.WriteLine("═══════════════════════════════════════════════════════\n");
+        Console.ResetColor();
+        
+        Console.WriteLine("📞 *Ring Ring*");
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("\nTrump: 'Vladimir! I heard you have some... troll factories?'");
+        Console.WriteLine("Trump: 'GENIUS idea! The media - all fake news anyway, right?'");
+        Console.WriteLine("Trump: 'We could coordinate. Your bots, my tweets - UNSTOPPABLE!'");
+        Console.WriteLine("Trump: 'Make some fake news about Biden. He's a disaster. Total disaster!'");
+        Console.ResetColor();
+        
+        Console.WriteLine("\n[1] Kooperation zusagen (Gemeinsame Desinformation)");
+        Console.WriteLine("[2] Zu riskant - ablehnen");
+        Console.Write("\nWähle [1-2]: ");
+        
+        if (Console.ReadLine() == "1")
+        {
+            Console.Clear();
+            
+            // Zufällige Entdeckung
+            bool entdeckt = rand.Next(100) < 60;
+            
+            if (!entdeckt)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n✓ OPERATION ERFOLGREICH!");
+                Console.WriteLine("═══════════════════════════════════════════════════════\n");
+                
+                p.EinflussKGB += 35;
+                p.USABeziehung += 15;
+                p.LoyalitätVolk += 10; // Propaganda-Effekt
+                
+                Console.WriteLine("Trump: 'BRILLIANT! Nobody suspects a thing!'");
+                Console.WriteLine("\n💻 KGB-Einfluss: +35 (Desinformationsnetzwerk)");
+                Console.WriteLine($"🤝 USA-Beziehung: +15% (jetzt {p.USABeziehung}%)");
+                Console.WriteLine($"👥 Loyalität Volk: +10 (Propaganda wirkt!)");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n⚠️  AUFGEFLOGEN!");
+                Console.WriteLine("═══════════════════════════════════════════════════════\n");
+                
+                p.EinflussInternational -= 50;
+                p.USABeziehung -= 40;
+                p.Geld -= 200; // Sanktionen
+                p.EinflussKGB -= 20; // Bloßgestellt
+                
+                Console.WriteLine("Trump: 'FAKE NEWS! I never said that! It was a joke!'");
+                Console.WriteLine("\n⚠️  Whistleblower deckt Kampagne auf! Internationaler Skandal!");
+                Console.WriteLine($"🌍 Internationales Ansehen: -50 (jetzt {p.EinflussInternational})");
+                Console.WriteLine($"🤝 USA-Beziehung: -40% (jetzt {p.USABeziehung}%)");
+                Console.WriteLine($"💰 Geld: -200 Rubel (Sanktionen!)");
+                Console.WriteLine($"💻 KGB-Einfluss: -20 (Bloßgestellt!)");
+                Console.ResetColor();
+            }
+        }
+        else
+        {
+            Console.WriteLine("\nTrump: 'Too bad. Could've been tremendous. The best fake news ever!'");
+            Console.WriteLine("\n→ Russland lehnt ab. Zu riskant.");
+        }
+        
+        Console.WriteLine("\n[Drücke eine Taste...]");
+        Console.ReadKey(true);
+    }
+}
+
 static class EventSystem
 {
     static Random rand = new Random();
