@@ -3159,6 +3159,150 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
+        // SCHULDEN-RÜCKZAHLUNGS-EVENTS (Dynamisch)
+        // Werden ausgelöst wenn Schulden bei Türkei zu hoch werden
+        // ═══════════════════════════════════════════════════════════
+        
+        allEvents.Add(new RandomEvent(
+            "Türkei fordert Schuldenrückzahlung",
+            "Erdogan ruft an! Türkei fordert Rückzahlung der geliehenen Gelder...",
+            "Präsident", 0, 0, "schulden",
+            p => {
+                if (p.ErdoganSchulden > 0)
+                {
+                    Console.WriteLine($"\n💳 Aktuelle Schulden: {p.ErdoganSchulden} Rubel");
+                    Console.WriteLine($"💰 Verfügbares Geld: {p.Geld} Rubel\n");
+                    
+                    if (p.Geld >= p.ErdoganSchulden)
+                    {
+                        Console.WriteLine("[1] Vollständig zurückzahlen");
+                        Console.WriteLine("[2] Teilweise zurückzahlen (50%)");
+                        Console.WriteLine("[3] Verhandeln (Stundung)");
+                        Console.Write("\nWähle [1-3]: ");
+                        
+                        string wahl = Console.ReadLine();
+                        
+                        if (wahl == "1")
+                        {
+                            p.Geld -= p.ErdoganSchulden;
+                            p.TürkeiBeziehung += 30;
+                            Console.WriteLine($"\n✓ Alle Schulden beglichen! Türkei sehr zufrieden.");
+                            p.ErdoganSchulden = 0;
+                        }
+                        else if (wahl == "2")
+                        {
+                            int zahlung = p.ErdoganSchulden / 2;
+                            p.Geld -= zahlung;
+                            p.ErdoganSchulden -= zahlung;
+                            p.TürkeiBeziehung += 10;
+                            Console.WriteLine($"\n✓ {zahlung} Rubel zurückgezahlt. Restschuld: {p.ErdoganSchulden}");
+                        }
+                        else
+                        {
+                            p.TürkeiBeziehung -= 20;
+                            p.ErdoganSchulden = (int)(p.ErdoganSchulden * 1.15); // +15% Verzugszinsen
+                            Console.WriteLine($"\n⚠ Stundung gewährt, aber +15% Verzugszinsen! Neue Schuld: {p.ErdoganSchulden}");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("❌ Nicht genug Geld zur Rückzahlung!");
+                        p.TürkeiBeziehung -= 30;
+                        p.EinflussInternational -= 20;
+                        p.ErdoganSchulden = (int)(p.ErdoganSchulden * 1.20); // +20% Strafzinsen
+                        Console.WriteLine($"⚠ Türkei verärgert! +20% Strafzinsen. Neue Schuld: {p.ErdoganSchulden}");
+                    }
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Schulden-Krise mit Türkei",
+            "Wirtschaftsministerium warnt! Schulden bei Türkei gefährden Staatshaushalt...",
+            "Präsident", 0, 0, "schulden",
+            p => {
+                if (p.ErdoganSchulden > 2000)
+                {
+                    Console.WriteLine($"\n🚨 SCHULDEN-ALARM: {p.ErdoganSchulden} Rubel bei Türkei!");
+                    Console.WriteLine("Erdogan droht mit Handelssanktionen!\n");
+                    
+                    Console.WriteLine("[1] Sofort zahlen (alles)");
+                    Console.WriteLine("[2] Gas-Export erhöhen (Schulden reduzieren)");
+                    Console.WriteLine("[3] Vermögen einfrieren lassen");
+                    Console.Write("\nWähle [1-3]: ");
+                    
+                    string wahl = Console.ReadLine();
+                    
+                    if (wahl == "1")
+                    {
+                        if (p.Geld >= p.ErdoganSchulden)
+                        {
+                            p.Geld -= p.ErdoganSchulden;
+                            p.TürkeiBeziehung += 40;
+                            Console.WriteLine("\n✓ Krise abgewendet! Türkei hochzufrieden.");
+                            p.ErdoganSchulden = 0;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n❌ Nicht genug Geld! Türkei droht mit Abbruch der Beziehungen!");
+                            p.TürkeiBeziehung -= 50;
+                            p.EinflussInternational -= 40;
+                        }
+                    }
+                    else if (wahl == "2")
+                    {
+                        int reduktion = 800;
+                        p.ErdoganSchulden -= reduktion;
+                        p.TürkeiBeziehung += 20;
+                        Console.WriteLine($"\n✓ Gas-Deal! Schulden um {reduktion} Rubel reduziert. Rest: {p.ErdoganSchulden}");
+                    }
+                    else
+                    {
+                        p.TürkeiBeziehung -= 60;
+                        p.EinflussInternational -= 50;
+                        p.Geld -= 500; // Vermögen eingefroren
+                        Console.WriteLine("\n⚠ Türkei friert russische Vermögen ein! Diplomatischer GAU!");
+                        Console.WriteLine("Schulden bleiben bestehen, 500 Rubel verloren!");
+                    }
+                }
+            }
+        ));
+        
+        allEvents.Add(new RandomEvent(
+            "Erdogan bietet Schuldenerlass an",
+            "Überraschung! Erdogan bietet teilweisen Schuldenerlass gegen politisches Entgegenkommen...",
+            "Präsident", 0, 0, "schulden",
+            p => {
+                if (p.ErdoganSchulden > 1000 && p.TürkeiBeziehung > 70)
+                {
+                    int erlass = p.ErdoganSchulden / 3;
+                    
+                    Console.WriteLine($"\n🎁 GROSSZÜGIGES ANGEBOT!");
+                    Console.WriteLine($"Erdogan erlässt {erlass} Rubel Schulden!");
+                    Console.WriteLine("Bedingung: Russland unterstützt Türkei in UN-Abstimmung.\n");
+                    
+                    Console.WriteLine("[1] Annehmen");
+                    Console.WriteLine("[2] Ablehnen");
+                    Console.Write("\nWähle [1-2]: ");
+                    
+                    if (Console.ReadLine() == "1")
+                    {
+                        p.ErdoganSchulden -= erlass;
+                        p.TürkeiBeziehung += 25;
+                        p.EinflussInternational -= 10; // UN-Abstimmung kostet Image
+                        Console.WriteLine($"\n✓ Schulden reduziert! Neue Schuld: {p.ErdoganSchulden} Rubel");
+                        Console.WriteLine("Russland stimmt für Türkei in UN.");
+                    }
+                    else
+                    {
+                        p.TürkeiBeziehung -= 15;
+                        Console.WriteLine("\nAbgelehnt. Schulden bleiben bestehen.");
+                    }
+                }
+            }
+        ));
+        
+        // ═══════════════════════════════════════════════════════════
         // FIKTIVE EREIGNISSE AB 2025+
         // Spekulative Zukunfts-Events für verlängerten Spielspaß
         // ═══════════════════════════════════════════════════════════
