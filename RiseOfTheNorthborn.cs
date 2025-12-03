@@ -1662,19 +1662,47 @@ class Program
         }
     }
     
-    static void StartNewGame()
+    static void StartMultiplayerGame()
+    {
+        Console.Clear();
+        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║              MULTIPLAYER-MODUS                            ║");
+        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+        
+        Console.Write("Wie viele Spieler? [2-4]: ");
+        if (!int.TryParse(Console.ReadLine(), out int playerCount) || playerCount < 2 || playerCount > 4)
+            playerCount = 2;
+        
+        StartNewGame(playerCount);
+    }
+    
+    static void StartNewGame(int playerCount = 1)
     {
         stopMusic = true;
         Thread.Sleep(300);
         
         Console.Clear();
-        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║      FLAD: AUFSTIEG IN EINER SOWJETISCHEN DYSTOPIE        ║");
-        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        Console.WriteLine("1952, Leningrad – In einer verfallenen Scheune");
-        Console.WriteLine("erblickt Flad das Licht der Welt...\n");
-        Thread.Sleep(2000);
+        if (playerCount == 1)
+        {
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║      FLAD: AUFSTIEG IN EINER SOWJETISCHEN DYSTOPIE        ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+            
+            Console.WriteLine("1952, Leningrad – In einer verfallenen Scheune");
+            Console.WriteLine("erblickt Flad das Licht der Welt...\n");
+            Thread.Sleep(2000);
+        }
+        else
+        {
+            Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║           MULTIPLAYER: AUFSTIEG ZUR MACHT                 ║");
+            Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
+            
+            Console.WriteLine($"{playerCount} Spieler treten gegeneinander an!");
+            Console.WriteLine("Wer wird die mächtigste Dynastie aufbauen?\n");
+            Thread.Sleep(1500);
+        }
         
         // Schwierigkeitsgrad
         int difficulty = ChooseDifficulty();
