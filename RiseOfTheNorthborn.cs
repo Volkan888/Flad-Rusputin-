@@ -1221,10 +1221,10 @@ static class DeathSystem
 // ═══════════════════════════════════════════════════════════════════
 
 /// <summary>
-/// PutinShop - Luxusgegenstände kaufen wie echte Oligarchen
+/// FladShop - Luxusgegenstände kaufen wie echte Oligarchen
 /// 
 /// KONZEPT:
-/// Der Spieler kann Putin-typische Luxusgegenstände kaufen:
+/// Der Spieler kann Flad-typische Luxusgegenstände kaufen:
 /// - Autos (Mercedes, Rolls-Royce, Aurus)
 /// - Pferde (Putin liebt Reiten!)
 /// - Jachten
