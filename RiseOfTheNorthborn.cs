@@ -302,6 +302,12 @@ class PlayerCharacter
         IstTot = false;
         GeburtenBonus = 0;
         FinanzBonus = 0;
+        
+        // Erdogan-Nottelefon initialisieren
+        ErdoganAnrufeVerfügbar = 5;      // 5 Anrufe pro Spiel
+        ErdoganSchulden = 0;              // Keine Schulden zu Beginn
+        ErdoganVermittlungAktiv = false;
+        TürkeiBeziehung = 50;             // Neutrale Beziehung
     }
     
     /// <summary>
