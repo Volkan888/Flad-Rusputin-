@@ -1059,12 +1059,46 @@ class Program
         Console.ResetColor();
         Thread.Sleep(2000);
         
-        // Kinder generieren
-        Console.WriteLine("\n>> Flad gründet eine Familie...");
-        int childCount = rand.Next(2, 5);
-        GenerateChildren(player, childCount);
-        Console.WriteLine($">> Flad hat {childCount} Kinder!");
-        Thread.Sleep(1500);
+        // Hochzeit anbieten
+        if (!player.IstVerheiratet)
+        {
+            Console.WriteLine("\n>> Als Präsident sollte Flad heiraten...");
+            Thread.Sleep(1000);
+            MarriageSystem.OfferMarriage(player);
+        }
+        
+        // Mehrere Jahre als Präsident - zufällige Geburten
+        Console.WriteLine("\n>> Flad regiert mehrere Jahre...");
+        for (int jahr = 0; jahr < 10; jahr++)
+        {
+            player.Alter++;
+            MarriageSystem.RandomBirth(player);
+            
+            // Tod prüfen
+            if (DeathSystem.CheckDeath(player))
+            {
+                var heir = DeathSystem.SelectHeir(player);
+                if (heir == null)
+                {
+                    Console.WriteLine("\n=== SPIEL BEENDET ===");
+                    Console.ReadKey();
+                    return;
+                }
+                
+                // Mit Erben weiterspielen
+                player = heir;
+                Console.WriteLine("\n>> Der neue Anführer beginnt seine Karriere...");
+                Thread.Sleep(2000);
+                
+                // Erbe startet im Studium
+                PlayStoryFromPhase(player, "Jurastudium");
+                return;
+            }
+            
+            Thread.Sleep(300); // Kurze Pause zwischen Jahren
+        }
+        
+        Console.WriteLine($"\n>> Flad hat {player.Kinder.Count} Kind(er)!");
         
         Console.WriteLine("\nRegierungsstil wählen:\n");
         Console.WriteLine("[1] Imperiale Expansion (+50 Militär, -200 Geld)");
