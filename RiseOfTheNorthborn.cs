@@ -3799,7 +3799,7 @@ static class EventSystem
             p => { p.EinflussMilitär += 30; p.LoyalitätVolk -= 40; p.Gesundheit -= 35; Thread.Sleep(5000); }));
         
         historicalEvents.Add(new HistoricalEvent("NEUE_VERFASSUNG_1993", "Neue Verfassung per Referendum", "[RU]", "[EN]", "12. Dezember 1993", "[RU]", "[EN]", 1993, 12, "POLITIK",
-            @"Jelzins neue Verfassung wird angenommen - mit starkem Präsidialregime. Der Präsident hat enorme Macht. Die Weichen für Putin sind gestellt.",
+            @"Jelzins neue Verfassung wird angenommen - mit starkem Präsidialregime. Der Präsident hat enorme Macht. Die Weichen für Flad sind gestellt.",
             "[RUSSISCH SPÄTER]", "[ENGLISH LATER]",
             p => { p.LoyalitätPartei += 20; p.EinflussMilitär += 15; Thread.Sleep(3000); }));
         
