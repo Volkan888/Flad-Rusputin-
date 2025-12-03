@@ -616,7 +616,7 @@ class RandomEvent
  */
 
 /// <summary>
-/// ShopItem - Repräsentiert einen Luxusgegenstand im Putin-Shop
+/// ShopItem - Repräsentiert einen Luxusgegenstand im Flad-Shop
 /// </summary>
 class ShopItem
 {
