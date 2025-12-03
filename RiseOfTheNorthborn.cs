@@ -11080,7 +11080,8 @@ class Program
         Console.ResetColor();
         Console.WriteLine();
         
-        string choice = ReadInputWithShortcuts(player, "Wähle [1-3 oder S/L/M]: ");
+        Console.Write("Wähle [1-3]: ");
+        string choice = Console.ReadLine();
         if (choice == "1") { player.Stärke += 2; player.Gesundheit -= 15; }
         else if (choice == "2") { player.Kraft += 2; player.Charisma++; }
         else { player.Intelligenz += 3; player.Charisma++; }
