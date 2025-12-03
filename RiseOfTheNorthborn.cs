@@ -581,7 +581,7 @@ class WifeOption
 /// </summary>
 static class MarriageSystem
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen rand-Variable verwendet
     
     static List<WifeOption> wives = new List<WifeOption>
     {
