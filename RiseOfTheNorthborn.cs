@@ -329,6 +329,15 @@ class PlayerCharacter
     {
         return Geburtsjahr + Alter;
     }
+    
+    /// <summary>
+    /// GetFirstName - Extrahiert Vornamen aus vollem Namen
+    /// </summary>
+    public string GetFirstName()
+    {
+        if (string.IsNullOrEmpty(Name)) return "Spieler";
+        return Name.Split(' ')[0];
+    }
 }
 
 /// <summary>
