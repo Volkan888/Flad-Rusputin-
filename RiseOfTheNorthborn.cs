@@ -2329,21 +2329,49 @@ class Board
     }
 }
 
+/// <summary>
+/// Ship - Repräsentiert ein einzelnes Schiff
+/// 
+/// Speichert Position, Größe und Treffer-Status eines Schiffes.
+/// 
+/// AUFGABEN:
+/// - Position tracking (Startpunkt + Ausrichtung)
+/// - Treffer-Tracking (bool-Array für jedes Schiffssegment)
+/// - Prüfung ob Schiff vollständig versenkt ist
+/// 
+/// TREFFER-MECHANIK:
+/// Ein Schiff der Größe 3 hat: hits = [false, false, false]
+/// Nach 2 Treffern: hits = [true, true, false]
+/// Nach 3 Treffern: hits = [true, true, true] → VERSENKT!
+/// </summary>
 class Ship
 {
-    int row, col, size;
-    bool horizontal;
-    bool[] hits;
+    int row, col, size;     // Position und Größe
+    bool horizontal;        // Ausrichtung (true = horizontal, false = vertikal)
+    bool[] hits;            // Treffer-Array: true = getroffen, false = intakt
     
+    /// <summary>
+    /// Konstruktor - Erstellt ein neues Schiff
+    /// </summary>
     public Ship(int r, int c, int s, bool h)
     {
         row = r;
         col = c;
         size = s;
         horizontal = h;
-        hits = new bool[s];
+        hits = new bool[s];  // Alle Segmente sind am Anfang intakt (false)
     }
     
+    /// <summary>
+    /// IsAt - Prüft ob Schiff an gegebener Position ist
+    /// 
+    /// BEISPIEL (Horizontal, Größe 3 bei A1):
+    /// IsAt(0,0) → true  (A1)
+    /// IsAt(0,1) → true  (B1)
+    /// IsAt(0,2) → true  (C1)
+    /// IsAt(0,3) → false (D1 - außerhalb)
+    /// IsAt(1,0) → false (A2 - andere Reihe)
+    /// </summary>
     public bool IsAt(int r, int c)
     {
         if (horizontal)
@@ -2352,12 +2380,22 @@ class Ship
             return c == col && r >= row && r < row + size;
     }
     
+    /// <summary>
+    /// Hit - Registriert einen Treffer auf diesem Schiff
+    /// 
+    /// Berechnet welches Segment getroffen wurde und markiert es im hits-Array.
+    /// 
+    /// BEISPIEL (Horizontal bei A1, Größe 3):
+    /// Hit(0,0) → hits[0] = true  (Vorderteil getroffen)
+    /// Hit(0,1) → hits[1] = true  (Mittelteil getroffen)
+    /// Hit(0,2) → hits[2] = true  (Hinterteil getroffen)
+    /// </summary>
     public void Hit(int r, int c)
     {
         if (horizontal)
-            hits[c - col] = true;
+            hits[c - col] = true;  // Index = Spalte minus Start-Spalte
         else
-            hits[r - row] = true;
+            hits[r - row] = true;  // Index = Reihe minus Start-Reihe
     }
     
     public bool IsSunk()
