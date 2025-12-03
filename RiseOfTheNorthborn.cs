@@ -2063,7 +2063,7 @@ static class EventSystem
                 Console.Write("Wähle [1-2]: ");
                 if (Console.ReadLine() == "1")
                 {
-                    Console.WriteLine("p => $"{p.GetFirstName()} meldet sich freiwillig für den Einsatz in Tschernobyl!");
+                    Console.WriteLine($"{p.GetFirstName()} meldet sich freiwillig für den Einsatz in Tschernobyl!");
                     p.Gesundheit -= 40; // Strahlenschäden
                     p.LoyalitätPartei += 35;
                     p.LoyalitätVolk += 25;
