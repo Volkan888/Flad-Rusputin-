@@ -6471,6 +6471,33 @@ static class EventSystem
                 Thread.Sleep(5000);
             }
         ));
+        
+        // ZUSÄTZLICHE EVENTS FÜR ERHÖHTE DICHTE (1987-1996)
+        // 1987 - 3 neue Events
+        allEvents.Add(new RandomEvent("Mathias Rust Moskau 1987", "Deutscher landet am Roten Platz", "Präsident", 75, 1987, "katastrophe", p => { p.EinflussMilitär -= 25; p.Gesundheit -= 15; Console.WriteLine("✈️ Sicherheitsversagen!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("INF-Vertrag Verhandlungen 1987", "Abrüstungsgespräche", "Präsident", 65, 1987, "politisch", p => { p.EinflussInternational += 20; p.Geld += 100; Console.WriteLine("☮️ Entspannung!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin vs Gorbatschow 1987", "Parteistreit", "Präsident", 60, 1987, "politisch", p => { p.LoyalitätPartei -= 15; Console.WriteLine("⚔️ Machtkampf!"); Thread.Sleep(3000); }));
+        
+        // 1988 - 3 neue Events
+        allEvents.Add(new RandomEvent("Erdbeben Armenien 1988", "25.000 Tote in Spitak", "Präsident", 80, 1988, "katastrophe", p => { p.Gesundheit -= 20; p.Geld -= 300; p.LoyalitätVolk -= 15; Console.WriteLine("💀 Katastrophe!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Rückzug Afghanistan 1988", "Ende des Krieges", "Präsident", 85, 1988, "politisch", p => { p.EinflussMilitär -= 20; p.Geld += 150; p.LoyalitätVolk += 10; Console.WriteLine("✈️ Truppen kehren heim!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Olympia Seoul 1988", "Sowjetische Erfolge", "Präsident", 55, 1988, "politisch", p => { p.EinflussInternational += 15; p.LoyalitätVolk += 10; Console.WriteLine("🏅 Gold-Rausch!"); Thread.Sleep(3000); }));
+        
+        // 1990 - 4 neue Events
+        allEvents.Add(new RandomEvent("Deutsche Wiedervereinigung 1990", "Berliner Mauer fällt", "Präsident", 90, 1990, "politisch", p => { p.EinflussInternational -= 30; p.EinflussMilitär -= 20; Console.WriteLine("🧱 DDR endet!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Baltikum Unabhängigkeit 1990", "Litauen erklärt Unabhängigkeit", "Präsident", 85, 1990, "politisch", p => { p.LoyalitätPartei -= 20; p.EinflussMilitär -= 15; Console.WriteLine("🇱🇹 UdSSR zerbricht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Gorbatschow Friedensnobelpreis 1990", "Internationale Anerkennung", "Präsident", 70, 1990, "politisch", p => { p.EinflussInternational += 25; p.LoyalitätVolk -= 10; Console.WriteLine("🏆 Nobelpreis!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Wirtschaftskrise 1990", "Versorgungsengpässe", "Präsident", 80, 1990, "katastrophe", p => { p.Geld -= 400; p.LoyalitätVolk -= 25; p.Gesundheit -= 10; Console.WriteLine("🍞 Lebensmittelknappheit!"); Thread.Sleep(3000); }));
+        
+        // 1993 - 3 neue Events
+        allEvents.Add(new RandomEvent("Panzerschlacht Moskau 1993", "Jelzin beschießt Parlament", "Präsident", 95, 1993, "katastrophe", p => { p.EinflussMilitär += 20; p.LoyalitätVolk -= 30; p.Gesundheit -= 20; Console.WriteLine("💥 Bürgerkrieg droht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Hyperinflation 1993", "Rubel-Verfall", "Präsident", 85, 1993, "katastrophe", p => { p.Geld -= 500; p.LoyalitätVolk -= 20; Console.WriteLine("💸 Währungskollaps!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Tschetschenien Unabhängigkeit 1993", "Dudajew erklärt Unabhängigkeit", "Präsident", 75, 1993, "politisch", p => { p.EinflussMilitär -= 15; p.LoyalitätPartei -= 10; Console.WriteLine("⚔️ Separatismus!"); Thread.Sleep(3000); }));
+        
+        // 1994 - 3 neue Events
+        allEvents.Add(new RandomEvent("Erster Tschetschenienkrieg 1994", "Invasion Grosnys", "Präsident", 90, 1994, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 400; p.LoyalitätVolk -= 20; Console.WriteLine("⚔️ Krieg beginnt!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Schwarzer Dienstag 1994", "Rubel stürzt ab", "Präsident", 80, 1994, "katastrophe", p => { p.Geld -= 600; p.Gesundheit -= 15; Console.WriteLine("📉 Finanzcrash!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("NATO-Erweiterung Debatte 1994", "Polen will NATO beitreten", "Präsident", 70, 1994, "politisch", p => { p.EinflussInternational -= 20; p.NATOBeziehung -= 25; Console.WriteLine("⚠️ NATO-Bedrohung!"); Thread.Sleep(3000); }));
     }
     
     /// <summary>
