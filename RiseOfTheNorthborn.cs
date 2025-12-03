@@ -2236,7 +2236,7 @@ static class EventSystem
             "7. Juli: Ohne Warnung überschwemmt Flut die Kleinstadt. Über 150 Tote in einer Nacht...",
             "Präsident", 13,
             p => {
-                Console.WriteLine("p => $"{p.GetFirstName()} besucht das Katastrophengebiet und ordnet Hilfsmaßnahmen an.");
+                Console.WriteLine($"{p.GetFirstName()} besucht das Katastrophengebiet und ordnet Hilfsmaßnahmen an.");
                 p.LoyalitätVolk -= 15; // Keine rechtzeitige Warnung
                 p.Geld -= 80;
                 p.Gesundheit -= 8;
