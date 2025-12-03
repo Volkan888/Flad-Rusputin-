@@ -1238,7 +1238,7 @@ static class DeathSystem
 /// - Nur einmal pro Item kaufbar
 /// - Taste 'Q' zum Öffnen
 /// </summary>
-static class PutinShop
+static class FladShop
 {
     // Random-Instanz wird von der globalen Program.rand-Variable verwendet
     static Random rand => Program.rand;
