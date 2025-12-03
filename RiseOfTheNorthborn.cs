@@ -2766,7 +2766,8 @@ static class NATOHotline
 
 static class ChinaHotline
 {
-    static Random rand = new Random();
+    // Random-Instanz wird von der globalen Program.rand-Variable verwendet
+    static Random rand => Program.rand;
     
     public static void CallChina(PlayerCharacter p)
     {
