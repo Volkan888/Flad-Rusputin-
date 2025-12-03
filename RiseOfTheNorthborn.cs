@@ -2135,7 +2135,7 @@ static class EventSystem
             "17. August: Rubel-Kollaps! Staatsdefault! Millionen verlieren Ersparnisse...",
             "DDR-Einsatz", 30,
             p => {
-                Console.WriteLine("Die 'Rubelkrise' vernichtet {player.GetFirstName()}s Ersparnisse und stürzt Russland in Depression.");
+                Console.WriteLine($"Die 'Rubelkrise' vernichtet {p.GetFirstName()}s Ersparnisse und stürzt Russland in Depression.");
                 p.Geld = Math.Max(0, p.Geld - 200); // Massive Verluste
                 p.LoyalitätPartei -= 35;
                 p.LoyalitätVolk -= 30;
