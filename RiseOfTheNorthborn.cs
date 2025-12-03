@@ -6540,13 +6540,38 @@ class Program
         {
             case 1: // Leicht
                 player.Stärke = player.Intelligenz = player.Charisma = player.Kraft = 1;
-                player.Geld = 500;
-                Console.WriteLine("LEICHT: Alle Attribute bei 1, +500 Rubel");
-                Thread.Sleep(2000);
+                player.Geld = 800; // Mehr Geld
+                player.NATOBeziehung = 40; // Bessere NATO-Beziehung
+                player.USABeziehung = 60; // Bessere USA-Beziehung
+                Console.WriteLine("LEICHT: Alle Attribute bei 1");
+                Console.WriteLine("+800 Rubel | Bessere Auslandsbeziehungen");
+                Console.WriteLine("Sanktionen: -25% Schaden");
+                Thread.Sleep(2500);
                 return;
-            case 2: points = 3; break;
-            case 3: points = 2; player.Gesundheit = 70; break;
-            case 4: points = 1; player.Geld = -200; player.EinflussKGB = 20; break;
+            case 2: // Normal
+                points = 3;
+                player.Geld = 500;
+                player.NATOBeziehung = 30;
+                player.USABeziehung = 50;
+                break;
+            case 3: // Schwer
+                points = 2;
+                player.Gesundheit = 70;
+                player.Geld = 300; // Weniger Geld
+                player.NATOBeziehung = 20; // Schlechtere NATO-Beziehung
+                player.USABeziehung = 40;
+                Console.WriteLine("SCHWER: -30 Gesundheit | Weniger Geld | Schlechtere Auslandsbeziehungen");
+                Thread.Sleep(1500);
+                break;
+            case 4: // Brutal
+                points = 1;
+                player.Geld = -200;
+                player.EinflussKGB = 20;
+                player.NATOBeziehung = 10; // Sehr schlecht
+                player.USABeziehung = 30;
+                Console.WriteLine("BRUTAL: Schulden | NATO-Feindschaft | Harte Sanktionen");
+                Thread.Sleep(1500);
+                break;
         }
         
         Console.WriteLine($"Du hast {points} Punkte zu verteilen:\n");
