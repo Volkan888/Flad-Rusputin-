@@ -11343,12 +11343,14 @@ class Program
                 return;
             }
             
+            // MENÜ: Alle 5 Jahre Speichern/Laden/Shop/Telefonate
+            if (jahr > 0 && jahr % 5 == 4) // Jahr 4 und 9 (= nach 5 und 10 Jahren)
+            {
+                Show5YearMenu(player);
+            }
+            
             Thread.Sleep(300); // Kurze Pause zwischen Jahren
         }
-        
-        // NEUES FEATURE: Menü alle 5 Jahre (ersetzt Shortcuts)
-        // Wird nach der 10-Jahres-Schleife aufgerufen
-        Show5YearMenu(player);
         
         Console.WriteLine($"\n>> Flad hat {player.Kinder.Count} Kind(er)!");
         
