@@ -10503,7 +10503,7 @@ class Program
                     Thread.Sleep(200);
                     BattleshipGame.Play();
                     stopMusic = false;
-                    Task.Run(() => SoundSystem.PlayMusic());
+                    Task.Run(() => PlayMusic());
                     break;
                 case "5":
                     stopMusic = true;
