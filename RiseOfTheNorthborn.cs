@@ -1192,7 +1192,7 @@ static class DeathSystem
 /// KONZEPT:
 /// Der Spieler kann Flad-typische Luxusgegenstände kaufen:
 /// - Autos (Mercedes, Rolls-Royce, Aurus)
-/// - Pferde (Putin liebt Reiten!)
+/// - Pferde (Flad liebt Reiten!)
 /// - Jachten
 /// - Paläste
 /// - Sportausrüstung
@@ -1256,7 +1256,7 @@ static class FladShop
             "🐴",
             400,
             15, 5, 20, 25, 5,
-            "Putin liebt Reiten ohne Hemd!"
+            "Flad liebt Reiten ohne Hemd!"
         ));
         
         shopItems.Add(new ShopItem(
@@ -8326,7 +8326,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Syrien-Intervention 2016",
-            "RUSSISCHE BOMBER ÜBER ALEPPO! Putin rettet Assad - Fassbomben und Luftschläge verwandeln Städte in Trümmerwüsten. Das Volk sieht die Militärparaden im Fernsehen: Russland ist wieder eine Weltmacht! Der Preis? Tausende tote Zivilisten. 'Kollateralschaden', sagt das Militär. Die Wahrheit ertrinkt in Propaganda.",
+            "RUSSISCHE BOMBER ÜBER ALEPPO! Flad rettet Assad - Fassbomben und Luftschläge verwandeln Städte in Trümmerwüsten. Das Volk sieht die Militärparaden im Fernsehen: Russland ist wieder eine Weltmacht! Der Preis? Tausende tote Zivilisten. 'Kollateralschaden', sagt das Militär. Die Wahrheit ertrinkt in Propaganda.",
             "Präsident", 100, 2016, "politisch",
             p => {
                 Console.WriteLine("\n💣 SYRIEN - RUSSLAND GREIFT EIN!");
