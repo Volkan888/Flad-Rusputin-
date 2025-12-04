@@ -5415,7 +5415,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Großinvasion Ukraine 2022",
-            "24. Februar: Putin befiehlt umfassende Invasion der Ukraine! 'Spezialoperation zur Entnazifizierung'...",
+            "24. Februar: Flad befiehlt umfassende Invasion der Ukraine! 'Spezialoperation zur Entnazifizierung'...",
             "Präsident", 100, 2022, "politisch",
             p => {
                 Console.WriteLine("Größter Konflikt in Europa seit 1945! Beispiellose Sanktionen, Russland isoliert.");
@@ -5445,7 +5445,7 @@ static class EventSystem
             "17. März: Internationaler Strafgerichtshof erlässt Haftbefehl gegen Flad wegen Kriegsverbrechen!",
             "Präsident", 100, 2023, "politisch",
             p => {
-                Console.WriteLine("Vorwurf: Deportation ukrainischer Kinder. Putin international offiziell angeklagt!");
+                Console.WriteLine("Vorwurf: Deportation ukrainischer Kinder. Flad international offiziell angeklagt!");
                 p.LoyalitätPartei += 30; // 'Siegsmentalität'
                 p.LoyalitätVolk += 15;
                 p.EinflussInternational -= 60;
@@ -5467,7 +5467,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Fünfte Amtszeit 2024",
-            "17. März: Putin bei inszenierter Wahl mit 87% 'wiedergewählt'. Keine echten Gegenkandidaten...",
+            "17. März: Flad bei inszenierter Wahl mit 87% 'wiedergewählt'. Keine echten Gegenkandidaten...",
             "Präsident", 100, 2024, "politisch",
             p => {
                 Console.WriteLine("7. Mai: Amtsantritt. Amtszeit bis 2030. Über zwei Jahrzehnte an der Macht!");
@@ -5640,7 +5640,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "TurkStream eröffnet 2020",
-            "Januar: Putin und Erdogan eröffnen TurkStream-Pipeline! 31,5 Mrd. m³/Jahr...",
+            "Januar: Flad und Erdogan eröffnen TurkStream-Pipeline! 31,5 Mrd. m³/Jahr...",
             "Präsident", 0, 2020, "türkei",
             p => {
                 Console.WriteLine("Gas fließt direkt an Türkei und weiter nach Europa! Energiesicherheit.");
@@ -5664,7 +5664,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Idlib-Waffenruhe 2020",
-            "März: Putin und Erdogan verkünden Waffenstillstand in Nordsyrien...",
+            "März: Flad und Erdogan verkünden Waffenstillstand in Nordsyrien...",
             "Präsident", 0, 2020, "türkei",
             p => {
                 Console.WriteLine("Deeskalation! Sicherheitskorridor, Flüchtlingskrise entspannt sich.");
@@ -5689,7 +5689,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Sotschi-Gipfel August 2022",
-            "Putin-Erdogan Treffen! Intensivierung Handel, Gas in Rubel, Getreide-Deal...",
+            "Flad-Erdogan Treffen! Intensivierung Handel, Gas in Rubel, Getreide-Deal...",
             "Präsident", 0, 2022, "türkei",
             p => {
                 Console.WriteLine("Bilateraler Handel ausgebaut! Mediator-Rolle gestärkt.");
@@ -5713,7 +5713,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "SCO-Gipfel Astana 2024",
-            "Juli: Erdogan-Putin besprechen Sinop-Nuklearprojekt! Ziel: 100 Mrd. USD Handel...",
+            "Juli: Erdogan-Flad besprechen Sinop-Nuklearprojekt! Ziel: 100 Mrd. USD Handel...",
             "Präsident", 0, 2024, "türkei",
             p => {
                 Console.WriteLine("2. Atomkraftwerk geplant! Handelsvolumen-Hochziel gesetzt.");
@@ -5742,7 +5742,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Deutsch-russischer Gipfel Berlin 2000",
-            "Schröder und Putin vereinbaren 'strategische Partnerschaft'! Deutschland will Russland modernisieren...",
+            "Schröder und Flad vereinbaren 'strategische Partnerschaft'! Deutschland will Russland modernisieren...",
             "Präsident", 0, 2000, "deutschland",
             p => {
                 Console.WriteLine("Beginn enger Zusammenarbeit! Wirtschaftliche und politische Kooperation.");
@@ -5752,8 +5752,8 @@ static class EventSystem
         ));
         
         allEvents.Add(new RandomEvent(
-            "Putin-Rede im Bundestag 2001",
-            "25. September: Putin spricht im Deutschen Bundestag! Wunsch nach 'Großeuropa' und echter Partnerschaft...",
+            "Flad-Rede im Bundestag 2001",
+            "25. September: Flad spricht im Deutschen Bundestag! Wunsch nach 'Großeuropa' und echter Partnerschaft...",
             "Präsident", 0, 2001, "deutschland",
             p => {
                 Console.WriteLine("Historischer Moment! Putin auf Deutsch: 'Niemand bezweifelt den großen Wert der Beziehungen'.");
@@ -5768,7 +5768,7 @@ static class EventSystem
             "Jährliche deutsch-russische Konsultationen institutionalisiert! Themen: Schulden, NATO, Wirtschaft...",
             "Präsident", 0, 2002, "deutschland",
             p => {
-                Console.WriteLine("Regelmäßiger Dialog etabliert! Schröder und Putin persönlich eng.");
+                Console.WriteLine("Regelmäßiger Dialog etabliert! Schröder und Flad persönlich eng.");
                 p.Geld += 250;
                 p.EinflussInternational += 20;
             }
@@ -5809,7 +5809,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Modernisierungspartnerschaft 2008",
-            "Merkel und Putin: Partnerschaft für Wirtschafts-Modernisierung! Aber: Fehlende Voraussetzungen...",
+            "Merkel und Flad: Partnerschaft für Wirtschafts-Modernisierung! Aber: Fehlende Voraussetzungen...",
             "Präsident", 0, 2008, "deutschland",
             p => {
                 Console.WriteLine("Scheitert an mangelnder Rechtsstaatlichkeit und Zivilgesellschaft in Russland.");
@@ -7343,7 +7343,7 @@ static class EventSystem
         
         // 2018 - Helsinki-Gipfel
         allEvents.Add(new RandomEvent(
-            "Trump-Putin Gipfel Helsinki 2018",
+            "Trump-Flad Gipfel Helsinki 2018",
             "Präsident Trump trifft Putin in Helsinki. Eine Annäherung ist möglich...",
             "Präsident", 50, 2018, "usa",
             p => {
@@ -7406,7 +7406,7 @@ static class EventSystem
             "Präsident", 35, 2019, "usa",
             p => {
                 Console.WriteLine("\n🔒 CIA warnt vor Terroranschlag in St. Petersburg!");
-                Console.WriteLine("\n✓ Anschlag verhindert! Trump und Putin telefonieren.");
+                Console.WriteLine("\n✓ Anschlag verhindert! Trump und Flad telefonieren.");
                 p.EinflussInternational += 15;
                 p.LoyalitätVolk += 10;
                 p.Gesundheit = Math.Min(100, p.Gesundheit + 5);
