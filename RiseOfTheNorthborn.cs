@@ -7447,7 +7447,7 @@ static class EventSystem
             "Neuer US-Präsident Biden bezeichnet Flad als .Killer.. Diplomatischer Eklat!",
             "Präsident", 70, 2021, "usa",
             p => {
-                Console.WriteLine("\n😠 Biden: 'Putin is a killer!'");
+                Console.WriteLine("\n😠 Biden: 'Flad is a killer!'");
                 Console.WriteLine("\n[1] Botschafter zurückrufen (harte Reaktion)");
                 Console.WriteLine("[2] Ignorieren");
                 Console.Write("\nWähle [1-2]: ");
@@ -7626,13 +7626,13 @@ static class EventSystem
         // 2050
         allEvents.Add(new RandomEvent(
             "Tech-Aufschwung 2050",
-            "Weltweite Deindustrialisierungswelle - Russland erlebt Tech-Boom! Posthumes Putin-Image als 'Vater der Zivilisation'.",
+            "Weltweite Deindustrialisierungswelle - Russland erlebt Tech-Boom! Posthumes Flad-Image als 'Vater der Zivilisation'.",
             "Präsident", 75, 2050, "zukunft",
             p => {
                 Console.WriteLine("\n📅 2050 - RUSSISCHES TECH-ZEITALTER");
                 Console.WriteLine("═══════════════════════════════════════════");
                 Console.WriteLine("🚀 Russland: Technologie-Exporteur #1");
-                Console.WriteLine("👴 Putin posthum als 'Zivilisations-Vater'");
+                Console.WriteLine("👴 Flad posthum als 'Zivilisations-Vater'");
                 Console.WriteLine("🇪🇺 Grenzstreitigkeiten mit EU (gelöst)");
                 p.Geld += 500;
                 p.EinflussInternational += 35;
@@ -7646,7 +7646,7 @@ static class EventSystem
         // 2061
         allEvents.Add(new RandomEvent(
             "Gagarin-100 2061",
-            "100. Jahrestag Gagarins Flug! Internationale Mond-Raumstation. Volksreferendum über 'Neue UdSSR'. Putin: 'Generalsekretär der Ahnen'.",
+            "100. Jahrestag Gagarins Flug! Internationale Mond-Raumstation. Volksreferendum über 'Neue UdSSR'. Flad: 'Generalsekretär der Ahnen'.",
             "Präsident", 80, 2061, "zukunft",
             p => {
                 Console.WriteLine("\n📅 2061 - GAGARIN JAHRHUNDERT");
@@ -7654,7 +7654,7 @@ static class EventSystem
                 Console.WriteLine("🚀 100 Jahre seit Gagarins Flug!");
                 Console.WriteLine("🌙 Internationale Mond-Raumstation");
                 Console.WriteLine("☭  'Neue UdSSR' Referendum diskutiert");
-                Console.WriteLine("👴 Putin: 'Generalsekretär der Ahnen'");
+                Console.WriteLine("👴 Flad: 'Generalsekretär der Ahnen'");
                 p.EinflussInternational += 40;
                 p.LoyalitätPartei += 25;
                 Console.WriteLine($"\n➕ International: +40 → {p.EinflussInternational}");
@@ -7908,7 +7908,7 @@ static class EventSystem
         // 2001-2005 - Neue Events für Flad-Ära
         allEvents.Add(new RandomEvent(
             "9/11 Terror New York 2001",
-            "DIE WELT BRENNT! Zwei Flugzeuge rasen in die Twin Towers - 3000 Menschen sterben live im Fernsehen. Die USA erklären den 'Krieg gegen den Terror'. Putin sieht seine Chance: Russland wird plötzlich zum Verbündeten des Westens. Das Volk erinnert sich an eigene Terror-Anschläge.",
+            "DIE WELT BRENNT! Zwei Flugzeuge rasen in die Twin Towers - 3000 Menschen sterben live im Fernsehen. Die USA erklären den 'Krieg gegen den Terror'. Flad sieht seine Chance: Russland wird plötzlich zum Verbündeten des Westens. Das Volk erinnert sich an eigene Terror-Anschläge.",
             "Präsident", 100, 2001, "katastrophe",
             p => {
                 Console.WriteLine("\n✈️💥 9/11 - WELTORDNUNG WANKT!");
@@ -7926,7 +7926,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Moskau-Theater Geiselnahme 2002",
-            "HORROR IM DUBROWKA-THEATER! 40 tschetschenische Terroristen nehmen 900 Geiseln. Putin befiehlt Giftgas-Einsatz - 130 Geiseln sterben qualvoll. Das Volk ist geschockt, doch die Propaganda verdreht alles: 'Helden retteten Hunderte'. Die Wahrheit stirbt im Gas.",
+            "HORROR IM DUBROWKA-THEATER! 40 tschetschenische Terroristen nehmen 900 Geiseln. Flad befiehlt Giftgas-Einsatz - 130 Geiseln sterben qualvoll. Das Volk ist geschockt, doch die Propaganda verdreht alles: 'Helden retteten Hunderte'. Die Wahrheit stirbt im Gas.",
             "Präsident", 100, 2002, "katastrophe",
             p => {
                 Console.WriteLine("\n☠️ THEATER-GEISELNAHME ENDET TÖDLICH!");
@@ -7944,7 +7944,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Chodorkowski verhaftet 2003",
-            "OLIGARCH IM KÄFIG! Michail Chodorkowski, reichster Mann Russlands, wird vom FSB verhaftet. Sein Verbrechen? Zu reich, zu mächtig, zu unabhängig. Putin zeigt allen: 'Ich bin der Boss'. Das Volk applaudiert - endlich werden die Oligarchen bestraft! Doch andere Oligarchen kriechen vor Putin.",
+            "OLIGARCH IM KÄFIG! Michail Chodorkowski, reichster Mann Russlands, wird vom FSB verhaftet. Sein Verbrechen? Zu reich, zu mächtig, zu unabhängig. Flad zeigt allen: 'Ich bin der Boss'. Das Volk applaudiert - endlich werden die Oligarchen bestraft! Doch andere Oligarchen kriechen vor Flad.",
             "Präsident", 100, 2003, "politisch",
             p => {
                 Console.WriteLine("\n⛓️ OLIGARCH CHODORKOWSKI VERHAFTET!");
@@ -7980,7 +7980,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Orange Revolution Ukraine 2004",
-            "KIEWER MAIDAN BRENNT! Eine Million Ukrainer protestieren gegen Wahlfälschung. Der pro-russische Kandidat wird gestürzt, der Westen jubelt. Putin ist wütend - die Ukraine entgleitet seinem Griff. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren?",
+            "KIEWER MAIDAN BRENNT! Eine Million Ukrainer protestieren gegen Wahlfälschung. Der pro-russische Kandidat wird gestürzt, der Westen jubelt. Flad ist wütend - die Ukraine entgleitet seinem Griff. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren?",
             "Präsident", 100, 2004, "politisch",
             p => {
                 Console.WriteLine("\n🧡 ORANGE REVOLUTION IN UKRAINE!");
@@ -8163,7 +8163,7 @@ static class EventSystem
         // 2010er - Moderne Flad-Ära
         allEvents.Add(new RandomEvent(
             "Proteste gegen Wahlfälschung 2011",
-            "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Putin ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Putin lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
+            "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Putin ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Flad lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
             "Präsident", 100, 2011, "politisch",
             p => {
                 Console.WriteLine("\n✊ PROTESTE GEGEN PUTIN!");
@@ -8181,7 +8181,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Pussy Riot Verhaftung 2012",
-            "PUNK-GEBET IM ERLÖSER-KATHEDRALE! Drei Frauen stürmen die Hauptkirche und singen 'Mutter Gottes, vertreibe Putin!' 2 Jahre Straflager. Das Volk ist gespalten: Helden oder Gotteslästerer? Der Westen protestiert. Putin ist es egal. Die Nachricht ist klar: Widerstand wird gebrochen.",
+            "PUNK-GEBET IM ERLÖSER-KATHEDRALE! Drei Frauen stürmen die Hauptkirche und singen 'Mutter Gottes, vertreibe Flad!' 2 Jahre Straflager. Das Volk ist gespalten: Helden oder Gotteslästerer? Der Westen protestiert. Flad ist es egal. Die Nachricht ist klar: Widerstand wird gebrochen.",
             "Präsident", 100, 2012, "politisch",
             p => {
                 Console.WriteLine("\n🎸 PUSSY RIOT - PROTEST WIRD BESTRAFT!");
@@ -8235,7 +8235,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Krim-Annexion 2014",
-            "DIE KRIM IST UNSER! 'Grüne Männchen' ohne Abzeichen übernehmen die Halbinsel. Putin leugnet alles - dann gibt er später zu, es waren russische Soldaten. Das Volk jubelt: Endlich Stärke! Westliche Sanktionen folgen sofort. Der Rubel stürzt ab. Patriotismus füllt keine Mägen.",
+            "DIE KRIM IST UNSER! 'Grüne Männchen' ohne Abzeichen übernehmen die Halbinsel. Flad leugnet alles - dann gibt er später zu, es waren russische Soldaten. Das Volk jubelt: Endlich Stärke! Westliche Sanktionen folgen sofort. Der Rubel stürzt ab. Patriotismus füllt keine Mägen.",
             "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("\n🇷🇺 KRIM ZURÜCK ZU RUSSLAND!");
@@ -8253,7 +8253,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "MH17 über Ukraine abgeschossen 2014",
-            "298 UNSCHULDIGE STERBEN! Eine malaysische Boeing wird über der Ostukraine abgeschossen - alle tot. Beweise zeigen: russische BUK-Rakete. Putin leugnet alles, zeigt auf Ukraine. Das Volk glaubt der Propaganda - oder schweigt. Die Familien der Opfer fordern Gerechtigkeit. Russland blockiert alles.",
+            "298 UNSCHULDIGE STERBEN! Eine malaysische Boeing wird über der Ostukraine abgeschossen - alle tot. Beweise zeigen: russische BUK-Rakete. Flad leugnet alles, zeigt auf Ukraine. Das Volk glaubt der Propaganda - oder schweigt. Die Familien der Opfer fordern Gerechtigkeit. Russland blockiert alles.",
             "Präsident", 100, 2014, "katastrophe",
             p => {
                 Console.WriteLine("\n✈️💥 MH17 ABGESCHOSSEN - 298 TOTE!");
@@ -8308,7 +8308,7 @@ static class EventSystem
         // 2016-2020 - Trump-Ära & Corona
         allEvents.Add(new RandomEvent(
             "Donald Trump gewählt 2016",
-            "CHAOS IM WEISSEN HAUS! Donald Trump wird US-Präsident - ein Geschenk für Putin. Die Propaganda jubelt: 'Amerikas Niedergang hat begonnen!' Das Volk hofft auf Entspannung. Trump lobt Putin öffentlich. Die Beziehungen könnten sich verbessern - doch der Deep State lauert bereits.",
+            "CHAOS IM WEISSEN HAUS! Donald Trump wird US-Präsident - ein Geschenk für Flad. Die Propaganda jubelt: 'Amerikas Niedergang hat begonnen!' Das Volk hofft auf Entspannung. Trump lobt Flad öffentlich. Die Beziehungen könnten sich verbessern - doch der Deep State lauert bereits.",
             "Präsident", 100, 2016, "politisch",
             p => {
                 Console.WriteLine("\n🇺🇸 TRUMP GEWINNT - NEUE ÄRA?");
@@ -8362,7 +8362,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "St. Petersburg Metro-Anschlag 2017",
-            "TERROR IN DER U-BAHN! Eine Bombe reißt 15 Menschen in den Tod, 50 weitere werden verletzt. Der Täter: ein Kirgise mit Verbindungen zum IS. Das Volk trauert - und fragt: Warum schützt uns der allmächtige FSB nicht? Putin verspricht Härte. Die Überwachung wird noch brutaler.",
+            "TERROR IN DER U-BAHN! Eine Bombe reißt 15 Menschen in den Tod, 50 weitere werden verletzt. Der Täter: ein Kirgise mit Verbindungen zum IS. Das Volk trauert - und fragt: Warum schützt uns der allmächtige FSB nicht? Flad verspricht Härte. Die Überwachung wird noch brutaler.",
             "Präsident", 100, 2017, "katastrophe",
             p => {
                 Console.WriteLine("\n💣 METRO-ANSCHLAG - 15 TOTE!");
@@ -8398,7 +8398,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Rentenreform 2018",
-            "PUTIN STIEHLT DIE RENTEN! Das Rentenalter wird drastisch erhöht - Männer auf 65, Frauen auf 60. Das Volk ist außer sich! Proteste überall. Putin versteckt sich, lässt Medwedew die Nachricht verkünden. Seine Beliebtheit stürzt ab. Das Vertrauen ist gebrochen. Selbst Loyalisten sind entsetzt.",
+            "FLAD STIEHLT DIE RENTEN! Das Rentenalter wird drastisch erhöht - Männer auf 65, Frauen auf 60. Das Volk ist außer sich! Proteste überall. Flad versteckt sich, lässt Medwedew die Nachricht verkünden. Seine Beliebtheit stürzt ab. Das Vertrauen ist gebrochen. Selbst Loyalisten sind entsetzt.",
             "Präsident", 100, 2018, "katastrophe",
             p => {
                 Console.WriteLine("\n👴 RENTENREFORM - DAS VOLK REBELLIERT!");
@@ -8434,7 +8434,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Corona-Pandemie Russland 2020",
-            "DAS UNSICHTBARE VIRUS! COVID-19 erreicht Russland. Putin versteckt sich monatelang in seiner Residenz. Ärzte sterben zu Dutzenden - manche 'fallen' aus Fenstern, nachdem sie kritisierten. Das Volk stirbt, während die Propaganda von 'Sputnik V' schwärmt. Die offiziellen Zahlen sind Lügen. Jeder kennt Tote.",
+            "DAS UNSICHTBARE VIRUS! COVID-19 erreicht Russland. Flad versteckt sich monatelang in seiner Residenz. Ärzte sterben zu Dutzenden - manche 'fallen' aus Fenstern, nachdem sie kritisierten. Das Volk stirbt, während die Propaganda von 'Sputnik V' schwärmt. Die offiziellen Zahlen sind Lügen. Jeder kennt Tote.",
             "Präsident", 100, 2020, "katastrophe",
             p => {
                 Console.WriteLine("\n🦠 CORONA TRIFFT RUSSLAND!");
@@ -8452,7 +8452,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Nawalny vergiftet 2020",
-            "DER AUFRECHTE WIRD NIEDERGESTRECKT! Alexei Nawalny kollabiert im Flugzeug - Nowitschok im Blut. Er überlebt knapp in Deutschland. Putin leugnet alles. Das Volk ist gespalten: Manche nennen ihn Held, andere Landesverräter. Als Nawalny zurückkehrt, wird er sofort verhaftet. Der Mut hat seinen Preis.",
+            "DER AUFRECHTE WIRD NIEDERGESTRECKT! Alexei Nawalny kollabiert im Flugzeug - Nowitschok im Blut. Er überlebt knapp in Deutschland. Flad leugnet alles. Das Volk ist gespalten: Manche nennen ihn Held, andere Landesverräter. Als Nawalny zurückkehrt, wird er sofort verhaftet. Der Mut hat seinen Preis.",
             "Präsident", 100, 2020, "katastrophe",
             p => {
                 Console.WriteLine("\n☠️ NAWALNY VERGIFTET - ÜBERLEBT KNAPP!");
@@ -8543,7 +8543,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Prigoschin-Aufstand 2023",
-            "WAGNERS MARSCH AUF MOSKAU! Jewgeni Prigoschin, der Chef der Wagner-Söldner, rebelliert! Seine Armee marschiert auf Moskau zu. Putin flieht. 24 Stunden purer Wahnsinn. Dann: Deal. Prigoschin dreht um. Das Volk ist geschockt - wie schwach ist Putin wirklich? 2 Monate später: Prigoschins Jet explodiert.",
+            "WAGNERS MARSCH AUF MOSKAU! Jewgeni Prigoschin, der Chef der Wagner-Söldner, rebelliert! Seine Armee marschiert auf Moskau zu. Putin flieht. 24 Stunden purer Wahnsinn. Dann: Deal. Prigoschin dreht um. Das Volk ist geschockt - wie schwach ist Flad wirklich? 2 Monate später: Prigoschins Jet explodiert.",
             "Präsident", 100, 2023, "katastrophe",
             p => {
                 Console.WriteLine("\n⚔️ WAGNER-AUFSTAND - PUTIN WACKELT!");
@@ -9025,11 +9025,11 @@ static class EventSystem
         // 2005 - 1 zusätzliches Event
         allEvents.Add(new RandomEvent(
             "Orange Revolution Nachwehen 2005",
-            "UKRAINE WENDET SICH NACH WESTEN! Viktor Juschtschenko wird Präsident - Flads Kandidat verlor. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren? Putin zieht die Schrauben an. Die 'farbigen Revolutionen' werden zum Feindbild. Der Kreml hat Angst.",
+            "UKRAINE WENDET SICH NACH WESTEN! Viktor Juschtschenko wird Präsident - Flads Kandidat verlor. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren? Flad zieht die Schrauben an. Die 'farbigen Revolutionen' werden zum Feindbild. Der Kreml hat Angst.",
             "Präsident", 100, 2005, "politisch",
             p => {
                 Console.WriteLine("\n🧡 UKRAINE-SCHOCK WIRKT NACH!");
-                Console.WriteLine("Putin sieht Bedrohung! Das Volk wird überwacht!");
+                Console.WriteLine("Flad sieht Bedrohung! Das Volk wird überwacht!");
                 p.EinflussKGB += 25;
                 p.LoyalitätVolk -= 20;
                 p.EinflussInternational -= 20;
@@ -9061,7 +9061,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Georgien-Russland Spionage-Krise 2006",
-            "VIER OFFIZIERE VERHAFTET! Georgien verhaftet russische Offiziere wegen Spionage. Putin ist wütend - totales Embargo gegen Georgien! Wein, Wasser, alles verboten. Das Volk leidet unter höheren Preisen. Die Beziehungen sind am Nullpunkt. Zwei Jahre später: Krieg.",
+            "VIER OFFIZIERE VERHAFTET! Georgien verhaftet russische Offiziere wegen Spionage. Flad ist wütend - totales Embargo gegen Georgien! Wein, Wasser, alles verboten. Das Volk leidet unter höheren Preisen. Die Beziehungen sind am Nullpunkt. Zwei Jahre später: Krieg.",
             "Präsident", 100, 2006, "politisch",
             p => {
                 Console.WriteLine("\n🇬🇪 GEORGIEN-KRISE ESKALIERT!");
@@ -9078,7 +9078,7 @@ static class EventSystem
         
         // 2007 - 1 zusätzliches Event
         allEvents.Add(new RandomEvent(
-            "Putin München-Rede 2007",
+            "Flad München-Rede 2007",
             "KRIEGSERKLÄRUNG AN DEN WESTEN! Flad hält eine flammende Rede auf der Münchner Sicherheitskonferenz: 'Die USA wollen eine unipolare Welt!' Das Volk jubelt - endlich zeigt Russland Stärke! Der Westen ist schockiert. Der neue Kalte Krieg beginnt offiziell. Die Maske ist gefallen.",
             "Präsident", 100, 2007, "politisch",
             p => {
@@ -9135,7 +9135,7 @@ static class EventSystem
         // 2013 - 1 zusätzliches Event
         allEvents.Add(new RandomEvent(
             "Anti-LGBT-Gesetze 2013",
-            "'HOMOSEXUELLEN-PROPAGANDA' VERBOTEN! Putin unterzeichnet drakonische Anti-LGBT-Gesetze. Das Volk ist gespalten: Konservative jubeln, Liberale sind entsetzt. Der Westen protestiert - Putin ist es egal. 'Traditionelle Werte' werden zum Kampfbegriff gegen den dekadenten Westen.",
+            "'HOMOSEXUELLEN-PROPAGANDA' VERBOTEN! Flad unterzeichnet drakonische Anti-LGBT-Gesetze. Das Volk ist gespalten: Konservative jubeln, Liberale sind entsetzt. Der Westen protestiert - Flad ist es egal. 'Traditionelle Werte' werden zum Kampfbegriff gegen den dekadenten Westen.",
             "Präsident", 100, 2013, "politisch",
             p => {
                 Console.WriteLine("\n🏳️‍🌈 ANTI-LGBT-GESETZE ERLASSEN!");
@@ -11160,7 +11160,7 @@ class Program
             Console.WriteLine($"   'F' = Finka besuchen (Gesundheit: {player.Gesundheit}%)\n");
             
             Console.WriteLine("🛒 LUXUS:");
-            Console.WriteLine("   'Q' = Putin's Shop\n");
+            Console.WriteLine("   'Q' = Flads Shop\n");
             Console.ResetColor();
         }
         
