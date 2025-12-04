@@ -10484,21 +10484,19 @@ class Program
             Console.WriteLine("══════════════════════════════════════════════════════════════");
             Console.ResetColor();
             
-            Console.WriteLine("\n[1] Einzelspieler – Flad Rusputin");
-            Console.WriteLine("[2] Multiplayer (2-4 Spieler)");
-            Console.WriteLine("[3] Spiel Laden");
-            Console.WriteLine("[4] Stammbaum ansehen 🌳");
-            Console.WriteLine("[5] Mini-Game: Schiffe versenken ⚓");
-            Console.WriteLine("[6] Spielstände verwalten");
-            Console.WriteLine("[7] Beenden");
+            Console.WriteLine("\n[1] Neues Spiel starten");
+            Console.WriteLine("[2] Stammbaum ansehen");
+            Console.WriteLine("[3] Spiel laden");
+            Console.WriteLine("[4] Schiffe versenken (Mini-Game)");
+            Console.WriteLine("[5] Beenden");
             
-            Console.Write("\nWähle [1-7]: ");
+            Console.Write("\nWähle [1-5]: ");
             string input = Console.ReadLine();
             
             switch (input)
             {
                 case "1": StartNewGame(1); break;
-                case "2": StartMultiplayerGame(); break;
+                case "2": ShowFamilyTree(); break;
                 case "3": LoadGame(); break;
                 case "4": ShowFamilyTree(); break;
                 case "5":
