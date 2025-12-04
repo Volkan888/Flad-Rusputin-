@@ -11289,8 +11289,11 @@ class Program
             Thread.Sleep(300); // Kurze Pause zwischen Jahren
         }
         
-        // NEUES FEATURE: Menü alle 10 Jahre (ersetzt Shortcuts)
-        Show10YearMenu(player);
+        // NEUES FEATURE: Menü alle 5 Jahre (ersetzt Shortcuts)
+        if (jahr % 5 == 0 && jahr > 0)
+        {
+            Show5YearMenu(player);
+        }
         
         Console.WriteLine($"\n>> Flad hat {player.Kinder.Count} Kind(er)!");
         
