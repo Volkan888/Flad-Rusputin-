@@ -3797,7 +3797,7 @@ static class EventSystem
         
         // ====== 2008 ======
         historicalEvents.Add(new HistoricalEvent("MEDWEDJEW_PRAESIDENT_2008", "Medwedjew wird Präsident - Putin Premier", "7. Mai 2008", 2008, 5, "POLITIK",
-            @"Dmitri Medwedjew wird Präsident, Flad wird Premierminister. Das 'Tandem' beginnt. Aber jeder weiß: Flad hat weiter das Sagen.",
+            @"Dmitri Medwedjew wird Präsident, Putin wird Premierminister. Das 'Tandem' beginnt. Aber jeder weiß: Putin hat weiter das Sagen.",
             p => { p.LoyalitätPartei += 20; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("GEORGIENKRIEG_2008", "Krieg mit Georgien - 5 Tage Blitzkrieg", "8. August 2008", 2008, 8, "KRIEG",
@@ -3815,7 +3815,7 @@ static class EventSystem
         
         // ====== 2011 ======
         historicalEvents.Add(new HistoricalEvent("PUTIN_KANDIDATUR_2011", "Putin kandidiert wieder für Präsidentschaft", "24. September 2011", 2011, 9, "POLITIK",
-            @"Flad verkündet: Er will wieder Präsident werden! Das Tandem war nur Theater. Proteste beginnen: 'Flad muss weg!'",
+            @"Putin verkündet: Er will wieder Präsident werden! Das Tandem war nur Theater. Proteste beginnen: 'Putin muss weg!'",
             p => { p.LoyalitätPartei += 25; p.LoyalitätVolk -= 20; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("DUMAWAHLEN_PROTESTE_2011", "Dumawahlen - Vorwürfe massiver Fälschungen", "4. Dezember 2011", 2011, 12, "POLITIK",
@@ -3828,7 +3828,7 @@ static class EventSystem
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 30; p.LoyalitätVolk -= 25; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("PUSSY_RIOT_2012", "Pussy Riot verhaftet", "3. August 2012", 2012, 8, "POLITIK",
-            @"Die Punk-Band Pussy Riot wird wegen 'Rowdytum aus religiösem Hass' zu 2 Jahren Haft verurteilt. Weltweite Empörung. Symbol für Flads autoritären Kurs.",
+            @"Die Punk-Band Pussy Riot wird wegen 'Rowdytum aus religiösem Hass' zu 2 Jahren Haft verurteilt. Weltweite Empörung. Symbol für Putins autoritären Kurs.",
             p => { p.EinflussInternational -= 25; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
         // ====== 2013 ======
@@ -3842,15 +3842,15 @@ static class EventSystem
         
         // ====== 2014 ======
         historicalEvents.Add(new HistoricalEvent("SOTSCHI_OLYMPIA_2014", "Winterolympiade in Sotschi", "7. Februar 2014", 2014, 2, "POLITIK",
-            @"Die teuersten Winterspiele aller Zeiten! 50 Milliarden Dollar! Flads Prestigeprojekt. Prunk und Propaganda. Doch Dopingvorwürfe werfen Schatten.",
+            @"Die teuersten Winterspiele aller Zeiten! 50 Milliarden Dollar! Putins Prestigeprojekt. Prunk und Propaganda. Doch Dopingvorwürfe werfen Schatten.",
             p => { p.Geld -= 600; p.EinflussInternational += 20; p.LoyalitätVolk += 25; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("MAIDAN_JANUKOWITSCH_FLIEHT_2014", "Janukowitsch flieht aus Ukraine", "22. Februar 2014", 2014, 2, "POLITIK",
-            @"Der pro-russische Präsident Janukowitsch flieht! Die Maidan-Revolution siegt. Flad nennt es 'Putsch'. Die Ukraine wendet sich dem Westen zu.",
+            @"Der pro-russische Präsident Janukowitsch flieht! Die Maidan-Revolution siegt. Putin nennt es 'Putsch'. Die Ukraine wendet sich dem Westen zu.",
             p => { p.EinflussInternational -= 30; p.Gesundheit -= 20; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("KRIM_ANNEXION_2014", "Annexion der Krim", "18. März 2014", 2014, 3, "KRIEG",
-            @"HISTORISCHER MOMENT! 'Grüne Männchen' (russische Soldaten ohne Abzeichen) besetzen die Krim. Ein inszeniertes 'Referendum': 97% für Russland. Flad verkündet: Die Krim ist wieder russisch! Der Westen schreit 'Völkerrechtsbruch!'. Sanktionen beginnen. In Russland Euphorie: 'Krim ist unser!' Flads Beliebtheit explodiert auf 80%+.",
+            @"HISTORISCHER MOMENT! 'Grüne Männchen' (russische Soldaten ohne Abzeichen) besetzen die Krim. Ein inszeniertes 'Referendum': 97% für Russland. Putin verkündet: Die Krim ist wieder russisch! Der Westen schreit 'Völkerrechtsbruch!'. Sanktionen beginnen. In Russland Euphorie: 'Krim ist unser!' Putins Beliebtheit explodiert auf 80%+.",
             p => { p.EinflussInternational -= 50; p.LoyalitätVolk += 50; p.EinflussMilitär += 40; p.Geld -= 400; Thread.Sleep(7000); }));
         
         historicalEvents.Add(new HistoricalEvent("DONBASS_KRIEG_2014", "Krieg im Donbass beginnt", "12. April 2014", 2014, 4, "KRIEG",
@@ -3863,7 +3863,7 @@ static class EventSystem
         
         // ====== 2015 ======
         historicalEvents.Add(new HistoricalEvent("NEMZOW_MORD_2015", "Oppositionsführer Nemzow ermordet", "27. Februar 2015", 2015, 2, "POLITIK",
-            @"Boris Nemzow wird direkt vor dem Kreml erschossen! Der prominenteste Flad-Kritiker ist tot. Offiziell: Tschetschenen. Viele vermuten den Kreml. Ein Schock.",
+            @"Boris Nemzow wird direkt vor dem Kreml erschossen! Der prominenteste Putin-Kritiker ist tot. Offiziell: Tschetschenen. Viele vermuten den Kreml. Ein Schock.",
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 30; p.LoyalitätVolk -= 20; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("SYRIEN_INTERVENTION_2015", "Russland greift in Syrien ein", "30. September 2015", 2015, 9, "KRIEG",
@@ -3872,7 +3872,7 @@ static class EventSystem
         
         // ====== 2016 ======
         historicalEvents.Add(new HistoricalEvent("DOPING_SKANDAL_2016", "Russland-Dopingskandal - Olympia-Ausschluss", "18. Juli 2016", 2016, 7, "POLITIK",
-            @"Systematisches Staatsdoping aufgedeckt! Russische Athleten werden von Rio ausgeschlossen. Flad nennt es 'anti-russische Kampagne'. Ein Imageschaden.",
+            @"Systematisches Staatsdoping aufgedeckt! Russische Athleten werden von Rio ausgeschlossen. Putin nennt es 'anti-russische Kampagne'. Ein Imageschaden.",
             p => { p.EinflussInternational -= 35; p.LoyalitätVolk -= 15; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("US_WAHL_HACK_2016", "Russland mischt sich in US-Wahl ein", "8. November 2016", 2016, 11, "POLITIK",
@@ -3885,7 +3885,7 @@ static class EventSystem
             p => { p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("PUTIN_VIERTE_AMTSZEIT_2018", "Putin wird zum vierten Mal Präsident", "18. März 2018", 2018, 3, "POLITIK",
-            @"Flad gewinnt mit 77% - ohne echte Opposition. Er kann bis 2024 regieren. De facto: Präsident auf Lebenszeit.",
+            @"Putin gewinnt mit 77% - ohne echte Opposition. Er kann bis 2024 regieren. De facto: Präsident auf Lebenszeit.",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 25; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("FUSSBALL_WM_2018", "Fußball-WM in Russland", "14. Juni 2018", 2018, 6, "POLITIK",
@@ -3901,8 +3901,8 @@ static class EventSystem
             @"Flad erhöht das Rentenalter drastisch. Seine Beliebtheit sinkt erstmals deutlich. Die Menschen sind verärgert. Ein seltener Fehler.",
             p => { p.LoyalitätVolk -= 35; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("VERFASSUNGSREFORM_2020", "Verfassungsreform - Flad kann bis 2036 bleiben", "1. Juli 2020", 2020, 7, "POLITIK",
-            @"Flad ändert die Verfassung! Der 'Amtszeiten-Zähler' wird auf Null gesetzt. Er kann bis 2036 Präsident bleiben. Ein Referendum wird abgehalten - 78% dafür (offiziell).",
+        historicalEvents.Add(new HistoricalEvent("VERFASSUNGSREFORM_2020", "Verfassungsreform - Putin kann bis 2036 bleiben", "1. Juli 2020", 2020, 7, "POLITIK",
+            @"Putin ändert die Verfassung! Der 'Amtszeiten-Zähler' wird auf Null gesetzt. Er kann bis 2036 Präsident bleiben. Ein Referendum wird abgehalten - 78% dafür (offiziell).",
             p => { p.LoyalitätPartei += 35; p.EinflussKGB += 30; p.LoyalitätVolk -= 20; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("NAWALNY_VERGIFTUNG_2020", "Nawalny vergiftet und verhaftet", "20. August 2020", 2020, 8, "POLITIK",
@@ -3915,12 +3915,12 @@ static class EventSystem
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 35; p.LoyalitätVolk -= 30; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("TRUPPENAUFMARSCH_UKRAINE_2021", "Truppenaufmarsch an ukrainischer Grenze", "1. April 2021", 2021, 4, "KRIEG",
-            @"Russland verlegt Zehntausende Soldaten an die ukrainische Grenze. Der Westen ist alarmiert. Flad testet die Reaktion. Ein Vorspiel für 2022.",
+            @"Russland verlegt Zehntausende Soldaten an die ukrainische Grenze. Der Westen ist alarmiert. Putin testet die Reaktion. Ein Vorspiel für 2022.",
             p => { p.EinflussMilitär += 25; p.Geld -= 250; p.EinflussInternational -= 25; Thread.Sleep(4000); }));
         
         // ====== 2022 ======
         historicalEvents.Add(new HistoricalEvent("INVASION_UKRAINE_2022", "Invasion der Ukraine", "24. Februar 2022", 2022, 2, "KRIEG",
-            @"KRIEGSBEGINN! Russische Truppen marschieren in die Ukraine ein! Flad nennt es 'Spezialoperation'. Ziel: Regimewechsel in Kiew. Aber die Ukraine leistet erbitterten Widerstand. Der Westen verhängt massive Sanktionen. Russland wird international isoliert. Der größte Krieg in Europa seit 1945.",
+            @"KRIEGSBEGINN! Russische Truppen marschieren in die Ukraine ein! Putin nennt es 'Spezialoperation'. Ziel: Regimewechsel in Kiew. Aber die Ukraine leistet erbitterten Widerstand. Der Westen verhängt massive Sanktionen. Russland wird international isoliert. Der größte Krieg in Europa seit 1945.",
             p => { p.EinflussMilitär += 30; p.Geld -= 800; p.EinflussInternational -= 70; p.LoyalitätVolk -= 40; p.Gesundheit -= 50; Thread.Sleep(8000); }));
         
         historicalEvents.Add(new HistoricalEvent("SANKTIONEN_MASSIV_2022", "Schärfste Sanktionen aller Zeiten", "1. März 2022", 2022, 3, "WIRTSCHAFT",
@@ -3928,20 +3928,20 @@ static class EventSystem
             p => { p.Geld -= 700; p.EinflussInternational -= 60; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
         
         historicalEvents.Add(new HistoricalEvent("MOBILISIERUNG_2022", "Teilmobilmachung verkündet", "21. September 2022", 2022, 9, "KRIEG",
-            @"Flad verkündet 'Teilmobilmachung'! 300.000 Reservisten werden eingezogen. Zehntausende fliehen aus Russland. Die Realität des Krieges erreicht die russische Gesellschaft.",
+            @"Putin verkündet 'Teilmobilmachung'! 300.000 Reservisten werden eingezogen. Zehntausende fliehen aus Russland. Die Realität des Krieges erreicht die russische Gesellschaft.",
             p => { p.EinflussMilitär += 20; p.LoyalitätVolk -= 50; p.Gesundheit -= 40; Thread.Sleep(5000); }));
         
         // ====== 2023 ======
         historicalEvents.Add(new HistoricalEvent("PRIGOSCHIN_AUFSTAND_2023", "Prigoschin-Meuterei", "24. Juni 2023", 2023, 6, "KRIEG",
-            @"SCHOCK! Wagner-Chef Prigoschin marschiert mit Söldnern auf Moskau! Eine bewaffnete Meuterei gegen das Militär! Nach 24 Stunden wird verhandelt - Prigoschin zieht ab. Flads größte Krise. Zwei Monate später stirbt Prigoschin bei mysteriösem Flugzeugabsturz.",
+            @"SCHOCK! Wagner-Chef Prigoschin marschiert mit Söldnern auf Moskau! Eine bewaffnete Meuterei gegen das Militär! Nach 24 Stunden wird verhandelt - Prigoschin zieht ab. Putins größte Krise. Zwei Monate später stirbt Prigoschin bei mysteriösem Flugzeugabsturz.",
             p => { p.LoyalitätPartei -= 40; p.EinflussMilitär -= 35; p.Gesundheit -= 45; Thread.Sleep(7000); }));
         
         historicalEvents.Add(new HistoricalEvent("NAWALNY_TOD_2024", "Nawalny stirbt in Straflager", "16. Februar 2024", 2024, 2, "POLITIK",
-            @"Alexej Nawalny ist tot! Der bekannteste Flad-Kritiker stirbt mit 47 Jahren im Straflager. Offiziell: Kreislaufversagen. Der Westen: Mord. Weltweite Trauer und Empörung.",
+            @"Alexej Nawalny ist tot! Der bekannteste Putin-Kritiker stirbt mit 47 Jahren im Straflager. Offiziell: Kreislaufversagen. Der Westen: Mord. Weltweite Trauer und Empörung.",
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 45; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
         
         historicalEvents.Add(new HistoricalEvent("PUTIN_WAHL_2024", "Putin zum fünften Mal 'gewählt'", "17. März 2024", 2024, 3, "POLITIK",
-            @"Flad gewinnt mit 87% - ohne echte Opposition. Er kann bis 2030 regieren. International: Scheinwahlen. In Russland: Business as usual.",
+            @"Putin gewinnt mit 87% - ohne echte Opposition. Er kann bis 2030 regieren. International: Scheinwahlen. In Russland: Business as usual.",
             p => { p.LoyalitätPartei += 25; p.EinflussKGB += 20; p.EinflussInternational -= 30; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("KURSK_OFFENSIVE_2024", "Ukraine greift Kursk an", "6. August 2024", 2024, 8, "KRIEG",
@@ -3978,7 +3978,7 @@ static class EventSystem
             p => { p.Geld -= 500; p.LoyalitätVolk -= 30; p.Gesundheit -= 40; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("DROHNENANGRIFF_KREML_2023", "Drohnenangriff auf Kreml", "3. Mai 2023", 2023, 5, "KRIEG",
-            @"Zwei Drohnen explodieren über dem Kreml! Flad bleibt unverletzt. Moskau beschuldigt die Ukraine.",
+            @"Zwei Drohnen explodieren über dem Kreml! Putin bleibt unverletzt. Moskau beschuldigt die Ukraine.",
             p => { p.Gesundheit -= 20; p.EinflussMilitär += 15; Thread.Sleep(3000); }));
         
         // === TELEFON-EVENTS MIT JA/NEIN ANTWORTEN ===
@@ -4932,7 +4932,7 @@ static class EventSystem
             "12. August: Atomares U-Boot Kursk sinkt in der Barentssee nach Explosion...",
             "Präsident", 100, 2000, "katastrophe",
             p => {
-                Console.WriteLine("Alle 118 Besatzungsmitglieder tot. Flad bleibt im Urlaub - heftige Kritik!");
+                Console.WriteLine("Alle 118 Besatzungsmitglieder tot. Putin bleibt im Urlaub - heftige Kritik!");
                 p.Gesundheit -= 35;
                 p.Geld -= 200;
                 p.LoyalitätVolk -= 40;
@@ -5113,7 +5113,7 @@ static class EventSystem
             "31. Dezember: Jelzin tritt überraschend zurück! Wladimir Putin - ehemaliger KGB-Offizier - wird amtierender Präsident...",
             "Präsident", 100, 1999, "politisch",
             p => {
-                Console.WriteLine("Der bis dahin kaum bekannte Flad übernimmt die Staatsführung!");
+                Console.WriteLine("Der bis dahin kaum bekannte Putin übernimmt die Staatsführung!");
                 p.LoyalitätPartei += 40;
                 p.EinflussKGB += 50;
                 p.EinflussMilitär += 30;
@@ -5123,7 +5123,7 @@ static class EventSystem
         ));
         
         allEvents.Add(new RandomEvent(
-            "Flads erster Wahlsieg 2000",
+            "Putins erster Wahlsieg 2000",
             "26. März: Putin wird mit 53% zum Präsidenten gewählt! Verspricht Stabilität nach chaotischem Jelzin-Jahrzehnt...",
             "Präsident", 100, 2000, "politisch",
             p => {
@@ -5141,7 +5141,7 @@ static class EventSystem
             "Putin führt Krieg in Tschetschenien mit harter Hand! Grosny in Trümmer gelegt...",
             "Präsident", 100, 2003, "politisch",
             p => {
-                Console.WriteLine("Tausende Zivilisten tot. Tschetschenien unter Kontrolle. Flads Popularität steigt!");
+                Console.WriteLine("Tausende Zivilisten tot. Tschetschenien unter Kontrolle. Putins Popularität steigt!");
                 p.EinflussMilitär += 50;
                 p.EinflussKGB += 35;
                 p.LoyalitätVolk += 30; // Trotz Opfer
@@ -5180,7 +5180,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Sowjet-Nostalgie 2005",
-            "25. April: Flad nennt Zerfall der UdSSR 'größte geopolitische Katastrophe des Jahrhunderts'!",
+            "25. April: Putin nennt Zerfall der UdSSR 'größte geopolitische Katastrophe des Jahrhunderts'!",
             "Präsident", 100, 2005, "politisch",
             p => {
                 Console.WriteLine("Signal: Russlands Größe soll wiederhergestellt werden! Westen besorgt.");
@@ -5206,10 +5206,10 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Ämtertausch mit Medwedew 2008",
-            "8. Mai: Flad wird Premierminister, Medwedew Präsident! 'Tandem-Lösung' umgeht Verfassung...",
+            "8. Mai: Putin wird Premierminister, Medwedew Präsident! 'Tandem-Lösung' umgeht Verfassung...",
             "Präsident", 100, 2008, "politisch",
             p => {
-                Console.WriteLine("Flad bleibt faktisch der starke Mann! Ermöglicht spätere Rückkehr ins Präsidentenamt.");
+                Console.WriteLine("Putin bleibt faktisch der starke Mann! Ermöglicht spätere Rückkehr ins Präsidentenamt.");
                 p.LoyalitätPartei += 45;
                 p.EinflussKGB += 35;
                 p.LoyalitätVolk += 20;
@@ -5236,7 +5236,7 @@ static class EventSystem
             "Dezember 2011: Größte Anti-Regierungs-Proteste seit den 90ern! Zehntausende in Moskau...",
             "Präsident", 100, 2011, "politisch",
             p => {
-                Console.WriteLine("Protest gegen Wahlfälschungen und Flad-Medwedew-Rollentausch! Putin antwortet mit Repression.");
+                Console.WriteLine("Protest gegen Wahlfälschungen und Putin-Medwedew-Rollentausch! Putin antwortet mit Repression.");
                 p.LoyalitätVolk -= 35;
                 p.LoyalitätPartei -= 15;
                 p.EinflussKGB += 30; // Härtere Gesetze
@@ -5273,7 +5273,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Krim-Annexion 2014",
-            "18. März: Flad annektiert die Krim! 'Grüne Männchen' besetzen Halbinsel, umstrittenes Referendum...",
+            "18. März: Putin annektiert die Krim! 'Grüne Männchen' besetzen Halbinsel, umstrittenes Referendum...",
             "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("In Russland gefeiert! Westliche Sanktionen und Ausschluss aus G8 folgen.");
@@ -5442,7 +5442,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "IStGH-Haftbefehl 2023",
-            "17. März: Internationaler Strafgerichtshof erlässt Haftbefehl gegen Flad wegen Kriegsverbrechen!",
+            "17. März: Internationaler Strafgerichtshof erlässt Haftbefehl gegen Putin wegen Kriegsverbrechen!",
             "Präsident", 100, 2023, "politisch",
             p => {
                 Console.WriteLine("Vorwurf: Deportation ukrainischer Kinder. Putin international offiziell angeklagt!");
@@ -5457,7 +5457,7 @@ static class EventSystem
             "23./24. Juni: Jewgeni Prigoschin startet bewaffneten Aufstand! Wagner marschiert auf Moskau...",
             "Präsident", 100, 2023, "politisch",
             p => {
-                Console.WriteLine("Flad nennt es 'Verrat'! Nach 24h beendet. Prigoschin stirbt im August bei Flugzeugabsturz.");
+                Console.WriteLine("Putin nennt es 'Verrat'! Nach 24h beendet. Prigoschin stirbt im August bei Flugzeugabsturz.");
                 p.EinflussMilitär -= 30; // Risse im Apparat
                 p.EinflussKGB += 25; // Härte nach Meuterei
                 p.LoyalitätVolk -= 25;
@@ -5567,7 +5567,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "TurkStream-Initiative 2014",
-            "Flad verkündet neue Pipeline! Ersatz für Südstraßen-Projekt...",
+            "Putin verkündet neue Pipeline! Ersatz für Südstraßen-Projekt...",
             "Präsident", 0, 2014, "türkei",
             p => {
                 Console.WriteLine("Neue direkte Gaspipeline geplant! Umgehung der Ukraine.");
@@ -6601,7 +6601,7 @@ static class EventSystem
         // 2007 - Münchner Sicherheitskonferenz
         allEvents.Add(new RandomEvent(
             "Münchner Rede 2007",
-            "Flad hält scharfe Rede: 'USA weltgefährlich! Ein Zentrum der Macht!'",
+            "Putin hält scharfe Rede: 'USA weltgefährlich! Ein Zentrum der Macht!'",
             "Präsident", 60, 2007, "nato",
             p => {
                 Console.WriteLine("\n📢 Historische Rede in München!");
@@ -7687,7 +7687,7 @@ static class EventSystem
         // 2100
         allEvents.Add(new RandomEvent(
             "Klimaneutral 2100",
-            "Russland ist klimaneutrales Großreich! Erneuerbare Energie dominiert. Flads Vermächtnis: Archaischer Machtpolitiker oder Retter Russlands?",
+            "Russland ist klimaneutrales Großreich! Erneuerbare Energie dominiert. Putins Vermächtnis: Archaischer Machtpolitiker oder Retter Russlands?",
             "Präsident", 90, 2100, "zukunft",
             p => {
                 Console.WriteLine("\n📅 2100 - NEUES ZEITALTER");
@@ -7695,7 +7695,7 @@ static class EventSystem
                 Console.WriteLine("🌱 Russland: Klimaneutrales Großreich!");
                 Console.WriteLine("⚡ 100% Erneuerbare Energie");
                 Console.WriteLine("🌍 Biomaterialien ersetzen Öl");
-                Console.WriteLine("👴 Flads Vermächtnis kontrovers:");
+                Console.WriteLine("👴 Putins Vermächtnis kontrovers:");
                 Console.WriteLine("   Machtpolitiker oder Retter?");
                 p.Geld += 600;
                 p.EinflussInternational += 50;
@@ -8217,7 +8217,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Olympia Sotschi 2014",
-            "DIE TEUERSTEN SPIELE ALLER ZEITEN! 51 Milliarden Dollar für Flads Prestige-Projekt. Korruption frisst Milliarden. Das Volk sieht glitzernde Stadien im Fernsehen - während sie in verfallenen Plattenbauten frieren. 'Brot und Spiele', sagen die Zyniker. Eine Woche später: Krim-Annexion beginnt.",
+            "DIE TEUERSTEN SPIELE ALLER ZEITEN! 51 Milliarden Dollar für Putins Prestige-Projekt. Korruption frisst Milliarden. Das Volk sieht glitzernde Stadien im Fernsehen - während sie in verfallenen Plattenbauten frieren. 'Brot und Spiele', sagen die Zyniker. Eine Woche später: Krim-Annexion beginnt.",
             "Präsident", 100, 2014, "politisch",
             p => {
                 Console.WriteLine("\n🏅 SOTSCHI-OLYMPIA - VERSCHWENDUNG!");
@@ -8489,7 +8489,7 @@ static class EventSystem
         // 2022-2025 - Ukraine-Krieg
         allEvents.Add(new RandomEvent(
             "Invasion Ukraine 2022",
-            "KRIEG IN EUROPA! 24. Februar, 04:00 Uhr - Raketen hageln auf Kiew. 200.000 russische Soldaten überqueren die Grenze. Flad nennt es 'Spezialoperation'. Das Volk glaubt der Propaganda: 'Wir befreien die Ukraine von Nazis!' Doch bald kommen die Zinksärge zurück. Mütter weinen, der Kreml schweigt.",
+            "KRIEG IN EUROPA! 24. Februar, 04:00 Uhr - Raketen hageln auf Kiew. 200.000 russische Soldaten überqueren die Grenze. Putin nennt es 'Spezialoperation'. Das Volk glaubt der Propaganda: 'Wir befreien die Ukraine von Nazis!' Doch bald kommen die Zinksärge zurück. Mütter weinen, der Kreml schweigt.",
             "Präsident", 100, 2022, "katastrophe",
             p => {
                 Console.WriteLine("\n💥 UKRAINE-KRIEG BEGINNT!");
@@ -8525,7 +8525,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Mobilmachung 2022",
-            "ALLE MÄNNER AN DIE FRONT! Flad verkündet 'Teilmobilmachung' - 300.000 Reservisten werden eingezogen. Panik bricht aus! Männer fliehen über die Grenzen, Flugtickets kosten Tausende. Das Volk realisiert: Der Krieg ist real. Frauen weinen auf Bahnhöfen. Der Staat jagt Wehrpflichtige wie Wild.",
+            "ALLE MÄNNER AN DIE FRONT! Putin verkündet 'Teilmobilmachung' - 300.000 Reservisten werden eingezogen. Panik bricht aus! Männer fliehen über die Grenzen, Flugtickets kosten Tausende. Das Volk realisiert: Der Krieg ist real. Frauen weinen auf Bahnhöfen. Der Staat jagt Wehrpflichtige wie Wild.",
             "Präsident", 100, 2022, "katastrophe",
             p => {
                 Console.WriteLine("\n🪖 MOBILMACHUNG - PANIK UND FLUCHT!");
@@ -8547,7 +8547,7 @@ static class EventSystem
             "Präsident", 100, 2023, "katastrophe",
             p => {
                 Console.WriteLine("\n⚔️ WAGNER-AUFSTAND - PUTIN WACKELT!");
-                Console.WriteLine("Beinahe-Putsch! Das Volk sieht Flads Schwäche!");
+                Console.WriteLine("Beinahe-Putsch! Das Volk sieht Putins Schwäche!");
                 p.EinflussMilitär -= 40;
                 p.LoyalitätVolk -= 45;
                 p.LoyalitätPartei -= 30;
@@ -9025,7 +9025,7 @@ static class EventSystem
         // 2005 - 1 zusätzliches Event
         allEvents.Add(new RandomEvent(
             "Orange Revolution Nachwehen 2005",
-            "UKRAINE WENDET SICH NACH WESTEN! Viktor Juschtschenko wird Präsident - Flads Kandidat verlor. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren? Putin zieht die Schrauben an. Die 'farbigen Revolutionen' werden zum Feindbild. Der Kreml hat Angst.",
+            "UKRAINE WENDET SICH NACH WESTEN! Viktor Juschtschenko wird Präsident - Putins Kandidat verlor. Das Volk in Russland sieht nervös zu: Könnte das auch hier passieren? Putin zieht die Schrauben an. Die 'farbigen Revolutionen' werden zum Feindbild. Der Kreml hat Angst.",
             "Präsident", 100, 2005, "politisch",
             p => {
                 Console.WriteLine("\n🧡 UKRAINE-SCHOCK WIRKT NACH!");
@@ -9079,7 +9079,7 @@ static class EventSystem
         // 2007 - 1 zusätzliches Event
         allEvents.Add(new RandomEvent(
             "Putin München-Rede 2007",
-            "KRIEGSERKLÄRUNG AN DEN WESTEN! Flad hält eine flammende Rede auf der Münchner Sicherheitskonferenz: 'Die USA wollen eine unipolare Welt!' Das Volk jubelt - endlich zeigt Russland Stärke! Der Westen ist schockiert. Der neue Kalte Krieg beginnt offiziell. Die Maske ist gefallen.",
+            "KRIEGSERKLÄRUNG AN DEN WESTEN! Putin hält eine flammende Rede auf der Münchner Sicherheitskonferenz: 'Die USA wollen eine unipolare Welt!' Das Volk jubelt - endlich zeigt Russland Stärke! Der Westen ist schockiert. Der neue Kalte Krieg beginnt offiziell. Die Maske ist gefallen.",
             "Präsident", 100, 2007, "politisch",
             p => {
                 Console.WriteLine("\n🎤 MÜNCHEN-REDE - PUTIN GEGEN DEN WESTEN!");
@@ -9098,7 +9098,7 @@ static class EventSystem
         // 2009 - 2 zusätzliche Events
         allEvents.Add(new RandomEvent(
             "Magnitski stirbt im Gefängnis 2009",
-            "FOLTER BIS ZUM TOD! Sergei Magnitski, Anwalt der Korruption aufdeckte, stirbt in Untersuchungshaft - gefoltert, ohne medizinische Hilfe. Das Volk flüstert die Wahrheit: Er wurde ermordet. Der Westen verhängt später die 'Magnitski-Sanktionen'. Sein Tod wird zum Symbol für Flads Brutalität.",
+            "FOLTER BIS ZUM TOD! Sergei Magnitski, Anwalt der Korruption aufdeckte, stirbt in Untersuchungshaft - gefoltert, ohne medizinische Hilfe. Das Volk flüstert die Wahrheit: Er wurde ermordet. Der Westen verhängt später die 'Magnitski-Sanktionen'. Sein Tod wird zum Symbol für Putins Brutalität.",
             "Präsident", 100, 2009, "katastrophe",
             p => {
                 Console.WriteLine("\n⚖️ MAGNITSKI STIRBT - FOLTER IN HAFT!");
