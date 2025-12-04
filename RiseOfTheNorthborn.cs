@@ -10498,16 +10498,14 @@ class Program
                 case "1": StartNewGame(1); break;
                 case "2": ShowFamilyTree(); break;
                 case "3": LoadGame(); break;
-                case "4": ShowFamilyTree(); break;
-                case "5":
+                case "4":
                     stopMusic = true;
                     Thread.Sleep(200);
                     BattleshipGame.Play();
                     stopMusic = false;
                     Task.Run(() => PlayMusic());
                     break;
-                case "6": ManageSaves(); break;
-                case "7":
+                case "5":
                     stopMusic = true;
                     Console.WriteLine("\n>> Auf Wiedersehen, Genosse!");
                     Thread.Sleep(2500);
