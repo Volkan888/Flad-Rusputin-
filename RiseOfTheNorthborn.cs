@@ -10412,6 +10412,7 @@ class Program
             
             EventSystem.InitializeEvents(); // Zufalls-Ereignisse laden
             EventSystem.InitializeHistoricalEvents(); // Historische Ereignisse laden
+            InitializeTelefonate(); // Telefonate laden
             ShowIntro();
             MainMenu();
         }
