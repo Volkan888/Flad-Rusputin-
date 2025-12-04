@@ -10513,20 +10513,7 @@ class Program
             }
         }
     }
-    
-    static void StartMultiplayerGame()
-    {
-        Console.Clear();
-        Console.WriteLine("╔═══════════════════════════════════════════════════════════╗");
-        Console.WriteLine("║              MULTIPLAYER-MODUS                            ║");
-        Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
-        
-        Console.Write("Wie viele Spieler? [2-4]: ");
-        if (!int.TryParse(Console.ReadLine(), out int playerCount) || playerCount < 2 || playerCount > 4)
-            playerCount = 2;
-        
-        StartNewGame(playerCount);
-    }
+ 
     
     static void StartNewGame(int playerCount = 1)
     {
