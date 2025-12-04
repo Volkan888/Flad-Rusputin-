@@ -10750,10 +10750,30 @@ class Program
         Console.WriteLine("║            SCHWIERIGKEITSGRAD WÄHLEN                      ║");
         Console.WriteLine("╚═══════════════════════════════════════════════════════════╝\n");
         
-        Console.WriteLine("[1] Leicht - Alle Attribute bei 1, +800 Rubel, gute Beziehungen");
-        Console.WriteLine("[2] Mittel - 3 Attributpunkte, +500 Rubel, normale Beziehungen");
-        Console.WriteLine("[3] Hart - 2 Punkte, 70% Gesundheit, -200 Rubel");
-        Console.WriteLine("[4] Kalter Krieg - 1 Punkt, -500 Rubel Schulden, Feindschaft, +40% KGB\n");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("[1] 😊 LEICHT");
+        Console.ResetColor();
+        Console.WriteLine("    → Alle Attribute bei 1, +800 Rubel, gute Beziehungen");
+        Console.WriteLine("    → Sanktionen: -25% Schaden\n");
+        
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("[2] ⚖️  MITTEL (Empfohlen)");
+        Console.ResetColor();
+        Console.WriteLine("    → 3 Attributpunkte verteilen, +500 Rubel");
+        Console.WriteLine("    → Normale Schwierigkeit\n");
+        
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("[3] 💪 HART");
+        Console.ResetColor();
+        Console.WriteLine("    → 2 Punkte, 70% Gesundheit, -200 Rubel Schulden");
+        Console.WriteLine("    → Sanktionen: +35% Schaden, Events +25% härter\n");
+        
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine("[4] ☠️  KALTER KRIEG (Experten)");
+        Console.ResetColor();
+        Console.WriteLine("    → 1 Punkt, -500 Rubel Schulden, +40% KGB");
+        Console.WriteLine("    → Sanktionen: +60% Schaden, Events +50% härter");
+        Console.WriteLine("    → NATO/USA fast Kriegszustand\n");
         
         while (true)
         {
