@@ -7085,8 +7085,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Tschetschenien II 1999", "Zweiter Krieg", "Präsident", 100, 1999, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 200; Console.WriteLine("⚔️ Neuer Tschetschenien-Krieg!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Flad wird Präsident", "Präsident", 100, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
         
-        // DUPLIKAT ENTFERNT: Putin 2000 ist bereits als HistoricalEvent vorhanden
-        allEvents.Add(new RandomEvent("Kursk-Untergang 2000", "U-Boot sinkt", "Präsident", 100, 2000, "katastrophe", p => { p.Gesundheit -= 25; p.LoyalitätPartei -= 15; Console.WriteLine("💀 118 Tote!"); Thread.Sleep(3000); }));
+        // DUPLIKAT ENTFERNT: Kursk 2000 ist bereits als HistoricalEvent vorhanden
         allEvents.Add(new RandomEvent("Y2K-Bug überstanden 2000", "Millennium", "Präsident", 100, 2000, "politisch", p => { p.Geld += 50; Console.WriteLine("💻 Y2K geschafft!"); Thread.Sleep(3000); }));
         
         // CHINA-EVENTS
