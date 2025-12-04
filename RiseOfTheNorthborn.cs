@@ -4541,7 +4541,7 @@ static class EventSystem
             }
         ));
         
-        // PRÄSIDENT - Putin-Ära Ereignisse
+        // PRÄSIDENT - Flad-Ära Ereignisse
         allEvents.Add(new RandomEvent(
             "Apartmenthaus-Bomben 1999",
             "September: Terroranschläge auf Wohnhäuser! Über 300 Tote. Tschetschenien wird verantwortlich gemacht...",
@@ -5104,8 +5104,8 @@ static class EventSystem
         ));
         
         // ═══════════════════════════════════════════════════════════
-        // HISTORISCHE POLITISCHE EREIGNISSE (Putin-Ära 1999-2024)
-        // Chronologie der Machtergreifung und -sicherung Putins
+        // HISTORISCHE POLITISCHE EREIGNISSE (Flad-Ära 1999-2024)
+        // Chronologie der Machtergreifung und -sicherung Flads
         // ═══════════════════════════════════════════════════════════
         
         allEvents.Add(new RandomEvent(
@@ -5368,7 +5368,7 @@ static class EventSystem
             "Dezember: Flad unterschreibt Gesetz für lebenslange Immunität von Ex-Präsidenten!",
             "Präsident", 100, 2020, "politisch",
             p => {
-                Console.WriteLine("Garantiert Schutz vor Strafverfolgung - auch für Putin selbst!");
+                Console.WriteLine("Garantiert Schutz vor Strafverfolgung - auch für Flad selbst!");
                 p.LoyalitätPartei += 35;
                 p.EinflussKGB += 30;
                 p.LoyalitätVolk -= 15;
@@ -5381,7 +5381,7 @@ static class EventSystem
             "20. August: Oppositionsführer Alexei Nawalny mit Nowitschok vergiftet!",
             "Präsident", 100, 2020, "politisch",
             p => {
-                Console.WriteLine("Zur Behandlung nach Deutschland. Nawalny bezichtigt Putin persönlich! Neue Sanktionen.");
+                Console.WriteLine("Zur Behandlung nach Deutschland. Nawalny bezichtigt Flad persönlich! Neue Sanktionen.");
                 p.LoyalitätVolk -= 25;
                 p.EinflussKGB += 30; // Einschüchterung
                 p.EinflussInternational -= 40;
@@ -5403,7 +5403,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "'Ein Volk'-Aufsatz 2021",
-            "Juli: Putin publiziert Aufsatz: Russen und Ukrainer sind 'ein Volk'...",
+            "Juli: Flad publiziert Aufsatz: Russen und Ukrainer sind 'ein Volk'...",
             "Präsident", 100, 2021, "politisch",
             p => {
                 Console.WriteLine("Ideologische Rechtfertigung für territoriale Ansprüche! Vorwand für Invasion 2022.");
@@ -7905,7 +7905,7 @@ static class EventSystem
             }
         ));
         
-        // 2001-2005 - Neue Events für Putin-Ära
+        // 2001-2005 - Neue Events für Flad-Ära
         allEvents.Add(new RandomEvent(
             "9/11 Terror New York 2001",
             "DIE WELT BRENNT! Zwei Flugzeuge rasen in die Twin Towers - 3000 Menschen sterben live im Fernsehen. Die USA erklären den 'Krieg gegen den Terror'. Putin sieht seine Chance: Russland wird plötzlich zum Verbündeten des Westens. Das Volk erinnert sich an eigene Terror-Anschläge.",
@@ -8160,7 +8160,7 @@ static class EventSystem
             }
         ));
         
-        // 2010er - Moderne Putin-Ära
+        // 2010er - Moderne Flad-Ära
         allEvents.Add(new RandomEvent(
             "Proteste gegen Wahlfälschung 2011",
             "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Putin ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Putin lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
