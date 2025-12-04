@@ -3940,7 +3940,7 @@ static class EventSystem
             @"Alexej Nawalny ist tot! Der bekannteste Flad-Kritiker stirbt mit 47 Jahren im Straflager. Offiziell: Kreislaufversagen. Der Westen: Mord. Weltweite Trauer und Empörung.",
             p => { p.EinflussKGB += 25; p.EinflussInternational -= 45; p.LoyalitätVolk -= 35; Thread.Sleep(5000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUTIN_WAHL_2024", "Putin zum fünften Mal 'gewählt'", "17. März 2024", 2024, 3, "POLITIK",
+        historicalEvents.Add(new HistoricalEvent("FLAD_WAHL_2024", "Flad zum fünften Mal 'gewählt'", "17. März 2024", 2024, 3, "POLITIK",
             @"Flad gewinnt mit 87% - ohne echte Opposition. Er kann bis 2030 regieren. International: Scheinwahlen. In Russland: Business as usual.",
             p => { p.LoyalitätPartei += 25; p.EinflussKGB += 20; p.EinflussInternational -= 30; Thread.Sleep(3000); }));
         
@@ -3950,7 +3950,7 @@ static class EventSystem
         
         // === ZUSÄTZLICHE EVENTS FÜR VOLLSTÄNDIGKEIT ===
         historicalEvents.Add(new HistoricalEvent("USA_911_TERROR_2001", "9/11 Terroranschläge", "11. September 2001", 2001, 9, "KATASTROPHE",
-            @"Terroranschläge auf das World Trade Center! Putin ist der erste, der Bush anruft und Unterstützung anbietet. Kurze Annäherung im 'Krieg gegen Terror'.",
+            @"Terroranschläge auf das World Trade Center! Flad ist der erste, der Bush anruft und Unterstützung anbietet. Kurze Annäherung im 'Krieg gegen Terror'.",
             p => { p.EinflussInternational += 30; p.Gesundheit += 15; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("GASPROM_MONOPOL_2005", "Gasprom wird Energie-Gigant", "28. September 2005", 2005, 9, "WIRTSCHAFT",
@@ -4020,7 +4020,7 @@ static class EventSystem
             }));
         
         historicalEvents.Add(new HistoricalEvent("XI_ANRUF_2022", "Xi Jinping ruft an - Partnerschaft?", "10. März 2022", 2022, 3, "POLITIK",
-            @"TELEFON! Xi: 'Genosse Putin, der Westen isoliert uns beide. Lass uns eine unzerbrechliche Allianz formen. China und Russland - grenzenlose Freundschaft!' Annehmen?",
+            @"TELEFON! Xi: 'Genosse Flad, der Westen isoliert uns beide. Lass uns eine unzerbrechliche Allianz formen. China und Russland - grenzenlose Freundschaft!' Annehmen?",
             p => {
                 Console.WriteLine("\n[1] JA - Enge Partnerschaft mit China");
                 Console.WriteLine("[2] NEIN - Abstand halten zu China");
@@ -4874,7 +4874,7 @@ static class EventSystem
                 Console.WriteLine("══════════════════════════════════════════════════════════");
                 Console.ResetColor();
                 Console.WriteLine("\n'Größte geopolitische Katastrophe des 20. Jahrhunderts'");
-                Console.WriteLine("                    - Wladimir Putin");
+                Console.WriteLine("                    - Flad Rusputin");
                 Thread.Sleep(5000);
                 p.Gesundheit -= 40;
                 p.Geld -= 600;
@@ -5110,7 +5110,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Unerwarteter Machtwechsel 1999",
-            "31. Dezember: Jelzin tritt überraschend zurück! Wladimir Putin - ehemaliger KGB-Offizier - wird amtierender Präsident...",
+            "31. Dezember: Jelzin tritt überraschend zurück! Flad Rusputin - ehemaliger KGB-Offizier - wird amtierender Präsident...",
             "Präsident", 100, 1999, "politisch",
             p => {
                 Console.WriteLine("Der bis dahin kaum bekannte Flad übernimmt die Staatsführung!");
@@ -5124,7 +5124,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Flads erster Wahlsieg 2000",
-            "26. März: Putin wird mit 53% zum Präsidenten gewählt! Verspricht Stabilität nach chaotischem Jelzin-Jahrzehnt...",
+            "26. März: Flad wird mit 53% zum Präsidenten gewählt! Verspricht Stabilität nach chaotischem Jelzin-Jahrzehnt...",
             "Präsident", 100, 2000, "politisch",
             p => {
                 Console.WriteLine("7. Mai: Feierliche Amtseinführung. Im Mai: Steuerfahnder stürmen oppositionellen Sender NTV!");
@@ -5138,7 +5138,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Zweiter Tschetschenienkrieg 2000-2003",
-            "Putin führt Krieg in Tschetschenien mit harter Hand! Grosny in Trümmer gelegt...",
+            "Flad führt Krieg in Tschetschenien mit harter Hand! Grosny in Trümmer gelegt...",
             "Präsident", 100, 2003, "politisch",
             p => {
                 Console.WriteLine("Tausende Zivilisten tot. Tschetschenien unter Kontrolle. Flads Popularität steigt!");
@@ -5166,7 +5166,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Wiederwahl und Föderalreform 2004",
-            "14. März: Putin mit 71% wiedergewählt! Nach Beslan-Tragödie: Gouverneurs-Direktwahlen abgeschafft...",
+            "14. März: Flad mit 71% wiedergewählt! Nach Beslan-Tragödie: Gouverneurs-Direktwahlen abgeschafft...",
             "Präsident", 100, 2004, "politisch",
             p => {
                 Console.WriteLine("Präsident ernennt fortan Regionschefs direkt! 'Machtvertikale' massiv gestärkt.");
@@ -5193,7 +5193,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Münchner Sicherheitskonferenz 2007",
-            "10. Februar: Putin überrascht mit scharfer Kritik an USA und 'unipolarer' Weltordnung!",
+            "10. Februar: Flad überrascht mit scharfer Kritik an USA und 'unipolarer' Weltordnung!",
             "Präsident", 100, 2007, "politisch",
             p => {
                 Console.WriteLine("Warnung vor neuer Konfrontation! Beginn eines 'Kalten Tons' im Ost-West-Verhältnis.");
@@ -5236,7 +5236,7 @@ static class EventSystem
             "Dezember 2011: Größte Anti-Regierungs-Proteste seit den 90ern! Zehntausende in Moskau...",
             "Präsident", 100, 2011, "politisch",
             p => {
-                Console.WriteLine("Protest gegen Wahlfälschungen und Flad-Medwedew-Rollentausch! Putin antwortet mit Repression.");
+                Console.WriteLine("Protest gegen Wahlfälschungen und Flad-Medwedew-Rollentausch! Flad antwortet mit Repression.");
                 p.LoyalitätVolk -= 35;
                 p.LoyalitätPartei -= 15;
                 p.EinflussKGB += 30; // Härtere Gesetze
@@ -5246,7 +5246,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Rückkehr ins Präsidentenamt 2012",
-            "4. März: Putin für dritte Amtszeit gewählt (64%)! Amtszeit nun 6 Jahre statt 4...",
+            "4. März: Flad für dritte Amtszeit gewählt (64%)! Amtszeit nun 6 Jahre statt 4...",
             "Präsident", 100, 2012, "politisch",
             p => {
                 Console.WriteLine("7. Mai: Amtseinführung mit Protesten! Kreml verschärft Gesetze gegen Opposition und NGOs.");
@@ -5326,7 +5326,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Vierte Amtszeit 2018",
-            "18. März: Putin mit 77% wiedergewählt! Unpopuläre Rentenreform folgt...",
+            "18. März: Flad mit 77% wiedergewählt! Unpopuläre Rentenreform folgt...",
             "Präsident", 100, 2018, "politisch",
             p => {
                 Console.WriteLine("Ruhestandsalter um 5 Jahre angehoben! Zustimmung sinkt von 80% auf 60%.");
@@ -5339,7 +5339,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Krim-Brücke eröffnet 2018",
-            "Mai: Putin eröffnet persönlich 18 km Brücke von Russland zur Krim!",
+            "Mai: Flad eröffnet persönlich 18 km Brücke von Russland zur Krim!",
             "Präsident", 100, 2018, "politisch",
             p => {
                 Console.WriteLine("Symbol der Krim-Integration! 2022 im Ukrainekrieg zum Angriffsziel.");
@@ -5352,7 +5352,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Verfassungsänderung 2020",
-            "1. Juli: Referendum über Verfassungsreform! 'Nullstellung' ermöglicht Putin Präsidentschaft bis 2036...",
+            "1. Juli: Referendum über Verfassungsreform! 'Nullstellung' ermöglicht Flad Präsidentschaft bis 2036...",
             "Präsident", 100, 2020, "politisch",
             p => {
                 Console.WriteLine("78% Zustimmung (offiziell). Kritiker sprechen von Machtsicherung auf Lebenszeit!");
@@ -5365,7 +5365,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Lebenslange Immunität 2020",
-            "Dezember: Putin unterschreibt Gesetz für lebenslange Immunität von Ex-Präsidenten!",
+            "Dezember: Flad unterschreibt Gesetz für lebenslange Immunität von Ex-Präsidenten!",
             "Präsident", 100, 2020, "politisch",
             p => {
                 Console.WriteLine("Garantiert Schutz vor Strafverfolgung - auch für Putin selbst!");
@@ -6688,12 +6688,12 @@ static class EventSystem
         // 1952
         allEvents.Add(new RandomEvent(
             "Putin wird geboren 1952",
-            "7. Oktober 1952: Wladimir Putin wird in Leningrad geboren. Stalin ordnet die Ärzte-Verschwörung an und lässt 13 jüdische Dichter exekutieren.",
+            "7. Oktober 1952: Flad Rusputin wird in Leningrad geboren. Stalin ordnet die Ärzte-Verschwörung an und lässt 13 jüdische Dichter exekutieren.",
             "Kindheit", 100, 1952, "putinleben",
             p => {
                 Console.WriteLine("\n📅 1952 - PUTINS GEBURT");
                 Console.WriteLine("═══════════════════════════════════════════");
-                Console.WriteLine("🍼 Am 7. Oktober wird Wladimir Putin in Leningrad geboren");
+                Console.WriteLine("🍼 Am 7. Oktober wird Flad Rusputin in Leningrad geboren");
                 Console.WriteLine("☭  Stalin ordnet die Ärzte-Verschwörung an");
                 Console.WriteLine("💀 13 jüdische Dichter werden exekutiert");
                 Console.WriteLine("📊 19. Parteikongress stabilisiert das Stalin-Regime");
