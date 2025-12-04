@@ -10993,32 +10993,45 @@ class Program
     }
     
     /// <summary>
-    /// Show10YearMenu - Zeigt alle 10 Jahre Menü mit Laden/Speichern und Telefonate
-    /// Ersetzt das alte Shortcut-System
+    /// Show5YearMenu - Zeigt alle 5 Jahre Menü mit Laden/Speichern, Shop und Telefonate
+    /// Nur Telefonate und Shop sind in Präsidenten-Phase verfügbar
     /// </summary>
-    static void Show10YearMenu(PlayerCharacter player)
+    static void Show5YearMenu(PlayerCharacter player)
     {
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(@"
 ╔═══════════════════════════════════════════════════════════╗
-║           📅 10-JAHRES-CHECKPOINT 📅                      ║
+║           📅 5-JAHRES-CHECKPOINT 📅                       ║
 ╚═══════════════════════════════════════════════════════════╝
 ");
         Console.ResetColor();
         
         Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
-        Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%\n");
+        Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%");
+        Console.WriteLine($"📊 Phase: {player.Phase}\n");
+        
+        bool istPraesident = (player.Phase == "Präsident");
         
         while (true)
         {
             Console.WriteLine("═══════════════════════════════════════════════════════════");
             Console.WriteLine("[1] 💾 Spiel speichern");
             Console.WriteLine("[2] 📂 Spiel laden");
-            Console.WriteLine("[3] 📞 Telefonate (Erdogan, Trump, China)");
-            Console.WriteLine("[4] ✅ Weiter spielen");
+            
+            if (istPraesident)
+            {
+                Console.WriteLine("[3] 📞 Telefonate (Erdogan, Trump, China)");
+                Console.WriteLine("[4] 🛒 Flads Luxus-Shop");
+                Console.WriteLine("[5] ✅ Weiter spielen");
+            }
+            else
+            {
+                Console.WriteLine("[3] ✅ Weiter spielen");
+            }
+            
             Console.WriteLine("═══════════════════════════════════════════════════════════");
-            Console.Write("\nWähle [1-4]: ");
+            Console.Write($"\nWähle [1-{(istPraesident ? "5" : "3")}]: ");
             
             string choice = Console.ReadLine();
             
@@ -11029,6 +11042,9 @@ class Program
                 Console.WriteLine("✓ Gespeichert!");
                 Thread.Sleep(2000);
                 Console.Clear();
+                Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
+                Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%");
+                Console.WriteLine($"📊 Phase: {player.Phase}\n");
             }
             else if (choice == "2")
             {
@@ -11041,13 +11057,27 @@ class Program
                     return;
                 }
                 Console.Clear();
+                Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
+                Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%");
+                Console.WriteLine($"📊 Phase: {player.Phase}\n");
             }
-            else if (choice == "3")
+            else if (choice == "3" && istPraesident)
             {
                 ShowPhoneMenu(player);
                 Console.Clear();
+                Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
+                Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%");
+                Console.WriteLine($"📊 Phase: {player.Phase}\n");
             }
-            else if (choice == "4")
+            else if (choice == "4" && istPraesident)
+            {
+                FladShop.ShowShop(player);
+                Console.Clear();
+                Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
+                Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%");
+                Console.WriteLine($"📊 Phase: {player.Phase}\n");
+            }
+            else if ((choice == "5" && istPraesident) || (choice == "3" && !istPraesident))
             {
                 Console.WriteLine("\n>> Weiter geht's!");
                 Thread.Sleep(1000);
@@ -11058,6 +11088,9 @@ class Program
                 Console.WriteLine("\n❌ Ungültige Eingabe!");
                 Thread.Sleep(1500);
                 Console.Clear();
+                Console.WriteLine($"\n🎭 {player.Name}, Alter {player.Alter}");
+                Console.WriteLine($"💰 Geld: {player.Geld} Rubel | ❤️  Gesundheit: {player.Gesundheit}%");
+                Console.WriteLine($"📊 Phase: {player.Phase}\n");
             }
         }
     }
