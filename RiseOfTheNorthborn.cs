@@ -5756,7 +5756,7 @@ static class EventSystem
             "25. September: Flad spricht im Deutschen Bundestag! Wunsch nach 'Großeuropa' und echter Partnerschaft...",
             "Präsident", 0, 2001, "deutschland",
             p => {
-                Console.WriteLine("Historischer Moment! Putin auf Deutsch: 'Niemand bezweifelt den großen Wert der Beziehungen'.");
+                Console.WriteLine("Historischer Moment! Flad auf Deutsch: 'Niemand bezweifelt den großen Wert der Beziehungen'.");
                 p.Geld += 200;
                 p.EinflussInternational += 30;
                 p.LoyalitätPartei += 15;
@@ -5797,7 +5797,7 @@ static class EventSystem
         ));
         
         allEvents.Add(new RandomEvent(
-            "Merkel trifft Putin in Moskau 2006",
+            "Merkel trifft Flad in Moskau 2006",
             "Neue Kanzlerin, neuer Ton! Merkel betont 'strategische Partnerschaft', aber kritischer...",
             "Präsident", 0, 2006, "deutschland",
             p => {
@@ -5868,7 +5868,7 @@ static class EventSystem
             "August: Vergifteter Nawalny nach Deutschland geflogen! Nowitschok nachgewiesen...",
             "Präsident", 0, 2020, "deutschland",
             p => {
-                Console.WriteLine("Deutschland fordert Aufklärung! Putin schweigt, Beziehungen auf Tiefpunkt.");
+                Console.WriteLine("Deutschland fordert Aufklärung! Flad schweigt, Beziehungen auf Tiefpunkt.");
                 p.EinflussInternational -= 25;
                 p.Geld -= 150;
             }
@@ -6687,7 +6687,7 @@ static class EventSystem
         
         // 1952
         allEvents.Add(new RandomEvent(
-            "Putin wird geboren 1952",
+            "Flad wird geboren 1952",
             "7. Oktober 1952: Flad Rusputin wird in Leningrad geboren. Stalin ordnet die Ärzte-Verschwörung an und lässt 13 jüdische Dichter exekutieren.",
             "Kindheit", 100, 1952, "putinleben",
             p => {
@@ -7083,7 +7083,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent("Kosovo-Krieg 1999", "NATO bombardiert Serbien", "Präsident", 100, 1999, "politisch", p => { p.EinflussInternational -= 25; p.EinflussMilitär += 15; Console.WriteLine("💥 NATO-Angriff!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Tschetschenien II 1999", "Zweiter Krieg", "Präsident", 100, 1999, "politisch", p => { p.EinflussMilitär += 25; p.Geld -= 200; Console.WriteLine("⚔️ Neuer Tschetschenien-Krieg!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Putin wird Präsident", "Präsident", 100, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Jelzin tritt zurück 1999", "Flad wird Präsident", "Präsident", 100, 1999, "politisch", p => { p.LoyalitätPartei += 20; Console.WriteLine("🇷🇺 Jelzin geht!"); Thread.Sleep(3000); }));
         
         // DUPLIKAT ENTFERNT: Putin 2000 ist bereits als HistoricalEvent vorhanden
         allEvents.Add(new RandomEvent("Kursk-Untergang 2000", "U-Boot sinkt", "Präsident", 100, 2000, "katastrophe", p => { p.Gesundheit -= 25; p.LoyalitätPartei -= 15; Console.WriteLine("💀 118 Tote!"); Thread.Sleep(3000); }));
@@ -7098,7 +7098,7 @@ static class EventSystem
         allEvents.Add(new RandomEvent("Xi Moskau 2015", "Militärübung", "Präsident", 50, 2015, "china", p => { p.EinflussMilitär += 30; Console.WriteLine("⚔️ +30 Militär!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Handel 2019", "$110 Mrd", "Präsident", 55, 2019, "china", p => { p.Geld += 350; Console.WriteLine("💰 +350 Rubel!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("Olympia 2022", "Peking", "Präsident", 75, 2022, "china", p => { p.Geld += 400; Console.WriteLine("🏅 +400 Rubel!"); Thread.Sleep(3000); }));
-        allEvents.Add(new RandomEvent("Putin Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(3000); }));
+        allEvents.Add(new RandomEvent("Flad Peking 2024", "BRI-Forum", "Präsident", 70, 2024, "china", p => { p.Geld += 350; Console.WriteLine("🐉 +350 Rubel!"); Thread.Sleep(3000); }));
         allEvents.Add(new RandomEvent("China-Allianz 2025", "Strategisch", "Präsident", 60, 2025, "china", p => { p.Geld += 300; Console.WriteLine("🤝 +300 Rubel!"); Thread.Sleep(3000); }));
         
         // ═══════════════════════════════════════════════════════════
@@ -7111,7 +7111,7 @@ static class EventSystem
             "Nach den Anschlägen vom 11. September bietet Russland den USA Zusammenarbeit im 'Krieg gegen den Terror' an...",
             "Präsident", 50, 2001, "usa",
             p => {
-                Console.WriteLine("\n🇺🇸 Die USA wurden angegriffen! Putin bietet Kooperation an.");
+                Console.WriteLine("\n🇺🇸 Die USA wurden angegriffen! Flad bietet Kooperation an.");
                 Console.WriteLine("\n[1] Zusammenarbeit anbieten (Luftbasen + Geheimdienstinfo)");
                 Console.WriteLine("[2] Neutral bleiben");
                 Console.Write("\nWähle [1-2]: ");
@@ -7344,7 +7344,7 @@ static class EventSystem
         // 2018 - Helsinki-Gipfel
         allEvents.Add(new RandomEvent(
             "Trump-Flad Gipfel Helsinki 2018",
-            "Präsident Trump trifft Putin in Helsinki. Eine Annäherung ist möglich...",
+            "Präsident Trump trifft Flad in Helsinki. Eine Annäherung ist möglich...",
             "Präsident", 50, 2018, "usa",
             p => {
                 Console.WriteLine("\n🤝 Historisches Treffen mit Donald Trump!");
@@ -7402,7 +7402,7 @@ static class EventSystem
         // 2019 - Terrorabwehr-Kooperation
         allEvents.Add(new RandomEvent(
             "Terrorabwehr-Kooperation 2019",
-            "US-Geheimdienste warnen vor Anschlag in Russland. Putin dankt Trump persönlich...",
+            "US-Geheimdienste warnen vor Anschlag in Russland. Flad dankt Trump persönlich...",
             "Präsident", 35, 2019, "usa",
             p => {
                 Console.WriteLine("\n🔒 CIA warnt vor Terroranschlag in St. Petersburg!");
@@ -7443,8 +7443,8 @@ static class EventSystem
         
         // 2021 - Biden "Killer"-Äußerung
         allEvents.Add(new RandomEvent(
-            "Biden nennt Putin 'Killer' 2021",
-            "Neuer US-Präsident Biden bezeichnet Putin als 'Killer'. Diplomatischer Eklat!",
+            "Biden nennt Flad 'Killer' 2021",
+            "Neuer US-Präsident Biden bezeichnet Flad als .Killer.. Diplomatischer Eklat!",
             "Präsident", 70, 2021, "usa",
             p => {
                 Console.WriteLine("\n😠 Biden: 'Putin is a killer!'");
@@ -7544,13 +7544,13 @@ static class EventSystem
         // 2026
         allEvents.Add(new RandomEvent(
             "Arktische Allianz 2026",
-            "Gründung eines neuen nordöstlichen Militärbündnisses mit China und Ex-Sowjetrepubliken. Putin tritt nach 25+ Jahren ab.",
+            "Gründung eines neuen nordöstlichen Militärbündnisses mit China und Ex-Sowjetrepubliken. Flad tritt nach 25+ Jahren ab.",
             "Präsident", 75, 2026, "zukunft",
             p => {
                 Console.WriteLine("\n📅 2026 - NEUE WELTORDNUNG");
                 Console.WriteLine("═══════════════════════════════════════════");
                 Console.WriteLine("🌏 'Arktische Allianz' mit China gegründet!");
-                Console.WriteLine("👴 Putin tritt nach über 25 Jahren ab");
+                Console.WriteLine("👴 Flad tritt nach über 25 Jahren ab");
                 Console.WriteLine("🤝 Technokratische Regierung formiert sich");
                 p.EinflussInternational += 20;
                 p.Geld += 200;
@@ -7611,7 +7611,7 @@ static class EventSystem
                 Console.WriteLine("\n📅 2040 - MEDIZINISCHER DURCHBRUCH");
                 Console.WriteLine("═══════════════════════════════════════════");
                 Console.WriteLine("💉 Alzheimer-Impfstoff in Moskau entwickelt!");
-                Console.WriteLine("🏆 Putin als 'Wissenschafts-Fürst' gefeiert");
+                Console.WriteLine("🏆 Flad als .Wissenschafts-Fürst. gefeiert");
                 Console.WriteLine("🌐 Eurasische Union wird Binnenmarkt");
                 Console.WriteLine("⚔️  Rivalisierende Blöcke in Zentralasien");
                 p.Gesundheit += 20;
@@ -7962,7 +7962,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Beslan Schulmassaker 2004",
-            "KINDER STERBEN IN FLAMMEN! Terroristen nehmen 1100 Menschen in einer Schule als Geiseln - darunter 777 Kinder. Die Armee stürmt mit Panzern und Flammenwerfern. 334 Tote, davon 186 Kinder. Das Volk trauert und weint. Putin schweigt drei Tage lang.",
+            "KINDER STERBEN IN FLAMMEN! Terroristen nehmen 1100 Menschen in einer Schule als Geiseln - darunter 777 Kinder. Die Armee stürmt mit Panzern und Flammenwerfern. 334 Tote, davon 186 Kinder. Das Volk trauert und weint. Flad schweigt drei Tage lang.",
             "Präsident", 100, 2004, "katastrophe",
             p => {
                 Console.WriteLine("\n💔 BESLAN - DIE NATION WEINT!");
@@ -9154,7 +9154,7 @@ static class EventSystem
         // 2025 - 2 zusätzliche Events
         allEvents.Add(new RandomEvent(
             "Ukraine-Krieg endloser Fleischwolf 2025",
-            "DER KRIEG FRISST DIE JUGEND! 2025 - Jahr drei des Ukraine-Krieges. Hunderttausende Russen sind tot oder verstümmelt. Das Volk ist erschöpft, aber die Propaganda läuft weiter. Mütter weinen heimlich. Soldaten desertieren. Wie lange noch? Putin schweigt. Der Fleischwolf dreht sich weiter.",
+            "DER KRIEG FRISST DIE JUGEND! 2025 - Jahr drei des Ukraine-Krieges. Hunderttausende Russen sind tot oder verstümmelt. Das Volk ist erschöpft, aber die Propaganda läuft weiter. Mütter weinen heimlich. Soldaten desertieren. Wie lange noch? Flad schweigt. Der Fleischwolf dreht sich weiter.",
             "Präsident", 100, 2025, "katastrophe",
             p => {
                 Console.WriteLine("\n💀 KRIEG DAUERT AN - JAHR 3!");
