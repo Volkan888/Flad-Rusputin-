@@ -8163,7 +8163,7 @@ static class EventSystem
         // 2010er - Moderne Flad-Ära
         allEvents.Add(new RandomEvent(
             "Proteste gegen Wahlfälschung 2011",
-            "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Putin ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Flad lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
+            "DAS VOLK ERWACHT! 100.000 Menschen auf Moskaus Straßen - die größten Proteste seit Jahrzehnten! 'Flad ist ein Dieb!' skandieren sie. Die Mittelschicht fordert Veränderung. Doch die Polizei schlägt brutal zu. Flad lernt: Liberalisierung war ein Fehler. Der Schraubstock wird angezogen.",
             "Präsident", 100, 2011, "politisch",
             p => {
                 Console.WriteLine("\n✊ PROTESTE GEGEN PUTIN!");
@@ -8312,7 +8312,7 @@ static class EventSystem
             "Präsident", 100, 2016, "politisch",
             p => {
                 Console.WriteLine("\n🇺🇸 TRUMP GEWINNT - NEUE ÄRA?");
-                Console.WriteLine("Putin hofft auf bessere Beziehungen! Das Volk ist optimistisch!");
+                Console.WriteLine("Flad hofft auf bessere Beziehungen! Das Volk ist optimistisch!");
                 p.USABeziehung += 30;
                 p.LoyalitätVolk += 15;
                 p.Geld += 200;
@@ -8470,7 +8470,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Nawalny verhaftet 2021",
-            "RÜCKKEHR IN DIE HÖLLE! Nawalny landet in Moskau - und wird am Gate verhaftet. Hunderttausende protestieren landesweit. Die Polizei schlägt brutal zu: 11.000 Festnahmen. Das Volk sieht die Brutalität live auf YouTube. Putin hat entschieden: Keine Opposition mehr. Die Schrauben werden angezogen bis zum Anschlag.",
+            "RÜCKKEHR IN DIE HÖLLE! Nawalny landet in Moskau - und wird am Gate verhaftet. Hunderttausende protestieren landesweit. Die Polizei schlägt brutal zu: 11.000 Festnahmen. Das Volk sieht die Brutalität live auf YouTube. Flad hat entschieden: Keine Opposition mehr. Die Schrauben werden angezogen bis zum Anschlag.",
             "Präsident", 100, 2021, "katastrophe",
             p => {
                 Console.WriteLine("\n⛓️ NAWALNY VERHAFTET - MASSENPROTESTE!");
@@ -8543,7 +8543,7 @@ static class EventSystem
         
         allEvents.Add(new RandomEvent(
             "Prigoschin-Aufstand 2023",
-            "WAGNERS MARSCH AUF MOSKAU! Jewgeni Prigoschin, der Chef der Wagner-Söldner, rebelliert! Seine Armee marschiert auf Moskau zu. Putin flieht. 24 Stunden purer Wahnsinn. Dann: Deal. Prigoschin dreht um. Das Volk ist geschockt - wie schwach ist Flad wirklich? 2 Monate später: Prigoschins Jet explodiert.",
+            "WAGNERS MARSCH AUF MOSKAU! Jewgeni Prigoschin, der Chef der Wagner-Söldner, rebelliert! Seine Armee marschiert auf Moskau zu. Flad flieht. 24 Stunden purer Wahnsinn. Dann: Deal. Prigoschin dreht um. Das Volk ist geschockt - wie schwach ist Flad wirklich? 2 Monate später: Prigoschins Jet explodiert.",
             "Präsident", 100, 2023, "katastrophe",
             p => {
                 Console.WriteLine("\n⚔️ WAGNER-AUFSTAND - PUTIN WACKELT!");
