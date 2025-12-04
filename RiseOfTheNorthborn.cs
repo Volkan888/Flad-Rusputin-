@@ -11347,10 +11347,8 @@ class Program
         }
         
         // NEUES FEATURE: Menü alle 5 Jahre (ersetzt Shortcuts)
-        if (jahr % 5 == 0 && jahr > 0)
-        {
-            Show5YearMenu(player);
-        }
+        // Wird nach der 10-Jahres-Schleife aufgerufen
+        Show5YearMenu(player);
         
         Console.WriteLine($"\n>> Flad hat {player.Kinder.Count} Kind(er)!");
         
