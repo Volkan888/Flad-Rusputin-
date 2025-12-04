@@ -11325,8 +11325,8 @@ class Program
                 return;
             }
             
-            // MENÜ: Alle 5 Jahre Speichern/Laden/Shop/Telefonate
-            if (jahr > 0 && jahr % 5 == 4) // Jahr 4 und 9 (= nach 5 und 10 Jahren)
+            // MENÜ: Nach 5 und 10 Jahren
+            if ((jahr == 4 || jahr == 9)) // Nach Jahr 5 und 10 (0-basiert: 0,1,2,3,4 = 5 Jahre)
             {
                 Show5YearMenu(player);
             }
