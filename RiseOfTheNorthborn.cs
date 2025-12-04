@@ -1306,7 +1306,7 @@ static class FladShop
             "🥋",
             300,
             25, 10, 15, 20, 10,
-            "Putin ist Judo-Meister"
+            "Flad ist Judo-Meister"
         ));
         
         shopItems.Add(new ShopItem(
@@ -1314,7 +1314,7 @@ static class FladShop
             "🏒",
             250,
             20, 5, 20, 25, 5,
-            "Putin spielt Eishockey"
+            "Flad spielt Eishockey"
         ));
         
         shopItems.Add(new ShopItem(
@@ -3747,7 +3747,7 @@ static class EventSystem
             p => { p.LoyalitätVolk -= 35; p.Gesundheit -= 30; p.EinflussKGB += 20; Thread.Sleep(5000); }));
         
         historicalEvents.Add(new HistoricalEvent("USA_ABM_AUSTRITT_2002", "USA steigen aus ABM-Vertrag aus", "13. Juni 2002", 2002, 6, "POLITIK",
-            @"Die USA kündigen den ABM-Vertrag über Raketenabwehr. Putin ist verärgert - ein wichtiger Abrüstungsvertrag ist Geschichte.",
+            @"Die USA kündigen den ABM-Vertrag über Raketenabwehr. Flad ist verärgert - ein wichtiger Abrüstungsvertrag ist Geschichte.",
             p => { p.EinflussInternational -= 20; p.Gesundheit -= 15; Thread.Sleep(3000); }));
         
         // ====== 2003 ======
@@ -3796,7 +3796,7 @@ static class EventSystem
             p => { p.EinflussKGB += 20; p.EinflussInternational -= 20; Thread.Sleep(3000); }));
         
         // ====== 2008 ======
-        historicalEvents.Add(new HistoricalEvent("MEDWEDJEW_PRAESIDENT_2008", "Medwedjew wird Präsident - Putin Premier", "7. Mai 2008", 2008, 5, "POLITIK",
+        historicalEvents.Add(new HistoricalEvent("MEDWEDJEW_PRAESIDENT_2008", "Medwedjew wird Präsident - Flad Premier", "7. Mai 2008", 2008, 5, "POLITIK",
             @"Dmitri Medwedjew wird Präsident, Flad wird Premierminister. Das 'Tandem' beginnt. Aber jeder weiß: Flad hat weiter das Sagen.",
             p => { p.LoyalitätPartei += 20; p.EinflussKGB += 15; Thread.Sleep(3000); }));
         
@@ -3814,17 +3814,17 @@ static class EventSystem
             p => { p.LoyalitätVolk -= 25; p.Gesundheit -= 20; p.EinflussKGB += 20; Thread.Sleep(4000); }));
         
         // ====== 2011 ======
-        historicalEvents.Add(new HistoricalEvent("PUTIN_KANDIDATUR_2011", "Putin kandidiert wieder für Präsidentschaft", "24. September 2011", 2011, 9, "POLITIK",
+        historicalEvents.Add(new HistoricalEvent("FLAD_KANDIDATUR_2011", "Flad kandidiert wieder für Präsidentschaft", "24. September 2011", 2011, 9, "POLITIK",
             @"Flad verkündet: Er will wieder Präsident werden! Das Tandem war nur Theater. Proteste beginnen: 'Flad muss weg!'",
             p => { p.LoyalitätPartei += 25; p.LoyalitätVolk -= 20; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("DUMAWAHLEN_PROTESTE_2011", "Dumawahlen - Vorwürfe massiver Fälschungen", "4. Dezember 2011", 2011, 12, "POLITIK",
-            @"Die Dumawahlen sind offensichtlich gefälscht! Zehntausende protestieren in Moskau. Die größten Proteste seit den 90ern. 'Russland ohne Putin!'",
+            @"Die Dumawahlen sind offensichtlich gefälscht! Zehntausende protestieren in Moskau. Die größten Proteste seit den 90ern. 'Russland ohne Flad!'",
             p => { p.LoyalitätVolk -= 35; p.EinflussKGB += 25; p.Gesundheit -= 15; Thread.Sleep(4000); }));
         
         // ====== 2012 ======
-        historicalEvents.Add(new HistoricalEvent("PUTIN_DRITTE_AMTSZEIT_2012", "Putin wird zum dritten Mal Präsident", "7. Mai 2012", 2012, 5, "POLITIK",
-            @"Putin kehrt als Präsident zurück - mit umstrittener Wahl. Am Wahltag: Proteste und Verhaftungen. Der 'Eiszeit' beginnt.",
+        historicalEvents.Add(new HistoricalEvent("FLAD_DRITTE_AMTSZEIT_2012", "Flad wird zum dritten Mal Präsident", "7. Mai 2012", 2012, 5, "POLITIK",
+            @"Flad kehrt als Präsident zurück - mit umstrittener Wahl. Am Wahltag: Proteste und Verhaftungen. Der 'Eiszeit' beginnt.",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 30; p.LoyalitätVolk -= 25; Thread.Sleep(4000); }));
         
         historicalEvents.Add(new HistoricalEvent("PUSSY_RIOT_2012", "Pussy Riot verhaftet", "3. August 2012", 2012, 8, "POLITIK",
@@ -3833,7 +3833,7 @@ static class EventSystem
         
         // ====== 2013 ======
         historicalEvents.Add(new HistoricalEvent("SNOWDEN_ASYL_2013", "Snowden erhält Asyl in Russland", "1. August 2013", 2013, 8, "POLITIK",
-            @"Der NSA-Whistleblower Edward Snowden erhält Asyl in Russland! Die USA sind wütend. Ein propagandistischer Coup für Putin.",
+            @"Der NSA-Whistleblower Edward Snowden erhält Asyl in Russland! Die USA sind wütend. Ein propagandistischer Coup für Flad.",
             p => { p.EinflussInternational += 20; Thread.Sleep(3000); }));
         
         historicalEvents.Add(new HistoricalEvent("UKRAINE_EU_2013", "Ukraine wendet sich von EU ab", "21. November 2013", 2013, 11, "POLITIK",
@@ -3884,7 +3884,7 @@ static class EventSystem
             @"Bombenanschlag in der Metro von St. Petersburg - 15 Tote, 45 Verletzte. ISIS bekennt sich. Der Terror kehrt zurück.",
             p => { p.LoyalitätVolk -= 25; p.Gesundheit -= 20; Thread.Sleep(3000); }));
         
-        historicalEvents.Add(new HistoricalEvent("PUTIN_VIERTE_AMTSZEIT_2018", "Putin wird zum vierten Mal Präsident", "18. März 2018", 2018, 3, "POLITIK",
+        historicalEvents.Add(new HistoricalEvent("FLAD_VIERTE_AMTSZEIT_2018", "Flad wird zum vierten Mal Präsident", "18. März 2018", 2018, 3, "POLITIK",
             @"Flad gewinnt mit 77% - ohne echte Opposition. Er kann bis 2024 regieren. De facto: Präsident auf Lebenszeit.",
             p => { p.LoyalitätPartei += 30; p.EinflussKGB += 25; p.LoyalitätVolk -= 15; Thread.Sleep(3000); }));
         
