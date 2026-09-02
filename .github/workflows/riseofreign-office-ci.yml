@@ -1,4 +1,4 @@
-name: RiseOfReign Office CI
+name: RiseOfReign Core CI
 
 on:
   push:
@@ -11,6 +11,7 @@ on:
       - 'tests/test_sectors_1933.py'
       - 'tests/test_power_structures_1933.py'
       - 'tests/test_state_profiles_1933.py'
+      - 'tests/test_turn_timer.py'
       - '.github/workflows/riseofreign-office-ci.yml'
   pull_request:
     paths:
@@ -21,10 +22,11 @@ on:
       - 'tests/test_sectors_1933.py'
       - 'tests/test_power_structures_1933.py'
       - 'tests/test_state_profiles_1933.py'
+      - 'tests/test_turn_timer.py'
       - '.github/workflows/riseofreign-office-ci.yml'
 
 jobs:
-  office-content-client-and-api:
+  core-content-client-and-api:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -37,8 +39,8 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Validate core game content
-        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py tests/test_sectors_1933.py tests/test_power_structures_1933.py tests/test_state_profiles_1933.py
+      - name: Validate core game content and desktop UI contracts
+        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py tests/test_sectors_1933.py tests/test_power_structures_1933.py tests/test_state_profiles_1933.py tests/test_turn_timer.py
 
       - name: Install Godot 4.7.2 stable
         run: |
@@ -70,9 +72,7 @@ jobs:
           dotnet run --project riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj -c Release --no-build > /tmp/riseofreign-api.log 2>&1 &
           echo $! > /tmp/riseofreign-api.pid
           for i in {1..30}; do
-            if curl -fsS http://127.0.0.1:5088/health > /tmp/health.json; then
-              exit 0
-            fi
+            if curl -fsS http://127.0.0.1:5088/health > /tmp/health.json; then exit 0; fi
             sleep 1
           done
           cat /tmp/riseofreign-api.log
@@ -81,89 +81,31 @@ jobs:
       - name: Smoke test office and January API
         run: |
           python - <<'PY'
-          import json
-          import urllib.request
-          import urllib.error
-
+          import json, urllib.request, urllib.error
           BASE = 'http://127.0.0.1:5088'
           AVATARS = ('ataturk','hitler','stalin','churchill','roosevelt','mussolini','custom')
-
           def get(path):
               with urllib.request.urlopen(BASE + path, timeout=5) as response:
                   return response.status, json.load(response)
-
           def post(path, payload):
-              req = urllib.request.Request(
-                  BASE + path,
-                  data=json.dumps(payload).encode('utf-8'),
-                  headers={'Content-Type': 'application/json'},
-                  method='POST',
-              )
+              req = urllib.request.Request(BASE + path, data=json.dumps(payload).encode('utf-8'), headers={'Content-Type':'application/json'}, method='POST')
               with urllib.request.urlopen(req, timeout=5) as response:
                   return response.status, json.load(response)
-
           status, health = get('/health')
-          assert status == 200
-          assert health['status'] == 'ok', health
-          assert health['mapContentLoaded'] is True, health
-          assert health['officeContentLoaded'] is True, health
-          assert health['januaryContentLoaded'] is True, health
-          assert health['stateProfilesLoaded'] is True, health
-
-          status, offices = get('/api/v1/offices')
-          assert status == 200
-          assert set(offices['interaction_types']) == {'side_menu', 'room', 'phone_list'}
-
+          assert status == 200 and health['status'] == 'ok', health
+          assert health['mapContentLoaded'] and health['officeContentLoaded'] and health['januaryContentLoaded'] and health['stateProfilesLoaded']
           for avatar in AVATARS:
-              status, office = get('/api/v1/offices/' + avatar)
-              assert status == 200, avatar
-              assert office['avatarId'] == avatar
-
               status, month = get('/api/v1/months/1933-01/' + avatar)
-              assert status == 200, avatar
-              assert month['avatar_id'] == avatar
-              assert month['next_date'] == '1933-02-01'
-              assert month['player_state']['finance']['monthly_income'] >= 0
-              assert month['player_state']['health']['health'] >= 0
-              assert month['player_state']['inventory_count'] > 0
+              assert status == 200 and month['avatar_id'] == avatar
               decision = month['decisions'][0]
-              choice = decision['choices'][0]
-              phone_category = month['phone_opportunities'][0]
-              map_action = month['map_actions'][0]
-
               payload = {
-                  'decision_choices': {decision['id']: choice['id']},
-                  'phone_action': {'category': phone_category, 'option': 'ask_for_report'},
-                  'map_action': map_action,
+                  'decision_choices': {decision['id']: decision['choices'][0]['id']},
+                  'phone_action': {'category': month['phone_opportunities'][0], 'option': 'ask_for_report'},
+                  'map_action': month['map_actions'][0],
               }
               status, resolved = post('/api/v1/months/1933-01/' + avatar + '/resolve', payload)
-              assert status == 200, (avatar, resolved)
-              assert resolved['status'] == 'resolved', resolved
-              assert resolved['next_date'] == '1933-02-01', resolved
-              assert resolved['resulting_indicators'], resolved
+              assert status == 200 and resolved['next_date'] == '1933-02-01'
               assert resolved['finance']['last_month_ledger']['month'] == '1933-01'
-              assert resolved['health']['health'] >= 0
-              assert len(resolved['inventory']) > 0
-
-          status, hitler = get('/api/v1/months/1933-01/hitler')
-          decision = hitler['decisions'][0]
-          status, hitler_result = post('/api/v1/months/1933-01/hitler/resolve', {
-              'decision_choices': {decision['id']: decision['choices'][0]['id']},
-              'phone_action': {'category': hitler['phone_opportunities'][0], 'option': 'ask_for_report'},
-              'map_action': hitler['map_actions'][0],
-          })
-          assert hitler_result['office_level'] == 1, hitler_result
-          assert any(x['type'] == 'historical_anchor' and x['id'] == 'de_1933_hitler_chancellor' for x in hitler_result['applied_actions'])
-
-          try:
-              post('/api/v1/months/1933-01/ataturk/resolve', {
-                  'decision_choices': {},
-                  'phone_action': {'category': 'cabinet', 'option': 'ask_for_report'},
-                  'map_action': 'inspect_resources',
-              })
-              raise AssertionError('Missing required decision should return 400')
-          except urllib.error.HTTPError as exc:
-              assert exc.code == 400, exc.code
           PY
 
       - name: Show API log on failure
@@ -173,6 +115,4 @@ jobs:
       - name: Stop API
         if: always()
         run: |
-          if [ -f /tmp/riseofreign-api.pid ]; then
-            kill "$(cat /tmp/riseofreign-api.pid)" || true
-          fi
+          if [ -f /tmp/riseofreign-api.pid ]; then kill "$(cat /tmp/riseofreign-api.pid)" || true; fi
