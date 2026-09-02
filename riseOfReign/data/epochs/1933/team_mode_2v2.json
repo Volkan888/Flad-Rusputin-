@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "mode_id": "historical_2v2",
+  "name": "Blau gegen Rot",
+  "max_players": 4,
+  "team_size": 2,
+  "team_lock": true,
+  "historical_start": "1933-01-01",
+  "teams": {
+    "blue": {
+      "label": "Alliierte Seite",
+      "ui_color": "blue",
+      "default_player_slots": [
+        {"slot": 1, "avatar_id": "churchill", "country_id": "united_kingdom"},
+        {"slot": 2, "avatar_id": "roosevelt", "country_id": "united_states"}
+      ],
+      "shared_systems": ["team_chat", "team_phone", "joint_meetings", "shared_intelligence_if_agreed", "lend_lease_or_aid_when_unlocked", "joint_research_if_agreed", "joint_operations_when_at_war"],
+      "historical_note": "The game begins in 1933 before the wartime Allied coalition fully exists. The blue team represents the eventual Allied side for the standard campaign; actual treaties, war status and military access still unlock through historical/event conditions."
+    },
+    "red": {
+      "label": "Achsen-Seite",
+      "ui_color": "red",
+      "default_player_slots": [
+        {"slot": 3, "avatar_id": "hitler", "country_id": "germany"},
+        {"slot": 4, "avatar_id": "mussolini", "country_id": "italy"}
+      ],
+      "shared_systems": ["team_chat", "team_phone", "joint_meetings", "shared_intelligence_if_agreed", "resource_deals", "joint_research_if_agreed", "joint_operations_when_at_war"],
+      "portrayal_note": "Historical and critical presentation. The red team is a gameplay faction, not heroic or celebratory framing of fascist regimes."
+    }
+  },
+  "non_player_or_optional_powers_1933": [
+    {
+      "avatar_id": "ataturk",
+      "country_id": "turkey",
+      "default_role": "independent_power",
+      "can_join_team_only_by_scenario_or_event": true
+    },
+    {
+      "avatar_id": "stalin",
+      "country_id": "soviet_union",
+      "default_role": "independent_power_1933",
+      "historical_team_transition": {
+        "team": "blue",
+        "condition": "historical_wartime_alliance_context_after_german_invasion_of_soviet_union",
+        "earliest_historical_year": 1941
+      }
+    },
+    {
+      "avatar_id": "custom",
+      "country_id": null,
+      "default_role": "scenario_defined",
+      "can_replace_slot_in_alternate_history": true
+    }
+  ],
+  "rules": {
+    "exactly_two_human_players_per_team": true,
+    "friendly_fire": false,
+    "team_members_cannot_directly_invade_each_other_while_team_lock_active": true,
+    "team_resources_are_not_automatically_pooled": true,
+    "state_treasuries_remain_separate": true,
+    "personal_inventory_remains_separate": true,
+    "organization_inventory_remains_separate": true,
+    "research_can_be_shared_only_through_agreement": true,
+    "military_control_is_never_automatically_shared": true,
+    "sector_control_remains_country_specific": true,
+    "victory_is_team_based_but_country_score_is_tracked": true
+  },
+  "team_interactions": {
+    "telephone": ["private_team_call", "three_way_or_four_way_conference", "request_aid", "offer_aid", "share_intelligence", "coordinate_research", "coordinate_diplomacy", "coordinate_operation"],
+    "meeting_room": ["bilateral_team_meeting", "full_team_conference", "war_council_when_unlocked", "economic_coordination", "research_coordination"],
+    "map": ["team_plan_markers", "proposed_fronts", "shared_supply_request", "allied_route_request"],
+    "restrictions": ["no_automatic_access_to_partner_budget", "no_automatic_access_to_partner_inventory", "no_automatic_access_to_partner_units"]
+  },
+  "victory": {
+    "primary": "team_victory",
+    "tracks": ["strategic_objectives", "surviving_capitals", "sector_control", "industrial_capacity", "resource_security", "military_position", "diplomatic_bloc_strength", "research_progress", "civil_stability"],
+    "individual_contribution_score": true,
+    "instant_win_by_single_capital_capture": false
+  },
+  "ui": {
+    "blue_side": {"accent": "#2458A6", "map_outline": "#3B82D0"},
+    "red_side": {"accent": "#8D1118", "map_outline": "#C72B32"},
+    "neutral": {"accent": "#77716A"},
+    "rule": "Team colors identify gameplay sides; national flags and historical country colors remain visible separately."
+  }
+}
