@@ -14,9 +14,12 @@ class OfficeClientContractTests(unittest.TestCase):
         cls.avatar_gd = (CLIENT / "scripts" / "avatar_select.gd").read_text(encoding="utf-8")
         cls.audio_gd = (CLIENT / "scripts" / "audio_manager.gd").read_text(encoding="utf-8")
         cls.office_gd = (CLIENT / "scripts" / "office_hub.gd").read_text(encoding="utf-8")
+        cls.timer_gd = (CLIENT / "scripts" / "turn_timer_widget.gd").read_text(encoding="utf-8")
+        cls.intro_gd = (CLIENT / "scripts" / "intro.gd").read_text(encoding="utf-8")
         cls.main_scene = (CLIENT / "scenes" / "main.tscn").read_text(encoding="utf-8")
         cls.avatar_scene = (CLIENT / "scenes" / "avatar_select.tscn").read_text(encoding="utf-8")
         cls.office_scene = (CLIENT / "scenes" / "office_hub.tscn").read_text(encoding="utf-8")
+        cls.intro_scene = (CLIENT / "scenes" / "intro.tscn").read_text(encoding="utf-8")
         cls.project = (CLIENT / "project.godot").read_text(encoding="utf-8")
         cls.office_data = json.loads(OFFICE_DATA.read_text(encoding="utf-8"))
 
@@ -37,13 +40,18 @@ class OfficeClientContractTests(unittest.TestCase):
     def test_audio_manager_is_global_persistent_and_configurable(self):
         self.assertIn('AudioManager="*res://scripts/audio_manager.gd"', self.project)
         self.assertIn('user://riseofreign_settings.cfg', self.audio_gd)
-        self.assertIn('master_volume', self.audio_gd)
-        self.assertIn('music_volume', self.audio_gd)
-        self.assertIn('sfx_volume', self.audio_gd)
-        self.assertIn('start_menu_music', self.audio_gd)
-        self.assertIn('play_click', self.audio_gd)
-        for node in ("MasterSlider", "MusicSlider", "SfxSlider", "MusicToggle", "SfxToggle"):
-            self.assertIn(f'name="{node}"', self.main_scene)
+        for token in ("master_volume", "music_volume", "sfx_volume", "start_menu_music", "play_click"):
+            self.assertIn(token, self.audio_gd)
+
+    def test_intro_is_video_first_with_safe_fallback(self):
+        self.assertIn('name="Video" type="VideoStreamPlayer"', self.intro_scene)
+        self.assertIn('name="Fallback"', self.intro_scene)
+        self.assertIn('VK APPS', self.intro_scene)
+        self.assertIn('RISE OF REIGN', self.intro_scene)
+        self.assertIn('vkapps_riseofreign_intro.ogv', self.intro_gd)
+        self.assertIn('ResourceLoader.exists', self.intro_gd)
+        self.assertIn('_run_fallback_intro', self.intro_gd)
+        self.assertIn('_on_video_finished', self.intro_gd)
 
     def test_office_client_uses_only_approved_interaction_modes(self):
         self.assertIn('"side_menu":', self.office_gd)
@@ -54,42 +62,45 @@ class OfficeClientContractTests(unittest.TestCase):
         self.assertEqual(set(self.office_data["interaction_types"]), {"side_menu", "room", "phone_list"})
 
     def test_office_api_contract_is_used(self):
-        self.assertIn('/api/v1/offices/%s', self.office_gd)
-        self.assertIn('avatarOffice', self.office_gd)
-        self.assertIn('sharedObjects', self.office_gd)
-        self.assertIn('officeLevels', self.office_gd)
-        self.assertIn('phoneSystem', self.office_gd)
-        self.assertIn('rooms', self.office_gd)
+        for token in ('/api/v1/offices/%s', 'avatarOffice', 'sharedObjects', 'officeLevels', 'phoneSystem', 'rooms'):
+            self.assertIn(token, self.office_gd)
 
-    def test_mobile_scene_has_required_surfaces_and_permanent_hud(self):
+    def test_desktop_scene_has_modern_icon_navigation_and_hud(self):
         for node_name in (
             "TopHud", "Treasury", "Income", "Expenses", "Health", "Stability", "Authority",
-            "QuickNav", "OfficePanel", "ObjectGrid", "InteractionPanel", "InteractionBody", "ActionList", "HTTPRequest"
+            "QuickNav", "OfficePanel", "ObjectGrid", "InteractionPanel", "InteractionBody", "ActionList",
+            "TurnPanel", "TimerLabel", "ReadyButton", "ReadyPlayers", "HTTPRequest"
         ):
             self.assertIn(f'name="{node_name}"', self.office_scene)
-        for label in ("BÜRO", "WELTKARTE", "TELEFON", "INVENTAR", "WIRTSCHAFT", "MILITÄR", "EINSTELLUNGEN"):
+        for label in ("BÜRO", "WELT", "TELEFON", "STAAT", "STRATEGIE", "EVENTS", "EINSTELLUNGEN", "FERTIG"):
             self.assertIn(label, self.office_scene)
+        for icon in ("office.svg", "world.svg", "phone.svg", "state.svg", "strategy.svg", "events.svg", "settings.svg", "timer.svg", "ready.svg"):
+            self.assertIn(icon, self.office_scene)
+            self.assertTrue((CLIENT / "assets" / "icons" / icon).exists(), icon)
+        self.assertIn('tooltip_text', self.office_scene)
         self.assertIn('_update_hud', self.office_gd)
-        self.assertIn('_on_nav_inventory', self.office_gd)
-        self.assertIn('personal_objects', self.office_gd)
+
+    def test_timer_widget_counts_down_and_supports_ready_toggle(self):
+        for token in ("turn_seconds", "seconds_left", "_on_tick", "_on_ready_pressed", "BEREIT ✓", "ZEIT ABGELAUFEN"):
+            self.assertIn(token, self.timer_gd)
+        self.assertIn('total_players: int = 4', self.timer_gd)
 
     def test_office_navigation_has_no_dead_end_fallback(self):
-        self.assertIn('_show_office', self.office_gd)
-        self.assertIn('_show_room_selector', self.office_gd)
-        self.assertIn('_show_phone_list', self.office_gd)
-        self.assertIn('Zurück', self.office_gd)
+        for token in ('_show_office', '_show_room_selector', '_show_phone_list', 'Zurück'):
+            self.assertIn(token, self.office_gd)
 
     def test_office_level_and_lock_logic_present(self):
-        self.assertIn('current_office_level', self.office_gd)
-        self.assertIn('required_office_level', self.office_gd)
-        self.assertIn('office_level', self.office_gd)
-        self.assertIn('_show_upgrade_overview', self.office_gd)
+        for token in ('current_office_level', 'required_office_level', 'office_level', '_show_upgrade_overview'):
+            self.assertIn(token, self.office_gd)
 
-    def test_project_targets_godot_47_and_configurable_api(self):
+    def test_project_targets_godot_47_desktop_mouse_and_configurable_api(self):
         self.assertIn('PackedStringArray("4.7")', self.project)
         self.assertIn('network/api_base_url=', self.project)
-        self.assertIn('1080', self.project)
-        self.assertIn('1920', self.project)
+        self.assertIn('viewport_width=1920', self.project)
+        self.assertIn('viewport_height=1080', self.project)
+        self.assertIn('ui/input_mode="mouse_keyboard"', self.project)
+        self.assertIn('pointing/emulate_touch_from_mouse=false', self.project)
+        self.assertIn('tooltip_delay_sec=0.35', self.project)
 
 
 if __name__ == "__main__":
