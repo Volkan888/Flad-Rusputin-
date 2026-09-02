@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Kurze, kritisch eingeordnete Wissenskarten für den Solo-Lernmodus.",
+  "portrayal_rule": "Diktaturen, Propaganda, Krieg und Menschenrechtsverletzungen werden nicht glorifiziert und nicht als moralisch neutrale Bonusmechanik dargestellt.",
+  "cards": [
+    {
+      "id": "office_power",
+      "topic": "office",
+      "title": "Büro ist nicht gleich Staatsmacht",
+      "summary": "Ein persönliches oder parteipolitisches Büro gibt Kontakte und Einfluss, aber nicht automatisch Zugriff auf Ministerien, Haushalt oder Militärbefehle.",
+      "question": "Was entscheidet im Spiel über direkten Zugriff auf Staatsmittel?",
+      "choices": ["Nur die Größe des Büros", "Amt, Autorität und institutioneller Zugang", "Das Alter des Avatars"],
+      "correct_index": 1,
+      "explanation": "Die Büroausstattung zeigt Macht an, ersetzt aber keine rechtliche oder institutionelle Zuständigkeit."
+    },
+    {
+      "id": "economy_balance",
+      "topic": "state",
+      "title": "Staatshaushalt und Staatsvermögen",
+      "summary": "Einnahmen, Ausgaben, Schulden und Vermögenswerte werden getrennt geführt. Eine hohe Staatskasse kann gleichzeitig mit hoher Verschuldung oder schwacher Versorgung auftreten.",
+      "question": "Was ist ein Haushaltsüberschuss?",
+      "choices": ["Einnahmen sind höher als Ausgaben", "Alle Ressourcen sind voll", "Der Staat besitzt viele Gebäude"],
+      "correct_index": 0,
+      "explanation": "Ein Überschuss beschreibt den monatlichen Zahlungsstrom, nicht den gesamten Besitz eines Staates."
+    },
+    {
+      "id": "transport_trade",
+      "topic": "map",
+      "title": "Verkehrsnetze verbinden Wirtschaft und Krieg",
+      "summary": "Straßen, Eisenbahnen, Häfen und Seewege erhöhen Handel und Versorgung. In Friedenszeiten können Abkommen die Nutzung durch andere Länder erlauben; im Krieg können Netze beschädigt oder blockiert werden.",
+      "question": "Warum ist ein Eisenbahnknoten strategisch wichtig?",
+      "choices": ["Er verbessert nur Kultur", "Er bündelt Transport, Versorgung und Handel", "Er ersetzt Rohstoffvorkommen"],
+      "correct_index": 1,
+      "explanation": "Ein Verkehrsknoten erzeugt keine Rohstoffe, macht vorhandene Ressourcen aber nutzbarer."
+    },
+    {
+      "id": "research_tradeoffs",
+      "topic": "research",
+      "title": "Forschung kostet Zeit und Kapazität",
+      "summary": "Technologien benötigen Forschungspunkte, Geld, Personal, Material und Monate. Frühes Erforschen ist möglich, aber teurer und riskanter.",
+      "question": "Was ist eine sinnvolle Folge paralleler Großprojekte?",
+      "choices": ["Keine Kosten", "Geteilte Forschungskapazität und längere Dauer", "Sofortige Fertigstellung"],
+      "correct_index": 1,
+      "explanation": "Mehrere Projekte konkurrieren um Ingenieure, Labore, Geld und Industrie."
+    },
+    {
+      "id": "radio_media",
+      "topic": "communications",
+      "title": "Radio, Nachrichten und Propaganda",
+      "summary": "Rundfunk kann informieren, mobilisieren oder manipulieren. Im Lernmodus werden Quelle, Absicht und mögliche Folgen einer Botschaft sichtbar gemacht.",
+      "question": "Welche Frage hilft bei der Quellenkritik?",
+      "choices": ["Wer verbreitet die Nachricht und mit welchem Ziel?", "Ist die Schrift groß?", "Ist das Radio teuer?"],
+      "correct_index": 0,
+      "explanation": "Absender, Zielgruppe, Belege und Interessen sind zentrale Elemente der Quellenkritik."
+    },
+    {
+      "id": "historical_anchor",
+      "topic": "events",
+      "title": "Historische Anker und Spielerfreiheit",
+      "summary": "Belegte Eckdaten bleiben im historischen Modus sichtbar. Entscheidungen verändern Vorbereitung, Reaktion und Folgen, nicht rückwirkend die belegte Vergangenheit.",
+      "question": "Was ist ein historischer Anker?",
+      "choices": ["Ein frei erfundenes Zufallsereignis", "Ein belegtes Eckdatum oder Ereignis", "Ein reiner Grafikfilter"],
+      "correct_index": 1,
+      "explanation": "Historische Anker geben Orientierung; alternative Geschichte entsteht aus Entscheidungen rund um diese Punkte."
+    },
+    {
+      "id": "health_leadership",
+      "topic": "profile",
+      "title": "Gesundheit ist mehrdimensional",
+      "summary": "Gesundheit, Energie, Stress, Mobilität und medizinischer Zugang sind getrennte Werte. Eine körperliche Einschränkung ist kein moralischer oder politischer Minderwert.",
+      "question": "Warum wird Mobilität getrennt von Gesundheit geführt?",
+      "choices": ["Damit Behinderung nicht pauschal als Führungsmalus gilt", "Damit das Inventar größer wird", "Damit Forschung kostenlos ist"],
+      "correct_index": 0,
+      "explanation": "Das System soll körperliche Bedingungen abbilden, ohne sie mit Charakter oder Führungsfähigkeit gleichzusetzen."
+    },
+    {
+      "id": "critical_portrayal",
+      "topic": "portrayal",
+      "title": "Kritische Darstellung von Diktaturen",
+      "summary": "Das Spiel zeigt Machtmechanismen, Repression und Propaganda als historische Systeme mit gesellschaftlichen Kosten. Extremistische Symbolik wird nicht als dekorative Belohnung eingesetzt.",
+      "question": "Was darf im Lernspiel niemals als neutraler Bonus erscheinen?",
+      "choices": ["Menschenrechtsverletzungen und Verfolgung", "Eisenbahnausbau", "Haushaltsplanung"],
+      "correct_index": 0,
+      "explanation": "Verfolgung und Gewalt brauchen kritische Einordnung und dürfen nicht spielerisch verherrlicht werden."
+    }
+  ]
+}

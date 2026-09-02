@@ -14,6 +14,8 @@ on:
       - 'tests/test_turn_timer.py'
       - 'tests/test_succession_capitulation.py'
       - 'tests/test_research_1933_1945.py'
+      - 'tests/test_war_entry_cards.py'
+      - 'tests/test_solo_learning_visuals.py'
       - '.github/workflows/riseofreign-office-ci.yml'
   pull_request:
     paths:
@@ -27,6 +29,8 @@ on:
       - 'tests/test_turn_timer.py'
       - 'tests/test_succession_capitulation.py'
       - 'tests/test_research_1933_1945.py'
+      - 'tests/test_war_entry_cards.py'
+      - 'tests/test_solo_learning_visuals.py'
       - '.github/workflows/riseofreign-office-ci.yml'
 
 jobs:
@@ -43,8 +47,20 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Validate core game content and desktop UI contracts
-        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py tests/test_sectors_1933.py tests/test_power_structures_1933.py tests/test_state_profiles_1933.py tests/test_turn_timer.py tests/test_succession_capitulation.py tests/test_research_1933_1945.py
+      - name: Validate core game content, solo learning and desktop UI contracts
+        run: >-
+          python -m unittest -v
+          tests/test_office_hubs.py
+          tests/test_office_client.py
+          tests/test_january_1933.py
+          tests/test_sectors_1933.py
+          tests/test_power_structures_1933.py
+          tests/test_state_profiles_1933.py
+          tests/test_turn_timer.py
+          tests/test_succession_capitulation.py
+          tests/test_research_1933_1945.py
+          tests/test_war_entry_cards.py
+          tests/test_solo_learning_visuals.py
 
       - name: Install Godot 4.7.2 stable
         run: |
@@ -85,7 +101,7 @@ jobs:
       - name: Smoke test office and January API
         run: |
           python - <<'PY'
-          import json, urllib.request, urllib.error
+          import json, urllib.request
           BASE = 'http://127.0.0.1:5088'
           AVATARS = ('ataturk','hitler','stalin','churchill','roosevelt','mussolini','custom')
           def get(path):

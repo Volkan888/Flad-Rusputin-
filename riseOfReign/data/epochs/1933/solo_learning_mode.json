@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "mode_id": "solo_learning",
+  "name": "Solo-Lernkampagne 1933",
+  "players": 1,
+  "other_powers": "deterministic_ai_director",
+  "default_timer_seconds": 0,
+  "difficulty_options": ["easy", "normal", "hard"],
+  "history_options": ["guided", "alternate"],
+  "learning": {
+    "enabled_by_default": true,
+    "features": ["context_cards", "source_criticism", "consequence_explanations", "knowledge_questions", "glossary", "uncertainty_labels"],
+    "never_reward": ["genocide", "political_persecution", "war_crimes", "racial_ideology", "extremist_symbol_collecting"],
+    "portrayal": "critical_non_glorifying",
+    "graphics": "neutral_historical_room_art_without_glorifying_extremist_symbols"
+  },
+  "prototype_scope": {
+    "playable_player_country": true,
+    "ai_world_summary": true,
+    "ai_map_economy_integration": "incremental",
+    "transparent_note": "The first solo build uses a deterministic AI director while full country simulation is connected step by step."
+  }
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><defs>
+  <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#191716"/><stop offset="1" stop-color="#090a0c"/></linearGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3d2618"/><stop offset=".5" stop-color="#1f140f"/><stop offset="1" stop-color="#0a0909"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1d083"/><stop offset=".5" stop-color="#9b6a29"/><stop offset="1" stop-color="#f0c66b"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#433a34" stop-opacity=".8"/><stop offset="1" stop-color="#0a1118" stop-opacity=".95"/></linearGradient>
+  <radialGradient id="lamp"><stop stop-color="#ffd58c" stop-opacity=".75"/><stop offset="1" stop-color="#ff9d3a" stop-opacity="0"/></radialGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".8"/></filter>
+  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#7db7c0" stroke-opacity=".08"/></pattern>
+</defs><rect width="1600" height="900" fill="url(#wall)"/><rect x="55" y="90" width="350" height="420" rx="8" fill="url(#glass)" stroke="#7b5228" stroke-width="8"/>
+<g fill="#0e1115"><path d="M70 480V350h45v130h20V300h60v180h20V390h40v90h25V250h65v230h45v30H70z"/></g>
+<g fill="#d99845" opacity=".65"><circle cx="105" cy="410" r="3"/><circle cx="150" cy="365" r="3"/><circle cx="230" cy="440" r="3"/><circle cx="315" cy="330" r="3"/><circle cx="350" cy="400" r="3"/></g><rect x="520" y="95" width="650" height="360" rx="10" fill="#312b22" stroke="url(#gold)" stroke-width="10"/>
+<path d="M560 165c90-60 160-20 230-45 95-34 145 25 230 2 55-15 75 40 100 75-60 25-85 85-150 92-70 8-110-52-175-40-84 16-128 80-215 48-62-22-80-82-20-132z" fill="#9d8252" opacity=".8"/>
+<g fill="#d9b56d"><circle cx="650" cy="235" r="9"/><circle cx="835" cy="205" r="9"/><circle cx="1010" cy="270" r="9"/></g>
+<path d="M650 235Q760 130 835 205T1010 270" fill="none" stroke="#c64338" stroke-width="5" stroke-dasharray="10 8"/>
+<rect x="1240" y="95" width="270" height="420" rx="8" fill="#15110e" stroke="#6b4826" stroke-width="7"/>
+<g fill="#2d1d13" stroke="#76502a" stroke-width="3"><rect x="1265" y="130" width="220" height="55"/><rect x="1265" y="200" width="220" height="55"/><rect x="1265" y="270" width="220" height="55"/><rect x="1265" y="340" width="220" height="55"/><rect x="1265" y="410" width="220" height="75"/></g>
+<rect x="430" y="470" width="770" height="290" rx="18" fill="url(#wood)" stroke="#9b642c" stroke-width="8" filter="url(#shadow)"/>
+<rect x="505" y="505" width="260" height="125" rx="8" fill="#c2a36b" opacity=".9" transform="rotate(-2 635 568)"/>
+<path d="M530 535h205M530 565h170M530 595h210" stroke="#4a3824" stroke-width="6" opacity=".75"/>
+<g transform="translate(810 525)"><rect width="145" height="92" rx="14" fill="#111" stroke="#b78a43" stroke-width="5"/><circle cx="45" cy="46" r="27" fill="none" stroke="#d5b366" stroke-width="4"/><path d="M100 34h25M100 50h25M100 66h18" stroke="#d5b366" stroke-width="4"/></g>
+<g transform="translate(1060 530)"><ellipse cx="50" cy="68" rx="46" ry="18" fill="#101010"/><path d="M20 55q30-80 60 0z" fill="#c5a04f"/><circle cx="50" cy="15" r="70" fill="url(#lamp)"/></g>
+<path d="M530 760h90v105h-90zM1010 760h90v105h-90z" fill="#1b120e"/>
+<path d="M760 470v-80q0-85 85-85t85 85v80" fill="#101011" stroke="#573a22" stroke-width="7"/>
+<path d="M780 430q65-55 130 0" fill="none" stroke="#725033" stroke-width="5"/>
+<rect x="405" y="75" width="95" height="430" fill="#54151b"/><path d="M423 85v410M450 85v410M477 85v410" stroke="#7b3036" stroke-width="10" opacity=".65"/>
+<circle cx="452" cy="250" r="35" fill="#151515" stroke="#d0a854" stroke-width="5"/><path d="M452 225v50M427 250h50" stroke="#d0a854" stroke-width="5"/><rect x="8" y="8" width="1584" height="884" rx="20" fill="none" stroke="#8f5b24" stroke-width="3" opacity=".6"/></svg>

@@ -45,33 +45,76 @@ jobs:
         run: |
           dotnet publish riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o /tmp/ror-server
 
-      - name: Assemble playable package
+      - name: Assemble playable package with robust launcher
         run: |
           mkdir -p /tmp/ror-dist/server /tmp/ror-dist/data/epochs
           cp riseOfReign/client/build/riseOfReign.exe /tmp/ror-dist/
           cp -R /tmp/ror-server/* /tmp/ror-dist/server/
           cp -R riseOfReign/data/epochs/1933 /tmp/ror-dist/data/epochs/
-          cat > /tmp/ror-dist/START_RISE_OF_REIGN.bat <<'BAT'
+          cat > /tmp/ror-dist/SPIEL_STARTEN.bat <<'BAT'
           @echo off
-          title Rise of Reign
+          setlocal
+          title Rise of Reign - Launcher
           cd /d "%~dp0"
           set "ROR_EPOCH_1933_PATH=%~dp0data\epochs\1933"
           set "ASPNETCORE_URLS=http://127.0.0.1:8080"
-          echo Starting Rise of Reign server...
-          start "RiseOfReign Server" /B "%~dp0server\RiseOfReign.Api.exe"
-          timeout /t 2 /nobreak >nul
-          echo Starting game...
-          "%~dp0riseOfReign.exe"
-          taskkill /IM RiseOfReign.Api.exe /F >nul 2>&1
+          set "ASPNETCORE_ENVIRONMENT=Production"
+          set "DOTNET_EnableDiagnostics=0"
+          set "ROR_LAUNCH_DIR=%~dp0"
+          set "ROR_SERVER_EXE=%~dp0server\RiseOfReign.Api.exe"
+          set "ROR_SERVER_LOG=%~dp0server.log"
+          set "ROR_SERVER_ERROR_LOG=%~dp0server-error.log"
+          set "ROR_SERVER_PID_FILE=%~dp0server.pid"
+          echo [1/3] Rise of Reign Server wird gestartet...
+          del /q "%ROR_SERVER_LOG%" "%ROR_SERVER_ERROR_LOG%" "%ROR_SERVER_PID_FILE%" >nul 2>&1
+          powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference='Stop'; $p=Start-Process -FilePath $env:ROR_SERVER_EXE -WorkingDirectory $env:ROR_LAUNCH_DIR -WindowStyle Minimized -RedirectStandardOutput $env:ROR_SERVER_LOG -RedirectStandardError $env:ROR_SERVER_ERROR_LOG -PassThru; Set-Content -Path $env:ROR_SERVER_PID_FILE -Value $p.Id"
+          if errorlevel 1 (
+            echo FEHLER: Der lokale Server konnte nicht gestartet werden.
+            pause
+            exit /b 1
+          )
+          echo [2/3] Warte auf den lokalen Spielserver...
+          powershell -NoProfile -ExecutionPolicy Bypass -Command "$ErrorActionPreference='SilentlyContinue'; for($i=0;$i -lt 80;$i++){try{$null=Invoke-WebRequest -UseBasicParsing 'http://127.0.0.1:8080/health' -TimeoutSec 1; exit 0}catch{Start-Sleep -Milliseconds 250}}; exit 1"
+          if errorlevel 1 (
+            echo.
+            echo FEHLER: Der lokale Server ist nicht erreichbar.
+            echo Standardausgabe:
+            if exist "%ROR_SERVER_LOG%" type "%ROR_SERVER_LOG%"
+            echo Fehlerausgabe:
+            if exist "%ROR_SERVER_ERROR_LOG%" type "%ROR_SERVER_ERROR_LOG%"
+            if exist "%ROR_SERVER_PID_FILE%" for /f "usebackq" %%P in ("%ROR_SERVER_PID_FILE%") do taskkill /PID %%P /T /F >nul 2>&1
+            pause
+            exit /b 1
+          )
+          echo [3/3] Spiel wird geoeffnet...
+          start "Rise of Reign" /wait "%~dp0riseOfReign.exe"
+          if exist "%ROR_SERVER_PID_FILE%" (
+            for /f "usebackq" %%P in ("%ROR_SERVER_PID_FILE%") do taskkill /PID %%P /T /F >nul 2>&1
+            del /q "%ROR_SERVER_PID_FILE%" >nul 2>&1
+          )
+          endlocal
           BAT
+          cp /tmp/ror-dist/SPIEL_STARTEN.bat /tmp/ror-dist/START_RISE_OF_REIGN.bat
           cat > /tmp/ror-dist/README_START.txt <<'TXT'
-          RISE OF REIGN - PLAYABLE PROTOTYPE
+          RISE OF REIGN - WINDOWS PROTOTYP
 
-          1. Extract the complete ZIP.
-          2. Double-click START_RISE_OF_REIGN.bat.
-          3. Keep the folder structure unchanged.
+          START:
+          1. ZIP vollständig entpacken.
+          2. SPIEL_STARTEN.bat doppelklicken.
+          3. Nicht nur die Server-EXE öffnen.
 
-          Current prototype includes VK APPS intro fallback, main menu, avatar selection, office hub, January 1933 loop, mouse UI, timer/ready UI and current content systems.
+          Der Launcher startet den lokalen Server, wartet auf den Health-Check und öffnet danach das Spiel.
+
+          Enthalten:
+          - VK APPS / Rise of Reign Intro
+          - modernes Hauptmenü
+          - Solo-Lernkampagne für einen Spieler
+          - Schwierigkeitsgrad, historischer Modus und optionaler Timer
+          - KI-Weltlage als deterministischer Direktor
+          - bildliche Büro-, Karten-, Kommunikations-, Forschungs-, Archiv- und Meetingräume
+          - anklickbare Maus-Hotspots und SVG-Icons
+          - Wissenskarten und Fragen
+          - Januar-1933-Spielschleife
           TXT
 
       - name: Upload playable Windows build

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id="1"]
+[ext_resource path="res://assets/rooms/menu_background.svg" type="Texture2D" id="2"]
+[ext_resource path="res://assets/icons/learning.svg" type="Texture2D" id="3"]
+[ext_resource path="res://assets/icons/strategy.svg" type="Texture2D" id="4"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,6 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
+[node name="MenuBackdrop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -18,28 +33,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.018, 0.018, 0.018, 1)
+color = Color(0.01, 0.01, 0.012, 0.5)
 mouse_filter = 2
 
 [node name="RedTop" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 14.0
+offset_bottom = 8.0
 grow_horizontal = 2
 color = Color(0.45, 0.025, 0.04, 1)
-mouse_filter = 2
-
-[node name="RedSide" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -22.0
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0.32, 0.018, 0.03, 1)
 mouse_filter = 2
 
 [node name="MainLayout" type="VBoxContainer" parent="."]
@@ -47,124 +50,146 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = 80.0
-offset_right = -56.0
-offset_bottom = -50.0
+offset_left = 72.0
+offset_top = 54.0
+offset_right = -72.0
+offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 26
+theme_override_constants/separation = 20
 
 [node name="Header" type="VBoxContainer" parent="MainLayout"]
 layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="Title" type="Label" parent="MainLayout/Header"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
-theme_override_font_sizes/font_size = 72
-text = "RISE OF REIGN"
-horizontal_alignment = 1
-
-[node name="Subtitle" type="Label" parent="MainLayout/Header"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.72, 0.1, 0.12, 1)
-theme_override_font_sizes/font_size = 26
-text = "1933 · THE WORLD IN CRISIS"
-horizontal_alignment = 1
+theme_override_constants/separation = 2
 
 [node name="Publisher" type="Label" parent="MainLayout/Header"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.46, 0.44, 0.4, 1)
-theme_override_font_sizes/font_size = 16
-text = "A VK APPS GAME"
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.75, 0.62, 0.36, 1)
+theme_override_font_sizes/font_size = 18
+text = "VK APPS PRÄSENTIERT"
+
+[node name="Title" type="Label" parent="MainLayout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.91, 0.8, 1)
+theme_override_font_sizes/font_size = 78
+text = "RISE OF REIGN"
+
+[node name="Subtitle" type="Label" parent="MainLayout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.77, 0.12, 0.15, 1)
+theme_override_font_sizes/font_size = 25
+text = "1933 · THE WORLD IN CRISIS · HISTORISCHES STRATEGIE- UND LERNSPIEL"
 
 [node name="Rule" type="ColorRect" parent="MainLayout/Header"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 3)
-color = Color(0.42, 0.03, 0.045, 1)
+color = Color(0.5, 0.04, 0.055, 0.9)
 
 [node name="Content" type="HSplitContainer" parent="MainLayout"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 540
+split_offset = 680
 
 [node name="MenuPanel" type="PanelContainer" parent="MainLayout/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(630, 0)
 
 [node name="Menu" type="VBoxContainer" parent="MainLayout/Content/MenuPanel"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 14
 
 [node name="MenuTitle" type="Label" parent="MainLayout/Content/MenuPanel/Menu"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.83, 0.79, 0.7, 1)
-theme_override_font_sizes/font_size = 24
-text = "HAUPTMENÜ"
+theme_override_font_sizes/font_size = 22
+text = "SPIELMODUS"
 
 [node name="NewGame" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 86)
-text = "NEUES SPIEL"
+custom_minimum_size = Vector2(0, 96)
+icon = ExtResource("3")
+icon_max_width = 38
+expand_icon = true
+text = "NEUES SPIEL · SOLO-LERNKAMPAGNE"
+tooltip_text = "Ein Spieler, KI-Welt, Lernkarten und Wissensfragen"
+
+[node name="SoloNote" type="Label" parent="MainLayout/Content/MenuPanel/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.63, 0.57, 1)
+text = "Empfohlen: ohne Zeitdruck beginnen, Avatar wählen und Januar 1933 im eigenen Büro spielen."
+autowrap_mode = 2
 
 [node name="Continue" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 86)
+custom_minimum_size = Vector2(0, 76)
 text = "FORTSETZEN"
 
 [node name="Multiplayer" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 86)
-text = "MULTIPLAYER · 4 SPIELER"
+custom_minimum_size = Vector2(0, 88)
+icon = ExtResource("4")
+icon_max_width = 36
+expand_icon = true
+text = "MULTIPLAYER · 2 GEGEN 2"
+tooltip_text = "Blaue Seite gegen rote Seite · vier Spieler"
 
 [node name="Settings" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 86)
+custom_minimum_size = Vector2(0, 72)
 text = "EINSTELLUNGEN"
 
 [node name="Quit" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 72)
+custom_minimum_size = Vector2(0, 66)
 text = "BEENDEN"
 
 [node name="FeaturePanel" type="PanelContainer" parent="MainLayout/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(430, 0)
+custom_minimum_size = Vector2(560, 0)
 
 [node name="Features" type="VBoxContainer" parent="MainLayout/Content/FeaturePanel"]
 layout_mode = 2
-theme_override_constants/separation = 22
+theme_override_constants/separation = 18
 
 [node name="Era" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.88, 0.83, 0.73, 1)
-theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(0.91, 0.85, 0.72, 1)
+theme_override_font_sizes/font_size = 32
 text = "1. JANUAR 1933"
 horizontal_alignment = 1
 
 [node name="Description" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.68, 0.66, 0.61, 1)
-text = "Führe einen Avatar von seiner persönlichen Steuerzentrale aus. Staatshaushalt, Ressourcen, Diplomatie, Forschung, Aufrüstung und Gesundheit laufen gleichzeitig."
+theme_override_colors/font_color = Color(0.73, 0.7, 0.64, 1)
+theme_override_font_sizes/font_size = 20
+text = "Führe einen historischen oder eigenen Avatar. Lerne, wie Staatshaushalt, Ressourcen, Verkehrsnetze, Forschung, Diplomatie, Gesundheit und politische Macht zusammenwirken."
 autowrap_mode = 2
 horizontal_alignment = 1
 
+[node name="LearningCard" type="PanelContainer" parent="MainLayout/Content/FeaturePanel/Features"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LearningText" type="Label" parent="MainLayout/Content/FeaturePanel/Features/LearningCard"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.76, 0.65, 1)
+theme_override_font_sizes/font_size = 18
+text = "SOLO-LERNMODUS\n\n• Bildliche Räume mit Maus-Hotspots\n• KI-gesteuerte Weltlage\n• Historischer Kontext und Quellenkritik\n• Wissensfragen mit Erklärung\n• Kritische Darstellung von Diktatur, Propaganda und Krieg\n• Keine verherrlichende Symbolik in den Spielräumen"
+autowrap_mode = 2
+vertical_alignment = 1
+
 [node name="Systems" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
-theme_override_font_sizes/font_size = 22
-text = "BÜRO  ·  WELTKARTE  ·  TELEFON\nWIRTSCHAFT  ·  FORSCHUNG  ·  MILITÄR\nDIPLOMATIE  ·  INVENTAR  ·  EREIGNISSE"
+theme_override_colors/font_color = Color(0.78, 0.72, 0.62, 1)
+theme_override_font_sizes/font_size = 18
+text = "BÜRO · WELTKARTE · TELEFON · WIRTSCHAFT\nFORSCHUNG · MILITÄR · DIPLOMATIE · EVENTS"
 horizontal_alignment = 1
 
 [node name="EraNote" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.55, 0.52, 0.48, 1)
-text = "Historische Anker bleiben bestehen. Deine Entscheidungen verändern die Lage, Ressourcen, Macht und Beziehungen darum herum."
+text = "Historische Anker bleiben sichtbar. Entscheidungen verändern Vorbereitung, Reaktion und Folgen."
 autowrap_mode = 2
-vertical_alignment = 1
 horizontal_alignment = 1
 
 [node name="Footer" type="HBoxContainer" parent="MainLayout"]
@@ -173,13 +198,13 @@ layout_mode = 2
 [node name="Status" type="Label" parent="MainLayout/Footer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.55, 0.53, 0.49, 1)
+theme_override_colors/font_color = Color(0.65, 0.61, 0.55, 1)
 text = "Build"
 
 [node name="SoundState" type="Label" parent="MainLayout/Footer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.53, 0.49, 1)
-text = "♪ SOUND"
+theme_override_colors/font_color = Color(0.65, 0.61, 0.55, 1)
+text = "♪ SOUND · MAUSSTEUERUNG"
 
 [node name="SettingsOverlay" type="Control" parent="."]
 layout_mode = 1
@@ -196,7 +221,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.82)
+color = Color(0, 0, 0, 0.86)
 mouse_filter = 1
 
 [node name="SettingsPanel" type="PanelContainer" parent="SettingsOverlay"]
@@ -206,16 +231,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -420.0
-offset_right = 380.0
-offset_bottom = 420.0
+offset_left = -390.0
+offset_top = -410.0
+offset_right = 390.0
+offset_bottom = 410.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SettingsLayout" type="VBoxContainer" parent="SettingsOverlay/SettingsPanel"]
 layout_mode = 2
-theme_override_constants/separation = 22
+theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
@@ -226,12 +251,10 @@ horizontal_alignment = 1
 
 [node name="MasterRow" type="HBoxContainer" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
-
 [node name="Label" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MasterRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(190, 0)
+custom_minimum_size = Vector2(210, 0)
 text = "Gesamtlautstärke"
-
 [node name="MasterSlider" type="HSlider" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MasterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -241,12 +264,10 @@ value = 0.85
 
 [node name="MusicRow" type="HBoxContainer" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
-
 [node name="Label" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MusicRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(190, 0)
+custom_minimum_size = Vector2(210, 0)
 text = "Musik"
-
 [node name="MusicSlider" type="HSlider" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MusicRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -256,12 +277,10 @@ value = 0.55
 
 [node name="SfxRow" type="HBoxContainer" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
-
 [node name="Label" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(190, 0)
+custom_minimum_size = Vector2(210, 0)
 text = "Effekte"
-
 [node name="SfxSlider" type="HSlider" parent="SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -272,11 +291,9 @@ value = 0.75
 [node name="MusicToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 text = "Menü-Musik aktiviert"
-
 [node name="SfxToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 text = "UI-Sounds aktiviert"
-
 [node name="IntroToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 text = "VK APPS / RISE OF REIGN Intro beim Start"
@@ -284,7 +301,7 @@ text = "VK APPS / RISE OF REIGN Intro beim Start"
 [node name="AudioNote" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58, 0.56, 0.52, 1)
-text = "Der Prototyp nutzt eigens erzeugte UI-/Intro-Töne. Finale Musik, Logoanimation und historische Ambiente-Sounds können später als freigegebene Assets ersetzt werden."
+text = "Solo-Timer, Schwierigkeitsgrad und Lernmodus werden beim Start der Kampagne eingestellt."
 autowrap_mode = 2
 
 [node name="Close" type="Button" parent="SettingsOverlay/SettingsPanel/SettingsLayout" groups=["strategy_menu_button"]]

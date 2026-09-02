@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><defs>
+  <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#191716"/><stop offset="1" stop-color="#090a0c"/></linearGradient>
+  <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3d2618"/><stop offset=".5" stop-color="#1f140f"/><stop offset="1" stop-color="#0a0909"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1d083"/><stop offset=".5" stop-color="#9b6a29"/><stop offset="1" stop-color="#f0c66b"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#433a34" stop-opacity=".8"/><stop offset="1" stop-color="#0a1118" stop-opacity=".95"/></linearGradient>
+  <radialGradient id="lamp"><stop stop-color="#ffd58c" stop-opacity=".75"/><stop offset="1" stop-color="#ff9d3a" stop-opacity="0"/></radialGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#000" flood-opacity=".8"/></filter>
+  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M80 0H0V80" fill="none" stroke="#7db7c0" stroke-opacity=".08"/></pattern>
+</defs><rect width="1600" height="900" fill="url(#wall)"/><rect x="55" y="90" width="350" height="420" rx="8" fill="url(#glass)" stroke="#7b5228" stroke-width="8"/>
+<g fill="#0e1115"><path d="M70 480V350h45v130h20V300h60v180h20V390h40v90h25V250h65v230h45v30H70z"/></g>
+<g fill="#d99845" opacity=".65"><circle cx="105" cy="410" r="3"/><circle cx="150" cy="365" r="3"/><circle cx="230" cy="440" r="3"/><circle cx="315" cy="330" r="3"/><circle cx="350" cy="400" r="3"/></g><rect x="465" y="85" width="670" height="330" rx="10" fill="#2b251d" stroke="url(#gold)" stroke-width="8"/><path d="M515 165c130-70 210 20 330-20 110-36 170 48 240 95-90 25-125 105-235 80-105-24-190 48-285-5-72-40-80-95-50-150z" fill="#947b4e"/>
+<rect x="240" y="505" width="1120" height="230" rx="80" fill="url(#wood)" stroke="#a46b2d" stroke-width="9" filter="url(#shadow)"/>
+<g fill="#111" stroke="#6f4a2c" stroke-width="7"><path d="M280 540q-80-120-140-10v170h150z"/><path d="M1320 540q80-120 140-10v170h-150z"/><path d="M540 460q-60-120-120-15v105h130z"/><path d="M1060 460q60-120 120-15v105h-130z"/></g>
+<g fill="#c8b389"><rect x="470" y="555" width="240" height="105"/><rect x="760" y="555" width="250" height="105"/></g>
+<g><circle cx="355" cy="450" r="100" fill="url(#lamp)"/><path d="M325 470q30-90 60 0z" fill="#c39949"/><circle cx="1245" cy="450" r="100" fill="url(#lamp)"/><path d="M1215 470q30-90 60 0z" fill="#c39949"/></g><rect x="8" y="8" width="1584" height="884" rx="20" fill="none" stroke="#8f5b24" stroke-width="3" opacity=".6"/></svg>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource path="res://scripts/office_hub.gd" type="Script" id="1"]
 [ext_resource path="res://scripts/turn_timer_widget.gd" type="Script" id="2"]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/icons/settings.svg" type="Texture2D" id="9"]
 [ext_resource path="res://assets/icons/timer.svg" type="Texture2D" id="10"]
 [ext_resource path="res://assets/icons/ready.svg" type="Texture2D" id="11"]
+[ext_resource path="res://scripts/visual_room_controller.gd" type="Script" id="12"]
 
 [node name="OfficeHub" type="Control"]
 layout_mode = 3
@@ -28,14 +29,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.014, 0.014, 0.016, 1)
+color = Color(0.008, 0.009, 0.012, 1)
 mouse_filter = 2
 
 [node name="AccentTop" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 4.0
+offset_bottom = 5.0
 grow_horizontal = 2
 color = Color(0.52, 0.025, 0.04, 1)
 mouse_filter = 2
@@ -45,25 +46,25 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 22.0
-offset_top = 18.0
-offset_right = -22.0
-offset_bottom = -18.0
+offset_left = 18.0
+offset_top = 12.0
+offset_right = -18.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Layout" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 7
 
 [node name="Header" type="HBoxContainer" parent="Margin/Layout"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 68)
-theme_override_constants/separation = 12
+custom_minimum_size = Vector2(0, 66)
+theme_override_constants/separation = 10
 
 [node name="Back" type="Button" parent="Margin/Layout/Header"]
 layout_mode = 2
-custom_minimum_size = Vector2(90, 56)
+custom_minimum_size = Vector2(82, 54)
 text = "←"
 tooltip_text = "Zur Avatar-Auswahl"
 
@@ -71,39 +72,39 @@ tooltip_text = "Zur Avatar-Auswahl"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.92, 0.87, 0.76, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 29
 text = "Avatar"
 vertical_alignment = 1
 
 [node name="Date" type="Label" parent="Margin/Layout/Header"]
 layout_mode = 2
-custom_minimum_size = Vector2(220, 56)
+custom_minimum_size = Vector2(220, 54)
 theme_override_colors/font_color = Color(0.82, 0.78, 0.69, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 19
 text = "1. Januar 1933"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="TurnPanel" type="PanelContainer" parent="Margin/Layout/Header"]
 layout_mode = 2
-custom_minimum_size = Vector2(355, 62)
+custom_minimum_size = Vector2(390, 62)
 script = ExtResource("2")
 
 [node name="TurnRow" type="HBoxContainer" parent="Margin/Layout/Header/TurnPanel"]
 layout_mode = 2
-theme_override_constants/separation = 9
+theme_override_constants/separation = 8
 
 [node name="TimerIcon" type="TextureRect" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(38, 38)
+custom_minimum_size = Vector2(36, 36)
 texture = ExtResource("10")
 expand_mode = 3
 stretch_mode = 5
 
 [node name="TimerLabel" type="Label" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(74, 0)
-theme_override_font_sizes/font_size = 23
+custom_minimum_size = Vector2(86, 0)
+theme_override_font_sizes/font_size = 22
 text = "05:00"
 vertical_alignment = 1
 
@@ -124,9 +125,9 @@ horizontal_alignment = 1
 
 [node name="ReadyButton" type="Button" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
 layout_mode = 2
-custom_minimum_size = Vector2(118, 50)
+custom_minimum_size = Vector2(145, 50)
 icon = ExtResource("11")
-icon_max_width = 26
+icon_max_width = 24
 expand_icon = true
 text = "FERTIG"
 tooltip_text = "Zug abgeben"
@@ -136,17 +137,17 @@ wait_time = 1.0
 
 [node name="OfficeTheme" type="Label" parent="Margin/Layout"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.52, 0.5, 0.47, 1)
+theme_override_colors/font_color = Color(0.56, 0.53, 0.49, 1)
 text = "Steuerzentrale wird geladen…"
 autowrap_mode = 2
 
 [node name="TopHud" type="PanelContainer" parent="Margin/Layout"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(0, 60)
 
 [node name="Hud" type="HBoxContainer" parent="Margin/Layout/TopHud"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
 [node name="Treasury" type="Label" parent="Margin/Layout/TopHud/Hud"]
 layout_mode = 2
@@ -183,89 +184,172 @@ horizontal_alignment = 1
 layout_mode = 2
 vertical_scroll_mode = 0
 horizontal_scroll_mode = 1
+tooltip_text = "WELTKARTE · INVENTAR · WIRTSCHAFT · MILITÄR"
 
 [node name="QuickNav" type="HBoxContainer" parent="Margin/Layout/QuickNavScroll"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 7
 
 [node name="Office" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(170, 62)
+custom_minimum_size = Vector2(160, 56)
 icon = ExtResource("3")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "BÜRO"
 tooltip_text = "Persönliche Steuerzentrale"
 [node name="World" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(170, 62)
+custom_minimum_size = Vector2(160, 56)
 icon = ExtResource("4")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "WELT"
 tooltip_text = "Weltkarte, Sektoren, Ressourcen und Verkehrsnetze"
 [node name="Phone" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(170, 62)
+custom_minimum_size = Vector2(160, 56)
 icon = ExtResource("5")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "TELEFON"
 tooltip_text = "Team, Regierung, Diplomatie und Kontakte"
 [node name="Economy" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(170, 62)
+custom_minimum_size = Vector2(160, 56)
 icon = ExtResource("6")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "STAAT"
 tooltip_text = "Haushalt, Inventar, Konzerne, Arbeit und Verwaltung"
 [node name="Military" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(190, 62)
+custom_minimum_size = Vector2(180, 56)
 icon = ExtResource("7")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "STRATEGIE"
 tooltip_text = "Militär, Forschung, Diplomatie und Geheimdienst"
 [node name="Events" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(170, 62)
+custom_minimum_size = Vector2(160, 56)
 icon = ExtResource("8")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "EVENTS"
 tooltip_text = "Historische und dynamische Ereignisse"
 [node name="Settings" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
 layout_mode = 2
-custom_minimum_size = Vector2(205, 62)
+custom_minimum_size = Vector2(195, 56)
 icon = ExtResource("9")
-icon_max_width = 32
+icon_max_width = 28
 expand_icon = true
 text = "EINSTELLUNGEN"
 
 [node name="Content" type="HSplitContainer" parent="Margin/Layout"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 1180
+split_offset = 1220
 
 [node name="OfficePanel" type="PanelContainer" parent="Margin/Layout/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(1080, 0)
+custom_minimum_size = Vector2(1160, 0)
 
 [node name="OfficeLayout" type="VBoxContainer" parent="Margin/Layout/Content/OfficePanel"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 7
+
 [node name="RoomTitle" type="Label" parent="Margin/Layout/Content/OfficePanel/OfficeLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.82, 0.71, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 22
 text = "Steuerzentrale"
 horizontal_alignment = 1
+
+[node name="VisualRoom" type="Control" parent="Margin/Layout/Content/OfficePanel/OfficeLayout"]
+layout_mode = 2
+custom_minimum_size = Vector2(1050, 560)
+size_flags_vertical = 3
+clip_contents = true
+script = ExtResource("12")
+
+[node name="RoomImage" type="TextureRect" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+
+[node name="Shade" type="ColorRect" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.08)
+mouse_filter = 2
+
+[node name="HotspotLayer" type="Control" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CaptionPanel" type="PanelContainer" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom"]
+layout_mode = 1
+anchors_preset = 12
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = -58.0
+offset_right = -22.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="RoomCaption" type="Label" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom/CaptionPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.81, 0.69, 1)
+theme_override_font_sizes/font_size = 16
+text = "BILDRAUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LearningBadge" type="Button" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -430.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = 62.0
+grow_horizontal = 0
+text = "SOLO · LERNKAMPAGNE"
+
+[node name="ListFallback" type="Button" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/VisualRoom"]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 118.0
+offset_bottom = 60.0
+text = "LISTE"
+tooltip_text = "Textliste als barrierearmen Fallback anzeigen"
+
 [node name="ObjectScroll" type="ScrollContainer" parent="Margin/Layout/Content/OfficePanel/OfficeLayout"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
+
 [node name="ObjectGrid" type="GridContainer" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/ObjectScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -275,26 +359,31 @@ theme_override_constants/v_separation = 8
 
 [node name="InteractionPanel" type="PanelContainer" parent="Margin/Layout/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(560, 0)
+custom_minimum_size = Vector2(520, 0)
+
 [node name="InteractionLayout" type="VBoxContainer" parent="Margin/Layout/Content/InteractionPanel"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 9
+
 [node name="InteractionTitle" type="Label" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.82, 0.71, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 21
 text = "Interaktion"
 autowrap_mode = 2
+
 [node name="InteractionBody" type="RichTextLabel" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 190)
+custom_minimum_size = Vector2(0, 185)
 text = "Lade…"
 fit_content = false
 scroll_active = true
+
 [node name="ActionScroll" type="ScrollContainer" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
+
 [node name="ActionList" type="VBoxContainer" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout/ActionScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -302,7 +391,7 @@ theme_override_constants/separation = 7
 
 [node name="Status" type="Label" parent="Margin/Layout"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.52, 0.5, 0.47, 1)
+theme_override_colors/font_color = Color(0.56, 0.53, 0.49, 1)
 text = "Initialisiere…"
 autowrap_mode = 2
 
