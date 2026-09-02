@@ -5,5 +5,6 @@
   <ItemGroup>
     <ProjectReference Include="../RiseOfReign.Domain/RiseOfReign.Domain.csproj" />
     <ProjectReference Include="../RiseOfReign.Application/RiseOfReign.Application.csproj" />
+    <ProjectReference Include="../RiseOfReign.Infrastructure/RiseOfReign.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
