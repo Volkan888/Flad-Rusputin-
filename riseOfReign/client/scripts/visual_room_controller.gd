@@ -42,7 +42,7 @@ var hub: Node
 var active_room_id := ""
 var learning_data: Dictionary = {"cards": []}
 var visual_mode := true
-var ai_advanced_for_january := false
+var ai_advanced_for_active_month := ""
 
 func _ready() -> void:
     mouse_filter = Control.MOUSE_FILTER_PASS
@@ -63,10 +63,12 @@ func _process(_delta: float) -> void:
     var room_id := str(hub.get("current_room_id"))
     if room_id != active_room_id:
         _set_room(room_id)
-    if GameSession.is_solo() and bool(hub.get("january_resolved")) and not ai_advanced_for_january:
-        GameSession.ensure_ai_world_report("1933-01")
-        ai_advanced_for_january = true
-        _update_learning_badge()
+    if GameSession.is_solo() and bool(hub.get("january_resolved")):
+        var resolved_month := str(hub.get("current_month_id"))
+        if ai_advanced_for_active_month != resolved_month:
+            GameSession.ensure_ai_world_report(resolved_month)
+            ai_advanced_for_active_month = resolved_month
+            _update_learning_badge()
 
 func _find_hub() -> void:
     var node: Node = get_parent()
@@ -310,7 +312,7 @@ func _show_ai_world() -> void:
     if not GameSession.is_solo():
         _panel("Mehrspieler-Welt", "Im 2-gegen-2-Modus werden andere Mächte durch Spieler und Ereignisregeln gesteuert.")
         return
-    var report := GameSession.ensure_ai_world_report("1933-01")
+    var report := GameSession.ensure_ai_world_report(str(hub.get("current_month_id")) if hub != null else "1933-01")
     var lines: Array[String] = []
     for line in report.get("summaries", []):
         lines.append("• %s" % line)

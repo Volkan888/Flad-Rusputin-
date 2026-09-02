@@ -158,7 +158,7 @@ public sealed class StateProfileService
 
     private static string NextMonthDate(string monthId)
     {
-        if (!DateOnly.TryParseExact($"{monthId}-01", "yyyy-MM-dd", out var date))
+        if (!DateOnly.TryParse($"{monthId}-01", out var date))
             return monthId;
         return date.AddMonths(1).ToString("yyyy-MM-dd");
     }

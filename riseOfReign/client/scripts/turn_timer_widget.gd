@@ -30,6 +30,23 @@ func _ready() -> void:
         tick.start()
     _refresh()
 
+func reset_for_next_turn() -> void:
+    tick.stop()
+    local_ready = false
+    submission_requested = false
+    ready_players = 0
+    total_players = GameSession.timer_total_players()
+    turn_seconds = GameSession.timer_seconds()
+    timer_disabled = turn_seconds <= 0
+    seconds_left = max(0, turn_seconds)
+    ready_button.disabled = false
+    ready_button.text = "ZUG BEENDEN" if GameSession.is_solo() else "FERTIG"
+    ready_state_label.text = "OHNE ZEITDRUCK" if timer_disabled else "AKTIV"
+    ready_state_label.add_theme_color_override("font_color", Color("b9a77d") if timer_disabled else Color("8c8c8c"))
+    if not timer_disabled:
+        tick.start()
+    _refresh()
+
 func set_server_seconds_left(value: int) -> void:
     if timer_disabled:
         return
