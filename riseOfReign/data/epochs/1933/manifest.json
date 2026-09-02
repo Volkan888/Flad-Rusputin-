@@ -5,11 +5,15 @@
   "turn_unit": "month",
   "max_players": 4,
   "historical_anchor_mode": true,
-  "content_version": "1933.0.1",
+  "content_version": "1933.0.2",
   "files": {
     "avatars": "avatars.json",
     "countries": "countries.json",
     "resources": "resources.json",
-    "events": "events/core-1933.json"
+    "events": "events/core-1933.json",
+    "map_source": "map_source.json",
+    "map_resource_nodes": "map_resource_nodes.json",
+    "map_connections": "map_connections.json",
+    "construction_catalog": "construction_catalog.json"
   }
 }

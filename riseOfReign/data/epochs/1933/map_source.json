@@ -1,0 +1,21 @@
+{
+  "map_id": "world_1933_online",
+  "canonical_source": {
+    "provider": "Wikimedia Commons / Our World in Data",
+    "title": "Political regime, World, 1933.svg",
+    "year": 1933,
+    "format": "svg",
+    "page_url": "https://commons.wikimedia.org/wiki/File:Political_regime,_World,_1933.svg",
+    "data_url": "https://ourworldindata.org/grapher/political-regime?tab=map",
+    "license": "CC BY 4.0",
+    "store_original_in_git": false
+  },
+  "runtime_policy": {
+    "load_online": true,
+    "allow_server_cache": true,
+    "cache_metadata": ["retrieved_at", "sha256", "license", "source_url", "map_year"],
+    "offline_match_policy": "use_last_verified_server_cache"
+  },
+  "overlays": ["control", "resources", "industry", "energy", "transport", "trade", "military_logistics", "diplomacy", "stability", "construction", "intel"],
+  "attribution_required": true
+}
