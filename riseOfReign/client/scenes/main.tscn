@@ -1,9 +1,38 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id="1"]
 [ext_resource path="res://assets/rooms/menu_background.svg" type="Texture2D" id="2"]
 [ext_resource path="res://assets/icons/learning.svg" type="Texture2D" id="3"]
 [ext_resource path="res://assets/icons/strategy.svg" type="Texture2D" id="4"]
+[ext_resource path="res://assets/portraits/flad_rasputin.svg" type="Texture2D" id="5"]
+
+[sub_resource type="StyleBoxFlat" id="Panel"]
+bg_color = Color(0.015, 0.016, 0.019, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31, 0.12, 0.1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 22.0
+content_margin_top = 22.0
+content_margin_right = 22.0
+content_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxFlat" id="PortraitPanel"]
+bg_color = Color(0.025, 0.022, 0.024, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.73, 0.53, 0.25, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -33,7 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.01, 0.01, 0.012, 0.5)
+color = Color(0.01, 0.01, 0.012, 0.61)
 mouse_filter = 2
 
 [node name="RedTop" type="ColorRect" parent="."]
@@ -50,34 +79,34 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 72.0
-offset_top = 54.0
-offset_right = -72.0
-offset_bottom = -38.0
+offset_left = 62.0
+offset_top = 42.0
+offset_right = -62.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
 
 [node name="Header" type="VBoxContainer" parent="MainLayout"]
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 0
 
 [node name="Publisher" type="Label" parent="MainLayout/Header"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.62, 0.36, 1)
+theme_override_colors/font_color = Color(0.78, 0.64, 0.36, 1)
 theme_override_font_sizes/font_size = 18
 text = "VK APPS PRÄSENTIERT"
 
 [node name="Title" type="Label" parent="MainLayout/Header"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.96, 0.91, 0.8, 1)
-theme_override_font_sizes/font_size = 78
+theme_override_colors/font_color = Color(0.97, 0.92, 0.81, 1)
+theme_override_font_sizes/font_size = 74
 text = "RISE OF REIGN"
 
 [node name="Subtitle" type="Label" parent="MainLayout/Header"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.77, 0.12, 0.15, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(0.78, 0.13, 0.16, 1)
+theme_override_font_sizes/font_size = 24
 text = "1933 · THE WORLD IN CRISIS · HISTORISCHES STRATEGIE- UND LERNSPIEL"
 
 [node name="Rule" type="ColorRect" parent="MainLayout/Header"]
@@ -88,45 +117,53 @@ color = Color(0.5, 0.04, 0.055, 0.9)
 [node name="Content" type="HSplitContainer" parent="MainLayout"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 680
+split_offset = 715
 
 [node name="MenuPanel" type="PanelContainer" parent="MainLayout/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(630, 0)
+custom_minimum_size = Vector2(690, 0)
+theme_override_styles/panel = SubResource("Panel")
 
 [node name="Menu" type="VBoxContainer" parent="MainLayout/Content/MenuPanel"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
 
 [node name="MenuTitle" type="Label" parent="MainLayout/Content/MenuPanel/Menu"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.83, 0.79, 0.7, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.84, 0.78, 0.67, 1)
+theme_override_font_sizes/font_size = 21
 text = "SPIELMODUS"
 
 [node name="NewGame" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 96)
+custom_minimum_size = Vector2(0, 98)
 icon = ExtResource("3")
-icon_max_width = 38
+icon_max_width = 42
 expand_icon = true
-text = "NEUES SPIEL · SOLO-LERNKAMPAGNE"
-tooltip_text = "Ein Spieler, KI-Welt, Lernkarten und Wissensfragen"
+text = "NEUES SPIEL · FLAD RASPUTIN"
+tooltip_text = "Solo-Kampagne von der Geburt bis zum ersten Büro 1933"
 
 [node name="SoloNote" type="Label" parent="MainLayout/Content/MenuPanel/Menu"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.66, 0.63, 0.57, 1)
-text = "Empfohlen: ohne Zeitdruck beginnen, Avatar wählen und Januar 1933 im eigenen Büro spielen."
+theme_override_colors/font_color = Color(0.68, 0.64, 0.56, 1)
+text = "Geburt → Herkunft → Kindheit → Schule → Arbeit → Vertraute → Inventar → erstes Büro → 1. Januar 1933"
 autowrap_mode = 2
 
 [node name="Continue" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 76)
 text = "FORTSETZEN"
+tooltip_text = "Gespeicherte Biografie oder Kampagne fortsetzen"
+
+[node name="Historical" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 78)
+text = "HISTORISCHE PERSPEKTIVEN"
+tooltip_text = "Historische Avatare als eigener Lernmodus"
 
 [node name="Multiplayer" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 88)
+custom_minimum_size = Vector2(0, 84)
 icon = ExtResource("4")
 icon_max_width = 36
 expand_icon = true
@@ -135,60 +172,78 @@ tooltip_text = "Blaue Seite gegen rote Seite · vier Spieler"
 
 [node name="Settings" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 72)
+custom_minimum_size = Vector2(0, 68)
 text = "EINSTELLUNGEN"
 
 [node name="Quit" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 66)
+custom_minimum_size = Vector2(0, 64)
 text = "BEENDEN"
 
 [node name="FeaturePanel" type="PanelContainer" parent="MainLayout/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(560, 0)
+custom_minimum_size = Vector2(720, 0)
+theme_override_styles/panel = SubResource("Panel")
 
-[node name="Features" type="VBoxContainer" parent="MainLayout/Content/FeaturePanel"]
+[node name="Features" type="HBoxContainer" parent="MainLayout/Content/FeaturePanel"]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Era" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+[node name="PortraitFrame" type="PanelContainer" parent="MainLayout/Content/FeaturePanel/Features"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.91, 0.85, 0.72, 1)
-theme_override_font_sizes/font_size = 32
-text = "1. JANUAR 1933"
+custom_minimum_size = Vector2(280, 0)
+theme_override_styles/panel = SubResource("PortraitPanel")
+
+[node name="Portrait" type="TextureRect" parent="MainLayout/Content/FeaturePanel/Features/PortraitFrame"]
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextBlock" type="VBoxContainer" parent="MainLayout/Content/FeaturePanel/Features"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 13
+
+[node name="Era" type="Label" parent="MainLayout/Content/FeaturePanel/Features/TextBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.85, 0.71, 1)
+theme_override_font_sizes/font_size = 31
+text = "FLAD RASPUTIN"
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+[node name="Description" type="Label" parent="MainLayout/Content/FeaturePanel/Features/TextBlock"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.73, 0.7, 0.64, 1)
-theme_override_font_sizes/font_size = 20
-text = "Führe einen historischen oder eigenen Avatar. Lerne, wie Staatshaushalt, Ressourcen, Verkehrsnetze, Forschung, Diplomatie, Gesundheit und politische Macht zusammenwirken."
+theme_override_colors/font_color = Color(0.76, 0.71, 0.63, 1)
+theme_override_font_sizes/font_size = 19
+text = "Baue eine fiktive Figur von der Geburt an auf. Jede Frage ist ein Event mit sichtbaren Folgen für Gesundheit, Bildung, Charakter, Kontakte, Inventar und das erste Büro."
 autowrap_mode = 2
 horizontal_alignment = 1
 
-[node name="LearningCard" type="PanelContainer" parent="MainLayout/Content/FeaturePanel/Features"]
+[node name="LearningCard" type="PanelContainer" parent="MainLayout/Content/FeaturePanel/Features/TextBlock"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("PortraitPanel")
 
-[node name="LearningText" type="Label" parent="MainLayout/Content/FeaturePanel/Features/LearningCard"]
+[node name="LearningText" type="Label" parent="MainLayout/Content/FeaturePanel/Features/TextBlock/LearningCard"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.82, 0.76, 0.65, 1)
-theme_override_font_sizes/font_size = 18
-text = "SOLO-LERNMODUS\n\n• Bildliche Räume mit Maus-Hotspots\n• KI-gesteuerte Weltlage\n• Historischer Kontext und Quellenkritik\n• Wissensfragen mit Erklärung\n• Kritische Darstellung von Diktatur, Propaganda und Krieg\n• Keine verherrlichende Symbolik in den Spielräumen"
+theme_override_colors/font_color = Color(0.84, 0.78, 0.67, 1)
+theme_override_font_sizes/font_size = 17
+text = "SOLO-PROLOG\n\n• 13 spielbare Biografie-Events\n• sichtbares Gesicht in drei Lebensphasen\n• vier eigenständige Vertraute\n• Inventar als echte Gegenstände\n• automatische Speicherung nach jeder Antwort\n• Übergabe der aufgebauten Figur an den 1. Januar 1933"
 autowrap_mode = 2
 vertical_alignment = 1
 
-[node name="Systems" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+[node name="Systems" type="Label" parent="MainLayout/Content/FeaturePanel/Features/TextBlock"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.78, 0.72, 0.62, 1)
-theme_override_font_sizes/font_size = 18
-text = "BÜRO · WELTKARTE · TELEFON · WIRTSCHAFT\nFORSCHUNG · MILITÄR · DIPLOMATIE · EVENTS"
+theme_override_colors/font_color = Color(0.78, 0.71, 0.6, 1)
+theme_override_font_sizes/font_size = 17
+text = "GEBURT · KINDHEIT · SCHULE · ARBEIT · NETZWERK\nINVENTAR · BÜRO · EVENTS · KAMPAGNE"
 horizontal_alignment = 1
 
-[node name="EraNote" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+[node name="EraNote" type="Label" parent="MainLayout/Content/FeaturePanel/Features/TextBlock"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.52, 0.48, 1)
-text = "Historische Anker bleiben sichtbar. Entscheidungen verändern Vorbereitung, Reaktion und Folgen."
+theme_override_colors/font_color = Color(0.58, 0.55, 0.5, 1)
+text = "Flad ist fiktiv. Historische Zusammenhänge werden kritisch eingeordnet und von Spielwerten getrennt."
 autowrap_mode = 2
 horizontal_alignment = 1
 
@@ -198,13 +253,13 @@ layout_mode = 2
 [node name="Status" type="Label" parent="MainLayout/Footer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.65, 0.61, 0.55, 1)
+theme_override_colors/font_color = Color(0.67, 0.62, 0.55, 1)
 text = "Build"
 
 [node name="SoundState" type="Label" parent="MainLayout/Footer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.65, 0.61, 0.55, 1)
-text = "♪ SOUND · MAUSSTEUERUNG"
+theme_override_colors/font_color = Color(0.67, 0.62, 0.55, 1)
+text = "♪ SOUND · MAUSSTEUERUNG · AUTOSAVE"
 
 [node name="SettingsOverlay" type="Control" parent="."]
 layout_mode = 1
@@ -237,6 +292,7 @@ offset_right = 390.0
 offset_bottom = 410.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("Panel")
 
 [node name="SettingsLayout" type="VBoxContainer" parent="SettingsOverlay/SettingsPanel"]
 layout_mode = 2
@@ -291,9 +347,11 @@ value = 0.75
 [node name="MusicToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 text = "Menü-Musik aktiviert"
+
 [node name="SfxToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 text = "UI-Sounds aktiviert"
+
 [node name="IntroToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 text = "VK APPS / RISE OF REIGN Intro beim Start"
@@ -301,7 +359,7 @@ text = "VK APPS / RISE OF REIGN Intro beim Start"
 [node name="AudioNote" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58, 0.56, 0.52, 1)
-text = "Solo-Timer, Schwierigkeitsgrad und Lernmodus werden beim Start der Kampagne eingestellt."
+text = "Solo-Timer und weitere Kampagnenregeln werden nach dem Prolog im Büro eingestellt."
 autowrap_mode = 2
 
 [node name="Close" type="Button" parent="SettingsOverlay/SettingsPanel/SettingsLayout" groups=["strategy_menu_button"]]
@@ -311,6 +369,7 @@ text = "ÜBERNEHMEN & SCHLIESSEN"
 
 [connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/NewGame" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Historical" to="." method="_on_historical_pressed"]
 [connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Quit" to="." method="_on_quit_pressed"]

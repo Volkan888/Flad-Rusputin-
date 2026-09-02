@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#321d20"/><stop offset="1" stop-color="#07090b"/></linearGradient>
+  <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#253342"/><stop offset="1" stop-color="#07080a"/></linearGradient>
+  <radialGradient id="light" cx=".42" cy=".27"><stop stop-color="#fff3d0" stop-opacity=".24"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".78"/></filter>
+</defs>
+<rect width="600" height="800" rx="32" fill="url(#bg)"/>
+<rect width="600" height="800" rx="32" fill="url(#light)"/>
+<path d="M0 690 Q300 620 600 690V800H0Z" fill="#050608" opacity=".8"/>
+<g filter="url(#shadow)">
+  <path d="M62 800 Q82 595 225 528 L302 565 L379 528 Q518 592 542 800Z" fill="url(#coat)"/>
+  <path d="M225 528 L302 654 L379 528 L352 497 H252Z" fill="#d6c6a6"/>
+  <path d="M252 497 Q302 535 352 497 L338 590 L302 654 L264 590Z" fill="#f0e1c0"/>
+  <path d="M263 540 L302 654 L341 540 L326 514 H278Z" fill="#8b2028"/>
+  <ellipse cx="302" cy="304" rx="121" ry="158" fill="#c88c70"/>
+  <ellipse cx="187" cy="313" rx="23" ry="42" fill="#c88c70"/>
+  <ellipse cx="417" cy="313" rx="23" ry="42" fill="#c88c70"/>
+</g>
+<path d="M166 280 Q174 102 302 108 Q436 104 444 280 Q392 184 321 186 Q232 190 166 280Z" fill="#211713"/>
+<path d="M207 364 Q214 475 302 500 Q392 478 406 364 Q370 425 302 432 Q240 423 207 364Z" fill="#211713" opacity=".88"/>
+<path d="M221 274 Q250 257 278 274" fill="none" stroke="#211713" stroke-width="12" stroke-linecap="round"/>
+<path d="M328 274 Q357 257 386 274" fill="none" stroke="#211713" stroke-width="12" stroke-linecap="round"/>
+<ellipse cx="250" cy="302" rx="12" ry="8" fill="#181715"/>
+<ellipse cx="358" cy="302" rx="12" ry="8" fill="#181715"/>
+<circle cx="246" cy="299" r="3" fill="#f6e2b0"/>
+<circle cx="354" cy="299" r="3" fill="#f6e2b0"/>
+<path d="M302 304 Q290 347 304 364 Q320 372 333 358" fill="none" stroke="#9d6652" stroke-width="8" stroke-linecap="round"/>
+<path d="M258 394 Q302 412 347 394" fill="none" stroke="#7c403e" stroke-width="9" stroke-linecap="round"/>
+<path d="M235 436 Q302 454 369 436" fill="none" stroke="#8e5a47" stroke-width="5" opacity=".5"/>
+
+
+
+
+<rect x="14" y="14" width="572" height="772" rx="24" fill="none" stroke="#c59a4b" stroke-width="8"/>
+<text x="300" y="744" fill="#eadbb9" font-family="serif" font-size="34" text-anchor="middle">FLAD RASPUTIN</text>
+</svg>

@@ -2,6 +2,8 @@ extends Control
 
 const OFFICE_SCENE = preload("res://scenes/office_hub.tscn")
 const CAMPAIGN_SAVE_PATH := "user://riseofreign_campaign.json"
+const FLAD_PROLOGUE_SAVE_PATH := "user://flad_rasputin_prologue.json"
+const FLAD_PROLOGUE_SCENE := "res://scenes/flad_prologue.tscn"
 
 @onready var settings_panel: PanelContainer = $SettingsOverlay/SettingsPanel
 @onready var settings_overlay: Control = $SettingsOverlay
@@ -19,7 +21,7 @@ func _ready() -> void:
     _style_all_buttons()
     _load_settings_into_controls()
     settings_overlay.visible = false
-    status_label.text = "RISE OF REIGN · SPIELBARER PROTOTYP · SOLO-LERNKAMPAGNE + 2 GEGEN 2"
+    status_label.text = "RISE OF REIGN · SOLO FLAD RASPUTIN · GEBURT BIS 1933 · HISTORISCHE PERSPEKTIVEN · 2 GEGEN 2"
     solo_button.grab_focus()
     AudioManager.start_menu_music()
 
@@ -27,21 +29,32 @@ func _on_new_game_pressed() -> void:
     AudioManager.play_click()
     _reset_local_campaign()
     GameSession.start_solo()
-    status_label.text = "Neue Solo-Lernkampagne wird vorbereitet…"
-    get_tree().change_scene_to_file("res://scenes/avatar_select.tscn")
+    status_label.text = "Flad Rasputins Biografie beginnt mit der Geburt…"
+    get_tree().change_scene_to_file(FLAD_PROLOGUE_SCENE)
 
 func _on_continue_pressed() -> void:
     AudioManager.play_click()
+    if GameSession.is_flad_solo() and not GameSession.flad_prologue_completed:
+        status_label.text = "Flad Rasputins Biografie wird fortgesetzt…"
+        get_tree().change_scene_to_file(FLAD_PROLOGUE_SCENE)
+        return
     if GameSession.player_avatar_id.is_empty():
-        status_label.text = "Noch kein Spielstand vorhanden. Starte zuerst eine Solo-Lernkampagne."
+        status_label.text = "Noch kein vollständiger Spielstand. Starte Flad Rasputins Geburt und Biografie."
+        get_tree().change_scene_to_file(FLAD_PROLOGUE_SCENE)
         return
     status_label.text = "Lade letzte Sitzung: %s · %s" % [GameSession.session_label(), GameSession.player_display_name]
     AudioManager.stop_menu_music()
-    var office = OFFICE_SCENE.instantiate()
-    office.avatar_id = GameSession.player_avatar_id
-    office.avatar_display_name = GameSession.player_display_name
+    var office: Node = OFFICE_SCENE.instantiate()
+    office.set("avatar_id", GameSession.player_avatar_id)
+    office.set("avatar_display_name", GameSession.player_display_name)
     get_tree().root.add_child(office)
     queue_free()
+
+func _on_historical_pressed() -> void:
+    AudioManager.play_click()
+    GameSession.start_historical_solo()
+    status_label.text = "Historische Perspektive auswählen…"
+    get_tree().change_scene_to_file("res://scenes/avatar_select.tscn")
 
 func _on_multiplayer_pressed() -> void:
     AudioManager.play_click()
@@ -89,43 +102,39 @@ func _load_settings_into_controls() -> void:
     intro_toggle.button_pressed = AudioManager.intro_enabled
 
 func _reset_local_campaign() -> void:
-    var absolute_path := ProjectSettings.globalize_path(CAMPAIGN_SAVE_PATH)
-    if FileAccess.file_exists(CAMPAIGN_SAVE_PATH):
-        DirAccess.remove_absolute(absolute_path)
-    GameSession.player_avatar_id = ""
-    GameSession.player_display_name = ""
+    for save_path: String in [CAMPAIGN_SAVE_PATH, FLAD_PROLOGUE_SAVE_PATH]:
+        if FileAccess.file_exists(save_path):
+            DirAccess.remove_absolute(ProjectSettings.globalize_path(save_path))
+    GameSession.reset_flad_prologue()
     GameSession.world_tension = 18
     GameSession.last_ai_report = {}
     GameSession.learning_score = 0
     GameSession.learning_answers = 0
 
 func _style_all_buttons() -> void:
-    for button in get_tree().get_nodes_in_group("strategy_menu_button"):
-        if button is Button:
-            _style_strategy_button(button)
+    for node: Node in get_tree().get_nodes_in_group("strategy_menu_button"):
+        if node is Button:
+            _style_strategy_button(node as Button)
 
 func _style_strategy_button(button: Button) -> void:
-    var normal := StyleBoxFlat.new()
+    var normal: StyleBoxFlat = StyleBoxFlat.new()
     normal.bg_color = Color(0.025, 0.025, 0.03, 0.92)
     normal.border_color = Color("6f1a20")
     normal.set_border_width_all(2)
-    normal.corner_radius_top_left = 12
-    normal.corner_radius_top_right = 12
-    normal.corner_radius_bottom_left = 12
-    normal.corner_radius_bottom_right = 12
-    normal.content_margin_left = 24
-    normal.content_margin_right = 24
+    normal.set_corner_radius_all(12)
+    normal.content_margin_left = 24.0
+    normal.content_margin_right = 24.0
 
-    var hover := normal.duplicate()
+    var hover: StyleBoxFlat = normal.duplicate()
     hover.bg_color = Color(0.18, 0.025, 0.035, 0.98)
     hover.border_color = Color("d1a04e")
     hover.set_border_width_all(3)
 
-    var pressed := normal.duplicate()
+    var pressed: StyleBoxFlat = normal.duplicate()
     pressed.bg_color = Color(0.38, 0.035, 0.05, 0.98)
     pressed.border_color = Color("f0cf80")
 
-    var focus := hover.duplicate()
+    var focus: StyleBoxFlat = hover.duplicate()
     focus.border_color = Color("f1d083")
 
     button.add_theme_stylebox_override("normal", normal)
