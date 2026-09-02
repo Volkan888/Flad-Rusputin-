@@ -89,8 +89,8 @@ public sealed class January1933Service
             throw new InvalidDataException("Selected January map action is not available for this avatar.");
         applied.Add(new JsonObject { ["type"]="map", ["action"]=mapAction });
 
+        int? officeLevel = null;
         var historical = slice["historical_anchor"]?.AsObject();
-        var officeLevel = slice["start_level"]?.GetValue<int?>();
         if (historical is not null)
         {
             ApplyEffects(indicators, historical["effects"]?.AsObject());
@@ -108,18 +108,18 @@ public sealed class January1933Service
         }
 
         ClampIndicators(indicators);
-
-        return new JsonObject
+        var result = new JsonObject
         {
             ["avatar_id"] = avatarId,
             ["resolved_month"] = "1933-01",
             ["next_date"] = month["next_date"]?.GetValue<string>() ?? "1933-02-01",
             ["resulting_indicators"] = indicators,
-            ["office_level"] = officeLevel,
             ["applied_actions"] = applied,
             ["report"] = BuildReport(applied, indicators),
             ["status"] = "resolved"
         };
+        result["office_level"] = officeLevel.HasValue ? JsonValue.Create(officeLevel.Value) : null;
+        return result;
     }
 
     private static void ApplyEffects(JsonObject indicators, JsonObject? effects)
