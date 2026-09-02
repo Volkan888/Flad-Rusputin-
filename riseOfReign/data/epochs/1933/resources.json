@@ -1,0 +1,8 @@
+{
+  "scale": "normalized_resource_points",
+  "stocks": ["treasury","food","coal","crude_oil","fuel","natural_gas","iron_ore","steel","non_ferrous_metals","chemicals","industrial_goods","consumer_goods","medical_supplies","military_material","strategic_materials"],
+  "capacities": ["energy_generation","industrial_capacity","refinery_capacity","steelworks_capacity","agriculture_capacity","construction_capacity","logistics_capacity","trade_capacity","workforce","skilled_workforce"],
+  "strategic_points": ["research_points","development_points","diplomacy_points","intelligence_points","influence_points","information_points","military_readiness"],
+  "state_values": ["stability","legitimacy","population_morale","military_morale","unrest","living_standard","administrative_capacity","international_reputation","leadership_capacity","power_index"],
+  "source": "design/RESOURCE_SYSTEM.md"
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "id": "ataturk",
+    "display_name": "Mustafa Kemal Atatürk",
+    "country_id": "turkey",
+    "birth": {"year": 1881, "date_precision": "year", "place": "Saloniki, Ottoman Empire"},
+    "start_role": "President",
+    "start_authority": 88,
+    "traits": ["reformer", "disciplined", "military_educated", "modernizer"],
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  },
+  {
+    "id": "hitler",
+    "display_name": "Adolf Hitler",
+    "country_id": "germany",
+    "birth": {"date": "1889-04-20", "date_precision": "day", "place": "Braunau am Inn, Austria-Hungary"},
+    "start_role": "NSDAP leader",
+    "start_authority": 45,
+    "traits": ["mass_mobilizer", "propagandist", "polarizing", "high_risk"],
+    "historical_note": "Critical historical portrayal; no heroic framing.",
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  },
+  {
+    "id": "stalin",
+    "display_name": "Joseph Stalin",
+    "country_id": "soviet_union",
+    "birth": {"date": "1878-12-18", "date_precision": "disputed_day", "alternate_official_date": "1879-12-21", "place": "Gori, Russian Empire"},
+    "start_role": "Soviet power center / General Secretary",
+    "start_authority": 94,
+    "traits": ["centralizer", "organizer", "network_controller", "distrustful"],
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  },
+  {
+    "id": "churchill",
+    "display_name": "Winston Churchill",
+    "country_id": "united_kingdom",
+    "birth": {"date": "1874-11-30", "date_precision": "day", "place": "Blenheim Palace, Oxfordshire, England"},
+    "start_role": "Member of Parliament",
+    "start_authority": 25,
+    "traits": ["orator", "military_experience", "foreign_policy", "persistent"],
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  },
+  {
+    "id": "roosevelt",
+    "display_name": "Franklin D. Roosevelt",
+    "country_id": "united_states",
+    "birth": {"date": "1882-01-30", "date_precision": "day", "place": "Springwood, Hyde Park, New York, USA"},
+    "start_role": "President-elect",
+    "start_authority": 45,
+    "traits": ["crisis_communicator", "economic_reformer", "coalition_builder", "resilient"],
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  },
+  {
+    "id": "mussolini",
+    "display_name": "Benito Mussolini",
+    "country_id": "italy",
+    "birth": {"date": "1883-07-29", "date_precision": "day", "place": "Dovia di Predappio, Kingdom of Italy"},
+    "start_role": "Head of Government / dictator",
+    "start_authority": 90,
+    "traits": ["propagandist", "party_controller", "public_staging", "resource_constrained"],
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  },
+  {
+    "id": "custom",
+    "display_name": "Custom Avatar",
+    "country_id": null,
+    "birth": {"year_min": 1870, "year_max": 1905, "date_precision": "generated"},
+    "start_role": "Generated from prologue",
+    "start_authority": null,
+    "traits": [],
+    "prologue_source": "design/AVATAR_PROLOGUES_1933.md"
+  }
+]

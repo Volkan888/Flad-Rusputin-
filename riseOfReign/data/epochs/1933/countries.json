@@ -1,0 +1,44 @@
+[
+  {
+    "id": "turkey",
+    "name_1933": "Republic of Turkey",
+    "capital": "Ankara",
+    "design_scores": {"treasury":45,"food":65,"coal":45,"crude_oil":10,"industry":35,"infrastructure":40,"research":45,"stability":70,"diplomacy":70},
+    "strategic_regions": ["marmara_istanbul","central_anatolia_ankara","aegean_izmir","black_sea_zonguldak","cukurova_adana","eastern_anatolia_erzurum"]
+  },
+  {
+    "id": "germany",
+    "name_1933": "German Reich",
+    "capital": "Berlin",
+    "design_scores": {"treasury":40,"food":55,"coal":90,"crude_oil":10,"industry":88,"infrastructure":80,"research":80,"stability":45,"diplomacy":40},
+    "strategic_regions": ["berlin_brandenburg","rhine_ruhr","hamburg_north","saxony","bavaria","silesia","east_prussia"]
+  },
+  {
+    "id": "soviet_union",
+    "name_1933": "Union of Soviet Socialist Republics",
+    "capital": "Moscow",
+    "design_scores": {"treasury":55,"food":50,"coal":90,"crude_oil":95,"industry":72,"infrastructure":45,"research":65,"stability":55,"diplomacy":45},
+    "strategic_regions": ["moscow_central","leningrad_northwest","ukraine_kiev","donbass","caucasus_baku","ural","west_siberia","central_asia"]
+  },
+  {
+    "id": "united_kingdom",
+    "name_1933": "United Kingdom",
+    "capital": "London",
+    "design_scores": {"treasury":65,"food":45,"coal":85,"crude_oil":20,"industry":85,"infrastructure":85,"research":82,"stability":75,"diplomacy":90},
+    "strategic_regions": ["london_southeast","midlands_birmingham","north_manchester_liverpool","south_wales","scotland_clyde","south_portsmouth"]
+  },
+  {
+    "id": "united_states",
+    "name_1933": "United States of America",
+    "capital": "Washington, D.C.",
+    "design_scores": {"treasury":55,"food":95,"coal":95,"crude_oil":100,"industry":92,"industry_utilization":55,"infrastructure":85,"research":85,"stability":55,"diplomacy":55},
+    "strategic_regions": ["washington_mid_atlantic","new_york_northeast","great_lakes","pennsylvania_pittsburgh","midwest_plains","texas_oklahoma","gulf_coast","california_pacific"]
+  },
+  {
+    "id": "italy",
+    "name_1933": "Kingdom of Italy",
+    "capital": "Rome",
+    "design_scores": {"treasury":50,"food":60,"coal":20,"crude_oil":8,"industry":60,"infrastructure":65,"research":60,"stability":70,"diplomacy":55},
+    "strategic_regions": ["rome_latium","lombardy_milan","piedmont_turin","liguria_genoa","po_valley","southern_italy_naples","sicily","sardinia"]
+  }
+]

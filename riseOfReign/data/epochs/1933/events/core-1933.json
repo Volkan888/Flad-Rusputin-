@@ -1,0 +1,59 @@
+[
+  {
+    "id": "de_1933_hitler_chancellor",
+    "date": "1933-01-30",
+    "country_id": "germany",
+    "avatar_id": "hitler",
+    "mode": "historical_anchor",
+    "effects": {"avatar.authority":25,"country.reputation":-5},
+    "responses": ["recognize","observe","distance"]
+  },
+  {
+    "id": "de_1933_reichstag_fire_decree",
+    "date": "1933-02-28",
+    "country_id": "germany",
+    "avatar_id": "hitler",
+    "mode": "historical_anchor",
+    "effects": {"avatar.authority":10,"country.reputation":-8,"country.unrest":5}
+  },
+  {
+    "id": "us_1933_fdr_inauguration",
+    "date": "1933-03-04",
+    "country_id": "united_states",
+    "avatar_id": "roosevelt",
+    "mode": "historical_anchor",
+    "effects": {"avatar.authority":35,"country.legitimacy":5}
+  },
+  {
+    "id": "de_1933_enabling_act",
+    "date": "1933-03-23",
+    "country_id": "germany",
+    "avatar_id": "hitler",
+    "mode": "historical_anchor",
+    "effects": {"avatar.authority":20,"country.reputation":-10}
+  },
+  {
+    "id": "us_1933_first_hundred_days",
+    "window": {"from":"1933-03-04","to":"1933-06-16"},
+    "country_id": "united_states",
+    "avatar_id": "roosevelt",
+    "mode": "historical_anchor_with_choices",
+    "choice_categories": ["banking","jobs","agriculture","infrastructure","industry"]
+  },
+  {
+    "id": "tr_1933_reform_program",
+    "window": {"from":"1933-01-01","to":"1933-12-31"},
+    "country_id": "turkey",
+    "avatar_id": "ataturk",
+    "mode": "historical_context",
+    "choice_categories": ["education","rail","industry","administration","diplomacy"]
+  },
+  {
+    "id": "su_1933_food_crisis",
+    "window": {"from":"1933-01-01","to":"1933-12-31"},
+    "country_id": "soviet_union",
+    "avatar_id": "stalin",
+    "mode": "humanitarian_crisis_anchor",
+    "effects": {"country.food":-20,"country.population_morale":-20,"country.unrest":15}
+  }
+]

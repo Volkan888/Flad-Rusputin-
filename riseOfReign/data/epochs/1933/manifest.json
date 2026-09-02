@@ -1,0 +1,15 @@
+{
+  "epoch_id": "1933",
+  "name": "The World in Crisis",
+  "start_date": "1933-01-01",
+  "turn_unit": "month",
+  "max_players": 4,
+  "historical_anchor_mode": true,
+  "content_version": "1933.0.1",
+  "files": {
+    "avatars": "avatars.json",
+    "countries": "countries.json",
+    "resources": "resources.json",
+    "events": "events/core-1933.json"
+  }
+}
