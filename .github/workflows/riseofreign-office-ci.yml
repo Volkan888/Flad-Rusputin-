@@ -1,0 +1,105 @@
+name: RiseOfReign Office CI
+
+on:
+  push:
+    branches: [riseOfReign]
+    paths:
+      - 'riseOfReign/**'
+      - 'tests/test_office_hubs.py'
+      - '.github/workflows/riseofreign-office-ci.yml'
+  pull_request:
+    paths:
+      - 'riseOfReign/**'
+      - 'tests/test_office_hubs.py'
+      - '.github/workflows/riseofreign-office-ci.yml'
+
+jobs:
+  office-content-and-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Validate office content
+        run: python -m unittest -v tests/test_office_hubs.py
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj
+
+      - name: Build
+        run: dotnet build riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj -c Release --no-restore
+
+      - name: Start API
+        env:
+          ROR_EPOCH_1933_PATH: ${{ github.workspace }}/riseOfReign/data/epochs/1933
+          ASPNETCORE_URLS: http://127.0.0.1:5088
+        run: |
+          dotnet run --project riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj -c Release --no-build > /tmp/riseofreign-api.log 2>&1 &
+          echo $! > /tmp/riseofreign-api.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:5088/health > /tmp/health.json; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/riseofreign-api.log
+          exit 1
+
+      - name: Smoke test health and office API
+        run: |
+          python - <<'PY'
+          import json
+          import urllib.request
+          import urllib.error
+
+          def get(path):
+              with urllib.request.urlopen('http://127.0.0.1:5088' + path, timeout=5) as response:
+                  return response.status, json.load(response)
+
+          status, health = get('/health')
+          assert status == 200
+          assert health['status'] == 'ok', health
+          assert health['mapContentLoaded'] is True, health
+          assert health['officeContentLoaded'] is True, health
+
+          status, offices = get('/api/v1/offices')
+          assert status == 200
+          assert set(offices['interaction_types']) == {'side_menu', 'room', 'phone_list'}
+
+          for avatar in ('ataturk','hitler','stalin','churchill','roosevelt','mussolini','custom'):
+              status, payload = get('/api/v1/offices/' + avatar)
+              assert status == 200, avatar
+              assert payload['avatarId'] == avatar, payload
+              assert payload['sharedObjects'], avatar
+              assert payload['rooms'], avatar
+              assert payload['phoneSystem'], avatar
+
+          try:
+              get('/api/v1/offices/not-a-real-avatar')
+              raise AssertionError('Unknown avatar should return 404')
+          except urllib.error.HTTPError as exc:
+              assert exc.code == 404, exc.code
+          PY
+
+      - name: Show API log on failure
+        if: failure()
+        run: cat /tmp/riseofreign-api.log || true
+
+      - name: Stop API
+        if: always()
+        run: |
+          if [ -f /tmp/riseofreign-api.pid ]; then
+            kill "$(cat /tmp/riseofreign-api.pid)" || true
+          fi
