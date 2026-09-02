@@ -1,5 +1,5 @@
 ; Engine configuration file.
-; riseOfReign mobile client
+; riseOfReign desktop / mouse-first client
 
 config_version=5
 
@@ -12,9 +12,19 @@ config/features=PackedStringArray("4.7")
 AudioManager="*res://scripts/audio_manager.gd"
 
 [display]
-window/size/viewport_width=1080
-window/size/viewport_height=1920
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1600
+window/size/window_height_override=900
 window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[input_devices]
+pointing/emulate_touch_from_mouse=false
+pointing/emulate_mouse_from_touch=true
+
+[gui]
+timers/tooltip_delay_sec=0.35
 
 [rendering]
 renderer/rendering_method="gl_compatibility"
@@ -25,3 +35,5 @@ limits/debugger/max_queued_messages=2048
 
 [riseofreign]
 network/api_base_url="http://127.0.0.1:8080"
+ui/input_mode="mouse_keyboard"
+ui/default_turn_timer_seconds=300
