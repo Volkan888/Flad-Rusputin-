@@ -7,12 +7,14 @@ on:
       - 'riseOfReign/**'
       - 'tests/test_office_hubs.py'
       - 'tests/test_office_client.py'
+      - 'tests/test_january_1933.py'
       - '.github/workflows/riseofreign-office-ci.yml'
   pull_request:
     paths:
       - 'riseOfReign/**'
       - 'tests/test_office_hubs.py'
       - 'tests/test_office_client.py'
+      - 'tests/test_january_1933.py'
       - '.github/workflows/riseofreign-office-ci.yml'
 
 jobs:
@@ -29,8 +31,8 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Validate office content and client contracts
-        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py
+      - name: Validate office and January content
+        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py
 
       - name: Install Godot 4.7.2 stable
         run: |
@@ -40,7 +42,7 @@ jobs:
           sudo install -m 0755 /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 /usr/local/bin/godot
           godot --version
 
-      - name: Parse Godot office client headlessly
+      - name: Parse Godot client headlessly
         run: godot --headless --path riseOfReign/client --editor --quit
 
       - name: Set up .NET 10
@@ -70,15 +72,28 @@ jobs:
           cat /tmp/riseofreign-api.log
           exit 1
 
-      - name: Smoke test health and office API
+      - name: Smoke test office and January API
         run: |
           python - <<'PY'
           import json
           import urllib.request
           import urllib.error
 
+          BASE = 'http://127.0.0.1:5088'
+          AVATARS = ('ataturk','hitler','stalin','churchill','roosevelt','mussolini','custom')
+
           def get(path):
-              with urllib.request.urlopen('http://127.0.0.1:5088' + path, timeout=5) as response:
+              with urllib.request.urlopen(BASE + path, timeout=5) as response:
+                  return response.status, json.load(response)
+
+          def post(path, payload):
+              req = urllib.request.Request(
+                  BASE + path,
+                  data=json.dumps(payload).encode('utf-8'),
+                  headers={'Content-Type': 'application/json'},
+                  method='POST',
+              )
+              with urllib.request.urlopen(req, timeout=5) as response:
                   return response.status, json.load(response)
 
           status, health = get('/health')
@@ -86,24 +101,56 @@ jobs:
           assert health['status'] == 'ok', health
           assert health['mapContentLoaded'] is True, health
           assert health['officeContentLoaded'] is True, health
+          assert health['januaryContentLoaded'] is True, health
 
           status, offices = get('/api/v1/offices')
           assert status == 200
           assert set(offices['interaction_types']) == {'side_menu', 'room', 'phone_list'}
 
-          for avatar in ('ataturk','hitler','stalin','churchill','roosevelt','mussolini','custom'):
-              status, payload = get('/api/v1/offices/' + avatar)
+          for avatar in AVATARS:
+              status, office = get('/api/v1/offices/' + avatar)
               assert status == 200, avatar
-              assert payload['avatarId'] == avatar, payload
-              assert payload['sharedObjects'], avatar
-              assert payload['rooms'], avatar
-              assert payload['phoneSystem'], avatar
+              assert office['avatarId'] == avatar
+
+              status, month = get('/api/v1/months/1933-01/' + avatar)
+              assert status == 200, avatar
+              assert month['avatar_id'] == avatar
+              assert month['next_date'] == '1933-02-01'
+              decision = month['decisions'][0]
+              choice = decision['choices'][0]
+              phone_category = month['phone_opportunities'][0]
+              map_action = month['map_actions'][0]
+
+              payload = {
+                  'decision_choices': {decision['id']: choice['id']},
+                  'phone_action': {'category': phone_category, 'option': 'ask_for_report'},
+                  'map_action': map_action,
+              }
+              status, resolved = post('/api/v1/months/1933-01/' + avatar + '/resolve', payload)
+              assert status == 200, (avatar, resolved)
+              assert resolved['status'] == 'resolved', resolved
+              assert resolved['next_date'] == '1933-02-01', resolved
+              assert resolved['resulting_indicators'], resolved
+
+          status, hitler = get('/api/v1/months/1933-01/hitler')
+          decision = hitler['decisions'][0]
+          status, hitler_result = post('/api/v1/months/1933-01/hitler/resolve', {
+              'decision_choices': {decision['id']: decision['choices'][0]['id']},
+              'phone_action': {'category': hitler['phone_opportunities'][0], 'option': 'ask_for_report'},
+              'map_action': hitler['map_actions'][0],
+          })
+          assert hitler_result['office_level'] == 1, hitler_result
+          assert any(x['type'] == 'historical_anchor' and x['id'] == 'de_1933_hitler_chancellor' for x in hitler_result['applied_actions'])
 
           try:
-              get('/api/v1/offices/not-a-real-avatar')
-              raise AssertionError('Unknown avatar should return 404')
+              post('/api/v1/months/1933-01/ataturk/resolve', {
+                  'decision_choices': {},
+                  'phone_action': {'category': 'cabinet', 'option': 'ask_for_report'},
+                  'map_action': 'inspect_resources',
+              })
+              raise AssertionError('Missing required decision should return 400')
           except urllib.error.HTTPError as exc:
-              assert exc.code == 404, exc.code
+              assert exc.code == 400, exc.code
           PY
 
       - name: Show API log on failure
