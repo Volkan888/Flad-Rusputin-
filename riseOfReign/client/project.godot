@@ -1,11 +1,12 @@
 ; Engine configuration file.
-; riseOfReign mobile client scaffold
+; riseOfReign mobile client
 
 config_version=5
 
 [application]
 config/name="riseOfReign"
 run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7")
 
 [display]
 window/size/viewport_width=1080
@@ -18,3 +19,6 @@ renderer/rendering_method.mobile="gl_compatibility"
 
 [network]
 limits/debugger/max_queued_messages=2048
+
+[riseofreign]
+network/api_base_url="http://127.0.0.1:8080"
