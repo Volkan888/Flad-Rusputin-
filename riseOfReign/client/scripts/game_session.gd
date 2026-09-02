@@ -87,13 +87,13 @@ func advance_ai_world(month_key: String) -> Dictionary:
             continue
         var profile: Dictionary = AI_PROFILES[ai_id]
         var focus: Array = profile.get("focus", [])
-        var seed := abs((month_key + "|" + ai_id + "|" + solo_difficulty + "|" + historical_mode).hash())
+        var seed: int = absi((month_key + "|" + ai_id + "|" + solo_difficulty + "|" + historical_mode).hash())
         var choice := str(focus[seed % focus.size()]) if not focus.is_empty() else "innere Verwaltung"
         var posture := _ai_posture(seed)
         lines.append("%s · %s: %s — %s" % [profile.get("country", ai_id), profile.get("name", ai_id), choice, posture])
         pressure += 1 + (seed % 3)
-    var difficulty_pressure := {"easy":0, "normal":2, "hard":5}.get(solo_difficulty, 2)
-    world_tension = clampi(world_tension + int(pressure / 3.0) + int(difficulty_pressure), 0, 100)
+    var difficulty_pressure: int = int({"easy":0, "normal":2, "hard":5}.get(solo_difficulty, 2))
+    world_tension = clampi(world_tension + int(pressure / 3.0) + difficulty_pressure, 0, 100)
     last_ai_report = {
         "month": month_key,
         "summaries": lines,
