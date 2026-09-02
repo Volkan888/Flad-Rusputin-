@@ -1,5 +1,8 @@
 extends Control
 
+const CAMPAIGN_SAVE_PATH := "user://riseofreign_campaign.json"
+const CURRENT_MONTH_ID := "1933-01"
+
 @export var avatar_id: String = "ataturk"
 @export var avatar_display_name: String = "Mustafa Kemal Atatürk"
 
@@ -36,6 +39,10 @@ var selected_phone_action: Dictionary = {}
 var selected_map_action: String = ""
 var january_resolved: bool = false
 
+var campaign_save_data: Dictionary = {}
+var campaign_save_loaded := false
+var player_state: Dictionary = {}
+
 func _ready() -> void:
     _style_existing_buttons()
     api_base_url = str(ProjectSettings.get_setting("riseofreign/network/api_base_url", "http://127.0.0.1:8080")).trim_suffix("/")
@@ -46,6 +53,7 @@ func _ready() -> void:
     interaction_body.text = "Die Steuerzentrale wird vom riseOfReign-Server geladen."
     status_label.text = "Verbinde mit %s" % api_base_url
     _update_hud({})
+    _load_campaign_save()
     http.request_completed.connect(_on_office_request_completed)
     month_http.request_completed.connect(_on_month_request_completed)
     var error := http.request("%s/api/v1/offices/%s" % [api_base_url, avatar_id])
@@ -54,6 +62,7 @@ func _ready() -> void:
 
 func _on_back_pressed() -> void:
     AudioManager.play_click()
+    _save_campaign_draft()
     get_tree().change_scene_to_file("res://scenes/avatar_select.tscn")
 
 func _on_office_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
@@ -71,7 +80,7 @@ func _on_office_request_completed(_result: int, response_code: int, _headers: Pa
     var start_level = avatar_office.get("start_level", 0)
     current_office_level = int(start_level) if typeof(start_level) in [TYPE_INT, TYPE_FLOAT] else 0
 
-    office_theme_label.text = "%s · Büro-Level %d" % [str(avatar_office.get("start_location", "1933")), current_office_level]
+    office_theme_label.text = "%s · Büro-Level %d · %s" % [str(avatar_office.get("start_location", "1933")), current_office_level, GameSession.session_label()]
     status_label.text = "Büro geladen · %s" % avatar_display_name
     _show_office()
     _load_january()
@@ -104,10 +113,19 @@ func _on_month_request_completed(_result: int, response_code: int, _headers: Pac
         return
 
     month_payload = parsed
+    if _has_resolved_campaign():
+        _restore_resolved_campaign()
+        return
+
     current_indicators = month_payload.get("starting_indicators", {}).duplicate(true)
+    if campaign_save_loaded:
+        var saved_indicators = campaign_save_data.get("current_indicators", {})
+        if typeof(saved_indicators) == TYPE_DICTIONARY and not saved_indicators.is_empty():
+            current_indicators = saved_indicators.duplicate(true)
     _update_hud(current_indicators)
-    status_label.text = "Januar 1933 geladen · Lagebericht bereit"
+    status_label.text = "Januar 1933 geladen · %s" % ("Entwurf wiederhergestellt" if campaign_save_loaded else "Lagebericht bereit")
     _show_month_briefing()
+    _save_campaign_draft()
 
 func _show_connection_error(message: String) -> void:
     interaction_title.text = "Keine Serververbindung"
@@ -129,13 +147,17 @@ func _show_office() -> void:
         _add_office_object(signature, true)
 
     interaction_title.text = "Dein Büro"
-    interaction_body.text = "Tippe einen Gegenstand oder einen Menüknopf an. Die Statusleiste bleibt wie in Grand-Strategy-Spielen immer sichtbar."
+    interaction_body.text = "Klicke einen Gegenstand oder einen Menüknopf an. Im Solo-Modus werden Entscheidungen, Telefon, Karte, Monatsbericht und Lernfortschritt automatisch lokal gespeichert."
     _clear_action_list()
     if not month_payload.is_empty() and not january_resolved:
         _add_action_button("Lagebericht Januar 1933", _show_month_briefing)
         _add_action_button("Januar abschließen", _finish_january)
     elif january_resolved:
         _add_action_button("Monatsbericht Januar", _show_resolved_status)
+        if GameSession.is_solo():
+            _add_action_button("KI-Weltbericht Januar", _show_solo_ai_report)
+            _add_action_button("Kampagnenübersicht", _show_campaign_overview)
+            _add_action_button("Lernfortschritt", _show_learning_progress)
     _add_action_button("Büro-Ausbau anzeigen", _show_upgrade_overview)
 
 func _add_office_object(item: Dictionary, signature: bool = false) -> void:
@@ -188,7 +210,7 @@ func _show_side_menu(item: Dictionary) -> void:
 func _show_phone_list() -> void:
     var phone: Dictionary = office_payload.get("phoneSystem", {})
     interaction_title.text = "Telefon"
-    interaction_body.text = "Wähle eine im Januar verfügbare Kontaktgruppe. Die gewählte Aktion wird Teil deiner Monatsentscheidung."
+    interaction_body.text = "Wähle eine im Januar verfügbare Kontaktgruppe. Die gewählte Aktion wird Teil deiner Monatsentscheidung und im Solo-Spiel sofort gespeichert."
     _clear_action_list()
 
     var allowed: Array = month_payload.get("phone_opportunities", []) if not month_payload.is_empty() and not january_resolved else []
@@ -222,7 +244,8 @@ func _on_phone_option(category_id: String, option: String) -> void:
     AudioManager.play_click()
     if not january_resolved and not month_payload.is_empty():
         selected_phone_action = {"category": category_id, "option": option}
-    status_label.text = "Telefon gewählt · %s · %s" % [_humanize(category_id), _humanize(option)]
+        _save_campaign_draft()
+    status_label.text = "Telefon gewählt und gespeichert · %s · %s" % [_humanize(category_id), _humanize(option)]
     interaction_body.text = "Für Januar vorgemerkt: %s → %s" % [_humanize(category_id), _humanize(option)]
     _clear_action_list()
     _add_action_button("Zum Januar-Lagebericht", _show_month_briefing)
@@ -306,6 +329,9 @@ func _show_month_briefing() -> void:
         interaction_title.text = "Januar wird geladen"
         interaction_body.text = "Der Lagebericht ist noch nicht verfügbar."
         return
+    if january_resolved:
+        _show_resolved_status()
+        return
     interaction_title.text = "Lagebericht · Januar 1933"
     var context_lines: Array[String] = []
     for line in month_payload.get("shared_context", []):
@@ -316,12 +342,16 @@ func _show_month_briefing() -> void:
         if month_payload.has(key):
             body += "\n\n%s" % str(month_payload[key])
     body += "\n\n%s" % _january_selection_summary()
+    if GameSession.is_solo():
+        body += "\n\nAUTOSAVE: Jede Auswahl wird in user://riseofreign_campaign.json gespeichert."
     interaction_body.text = body
     _clear_action_list()
     _add_action_button("1 · Entscheidungen", _show_january_decisions)
     _add_action_button("2 · Telefon / Meeting", _show_phone_list)
     _add_action_button("3 · Weltkarte / Ressourcen", _show_january_map_actions)
     _add_action_button("4 · Januar abschließen", _finish_january)
+    if GameSession.is_solo():
+        _add_action_button("Kampagnenübersicht", _show_campaign_overview)
     _add_action_button("Zurück ins Büro", _show_office)
 
 func _show_january_decisions() -> void:
@@ -343,7 +373,8 @@ func _show_january_decisions() -> void:
 func _select_january_choice(decision_id: String, choice_id: String, label: String) -> void:
     AudioManager.play_click()
     selected_decisions[decision_id] = choice_id
-    status_label.text = "Entscheidung vorgemerkt · %s" % label
+    _save_campaign_draft()
+    status_label.text = "Entscheidung gespeichert · %s" % label
     _show_january_decisions()
 
 func _show_january_map_actions() -> void:
@@ -357,7 +388,8 @@ func _show_january_map_actions() -> void:
 func _select_january_map_action(action: String) -> void:
     AudioManager.play_click()
     selected_map_action = action
-    status_label.text = "Kartenaktion vorgemerkt · %s" % _humanize(action)
+    _save_campaign_draft()
+    status_label.text = "Kartenaktion gespeichert · %s" % _humanize(action)
     _show_january_map_actions()
 
 func _finish_january() -> void:
@@ -381,8 +413,9 @@ func _finish_january() -> void:
     if selected_map_action.is_empty():
         missing.append("Weltkarte / Ressourcen")
     if not missing.is_empty():
+        _save_campaign_draft()
         interaction_title.text = "Januar noch nicht bereit"
-        interaction_body.text = "Fehlt noch:\n• %s" % "\n• ".join(missing)
+        interaction_body.text = "Fehlt noch:\n• %s\n\nDein bisheriger Entwurf ist gespeichert." % "\n• ".join(missing)
         _clear_action_list()
         _add_action_button("Zum Lagebericht", _show_month_briefing)
         return
@@ -392,6 +425,7 @@ func _finish_january() -> void:
         "phone_action": selected_phone_action,
         "map_action": selected_map_action
     }
+    _save_campaign_draft()
     month_request_mode = "resolve"
     status_label.text = "Januar 1933 wird aufgelöst…"
     var headers := PackedStringArray(["Content-Type: application/json"])
@@ -405,28 +439,52 @@ func _finish_january() -> void:
         status_label.text = "Monatsauflösung konnte nicht gestartet werden (%s)." % error
 
 func _show_month_report(result: Dictionary) -> void:
+    _apply_month_report(result, true)
+
+func _apply_month_report(result: Dictionary, persist_result: bool) -> void:
     january_resolved = true
     date_label.text = "1. Februar 1933"
     var returned_level = result.get("office_level", null)
     if typeof(returned_level) in [TYPE_INT, TYPE_FLOAT]:
         current_office_level = int(returned_level)
-        office_theme_label.text = "%s · Büro-Level %d" % [str(avatar_office.get("start_location", "1933")), current_office_level]
+        office_theme_label.text = "%s · Büro-Level %d · %s" % [str(avatar_office.get("start_location", "1933")), current_office_level, GameSession.session_label()]
+
+    var indicators: Dictionary = result.get("resulting_indicators", {})
+    current_indicators = indicators.duplicate(true)
+    player_state = result.get("player_state", {}).duplicate(true) if typeof(result.get("player_state", {})) == TYPE_DICTIONARY else {}
+    _update_hud(current_indicators)
+
+    var ai_report := _campaign_ai_report(true)
+    if persist_result:
+        _save_campaign_resolution(result, ai_report)
 
     interaction_title.text = "Monatsbericht · Januar 1933"
     var lines: Array[String] = [str(result.get("report", "Januar abgeschlossen.")), "", "Stand zum 1. Februar 1933:"]
-    var indicators: Dictionary = result.get("resulting_indicators", {})
-    current_indicators = indicators.duplicate(true)
-    _update_hud(current_indicators)
     var keys := indicators.keys()
     keys.sort()
     for key in keys:
         lines.append("• %s: %s" % [_humanize(str(key)), str(indicators[key])])
+    if GameSession.is_solo():
+        lines.append("")
+        lines.append("Solo-Spielstand gespeichert.")
+        lines.append("Weltspannung: %s / 100" % str(ai_report.get("world_tension", GameSession.world_tension)))
+        lines.append(GameSession.learning_progress_text())
     interaction_body.text = "\n".join(lines)
-    status_label.text = "Januar abgeschlossen · Februar 1933 vorbereitet"
+    status_label.text = "Januar abgeschlossen und gespeichert · Februar 1933 vorbereitet"
     _clear_action_list()
+    if GameSession.is_solo():
+        _add_action_button("KI-Weltbericht Januar", _show_solo_ai_report)
+        _add_action_button("Kampagnenübersicht", _show_campaign_overview)
+        _add_action_button("Lernfortschritt", _show_learning_progress)
     _add_action_button("Zurück ins Büro", _show_office)
 
 func _show_resolved_status() -> void:
+    if _has_resolved_campaign():
+        var saved_result = campaign_save_data.get("resolved_result", {})
+        if typeof(saved_result) == TYPE_DICTIONARY and not saved_result.is_empty():
+            _apply_month_report(saved_result, false)
+            status_label.text = "Gespeicherter Monatsbericht geladen · 1. Februar 1933"
+            return
     interaction_title.text = "Februar 1933"
     interaction_body.text = "Der Januar ist abgeschlossen. Das Büro zeigt bereits den neuen Zeitstand; der vollständige Februar-Content ist der nächste Monatsbaustein."
     _clear_action_list()
@@ -548,12 +606,71 @@ func _toggle_sfx() -> void:
     _show_audio_settings_panel()
 
 func _go_to_main_menu() -> void:
+    _save_campaign_draft()
     get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _show_named_panel(title: String, body: String) -> void:
     interaction_title.text = title
     interaction_body.text = body
     _clear_action_list()
+    _add_action_button("Zurück zum Büro", _show_office)
+
+func _show_solo_ai_report() -> void:
+    var report := _campaign_ai_report(true)
+    var lines: Array[String] = []
+    for line in report.get("summaries", []):
+        lines.append("• %s" % str(line))
+    interaction_title.text = "Solo · KI-Weltbericht Januar"
+    interaction_body.text = "Weltspannung: %s / 100\nKI-Mächte: %d\nDirektor: %s\n\n%s\n\n%s" % [
+        str(report.get("world_tension", GameSession.world_tension)),
+        GameSession.ai_player_count(),
+        _humanize(str(report.get("director", "guided_historical"))),
+        "\n".join(lines),
+        str(report.get("note", "Die KI-Welt wird schrittweise mit Karte, Wirtschaft und Diplomatie verbunden."))
+    ]
+    _clear_action_list()
+    _add_action_button("Kampagnenübersicht", _show_campaign_overview)
+    _add_action_button("Lernfortschritt", _show_learning_progress)
+    _add_action_button("Zurück zum Büro", _show_office)
+
+func _show_campaign_overview() -> void:
+    var status := "Januar abgeschlossen" if january_resolved else "Januar in Bearbeitung"
+    var missing := _missing_january_steps()
+    var completion := "vollständig" if missing.is_empty() else "offen: %s" % ", ".join(missing)
+    var finance_text := "—"
+    var health_text := "—"
+    if not player_state.is_empty():
+        finance_text = str(player_state.get("finance", {}).get("treasury", current_indicators.get("treasury", "—")))
+        health_text = str(player_state.get("health", {}).get("health", current_indicators.get("health", "—")))
+    interaction_title.text = "Solo · Kampagnenübersicht"
+    interaction_body.text = "Avatar: %s\nModus: %s\nZeitstand: %s\nStatus: %s\nMonatsplan: %s\nStaatskasse: %s RP\nGesundheit: %s\nWeltspannung: %d / 100\nLernen: %s\n\nSpielstand: %s" % [
+        avatar_display_name,
+        GameSession.session_label(),
+        "1. Februar 1933" if january_resolved else "Januar 1933",
+        status,
+        completion,
+        finance_text,
+        health_text,
+        GameSession.world_tension,
+        GameSession.learning_progress_text(),
+        ProjectSettings.globalize_path(CAMPAIGN_SAVE_PATH)
+    ]
+    _clear_action_list()
+    if january_resolved:
+        _add_action_button("Monatsbericht Januar", _show_resolved_status)
+        _add_action_button("KI-Weltbericht Januar", _show_solo_ai_report)
+    else:
+        _add_action_button("Zum Lagebericht", _show_month_briefing)
+    _add_action_button("Lernfortschritt", _show_learning_progress)
+    _add_action_button("Zurück zum Büro", _show_office)
+
+func _show_learning_progress() -> void:
+    interaction_title.text = "Lernfortschritt"
+    interaction_body.text = "%s\n\n%s\n\nWissenskarten erklären Regeln, historischen Kontext, Folgen und Unsicherheiten. Falsche Antworten verlieren keine Ressourcen; sie öffnen eine Erklärung." % [GameSession.learning_progress_text(), GameSession.educational_notice()]
+    _clear_action_list()
+    if january_resolved:
+        _add_action_button("KI-Weltbericht Januar", _show_solo_ai_report)
+        _add_action_button("Kampagnenübersicht", _show_campaign_overview)
     _add_action_button("Zurück zum Büro", _show_office)
 
 func _update_hud(indicators: Dictionary) -> void:
@@ -625,6 +742,133 @@ func _style_strategy_button(button: Button) -> void:
     button.add_theme_stylebox_override("pressed", pressed)
     button.add_theme_color_override("font_color", Color("e5dece"))
     button.add_theme_color_override("font_hover_color", Color("ffffff"))
+    button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+
+func _load_campaign_save() -> void:
+    if not GameSession.is_solo() or not FileAccess.file_exists(CAMPAIGN_SAVE_PATH):
+        return
+    var file := FileAccess.open(CAMPAIGN_SAVE_PATH, FileAccess.READ)
+    if file == null:
+        return
+    var parsed = JSON.parse_string(file.get_as_text())
+    if typeof(parsed) != TYPE_DICTIONARY:
+        return
+    if str(parsed.get("avatar_id", "")) != avatar_id:
+        return
+    campaign_save_data = parsed
+    campaign_save_loaded = true
+    var decisions = campaign_save_data.get("selected_decisions", {})
+    var phone = campaign_save_data.get("selected_phone_action", {})
+    selected_decisions = decisions.duplicate(true) if typeof(decisions) == TYPE_DICTIONARY else {}
+    selected_phone_action = phone.duplicate(true) if typeof(phone) == TYPE_DICTIONARY else {}
+    selected_map_action = str(campaign_save_data.get("selected_map_action", ""))
+    var saved_player_state = campaign_save_data.get("player_state", {})
+    player_state = saved_player_state.duplicate(true) if typeof(saved_player_state) == TYPE_DICTIONARY else {}
+    if str(campaign_save_data.get("status", "draft")) == "resolved":
+        january_resolved = true
+        date_label.text = "1. Februar 1933"
+
+func _save_campaign_draft() -> void:
+    if not GameSession.is_solo() or january_resolved or month_payload.is_empty():
+        return
+    campaign_save_data = {
+        "schema_version": 1,
+        "game": "riseOfReign",
+        "mode_id": "solo_learning",
+        "avatar_id": avatar_id,
+        "avatar_display_name": avatar_display_name,
+        "current_month": CURRENT_MONTH_ID,
+        "current_date": "1933-01-01",
+        "status": "draft",
+        "selected_decisions": selected_decisions.duplicate(true),
+        "selected_phone_action": selected_phone_action.duplicate(true),
+        "selected_map_action": selected_map_action,
+        "current_indicators": current_indicators.duplicate(true),
+        "difficulty": GameSession.solo_difficulty,
+        "historical_mode": GameSession.historical_mode,
+        "learning_enabled": GameSession.learning_enabled,
+        "learning_score": GameSession.learning_score,
+        "learning_answers": GameSession.learning_answers,
+        "world_tension": GameSession.world_tension,
+        "saved_at_utc": Time.get_datetime_string_from_system(true, true)
+    }
+    campaign_save_loaded = _write_campaign_save(campaign_save_data)
+
+func _save_campaign_resolution(result: Dictionary, ai_report: Dictionary) -> void:
+    if not GameSession.is_solo():
+        return
+    campaign_save_data = {
+        "schema_version": 1,
+        "game": "riseOfReign",
+        "mode_id": "solo_learning",
+        "avatar_id": avatar_id,
+        "avatar_display_name": avatar_display_name,
+        "current_month": CURRENT_MONTH_ID,
+        "current_date": str(result.get("next_date", "1933-02-01")),
+        "status": "resolved",
+        "selected_decisions": selected_decisions.duplicate(true),
+        "selected_phone_action": selected_phone_action.duplicate(true),
+        "selected_map_action": selected_map_action,
+        "current_indicators": current_indicators.duplicate(true),
+        "resulting_indicators": result.get("resulting_indicators", {}).duplicate(true),
+        "resolved_result": result.duplicate(true),
+        "player_state": player_state.duplicate(true),
+        "ai_report": ai_report.duplicate(true),
+        "difficulty": GameSession.solo_difficulty,
+        "historical_mode": GameSession.historical_mode,
+        "learning_enabled": GameSession.learning_enabled,
+        "learning_score": GameSession.learning_score,
+        "learning_answers": GameSession.learning_answers,
+        "world_tension": int(ai_report.get("world_tension", GameSession.world_tension)),
+        "saved_at_utc": Time.get_datetime_string_from_system(true, true)
+    }
+    campaign_save_loaded = _write_campaign_save(campaign_save_data)
+
+func _write_campaign_save(data: Dictionary) -> bool:
+    var file := FileAccess.open(CAMPAIGN_SAVE_PATH, FileAccess.WRITE)
+    if file == null:
+        status_label.text = "Warnung: Solo-Spielstand konnte nicht geschrieben werden."
+        return false
+    file.store_string(JSON.stringify(data, "  "))
+    file.flush()
+    return true
+
+func _has_resolved_campaign() -> bool:
+    return campaign_save_loaded and str(campaign_save_data.get("status", "")) == "resolved"
+
+func _restore_resolved_campaign() -> void:
+    var saved_result = campaign_save_data.get("resolved_result", {})
+    if typeof(saved_result) != TYPE_DICTIONARY or saved_result.is_empty():
+        january_resolved = false
+        campaign_save_data["status"] = "draft"
+        current_indicators = month_payload.get("starting_indicators", {}).duplicate(true)
+        _update_hud(current_indicators)
+        _show_month_briefing()
+        return
+    january_resolved = true
+    _apply_month_report(saved_result, false)
+    status_label.text = "Solo-Spielstand wiederhergestellt · 1. Februar 1933"
+
+func _campaign_ai_report(create_if_missing: bool) -> Dictionary:
+    var saved = campaign_save_data.get("ai_report", {})
+    if typeof(saved) == TYPE_DICTIONARY and not saved.is_empty():
+        GameSession.world_tension = int(saved.get("world_tension", GameSession.world_tension))
+        return saved.duplicate(true)
+    if create_if_missing and GameSession.is_solo():
+        return GameSession.ensure_ai_world_report(CURRENT_MONTH_ID)
+    return {}
+
+func _missing_january_steps() -> Array[String]:
+    var missing: Array[String] = []
+    if not month_payload.is_empty():
+        for decision in month_payload.get("decisions", []):
+            if bool(decision.get("required", false)) and not selected_decisions.has(str(decision.get("id", ""))):
+                missing.append(str(decision.get("title", decision.get("id", "Entscheidung"))))
+    if selected_phone_action.is_empty():
+        missing.append("Telefon")
+    if selected_map_action.is_empty():
+        missing.append("Karte")
+    return missing
 
 func _requirement_note(requirements) -> String:
     if typeof(requirements) != TYPE_DICTIONARY or requirements.is_empty():
