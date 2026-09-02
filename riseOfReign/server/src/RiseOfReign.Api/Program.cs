@@ -1,3 +1,4 @@
+using System.Text.Json.Nodes;
 using RiseOfReign.Application;
 using RiseOfReign.Domain;
 
@@ -6,17 +7,29 @@ builder.Services.AddSingleton<TurnEngine>();
 builder.Services.AddSignalR();
 
 var epochPath = ResolveEpochPath(builder.Environment.ContentRootPath);
-var loader = new EpochContentLoader();
+var mapLoader = new EpochContentLoader();
+var officeLoader = new OfficeHubContentLoader();
 EpochMapContent? mapContent = null;
+JsonNode? officeContent = null;
 string? mapLoadError = null;
+string? officeLoadError = null;
 
 try
 {
-    mapContent = await loader.LoadMapAsync(epochPath);
+    mapContent = await mapLoader.LoadMapAsync(epochPath);
 }
 catch (Exception ex)
 {
     mapLoadError = ex.Message;
+}
+
+try
+{
+    officeContent = await officeLoader.LoadAsync(epochPath);
+}
+catch (Exception ex)
+{
+    officeLoadError = ex.Message;
 }
 
 var app = builder.Build();
@@ -24,10 +37,12 @@ var app = builder.Build();
 app.MapGet("/health", () => Results.Ok(new
 {
     service = "riseOfReign-api",
-    status = mapContent is null ? "degraded" : "ok",
+    status = mapContent is null || officeContent is null ? "degraded" : "ok",
     epoch = "1933",
     mapContentLoaded = mapContent is not null,
+    officeContentLoaded = officeContent is not null,
     mapLoadError,
+    officeLoadError,
     utc = DateTimeOffset.UtcNow
 }));
 
@@ -35,7 +50,7 @@ app.MapGet("/api/v1/meta", () => Results.Ok(new
 {
     game = "riseOfReign",
     ruleset = "0.1.0",
-    content = "1933.0.2",
+    content = "1933.0.3",
     turnUnit = "month",
     maxPlayers = 4
 }));
@@ -95,6 +110,30 @@ app.MapGet("/api/v1/construction/catalog", (string? type) =>
         query = query.Where(x => string.Equals(x.Type, type, StringComparison.OrdinalIgnoreCase));
 
     return Results.Ok(query);
+});
+
+app.MapGet("/api/v1/offices", () => officeContent is null
+    ? Results.Problem(officeLoadError ?? "Office content unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable)
+    : Results.Ok(officeContent));
+
+app.MapGet("/api/v1/offices/{avatarId}", (string avatarId) =>
+{
+    if (officeContent is null)
+        return Results.Problem(officeLoadError ?? "Office content unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
+
+    var avatarOffices = officeContent["avatar_offices"]?.AsObject();
+    if (avatarOffices is null || !avatarOffices.TryGetPropertyValue(avatarId, out var avatarOffice) || avatarOffice is null)
+        return Results.NotFound(new { error = "Unknown avatar office.", avatarId });
+
+    return Results.Ok(new
+    {
+        avatarId,
+        sharedObjects = officeContent["shared_objects"],
+        officeLevels = officeContent["office_levels"],
+        rooms = officeContent["rooms"],
+        dynamicVisualStates = officeContent["dynamic_visual_states"],
+        avatarOffice
+    });
 });
 
 app.Run();
