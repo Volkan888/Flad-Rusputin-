@@ -221,7 +221,7 @@ app.MapGet("/api/v1/campaign/months", () => Results.Ok(campaignMonths
         endDate = x.Value["end_date"]?.GetValue<string>(),
         nextMonthId = x.Value["next_month_id"]?.GetValue<string>(),
         nextContentAvailable = x.Value["next_content_available"]?.GetValue<bool>() ?? false
-    }))));
+    })));
 
 app.MapGet("/api/v1/campaign/months/{monthId}/{avatarId}", (string monthId, string avatarId, string? countryId) =>
 {
