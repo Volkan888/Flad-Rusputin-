@@ -7,18 +7,23 @@ var music_volume: float = 0.55
 var sfx_volume: float = 0.75
 var music_enabled: bool = true
 var sfx_enabled: bool = true
+var intro_enabled: bool = true
 
 var _music_player: AudioStreamPlayer
 var _sfx_player: AudioStreamPlayer
+var _intro_player: AudioStreamPlayer
 
 func _ready() -> void:
     _load_settings()
     _music_player = AudioStreamPlayer.new()
     _sfx_player = AudioStreamPlayer.new()
+    _intro_player = AudioStreamPlayer.new()
     add_child(_music_player)
     add_child(_sfx_player)
+    add_child(_intro_player)
     _music_player.stream = _make_tone([55.0, 82.5, 110.0], 4.0, 0.06, true)
     _sfx_player.stream = _make_click()
+    _intro_player.stream = _make_intro_cue()
     apply_settings()
 
 func start_menu_music() -> void:
@@ -32,6 +37,11 @@ func play_click() -> void:
     if not sfx_enabled:
         return
     _sfx_player.play()
+
+func play_intro_cue() -> void:
+    if not sfx_enabled:
+        return
+    _intro_player.play()
 
 func set_master_volume(value: float) -> void:
     master_volume = clampf(value, 0.0, 1.0)
@@ -60,6 +70,10 @@ func set_sfx_enabled(value: bool) -> void:
     sfx_enabled = value
     save_settings()
 
+func set_intro_enabled(value: bool) -> void:
+    intro_enabled = value
+    save_settings()
+
 func apply_settings() -> void:
     var master_db := linear_to_db(maxf(master_volume, 0.001))
     AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), master_db)
@@ -67,6 +81,8 @@ func apply_settings() -> void:
         _music_player.volume_db = linear_to_db(maxf(music_volume, 0.001))
     if _sfx_player:
         _sfx_player.volume_db = linear_to_db(maxf(sfx_volume, 0.001))
+    if _intro_player:
+        _intro_player.volume_db = linear_to_db(maxf(sfx_volume, 0.001))
 
 func save_settings() -> void:
     var config := ConfigFile.new()
@@ -75,6 +91,7 @@ func save_settings() -> void:
     config.set_value("audio", "sfx", sfx_volume)
     config.set_value("audio", "music_enabled", music_enabled)
     config.set_value("audio", "sfx_enabled", sfx_enabled)
+    config.set_value("presentation", "intro_enabled", intro_enabled)
     config.save(SETTINGS_PATH)
 
 func _load_settings() -> void:
@@ -86,6 +103,7 @@ func _load_settings() -> void:
     sfx_volume = float(config.get_value("audio", "sfx", sfx_volume))
     music_enabled = bool(config.get_value("audio", "music_enabled", music_enabled))
     sfx_enabled = bool(config.get_value("audio", "sfx_enabled", sfx_enabled))
+    intro_enabled = bool(config.get_value("presentation", "intro_enabled", intro_enabled))
 
 func _make_click() -> AudioStreamWAV:
     var stream := AudioStreamWAV.new()
@@ -99,6 +117,30 @@ func _make_click() -> AudioStreamWAV:
         var t := float(i) / 22050.0
         var envelope := 1.0 - float(i) / float(frames)
         var sample := sin(TAU * 620.0 * t) * envelope * 0.22
+        data.encode_s16(i * 2, int(clampf(sample, -1.0, 1.0) * 32767.0))
+    stream.data = data
+    return stream
+
+func _make_intro_cue() -> AudioStreamWAV:
+    var stream := AudioStreamWAV.new()
+    stream.format = AudioStreamWAV.FORMAT_16_BITS
+    stream.mix_rate = 22050
+    stream.stereo = false
+    var duration := 2.6
+    var frames := int(duration * 22050.0)
+    var data := PackedByteArray()
+    data.resize(frames * 2)
+    for i in range(frames):
+        var t := float(i) / 22050.0
+        var attack := minf(1.0, t / 0.18)
+        var release := clampf((duration - t) / 0.55, 0.0, 1.0)
+        var envelope := attack * release
+        var low := sin(TAU * 48.0 * t) * 0.09
+        var mid := sin(TAU * 96.0 * t) * 0.045
+        var accent := 0.0
+        if t > 1.15 and t < 1.55:
+            accent = sin(TAU * 220.0 * t) * 0.035 * (1.0 - absf(t - 1.35) / 0.20)
+        var sample := (low + mid + accent) * envelope
         data.encode_s16(i * 2, int(clampf(sample, -1.0, 1.0) * 32767.0))
     stream.data = data
     return stream
