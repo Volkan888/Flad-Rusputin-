@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Defines the visual and functional spaces before the 1933 office hub. Spectacular command rooms are deliberately withheld until later progression.",
+  "global_stages": [
+    {"stage":0,"id":"birth_home","label":"Geburt / Elternhaus","space":"home_room","controls":["family","origin","health","keepsakes"],"office_features":[],"visual_rule":"No office imagery. Family home and period-appropriate surroundings only."},
+    {"stage":1,"id":"childhood_learning","label":"Kindheit / Lernen","space":"childhood_room_or_school","controls":["education","friends","family","first_items","health"],"office_features":["small_desk_or_learning_surface"],"visual_rule":"A modest desk, books or school materials may appear; no political command elements."},
+    {"stage":2,"id":"education_training","label":"Ausbildung / Studium / Militärschule","space":"study_dorm_barracks_or_training_room","controls":["skills","education","career_contacts","inventory","health"],"office_features":["desk","books","notebook","local_map"],"visual_rule":"Functional personal workspace only."},
+    {"stage":3,"id":"first_professional_workspace","label":"Erster Beruf / Dienst","space":"workplace_or_shared_office","controls":["career","income","contacts","assignments","inventory","health"],"office_features":["shared_desk","filing_space","telephone_if_period_and_role_allow","work_map"],"visual_rule":"First real office functions, but usually shared or limited."},
+    {"stage":4,"id":"personal_office","label":"Eigenes Arbeitszimmer","space":"private_office","controls":["correspondence","appointments","personal_finance","political_or_professional_network","inventory","health"],"office_features":["personal_desk","telephone","bookshelf","files","portrait_or_personal_objects"],"visual_rule":"First room that visually belongs to the avatar."},
+    {"stage":5,"id":"political_leadership_office","label":"Politisches / leitendes Büro","space":"leadership_office","controls":["organization","press","staff","political_contacts","meetings","security"],"office_features":["larger_desk","telephone","assistant_access","wall_map","filing_cabinet","visitor_chairs"],"visual_rule":"Power becomes visible but state authority is not implied unless historically held."},
+    {"stage":6,"id":"government_transition","label":"Regierungs-/Übergangsbüro","space":"official_or_transition_office","controls":["state_briefings","budget_access_if_authorized","ministers","official_correspondence","security","health"],"office_features":["state_symbol","official_files","budget_ledger","secure_documents"],"visual_rule":"Only unlocked by actual office/institutional authority."},
+    {"stage":7,"id":"office_hub_1933","label":"Steuerzentrale 1933","space":"office_hub","controls":["office","map","phone","decisions","inventory","archive","research","diplomacy","economy","military","events","settings"],"office_features":["current_office_level_system"],"visual_rule":"Uses office_hubs.json and each avatar's historically appropriate 1 January 1933 level."}
+  ],
+  "late_highlights": {
+    "rule":"Do not show these as fully realized spaces in the prologue or low-power offices. Tease locked doors, plans, empty room labels or upgrade silhouettes only when appropriate.",
+    "highlights":[
+      {"id":"dedicated_map_room","earliest_office_level":3,"unlock_logic":["authority","staff","communications","infrastructure"],"payoff":"Large interactive strategic wall map and resource/logistics overlays."},
+      {"id":"communications_room","earliest_office_level":3,"unlock_logic":["communications","money","staff"],"payoff":"Multiple telephone lines, telegraph/teleprinter and secure communications."},
+      {"id":"war_room","earliest_office_level":3,"unlock_logic":["military_influence","armament","authority"],"payoff":"Fronts, supply, mobilization and production become a dedicated command space."},
+      {"id":"intelligence_room","earliest_office_level":4,"unlock_logic":["intelligence_capacity","authority","security"],"payoff":"Dedicated intelligence picture, networks and counterintelligence."},
+      {"id":"national_conference_room","earliest_office_level":4,"unlock_logic":["government_authority","diplomacy","staff"],"payoff":"Cabinet crises, multi-party diplomacy and major delegations."},
+      {"id":"crisis_shelter","earliest_office_level":5,"unlock_logic":["war_or_security_crisis","construction","state_capacity"],"payoff":"Continuity-of-government and secure crisis orders."},
+      {"id":"great_power_hq","earliest_office_level":5,"unlock_logic":["great_power_status_or_major_war","industry","logistics","armament","authority"],"payoff":"The strongest visual culmination: global logistics, multi-front view, alliance coordination and strategic reserves."}
+    ]
+  },
+  "avatar_paths": {
+    "ataturk":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","government_transition","office_hub_1933"],
+    "hitler":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","office_hub_1933"],
+    "stalin":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","government_transition","office_hub_1933"],
+    "churchill":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","office_hub_1933"],
+    "roosevelt":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","government_transition","office_hub_1933"],
+    "mussolini":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","government_transition","office_hub_1933"],
+    "custom":["birth_home","childhood_learning","education_training","first_professional_workspace","personal_office","political_leadership_office","government_transition","office_hub_1933"]
+  },
+  "continuity_rules":[
+    "Items gained in a prior space can appear later if still owned.",
+    "Contacts unlocked during education or career can populate later telephone lists.",
+    "Health and injuries persist across all spaces.",
+    "Personal wealth and state treasury remain separate throughout progression.",
+    "A room upgrade never grants political authority by itself.",
+    "Late highlight rooms are gameplay rewards and status feedback, not cosmetic shortcuts."
+  ]
+}
