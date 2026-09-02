@@ -8,6 +8,7 @@ on:
       - 'tests/test_office_hubs.py'
       - 'tests/test_office_client.py'
       - 'tests/test_january_1933.py'
+      - 'tests/test_sectors_1933.py'
       - '.github/workflows/riseofreign-office-ci.yml'
   pull_request:
     paths:
@@ -15,6 +16,7 @@ on:
       - 'tests/test_office_hubs.py'
       - 'tests/test_office_client.py'
       - 'tests/test_january_1933.py'
+      - 'tests/test_sectors_1933.py'
       - '.github/workflows/riseofreign-office-ci.yml'
 
 jobs:
@@ -31,8 +33,8 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Validate office and January content
-        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py
+      - name: Validate office January and sector content
+        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py tests/test_sectors_1933.py
 
       - name: Install Godot 4.7.2 stable
         run: |
@@ -102,6 +104,7 @@ jobs:
           assert health['mapContentLoaded'] is True, health
           assert health['officeContentLoaded'] is True, health
           assert health['januaryContentLoaded'] is True, health
+          assert health['stateProfilesLoaded'] is True, health
 
           status, offices = get('/api/v1/offices')
           assert status == 200
@@ -116,6 +119,9 @@ jobs:
               assert status == 200, avatar
               assert month['avatar_id'] == avatar
               assert month['next_date'] == '1933-02-01'
+              assert month['player_state']['finance']['monthly_income'] >= 0
+              assert month['player_state']['health']['health'] >= 0
+              assert month['player_state']['inventory_count'] > 0
               decision = month['decisions'][0]
               choice = decision['choices'][0]
               phone_category = month['phone_opportunities'][0]
@@ -131,6 +137,9 @@ jobs:
               assert resolved['status'] == 'resolved', resolved
               assert resolved['next_date'] == '1933-02-01', resolved
               assert resolved['resulting_indicators'], resolved
+              assert resolved['finance']['last_month_ledger']['month'] == '1933-01'
+              assert resolved['health']['health'] >= 0
+              assert len(resolved['inventory']) > 0
 
           status, hitler = get('/api/v1/months/1933-01/hitler')
           decision = hitler['decisions'][0]
