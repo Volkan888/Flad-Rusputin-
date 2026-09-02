@@ -13,6 +13,7 @@ on:
       - 'tests/test_state_profiles_1933.py'
       - 'tests/test_turn_timer.py'
       - 'tests/test_succession_capitulation.py'
+      - 'tests/test_research_1933_1945.py'
       - '.github/workflows/riseofreign-office-ci.yml'
   pull_request:
     paths:
@@ -25,6 +26,7 @@ on:
       - 'tests/test_state_profiles_1933.py'
       - 'tests/test_turn_timer.py'
       - 'tests/test_succession_capitulation.py'
+      - 'tests/test_research_1933_1945.py'
       - '.github/workflows/riseofreign-office-ci.yml'
 
 jobs:
@@ -42,7 +44,7 @@ jobs:
           python-version: '3.13'
 
       - name: Validate core game content and desktop UI contracts
-        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py tests/test_sectors_1933.py tests/test_power_structures_1933.py tests/test_state_profiles_1933.py tests/test_turn_timer.py tests/test_succession_capitulation.py
+        run: python -m unittest -v tests/test_office_hubs.py tests/test_office_client.py tests/test_january_1933.py tests/test_sectors_1933.py tests/test_power_structures_1933.py tests/test_state_profiles_1933.py tests/test_turn_timer.py tests/test_succession_capitulation.py tests/test_research_1933_1945.py
 
       - name: Install Godot 4.7.2 stable
         run: |
