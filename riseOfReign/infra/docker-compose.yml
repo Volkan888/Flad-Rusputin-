@@ -18,10 +18,11 @@ services:
 
   api:
     build:
-      context: ../server
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: server/Dockerfile
     environment:
       ASPNETCORE_URLS: http://+:8080
+      ROR_EPOCH_1933_PATH: /app/content/1933
       ConnectionStrings__GameDb: Host=db;Port=5432;Database=${POSTGRES_DB:-riseofreign};Username=${POSTGRES_USER:-riseofreign};Password=${POSTGRES_PASSWORD:-change-me-local}
     ports:
       - "8080:8080"
