@@ -1,6 +1,7 @@
 using System.Text.Json.Nodes;
 using RiseOfReign.Application;
 using RiseOfReign.Domain;
+using RiseOfReign.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<TurnEngine>();
@@ -26,7 +27,20 @@ catch (Exception ex) { officeLoadError = ex.Message; }
 try { januaryContent = await januaryService.LoadAsync(epochPath); }
 catch (Exception ex) { januaryLoadError = ex.Message; }
 
+var connectionString = builder.Configuration.GetConnectionString("GameDb");
+IOnlineMatchStore? matchStore = null;
+OnlineMatchCoordinator? matchCoordinator = null;
+if (!string.IsNullOrWhiteSpace(connectionString) && januaryContent is not null)
+{
+    matchStore = new PostgresOnlineMatchStore(connectionString);
+    matchCoordinator = new OnlineMatchCoordinator(matchStore, januaryService, januaryContent);
+}
+
 var app = builder.Build();
+if (matchStore is not null)
+{
+    app.Lifetime.ApplicationStopped.Register(() => matchStore.DisposeAsync().AsTask().GetAwaiter().GetResult());
+}
 
 app.MapGet("/health", () => Results.Ok(new
 {
@@ -36,6 +50,7 @@ app.MapGet("/health", () => Results.Ok(new
     mapContentLoaded = mapContent is not null,
     officeContentLoaded = officeContent is not null,
     januaryContentLoaded = januaryContent is not null,
+    onlineMatchStoreConfigured = matchCoordinator is not null,
     mapLoadError,
     officeLoadError,
     januaryLoadError,
@@ -139,6 +154,65 @@ app.MapPost("/api/v1/months/1933-01/{avatarId}/resolve", (string avatarId, JsonO
     try { return Results.Ok(januaryService.Resolve(januaryContent, avatarId, request)); }
     catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown January avatar.", avatarId }); }
     catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
+});
+
+app.MapPost("/api/v1/matches", async (CreateOnlineMatchRequest request, CancellationToken cancellationToken) =>
+{
+    if (matchCoordinator is null)
+        return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try
+    {
+        var result = await matchCoordinator.CreateAsync(request, cancellationToken);
+        return Results.Created($"/api/v1/matches/{result.MatchId}", result);
+    }
+    catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
+    catch (ArgumentException ex) { return Results.BadRequest(new { error = ex.Message }); }
+});
+
+app.MapGet("/api/v1/matches/{matchId:guid}", async (Guid matchId, CancellationToken cancellationToken) =>
+{
+    if (matchCoordinator is null)
+        return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    var match = await matchCoordinator.GetAsync(matchId, cancellationToken);
+    return match is null ? Results.NotFound(new { error = "Match not found.", matchId }) : Results.Ok(match);
+});
+
+app.MapPost("/api/v1/matches/{matchId:guid}/join", async (Guid matchId, JoinOnlineMatchRequest request, CancellationToken cancellationToken) =>
+{
+    if (matchCoordinator is null)
+        return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try
+    {
+        var result = await matchCoordinator.JoinAsync(matchId, request, cancellationToken);
+        return Results.Ok(new { playerId = result.PlayerId, match = result.Match });
+    }
+    catch (KeyNotFoundException ex) { return Results.NotFound(new { error = ex.Message }); }
+    catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
+    catch (ArgumentException ex) { return Results.BadRequest(new { error = ex.Message }); }
+    catch (InvalidOperationException ex) { return Results.Conflict(new { error = ex.Message }); }
+});
+
+app.MapPost("/api/v1/matches/{matchId:guid}/start", async (Guid matchId, CancellationToken cancellationToken) =>
+{
+    if (matchCoordinator is null)
+        return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try { return Results.Ok(await matchCoordinator.StartAsync(matchId, cancellationToken)); }
+    catch (KeyNotFoundException ex) { return Results.NotFound(new { error = ex.Message }); }
+    catch (InvalidOperationException ex) { return Results.Conflict(new { error = ex.Message }); }
+});
+
+app.MapPost("/api/v1/matches/{matchId:guid}/turns/1/submit", async (Guid matchId, SubmitJanuaryTurnRequest request, CancellationToken cancellationToken) =>
+{
+    if (matchCoordinator is null)
+        return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try
+    {
+        var result = await matchCoordinator.SubmitJanuaryAsync(matchId, request, cancellationToken);
+        return result.Resolved ? Results.Ok(result) : Results.Accepted($"/api/v1/matches/{matchId}", result);
+    }
+    catch (KeyNotFoundException ex) { return Results.NotFound(new { error = ex.Message }); }
+    catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
+    catch (InvalidOperationException ex) { return Results.Conflict(new { error = ex.Message }); }
 });
 
 app.Run();
