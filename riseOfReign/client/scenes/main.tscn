@@ -73,6 +73,13 @@ theme_override_font_sizes/font_size = 26
 text = "1933 · THE WORLD IN CRISIS"
 horizontal_alignment = 1
 
+[node name="Publisher" type="Label" parent="MainLayout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.46, 0.44, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "A VK APPS GAME"
+horizontal_alignment = 1
+
 [node name="Rule" type="ColorRect" parent="MainLayout/Header"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 3)
@@ -200,15 +207,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -380.0
-offset_top = -390.0
+offset_top = -420.0
 offset_right = 380.0
-offset_bottom = 390.0
+offset_bottom = 420.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SettingsLayout" type="VBoxContainer" parent="SettingsOverlay/SettingsPanel"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 22
 
 [node name="Title" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
@@ -270,10 +277,14 @@ text = "Menü-Musik aktiviert"
 layout_mode = 2
 text = "UI-Sounds aktiviert"
 
+[node name="IntroToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
+layout_mode = 2
+text = "VK APPS / RISE OF REIGN Intro beim Start"
+
 [node name="AudioNote" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58, 0.56, 0.52, 1)
-text = "Aktuell nutzt der Prototyp einen eigens erzeugten, lizenzfreien Menüton und Klicksound. Finale Musik und historische Ambiente-Sounds werden später als Assets ersetzt."
+text = "Der Prototyp nutzt eigens erzeugte UI-/Intro-Töne. Finale Musik, Logoanimation und historische Ambiente-Sounds können später als freigegebene Assets ersetzt werden."
 autowrap_mode = 2
 
 [node name="Close" type="Button" parent="SettingsOverlay/SettingsPanel/SettingsLayout" groups=["strategy_menu_button"]]
@@ -291,4 +302,5 @@ text = "ÜBERNEHMEN & SCHLIESSEN"
 [connection signal="value_changed" from="SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow/SfxSlider" to="." method="_on_sfx_changed"]
 [connection signal="toggled" from="SettingsOverlay/SettingsPanel/SettingsLayout/MusicToggle" to="." method="_on_music_toggled"]
 [connection signal="toggled" from="SettingsOverlay/SettingsPanel/SettingsLayout/SfxToggle" to="." method="_on_sfx_toggled"]
+[connection signal="toggled" from="SettingsOverlay/SettingsPanel/SettingsLayout/IntroToggle" to="." method="_on_intro_toggled"]
 [connection signal="pressed" from="SettingsOverlay/SettingsPanel/SettingsLayout/Close" to="." method="_on_close_settings_pressed"]
