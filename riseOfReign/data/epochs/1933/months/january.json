@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "month_id": "1933-01",
+  "start_date": "1933-01-01",
+  "end_date": "1933-01-31",
+  "next_date": "1933-02-01",
+  "turn_phases": ["briefing", "office_decisions", "phone_or_meeting", "map_action", "resolve", "historical_anchor", "report"],
+  "shared_context": [
+    "The world economy is still shaped by the Great Depression.",
+    "Trade, employment, state finances and political legitimacy are under pressure in many countries.",
+    "The international order is unstable and every player begins with different institutional authority."
+  ],
+  "avatars": {
+    "ataturk": {
+      "country_id": "turkey",
+      "briefing": "The republic is consolidating institutions while balancing rail, industry, education and diplomacy. Your office already has direct government access, but resources are limited.",
+      "starting_indicators": {"treasury":45,"food":65,"industry":35,"infrastructure":40,"research":45,"stability":70,"authority":88,"diplomacy":70},
+      "decisions": [
+        {"id":"tr_jan_priority","title":"January reform priority","required":true,"choices":[
+          {"id":"rail","label":"Prioritize rail connections","effects":{"treasury":-3,"infrastructure":4,"industry":1}},
+          {"id":"education","label":"Prioritize education and administration","effects":{"treasury":-2,"research":3,"stability":1}},
+          {"id":"industry","label":"Prioritize industrial investment","effects":{"treasury":-4,"industry":4,"stability":-1}},
+          {"id":"diplomacy","label":"Prioritize regional diplomacy","effects":{"treasury":-1,"diplomacy":4}}
+        ]}
+      ],
+      "phone_opportunities":["cabinet","military_command","diplomacy","science_industry","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","prepare_rail_project","prepare_industry_project"],
+      "month_note":"The 1933 reform program remains an open historical context window throughout the year."
+    },
+    "hitler": {
+      "country_id": "germany",
+      "briefing": "On 1 January 1933 you do not control the German government. The office is a political leadership office; state budget, military command and official diplomacy remain locked until institutional power changes.",
+      "starting_indicators": {"treasury":40,"food":55,"industry":88,"infrastructure":80,"research":80,"stability":45,"authority":45,"diplomacy":40},
+      "decisions": [
+        {"id":"de_jan_positioning","title":"Political positioning before 30 January","required":true,"choices":[
+          {"id":"coalition_contacts","label":"Focus on coalition and elite contacts","effects":{"authority":3,"stability":-1}},
+          {"id":"public_campaign","label":"Focus on public campaigning","effects":{"authority":2,"stability":-2}},
+          {"id":"party_organization","label":"Focus on party organization","effects":{"authority":2}}
+        ]}
+      ],
+      "phone_opportunities":["party_parliament","personal_circle","other_players"],
+      "map_actions":["inspect_resources","inspect_connections"],
+      "historical_anchor":{"id":"de_1933_hitler_chancellor","date":"1933-01-30","effects":{"authority":25,"diplomacy":-5},"office_transition":{"from_level":0,"to_level":1}},
+      "portrayal_note":"Historical and critical presentation. Institutional power growth is represented as a game state, not as celebration."
+    },
+    "stalin": {
+      "country_id": "soviet_union",
+      "briefing": "Industrial expansion coexists with a catastrophic food and humanitarian crisis. The state has broad administrative reach, but food, morale and regional stability require immediate attention.",
+      "starting_indicators": {"treasury":55,"food":50,"industry":72,"infrastructure":45,"research":65,"stability":55,"authority":94,"diplomacy":45},
+      "decisions": [
+        {"id":"su_jan_crisis_response","title":"Food-crisis response","required":true,"choices":[
+          {"id":"emergency_relief","label":"Shift resources to emergency relief","effects":{"treasury":-4,"food":5,"stability":3,"industry":-2}},
+          {"id":"external_procurement","label":"Seek additional external procurement","effects":{"treasury":-5,"food":4,"diplomacy":2}},
+          {"id":"protect_industry","label":"Protect industrial targets despite shortages","effects":{"industry":3,"food":-4,"stability":-4}}
+        ]}
+      ],
+      "phone_opportunities":["government_ministers","military_command","intelligence","regional_admin","science_industry","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","prioritize_food_route","prioritize_industry_route"],
+      "historical_anchor":{"id":"su_1933_food_crisis","window":"1933","effects":{"food":-5,"stability":-3}},
+      "humanitarian_note":"Civilian suffering is shown explicitly as a negative state consequence and cannot be converted into a pure bonus."
+    },
+    "churchill": {
+      "country_id": "united_kingdom",
+      "briefing": "You are an MP outside the government. Your influence comes through Parliament, correspondence, press networks and foreign-policy contacts rather than direct command of the state.",
+      "starting_indicators": {"treasury":65,"food":45,"industry":85,"infrastructure":85,"research":82,"stability":75,"authority":25,"diplomacy":90},
+      "decisions": [
+        {"id":"uk_jan_influence","title":"Where to spend political attention","required":true,"choices":[
+          {"id":"parliament","label":"Concentrate on Parliament","effects":{"authority":2}},
+          {"id":"writing_press","label":"Use writing and press contacts","effects":{"authority":1,"diplomacy":1}},
+          {"id":"foreign_contacts","label":"Strengthen foreign-policy contacts","effects":{"diplomacy":3}}
+        ]}
+      ],
+      "phone_opportunities":["party_parliament","personal_circle","diplomacy","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","review_empire_routes"],
+      "restriction_note":"Direct cabinet orders, state budget allocation and military command are unavailable in January 1933."
+    },
+    "roosevelt": {
+      "country_id": "united_states",
+      "briefing": "You are President-elect while the United States remains in a severe economic crisis. January is a transition month: cabinet planning, banking briefings and program design matter, but full presidential authority begins on 4 March.",
+      "starting_indicators": {"treasury":55,"food":95,"industry":92,"infrastructure":85,"research":85,"stability":55,"authority":45,"diplomacy":55},
+      "decisions": [
+        {"id":"us_jan_transition","title":"Transition-team priority","required":true,"choices":[
+          {"id":"banking","label":"Prioritize banking and financial briefings","effects":{"treasury":2,"stability":1}},
+          {"id":"jobs","label":"Prepare employment and public-works plans","effects":{"treasury":-2,"infrastructure":2,"stability":2}},
+          {"id":"cabinet","label":"Prioritize cabinet selection and coordination","effects":{"authority":2,"stability":1}},
+          {"id":"agriculture","label":"Prepare agricultural support options","effects":{"food":2,"treasury":-1}}
+        ]}
+      ],
+      "phone_opportunities":["personal_circle","science_industry","party_parliament","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","review_public_works_candidates"],
+      "restriction_note":"Full government, military and diplomatic command remains locked until inauguration on 4 March 1933."
+    },
+    "mussolini": {
+      "country_id": "italy",
+      "briefing": "The government has broad administrative control, but Italy faces limited coal and oil resources and must balance prestige projects, infrastructure, industry and military ambitions.",
+      "starting_indicators": {"treasury":50,"food":60,"industry":60,"infrastructure":65,"research":60,"stability":70,"authority":90,"diplomacy":55},
+      "decisions": [
+        {"id":"it_jan_state_priority","title":"State investment priority","required":true,"choices":[
+          {"id":"infrastructure","label":"Infrastructure and transport","effects":{"treasury":-3,"infrastructure":4,"industry":1}},
+          {"id":"industry","label":"Industrial expansion","effects":{"treasury":-4,"industry":4}},
+          {"id":"civil_supply","label":"Protect civilian supply and stability","effects":{"treasury":-2,"food":2,"stability":3}},
+          {"id":"military","label":"Increase military-oriented allocation","effects":{"treasury":-4,"industry":1,"stability":-1,"armament":4}}
+        ]}
+      ],
+      "phone_opportunities":["government_ministers","military_command","diplomacy","science_industry","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","prepare_infrastructure_project","review_import_routes"],
+      "portrayal_note":"Historical and critical presentation; authoritarian power is accompanied by political and resource costs."
+    },
+    "custom": {
+      "country_id": null,
+      "briefing": "The custom avatar's January situation is generated from country, profession, authority and prologue choices.",
+      "starting_indicators": {"treasury":50,"food":50,"industry":50,"infrastructure":50,"research":50,"stability":50,"authority":30,"diplomacy":50},
+      "decisions": [
+        {"id":"custom_jan_priority","title":"Choose your first governing priority","required":true,"choices":[
+          {"id":"economy","label":"Economy","effects":{"treasury":2,"industry":2}},
+          {"id":"infrastructure","label":"Infrastructure","effects":{"treasury":-2,"infrastructure":3}},
+          {"id":"research","label":"Research","effects":{"treasury":-2,"research":3}},
+          {"id":"stability","label":"Stability","effects":{"treasury":-1,"stability":3}},
+          {"id":"diplomacy","label":"Diplomacy","effects":{"diplomacy":3}}
+        ]}
+      ],
+      "phone_opportunities":["personal_circle","party_parliament","science_industry","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","prepare_basic_project"]
+    }
+  }
+}
