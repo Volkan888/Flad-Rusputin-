@@ -10,12 +10,21 @@ public sealed class OnlineMatchCoordinator
     private readonly IOnlineMatchStore _store;
     private readonly January1933Service _januaryService;
     private readonly JsonObject _januaryContent;
+    private readonly StateProfileService _stateProfiles;
+    private readonly JsonObject _stateProfileContent;
 
-    public OnlineMatchCoordinator(IOnlineMatchStore store, January1933Service januaryService, JsonObject januaryContent)
+    public OnlineMatchCoordinator(
+        IOnlineMatchStore store,
+        January1933Service januaryService,
+        JsonObject januaryContent,
+        StateProfileService stateProfiles,
+        JsonObject stateProfileContent)
     {
         _store = store;
         _januaryService = januaryService;
         _januaryContent = januaryContent;
+        _stateProfiles = stateProfiles;
+        _stateProfileContent = stateProfileContent;
     }
 
     public Task<OnlineMatchView?> GetAsync(Guid matchId, CancellationToken cancellationToken = default)
@@ -51,6 +60,15 @@ public sealed class OnlineMatchCoordinator
     public Task<OnlineMatchView> StartAsync(Guid matchId, CancellationToken cancellationToken = default)
         => _store.StartAsync(matchId, cancellationToken);
 
+    public async Task<JsonObject> GetInitialPlayerStateAsync(Guid matchId, Guid playerId, CancellationToken cancellationToken = default)
+    {
+        var match = await _store.GetAsync(matchId, cancellationToken)
+            ?? throw new KeyNotFoundException("Match not found.");
+        var player = match.Players.SingleOrDefault(x => x.PlayerId == playerId)
+            ?? throw new KeyNotFoundException("Player not found in match.");
+        return _stateProfiles.GetInitialState(_stateProfileContent, player.AvatarId, player.CountryId);
+    }
+
     public async Task<SubmitTurnResult> SubmitJanuaryAsync(
         Guid matchId,
         SubmitJanuaryTurnRequest request,
@@ -71,28 +89,18 @@ public sealed class OnlineMatchCoordinator
             ["map_action"] = request.MapAction
         };
 
-        _januaryService.Resolve(_januaryContent, player.AvatarId, payload);
+        ResolveWithPlayerState(player.AvatarId, player.CountryId, payload);
         var ready = await _store.QueueJanuaryAsync(matchId, request.PlayerId, request.ClientCommandId, payload, cancellationToken);
 
         if (ready < 4)
-        {
             return new SubmitTurnResult(matchId, request.PlayerId, 1, ready, false, match.CurrentDate, match.TurnNumber, null);
-        }
 
         var ownsResolution = await _store.TryClaimJanuaryResolutionAsync(matchId, cancellationToken);
         if (!ownsResolution)
         {
             var latest = await _store.GetAsync(matchId, cancellationToken)
                 ?? throw new KeyNotFoundException("Match not found after submit.");
-            return new SubmitTurnResult(
-                matchId,
-                request.PlayerId,
-                1,
-                ready,
-                latest.TurnNumber >= 2,
-                latest.CurrentDate,
-                latest.TurnNumber,
-                null);
+            return new SubmitTurnResult(matchId, request.PlayerId, 1, ready, latest.TurnNumber >= 2, latest.CurrentDate, latest.TurnNumber, null);
         }
 
         try
@@ -103,28 +111,35 @@ public sealed class OnlineMatchCoordinator
 
             var resolutions = new Dictionary<Guid, JsonObject>();
             foreach (var command in commands)
-                resolutions[command.PlayerId] = _januaryService.Resolve(_januaryContent, command.AvatarId, command.Payload);
+                resolutions[command.PlayerId] = ResolveWithPlayerState(command.AvatarId, command.CountryId, command.Payload);
 
             var snapshot = BuildSnapshot(matchId, resolutions);
             var hash = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(snapshot.ToJsonString()))).ToLowerInvariant();
             var finalized = await _store.FinalizeJanuaryAsync(matchId, resolutions, snapshot, hash, cancellationToken);
             resolutions.TryGetValue(request.PlayerId, out var ownResolution);
 
-            return new SubmitTurnResult(
-                matchId,
-                request.PlayerId,
-                1,
-                4,
-                true,
-                finalized.CurrentDate,
-                finalized.TurnNumber,
-                ownResolution);
+            return new SubmitTurnResult(matchId, request.PlayerId, 1, 4, true, finalized.CurrentDate, finalized.TurnNumber, ownResolution);
         }
         catch
         {
             await _store.ReleaseResolutionClaimAsync(matchId, cancellationToken);
             throw;
         }
+    }
+
+    private JsonObject ResolveWithPlayerState(string avatarId, string? countryId, JsonObject payload)
+    {
+        var resolution = _januaryService.Resolve(_januaryContent, avatarId, payload);
+        var initialState = _stateProfiles.GetInitialState(_stateProfileContent, avatarId, countryId);
+        var indicators = resolution["resulting_indicators"]?.AsObject()
+            ?? throw new InvalidDataException("January resolution has no resulting_indicators.");
+        var actions = resolution["applied_actions"]?.AsArray() ?? new JsonArray();
+        var playerState = _stateProfiles.AdvanceMonth(initialState, indicators, actions);
+        resolution["player_state"] = playerState;
+        resolution["finance"] = playerState["finance"]?.DeepClone();
+        resolution["health"] = playerState["health"]?.DeepClone();
+        resolution["inventory"] = playerState["inventory"]?.DeepClone();
+        return resolution;
     }
 
     private (string? CountryId, int Authority) ResolveSlot(string avatarId, string? requestedCountryId)
@@ -154,13 +169,14 @@ public sealed class OnlineMatchCoordinator
             players.Add(new JsonObject
             {
                 ["player_id"] = pair.Key.ToString(),
-                ["resolution"] = pair.Value.DeepClone()
+                ["resolution"] = pair.Value.DeepClone(),
+                ["player_state"] = pair.Value["player_state"]?.DeepClone()
             });
         }
 
         return new JsonObject
         {
-            ["schema_version"] = 1,
+            ["schema_version"] = 2,
             ["match_id"] = matchId.ToString(),
             ["epoch_id"] = "1933",
             ["turn_number"] = 2,
