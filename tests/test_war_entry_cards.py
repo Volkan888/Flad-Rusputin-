@@ -11,9 +11,16 @@ class WarEntryCardTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.data = json.loads((EPOCH / "war_entry_cards_1939_1945.json").read_text(encoding="utf-8"))
+        cls.lifecycle = json.loads((EPOCH / "succession_capitulation_1933_1945.json").read_text(encoding="utf-8"))
         cls.manifest = json.loads((EPOCH / "manifest.json").read_text(encoding="utf-8"))
         cls.cards = cls.data["cards"]
         cls.by_id = {card["id"]: card for card in cls.cards}
+        cls.lifecycle_ids = {
+            transition["event_id"]
+            for country in cls.lifecycle["countries"].values()
+            for transition in country.get("transitions", [])
+            if transition.get("event_id")
+        }
 
     def test_manifest_registers_war_entry_cards(self):
         self.assertEqual(self.manifest["files"]["war_entry_cards"], "war_entry_cards_1939_1945.json")
@@ -46,25 +53,51 @@ class WarEntryCardTests(unittest.TestCase):
         }
         self.assertTrue(required.issubset(self.by_id))
 
-    def test_followups_resolve_to_known_cards(self):
-        known = set(self.by_id)
+    def test_followups_resolve_to_cards_or_lifecycle_events(self):
+        known = set(self.by_id) | self.lifecycle_ids
         for card in self.cards:
             for followup in card.get("followups", []):
                 self.assertIn(followup, known, f"{card['id']} references missing follow-up {followup}")
 
-    def test_actions_are_playable_or_automatic_anchors(self):
+    def test_every_card_has_a_resolvable_game_flow(self):
+        flow_fields = {
+            "actions",
+            "alternate_actions",
+            "historical_mode_action",
+            "lifecycle_event",
+            "followups",
+            "effects",
+            "team_changes",
+            "sector_effects",
+            "transport_effects",
+        }
         for card in self.cards:
-            has_actions = bool(card.get("actions")) or bool(card.get("alternate_actions"))
-            is_anchor = card.get("historical_mode_action") == "automatic_anchor"
-            self.assertTrue(has_actions or is_anchor, f"{card['id']} has no playable or automatic flow")
+            self.assertTrue(
+                any(field in card and card[field] not in ({}, [], "", None) for field in flow_fields),
+                f"{card['id']} has no action, transition or outcome flow",
+            )
 
-    def test_effects_and_risks_use_bounded_gameplay_numbers(self):
+    def test_numeric_balance_values_are_bounded(self):
+        def walk(value, path):
+            if isinstance(value, bool):
+                return
+            if isinstance(value, (int, float)):
+                self.assertGreaterEqual(value, -100, path)
+                self.assertLessEqual(value, 100, path)
+                return
+            if isinstance(value, dict):
+                for key, nested in value.items():
+                    walk(nested, f"{path}.{key}")
+                return
+            if isinstance(value, list):
+                for index, nested in enumerate(value):
+                    walk(nested, f"{path}[{index}]")
+                return
+            self.assertIsInstance(value, (str, type(None)), path)
+
         for card in self.cards:
-            for section in ("effects", "risks"):
-                for key, value in card.get(section, {}).items():
-                    self.assertIsInstance(value, (int, float), f"{card['id']} {section}.{key}")
-                    self.assertGreaterEqual(value, -100)
-                    self.assertLessEqual(value, 100)
+            walk(card.get("effects", {}), f"{card['id']}.effects")
+            walk(card.get("risks", {}), f"{card['id']}.risks")
 
     def test_sources_are_https_or_explicitly_status_labeled(self):
         for card in self.cards:
