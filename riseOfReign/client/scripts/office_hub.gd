@@ -8,6 +8,13 @@ extends Control
 @onready var title_label: Label = $Margin/Layout/Header/Title
 @onready var date_label: Label = $Margin/Layout/Header/Date
 @onready var office_theme_label: Label = $Margin/Layout/OfficeTheme
+@onready var treasury_label: Label = $Margin/Layout/TopHud/Hud/Treasury
+@onready var income_label: Label = $Margin/Layout/TopHud/Hud/Income
+@onready var expenses_label: Label = $Margin/Layout/TopHud/Hud/Expenses
+@onready var health_label: Label = $Margin/Layout/TopHud/Hud/Health
+@onready var stability_label: Label = $Margin/Layout/TopHud/Hud/Stability
+@onready var authority_label: Label = $Margin/Layout/TopHud/Hud/Authority
+@onready var quick_nav: HBoxContainer = $Margin/Layout/QuickNavScroll/QuickNav
 @onready var room_title: Label = $Margin/Layout/Content/OfficePanel/OfficeLayout/RoomTitle
 @onready var object_grid: GridContainer = $Margin/Layout/Content/OfficePanel/OfficeLayout/ObjectScroll/ObjectGrid
 @onready var interaction_title: Label = $Margin/Layout/Content/InteractionPanel/InteractionLayout/InteractionTitle
@@ -20,6 +27,7 @@ var office_payload: Dictionary = {}
 var avatar_office: Dictionary = {}
 var current_office_level: int = 0
 var current_room_id: String = "office"
+var current_indicators: Dictionary = {}
 
 var month_payload: Dictionary = {}
 var month_request_mode: String = "load"
@@ -29,6 +37,7 @@ var selected_map_action: String = ""
 var january_resolved: bool = false
 
 func _ready() -> void:
+    _style_existing_buttons()
     api_base_url = str(ProjectSettings.get_setting("riseofreign/network/api_base_url", "http://127.0.0.1:8080")).trim_suffix("/")
     title_label.text = avatar_display_name
     date_label.text = "1. Januar 1933"
@@ -36,6 +45,7 @@ func _ready() -> void:
     interaction_title.text = "Lade Büro…"
     interaction_body.text = "Die Steuerzentrale wird vom riseOfReign-Server geladen."
     status_label.text = "Verbinde mit %s" % api_base_url
+    _update_hud({})
     http.request_completed.connect(_on_office_request_completed)
     month_http.request_completed.connect(_on_month_request_completed)
     var error := http.request("%s/api/v1/offices/%s" % [api_base_url, avatar_id])
@@ -43,7 +53,8 @@ func _ready() -> void:
         _show_connection_error("HTTPRequest konnte nicht gestartet werden (%s)." % error)
 
 func _on_back_pressed() -> void:
-    get_tree().change_scene_to_file("res://scenes/main.tscn")
+    AudioManager.play_click()
+    get_tree().change_scene_to_file("res://scenes/avatar_select.tscn")
 
 func _on_office_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
     if response_code != 200:
@@ -93,6 +104,8 @@ func _on_month_request_completed(_result: int, response_code: int, _headers: Pac
         return
 
     month_payload = parsed
+    current_indicators = month_payload.get("starting_indicators", {}).duplicate(true)
+    _update_hud(current_indicators)
     status_label.text = "Januar 1933 geladen · Lagebericht bereit"
     _show_month_briefing()
 
@@ -116,7 +129,7 @@ func _show_office() -> void:
         _add_office_object(signature, true)
 
     interaction_title.text = "Dein Büro"
-    interaction_body.text = "Tippe einen Gegenstand an. Side-Menüs, Räume und Telefon bilden die Steuerzentrale."
+    interaction_body.text = "Tippe einen Gegenstand oder einen Menüknopf an. Die Statusleiste bleibt wie in Grand-Strategy-Spielen immer sichtbar."
     _clear_action_list()
     if not month_payload.is_empty() and not january_resolved:
         _add_action_button("Lagebericht Januar 1933", _show_month_briefing)
@@ -131,6 +144,7 @@ func _add_office_object(item: Dictionary, signature: bool = false) -> void:
     button.text = ("★ " if signature else "") + label
     button.custom_minimum_size = Vector2(0, 86)
     button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    _style_strategy_button(button)
 
     var requirement = item.get("requirements", {})
     var required_level := int(requirement.get("office_level", 0)) if typeof(requirement) == TYPE_DICTIONARY else 0
@@ -146,6 +160,7 @@ func _add_office_object(item: Dictionary, signature: bool = false) -> void:
     object_grid.add_child(button)
 
 func _on_object_pressed(item: Dictionary) -> void:
+    AudioManager.play_click()
     var interaction := str(item.get("interaction", "side_menu"))
     match interaction:
         "side_menu":
@@ -184,6 +199,7 @@ func _show_phone_list() -> void:
         var button := Button.new()
         button.text = str(category.get("label", category.get("id", "Kontakt")))
         button.custom_minimum_size = Vector2(0, 64)
+        _style_strategy_button(button)
         button.pressed.connect(_show_phone_category.bind(category))
         action_list.add_child(button)
 
@@ -203,6 +219,7 @@ func _show_phone_category(category: Dictionary) -> void:
     _add_action_button("← Kontaktgruppen", _show_phone_list)
 
 func _on_phone_option(category_id: String, option: String) -> void:
+    AudioManager.play_click()
     if not january_resolved and not month_payload.is_empty():
         selected_phone_action = {"category": category_id, "option": option}
     status_label.text = "Telefon gewählt · %s · %s" % [_humanize(category_id), _humanize(option)]
@@ -238,6 +255,7 @@ func _open_room(room_id: String) -> void:
         var button := Button.new()
         button.text = _humanize(str(feature))
         button.custom_minimum_size = Vector2(0, 86)
+        _style_strategy_button(button)
         button.pressed.connect(_show_room_feature.bind(room, str(feature)))
         object_grid.add_child(button)
 
@@ -260,6 +278,7 @@ func _show_room_selector() -> void:
         var required_level := int(room.get("required_office_level", 0))
         button.text = str(room.get("label", room.get("id", "Raum")))
         button.custom_minimum_size = Vector2(0, 86)
+        _style_strategy_button(button)
         if required_level > current_office_level:
             button.text += " · Level %d 🔒" % required_level
             button.disabled = true
@@ -322,6 +341,7 @@ func _show_january_decisions() -> void:
     _add_action_button("← Lagebericht", _show_month_briefing)
 
 func _select_january_choice(decision_id: String, choice_id: String, label: String) -> void:
+    AudioManager.play_click()
     selected_decisions[decision_id] = choice_id
     status_label.text = "Entscheidung vorgemerkt · %s" % label
     _show_january_decisions()
@@ -335,11 +355,13 @@ func _show_january_map_actions() -> void:
     _add_action_button("← Lagebericht", _show_month_briefing)
 
 func _select_january_map_action(action: String) -> void:
+    AudioManager.play_click()
     selected_map_action = action
     status_label.text = "Kartenaktion vorgemerkt · %s" % _humanize(action)
     _show_january_map_actions()
 
 func _finish_january() -> void:
+    AudioManager.play_click()
     if january_resolved:
         _show_resolved_status()
         return
@@ -393,6 +415,8 @@ func _show_month_report(result: Dictionary) -> void:
     interaction_title.text = "Monatsbericht · Januar 1933"
     var lines: Array[String] = [str(result.get("report", "Januar abgeschlossen.")), "", "Stand zum 1. Februar 1933:"]
     var indicators: Dictionary = result.get("resulting_indicators", {})
+    current_indicators = indicators.duplicate(true)
+    _update_hud(current_indicators)
     var keys := indicators.keys()
     keys.sort()
     for key in keys:
@@ -425,7 +449,128 @@ func _show_upgrade_overview() -> void:
     _clear_action_list()
     _add_action_button("Zurück zum Büro", _show_office)
 
+func _on_nav_office() -> void:
+    AudioManager.play_click()
+    _show_office()
+
+func _on_nav_world() -> void:
+    AudioManager.play_click()
+    _open_room("map_room")
+
+func _on_nav_phone() -> void:
+    AudioManager.play_click()
+    _show_phone_list()
+
+func _on_nav_decisions() -> void:
+    AudioManager.play_click()
+    if not month_payload.is_empty() and not january_resolved:
+        _show_january_decisions()
+    else:
+        _show_named_panel("Entscheidungen", "Aktuell sind keine offenen Monatsentscheidungen vorhanden.")
+
+func _on_nav_inventory() -> void:
+    AudioManager.play_click()
+    var items: Array[String] = []
+    for item in avatar_office.get("personal_objects", []):
+        items.append("• %s" % str(item))
+    var signature = avatar_office.get("signature_object", {})
+    if typeof(signature) == TYPE_DICTIONARY and not signature.is_empty():
+        items.push_front("★ %s" % str(signature.get("label", signature.get("id", "Spezialobjekt"))))
+    if items.is_empty():
+        items.append("• Noch keine persönlichen Gegenstände erfasst")
+    _show_named_panel("Inventar · %s" % avatar_display_name, "Persönliche Gegenstände und wichtige Dokumente:\n\n%s\n\nStaatseigentum wird getrennt vom persönlichen Inventar geführt." % "\n".join(items))
+
+func _on_nav_archive() -> void:
+    AudioManager.play_click()
+    _show_side_menu({"label":"Aktenarchiv", "opens":"archive"})
+
+func _on_nav_research() -> void:
+    AudioManager.play_click()
+    var value = current_indicators.get("research", "—")
+    _show_named_panel("Forschung", "Aktueller Forschungswert: %s\n\nProjekte, Forscher und gemeinsame Forschung werden hier verbunden." % str(value))
+
+func _on_nav_diplomacy() -> void:
+    AudioManager.play_click()
+    var value = current_indicators.get("diplomacy", "—")
+    _show_named_panel("Diplomatie", "Aktueller Diplomatie-Wert: %s\n\nVerträge, Beziehungen, Meetings und andere Spieler werden hier gebündelt." % str(value))
+
+func _on_nav_economy() -> void:
+    AudioManager.play_click()
+    var lines: Array[String] = []
+    for key in ["treasury", "food", "industry", "infrastructure", "research", "stability"]:
+        lines.append("• %s: %s" % [_humanize(key), str(current_indicators.get(key, "—"))])
+    _show_named_panel("Wirtschaft & Staatsvermögen", "%s\n\nEinnahmen, Ausgaben, Reserven, Staatsbesitz und Schulden werden als eigene Monatsabrechnung ergänzt." % "\n".join(lines))
+
+func _on_nav_military() -> void:
+    AudioManager.play_click()
+    _show_side_menu({"label":"Militär", "opens":"basic_military"})
+
+func _on_nav_events() -> void:
+    AudioManager.play_click()
+    if not month_payload.is_empty():
+        _show_month_briefing()
+    else:
+        _show_named_panel("Ereignisse", "Ereignisse werden geladen.")
+
+func _on_nav_settings() -> void:
+    AudioManager.play_click()
+    _show_audio_settings_panel()
+
+func _show_audio_settings_panel() -> void:
+    interaction_title.text = "Einstellungen · Audio"
+    interaction_body.text = "Gesamt: %d%%\nMusik: %d%% · %s\nEffekte: %d%% · %s" % [
+        int(AudioManager.master_volume * 100.0),
+        int(AudioManager.music_volume * 100.0),
+        "AN" if AudioManager.music_enabled else "AUS",
+        int(AudioManager.sfx_volume * 100.0),
+        "AN" if AudioManager.sfx_enabled else "AUS"
+    ]
+    _clear_action_list()
+    _add_action_button("Gesamt +10%", _adjust_master.bind(0.1))
+    _add_action_button("Gesamt -10%", _adjust_master.bind(-0.1))
+    _add_action_button("Musik an/aus", _toggle_music)
+    _add_action_button("Effekte an/aus", _toggle_sfx)
+    _add_action_button("Zum Hauptmenü", _go_to_main_menu)
+    _add_action_button("Zurück zum Büro", _show_office)
+
+func _adjust_master(delta: float) -> void:
+    AudioManager.set_master_volume(clampf(AudioManager.master_volume + delta, 0.0, 1.0))
+    AudioManager.play_click()
+    _show_audio_settings_panel()
+
+func _toggle_music() -> void:
+    AudioManager.set_music_enabled(not AudioManager.music_enabled)
+    _show_audio_settings_panel()
+
+func _toggle_sfx() -> void:
+    AudioManager.set_sfx_enabled(not AudioManager.sfx_enabled)
+    AudioManager.play_click()
+    _show_audio_settings_panel()
+
+func _go_to_main_menu() -> void:
+    get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+func _show_named_panel(title: String, body: String) -> void:
+    interaction_title.text = title
+    interaction_body.text = body
+    _clear_action_list()
+    _add_action_button("Zurück zum Büro", _show_office)
+
+func _update_hud(indicators: Dictionary) -> void:
+    treasury_label.text = "STAATSKASSE\n%s" % _format_hud_value(indicators.get("treasury", null), "RP")
+    income_label.text = "EINNAHMEN\n%s" % _format_hud_value(indicators.get("monthly_income", null), "RP")
+    expenses_label.text = "AUSGABEN\n%s" % _format_hud_value(indicators.get("monthly_expenses", null), "RP")
+    health_label.text = "GESUNDHEIT\n%s" % _format_hud_value(indicators.get("health", null), "%")
+    stability_label.text = "STABILITÄT\n%s" % _format_hud_value(indicators.get("stability", null), "%")
+    authority_label.text = "AUTORITÄT\n%s" % _format_hud_value(indicators.get("authority", null), "%")
+
+func _format_hud_value(value, suffix: String) -> String:
+    if value == null:
+        return "—"
+    return "%s %s" % [str(value), suffix]
+
 func _on_placeholder_action(route: String) -> void:
+    AudioManager.play_click()
     status_label.text = "Vorbereitet · %s" % _humanize(route)
 
 func _find_room(room_id: String) -> Dictionary:
@@ -447,8 +592,39 @@ func _add_action_button(label: String, callback: Callable) -> void:
     button.text = label
     button.custom_minimum_size = Vector2(0, 60)
     button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    _style_strategy_button(button)
     button.pressed.connect(callback)
     action_list.add_child(button)
+
+func _style_existing_buttons() -> void:
+    _style_strategy_button($Margin/Layout/Header/Back)
+    for child in quick_nav.get_children():
+        if child is Button:
+            _style_strategy_button(child)
+
+func _style_strategy_button(button: Button) -> void:
+    var normal := StyleBoxFlat.new()
+    normal.bg_color = Color("121212")
+    normal.border_color = Color("5c0a10")
+    normal.set_border_width_all(2)
+    normal.corner_radius_top_left = 3
+    normal.corner_radius_top_right = 3
+    normal.corner_radius_bottom_left = 3
+    normal.corner_radius_bottom_right = 3
+
+    var hover := normal.duplicate()
+    hover.bg_color = Color("28080c")
+    hover.border_color = Color("a61923")
+
+    var pressed := normal.duplicate()
+    pressed.bg_color = Color("4b0a10")
+    pressed.border_color = Color("d53b46")
+
+    button.add_theme_stylebox_override("normal", normal)
+    button.add_theme_stylebox_override("hover", hover)
+    button.add_theme_stylebox_override("pressed", pressed)
+    button.add_theme_color_override("font_color", Color("e5dece"))
+    button.add_theme_color_override("font_hover_color", Color("ffffff"))
 
 func _requirement_note(requirements) -> String:
     if typeof(requirements) != TYPE_DICTIONARY or requirements.is_empty():
