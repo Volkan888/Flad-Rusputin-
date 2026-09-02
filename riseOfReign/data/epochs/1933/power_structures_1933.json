@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.0",
+  "epoch": 1933,
+  "purpose": "Country-specific economic and non-state power structures that can own assets, influence sectors and interact with players. Criminal-network mechanics are abstract strategy values only.",
+  "types": [
+    "private_company",
+    "industrial_group",
+    "bank",
+    "state_enterprise",
+    "state_holding",
+    "planning_institution",
+    "labor_organization",
+    "political_organization",
+    "religious_institution",
+    "criminal_network",
+    "underground_network",
+    "media_network"
+  ],
+  "influence_dimensions": [
+    "economic",
+    "industrial",
+    "labor",
+    "political",
+    "financial",
+    "research",
+    "media",
+    "local_control",
+    "information",
+    "security_risk",
+    "cultural"
+  ],
+  "ownership_rules": {
+    "territorial_sovereignty_separate": true,
+    "sector_influence_max": 100,
+    "assets_have_owner": true,
+    "state_can_regulate_or_nationalize_through_game_rules": true,
+    "corporations_can_span_multiple_sectors": true,
+    "criminal_networks_never_own_sovereignty": true,
+    "criminal_actions_are_abstract": true,
+    "inventory_separation": ["personal", "office", "state", "organization"]
+  },
+  "organization_inventory": {
+    "allowed_categories": ["cash_reserve", "documents", "licenses", "contracts", "vehicles_abstract", "industrial_assets", "communications_assets", "research_assets", "property", "stockpiles_abstract"],
+    "rule": "Organization inventory is distinct from the avatar's personal inventory and the state's treasury.",
+    "transfer_requires": ["authority_or_contract", "legal_or_event_basis", "storage_or_destination"]
+  },
+  "interaction_model": {
+    "legal_entities": ["negotiate_contract", "appoint_state_liaison", "subsidize", "tax", "regulate", "request_production", "commission_research", "purchase_asset", "sell_asset", "nationalize_if_rules_allow"],
+    "criminal_or_underground_entities": ["gather_information", "reduce_or_increase_local_stability", "black_market_pressure", "corruption_risk", "local_influence", "counter_network_action"],
+    "safety_note": "No real-world operational crime instructions are represented. Outcomes are resolved by stats, costs, cooldowns and events."
+  },
+  "structures": [
+    {
+      "id":"tr_is_bankasi","country_id":"turkey","name":"Türkiye İş Bankası","type":"bank","historical_status":"historical_anchor","founded":1924,
+      "influence":{"economic":45,"financial":62,"industrial":32,"political":22,"research":12,"labor":8,"local_control":10},
+      "sector_presence":{"tr_central_anatolia_ankara":38,"tr_marmara_istanbul":42,"tr_aegean_izmir":24},
+      "assets":["credit_capacity","commercial_finance","industrial_participations"],
+      "player_uses":["industrial_credit","infrastructure_finance","trade_finance"],
+      "source":"https://www.isbank.com.tr/bankamizi-taniyin/tarihimiz"
+    },
+    {
+      "id":"tr_sumerbank","country_id":"turkey","name":"Sümerbank","type":"state_enterprise","historical_status":"historical_anchor_formed_1933","founded":1933,
+      "start_activation":"1933-07-11","influence":{"economic":30,"financial":35,"industrial":52,"political":35,"research":24,"labor":28,"local_control":16},
+      "sector_presence":{"tr_central_anatolia_ankara":28,"tr_marmara_istanbul":22,"tr_aegean_izmir":18},
+      "assets":["state_factory_management","industrial_credit","training_capacity"],
+      "player_uses":["state_factory_program","industrial_training","industrial_credit"],
+      "source":"https://tcmb1.tcmb.gov.tr/wps/wcm/connect/414adad0-d9da-4f8e-bf55-04702bf042ce/sinemucarkaya.pdf"
+    },
+    {
+      "id":"tr_koczade_ahmet_vehbi","country_id":"turkey","name":"Koçzade Ahmet Vehbi","type":"private_company","historical_status":"historical_anchor","founded":1926,
+      "influence":{"economic":24,"financial":14,"industrial":10,"political":8,"research":5,"labor":12,"local_control":12},
+      "sector_presence":{"tr_central_anatolia_ankara":32,"tr_marmara_istanbul":18},
+      "assets":["trade_business","construction_materials","dealerships"],
+      "player_uses":["commercial_contract","import_agency","construction_supply"],
+      "source":"https://www.koc.com.tr/about-us/history"
+    },
+    {
+      "id":"tr_black_market_networks","country_id":"turkey","name":"Regionale Schmuggel- und Schwarzmarktnetze","type":"criminal_network","historical_status":"generic_context_not_named_group",
+      "influence":{"economic":8,"financial":8,"local_control":12,"information":12,"security_risk":10,"political":3},
+      "sector_presence":{"tr_eastern_anatolia_erzurum":18,"tr_cukurova_adana":12,"tr_marmara_istanbul":8},
+      "assets":["informal_trade_routes","hidden_reserves_abstract"],
+      "player_uses":["counter_network_action","information_rumors"],
+      "note":"Generic gameplay network; not presented as a specific historical organization."
+    },
+
+    {
+      "id":"de_krupp","country_id":"germany","name":"Fried. Krupp AG / Krupp group","type":"industrial_group","historical_status":"historical_anchor",
+      "influence":{"economic":58,"industrial":82,"labor":60,"political":38,"financial":42,"research":56,"local_control":45},
+      "sector_presence":{"de_rhine_ruhr":88,"de_berlin_brandenburg":20,"de_hamburg_north":18},
+      "assets":["steel_capacity","heavy_engineering","locomotive_vehicle_ship_capacity","research_engineering"],
+      "player_uses":["industrial_contract","infrastructure_order","military_industry_order_abstract","research_contract"],
+      "source":"https://www.thyssenkrupp.com/de/unternehmen/geschichte/konzerne-im-wandel/krupp-unternehmensgeschichte"
+    },
+    {
+      "id":"de_vereinigte_stahlwerke","country_id":"germany","name":"Vereinigte Stahlwerke","type":"industrial_group","historical_status":"historical_anchor",
+      "influence":{"economic":55,"industrial":78,"labor":62,"political":32,"financial":40,"research":42,"local_control":48},
+      "sector_presence":{"de_rhine_ruhr":78,"de_silesia":40},
+      "assets":["coal_steel_capacity","heavy_industry"],
+      "player_uses":["steel_contract","industrial_expansion","state_allocation"],
+      "source":"https://www.thyssenkrupp.com/de/unternehmen/historie"
+    },
+    {
+      "id":"de_industrial_business_networks","country_id":"germany","name":"Industrie- und Unternehmernetzwerke","type":"private_company","historical_status":"aggregate_context",
+      "influence":{"economic":62,"industrial":64,"labor":50,"political":34,"financial":48,"research":46},
+      "sector_presence":{"de_rhine_ruhr":60,"de_saxony":48,"de_hamburg_north":40,"de_berlin_brandenburg":35},
+      "assets":["factory_network","commercial_credit","technical_staff"],
+      "player_uses":["industrial_coordination","tax_policy","investment_program"]
+    },
+    {
+      "id":"de_underground_political_networks","country_id":"germany","name":"Verfolgte politische Untergrundnetzwerke","type":"underground_network","historical_status":"generic_aggregate_context",
+      "influence":{"political":12,"information":18,"local_control":6,"security_risk":10,"labor":10},
+      "sector_presence":{"de_berlin_brandenburg":15,"de_rhine_ruhr":12,"de_hamburg_north":10},
+      "assets":["contacts","clandestine_documents_abstract"],
+      "player_uses":["intelligence_picture","counter_network_action"],
+      "note":"Aggregate non-glorifying representation; not an operational model."
+    },
+
+    {
+      "id":"su_gosplan","country_id":"soviet_union","name":"Gosplan","type":"planning_institution","historical_status":"historical_anchor",
+      "influence":{"economic":80,"industrial":88,"labor":74,"political":78,"financial":56,"research":52,"local_control":42},
+      "sector_presence":{"su_moscow_central":95,"su_ural":58,"su_donbass":62,"su_ukraine_kiev":55,"su_west_siberia":42},
+      "assets":["production_targets","planning_data","investment_allocation"],
+      "player_uses":["state_plan","industrial_priority","infrastructure_allocation"],
+      "source":"https://www.loc.gov/item/00509513/"
+    },
+    {
+      "id":"su_state_industrial_trusts","country_id":"soviet_union","name":"Staatliche Industrie- und Produktionsverbände","type":"state_enterprise","historical_status":"aggregate_context",
+      "influence":{"economic":75,"industrial":90,"labor":82,"political":70,"research":48,"local_control":55},
+      "sector_presence":{"su_donbass":85,"su_ural":82,"su_moscow_central":60,"su_west_siberia":62,"su_caucasus_baku":70},
+      "assets":["state_factories","mines","industrial_transport","technical_staff"],
+      "player_uses":["production_reallocation","industrial_expansion","resource_priority"]
+    },
+    {
+      "id":"su_shadow_market_networks","country_id":"soviet_union","name":"Informelle Tausch- und Schattenmarktnetze","type":"criminal_network","historical_status":"generic_context_not_named_group",
+      "influence":{"economic":10,"financial":6,"information":13,"local_control":9,"security_risk":11},
+      "sector_presence":{"su_ukraine_kiev":13,"su_moscow_central":8,"su_central_asia":12},
+      "assets":["informal_exchange_abstract"],
+      "player_uses":["counter_network_action","shortage_information"]
+    },
+
+    {
+      "id":"uk_ici","country_id":"united_kingdom","name":"Imperial Chemical Industries (ICI)","type":"industrial_group","historical_status":"historical_anchor",
+      "influence":{"economic":58,"industrial":64,"labor":44,"political":20,"financial":38,"research":72,"local_control":28},
+      "sector_presence":{"uk_midlands_birmingham":48,"uk_north_manchester_liverpool":45,"uk_london_southeast":22},
+      "assets":["chemical_industry","industrial_research","fertilizer_materials"],
+      "player_uses":["chemical_supply","research_contract","industrial_expansion"],
+      "source":"https://archives.sciencehistory.org/repositories/3/archival_objects/4781"
+    },
+    {
+      "id":"uk_heavy_industry_shipbuilding_network","country_id":"united_kingdom","name":"Britische Schwerindustrie- und Schiffbaunetze","type":"industrial_group","historical_status":"aggregate_context",
+      "influence":{"economic":60,"industrial":78,"labor":68,"political":24,"financial":42,"research":45,"local_control":38},
+      "sector_presence":{"uk_scotland_clyde":78,"uk_midlands_birmingham":58,"uk_north_manchester_liverpool":60,"uk_south_wales":42},
+      "assets":["shipyards","steel_engineering","heavy_manufacturing"],
+      "player_uses":["shipbuilding_order","industrial_contract","infrastructure_order"]
+    },
+    {
+      "id":"uk_city_finance_network","country_id":"united_kingdom","name":"City of London Finanznetz","type":"bank","historical_status":"aggregate_context",
+      "influence":{"economic":62,"financial":90,"political":26,"information":42,"industrial":25},
+      "sector_presence":{"uk_london_southeast":92},
+      "assets":["credit_market","international_finance","foreign_exchange_access"],
+      "player_uses":["state_borrowing","trade_finance","foreign_exchange"]
+    },
+    {
+      "id":"uk_underworld_networks","country_id":"united_kingdom","name":"Städtische Unterwelt- und illegale Wett-/Handelsnetze","type":"criminal_network","historical_status":"generic_context_not_named_group",
+      "influence":{"economic":7,"financial":8,"information":12,"local_control":9,"security_risk":8},
+      "sector_presence":{"uk_london_southeast":12,"uk_north_manchester_liverpool":9},
+      "assets":["informal_cash_abstract","street_contacts"],
+      "player_uses":["counter_network_action","local_information"]
+    },
+
+    {
+      "id":"us_ford","country_id":"united_states","name":"Ford Motor Company","type":"industrial_group","historical_status":"historical_anchor",
+      "influence":{"economic":70,"industrial":82,"labor":70,"political":18,"financial":48,"research":65,"local_control":42},
+      "sector_presence":{"us_great_lakes":90,"us_new_york_northeast":18,"us_california_pacific":12},
+      "assets":["river_rouge_integrated_industry","vehicle_production","steel_glass_power_capacity","engineering"],
+      "player_uses":["vehicle_contract","industrial_research","production_conversion"],
+      "source":"https://corporate.ford.com/about/history/company-timeline/"
+    },
+    {
+      "id":"us_general_motors","country_id":"united_states","name":"General Motors","type":"industrial_group","historical_status":"historical_anchor",
+      "influence":{"economic":75,"industrial":84,"labor":72,"political":18,"financial":55,"research":72,"local_control":45},
+      "sector_presence":{"us_great_lakes":88,"us_new_york_northeast":24,"us_california_pacific":15},
+      "assets":["multi_brand_vehicle_industry","research_laboratory","international_operations"],
+      "player_uses":["vehicle_contract","industrial_research","export_capacity"],
+      "source":"https://www.gm.com/heritage"
+    },
+    {
+      "id":"us_standard_oil_nj","country_id":"united_states","name":"Standard Oil Company of New Jersey","type":"industrial_group","historical_status":"historical_anchor_successor_company",
+      "influence":{"economic":68,"industrial":72,"financial":58,"political":20,"research":45,"local_control":35},
+      "sector_presence":{"us_gulf_coast":50,"us_new_york_northeast":36,"us_texas_oklahoma":28},
+      "assets":["oil_refining_marketing","petroleum_distribution"],
+      "player_uses":["fuel_contract","refining_expansion","trade_supply"],
+      "source":"https://corporate.exxonmobil.com/who-we-are/our-global-organization/our-history"
+    },
+    {
+      "id":"us_new_york_mafia_network","country_id":"united_states","name":"New York Mafia / Five-family structure","type":"criminal_network","historical_status":"historical_anchor_post_1931_structure",
+      "influence":{"economic":12,"financial":14,"labor":18,"political":8,"information":22,"local_control":18,"security_risk":22},
+      "sector_presence":{"us_new_york_northeast":30},
+      "assets":["racketeering_income_abstract","street_and_labor_contacts"],
+      "player_uses":["counter_network_action","organized_crime_intelligence"],
+      "source":"https://www.fbi.gov/investigate/transnational-organized-crime/history-of-la-cosa-nostra",
+      "note":"Abstract threat/influence representation only."
+    },
+    {
+      "id":"us_chicago_underworld","country_id":"united_states","name":"Chicago organized-crime networks","type":"criminal_network","historical_status":"historical_context",
+      "influence":{"economic":10,"financial":12,"labor":12,"political":7,"information":18,"local_control":16,"security_risk":20},
+      "sector_presence":{"us_great_lakes":24},
+      "assets":["rackets_abstract","corrupt_contacts_abstract"],
+      "player_uses":["counter_network_action","organized_crime_intelligence"],
+      "source":"https://archives.fbi.gov/archives/news/stories/2007/june/intelmob_062207"
+    },
+    {
+      "id":"us_industrial_racketeering_network","country_id":"united_states","name":"New York industrial racketeering networks","type":"criminal_network","historical_status":"historical_anchor_1932_1933_investigation",
+      "influence":{"economic":8,"financial":10,"labor":20,"political":5,"information":12,"local_control":14,"security_risk":20},
+      "sector_presence":{"us_new_york_northeast":22},
+      "assets":["labor_racketeering_influence_abstract"],
+      "player_uses":["counter_network_action","labor_security_intelligence"],
+      "source":"https://www.fbi.gov/history/cases-and-criminals/fur-dressers-case"
+    },
+
+    {
+      "id":"it_iri","country_id":"italy","name":"Istituto per la Ricostruzione Industriale (IRI)","type":"state_holding","historical_status":"historical_anchor_formed_1933","founded":1933,
+      "start_activation":"1933-01-23","influence":{"economic":72,"industrial":78,"financial":86,"political":74,"labor":58,"research":38,"local_control":44},
+      "sector_presence":{"it_rome_latium":72,"it_lombardy_milan":62,"it_liguria_genoa":50,"it_piedmont_turin":42},
+      "assets":["bank_industrial_holdings","shipbuilding_mechanical_assets","steel_chemical_mining_assets","telephone_electric_assets"],
+      "player_uses":["bank_rescue","state_holding_control","industrial_reorganization","infrastructure_finance"],
+      "source":"https://www.treccani.it/enciclopedia/iri_%28Dizionario-di-Economia-e-Finanza%29/"
+    },
+    {
+      "id":"it_fiat","country_id":"italy","name":"FIAT","type":"industrial_group","historical_status":"historical_anchor",
+      "influence":{"economic":66,"industrial":78,"labor":70,"political":32,"financial":45,"research":56,"local_control":52},
+      "sector_presence":{"it_piedmont_turin":90,"it_lombardy_milan":28},
+      "assets":["vehicle_industry","engineering","industrial_workforce"],
+      "player_uses":["vehicle_contract","industrial_expansion","research_contract"]
+    },
+    {
+      "id":"it_sicilian_mafia_latent","country_id":"italy","name":"Sizilianische Mafia-Netzwerke","type":"criminal_network","historical_status":"historical_context_latent_after_fascist_crackdown",
+      "influence":{"economic":7,"financial":7,"political":5,"information":14,"local_control":17,"security_risk":14},
+      "sector_presence":{"it_sicily":24},
+      "assets":["local_contacts","informal_control_abstract"],
+      "player_uses":["counter_network_action","local_intelligence"],
+      "source":"https://www.treccani.it/enciclopedia/palermo/",
+      "note":"Represents residual/latent local networks after the Mori campaign; not a claim of uniform island-wide control in 1933."
+    },
+    {
+      "id":"it_catholic_institutions","country_id":"italy","name":"Katholische Institutionen / Azione Cattolica Umfeld","type":"religious_institution","historical_status":"historical_context",
+      "influence":{"cultural":78,"political":30,"labor":14,"local_control":30,"media":25,"information":24},
+      "sector_presence":{"it_rome_latium":68,"it_southern_italy_naples":50,"it_sicily":48,"it_po_valley":40},
+      "assets":["schools_associations","religious_social_network"],
+      "player_uses":["social_dialogue","education_policy_interaction","church_state_relations"],
+      "source":"https://www.treccani.it/enciclopedia/italia_%28Dizionario-di-Storia%29/"
+    }
+  ]
+}
