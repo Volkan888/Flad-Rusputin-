@@ -17,6 +17,7 @@ on:
       - 'tests/test_war_entry_cards.py'
       - 'tests/test_solo_learning_visuals.py'
       - 'tests/test_solo_campaign_persistence.py'
+      - 'tests/test_flad_rasputin_prologue.py'
       - '.github/workflows/riseofreign-office-ci.yml'
   pull_request:
     paths:
@@ -33,6 +34,7 @@ on:
       - 'tests/test_war_entry_cards.py'
       - 'tests/test_solo_learning_visuals.py'
       - 'tests/test_solo_campaign_persistence.py'
+      - 'tests/test_flad_rasputin_prologue.py'
       - '.github/workflows/riseofreign-office-ci.yml'
 
 jobs:
@@ -49,7 +51,7 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Validate core game content, solo learning, persistence and desktop UI contracts
+      - name: Validate core game content, Flad prologue, persistence and desktop UI contracts
         run: >-
           python -m unittest -v
           tests/test_office_hubs.py
@@ -64,6 +66,7 @@ jobs:
           tests/test_war_entry_cards.py
           tests/test_solo_learning_visuals.py
           tests/test_solo_campaign_persistence.py
+          tests/test_flad_rasputin_prologue.py
 
       - name: Install Godot 4.7.2 stable
         run: |
