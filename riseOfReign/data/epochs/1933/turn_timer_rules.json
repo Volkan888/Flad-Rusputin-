@@ -1,7 +1,8 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "mode": "turn_timer",
   "permanent_hud": true,
+  "default_preset": "turn_5m",
   "display": {
     "office": true,
     "world_map": true,
@@ -11,12 +12,26 @@
     "critical_last_seconds": 30
   },
   "match_presets": {
-    "live_quick": {"turn_seconds": 300, "label": "5 Minuten"},
-    "live_standard": {"turn_seconds": 900, "label": "15 Minuten"},
-    "live_extended": {"turn_seconds": 1800, "label": "30 Minuten"},
-    "async_12h": {"turn_seconds": 43200, "label": "12 Stunden"},
-    "async_24h": {"turn_seconds": 86400, "label": "24 Stunden"},
-    "async_48h": {"turn_seconds": 172800, "label": "48 Stunden"}
+    "turn_2m": {"turn_seconds": 120, "label": "2 Minuten"},
+    "turn_5m": {"turn_seconds": 300, "label": "5 Minuten"},
+    "turn_10m": {"turn_seconds": 600, "label": "10 Minuten"},
+    "turn_1h": {"turn_seconds": 3600, "label": "1 Stunde"},
+    "turn_24h": {"turn_seconds": 86400, "label": "24 Stunden"}
+  },
+  "timer_change_vote": {
+    "enabled": true,
+    "eligible_voters": 4,
+    "required_yes_votes": 3,
+    "approval_rule": "three_of_four",
+    "tie_keeps_current_timer": true,
+    "one_active_proposal_per_match": true,
+    "proposal_options": ["turn_2m", "turn_5m", "turn_10m", "turn_1h", "turn_24h"],
+    "applies_from": "next_turn",
+    "cannot_change_current_turn_deadline_retroactively": true,
+    "all_players_receive_vote_notification": true,
+    "vote_is_server_authoritative": true,
+    "player_can_change_vote_until_proposal_resolves": true,
+    "proposal_closes_when": ["three_yes_votes", "two_no_votes", "all_four_voted", "turn_ends"]
   },
   "phase_rules": {
     "briefing": {"consumes_timer": false},
@@ -30,7 +45,8 @@
     "blue_and_red_use_same_deadline": true,
     "team_member_submission_does_not_stop_partner_timer": true,
     "all_four_submitted_resolves_early": true,
-    "pause_requires_match_setting": true
+    "timer_vote_is_individual_not_team_block_vote": true,
+    "no_team_can_change_timer_alone": true
   },
   "timeout_behavior": {
     "never_submit_empty_turn": true,
@@ -47,6 +63,7 @@
     "client_clock_is_display_only": true,
     "reconnect_uses_server_deadline": true,
     "network_disconnect_does_not_reset_timer": true,
-    "host_cannot_extend_only_one_team": true
+    "host_cannot_extend_only_one_team": true,
+    "same_vote_rule_for_host_and_guests": true
   }
 }
