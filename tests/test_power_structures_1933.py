@@ -13,6 +13,8 @@ class PowerStructure1933Tests(unittest.TestCase):
         cls.structures = cls.data["structures"]
         sectors = json.loads((EPOCH / "sectors_1933.json").read_text(encoding="utf-8"))["sectors"]
         cls.sector_ids = {s["id"] for s in sectors}
+        registry_path = EPOCH / "power_structure_sources_1933.json"
+        cls.source_registry = json.loads(registry_path.read_text(encoding="utf-8"))["sources"] if registry_path.exists() else {}
 
     def test_structure_ids_unique(self):
         ids = [x["id"] for x in self.structures]
@@ -66,7 +68,15 @@ class PowerStructure1933Tests(unittest.TestCase):
         anchored = [x for x in self.structures if x.get("historical_status", "").startswith("historical_anchor")]
         self.assertGreaterEqual(len(anchored), 10)
         for structure in anchored:
-            self.assertTrue(structure.get("source"), structure["id"])
+            inline_source = structure.get("source")
+            registry_source = self.source_registry.get(structure["id"], {}).get("url")
+            self.assertTrue(inline_source or registry_source, structure["id"])
+
+    def test_source_registry_entries_are_valid(self):
+        structure_ids = {x["id"] for x in self.structures}
+        for structure_id, source in self.source_registry.items():
+            self.assertIn(structure_id, structure_ids)
+            self.assertTrue(str(source.get("url", "")).startswith("https://"), structure_id)
 
     def test_state_and_private_economic_power_both_exist(self):
         types = {x["type"] for x in self.structures}
