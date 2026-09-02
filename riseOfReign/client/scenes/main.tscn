@@ -18,49 +18,277 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.06, 0.045, 0.035, 1)
+color = Color(0.018, 0.018, 0.018, 1)
 mouse_filter = 2
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="RedTop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+color = Color(0.45, 0.025, 0.04, 1)
+mouse_filter = 2
+
+[node name="RedSide" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.32, 0.018, 0.03, 1)
+mouse_filter = 2
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_top = 70.0
-offset_right = -40.0
-offset_bottom = -70.0
+offset_left = 56.0
+offset_top = 80.0
+offset_right = -56.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 26
+
+[node name="Header" type="VBoxContainer" parent="MainLayout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="MainLayout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.86, 0.72, 1)
+theme_override_font_sizes/font_size = 72
+text = "RISE OF REIGN"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MainLayout/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.1, 0.12, 1)
+theme_override_font_sizes/font_size = 26
+text = "1933 · THE WORLD IN CRISIS"
+horizontal_alignment = 1
+
+[node name="Rule" type="ColorRect" parent="MainLayout/Header"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 3)
+color = Color(0.42, 0.03, 0.045, 1)
+
+[node name="Content" type="HSplitContainer" parent="MainLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+split_offset = 540
+
+[node name="MenuPanel" type="PanelContainer" parent="MainLayout/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(500, 0)
+
+[node name="Menu" type="VBoxContainer" parent="MainLayout/Content/MenuPanel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MenuTitle" type="Label" parent="MainLayout/Content/MenuPanel/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83, 0.79, 0.7, 1)
+theme_override_font_sizes/font_size = 24
+text = "HAUPTMENÜ"
+
+[node name="NewGame" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 86)
+text = "NEUES SPIEL"
+
+[node name="Continue" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 86)
+text = "FORTSETZEN"
+
+[node name="Multiplayer" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 86)
+text = "MULTIPLAYER · 4 SPIELER"
+
+[node name="Settings" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 86)
+text = "EINSTELLUNGEN"
+
+[node name="Quit" type="Button" parent="MainLayout/Content/MenuPanel/Menu" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 72)
+text = "BEENDEN"
+
+[node name="FeaturePanel" type="PanelContainer" parent="MainLayout/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(430, 0)
+
+[node name="Features" type="VBoxContainer" parent="MainLayout/Content/FeaturePanel"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Era" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.83, 0.73, 1)
+theme_override_font_sizes/font_size = 34
+text = "1. JANUAR 1933"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.66, 0.61, 1)
+text = "Führe einen Avatar von seiner persönlichen Steuerzentrale aus. Staatshaushalt, Ressourcen, Diplomatie, Forschung, Aufrüstung und Gesundheit laufen gleichzeitig."
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Systems" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
+theme_override_font_sizes/font_size = 22
+text = "BÜRO  ·  WELTKARTE  ·  TELEFON\nWIRTSCHAFT  ·  FORSCHUNG  ·  MILITÄR\nDIPLOMATIE  ·  INVENTAR  ·  EREIGNISSE"
+horizontal_alignment = 1
+
+[node name="EraNote" type="Label" parent="MainLayout/Content/FeaturePanel/Features"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.55, 0.52, 0.48, 1)
+text = "Historische Anker bleiben bestehen. Deine Entscheidungen verändern die Lage, Ressourcen, Macht und Beziehungen darum herum."
+autowrap_mode = 2
+vertical_alignment = 1
+horizontal_alignment = 1
+
+[node name="Footer" type="HBoxContainer" parent="MainLayout"]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="MainLayout/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.53, 0.49, 1)
+text = "Build"
+
+[node name="SoundState" type="Label" parent="MainLayout/Footer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.53, 0.49, 1)
+text = "♪ SOUND"
+
+[node name="SettingsOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
-layout_mode = 2
-theme_override_constants/separation = 18
+[node name="Dim" type="ColorRect" parent="SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.82)
+mouse_filter = 1
 
-[node name="Title" type="Label" parent="Margin/VBox"]
+[node name="SettingsPanel" type="PanelContainer" parent="SettingsOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -390.0
+offset_right = 380.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsLayout" type="VBoxContainer" parent="SettingsOverlay/SettingsPanel"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "riseOfReign"
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.86, 0.74, 1)
+theme_override_font_sizes/font_size = 40
+text = "EINSTELLUNGEN"
 horizontal_alignment = 1
 
-[node name="Subtitle" type="Label" parent="Margin/VBox"]
+[node name="MasterRow" type="HBoxContainer" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
-text = "1. Januar 1933 · Persönliche Steuerzentrale"
-horizontal_alignment = 1
-autowrap_mode = 2
 
-[node name="AvatarScroll" type="ScrollContainer" parent="Margin/VBox"]
+[node name="Label" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MasterRow"]
 layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
+custom_minimum_size = Vector2(190, 0)
+text = "Gesamtlautstärke"
 
-[node name="AvatarList" type="VBoxContainer" parent="Margin/VBox/AvatarScroll"]
+[node name="MasterSlider" type="HSlider" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MasterRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+max_value = 1.0
+step = 0.01
+value = 0.85
 
-[node name="Status" type="Label" parent="Margin/VBox"]
+[node name="MusicRow" type="HBoxContainer" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
 layout_mode = 2
-text = "Avatar-Auswahl"
-horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MusicRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(190, 0)
+text = "Musik"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsOverlay/SettingsPanel/SettingsLayout/MusicRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.55
+
+[node name="SfxRow" type="HBoxContainer" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(190, 0)
+text = "Effekte"
+
+[node name="SfxSlider" type="HSlider" parent="SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.75
+
+[node name="MusicToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
+layout_mode = 2
+text = "Menü-Musik aktiviert"
+
+[node name="SfxToggle" type="CheckButton" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
+layout_mode = 2
+text = "UI-Sounds aktiviert"
+
+[node name="AudioNote" type="Label" parent="SettingsOverlay/SettingsPanel/SettingsLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58, 0.56, 0.52, 1)
+text = "Aktuell nutzt der Prototyp einen eigens erzeugten, lizenzfreien Menüton und Klicksound. Finale Musik und historische Ambiente-Sounds werden später als Assets ersetzt."
 autowrap_mode = 2
+
+[node name="Close" type="Button" parent="SettingsOverlay/SettingsPanel/SettingsLayout" groups=["strategy_menu_button"]]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 72)
+text = "ÜBERNEHMEN & SCHLIESSEN"
+
+[connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainLayout/Content/MenuPanel/Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="SettingsOverlay/SettingsPanel/SettingsLayout/MasterRow/MasterSlider" to="." method="_on_master_changed"]
+[connection signal="value_changed" from="SettingsOverlay/SettingsPanel/SettingsLayout/MusicRow/MusicSlider" to="." method="_on_music_changed"]
+[connection signal="value_changed" from="SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow/SfxSlider" to="." method="_on_sfx_changed"]
+[connection signal="toggled" from="SettingsOverlay/SettingsPanel/SettingsLayout/MusicToggle" to="." method="_on_music_toggled"]
+[connection signal="toggled" from="SettingsOverlay/SettingsPanel/SettingsLayout/SfxToggle" to="." method="_on_sfx_toggled"]
+[connection signal="pressed" from="SettingsOverlay/SettingsPanel/SettingsLayout/Close" to="." method="_on_close_settings_pressed"]
