@@ -50,7 +50,7 @@ app.MapGet("/api/v1/meta", () => Results.Ok(new
 {
     game = "riseOfReign",
     ruleset = "0.1.0",
-    content = "1933.0.3",
+    content = "1933.0.4",
     turnUnit = "month",
     maxPlayers = 4
 }));
@@ -131,7 +131,12 @@ app.MapGet("/api/v1/offices/{avatarId}", (string avatarId) =>
         sharedObjects = officeContent["shared_objects"],
         officeLevels = officeContent["office_levels"],
         rooms = officeContent["rooms"],
+        phoneSystem = officeContent["phone_system"],
+        upgradeRules = officeContent["upgrade_rules"],
+        relocationAndDamage = officeContent["relocation_and_damage"],
+        multiplayerMeetings = officeContent["multiplayer_meetings"],
         dynamicVisualStates = officeContent["dynamic_visual_states"],
+        accessibilityAndMobile = officeContent["accessibility_and_mobile"],
         avatarOffice
     });
 });
