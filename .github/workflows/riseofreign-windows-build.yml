@@ -1,0 +1,83 @@
+name: RiseOfReign Windows Playable Build
+
+on:
+  push:
+    branches: [riseOfReign]
+    paths:
+      - 'riseOfReign/client/**'
+      - 'riseOfReign/server/**'
+      - 'riseOfReign/data/**'
+      - '.github/workflows/riseofreign-windows-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Godot 4.7.2 and export templates
+        run: |
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 /usr/local/bin/godot
+          curl -L --fail --retry 3 -o /tmp/templates.tpz https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz
+          mkdir -p "$HOME/.local/share/godot/export_templates/4.7.2.stable"
+          unzip -q /tmp/templates.tpz -d /tmp/templates
+          cp -R /tmp/templates/templates/* "$HOME/.local/share/godot/export_templates/4.7.2.stable/"
+          godot --version
+
+      - name: Export Godot Windows client
+        run: |
+          mkdir -p riseOfReign/client/build
+          godot --headless --path riseOfReign/client --export-release "Windows Desktop" build/riseOfReign.exe
+          test -f riseOfReign/client/build/riseOfReign.exe
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Publish Windows API self-contained
+        run: |
+          dotnet publish riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o /tmp/ror-server
+
+      - name: Assemble playable package
+        run: |
+          mkdir -p /tmp/ror-dist/server /tmp/ror-dist/data/epochs
+          cp riseOfReign/client/build/riseOfReign.exe /tmp/ror-dist/
+          cp -R /tmp/ror-server/* /tmp/ror-dist/server/
+          cp -R riseOfReign/data/epochs/1933 /tmp/ror-dist/data/epochs/
+          cat > /tmp/ror-dist/START_RISE_OF_REIGN.bat <<'BAT'
+          @echo off
+          title Rise of Reign
+          cd /d "%~dp0"
+          set "ROR_EPOCH_1933_PATH=%~dp0data\epochs\1933"
+          set "ASPNETCORE_URLS=http://127.0.0.1:8080"
+          echo Starting Rise of Reign server...
+          start "RiseOfReign Server" /B "%~dp0server\RiseOfReign.Api.exe"
+          timeout /t 2 /nobreak >nul
+          echo Starting game...
+          "%~dp0riseOfReign.exe"
+          taskkill /IM RiseOfReign.Api.exe /F >nul 2>&1
+          BAT
+          cat > /tmp/ror-dist/README_START.txt <<'TXT'
+          RISE OF REIGN - PLAYABLE PROTOTYPE
+
+          1. Extract the complete ZIP.
+          2. Double-click START_RISE_OF_REIGN.bat.
+          3. Keep the folder structure unchanged.
+
+          Current prototype includes VK APPS intro fallback, main menu, avatar selection, office hub, January 1933 loop, mouse UI, timer/ready UI and current content systems.
+          TXT
+
+      - name: Upload playable Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: riseOfReign-Windows-playable
+          path: /tmp/ror-dist
+          retention-days: 14
+          compression-level: 6
