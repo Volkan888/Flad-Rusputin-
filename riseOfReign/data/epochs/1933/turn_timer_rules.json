@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "mode": "turn_timer",
+  "permanent_hud": true,
+  "display": {
+    "office": true,
+    "world_map": true,
+    "phone": true,
+    "meetings": true,
+    "warning_thresholds": [0.5, 0.25, 0.1],
+    "critical_last_seconds": 30
+  },
+  "match_presets": {
+    "live_quick": {"turn_seconds": 300, "label": "5 Minuten"},
+    "live_standard": {"turn_seconds": 900, "label": "15 Minuten"},
+    "live_extended": {"turn_seconds": 1800, "label": "30 Minuten"},
+    "async_12h": {"turn_seconds": 43200, "label": "12 Stunden"},
+    "async_24h": {"turn_seconds": 86400, "label": "24 Stunden"},
+    "async_48h": {"turn_seconds": 172800, "label": "48 Stunden"}
+  },
+  "phase_rules": {
+    "briefing": {"consumes_timer": false},
+    "office_decisions": {"consumes_timer": true},
+    "phone_or_meeting": {"consumes_timer": true},
+    "map_action": {"consumes_timer": true},
+    "submit": {"consumes_timer": true},
+    "resolve": {"consumes_timer": false}
+  },
+  "team_rules": {
+    "blue_and_red_use_same_deadline": true,
+    "team_member_submission_does_not_stop_partner_timer": true,
+    "all_four_submitted_resolves_early": true,
+    "pause_requires_match_setting": true
+  },
+  "timeout_behavior": {
+    "never_submit_empty_turn": true,
+    "auto_keep_last_safe_economic_policy": true,
+    "auto_phone_action": "no_new_commitment",
+    "auto_map_action": "inspect_current_supply",
+    "auto_decline_irreversible_action": true,
+    "auto_cancel_unconfirmed_attack": true,
+    "mark_player_timed_out": true,
+    "repeat_timeouts_can_enable_ai_takeover_if_match_setting_allows": true
+  },
+  "fairness": {
+    "server_authoritative_deadline": true,
+    "client_clock_is_display_only": true,
+    "reconnect_uses_server_deadline": true,
+    "network_disconnect_does_not_reset_timer": true,
+    "host_cannot_extend_only_one_team": true
+  }
+}
