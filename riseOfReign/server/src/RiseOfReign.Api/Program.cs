@@ -11,12 +11,15 @@ var epochPath = ResolveEpochPath(builder.Environment.ContentRootPath);
 var mapLoader = new EpochContentLoader();
 var officeLoader = new OfficeHubContentLoader();
 var januaryService = new January1933Service();
+var stateProfileService = new StateProfileService();
 EpochMapContent? mapContent = null;
 JsonNode? officeContent = null;
 JsonObject? januaryContent = null;
+JsonObject? stateProfileContent = null;
 string? mapLoadError = null;
 string? officeLoadError = null;
 string? januaryLoadError = null;
+string? stateProfileLoadError = null;
 
 try { mapContent = await mapLoader.LoadMapAsync(epochPath); }
 catch (Exception ex) { mapLoadError = ex.Message; }
@@ -27,41 +30,46 @@ catch (Exception ex) { officeLoadError = ex.Message; }
 try { januaryContent = await januaryService.LoadAsync(epochPath); }
 catch (Exception ex) { januaryLoadError = ex.Message; }
 
+try { stateProfileContent = await stateProfileService.LoadAsync(epochPath); }
+catch (Exception ex) { stateProfileLoadError = ex.Message; }
+
 var connectionString = builder.Configuration.GetConnectionString("GameDb");
 IOnlineMatchStore? matchStore = null;
 OnlineMatchCoordinator? matchCoordinator = null;
-if (!string.IsNullOrWhiteSpace(connectionString) && januaryContent is not null)
+if (!string.IsNullOrWhiteSpace(connectionString) && januaryContent is not null && stateProfileContent is not null)
 {
     matchStore = new PostgresOnlineMatchStore(connectionString);
-    matchCoordinator = new OnlineMatchCoordinator(matchStore, januaryService, januaryContent);
+    matchCoordinator = new OnlineMatchCoordinator(matchStore, januaryService, januaryContent, stateProfileService, stateProfileContent);
 }
 
 var app = builder.Build();
 if (matchStore is not null)
-{
     app.Lifetime.ApplicationStopped.Register(() => matchStore.DisposeAsync().AsTask().GetAwaiter().GetResult());
-}
 
 app.MapGet("/health", () => Results.Ok(new
 {
     service = "riseOfReign-api",
-    status = mapContent is null || officeContent is null || januaryContent is null ? "degraded" : "ok",
+    status = mapContent is null || officeContent is null || januaryContent is null || stateProfileContent is null ? "degraded" : "ok",
     epoch = "1933",
     mapContentLoaded = mapContent is not null,
     officeContentLoaded = officeContent is not null,
     januaryContentLoaded = januaryContent is not null,
+    stateProfilesLoaded = stateProfileContent is not null,
     onlineMatchStoreConfigured = matchCoordinator is not null,
     mapLoadError,
     officeLoadError,
     januaryLoadError,
+    stateProfileLoadError,
     utc = DateTimeOffset.UtcNow
 }));
 
 app.MapGet("/api/v1/meta", () => Results.Ok(new
 {
     game = "riseOfReign",
+    displayName = "Rise of Reign",
+    publisher = "VK APPS",
     ruleset = "0.1.0",
-    content = "1933.0.5",
+    content = "1933.0.6",
     turnUnit = "month",
     maxPlayers = 4
 }));
@@ -139,19 +147,47 @@ app.MapGet("/api/v1/offices/{avatarId}", (string avatarId) =>
     });
 });
 
-app.MapGet("/api/v1/months/1933-01/{avatarId}", (string avatarId) =>
+app.MapGet("/api/v1/state/1933/{avatarId}", (string avatarId, string? countryId) =>
 {
-    if (januaryContent is null)
-        return Results.Problem(januaryLoadError ?? "January content unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
-    try { return Results.Ok(januaryService.GetAvatarSlice(januaryContent, avatarId)); }
+    if (stateProfileContent is null)
+        return Results.Problem(stateProfileLoadError ?? "State profiles unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try { return Results.Ok(stateProfileService.GetInitialState(stateProfileContent, avatarId, countryId)); }
+    catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown state-profile avatar.", avatarId }); }
+});
+
+app.MapGet("/api/v1/months/1933-01/{avatarId}", (string avatarId, string? countryId) =>
+{
+    if (januaryContent is null || stateProfileContent is null)
+        return Results.Problem(januaryLoadError ?? stateProfileLoadError ?? "January content unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try
+    {
+        var slice = januaryService.GetAvatarSlice(januaryContent, avatarId);
+        var resolvedCountry = countryId ?? slice["country_id"]?.GetValue<string>();
+        slice["player_state"] = stateProfileService.GetInitialState(stateProfileContent, avatarId, resolvedCountry);
+        return Results.Ok(slice);
+    }
     catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown January avatar.", avatarId }); }
 });
 
-app.MapPost("/api/v1/months/1933-01/{avatarId}/resolve", (string avatarId, JsonObject request) =>
+app.MapPost("/api/v1/months/1933-01/{avatarId}/resolve", (string avatarId, string? countryId, JsonObject request) =>
 {
-    if (januaryContent is null)
-        return Results.Problem(januaryLoadError ?? "January content unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
-    try { return Results.Ok(januaryService.Resolve(januaryContent, avatarId, request)); }
+    if (januaryContent is null || stateProfileContent is null)
+        return Results.Problem(januaryLoadError ?? stateProfileLoadError ?? "January content unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try
+    {
+        var slice = januaryService.GetAvatarSlice(januaryContent, avatarId);
+        var resolvedCountry = countryId ?? slice["country_id"]?.GetValue<string>();
+        var result = januaryService.Resolve(januaryContent, avatarId, request);
+        var initialState = stateProfileService.GetInitialState(stateProfileContent, avatarId, resolvedCountry);
+        var indicators = result["resulting_indicators"]?.AsObject() ?? throw new InvalidDataException("January resolution missing indicators.");
+        var actions = result["applied_actions"]?.AsArray() ?? new JsonArray();
+        var playerState = stateProfileService.AdvanceMonth(initialState, indicators, actions);
+        result["player_state"] = playerState;
+        result["finance"] = playerState["finance"]?.DeepClone();
+        result["health"] = playerState["health"]?.DeepClone();
+        result["inventory"] = playerState["inventory"]?.DeepClone();
+        return Results.Ok(result);
+    }
     catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown January avatar.", avatarId }); }
     catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
 });
@@ -175,6 +211,14 @@ app.MapGet("/api/v1/matches/{matchId:guid}", async (Guid matchId, CancellationTo
         return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
     var match = await matchCoordinator.GetAsync(matchId, cancellationToken);
     return match is null ? Results.NotFound(new { error = "Match not found.", matchId }) : Results.Ok(match);
+});
+
+app.MapGet("/api/v1/matches/{matchId:guid}/players/{playerId:guid}/state", async (Guid matchId, Guid playerId, CancellationToken cancellationToken) =>
+{
+    if (matchCoordinator is null)
+        return Results.Problem("Online match store is not configured.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    try { return Results.Ok(await matchCoordinator.GetInitialPlayerStateAsync(matchId, playerId, cancellationToken)); }
+    catch (KeyNotFoundException ex) { return Results.NotFound(new { error = ex.Message }); }
 });
 
 app.MapPost("/api/v1/matches/{matchId:guid}/join", async (Guid matchId, JoinOnlineMatchRequest request, CancellationToken cancellationToken) =>
