@@ -64,12 +64,23 @@ public sealed class StateProfileService
             ["finance"] = finance,
             ["health"] = avatar["health"]?.DeepClone(),
             ["inventory"] = avatar["inventory"]?.DeepClone(),
-            ["inventory_count"] = avatar["inventory"]?.AsArray().Sum(ItemQuantity) ?? 0
+            ["inventory_count"] = avatar["inventory"]?.AsArray().Sum(ItemQuantity) ?? 0,
+            ["completed_months"] = new JsonArray()
         };
     }
 
     public JsonObject AdvanceMonth(JsonObject initialState, JsonObject indicators, JsonArray appliedActions)
+        => AdvanceMonth(initialState, indicators, appliedActions, "1933-01");
+
+    public JsonObject AdvanceMonth(
+        JsonObject initialState,
+        JsonObject indicators,
+        JsonArray appliedActions,
+        string monthId)
     {
+        if (string.IsNullOrWhiteSpace(monthId))
+            throw new ArgumentException("monthId is required.", nameof(monthId));
+
         var state = initialState.DeepClone().AsObject();
         var finance = state["finance"]?.AsObject()
             ?? throw new InvalidDataException("Player state is missing finance.");
@@ -88,7 +99,7 @@ public sealed class StateProfileService
         finance["monthly_net"] = net;
         finance["last_month_ledger"] = new JsonObject
         {
-            ["month"] = "1933-01",
+            ["month"] = monthId,
             ["income"] = income,
             ["expense"] = expense,
             ["net"] = net,
@@ -103,7 +114,7 @@ public sealed class StateProfileService
         var stress = health["stress"]?.GetValue<decimal>() ?? 40m;
 
         var stressDelta = 0m;
-        var energyDelta = -1m; // normal monthly workload/fatigue seed
+        var energyDelta = -1m;
         if (stability < 50m) stressDelta += 2m;
         else if (stability >= 70m) stressDelta -= 1m;
         if (treasuryAfter < 20m) stressDelta += 1m;
@@ -129,15 +140,27 @@ public sealed class StateProfileService
         health["stress"] = stress;
         health["last_month_change"] = new JsonObject
         {
-            ["month"] = "1933-01",
+            ["month"] = monthId,
             ["health_delta"] = healthValue - (initialState["health"]?["health"]?.GetValue<decimal>() ?? healthValue),
             ["energy_delta"] = energy - (initialState["health"]?["energy"]?.GetValue<decimal>() ?? energy),
             ["stress_delta"] = stress - (initialState["health"]?["stress"]?.GetValue<decimal>() ?? stress)
         };
 
+        var completedMonths = state["completed_months"]?.AsArray() ?? new JsonArray();
+        if (!completedMonths.Any(x => string.Equals(x?.GetValue<string>(), monthId, StringComparison.OrdinalIgnoreCase)))
+            completedMonths.Add(monthId);
+        state["completed_months"] = completedMonths;
+        state["current_date"] = NextMonthDate(monthId);
         state["inventory_count"] = state["inventory"]?.AsArray().Sum(ItemQuantity) ?? 0;
         state["leadership_availability"] = LeadershipAvailability(healthValue, energy);
         return state;
+    }
+
+    private static string NextMonthDate(string monthId)
+    {
+        if (!DateOnly.TryParseExact($"{monthId}-01", "yyyy-MM-dd", out var date))
+            return monthId;
+        return date.AddMonths(1).ToString("yyyy-MM-dd");
     }
 
     private static int ItemQuantity(JsonNode? node)
