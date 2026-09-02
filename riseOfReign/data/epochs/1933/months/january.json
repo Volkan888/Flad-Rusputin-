@@ -1,9 +1,12 @@
 {
   "schema_version": "1.0",
   "month_id": "1933-01",
+  "title": "Januar 1933",
   "start_date": "1933-01-01",
   "end_date": "1933-01-31",
   "next_date": "1933-02-01",
+  "next_month_id": "1933-02",
+  "next_content_available": true,
   "turn_phases": ["briefing", "office_decisions", "phone_or_meeting", "map_action", "resolve", "historical_anchor", "report"],
   "shared_context": [
     "The world economy is still shaped by the Great Depression.",
