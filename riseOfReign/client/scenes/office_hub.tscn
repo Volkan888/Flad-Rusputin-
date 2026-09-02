@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource path="res://scripts/office_hub.gd" type="Script" id="1"]
+[ext_resource path="res://assets/icons/office.svg" type="Texture2D" id="2"]
+[ext_resource path="res://assets/icons/world.svg" type="Texture2D" id="3"]
+[ext_resource path="res://assets/icons/state.svg" type="Texture2D" id="4"]
+[ext_resource path="res://assets/icons/strategy.svg" type="Texture2D" id="5"]
+[ext_resource path="res://assets/icons/events.svg" type="Texture2D" id="6"]
+[ext_resource path="res://assets/icons/settings.svg" type="Texture2D" id="7"]
+[ext_resource path="res://assets/icons/timer.svg" type="Texture2D" id="8"]
+[ext_resource path="res://assets/icons/ready.svg" type="Texture2D" id="9"]
 
 [node name="OfficeHub" type="Control"]
 layout_mode = 3
@@ -18,16 +26,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.025, 0.022, 0.02, 1)
+color = Color(0.014, 0.014, 0.016, 1)
 mouse_filter = 2
 
-[node name="RedTop" type="ColorRect" parent="."]
+[node name="AccentTop" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 10.0
+offset_bottom = 4.0
 grow_horizontal = 2
-color = Color(0.42, 0.025, 0.04, 1)
+color = Color(0.52, 0.025, 0.04, 1)
 mouse_filter = 2
 
 [node name="Margin" type="MarginContainer" parent="."]
@@ -35,16 +43,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 26.0
-offset_right = -24.0
-offset_bottom = -26.0
+offset_left = 22.0
+offset_top = 18.0
+offset_right = -22.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="Layout" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
@@ -52,41 +56,94 @@ theme_override_constants/separation = 10
 
 [node name="Header" type="HBoxContainer" parent="Margin/Layout"]
 layout_mode = 2
+custom_minimum_size = Vector2(0, 72)
 theme_override_constants/separation = 12
 
 [node name="Back" type="Button" parent="Margin/Layout/Header"]
 layout_mode = 2
-custom_minimum_size = Vector2(125, 54)
-text = "← AVATARE"
+custom_minimum_size = Vector2(120, 58)
+text = "←"
+tooltip_text = "Zur Avatar-Auswahl"
 
-[node name="Title" type="Label" parent="Margin/Layout/Header"]
+[node name="Identity" type="VBoxContainer" parent="Margin/Layout/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.91, 0.86, 0.74, 1)
+
+[node name="Title" type="Label" parent="Margin/Layout/Header/Identity"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.87, 0.76, 1)
 theme_override_font_sizes/font_size = 30
 text = "Avatar"
-vertical_alignment = 1
+
+[node name="OfficeTheme" type="Label" parent="Margin/Layout/Header/Identity"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.52, 0.5, 0.47, 1)
+text = "Steuerzentrale wird geladen…"
 
 [node name="Date" type="Label" parent="Margin/Layout/Header"]
 layout_mode = 2
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(220, 58)
 theme_override_colors/font_color = Color(0.82, 0.78, 0.69, 1)
+theme_override_font_sizes/font_size = 20
 text = "1. Januar 1933"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="OfficeTheme" type="Label" parent="Margin/Layout"]
+[node name="TurnPanel" type="PanelContainer" parent="Margin/Layout/Header"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.58, 0.56, 0.52, 1)
-text = "Steuerzentrale wird geladen…"
-autowrap_mode = 2
+custom_minimum_size = Vector2(330, 64)
+
+[node name="TurnRow" type="HBoxContainer" parent="Margin/Layout/Header/TurnPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TimerIcon" type="TextureRect" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(42, 42)
+texture = ExtResource("8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TimerLabel" type="Label" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(82, 0)
+theme_override_colors/font_color = Color(0.95, 0.94, 0.9, 1)
+theme_override_font_sizes/font_size = 24
+text = "05:00"
+vertical_alignment = 1
+tooltip_text = "Verbleibende Rundenzeit"
+
+[node name="ReadyInfo" type="VBoxContainer" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReadyPlayers" type="Label" parent="Margin/Layout/Header/TurnPanel/TurnRow/ReadyInfo"]
+layout_mode = 2
+text = "0 / 4 fertig"
+horizontal_alignment = 1
+
+[node name="ReadyState" type="Label" parent="Margin/Layout/Header/TurnPanel/TurnRow/ReadyInfo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+text = "AKTIV"
+horizontal_alignment = 1
+
+[node name="ReadyButton" type="Button" parent="Margin/Layout/Header/TurnPanel/TurnRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(118, 52)
+icon = ExtResource("9")
+icon_max_width = 28
+expand_icon = true
+text = "FERTIG"
+tooltip_text = "Zug abgeben. Vor endgültiger Auflösung kann die Bereitschaft zurückgenommen werden."
 
 [node name="TopHud" type="PanelContainer" parent="Margin/Layout"]
 layout_mode = 2
+custom_minimum_size = Vector2(0, 66)
 
 [node name="Hud" type="HBoxContainer" parent="Margin/Layout/TopHud"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
 [node name="Treasury" type="Label" parent="Margin/Layout/TopHud/Hud"]
 layout_mode = 2
@@ -124,158 +181,167 @@ size_flags_horizontal = 3
 text = "AUTORITÄT\n—"
 horizontal_alignment = 1
 
-[node name="QuickNavScroll" type="ScrollContainer" parent="Margin/Layout"]
-layout_mode = 2
-vertical_scroll_mode = 0
-
-[node name="QuickNav" type="HBoxContainer" parent="Margin/Layout/QuickNavScroll"]
-layout_mode = 2
-theme_override_constants/separation = 7
-
-[node name="Office" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(120, 56)
-text = "BÜRO"
-
-[node name="World" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(145, 56)
-text = "WELTKARTE"
-
-[node name="Phone" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(130, 56)
-text = "TELEFON"
-
-[node name="Decisions" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(170, 56)
-text = "ENTSCHEIDUNGEN"
-
-[node name="Inventory" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(135, 56)
-text = "INVENTAR"
-
-[node name="Archive" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(120, 56)
-text = "AKTEN"
-
-[node name="Research" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(145, 56)
-text = "FORSCHUNG"
-
-[node name="Diplomacy" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(150, 56)
-text = "DIPLOMATIE"
-
-[node name="Economy" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(145, 56)
-text = "WIRTSCHAFT"
-
-[node name="Military" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(130, 56)
-text = "MILITÄR"
-
-[node name="Events" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(135, 56)
-text = "EREIGNISSE"
-
-[node name="Settings" type="Button" parent="Margin/Layout/QuickNavScroll/QuickNav"]
-layout_mode = 2
-custom_minimum_size = Vector2(155, 56)
-text = "EINSTELLUNGEN"
-
-[node name="Content" type="HSplitContainer" parent="Margin/Layout"]
+[node name="Body" type="HBoxContainer" parent="Margin/Layout"]
 layout_mode = 2
 size_flags_vertical = 3
-split_offset = 610
+theme_override_constants/separation = 10
 
-[node name="OfficePanel" type="PanelContainer" parent="Margin/Layout/Content"]
+[node name="QuickNavPanel" type="PanelContainer" parent="Margin/Layout/Body"]
 layout_mode = 2
-custom_minimum_size = Vector2(590, 0)
+custom_minimum_size = Vector2(190, 0)
 
-[node name="OfficeLayout" type="VBoxContainer" parent="Margin/Layout/Content/OfficePanel"]
+[node name="QuickNav" type="VBoxContainer" parent="Margin/Layout/Body/QuickNavPanel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
-[node name="RoomTitle" type="Label" parent="Margin/Layout/Content/OfficePanel/OfficeLayout"]
+[node name="Office" type="Button" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 70)
+icon = ExtResource("2")
+icon_max_width = 34
+expand_icon = true
+text = "BÜRO"
+alignment = 0
+tooltip_text = "Persönliche Steuerzentrale"
+
+[node name="World" type="Button" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 70)
+icon = ExtResource("3")
+icon_max_width = 34
+expand_icon = true
+text = "WELT"
+alignment = 0
+tooltip_text = "Weltkarte, Sektoren, Ressourcen und Verkehrsnetze"
+
+[node name="State" type="Button" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 70)
+icon = ExtResource("4")
+icon_max_width = 34
+expand_icon = true
+text = "STAAT"
+alignment = 0
+tooltip_text = "Wirtschaft, Inventar, Konzerne und Verwaltung"
+
+[node name="Strategy" type="Button" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 70)
+icon = ExtResource("5")
+icon_max_width = 34
+expand_icon = true
+text = "STRATEGIE"
+alignment = 0
+tooltip_text = "Militär, Forschung, Diplomatie und Geheimdienst"
+
+[node name="Events" type="Button" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 70)
+icon = ExtResource("6")
+icon_max_width = 34
+expand_icon = true
+text = "EVENTS"
+alignment = 0
+tooltip_text = "Historische und dynamische Ereignisse"
+
+[node name="Spacer" type="Control" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="Button" parent="Margin/Layout/Body/QuickNavPanel/QuickNav"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 64)
+icon = ExtResource("7")
+icon_max_width = 32
+expand_icon = true
+text = "EINSTELLUNGEN"
+alignment = 0
+
+[node name="Content" type="HSplitContainer" parent="Margin/Layout/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offset = 1050
+
+[node name="OfficePanel" type="PanelContainer" parent="Margin/Layout/Body/Content"]
+layout_mode = 2
+custom_minimum_size = Vector2(990, 0)
+
+[node name="OfficeLayout" type="VBoxContainer" parent="Margin/Layout/Body/Content/OfficePanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RoomTitle" type="Label" parent="Margin/Layout/Body/Content/OfficePanel/OfficeLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.82, 0.71, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 23
 text = "Steuerzentrale"
 horizontal_alignment = 1
 
-[node name="ObjectScroll" type="ScrollContainer" parent="Margin/Layout/Content/OfficePanel/OfficeLayout"]
+[node name="ObjectScroll" type="ScrollContainer" parent="Margin/Layout/Body/Content/OfficePanel/OfficeLayout"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="ObjectGrid" type="GridContainer" parent="Margin/Layout/Content/OfficePanel/OfficeLayout/ObjectScroll"]
+[node name="ObjectGrid" type="GridContainer" parent="Margin/Layout/Body/Content/OfficePanel/OfficeLayout/ObjectScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 3
+columns = 4
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 
-[node name="InteractionPanel" type="PanelContainer" parent="Margin/Layout/Content"]
+[node name="InteractionPanel" type="PanelContainer" parent="Margin/Layout/Body/Content"]
 layout_mode = 2
-custom_minimum_size = Vector2(360, 0)
+custom_minimum_size = Vector2(500, 0)
 
-[node name="InteractionLayout" type="VBoxContainer" parent="Margin/Layout/Content/InteractionPanel"]
+[node name="InteractionLayout" type="VBoxContainer" parent="Margin/Layout/Body/Content/InteractionPanel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
-[node name="InteractionTitle" type="Label" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout"]
+[node name="InteractionTitle" type="Label" parent="Margin/Layout/Body/Content/InteractionPanel/InteractionLayout"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.82, 0.71, 1)
 theme_override_font_sizes/font_size = 22
 text = "Interaktion"
 autowrap_mode = 2
 
-[node name="InteractionBody" type="RichTextLabel" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout"]
+[node name="InteractionBody" type="RichTextLabel" parent="Margin/Layout/Body/Content/InteractionPanel/InteractionLayout"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 210)
+custom_minimum_size = Vector2(0, 190)
 text = "Lade…"
 fit_content = false
 scroll_active = true
 
-[node name="ActionScroll" type="ScrollContainer" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout"]
+[node name="ActionScroll" type="ScrollContainer" parent="Margin/Layout/Body/Content/InteractionPanel/InteractionLayout"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="ActionList" type="VBoxContainer" parent="Margin/Layout/Content/InteractionPanel/InteractionLayout/ActionScroll"]
+[node name="ActionList" type="VBoxContainer" parent="Margin/Layout/Body/Content/InteractionPanel/InteractionLayout/ActionScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 7
 
 [node name="Status" type="Label" parent="Margin/Layout"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.58, 0.56, 0.52, 1)
+theme_override_colors/font_color = Color(0.52, 0.5, 0.47, 1)
 text = "Initialisiere…"
 autowrap_mode = 2
+
+[node name="TurnTick" type="Timer" parent="."]
+wait_time = 1.0
+autostart = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="MonthHTTPRequest" type="HTTPRequest" parent="."]
 
 [connection signal="pressed" from="Margin/Layout/Header/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Office" to="." method="_on_nav_office"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/World" to="." method="_on_nav_world"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Phone" to="." method="_on_nav_phone"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Decisions" to="." method="_on_nav_decisions"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Inventory" to="." method="_on_nav_inventory"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Archive" to="." method="_on_nav_archive"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Research" to="." method="_on_nav_research"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Diplomacy" to="." method="_on_nav_diplomacy"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Economy" to="." method="_on_nav_economy"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Military" to="." method="_on_nav_military"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Events" to="." method="_on_nav_events"]
-[connection signal="pressed" from="Margin/Layout/QuickNavScroll/QuickNav/Settings" to="." method="_on_nav_settings"]
+[connection signal="pressed" from="Margin/Layout/Header/TurnPanel/TurnRow/ReadyButton" to="." method="_on_ready_pressed"]
+[connection signal="pressed" from="Margin/Layout/Body/QuickNavPanel/QuickNav/Office" to="." method="_on_nav_office"]
+[connection signal="pressed" from="Margin/Layout/Body/QuickNavPanel/QuickNav/World" to="." method="_on_nav_world"]
+[connection signal="pressed" from="Margin/Layout/Body/QuickNavPanel/QuickNav/State" to="." method="_on_nav_state"]
+[connection signal="pressed" from="Margin/Layout/Body/QuickNavPanel/QuickNav/Strategy" to="." method="_on_nav_strategy"]
+[connection signal="pressed" from="Margin/Layout/Body/QuickNavPanel/QuickNav/Events" to="." method="_on_nav_events"]
+[connection signal="pressed" from="Margin/Layout/Body/QuickNavPanel/QuickNav/Settings" to="." method="_on_nav_settings"]
+[connection signal="timeout" from="TurnTick" to="." method="_on_turn_tick"]
