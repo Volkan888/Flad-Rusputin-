@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0",
+  "catalog": "research_catalog_1933_1945.json",
+  "rules": {
+    "base_duration_multiplier": 1.0,
+    "base_cost_multiplier": 1.0,
+    "min_duration_multiplier": 0.65,
+    "max_duration_multiplier": 1.65,
+    "min_cost_multiplier": 0.75,
+    "max_cost_multiplier": 1.60,
+    "historical_maturity_gate": true,
+    "joint_research_can_reduce_duration": true,
+    "joint_research_never_bypasses_historical_maturity_gate_in_historical_mode": true,
+    "captured_or_shared_technology_requires_adaptation": true
+  },
+  "countries": {
+    "germany": {
+      "track_modifiers": {
+        "people_work":{"duration":0.90,"cost":1.00},
+        "soldiers_weapons":{"duration":0.82,"cost":1.08},
+        "culture_school":{"duration":0.95,"cost":1.00}
+      },
+      "favored":["pw_motorway_network","pw_synthetic_fuel","pw_synthetic_rubber","sw_mechanized_combined_arms","sw_medium_tank_design","sw_rocketry","sw_ballistic_missile","sw_jet_engine","sw_jet_fighter","cs_telex_network","cs_television_experimental","cs_television_service","cs_coaxial_network"],
+      "project_modifiers": {
+        "pw_motorway_network":{"duration":0.75,"cost":0.95},
+        "pw_synthetic_fuel":{"duration":0.80,"cost":0.95},
+        "sw_rocketry":{"duration":0.75,"cost":1.00},
+        "sw_ballistic_missile":{"duration":0.78,"cost":1.05},
+        "sw_jet_engine":{"duration":0.82,"cost":1.00},
+        "cs_television_service":{"duration":0.82,"cost":0.95},
+        "cs_censorship_state_control":{"duration":0.70,"cost":0.90}
+      },
+      "historical_constraints":[
+        {"id":"de_rearmament_visibility","effect":"military research and production can increase diplomatic tension before open war"},
+        {"id":"de_resource_constraint","effect":"advanced armor, aviation and synthetic programs compete heavily for steel, fuel, chemicals and skilled labor"}
+      ],
+      "historical_notes":["Strong early investment in roads, communications, synthetic materials, rocketry and military aviation.","Authoritarian media-control research carries explicit social, diplomatic and scientific penalties."]
+    },
+    "united_kingdom": {
+      "track_modifiers": {
+        "people_work":{"duration":0.95,"cost":1.00},
+        "soldiers_weapons":{"duration":0.88,"cost":1.00},
+        "culture_school":{"duration":0.85,"cost":0.95}
+      },
+      "favored":["pw_port_mechanization","pw_merchant_shipping","sw_radar_early_warning","sw_airborne_radar","sw_sonar_asdic","sw_convoy_doctrine","sw_carrier_aviation","sw_cryptanalysis","sw_electronic_computing","cs_television_service","cs_operations_research","cs_advanced_electronics"],
+      "project_modifiers": {
+        "sw_radar_early_warning":{"duration":0.70,"cost":0.90},
+        "sw_sonar_asdic":{"duration":0.75,"cost":0.90},
+        "sw_convoy_doctrine":{"duration":0.75,"cost":0.90},
+        "sw_cryptanalysis":{"duration":0.72,"cost":0.90},
+        "sw_electronic_computing":{"duration":0.68,"cost":0.90},
+        "cs_television_service":{"duration":0.80,"cost":0.95},
+        "cs_operations_research":{"duration":0.75,"cost":0.90}
+      },
+      "historical_constraints":[
+        {"id":"uk_early_rearmament_pressure","effect":"large military expansion before the later 1930s carries stronger treasury and political-opportunity costs"},
+        {"id":"uk_import_dependence","effect":"sea-lane protection directly affects food, fuel and industrial research throughput"}
+      ],
+      "historical_notes":["Strong advantages in radar, signals intelligence, naval protection, operations research and wartime computing.","Commercial and maritime infrastructure remains strategically central."]
+    },
+    "united_states": {
+      "track_modifiers": {
+        "people_work":{"duration":0.82,"cost":0.88},
+        "soldiers_weapons":{"duration":0.95,"cost":0.92},
+        "culture_school":{"duration":0.88,"cost":0.90}
+      },
+      "favored":["pw_road_modernization","pw_grid_electrification","pw_mass_production","pw_agricultural_mechanization","pw_food_preservation","pw_penicillin_mass_production","sw_long_range_bomber","sw_carrier_aviation","sw_atomic_program","cs_scientific_institutes","cs_advanced_electronics","cs_operations_research"],
+      "project_modifiers": {
+        "pw_mass_production":{"duration":0.68,"cost":0.78},
+        "pw_penicillin_mass_production":{"duration":0.65,"cost":0.82},
+        "sw_long_range_bomber":{"duration":0.78,"cost":0.88},
+        "sw_carrier_aviation":{"duration":0.78,"cost":0.88},
+        "sw_atomic_program":{"duration":0.70,"cost":0.80},
+        "cs_scientific_institutes":{"duration":0.78,"cost":0.88}
+      },
+      "historical_constraints":[
+        {"id":"us_peacetime_military_priority","effect":"before major wartime mobilization, military projects consume additional political priority despite high industrial potential"},
+        {"id":"us_depression_utilization","effect":"early industrial capacity is high but utilization and employment conditions constrain immediate output"}
+      ],
+      "historical_notes":["Exceptional scaling advantage in mass production, medicine, aircraft, shipping and the atomic program once mobilized.","Early campaign emphasis is economic recovery and infrastructure rather than maximum military output."]
+    },
+    "soviet_union": {
+      "track_modifiers": {
+        "people_work":{"duration":0.88,"cost":0.92},
+        "soldiers_weapons":{"duration":0.88,"cost":0.94},
+        "culture_school":{"duration":0.98,"cost":0.92}
+      },
+      "favored":["pw_rail_standardization","pw_heavy_freight_rail","pw_grid_electrification","pw_industrial_standardization","pw_mass_production","sw_medium_tank_design","sw_artillery_fire_control","sw_fighter_aircraft","sw_rocketry","cs_basic_school_expansion","cs_technical_school","cs_scientific_institutes"],
+      "project_modifiers": {
+        "pw_heavy_freight_rail":{"duration":0.78,"cost":0.85},
+        "pw_industrial_standardization":{"duration":0.76,"cost":0.85},
+        "sw_medium_tank_design":{"duration":0.78,"cost":0.90},
+        "sw_artillery_fire_control":{"duration":0.78,"cost":0.90},
+        "cs_technical_school":{"duration":0.76,"cost":0.85},
+        "sw_rocketry":{"duration":0.88,"cost":0.92}
+      },
+      "historical_constraints":[
+        {"id":"su_human_cost","effect":"forced industrial acceleration may raise output while worsening food, morale, population and stability outcomes"},
+        {"id":"su_command_disruption","effect":"political purges or command disruption events can temporarily reduce military doctrine and research efficiency"}
+      ],
+      "historical_notes":["Strong heavy-industry, rail, artillery, armor and technical-education paths.","Acceleration has explicit civilian and institutional costs rather than being a free industrial bonus."]
+    },
+    "italy": {
+      "track_modifiers": {
+        "people_work":{"duration":1.00,"cost":1.08},
+        "soldiers_weapons":{"duration":1.15,"cost":1.18},
+        "culture_school":{"duration":0.98,"cost":1.00}
+      },
+      "favored":["pw_road_modernization","pw_port_mechanization","pw_merchant_shipping","sw_fighter_aircraft","sw_artillery_fire_control","cs_public_radio","cs_religion_state_dialogue","cs_cultural_institutions"],
+      "project_modifiers": {
+        "pw_port_mechanization":{"duration":0.90,"cost":0.95},
+        "sw_fighter_aircraft":{"duration":0.92,"cost":1.00},
+        "cs_public_radio":{"duration":0.85,"cost":0.95},
+        "cs_religion_state_dialogue":{"duration":0.85,"cost":0.90},
+        "sw_heavy_tank_design":{"duration":1.35,"cost":1.35},
+        "sw_atomic_program":{"duration":1.50,"cost":1.50}
+      },
+      "historical_constraints":[
+        {"id":"it_energy_raw_materials","effect":"limited domestic coal, oil and industrial depth increase advanced military-project costs"},
+        {"id":"it_industrial_concentration","effect":"northern industrial sectors are disproportionately important to national research and production"}
+      ],
+      "historical_notes":["Competitive aviation, naval and selected engineering capacity but constrained by energy, raw materials and industrial scale.","Church-state relations and mass communication form an important culture-policy branch."]
+    },
+    "turkey": {
+      "track_modifiers": {
+        "people_work":{"duration":0.95,"cost":0.92},
+        "soldiers_weapons":{"duration":1.25,"cost":1.25},
+        "culture_school":{"duration":0.82,"cost":0.88}
+      },
+      "favored":["pw_rail_standardization","pw_road_modernization","pw_grid_electrification","pw_industrial_standardization","pw_agricultural_mechanization","cs_basic_school_expansion","cs_technical_school","cs_university_reform","cs_religion_state_dialogue","cs_foreign_language_training"],
+      "project_modifiers": {
+        "pw_rail_standardization":{"duration":0.80,"cost":0.82},
+        "pw_industrial_standardization":{"duration":0.82,"cost":0.86},
+        "cs_basic_school_expansion":{"duration":0.72,"cost":0.80},
+        "cs_university_reform":{"duration":0.70,"cost":0.78},
+        "cs_foreign_language_training":{"duration":0.78,"cost":0.82},
+        "sw_heavy_tank_design":{"duration":1.45,"cost":1.45},
+        "sw_jet_fighter":{"duration":1.45,"cost":1.45},
+        "sw_atomic_program":{"duration":1.55,"cost":1.55}
+      },
+      "historical_constraints":[
+        {"id":"tr_industrial_base","effect":"advanced weapons require imported technology, licensed production, joint research or a greatly expanded domestic industrial base"},
+        {"id":"tr_budget_choice","effect":"education, rail, state industry and military modernization compete for a relatively constrained treasury"}
+      ],
+      "historical_notes":["Strong reform, education, university, rail and state-industrial modernization incentives.","Advanced wartime weapons are possible in alternate history but deliberately expensive without external cooperation."]
+    },
+    "custom_default": {
+      "track_modifiers": {
+        "people_work":{"duration":1.00,"cost":1.00},
+        "soldiers_weapons":{"duration":1.00,"cost":1.00},
+        "culture_school":{"duration":1.00,"cost":1.00}
+      },
+      "favored":[],
+      "project_modifiers":{},
+      "historical_constraints":[],
+      "historical_notes":["Generated from country, institutions, resources, prologue and scenario settings."]
+    }
+  }
+}
