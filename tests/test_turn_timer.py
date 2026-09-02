@@ -16,10 +16,25 @@ class TurnTimerTests(unittest.TestCase):
         self.assertEqual(self.manifest["files"]["turn_timer_rules"], "turn_timer_rules.json")
 
     def test_expected_presets_exist(self):
-        expected = {"live_quick", "live_standard", "live_extended", "async_12h", "async_24h", "async_48h"}
+        expected = {"turn_2m", "turn_5m", "turn_10m", "turn_1h", "turn_24h"}
         self.assertEqual(set(self.data["match_presets"]), expected)
-        for preset in self.data["match_presets"].values():
-            self.assertGreater(preset["turn_seconds"], 0)
+        self.assertEqual(self.data["default_preset"], "turn_5m")
+        self.assertEqual(self.data["match_presets"]["turn_2m"]["turn_seconds"], 120)
+        self.assertEqual(self.data["match_presets"]["turn_5m"]["turn_seconds"], 300)
+        self.assertEqual(self.data["match_presets"]["turn_10m"]["turn_seconds"], 600)
+        self.assertEqual(self.data["match_presets"]["turn_1h"]["turn_seconds"], 3600)
+        self.assertEqual(self.data["match_presets"]["turn_24h"]["turn_seconds"], 86400)
+
+    def test_three_of_four_vote_required(self):
+        vote = self.data["timer_change_vote"]
+        self.assertTrue(vote["enabled"])
+        self.assertEqual(vote["eligible_voters"], 4)
+        self.assertEqual(vote["required_yes_votes"], 3)
+        self.assertEqual(vote["approval_rule"], "three_of_four")
+        self.assertTrue(vote["tie_keeps_current_timer"])
+        self.assertEqual(set(vote["proposal_options"]), set(self.data["match_presets"]))
+        self.assertEqual(vote["applies_from"], "next_turn")
+        self.assertTrue(vote["cannot_change_current_turn_deadline_retroactively"])
 
     def test_timer_is_server_authoritative(self):
         fairness = self.data["fairness"]
@@ -27,11 +42,14 @@ class TurnTimerTests(unittest.TestCase):
         self.assertTrue(fairness["client_clock_is_display_only"])
         self.assertTrue(fairness["reconnect_uses_server_deadline"])
         self.assertTrue(fairness["network_disconnect_does_not_reset_timer"])
+        self.assertTrue(fairness["same_vote_rule_for_host_and_guests"])
 
     def test_teams_share_same_deadline(self):
         rules = self.data["team_rules"]
         self.assertTrue(rules["blue_and_red_use_same_deadline"])
         self.assertTrue(rules["all_four_submitted_resolves_early"])
+        self.assertTrue(rules["timer_vote_is_individual_not_team_block_vote"])
+        self.assertTrue(rules["no_team_can_change_timer_alone"])
 
     def test_timeout_never_auto_attacks(self):
         timeout = self.data["timeout_behavior"]
