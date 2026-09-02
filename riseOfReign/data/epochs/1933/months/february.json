@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "month_id": "1933-02",
+  "title": "Februar 1933",
+  "start_date": "1933-02-01",
+  "end_date": "1933-02-28",
+  "next_date": "1933-03-01",
+  "next_month_id": "1933-03",
+  "next_content_available": false,
+  "turn_phases": ["briefing", "office_decisions", "phone_or_meeting", "map_action", "resolve", "historical_anchor", "report"],
+  "shared_context": [
+    "Die Weltwirtschaftskrise belastet weiterhin Beschäftigung, Handel und Staatshaushalte.",
+    "Politische Institutionen reagieren sehr unterschiedlich auf Unsicherheit und Radikalisierung.",
+    "Infrastruktur, Versorgung, Medien und staatliche Autorität beeinflussen sich gegenseitig."
+  ],
+  "learning_focus": [
+    "Zielkonflikte zwischen Stabilität, Rechten, Haushalt und Macht erkennen",
+    "Historische Ereignisse von freien Spielerentscheidungen unterscheiden",
+    "Quellen, Absichten und Folgen politischer Kommunikation prüfen"
+  ],
+  "avatars": {
+    "ataturk": {
+      "country_id": "turkey",
+      "briefing": "Die Republik muss Reformtempo, Bahnanschlüsse, Bildung und knappe Investitionsmittel ausbalancieren. Ein schneller Ausbau verbessert langfristig Kapazität, bindet aber sofort Geld und Fachkräfte.",
+      "starting_indicators": {"treasury":47,"food":65,"industry":36,"infrastructure":42,"research":46,"stability":71,"authority":88,"diplomacy":70},
+      "decisions": [{"id":"tr_feb_development","title":"Entwicklungsprogramm Februar","required":true,"choices":[
+        {"id":"rail_surveys","label":"Bahntrassen und regionale Anschlüsse vermessen","effects":{"treasury":-3,"infrastructure":3,"research":1},"learning_note":"Planung ist günstiger als sofortiger Bau, verschiebt den Nutzen aber in spätere Monate."},
+        {"id":"teacher_training","label":"Lehrer- und Verwaltungsfortbildung stärken","effects":{"treasury":-2,"research":3,"stability":1}},
+        {"id":"industrial_credit","label":"Kredite für staatlich koordinierte Industrie vorbereiten","effects":{"treasury":-4,"industry":4,"debt_pressure":2}},
+        {"id":"regional_diplomacy","label":"Regionale Gespräche und Handelskontakte priorisieren","effects":{"treasury":-1,"diplomacy":3,"trade_access":2}}
+      ]}],
+      "phone_opportunities":["government_ministers","diplomacy","science_industry","regional_admin","other_players"],
+      "map_actions":["inspect_anatolian_connections","survey_rail_corridor","review_port_trade","inspect_industrial_sites"],
+      "learning_note":"Modernisierung besteht aus verbundenen Verwaltungs-, Bildungs-, Verkehrs- und Finanzentscheidungen."
+    },
+    "hitler": {
+      "country_id": "germany",
+      "briefing": "Nach der Ernennung zum Reichskanzler wächst der institutionelle Zugriff. Der Monat zeigt kritisch, wie Notstandsargumente, Polizeimacht, Propaganda und der Abbau von Grundrechten miteinander verbunden werden können.",
+      "starting_indicators": {"treasury":38,"food":55,"industry":88,"infrastructure":80,"research":80,"stability":43,"authority":70,"diplomacy":35,"civil_liberties":65},
+      "decisions": [{"id":"de_feb_government_response","title":"Staatliche Reaktion auf politische Spannung","required":true,"choices":[
+        {"id":"constitutional_investigation","label":"Rechtsstaatliche Untersuchung und parlamentarische Kontrolle","effects":{"treasury":-2,"stability":2,"diplomacy":2,"civil_liberties":3,"authority":-1}},
+        {"id":"police_coordination","label":"Polizeiliche Koordination mit zeitlicher und gerichtlicher Begrenzung","effects":{"treasury":-2,"stability":1,"authority":2,"civil_liberties":-1}},
+        {"id":"emergency_rule","label":"Umfassende Notstandsmaßnahmen durchsetzen","effects":{"authority":7,"stability":-5,"diplomacy":-5,"civil_liberties":-12},"learning_note":"Der Machtgewinn ist kein neutraler Bonus: Rechte, Stabilität und internationale Glaubwürdigkeit sinken deutlich."}
+      ]}],
+      "phone_opportunities":["government_ministers","party_parliament","military_command","intelligence","other_players"],
+      "map_actions":["inspect_industrial_regions","review_rail_connections","review_police_regions","inspect_unemployment_centers"],
+      "historical_anchor": {
+        "id":"de_1933_reichstag_fire",
+        "date":"1933-02-27",
+        "title":"Reichstagsbrand und politische Eskalation",
+        "context":"Der Brand wurde von der nationalsozialistischen Führung zur massiven Ausweitung staatlicher Repression und zur Einschränkung von Grundrechten genutzt. Einzelne Abläufe wurden historisch kontrovers diskutiert; die politischen Folgen sind eindeutig belegt.",
+        "effects":{"stability":-5,"authority":3,"diplomacy":-2,"civil_liberties":-5},
+        "source_status":"editorial_source_review_required_before_public_education_release"
+      },
+      "portrayal_note":"Diktatur, politische Verfolgung und Entrechtung werden kritisch dargestellt und niemals als folgenloser Fortschrittsweg belohnt.",
+      "learning_note":"Institutionelle Macht kann schnell wachsen, wenn Krisen zur Schwächung von Kontrolle und Rechten genutzt werden."
+    },
+    "stalin": {
+      "country_id": "soviet_union",
+      "briefing": "Die Industrialisierung steht einer schweren Hunger- und Versorgungskrise gegenüber. Ziviles Leid ist ein negativer Zustand und darf nicht in einen reinen Produktionsbonus umgewandelt werden.",
+      "starting_indicators": {"treasury":54,"food":45,"industry":73,"infrastructure":45,"research":65,"stability":51,"authority":94,"diplomacy":45,"civilian_welfare":35},
+      "decisions": [{"id":"su_feb_food_response","title":"Versorgungs- und Hungerkrise","required":true,"choices":[
+        {"id":"regional_relief","label":"Regionale Nothilfe und Lebensmittellieferungen ausweiten","effects":{"treasury":-5,"food":6,"stability":3,"industry":-2,"civilian_welfare":5}},
+        {"id":"external_purchase","label":"Zusätzliche Beschaffung im Ausland verhandeln","effects":{"treasury":-6,"food":5,"diplomacy":2}},
+        {"id":"transport_priority","label":"Bahnkapazität vorrangig für zivile Versorgung einsetzen","effects":{"food":4,"stability":2,"industry":-2,"infrastructure":1}},
+        {"id":"enforce_collections","label":"Zwangsmaßnahmen und Abgaben weiter verschärfen","effects":{"industry":3,"authority":2,"food":-5,"stability":-6,"civilian_welfare":-10,"diplomacy":-2},"learning_note":"Repression verschärft humanitäre Schäden und wird nicht als kostenfreie Effizienz dargestellt."}
+      ]}],
+      "phone_opportunities":["government_ministers","regional_admin","science_industry","military_command","intelligence","other_players"],
+      "map_actions":["prioritize_food_rail","inspect_grain_regions","review_industrial_shipments","inspect_regional_supply"],
+      "historical_anchor":{"id":"su_1933_famine_continues","window":"1933-02","title":"Hunger- und Versorgungskrise","context":"Die schwere Hungersnot und staatliche Politik verursachten massives ziviles Leid.","effects":{"food":-4,"stability":-3,"civilian_welfare":-6},"source_status":"historical_anchor_requires_dedicated_source_panel"},
+      "humanitarian_note":"Ziviles Leid wird sichtbar gemacht, nicht abstrahiert oder belohnt.",
+      "learning_note":"Produktionsziele, Transportkapazität und Menschenleben stehen in einem realen politischen Zielkonflikt."
+    },
+    "churchill": {
+      "country_id": "united_kingdom",
+      "briefing": "Als Abgeordneter außerhalb der Regierung arbeitest du über Parlament, Presse und persönliche Netzwerke. Direkte Befehle an Haushalt oder Streitkräfte bleiben gesperrt.",
+      "starting_indicators": {"treasury":66,"food":45,"industry":85,"infrastructure":85,"research":82,"stability":75,"authority":27,"diplomacy":91},
+      "decisions": [{"id":"uk_feb_influence","title":"Politischen Einfluss aufbauen","required":true,"choices":[
+        {"id":"parliament_questions","label":"Parlamentarische Anfragen zu Außen- und Sicherheitspolitik","effects":{"authority":2,"diplomacy":1}},
+        {"id":"press_analysis","label":"Analysen und Warnungen über Pressekanäle veröffentlichen","effects":{"authority":2,"diplomacy":1,"stress":1}},
+        {"id":"private_correspondence","label":"Ausländische und parteiübergreifende Kontakte vertiefen","effects":{"diplomacy":3,"authority":1}},
+        {"id":"economic_constituency","label":"Arbeitslosigkeit und lokale Wirtschaft in den Mittelpunkt stellen","effects":{"stability":2,"authority":1,"treasury":-1}}
+      ]}],
+      "phone_opportunities":["party_parliament","personal_circle","diplomacy","science_industry","other_players"],
+      "map_actions":["review_empire_routes","inspect_ports","review_industrial_regions","inspect_unemployment"],
+      "restriction_note":"Einfluss ist nicht dasselbe wie Regierungsgewalt.",
+      "learning_note":"Parlamentarische Demokratien verteilen Macht auf Ämter, Verfahren, Parteien, Öffentlichkeit und Kontrolle."
+    },
+    "roosevelt": {
+      "country_id": "united_states",
+      "briefing": "Der Amtsantritt steht noch bevor. Bankenprobleme, Arbeitslosigkeit und öffentliche Erwartungen verlangen vorbereitete Maßnahmen, doch die volle Exekutivgewalt beginnt erst im März.",
+      "starting_indicators": {"treasury":53,"food":95,"industry":92,"infrastructure":87,"research":85,"stability":57,"authority":47,"diplomacy":55,"bank_confidence":38},
+      "decisions": [{"id":"us_feb_transition_plan","title":"Übergabe- und Krisenplanung","required":true,"choices":[
+        {"id":"banking_package","label":"Bankenprüfung und Notfallpaket vorbereiten","effects":{"treasury":-2,"stability":2,"bank_confidence":5,"authority":1}},
+        {"id":"public_works","label":"Arbeits- und Infrastrukturprogramme konkretisieren","effects":{"treasury":-3,"infrastructure":3,"stability":2}},
+        {"id":"cabinet_coordination","label":"Kabinetts- und Behördenkoordination vorziehen","effects":{"authority":3,"stability":1}},
+        {"id":"agricultural_relief","label":"Agrar- und Schuldenerleichterungen vorbereiten","effects":{"treasury":-2,"food":1,"stability":3}}
+      ]}],
+      "phone_opportunities":["personal_circle","party_parliament","science_industry","government_ministers","other_players"],
+      "map_actions":["review_bank_regions","inspect_public_works","inspect_industrial_capacity","review_agricultural_regions"],
+      "historical_anchor":{"id":"us_1933_banking_crisis_pressure","window":"1933-02","title":"Zunehmender Bankendruck vor dem Amtsantritt","context":"Bankenschließungen, Vertrauensverlust und wirtschaftliche Not verschärften den Handlungsdruck auf die kommende Regierung.","effects":{"stability":-2,"bank_confidence":-4},"source_status":"historical_context_source_panel_pending"},
+      "restriction_note":"Volle Präsidialgewalt wird im historischen Modus erst am 4. März freigeschaltet.",
+      "learning_note":"Gute Krisenpolitik benötigt vorbereitete Gesetze, Personal, Kommunikation und Verwaltungsfähigkeit."
+    },
+    "mussolini": {
+      "country_id": "italy",
+      "briefing": "Italien muss Rohstoffabhängigkeit, Infrastruktur, zivile Versorgung und militärisches Prestige gegeneinander abwägen. Autoritäre Kontrolle beseitigt keine wirtschaftlichen Engpässe.",
+      "starting_indicators": {"treasury":49,"food":60,"industry":61,"infrastructure":68,"research":60,"stability":69,"authority":90,"diplomacy":55,"fuel_security":35},
+      "decisions": [{"id":"it_feb_resource_strategy","title":"Rohstoff- und Investitionsstrategie","required":true,"choices":[
+        {"id":"trade_agreements","label":"Kohle- und Ölimporte langfristig absichern","effects":{"treasury":-3,"diplomacy":2,"fuel_security":4,"trade_access":2}},
+        {"id":"rail_ports","label":"Bahn- und Hafenengpässe ausbauen","effects":{"treasury":-4,"infrastructure":4,"industry":1}},
+        {"id":"civil_supply","label":"Zivile Versorgung und Preisstabilität priorisieren","effects":{"treasury":-2,"food":2,"stability":3}},
+        {"id":"prestige_armament","label":"Militärische Prestigeprojekte beschleunigen","effects":{"treasury":-5,"armament":4,"industry":1,"stability":-2,"fuel_security":-3},"learning_note":"Prestige ersetzt weder Treibstoff noch belastbare Logistik."}
+      ]}],
+      "phone_opportunities":["government_ministers","military_command","diplomacy","science_industry","other_players"],
+      "map_actions":["inspect_ports","review_import_routes","inspect_rail_bottlenecks","review_industrial_north"],
+      "portrayal_note":"Autoritäre Herrschaft wird kritisch und mit gesellschaftlichen Kosten dargestellt.",
+      "learning_note":"Rohstoffsicherheit hängt von Handel, Lagerung, Infrastruktur und Diplomatie ab."
+    },
+    "custom": {
+      "country_id": null,
+      "briefing": "Der eigene Avatar entwickelt sein Land über Beruf, Herkunft, Staatsform und Entscheidungen. Im Prototyp nutzt Februar ein neutrales Grundprofil.",
+      "starting_indicators": {"treasury":50,"food":50,"industry":50,"infrastructure":50,"research":50,"stability":50,"authority":32,"diplomacy":50},
+      "decisions": [{"id":"custom_feb_priority","title":"Zweiter Entwicklungsschwerpunkt","required":true,"choices":[
+        {"id":"budget","label":"Haushalt stabilisieren","effects":{"treasury":3,"industry":-1}},
+        {"id":"infrastructure","label":"Verkehr und Energie ausbauen","effects":{"treasury":-3,"infrastructure":4}},
+        {"id":"research","label":"Bildung und Forschung stärken","effects":{"treasury":-2,"research":4}},
+        {"id":"welfare","label":"Versorgung und gesellschaftliche Stabilität verbessern","effects":{"treasury":-2,"food":2,"stability":3}},
+        {"id":"diplomacy","label":"Handels- und Nachbarschaftsbeziehungen ausbauen","effects":{"diplomacy":3,"trade_access":2}}
+      ]}],
+      "phone_opportunities":["personal_circle","party_parliament","government_ministers","science_industry","other_players"],
+      "map_actions":["inspect_resources","inspect_connections","prepare_basic_project","review_trade_routes"],
+      "learning_note":"Jede Priorität hat Opportunitätskosten: Geld, Zeit, Fachkräfte oder politische Aufmerksamkeit fehlen an anderer Stelle."
+    }
+  }
+}
