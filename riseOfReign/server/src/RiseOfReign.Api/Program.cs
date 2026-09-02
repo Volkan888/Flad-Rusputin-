@@ -11,11 +11,14 @@ var epochPath = ResolveEpochPath(builder.Environment.ContentRootPath);
 var mapLoader = new EpochContentLoader();
 var officeLoader = new OfficeHubContentLoader();
 var januaryService = new January1933Service();
+var campaignMonthService = new CampaignMonthService();
 var stateProfileService = new StateProfileService();
 EpochMapContent? mapContent = null;
 JsonNode? officeContent = null;
 JsonObject? januaryContent = null;
 JsonObject? stateProfileContent = null;
+var campaignMonths = new Dictionary<string, JsonObject>(StringComparer.OrdinalIgnoreCase);
+var campaignMonthLoadErrors = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 string? mapLoadError = null;
 string? officeLoadError = null;
 string? januaryLoadError = null;
@@ -33,6 +36,16 @@ catch (Exception ex) { januaryLoadError = ex.Message; }
 try { stateProfileContent = await stateProfileService.LoadAsync(epochPath); }
 catch (Exception ex) { stateProfileLoadError = ex.Message; }
 
+foreach (var entry in new Dictionary<string, string>
+{
+    ["1933-01"] = Path.Combine("months", "january.json"),
+    ["1933-02"] = Path.Combine("months", "february.json")
+})
+{
+    try { campaignMonths[entry.Key] = await campaignMonthService.LoadAsync(epochPath, entry.Value); }
+    catch (Exception ex) { campaignMonthLoadErrors[entry.Key] = ex.Message; }
+}
+
 var connectionString = builder.Configuration.GetConnectionString("GameDb");
 IOnlineMatchStore? matchStore = null;
 OnlineMatchCoordinator? matchCoordinator = null;
@@ -49,17 +62,20 @@ if (matchStore is not null)
 app.MapGet("/health", () => Results.Ok(new
 {
     service = "riseOfReign-api",
-    status = mapContent is null || officeContent is null || januaryContent is null || stateProfileContent is null ? "degraded" : "ok",
+    status = mapContent is null || officeContent is null || januaryContent is null || stateProfileContent is null || campaignMonths.Count < 2 ? "degraded" : "ok",
     epoch = "1933",
     mapContentLoaded = mapContent is not null,
     officeContentLoaded = officeContent is not null,
     januaryContentLoaded = januaryContent is not null,
+    februaryContentLoaded = campaignMonths.ContainsKey("1933-02"),
     stateProfilesLoaded = stateProfileContent is not null,
+    playableCampaignMonths = campaignMonths.Keys.OrderBy(x => x).ToArray(),
     onlineMatchStoreConfigured = matchCoordinator is not null,
     mapLoadError,
     officeLoadError,
     januaryLoadError,
     stateProfileLoadError,
+    campaignMonthLoadErrors,
     utc = DateTimeOffset.UtcNow
 }));
 
@@ -68,10 +84,12 @@ app.MapGet("/api/v1/meta", () => Results.Ok(new
     game = "riseOfReign",
     displayName = "Rise of Reign",
     publisher = "VK APPS",
-    ruleset = "0.1.0",
-    content = "1933.0.6",
+    ruleset = "0.2.0",
+    content = "1933.0.13",
     turnUnit = "month",
-    maxPlayers = 4
+    maxPlayers = 4,
+    soloCampaign = true,
+    playableMonths = campaignMonths.Keys.OrderBy(x => x).ToArray()
 }));
 
 app.MapGet("/api/v1/map/summary", () => mapContent is null
@@ -155,6 +173,7 @@ app.MapGet("/api/v1/state/1933/{avatarId}", (string avatarId, string? countryId)
     catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown state-profile avatar.", avatarId }); }
 });
 
+// Backward-compatible January endpoints used by the first vertical slice and online-match coordinator.
 app.MapGet("/api/v1/months/1933-01/{avatarId}", (string avatarId, string? countryId) =>
 {
     if (januaryContent is null || stateProfileContent is null)
@@ -189,6 +208,63 @@ app.MapPost("/api/v1/months/1933-01/{avatarId}/resolve", (string avatarId, strin
         return Results.Ok(result);
     }
     catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown January avatar.", avatarId }); }
+    catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
+});
+
+app.MapGet("/api/v1/campaign/months", () => Results.Ok(campaignMonths
+    .OrderBy(x => x.Key)
+    .Select(x => new
+    {
+        monthId = x.Key,
+        title = x.Value["title"]?.GetValue<string>() ?? x.Key,
+        startDate = x.Value["start_date"]?.GetValue<string>(),
+        endDate = x.Value["end_date"]?.GetValue<string>(),
+        nextMonthId = x.Value["next_month_id"]?.GetValue<string>(),
+        nextContentAvailable = x.Value["next_content_available"]?.GetValue<bool>() ?? false
+    }))));
+
+app.MapGet("/api/v1/campaign/months/{monthId}/{avatarId}", (string monthId, string avatarId, string? countryId) =>
+{
+    if (stateProfileContent is null)
+        return Results.Problem(stateProfileLoadError ?? "State profiles unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    if (!campaignMonths.TryGetValue(monthId, out var month))
+        return Results.NotFound(new { error = "Campaign month is not available in this build.", monthId });
+    try
+    {
+        var slice = campaignMonthService.GetAvatarSlice(month, avatarId);
+        var resolvedCountry = countryId ?? slice["country_id"]?.GetValue<string>();
+        slice["player_state"] = stateProfileService.GetInitialState(stateProfileContent, avatarId, resolvedCountry);
+        return Results.Ok(slice);
+    }
+    catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown campaign avatar.", monthId, avatarId }); }
+    catch (InvalidDataException ex) { return Results.Problem(ex.Message, statusCode: StatusCodes.Status503ServiceUnavailable); }
+});
+
+app.MapPost("/api/v1/campaign/months/{monthId}/{avatarId}/resolve", (string monthId, string avatarId, string? countryId, JsonObject request) =>
+{
+    if (stateProfileContent is null)
+        return Results.Problem(stateProfileLoadError ?? "State profiles unavailable.", statusCode: StatusCodes.Status503ServiceUnavailable);
+    if (!campaignMonths.TryGetValue(monthId, out var month))
+        return Results.NotFound(new { error = "Campaign month is not available in this build.", monthId });
+    try
+    {
+        var slice = campaignMonthService.GetAvatarSlice(month, avatarId);
+        var resolvedCountry = countryId ?? slice["country_id"]?.GetValue<string>();
+        var result = campaignMonthService.Resolve(month, avatarId, request);
+        var initialState = request["player_state"] is JsonObject suppliedState
+            ? suppliedState.DeepClone().AsObject()
+            : stateProfileService.GetInitialState(stateProfileContent, avatarId, resolvedCountry);
+        var indicators = result["resulting_indicators"]?.AsObject()
+            ?? throw new InvalidDataException("Campaign resolution missing indicators.");
+        var actions = result["applied_actions"]?.AsArray() ?? new JsonArray();
+        var playerState = stateProfileService.AdvanceMonth(initialState, indicators, actions, monthId);
+        result["player_state"] = playerState;
+        result["finance"] = playerState["finance"]?.DeepClone();
+        result["health"] = playerState["health"]?.DeepClone();
+        result["inventory"] = playerState["inventory"]?.DeepClone();
+        return Results.Ok(result);
+    }
+    catch (KeyNotFoundException) { return Results.NotFound(new { error = "Unknown campaign avatar.", monthId, avatarId }); }
     catch (InvalidDataException ex) { return Results.BadRequest(new { error = ex.Message }); }
 });
 
