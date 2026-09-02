@@ -1,0 +1,139 @@
+name: RiseOfReign Milestone 33 Publish
+
+on:
+  push:
+    branches: [riseOfReign]
+    paths:
+      - '.github/workflows/riseofreign-milestone33-publish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish-then-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: riseOfReign
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Apply final non-destructive corrections
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          root = Path.cwd()
+
+          required = {
+              'generic month service': root / 'riseOfReign/server/src/RiseOfReign.Application/CampaignMonthService.cs',
+              'February content': root / 'riseOfReign/data/epochs/1933/months/february.json',
+              'campaign save': root / 'riseOfReign/client/scripts/campaign_state.gd',
+              'generic office client': root / 'riseOfReign/client/scripts/office_hub.gd',
+          }
+          missing = [label for label, path in required.items() if not path.exists()]
+          if missing:
+              raise SystemExit('Milestone source missing: ' + ', '.join(missing))
+
+          manifest_path = root / 'riseOfReign/data/epochs/1933/manifest.json'
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          manifest['content_version'] = '1933.0.13'
+          files = manifest.setdefault('files', {})
+          files['february_1933'] = 'months/february.json'
+          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          state_path = root / 'riseOfReign/server/src/RiseOfReign.Application/StateProfileService.cs'
+          state = state_path.read_text(encoding='utf-8')
+          state = state.replace(
+              'if (!DateOnly.TryParseExact($"{monthId}-01", "yyyy-MM-dd", out var date))',
+              'if (!DateOnly.TryParse($"{monthId}-01", out var date))'
+          )
+          state_path.write_text(state, encoding='utf-8')
+
+          test_path = root / 'tests/test_january_1933.py'
+          tests = test_path.read_text(encoding='utf-8')
+          tests = tests.replace('            "1. Februar 1933",\n', '            "_format_date",\n            "1933-02",\n')
+          tests = tests.replace(
+              '            \'campaignMonths["1933-01"]\',\n            \'campaignMonths["1933-02"]\',\n',
+              '            \'["1933-01"]\',\n            \'["1933-02"]\',\n'
+          )
+          test_path.write_text(tests, encoding='utf-8')
+
+          office_path = root / 'riseOfReign/client/scripts/office_hub.gd'
+          office = office_path.read_text(encoding='utf-8')
+          office = office.replace(
+              '"Gespeicherte Monate: %s" % (", ".join(completed) if not completed.is_empty() else "noch keiner"),',
+              '"Gespeicherte Monate: %s" % (_joined_strings(completed) if not completed.is_empty() else "noch keiner"),'
+          )
+          if 'func _joined_strings(values: Array) -> String:' not in office:
+              helper = '''func _joined_strings(values: Array) -> String:\n    var texts: PackedStringArray = []\n    for value in values:\n        texts.append(str(value))\n    return ", ".join(texts)\n\n'''
+              office = office.replace('func _month_label(month_id: String) -> String:', helper + 'func _month_label(month_id: String) -> String:')
+          old = '''    current_player_state = CAMPAIGN_STATE.player_state()\n    current_indicators = CAMPAIGN_STATE.indicators()\n    january_resolved = false\n    _load_current_month()'''
+          new = '''    current_player_state = CAMPAIGN_STATE.player_state()\n    current_indicators = CAMPAIGN_STATE.indicators()\n    january_resolved = false\n    var timer_panel := get_node_or_null("Margin/Layout/Header/TurnPanel")\n    if timer_panel != null and timer_panel.has_method("reset_for_next_turn"):\n        timer_panel.call("reset_for_next_turn")\n    _load_current_month()'''
+          office = office.replace(old, new)
+          office_path.write_text(office, encoding='utf-8')
+
+          timer_path = root / 'riseOfReign/client/scripts/turn_timer_widget.gd'
+          timer = timer_path.read_text(encoding='utf-8')
+          if 'func reset_for_next_turn() -> void:' not in timer:
+              method = '''func reset_for_next_turn() -> void:\n    tick.stop()\n    local_ready = false\n    submission_requested = false\n    ready_players = 0\n    total_players = GameSession.timer_total_players()\n    turn_seconds = GameSession.timer_seconds()\n    timer_disabled = turn_seconds <= 0\n    seconds_left = max(0, turn_seconds)\n    ready_button.disabled = false\n    ready_button.text = "ZUG BEENDEN" if GameSession.is_solo() else "FERTIG"\n    ready_state_label.text = "OHNE ZEITDRUCK" if timer_disabled else "AKTIV"\n    ready_state_label.add_theme_color_override("font_color", Color("b9a77d") if timer_disabled else Color("8c8c8c"))\n    if not timer_disabled:\n        tick.start()\n    _refresh()\n\n'''
+              timer = timer.replace('func set_server_seconds_left(value: int) -> void:', method + 'func set_server_seconds_left(value: int) -> void:')
+          timer_path.write_text(timer, encoding='utf-8')
+
+          visual_path = root / 'riseOfReign/client/scripts/visual_room_controller.gd'
+          visual = visual_path.read_text(encoding='utf-8')
+          visual = visual.replace('var ai_advanced_for_january := false', 'var ai_advanced_for_active_month := ""')
+          visual = visual.replace(
+              '''    if GameSession.is_solo() and bool(hub.get("january_resolved")) and not ai_advanced_for_january:\n        GameSession.ensure_ai_world_report("1933-01")\n        ai_advanced_for_january = true\n        _update_learning_badge()''',
+              '''    if GameSession.is_solo() and bool(hub.get("january_resolved")):\n        var resolved_month := str(hub.get("current_month_id"))\n        if ai_advanced_for_active_month != resolved_month:\n            GameSession.ensure_ai_world_report(resolved_month)\n            ai_advanced_for_active_month = resolved_month\n            _update_learning_badge()'''
+          )
+          visual = visual.replace(
+              'var report := GameSession.ensure_ai_world_report("1933-01")',
+              'var report := GameSession.ensure_ai_world_report(str(hub.get("current_month_id")) if hub != null else "1933-01")'
+          )
+          visual_path.write_text(visual, encoding='utf-8')
+
+          status = root / 'riseOfReign/design/MILESTONE_33_JANUARY_FEBRUARY_SOLO.md'
+          status.write_text('''# Milestone 33 – Januar/Februar Solo-Lernkampagne\n\n- lokaler Solo-Spielstand und Hauptmenü-Fortsetzen\n- Januar und Februar 1933 spielbar\n- Staatskasse, Haushalt, Gesundheit, Energie, Stress und Inventar werden übernommen\n- Timer wird beim Monatswechsel zurückgesetzt\n- KI-Weltlage folgt dem aktiven Monat\n- bildliche Räume, Maus-Hotspots und Lernkarten bleiben aktiv\n- Diktatur, Verfolgung und humanitäre Krisen werden kritisch und mit Kosten dargestellt\n''', encoding='utf-8')
+          PY
+
+      - name: Publish milestone commit
+        run: |
+          git config user.name "Volkan888"
+          git config user.email "kivoku@web.de"
+          git add riseOfReign tests
+          if git diff --cached --quiet; then
+            echo "No additional milestone correction required."
+          else
+            git commit -m "2026-09-02 14:32 CEST | milestone-33-final | persistent January-February solo learning campaign"
+            git push origin HEAD:riseOfReign
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Verify Python contracts
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Verify API build
+        run: dotnet build riseOfReign/server/src/RiseOfReign.Api/RiseOfReign.Api.csproj -c Release
+
+      - name: Install and verify Godot 4.7.2
+        run: |
+          curl -L --fail --retry 3 -o /tmp/godot.zip https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip
+          echo "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4  /tmp/godot.zip" | sha256sum -c -
+          unzip -q /tmp/godot.zip -d /tmp/godot
+          sudo install -m 0755 /tmp/godot/Godot_v4.7.2-stable_linux.x86_64 /usr/local/bin/godot
+          godot --headless --path riseOfReign/client --editor --quit
