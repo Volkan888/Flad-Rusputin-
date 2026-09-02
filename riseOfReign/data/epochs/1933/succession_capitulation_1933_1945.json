@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "campaign_window": {"from":"1933-01-01","to":"1945-12-31"},
+  "purpose": "Keep player control continuous through death, resignation, overthrow, exile, liberation, armistice, surrender and occupation without rewriting historical office structures.",
+  "control_model": {
+    "separate_fields": ["head_of_state", "head_of_government", "control_actor", "player_avatar"],
+    "transition_types": ["death", "resignation", "dismissal", "constitutional_succession", "government_in_exile", "regime_split", "liberation", "armistice", "military_surrender", "occupation", "allied_control"],
+    "player_rules": {
+      "clear_successor": "transfer_player_to_successor_avatar",
+      "government_in_exile": "continue_as_exile_government_with_reduced_territorial_control",
+      "regime_split": "historical_mode_assigns_team-compatible successor; alternate-history mode may offer a branch choice",
+      "occupation_without_sovereign_successor": "transfer_to_occupation_or_resistance_command according to country chain",
+      "state_inventory": "remains with the state or successor administration unless an event explicitly removes it",
+      "personal_inventory": "follows the avatar unless confiscated, lost, inherited or archived by event",
+      "research": "completed national research remains with the country; active projects may suffer disruption penalties",
+      "organizations": "corporations and underground organizations survive separately and can change allegiance/influence",
+      "no_instant_game_over_on_capital_loss": true
+    }
+  },
+  "countries": {
+    "turkey": {
+      "initial": {"head_of_state":"Mustafa Kemal Atatürk","head_of_government":"İsmet İnönü / cabinet context","control_actor":"Republic of Turkey","player_avatar":"ataturk"},
+      "transitions": [
+        {"date":"1938-11-10","type":"death","event_id":"tr_1938_ataturk_death","from_avatar":"ataturk","interim_control":"Abdülhalik Renda as acting president","effects":{"stability":-4,"national_mourning":10}},
+        {"date":"1938-11-11","type":"constitutional_succession","event_id":"tr_1938_inonu_president","to_avatar":"ismet_inonu","head_of_state":"İsmet İnönü","control_actor":"Republic of Turkey","player_transfer":true,"effects":{"stability":3,"continuity":8}}
+      ],
+      "sources":["https://cdn.tbmm.gov.tr/TbmmWeb/Yayinlar/Dosya/b6aa0899-396d-4442-9b1f-17be2445d948.pdf"]
+    },
+    "united_kingdom": {
+      "initial": {"head_of_state":"George V","head_of_government":"Ramsay MacDonald","control_actor":"United Kingdom government","player_avatar":"churchill","note":"Churchill is not prime minister at campaign start."},
+      "transitions": [
+        {"date":"1940-05-10","type":"resignation","event_id":"uk_1940_chamberlain_resigns","from_head_of_government":"Neville Chamberlain","to_avatar":"churchill","head_of_government":"Winston Churchill","control_actor":"Churchill coalition government","player_transfer":false,"effects":{"authority":35,"war_cabinet_access":1}}
+      ],
+      "sources":["https://www.gov.uk/government/history/past-prime-ministers/neville-chamberlain"]
+    },
+    "united_states": {
+      "initial": {"head_of_state":"Herbert Hoover until 1933-03-04","head_of_government":"same office","control_actor":"United States federal government","player_avatar":"roosevelt"},
+      "transitions": [
+        {"date":"1933-03-04","type":"constitutional_succession","event_id":"us_1933_fdr_inauguration","to_avatar":"roosevelt","head_of_state":"Franklin D. Roosevelt","head_of_government":"Franklin D. Roosevelt","player_transfer":false},
+        {"date":"1945-04-12","type":"death","event_id":"us_1945_fdr_death","from_avatar":"roosevelt","to_avatar":"harry_truman","head_of_state":"Harry S. Truman","head_of_government":"Harry S. Truman","control_actor":"United States federal government","player_transfer":true,"effects":{"stability":-2,"war_command_continuity":5}}
+      ],
+      "sources":["https://www.trumanlibrary.gov/calendar/search","https://www.trumanlibrary.gov/library/public-papers/1/statement-president-after-taking-oath-office"]
+    },
+    "soviet_union": {
+      "initial": {"head_of_state":"Mikhail Kalinin (formal)","head_of_government":"Vyacheslav Molotov","control_actor":"Soviet leadership centered on Joseph Stalin","player_avatar":"stalin"},
+      "transitions": [],
+      "campaign_note":"Stalin remains the principal player-avatar control actor through the end of the 1945 campaign. Formal state offices remain separately represented."
+    },
+    "germany": {
+      "initial": {"head_of_state":"Paul von Hindenburg","head_of_government":"Kurt von Schleicher until 1933-01-30","control_actor":"German state institutions","player_avatar":"hitler","note":"Hitler begins outside full state control."},
+      "transitions": [
+        {"date":"1933-01-30","type":"constitutional_succession","event_id":"de_1933_hitler_chancellor","to_avatar":"hitler","head_of_government":"Adolf Hitler","player_transfer":false},
+        {"date":"1945-04-30","type":"death","event_id":"de_1945_hitler_death","from_avatar":"hitler","to_avatar":"karl_donitz","head_of_state":"Karl Dönitz","head_of_government":"Joseph Goebbels briefly; then Schwerin von Krosigk leading the acting government","control_actor":"Flensburg government","player_transfer":true,"effects":{"authority":-45,"military_cohesion":-25}},
+        {"date":"1945-05-08","type":"military_surrender","event_id":"de_1945_unconditional_surrender","control_actor":"Allied occupation authorities","player_avatar":"allied_control_germany","player_transfer":true,"effects":{"war_status":"surrendered","military_control":0,"territorial_control":"occupation_zones"}},
+        {"date":"1945-05-23","type":"allied_control","event_id":"de_1945_flensburg_government_arrested","from_avatar":"karl_donitz","control_actor":"Allied Control Council / four occupation commanders","player_avatar":"allied_control_germany","player_transfer":false}
+      ],
+      "sources":["https://www.bundesarchiv.de/themen-entdecken/online-entdecken/geschichtsgalerien/die-geschaeftsfuehrende-reichsregierung-doenitz/","https://www.bundesarchiv.de/themen-entdecken/online-entdecken/dokumente-zur-zeitgeschichte/politisches-testament-adolf-hitlers/","https://history.state.gov/historicaldocuments/frus1945v03/d210"]
+    },
+    "italy": {
+      "initial": {"head_of_state":"Victor Emmanuel III","head_of_government":"Benito Mussolini","control_actor":"Kingdom of Italy under Fascist government","player_avatar":"mussolini"},
+      "transitions": [
+        {"date":"1943-07-25","type":"dismissal","event_id":"it_1943_mussolini_removed","from_avatar":"mussolini","to_avatar":"pietro_badoglio","head_of_government":"Pietro Badoglio","control_actor":"Kingdom of Italy government","player_transfer":true,"effects":{"authority":-30,"regime_cohesion":-40}},
+        {"date":"1943-09-08","type":"armistice","event_id":"it_1943_armistice_announced","control_actor":"Kingdom of Italy / Allied armistice context","effects":{"axis_team_lock":false,"war_status":"armistice","military_cohesion":-20}},
+        {"date":"1943-09-23","type":"regime_split","event_id":"it_1943_regime_split","branches":{"kingdom":{"avatar":"pietro_badoglio","team":"blue_co_belligerent","control":"southern_italy_and_liberated_sectors"},"rsi":{"avatar":"mussolini","team":"red","control":"german_occupied_northern_italy"}},"historical_2v2_player_rule":"red Italy player follows RSI branch; Kingdom becomes allied NPC/co-belligerent unless scenario overrides"},
+        {"date":"1945-04-28","type":"death","event_id":"it_1945_mussolini_death","branch":"rsi","from_avatar":"mussolini","control_actor":"collapsing RSI / German forces in northern Italy","player_transfer":"to_remaining_axis_command_until_local_surrender"}
+      ],
+      "sources":["https://history.state.gov/historicaldocuments/frus1943/d610","https://history.state.gov/historicaldocuments/frus1943/d608"]
+    },
+    "poland": {
+      "initial": {"head_of_state":"Ignacy Mościcki","head_of_government":"Polish government","control_actor":"Second Polish Republic","player_avatar":"polish_state"},
+      "transitions": [
+        {"date":"1939-09-17","type":"government_in_exile","event_id":"pl_1939_government_leaves_country","control_actor":"Polish constitutional authorities moving into exile","effects":{"territorial_control":"contested_occupation","exile_government":1}},
+        {"date":"1939-09-30","type":"constitutional_succession","event_id":"pl_1939_government_in_exile_formed","head_of_state":"Władysław Raczkiewicz","head_of_government":"Władysław Sikorski","control_actor":"Polish government-in-exile","player_avatar":"wladyslaw_sikorski","player_transfer":true,"effects":{"state_continuity":10,"territorial_control":0,"underground_state_access":1}},
+        {"date":"1943-07-04","type":"death","event_id":"pl_1943_sikorski_death","from_avatar":"wladyslaw_sikorski","to_avatar":"stanislaw_mikolajczyk","head_of_government":"Stanisław Mikołajczyk","player_transfer":true},
+        {"date":"1945-07-05","type":"recognition_shift","event_id":"pl_1945_recognition_shift","control_actor":"Provisional Government of National Unity recognized by western Allies; government-in-exile continues but loses major-power recognition","player_transfer":"scenario_choice_between_domestic_postwar_state_and_exile_continuity"}
+      ],
+      "special_rule":"Poland does not use a simple capitulation = deleted country rule. Exile government and underground-state gameplay remain active after territorial defeat.",
+      "sources":["https://eng.ipn.gov.pl/en/digital-resources/articles/7475%2CLast-Will-of-the-Polish-Undergound-State.html","https://ipn.gov.pl/pl/historia-z-ipn/215994%2CJan-Karski-kurier-Polskiego-Panstwa-Podziemnego.html","https://www.gov.pl/attachment/fad64bec-83d1-4d27-996d-10ccf6cc0aa6"]
+    },
+    "france": {
+      "initial": {"head_of_state":"Albert Lebrun","head_of_government":"Third Republic cabinet","control_actor":"French Third Republic","player_avatar":"france_government"},
+      "transitions": [
+        {"date":"1940-06-16","type":"resignation","event_id":"fr_1940_reynaud_resigns","head_of_government":"Philippe Pétain","control_actor":"French government seeking armistice"},
+        {"date":"1940-06-18","type":"regime_split","event_id":"fr_1940_free_french_call","branches":{"vichy":{"avatar":"philippe_petain","control":"Vichy regime / metropolitan unoccupied zone initially"},"free_france":{"avatar":"charles_de_gaulle","team":"blue","control":"Free French movement and rallied territories"}},"historical_2v2_player_rule":"blue France control follows Free France if France becomes a player-controlled ally"},
+        {"date":"1944-09-09","type":"liberation","event_id":"fr_1944_provisional_government","to_avatar":"charles_de_gaulle","head_of_government":"Charles de Gaulle","control_actor":"Provisional Government of the French Republic","player_transfer":true}
+      ],
+      "sources":["https://www.elysee.fr/en/albert-lebrun","https://www.elysee.fr/en/charles-de-gaulle"]
+    },
+    "japan": {
+      "initial": {"head_of_state":"Emperor Hirohito","head_of_government":"civilian cabinet","control_actor":"Empire of Japan government","player_avatar":"japan_government"},
+      "transitions": [
+        {"date":"1941-10-18","type":"constitutional_succession","event_id":"jp_1941_tojo_cabinet","head_of_government":"Hideki Tojo","player_avatar":"hideki_tojo","player_transfer":true},
+        {"date":"1944-07-22","type":"resignation","event_id":"jp_1944_tojo_resigns","from_avatar":"hideki_tojo","to_avatar":"kuniaki_koiso","head_of_government":"Kuniaki Koiso","player_transfer":true},
+        {"date":"1945-04-07","type":"resignation","event_id":"jp_1945_suzuki_cabinet","to_avatar":"kantaro_suzuki","head_of_government":"Kantarō Suzuki","player_transfer":true},
+        {"date":"1945-08-15","type":"military_surrender","event_id":"jp_1945_surrender_announced","control_actor":"Japanese government under surrender directives / incoming SCAP authority","effects":{"war_status":"surrendered","military_control":0}},
+        {"date":"1945-09-02","type":"occupation","event_id":"jp_1945_surrender_signed","head_of_state":"Emperor Hirohito retained subject to occupation authority","control_actor":"Supreme Commander for the Allied Powers (SCAP) exercising supreme occupation authority through the Japanese government where possible","player_avatar":"scap_japan","player_transfer":true}
+      ],
+      "sources":["https://history.state.gov/historicaldocuments/frus1945v06/d491","https://history.state.gov/historicaldocuments/frus1945v07/d390"]
+    }
+  }
+}
