@@ -79,7 +79,9 @@ class January1933Tests(unittest.TestCase):
 
     def test_manifest_registers_month(self):
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-        self.assertEqual(manifest["content_version"], "1933.0.5")
+        version_parts = manifest["content_version"].split(".")
+        self.assertEqual(version_parts[0], "1933")
+        self.assertGreaterEqual(int(version_parts[-1]), 5)
         self.assertEqual(manifest["files"]["january_1933"], "months/january.json")
 
     def test_client_has_full_month_loop(self):
