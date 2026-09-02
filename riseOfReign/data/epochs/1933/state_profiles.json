@@ -1,0 +1,169 @@
+{
+  "schema_version": "1.0",
+  "epoch": 1933,
+  "unit_note": "All finance and asset values are normalized gameplay Resource Points (RP), not claims of exact historical currency amounts.",
+  "inventory_note": "Starter inventory is gameplay content inspired by role and office context. It is not a claim that the historical person owned each exact object on 1 January 1933.",
+  "finance_rules": {
+    "treasury_min": 0,
+    "treasury_soft_max": 100,
+    "monthly_net_formula": "income_total - expense_total",
+    "deficit_rule": "If treasury cannot cover a negative monthly net, debt rises and stability/reputation risks unlock.",
+    "surplus_rule": "A positive monthly net increases treasury unless allocated to reserves, debt repayment or investment.",
+    "income_categories": ["taxes", "customs_tariffs", "state_enterprises", "exports_transfers", "other_income"],
+    "expense_categories": ["administration", "civil_supply_welfare", "education_research", "infrastructure", "military_security", "debt_service", "other_expense"],
+    "asset_categories": ["gold_reserves", "foreign_exchange", "state_enterprises", "infrastructure_value", "strategic_reserves", "military_stockpiles", "public_property"]
+  },
+  "health_rules": {
+    "scale": "0-100",
+    "dimensions": ["health", "energy", "stress", "mobility", "medical_access"],
+    "monthly_update": [
+      "age pressure is small and gradual",
+      "high stress and low energy can reduce health",
+      "rest, medical care and successful crisis management can restore energy/stress",
+      "injury, illness and dangerous travel are event-driven",
+      "mobility is separate from health and never used as a moral or leadership-value penalty by itself"
+    ],
+    "leadership_effect": "Very low health or energy can reduce leadership capacity, meeting availability and travel options. It does not automatically remove the avatar.",
+    "critical_threshold": 20,
+    "incapacitated_threshold": 5
+  },
+  "inventory_rules": {
+    "ownership_types": ["personal", "office", "state_issued", "classified"],
+    "item_fields": ["id", "label", "category", "ownership", "quantity", "condition", "portable", "effects", "tags"],
+    "condition_scale": "0-100",
+    "loss_sources": ["travel", "office_damage", "confiscation", "theft_event", "succession", "player_choice"],
+    "gain_sources": ["event", "meeting", "research", "office_upgrade", "diplomacy", "purchase", "award"],
+    "state_property_rule": "State-issued and classified items normally remain with the office/state on succession; personal items follow avatar succession rules."
+  },
+  "countries": {
+    "turkey": {
+      "finance": {
+        "treasury": 45,
+        "debt_pressure": 28,
+        "income": {"taxes": 10, "customs_tariffs": 3, "state_enterprises": 4, "exports_transfers": 4, "other_income": 1},
+        "expenses": {"administration": 5, "civil_supply_welfare": 2, "education_research": 2, "infrastructure": 4, "military_security": 4, "debt_service": 2, "other_expense": 1},
+        "assets": {"gold_reserves": 34, "foreign_exchange": 28, "state_enterprises": 42, "infrastructure_value": 40, "strategic_reserves": 35, "military_stockpiles": 38, "public_property": 55}
+      }
+    },
+    "germany": {
+      "finance": {
+        "treasury": 40,
+        "debt_pressure": 55,
+        "income": {"taxes": 13, "customs_tariffs": 3, "state_enterprises": 3, "exports_transfers": 6, "other_income": 1},
+        "expenses": {"administration": 6, "civil_supply_welfare": 5, "education_research": 3, "infrastructure": 3, "military_security": 3, "debt_service": 6, "other_expense": 2},
+        "assets": {"gold_reserves": 25, "foreign_exchange": 22, "state_enterprises": 48, "infrastructure_value": 80, "strategic_reserves": 62, "military_stockpiles": 55, "public_property": 70}
+      }
+    },
+    "soviet_union": {
+      "finance": {
+        "treasury": 55,
+        "debt_pressure": 18,
+        "income": {"taxes": 7, "customs_tariffs": 1, "state_enterprises": 17, "exports_transfers": 4, "other_income": 1},
+        "expenses": {"administration": 5, "civil_supply_welfare": 4, "education_research": 3, "infrastructure": 5, "military_security": 5, "debt_service": 1, "other_expense": 8},
+        "assets": {"gold_reserves": 58, "foreign_exchange": 28, "state_enterprises": 90, "infrastructure_value": 45, "strategic_reserves": 75, "military_stockpiles": 70, "public_property": 95}
+      }
+    },
+    "united_kingdom": {
+      "finance": {
+        "treasury": 65,
+        "debt_pressure": 46,
+        "income": {"taxes": 14, "customs_tariffs": 3, "state_enterprises": 2, "exports_transfers": 8, "other_income": 1},
+        "expenses": {"administration": 6, "civil_supply_welfare": 5, "education_research": 3, "infrastructure": 3, "military_security": 5, "debt_service": 4, "other_expense": 1},
+        "assets": {"gold_reserves": 70, "foreign_exchange": 72, "state_enterprises": 42, "infrastructure_value": 85, "strategic_reserves": 68, "military_stockpiles": 75, "public_property": 80}
+      }
+    },
+    "united_states": {
+      "finance": {
+        "treasury": 55,
+        "debt_pressure": 38,
+        "income": {"taxes": 16, "customs_tariffs": 3, "state_enterprises": 1, "exports_transfers": 10, "other_income": 2},
+        "expenses": {"administration": 6, "civil_supply_welfare": 8, "education_research": 3, "infrastructure": 5, "military_security": 4, "debt_service": 5, "other_expense": 4},
+        "assets": {"gold_reserves": 90, "foreign_exchange": 82, "state_enterprises": 30, "infrastructure_value": 85, "strategic_reserves": 88, "military_stockpiles": 70, "public_property": 88}
+      }
+    },
+    "italy": {
+      "finance": {
+        "treasury": 50,
+        "debt_pressure": 48,
+        "income": {"taxes": 11, "customs_tariffs": 3, "state_enterprises": 3, "exports_transfers": 4, "other_income": 1},
+        "expenses": {"administration": 5, "civil_supply_welfare": 3, "education_research": 2, "infrastructure": 4, "military_security": 5, "debt_service": 4, "other_expense": 1},
+        "assets": {"gold_reserves": 50, "foreign_exchange": 42, "state_enterprises": 50, "infrastructure_value": 65, "strategic_reserves": 42, "military_stockpiles": 58, "public_property": 68}
+      }
+    },
+    "custom_default": {
+      "finance": {
+        "treasury": 50,
+        "debt_pressure": 35,
+        "income": {"taxes": 10, "customs_tariffs": 2, "state_enterprises": 3, "exports_transfers": 4, "other_income": 1},
+        "expenses": {"administration": 4, "civil_supply_welfare": 3, "education_research": 2, "infrastructure": 3, "military_security": 4, "debt_service": 2, "other_expense": 2},
+        "assets": {"gold_reserves": 50, "foreign_exchange": 50, "state_enterprises": 50, "infrastructure_value": 50, "strategic_reserves": 50, "military_stockpiles": 50, "public_property": 50}
+      }
+    }
+  },
+  "avatars": {
+    "ataturk": {
+      "age_display": "51-52",
+      "health": {"health": 79, "energy": 78, "stress": 42, "mobility": 96, "medical_access": 86, "historical_verification": "design_seed_not_clinical"},
+      "inventory": [
+        {"id":"fountain_pen","label":"Füllfederhalter","category":"tool","ownership":"personal","quantity":1,"condition":90,"portable":true,"effects":{},"tags":["correspondence"]},
+        {"id":"pocket_watch","label":"Taschenuhr","category":"personal","ownership":"personal","quantity":1,"condition":88,"portable":true,"effects":{},"tags":["time"]},
+        {"id":"reform_folder","label":"Reformmappe","category":"document","ownership":"office","quantity":1,"condition":100,"portable":false,"effects":{"reform_access":1},"tags":["signature","government"]},
+        {"id":"state_keyring","label":"Dienstschlüssel","category":"access","ownership":"state_issued","quantity":1,"condition":100,"portable":true,"effects":{"office_access":1},"tags":["access"]}
+      ]
+    },
+    "hitler": {
+      "age_display": "43",
+      "health": {"health": 84, "energy": 80, "stress": 48, "mobility": 96, "medical_access": 78, "historical_verification": "design_seed_not_clinical"},
+      "inventory": [
+        {"id":"fountain_pen","label":"Füllfederhalter","category":"tool","ownership":"personal","quantity":1,"condition":88,"portable":true,"effects":{},"tags":["correspondence"]},
+        {"id":"political_folder","label":"Politische Aktenmappe","category":"document","ownership":"office","quantity":1,"condition":100,"portable":false,"effects":{"political_contact_access":1},"tags":["signature","party"]},
+        {"id":"contact_notebook","label":"Kontaktnotizbuch","category":"document","ownership":"personal","quantity":1,"condition":90,"portable":true,"effects":{},"tags":["contacts"]}
+      ]
+    },
+    "stalin": {
+      "age_display": "54",
+      "health": {"health": 76, "energy": 72, "stress": 58, "mobility": 91, "medical_access": 88, "historical_verification": "design_seed_not_clinical"},
+      "inventory": [
+        {"id":"cadre_file","label":"Kaderakte","category":"document","ownership":"classified","quantity":1,"condition":100,"portable":false,"effects":{"cadre_access":1},"tags":["signature","classified"]},
+        {"id":"planning_notebook","label":"Planungsnotizbuch","category":"document","ownership":"office","quantity":1,"condition":92,"portable":true,"effects":{},"tags":["planning"]},
+        {"id":"secure_keyring","label":"Sicherheitsschlüssel","category":"access","ownership":"state_issued","quantity":1,"condition":100,"portable":true,"effects":{"secure_access":1},"tags":["classified","access"]}
+      ]
+    },
+    "churchill": {
+      "age_display": "58",
+      "health": {"health": 75, "energy": 70, "stress": 51, "mobility": 91, "medical_access": 91, "historical_verification": "design_seed_not_clinical"},
+      "inventory": [
+        {"id":"fountain_pen","label":"Füllfederhalter","category":"tool","ownership":"personal","quantity":1,"condition":92,"portable":true,"effects":{},"tags":["writing"]},
+        {"id":"correspondence_folder","label":"Korrespondenzmappe","category":"document","ownership":"personal","quantity":1,"condition":95,"portable":true,"effects":{"press_contact_access":1},"tags":["signature","parliament","press"]},
+        {"id":"parliament_pass","label":"Parlamentsausweis","category":"access","ownership":"state_issued","quantity":1,"condition":100,"portable":true,"effects":{"parliament_access":1},"tags":["parliament"]}
+      ]
+    },
+    "roosevelt": {
+      "age_display": "50",
+      "health": {"health": 74, "energy": 71, "stress": 57, "mobility": 36, "medical_access": 96, "historical_verification": "mobility_dimension_reflects_documented_long_term_paralysis; remaining values are gameplay seeds"},
+      "inventory": [
+        {"id":"advisor_folder","label":"Beratermappe","category":"document","ownership":"office","quantity":1,"condition":100,"portable":true,"effects":{"advisor_access":1},"tags":["signature","transition"]},
+        {"id":"transition_schedule","label":"Übergabekalender","category":"document","ownership":"office","quantity":1,"condition":100,"portable":true,"effects":{},"tags":["transition"]},
+        {"id":"personal_notebook","label":"Persönliches Notizbuch","category":"document","ownership":"personal","quantity":1,"condition":90,"portable":true,"effects":{},"tags":["notes"]}
+      ]
+    },
+    "mussolini": {
+      "age_display": "49",
+      "health": {"health": 81, "energy": 79, "stress": 47, "mobility": 95, "medical_access": 86, "historical_verification": "design_seed_not_clinical"},
+      "inventory": [
+        {"id":"state_project_folder","label":"Staatsprojektmappe","category":"document","ownership":"office","quantity":1,"condition":100,"portable":true,"effects":{"state_project_access":1},"tags":["signature","government"]},
+        {"id":"service_keyring","label":"Dienstschlüssel","category":"access","ownership":"state_issued","quantity":1,"condition":100,"portable":true,"effects":{"office_access":1},"tags":["access"]},
+        {"id":"briefing_notebook","label":"Lagenotizbuch","category":"document","ownership":"office","quantity":1,"condition":92,"portable":true,"effects":{},"tags":["briefing"]}
+      ]
+    },
+    "custom": {
+      "age_display": "generated",
+      "health": {"health": 80, "energy": 80, "stress": 40, "mobility": 90, "medical_access": 70, "historical_verification": "generated"},
+      "inventory": [
+        {"id":"identity_documents","label":"Ausweispapiere","category":"document","ownership":"personal","quantity":1,"condition":100,"portable":true,"effects":{},"tags":["identity"]},
+        {"id":"personal_notebook","label":"Persönliches Notizbuch","category":"document","ownership":"personal","quantity":1,"condition":90,"portable":true,"effects":{},"tags":["notes"]},
+        {"id":"profession_item","label":"Berufsgegenstand","category":"generated","ownership":"personal","quantity":1,"condition":90,"portable":true,"effects":{},"tags":["generated_from_prologue"]}
+      ]
+    }
+  }
+}
