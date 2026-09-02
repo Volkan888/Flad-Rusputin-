@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "epoch": 1933,
+  "sources": {
+    "it_fiat": {
+      "url": "https://www.media.stellantis.com/de-de/fiat/press/fiat-eine-hundertjahrige-geschichte",
+      "note": "FIAT was founded in Turin in 1899 and was an established industrial manufacturer long before the 1933 start."
+    }
+  }
+}
