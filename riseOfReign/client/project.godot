@@ -1,0 +1,20 @@
+; Engine configuration file.
+; riseOfReign mobile client scaffold
+
+config_version=5
+
+[application]
+config/name="riseOfReign"
+run/main_scene="res://scenes/main.tscn"
+
+[display]
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+
+[network]
+limits/debugger/max_queued_messages=2048

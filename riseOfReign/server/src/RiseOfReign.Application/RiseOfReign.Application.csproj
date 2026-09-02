@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>RiseOfReign.Application</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../RiseOfReign.Domain/RiseOfReign.Domain.csproj" />
+  </ItemGroup>
+</Project>

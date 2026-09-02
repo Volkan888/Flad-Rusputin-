@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <RootNamespace>RiseOfReign.Api</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../RiseOfReign.Domain/RiseOfReign.Domain.csproj" />
+    <ProjectReference Include="../RiseOfReign.Application/RiseOfReign.Application.csproj" />
+  </ItemGroup>
+</Project>
