@@ -46,7 +46,9 @@ public sealed class January1933Service
 
         foreach (var decisionNode in slice["decisions"]?.AsArray() ?? [])
         {
-            var decision = decisionNode?.AsObject() ?? continue;
+            if (decisionNode is null)
+                continue;
+            var decision = decisionNode.AsObject();
             var decisionId = decision["id"]?.GetValue<string>() ?? "";
             var required = decision["required"]?.GetValue<bool>() ?? false;
             var choiceId = selected[decisionId]?.GetValue<string>();
@@ -56,8 +58,9 @@ public sealed class January1933Service
                 continue;
 
             var choice = (decision["choices"]?.AsArray() ?? [])
-                .Select(x => x?.AsObject())
-                .FirstOrDefault(x => x is not null && string.Equals(x["id"]?.GetValue<string>(), choiceId, StringComparison.OrdinalIgnoreCase))
+                .Where(x => x is not null)
+                .Select(x => x!.AsObject())
+                .FirstOrDefault(x => string.Equals(x["id"]?.GetValue<string>(), choiceId, StringComparison.OrdinalIgnoreCase))
                 ?? throw new InvalidDataException($"Invalid choice '{choiceId}' for decision '{decisionId}'.");
 
             ApplyEffects(indicators, choice["effects"]?.AsObject());
