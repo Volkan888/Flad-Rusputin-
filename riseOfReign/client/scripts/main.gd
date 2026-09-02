@@ -1,6 +1,7 @@
 extends Control
 
 const OFFICE_SCENE = preload("res://scenes/office_hub.tscn")
+const CAMPAIGN_SAVE_PATH := "user://riseofreign_campaign.json"
 
 @onready var settings_panel: PanelContainer = $SettingsOverlay/SettingsPanel
 @onready var settings_overlay: Control = $SettingsOverlay
@@ -24,8 +25,9 @@ func _ready() -> void:
 
 func _on_new_game_pressed() -> void:
     AudioManager.play_click()
+    _reset_local_campaign()
     GameSession.start_solo()
-    status_label.text = "Solo-Lernkampagne wird vorbereitet…"
+    status_label.text = "Neue Solo-Lernkampagne wird vorbereitet…"
     get_tree().change_scene_to_file("res://scenes/avatar_select.tscn")
 
 func _on_continue_pressed() -> void:
@@ -85,6 +87,17 @@ func _load_settings_into_controls() -> void:
     music_toggle.button_pressed = AudioManager.music_enabled
     sfx_toggle.button_pressed = AudioManager.sfx_enabled
     intro_toggle.button_pressed = AudioManager.intro_enabled
+
+func _reset_local_campaign() -> void:
+    var absolute_path := ProjectSettings.globalize_path(CAMPAIGN_SAVE_PATH)
+    if FileAccess.file_exists(CAMPAIGN_SAVE_PATH):
+        DirAccess.remove_absolute(absolute_path)
+    GameSession.player_avatar_id = ""
+    GameSession.player_display_name = ""
+    GameSession.world_tension = 18
+    GameSession.last_ai_report = {}
+    GameSession.learning_score = 0
+    GameSession.learning_answers = 0
 
 func _style_all_buttons() -> void:
     for button in get_tree().get_nodes_in_group("strategy_menu_button"):
