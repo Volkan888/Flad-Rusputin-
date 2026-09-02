@@ -7,13 +7,14 @@ extends Control
 @onready var sfx_slider: HSlider = $SettingsOverlay/SettingsPanel/SettingsLayout/SfxRow/SfxSlider
 @onready var music_toggle: CheckButton = $SettingsOverlay/SettingsPanel/SettingsLayout/MusicToggle
 @onready var sfx_toggle: CheckButton = $SettingsOverlay/SettingsPanel/SettingsLayout/SfxToggle
+@onready var intro_toggle: CheckButton = $SettingsOverlay/SettingsPanel/SettingsLayout/IntroToggle
 @onready var status_label: Label = $MainLayout/Footer/Status
 
 func _ready() -> void:
     _style_all_buttons()
     _load_settings_into_controls()
     settings_overlay.visible = false
-    status_label.text = "1933 · The World in Crisis · Build 0.1"
+    status_label.text = "RISE OF REIGN · 1933 · The World in Crisis · Build 0.1"
     AudioManager.start_menu_music()
 
 func _on_new_game_pressed() -> void:
@@ -57,12 +58,16 @@ func _on_music_toggled(enabled: bool) -> void:
 func _on_sfx_toggled(enabled: bool) -> void:
     AudioManager.set_sfx_enabled(enabled)
 
+func _on_intro_toggled(enabled: bool) -> void:
+    AudioManager.set_intro_enabled(enabled)
+
 func _load_settings_into_controls() -> void:
     master_slider.value = AudioManager.master_volume
     music_slider.value = AudioManager.music_volume
     sfx_slider.value = AudioManager.sfx_volume
     music_toggle.button_pressed = AudioManager.music_enabled
     sfx_toggle.button_pressed = AudioManager.sfx_enabled
+    intro_toggle.button_pressed = AudioManager.intro_enabled
 
 func _style_all_buttons() -> void:
     for button in get_tree().get_nodes_in_group("strategy_menu_button"):
