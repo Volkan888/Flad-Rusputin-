@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "epoch": 1933,
+  "interaction_types": ["side_menu", "room", "phone_list", "overlay", "avatar_panel", "state_panel"],
+  "shared_objects": [
+    {"id":"telephone","label":"Telefon","interaction":"phone_list","opens":"contacts","always_available":true},
+    {"id":"wall_map","label":"Weltkarte","interaction":"room","opens":"map_room_or_world_map","always_available":true},
+    {"id":"desk","label":"Schreibtisch","interaction":"side_menu","opens":"decision_queue","always_available":true},
+    {"id":"urgent_folder","label":"Dringende Aktenmappe","interaction":"side_menu","opens":"urgent_events","always_available":true},
+    {"id":"filing_cabinet","label":"Aktenschrank","interaction":"side_menu","opens":"archive","always_available":true,"upgrades_to":"archive_room"},
+    {"id":"radio","label":"Radio","interaction":"overlay","opens":"news_and_public_broadcasts","always_available":true},
+    {"id":"newspaper","label":"Zeitung","interaction":"side_menu","opens":"public_press","always_available":true},
+    {"id":"budget_ledger","label":"Budgetbuch","interaction":"side_menu","opens":"treasury_budget","requirements":{"government_access":20}},
+    {"id":"military_folder","label":"Militärmappe","interaction":"side_menu","opens":"basic_military","always_available":true,"upgrades_to":"war_room"},
+    {"id":"research_folder","label":"Forschungsmappe","interaction":"side_menu","opens":"research","requirements":{"research_access":15},"upgrades_to":"research_room"},
+    {"id":"diplomatic_folder","label":"Diplomatenmappe","interaction":"side_menu","opens":"diplomacy","always_available":true},
+    {"id":"secret_file","label":"Geheimakte","interaction":"side_menu","opens":"basic_intelligence","requirements":{"intelligence_access":15},"upgrades_to":"intelligence_room"},
+    {"id":"calendar","label":"Kalender","interaction":"side_menu","opens":"appointments_deadlines","always_available":true},
+    {"id":"clock","label":"Uhr","interaction":"overlay","opens":"turn_deadline","always_available":true},
+    {"id":"visitor_chairs","label":"Besuchersessel","interaction":"room","opens":"office_meeting","requirements":{"contact_available":true}},
+    {"id":"door","label":"Tür","interaction":"room","opens":"room_selector","always_available":true},
+    {"id":"safe","label":"Tresor","interaction":"side_menu","opens":"classified_reserves","requirements":{"office_level":2}},
+    {"id":"bookshelf","label":"Bücherregal","interaction":"side_menu","opens":"laws_history_traits","always_available":true},
+    {"id":"avatar_portrait","label":"Avatarbild","interaction":"avatar_panel","opens":"avatar_status","always_available":true},
+    {"id":"flag_or_state_symbol","label":"Flagge / Staatssymbol","interaction":"state_panel","opens":"government_state","always_available":true},
+    {"id":"window","label":"Fenster","interaction":"overlay","opens":"ambient_national_situation","always_available":true}
+  ],
+  "office_levels": [
+    {"level":0,"name":"Privates/politisches Büro","requirements":{},"features":["basic_phone","basic_map","basic_files","limited_staff"]},
+    {"level":1,"name":"Regierungsbüro","requirements":{"authority":35,"government_office_or_influence":true},"features":["minister_contacts","budget_ledger","state_reports","cabinet_access"]},
+    {"level":2,"name":"Erweiterte Staatskanzlei","requirements":{"authority":55,"treasury":12,"administration":45},"build_months":2,"features":["secure_phone","assistant","larger_map","meeting_room","safe"]},
+    {"level":3,"name":"Strategische Kommandozentrale","requirements":{"authority":65,"military_influence":50,"armament_index":50,"treasury":18,"industrial_goods":6,"steel":3},"build_months":3,"features":["map_room","communications_room","war_room"]},
+    {"level":4,"name":"Nationale Machtzentrale","requirements":{"authority":80,"state_capacity":70,"communications":65,"treasury":25},"build_months":4,"features":["crisis_staff","intelligence_room","conference_room","multi_line_communications"]},
+    {"level":5,"name":"Kriegs-/Großmacht-Hauptquartier","requirements":{"authority":85,"industry":75,"armament_index":75,"logistics":70,"military_control":70,"war_or_great_power_status":true},"build_months":6,"features":["global_logistics","alliance_coordination","multi_front_view","strategic_reserves"]}
+  ],
+  "rooms": [
+    {"id":"map_room","label":"Karten-/Lageraum","opens":["world_map","resources","logistics","troops","construction","routes"]},
+    {"id":"cabinet_room","label":"Kabinettszimmer","opens":["ministers","votes","budget","government_proposals"]},
+    {"id":"communications_room","label":"Kommunikationsraum","opens":["phone_lines","telegraph_radio","embassies","military_comms"]},
+    {"id":"intelligence_room","label":"Geheimdienstzimmer","opens":["intelligence_picture","networks","counterintelligence","protection"]},
+    {"id":"war_room","label":"Militär-/Kriegsraum","opens":["forces","supply","mobilization","fronts","reserves","production_orders"]},
+    {"id":"research_room","label":"Forschungs-/Beraterzimmer","opens":["research_projects","scientists","joint_research","technology_advice"]},
+    {"id":"meeting_room","label":"Empfangs-/Meetingraum","opens":["bilateral_meetings","ambassadors","ministers","business_delegations"]},
+    {"id":"crisis_shelter","label":"Krisen-/Schutzraum","opens":["continuity_of_government","secure_comms","crisis_orders"],"requirements":{"war_threat":true}}
+  ],
+  "avatar_offices": {
+    "ataturk": {
+      "start_level":1,
+      "theme":"Ankara republican presidential office, restrained modern 1930s state administration",
+      "signature_object":{"id":"reform_folder","label":"Reformmappe","interaction":"side_menu","opens":"institutional_reforms"},
+      "personal_objects":["Anatolia map","education files","language reform files","legal modernization files"],
+      "start_access":{"cabinet":true,"military":true,"research":true,"diplomacy":true}
+    },
+    "hitler": {
+      "start_level":0,
+      "theme":"Political party office on 1 January 1933; must not visually imply chancellorship before 30 January",
+      "signature_object":{"id":"political_folder","label":"Politische Aktenmappe","interaction":"side_menu","opens":"party_coalition_elite_access"},
+      "personal_objects":["Germany map","party files","campaign correspondence","political contact lists"],
+      "historical_transition":{"date":"1933-01-30","event":"chancellorship","may_unlock_level":1},
+      "portrayal_note":"historically critical, non-glorifying"
+    },
+    "stalin": {
+      "start_level":2,
+      "theme":"Strict functional Soviet leadership office focused on party apparatus, personnel and industrial reports",
+      "signature_object":{"id":"cadre_file","label":"Kaderakte","interaction":"side_menu","opens":"cadres_party_loyalty_administration"},
+      "personal_objects":["USSR map","party reports","production plans","personnel files","industrialization reports"],
+      "start_access":{"party":true,"intelligence":true,"planning":true,"government":true}
+    },
+    "churchill": {
+      "start_level":0,
+      "theme":"Private/parliamentary British office in 1933, books, correspondence and foreign-policy material",
+      "signature_object":{"id":"correspondence_folder","label":"Korrespondenzmappe","interaction":"side_menu","opens":"parliament_press_networks_foreign_contacts"},
+      "personal_objects":["books","writing desk materials","Parliament files","foreign policy papers","world map"],
+      "start_access":{"cabinet":false,"direct_military_command":false,"press_networks":true,"parliament":true},
+      "future_upgrade":"War Cabinet / War Room when historical/political authority permits"
+    },
+    "roosevelt": {
+      "start_level":0,
+      "theme":"President-elect transition office until 4 March 1933, crisis briefing and cabinet planning",
+      "signature_object":{"id":"advisor_folder","label":"Beratermappe","interaction":"side_menu","opens":"advisors_candidates_economic_social_programs"},
+      "personal_objects":["US map","economic crisis reports","advisor files","cabinet candidate papers"],
+      "historical_transition":{"date":"1933-03-04","event":"presidential_inauguration","may_unlock_level":1}
+    },
+    "mussolini": {
+      "start_level":2,
+      "theme":"Representative Rome government office with strong administrative and military access",
+      "signature_object":{"id":"state_project_folder","label":"Staatsprojektmappe","interaction":"side_menu","opens":"infrastructure_prestige_industry_administration"},
+      "personal_objects":["Italy map","infrastructure files","industry reports","military papers","administration files"],
+      "start_access":{"government":true,"military":true,"communications":true}
+    },
+    "custom": {
+      "start_level":"generated",
+      "theme":"generated from origin, profession, country and political status",
+      "signature_object":"generated_from_profession",
+      "profession_variants": {
+        "lawyer":"law_books_and_case_files",
+        "officer":"military_maps_and_service_files",
+        "entrepreneur":"trade_ledger_and_company_files",
+        "party_official":"party_files_and_contact_lists",
+        "civil_servant":"administrative_files_and_agency_access",
+        "journalist":"press_folder_and_information_network"
+      }
+    }
+  },
+  "dynamic_visual_states": [
+    "urgent_files_accumulate",
+    "telephone_rings_for_critical_events",
+    "newspaper_stack_for_unread_public_news",
+    "front_markers_appear_during_war",
+    "desk_clutter_tracks_parallel_projects",
+    "lighting_reacts_to_energy_crisis",
+    "guards_increase_with_security_risk",
+    "damage_and_provisional_office_possible_in_war"
+  ]
+}
