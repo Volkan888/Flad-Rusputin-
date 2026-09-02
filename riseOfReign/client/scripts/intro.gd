@@ -1,10 +1,14 @@
 extends Control
 
-@onready var vk_apps: Label = $Center/VBox/VKApps
-@onready var presents: Label = $Center/VBox/Presents
-@onready var game_title: Label = $Center/VBox/GameTitle
-@onready var subtitle: Label = $Center/VBox/Subtitle
-@onready var red_flash: ColorRect = $RedFlash
+const VIDEO_PATH := "res://assets/video/vkapps_riseofreign_intro.ogv"
+
+@onready var video: VideoStreamPlayer = $Video
+@onready var fallback: Control = $Fallback
+@onready var vk_apps: Label = $Fallback/Center/VBox/VKApps
+@onready var presents: Label = $Fallback/Center/VBox/Presents
+@onready var game_title: Label = $Fallback/Center/VBox/GameTitle
+@onready var subtitle: Label = $Fallback/Center/VBox/Subtitle
+@onready var red_flash: ColorRect = $Fallback/RedFlash
 @onready var skip_button: Button = $Skip
 
 var _finished := false
@@ -13,17 +17,27 @@ func _ready() -> void:
     if not AudioManager.intro_enabled:
         _finish_intro()
         return
+    AudioManager.stop_menu_music()
+    if ResourceLoader.exists(VIDEO_PATH):
+        var stream = load(VIDEO_PATH)
+        if stream is VideoStream:
+            fallback.visible = false
+            video.visible = true
+            video.stream = stream
+            video.play()
+            return
+    _run_fallback_intro()
+
+func _run_fallback_intro() -> void:
+    video.visible = false
+    fallback.visible = true
     vk_apps.modulate.a = 0.0
     presents.modulate.a = 0.0
     game_title.modulate.a = 0.0
     subtitle.modulate.a = 0.0
     red_flash.modulate.a = 0.0
     skip_button.modulate.a = 0.0
-    AudioManager.stop_menu_music()
     AudioManager.play_intro_cue()
-    _run_intro()
-
-func _run_intro() -> void:
     var tween := create_tween()
     tween.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
     tween.tween_property(vk_apps, "modulate:a", 1.0, 0.55)
@@ -48,6 +62,9 @@ func _unhandled_input(event: InputEvent) -> void:
     if event.is_pressed() and not event.is_echo():
         _finish_intro()
 
+func _on_video_finished() -> void:
+    _finish_intro()
+
 func _on_skip_pressed() -> void:
     AudioManager.play_click()
     _finish_intro()
@@ -56,4 +73,6 @@ func _finish_intro() -> void:
     if _finished:
         return
     _finished = true
+    if video.playing:
+        video.stop()
     get_tree().change_scene_to_file("res://scenes/main.tscn")
