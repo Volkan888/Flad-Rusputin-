@@ -96,8 +96,8 @@ class January1933Tests(unittest.TestCase):
             "_finish_january",
             "_show_month_report",
             "HTTPClient.METHOD_POST",
-            "_format_date",
-            "1933-02",
+            "CAMPAIGN_SAVE_PATH",
+            "1. Februar 1933",
         ):
             self.assertIn(token, script)
         self.assertIn('name="MonthHTTPRequest"', scene)
