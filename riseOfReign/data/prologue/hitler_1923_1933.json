@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "avatar_id": "hitler",
+  "period": {"from": "1923-11-08", "to": "1933-01-30"},
+  "portrayal": {
+    "mode": "critical_historical",
+    "no_glorification": true,
+    "rule": "Rooms, objects and texts are historical evidence and gameplay context, never prestige rewards or heroic collectibles."
+  },
+  "stages": [
+    {
+      "id": "failed_coup_1923",
+      "date": "1923-11-08/1923-11-09",
+      "title": "Gescheiterter Umsturzversuch",
+      "location": "Munich, Bavaria, Germany",
+      "room_type": "event_scene",
+      "historical_anchor": true,
+      "effects": {"political_access": -20, "legal_risk": 100, "public_notoriety": 25},
+      "next": "trial_1924"
+    },
+    {
+      "id": "trial_1924",
+      "date": "1924-02/1924-04-01",
+      "title": "Prozess und Verurteilung",
+      "location": "Munich, Bavaria, Germany",
+      "room_type": "courtroom",
+      "historical_anchor": true,
+      "clickable_objects": ["court_files", "newspapers", "defense_notes", "visitor_messages"],
+      "next": "landsberg_imprisonment"
+    },
+    {
+      "id": "landsberg_imprisonment",
+      "date": "1924-04-01/1924-12-20",
+      "title": "Festungshaft in Landsberg",
+      "location": "Landsberg am Lech, Bavaria, Germany",
+      "room_type": "prison_cell",
+      "historical_anchor": true,
+      "visual_direction": "Plain 1924 prison room/cell. No banners, shrine composition or later Nazi propaganda staging.",
+      "clickable_objects": [
+        {"id": "cell_desk", "label": "Schreibtisch / Arbeitstisch", "interaction": "side_menu", "opens": "writing_and_correspondence"},
+        {"id": "prison_bed", "label": "Bett", "interaction": "side_menu", "opens": "health_and_daily_routine"},
+        {"id": "barred_window", "label": "Fenster", "interaction": "side_menu", "opens": "outside_world_news"},
+        {"id": "visitor_log", "label": "Besucherbuch", "interaction": "side_menu", "opens": "supporter_contacts"},
+        {"id": "court_documents", "label": "Gerichts- und Haftunterlagen", "interaction": "side_menu", "opens": "legal_history"},
+        {"id": "letters", "label": "Briefe", "interaction": "side_menu", "opens": "correspondence"},
+        {"id": "manuscript_pages", "label": "Manuskriptseiten", "interaction": "side_menu", "opens": "mein_kampf_context"}
+      ],
+      "inventory_changes": [
+        {"action": "add", "inventory": "personal", "item_id": "mein_kampf_manuscript_context"},
+        {"action": "add", "inventory": "personal", "item_id": "landsberg_correspondence"}
+      ],
+      "gameplay": {
+        "government_access": 0,
+        "military_command": 0,
+        "movement_freedom": 0,
+        "party_contacts": "limited_but_present",
+        "public_activity": "restricted",
+        "writing_activity": true
+      },
+      "next": "release_1924"
+    },
+    {
+      "id": "release_1924",
+      "date": "1924-12-20",
+      "title": "Entlassung aus Landsberg",
+      "room_type": "transition_scene",
+      "historical_anchor": true,
+      "effects": {"movement_freedom": 100, "legal_risk": -35},
+      "next": "party_rebuild_1925_1929"
+    },
+    {
+      "id": "party_rebuild_1925_1929",
+      "date": "1925/1929",
+      "title": "Parteiorganisation und politische Rückkehr",
+      "room_type": "small_party_office",
+      "office_stage": "political_office_early",
+      "clickable_objects": ["telephone_basic", "party_files", "correspondence", "newspapers", "campaign_map", "bookshelf"],
+      "next": "mass_politics_1930_1932"
+    },
+    {
+      "id": "mass_politics_1930_1932",
+      "date": "1930/1932",
+      "title": "Wahlkämpfe und wachsender Parteiapparat",
+      "room_type": "party_leadership_office",
+      "office_stage": "political_office_expanded",
+      "clickable_objects": ["telephone", "party_files", "campaign_correspondence", "press_reports", "germany_map", "contact_lists"],
+      "next": "january_1933_party_office"
+    },
+    {
+      "id": "january_1933_party_office",
+      "date": "1933-01-01",
+      "title": "Politisches Führungsbüro",
+      "room_type": "political_office",
+      "office_level": 0,
+      "historical_anchor": true,
+      "restriction": "No state budget, cabinet authority or military command on 1 January 1933.",
+      "next": "chancellorship_transition"
+    },
+    {
+      "id": "chancellorship_transition",
+      "date": "1933-01-30",
+      "title": "Ernennung zum Reichskanzler",
+      "room_type": "government_office_transition",
+      "office_level_from": 0,
+      "office_level_to": 1,
+      "historical_anchor": true,
+      "next": "main_game_1933"
+    }
+  ],
+  "historical_items": [
+    {
+      "id": "mein_kampf_manuscript_context",
+      "name": "Manuskript / Entstehungskontext von Mein Kampf",
+      "category": "historical_document",
+      "inventory_scope": "personal",
+      "prestige_value": 0,
+      "sellable": false,
+      "tradeable": false,
+      "description": "Hitler begann 1924 während seiner Haft in Landsberg mit der Arbeit an dem später unter dem Titel Mein Kampf veröffentlichten Text. Das Spiel zeigt den rassistischen, antisemitischen und expansionistischen Inhalt kritisch als historische Quelle und Vorzeichen späterer NS-Politik.",
+      "opens": ["historical_context", "ideology_analysis", "later_event_links"],
+      "bonuses": [],
+      "negative_links": ["extremism", "antisemitism", "racial_policy", "aggressive_expansion", "international_distrust"]
+    },
+    {
+      "id": "landsberg_correspondence",
+      "name": "Landsberg-Korrespondenz",
+      "category": "historical_documents",
+      "inventory_scope": "personal",
+      "prestige_value": 0,
+      "sellable": false,
+      "tradeable": false,
+      "opens": ["contacts", "visitor_history", "political_network_history"]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://encyclopedia.ushmm.org/content/de/article/mein-kampf",
+      "note": "USHMM: work on Mein Kampf began in Landsberg prison in 1924 after conviction for the 1923 coup attempt."
+    },
+    {
+      "url": "https://www.historisches-lexikon-bayerns.de/Lexikon/Artikel_44400",
+      "note": "Historisches Lexikon Bayerns: sentence began 1 April 1924; release 20 December 1924; first part of Mein Kampf written in Landsberg."
+    },
+    {
+      "url": "https://germanhistorydocs.org/de/deutschland-nationalsozialismus-1933-1945/adolf-hitler-mein-kampf-1-band-1925",
+      "note": "German History in Documents and Images: Landsberg imprisonment and publication context of volume 1 in 1925."
+    }
+  ]
+}
