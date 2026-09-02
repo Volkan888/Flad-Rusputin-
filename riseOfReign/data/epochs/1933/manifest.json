@@ -5,7 +5,7 @@
   "turn_unit": "month",
   "max_players": 4,
   "historical_anchor_mode": true,
-  "content_version": "1933.0.6",
+  "content_version": "1933.0.7",
   "files": {
     "avatars": "avatars.json",
     "countries": "countries.json",
@@ -17,6 +17,7 @@
     "construction_catalog": "construction_catalog.json",
     "office_hubs": "office_hubs.json",
     "state_profiles": "state_profiles.json",
+    "sectors": "sectors_1933.json",
     "january_1933": "months/january.json"
   }
 }
