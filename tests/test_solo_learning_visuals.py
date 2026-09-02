@@ -25,9 +25,11 @@ class SoloLearningVisualTests(unittest.TestCase):
 
     def test_solo_session_is_explicit_and_persistent(self):
         self.assertIn('GameSession="*res://scripts/game_session.gd"', self.project)
-        self.assertIn('SOLO-LERNKAMPAGNE', self.main_scene)
+        self.assertIn('FLAD RASPUTIN', self.main_scene)
+        self.assertIn('SOLO-PROLOG', self.main_scene)
         self.assertIn('MULTIPLAYER · 2 GEGEN 2', self.main_scene)
         self.assertIn('GameSession.start_solo()', self.main_gd)
+        self.assertIn('FLAD_PROLOGUE_SCENE', self.main_gd)
         self.assertIn('GameSession.start_multiplayer()', self.main_gd)
         self.assertIn('user://riseofreign_session.cfg', self.session_gd)
         self.assertIn('deterministische strategische Simulation', self.session_gd)
